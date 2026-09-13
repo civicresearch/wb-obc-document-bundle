@@ -37,14 +37,16 @@ This is the first statewide Panchayat & Rural Development Department guideline/o
 The site uses relative links, so downloaded copies work without a network connection. When served by GitHub Pages, the same links continue to work:
 
 ```text
-https://raw.githubusercontent.com/<owner>/wb-obc-document-bundle/main/obc_pdfs/<file>.pdf
+https://raw.githubusercontent.com/civicresearchgroup/wb-obc-document-bundle/main/obc_pdfs/<file>.pdf
 ```
 
 For GitHub Pages-style links, use:
 
 ```text
-https://<owner>.github.io/wb-obc-document-bundle/obc_pdfs/<file>.pdf
+https://civicresearchgroup.github.io/wb-obc-document-bundle/obc_pdfs/<file>.pdf
 ```
+
+Contact: <civicresearchgroup@gmail.com>
 
 Because the main timeline, litigation tracker, and document corpus now load JSON files, serve the folder over HTTP while editing:
 
@@ -70,7 +72,7 @@ This writes `index-standalone.html`; keep editing `index.html` and the JSON file
 
 1. Push the `main` branch to GitHub.
 2. In **Settings → Pages**, choose **Deploy from a branch**, then select `main` and `/(root)`.
-3. Save. GitHub will publish the site at `https://b4build.github.io/wb-obc-document-bundle/`.
+3. Save. GitHub will publish the site at `https://civicresearchgroup.github.io/wb-obc-document-bundle/`.
 
 The repository root contains `index.html`, which GitHub Pages uses automatically. The larger litigation bundles listed in `related_sources_catalog.json` are intentionally not published; add concise primary orders or properly described extracts instead.
 

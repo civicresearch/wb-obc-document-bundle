@@ -19,6 +19,10 @@
     .bar, main { width:min(940px,calc(100% - 32px)); margin:auto; }
     .bar { display:flex; justify-content:space-between; gap:16px; align-items:center; min-height:64px; }
     .brand { color:#f9dba0; font:700 12px var(--mono); letter-spacing:.08em; text-transform:uppercase; }
+    .brand-logo { display:inline-flex; align-items:center; text-decoration:none; }
+    .brand-logo img { display:block; height:34px; width:auto; max-width:190px; object-fit:contain; }
+    .site-contact { width:min(940px,calc(100% - 32px)); margin:0 auto; padding:22px 0 42px; color:var(--muted); font-size:14px; }
+    .site-contact a { color:#125c83; font-weight:700; }
     .bar-actions { display:flex; align-items:center; gap:12px; }
     .bar a { color:#fff; }
     .language-switch { display:inline-flex; align-items:center; gap:4px; padding:3px; border:1px solid rgba(255,255,255,.18); border-radius:999px; }
@@ -71,7 +75,9 @@
   <a class="skip" href="#public-forms" data-i18n="skip">Skip to public forms</a>
   <header>
     <div class="bar">
-      <span class="brand">WB OBC Archive</span>
+      <a class="brand brand-logo" href="index.html#home" aria-label="Civic Research Group — WB OBC Archive home">
+        <img src="CRG_LOGO_light.png" alt="Civic Research Group" width="180" height="40" decoding="async">
+      </a>
       <div class="bar-actions">
         <a id="back-link" href="index.html#home" data-i18n="back">Back to research bundle</a>
         <span class="language-switch" aria-label="Language">
@@ -148,6 +154,12 @@
       </form>
     </section>
   </main>
+  <footer class="site-contact">
+    <span data-i18n="contactLabel">Contact us:</span>
+    <a href="mailto:civicresearchgroup@gmail.com">civicresearchgroup@gmail.com</a>
+    ·
+    <a href="https://github.com/civicresearchgroup/wb-obc-document-bundle" target="_blank" rel="noreferrer" data-i18n="contactRepo">Repository</a>
+  </footer>
   <script>
     const TRANSLATIONS = {
       en: {
@@ -195,7 +207,9 @@
         whereFound: 'where did you find it?',
         provenancePlaceholder: 'Official download, gazette, court record, newspaper notice, public mirror, etc.',
         submitButton: 'Open structured GitHub report',
-        fineText: 'Submitting opens a prefilled issue on GitHub. You review it before posting; nothing is transmitted from this page automatically.'
+        fineText: 'Submitting opens a prefilled issue on GitHub. You review it before posting; nothing is transmitted from this page automatically.',
+        contactLabel: 'Contact us:',
+        contactRepo: 'Repository'
       },
       bn: {
         title: 'উৎস জানান · পশ্চিমবঙ্গ ওবিসি নথি',
@@ -242,7 +256,9 @@
         whereFound: 'কোথায় পেয়েছেন?',
         provenancePlaceholder: 'সরকারি ডাউনলোড, গেজেট, আদালত রেকর্ড, সংবাদপত্র নোটিস, পাবলিক মিরর ইত্যাদি।',
         submitButton: 'কাঠামোবদ্ধ GitHub রিপোর্ট খুলুন',
-        fineText: 'জমা দিলে GitHub-এ একটি প্রিফিলড issue খুলবে। পোস্ট করার আগে আপনি তা দেখে নেবেন; এই পাতা থেকে কিছু স্বয়ংক্রিয়ভাবে পাঠানো হয় না।'
+        fineText: 'জমা দিলে GitHub-এ একটি প্রিফিলড issue খুলবে। পোস্ট করার আগে আপনি তা দেখে নেবেন; এই পাতা থেকে কিছু স্বয়ংক্রিয়ভাবে পাঠানো হয় না।',
+        contactLabel: 'আমাদের সাথে যোগাযোগ করুন:',
+        contactRepo: 'রিপোজিটরি'
       }
     };
 
@@ -291,7 +307,7 @@
         '', '## Checklist', '- [ ] No personal or sensitive information included', '- [ ] Source/provenance stated', '- [ ] I understand this report will be public'
       ].join('\n');
       const params = new URLSearchParams({ title: `[${kind}] ${subject}`, body, labels: 'source-report' });
-      window.open(`https://github.com/b4build/wb-obc-document-bundle/issues/new?${params}`, '_blank', 'noopener');
+      window.open(`https://github.com/civicresearchgroup/wb-obc-document-bundle/issues/new?${params}`, '_blank', 'noopener');
     });
   </script>
 </body>

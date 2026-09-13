@@ -18,7 +18,7 @@
     //    asset links to point at the raw GitHub copy instead.
     // Edit GITHUB_RAW_BASE below if the repo/branch ever changes.
     (function () {
-      var GITHUB_RAW_BASE = 'https://raw.githubusercontent.com/b4build/wb-obc-document-bundle/main/';
+      var GITHUB_RAW_BASE = 'https://raw.githubusercontent.com/civicresearchgroup/wb-obc-document-bundle/main/';
       var host = window.location.hostname;
       var isGithubPages = /(^|\.)github\.io$/.test(host);
       var isLocal = host === 'localhost' || host === '127.0.0.1' || host === '' || window.location.protocol === 'file:';
@@ -31,13 +31,19 @@
   <a class="skip-link" href="#main-content">Skip to main content</a>
   <header class="site-header">
     <div class="site-header-inner">
-      <span class="site-logo" data-i18n="siteLogo">WB OBC Archive</span>
+      <a href="#home" class="site-logo" aria-label="Civic Research Group — WB OBC Archive home">
+        <span class="site-logo-mark">
+          <img src="CRG_LOGO_light.png" alt="Civic Research Group" width="184" height="42" decoding="async">
+        </span>
+        <span class="site-logo-text" data-i18n="siteLogo">WB OBC Archive</span>
+      </a>
       <button type="button" class="nav-toggle" aria-expanded="false" aria-controls="site-nav" aria-label="Open navigation menu">
         <span class="nav-toggle-bar"></span>
         <span class="nav-toggle-bar"></span>
         <span class="nav-toggle-bar"></span>
       </button>
       <nav class="site-nav" id="site-nav" aria-label="Sections">
+        <button type="button" class="nav-close" aria-label="Close navigation menu">×</button>
         <a href="#home" class="active" data-tab-target="home" data-i18n="navHome">Home</a>
         <div class="nav-group">
           <button type="button" class="nav-group-toggle" aria-expanded="false" data-i18n="navResearch">Research <span class="nav-caret" aria-hidden="true">▾</span></button>
@@ -62,11 +68,11 @@
         <a href="contribute.html" data-i18n="navContribute">Contribute</a>
         <a href="#about" data-tab-target="about" data-i18n="navAbout">About</a>
         <span class="language-switch" aria-label="Language">
-          <button type="button" id="lang-en" class="lang-btn active" data-lang="en" aria-pressed="true">EN</button>
+          <button type="button" id="lang-en" class="lang-btn active" data-lang="en" data-lang-switch="en" aria-pressed="true">EN</button>
           <span class="lang-separator">|</span>
-          <button type="button" id="lang-bn" class="lang-btn" data-lang="bn" aria-pressed="false">বাংলা</button>
+          <button type="button" id="lang-bn" class="lang-btn" data-lang="bn" data-lang-switch="bn" aria-pressed="false">বাংলা</button>
         </span>
-        <a href="https://github.com/b4build/wb-obc-document-bundle" target="_blank" rel="noreferrer" data-i18n="navGitHub">GitHub</a>
+        <a href="https://github.com/civicresearchgroup/wb-obc-document-bundle" target="_blank" rel="noreferrer" data-i18n="navGitHub">GitHub</a>
       </nav>
       <div class="nav-overlay"></div>
     </div>
@@ -74,7 +80,7 @@
 
   <section class="hero">
     <div class="hero-inner wrap">
-      <p class="hero-eyebrow" id="hero-eyebrow" data-i18n="heroEyebrow">West Bengal · Backward Classes Welfare Department · 1993–2026</p>
+      <p class="hero-eyebrow" id="hero-eyebrow" data-i18n="heroEyebrow">West Bengal OBC Archive · 1993–2026</p>
       <h1 id="hero-title" data-i18n="heroTitle">OBC Reservation and List Timeline</h1>
       <p class="hero-sub" id="hero-sub" data-i18n="heroSub">A consolidated view of the PDFs in <strong>OBC OLD</strong> and <strong>OBC 2025</strong>, starting with the 1993 Commission Act and continuing through the 2026 notification and litigation record.</p>
       <div class="hero-stats stagger-in">
@@ -102,6 +108,12 @@
       <div class="popup-footer">
         <label><input type="checkbox" id="dont-show-again"> <span data-i18n="popupDontShow">Don't show this message again</span></label>
       </div>
+      <div class="popup-lang-switch" style="margin-top:1rem;padding-top:0.75rem;border-top:1px solid var(--border);display:flex;align-items:center;gap:0.5rem;">
+        <span style="font-size:0.875rem;color:var(--muted);" data-i18n="popupLanguage">Language:</span>
+        <button type="button" class="lang-btn-small" data-lang-switch="en" aria-pressed="false">EN</button>
+        <span style="color:var(--muted);">|</span>
+        <button type="button" class="lang-btn-small" data-lang-switch="bn" aria-pressed="false">বাংলা</button>
+      </div>
     </div>
   </div>
 
@@ -110,24 +122,10 @@
 
     <section id="home" class="home-panel tab-panel" data-tab-panel="home" aria-label="Home dashboard">
       <div class="home-intro">
-        <p class="panel-kicker" data-i18n="homePanelKicker">Offline bundle</p>
+        <p class="panel-kicker" data-i18n="homePanelKicker">Research bundle</p>
         <h2 data-i18n="homePanelTitle">Research Home</h2>
-        <p data-i18n="homePanelIntro">Use this single HTML as a source-led research desk. It connects statutory background, notifications, certificate and roster records, hearing notices, policy reports, litigation, and the PDFs that support each claim.</p>
+        <p data-i18n="homePanelIntro">A unified OBC archive for statutory context, notifications, certificates, hearings, policy reports, litigation, and bundled source PDFs.</p>
       </div>
-      <section class="home-brief stagger-in" aria-label="How to use this site">
-        <article><strong data-i18n="homeStep1Title">Start with the question</strong><span data-i18n="homeStep1Desc">Search a community, notification, case number, date, or legal term.</span></article>
-        <article><strong data-i18n="homeStep2Title">Follow the record</strong><span data-i18n="homeStep2Desc">Use Timeline for policy changes and Litigation for court orders and procedural status.</span></article>
-        <article><strong data-i18n="homeStep3Title">Open the source</strong><span data-i18n="homeStep3Desc">Every summary should lead to a bundled PDF or a clearly labelled original source link.</span></article>
-      </section>
-      <div class="source-status-grid stagger-in">
-        <a class="source-status lift" href="#documents"><strong data-i18n="homeStatus1Num">84</strong><span data-i18n="homeStatus1Desc">PDF sources bundled locally across notifications, hearings, reports, and litigation records</span></a>
-        <a class="source-status lift" href="#public-hearings"><strong data-i18n="homeStatus2Num">17</strong><span data-i18n="homeStatus2Desc">hearing / public notice PDFs bundled locally</span></a>
-        <a class="source-status lift" href="#reports"><strong data-i18n="homeStatus3Num">6</strong><span data-i18n="homeStatus3Desc">policy/process sources bundled for context</span></a>
-        <a class="source-status lift" href="#missing-records"><strong data-i18n="homeStatus4Num">5</strong><span data-i18n="homeStatus4Desc">priority evidence gaps and follow-ups tracked</span></a>
-        <a class="source-status lift" href="obc_pdf_manifest.json"><strong data-i18n="homeStatus5Num">JSON</strong><span data-i18n="homeStatus5Desc">renamed PDF manifest for local or cloud use</span></a>
-        <a class="source-status lift" href="https://github.com/b4build/wb-obc-document-bundle" target="_blank" rel="noreferrer"><strong data-i18n="homeStatus6Num">GitHub</strong><span data-i18n="homeStatus6Desc">Repository for the OBC document bundle</span></a>
-      </div>
-
       <div id="query-hub" class="query-hub" aria-label="OBC query hub">
         <div class="search-intro">
           <p class="panel-kicker" data-i18n="searchHubKicker">Bundle search</p>
@@ -140,11 +138,11 @@
           <div id="site-search-results" class="site-search-results" aria-live="polite"></div>
         </div>
         <div class="search-footer">
-          <div class="search-scope" aria-label="Search coverage">
-            <span><strong data-i18n="searchScopeTimeline">Timeline</strong> <span data-i18n="searchScopeTimelineDesc">notification trail</span></span>
-            <span><strong data-i18n="searchScopeLitigation">Litigation</strong> <span data-i18n="searchScopeLitigationDesc">court orders and status notes</span></span>
-            <span><strong data-i18n="searchScopeOBCList">OBC List</strong> <span data-i18n="searchScopeOBCListDesc">current and historical class rows</span></span>
-            <span><strong data-i18n="searchScopePDFs">Source PDFs</strong> <span data-i18n="searchScopePDFsDesc">extracted document text</span></span>
+          <div class="search-scope compact" aria-label="Search coverage">
+            <span><strong data-i18n="searchScopeTimeline">Timeline</strong></span>
+            <span><strong data-i18n="searchScopeLitigation">Litigation</strong></span>
+            <span><strong data-i18n="searchScopeOBCList">OBC List</strong></span>
+            <span><strong data-i18n="searchScopePDFs">Source PDFs</strong></span>
           </div>
           <div class="query-actions" aria-label="Quick navigation">
             <a href="#timeline" data-i18n="queryAction1">Trace timeline</a>
@@ -154,7 +152,22 @@
             <a href="#reports" data-i18n="queryAction5">Check policy basis</a>
             <a href="#about" data-i18n="queryAction6">Read scope &amp; source care</a>
           </div>
+          <div class="query-actions query-actions-utility" aria-label="Bundle resources">
+            <a href="obc_pdf_manifest.json" data-i18n="homeStatus5Num">JSON</a>
+            <a href="https://github.com/civicresearchgroup/wb-obc-document-bundle" target="_blank" rel="noreferrer" data-i18n="homeStatus6Num">GitHub</a>
+          </div>
         </div>
+      </div>
+      <section class="home-brief stagger-in" aria-label="How to use this site">
+        <article><strong data-i18n="homeStep1Title">Start with the question</strong><span data-i18n="homeStep1Desc">Search a community, notification, case number, date, or legal term.</span></article>
+        <article><strong data-i18n="homeStep2Title">Follow the record</strong><span data-i18n="homeStep2Desc">Use Timeline for policy changes and Litigation for court orders and procedural status.</span></article>
+        <article><strong data-i18n="homeStep3Title">Open the source</strong><span data-i18n="homeStep3Desc">Every summary should lead to a bundled PDF or a clearly labelled original source link.</span></article>
+      </section>
+      <div class="source-status-grid stagger-in" id="home-stats">
+        <a class="source-status lift" href="#documents" data-count-target="84"><strong data-i18n="homeStatus1Num" data-stat="0">84</strong><span data-i18n="homeStatus1Desc">PDF sources bundled locally across notifications, hearings, reports, and litigation records</span></a>
+        <a class="source-status lift" href="#public-hearings" data-count-target="17"><strong data-i18n="homeStatus2Num" data-stat="0">17</strong><span data-i18n="homeStatus2Desc">hearing / public notice PDFs bundled locally</span></a>
+        <a class="source-status lift" href="#reports" data-count-target="6"><strong data-i18n="homeStatus3Num" data-stat="0">6</strong><span data-i18n="homeStatus3Desc">policy/process sources bundled for context</span></a>
+        <a class="source-status lift" href="#missing-records" data-count-target="5"><strong data-i18n="homeStatus4Num" data-stat="0">5</strong><span data-i18n="homeStatus4Desc">priority evidence gaps and follow-ups tracked</span></a>
       </div>
 
       <div class="home-layout stagger-in">
@@ -166,7 +179,7 @@
         <article class="home-card lift accent-gold">
           <h3 data-i18n="homeCard2Title">Policy Basis</h3>
           <p data-i18n="homeCard2Desc">Use the Mandal, Sachar, and West Bengal Muslim OBC reports to understand backwardness criteria, Muslim OBC context, and evidence requirements.</p>
-          <p><a href="#reports" data-i18n="homeCard2Link1">Open reports</a> · <a href="https://raw.githubusercontent.com/b4build/wb-obc-document-bundle/main/muslim_obc_status.html" target="_blank" rel="noreferrer" data-i18n="homeCard2Link2">Muslim OBC note</a></p>
+          <p><a href="#reports" data-i18n="homeCard2Link1">Open reports</a> · <a href="https://raw.githubusercontent.com/civicresearchgroup/wb-obc-document-bundle/main/muslim_obc_status.html" target="_blank" rel="noreferrer" data-i18n="homeCard2Link2">Muslim OBC note</a></p>
         </article>
         <article class="home-card lift accent-green">
           <h3 data-i18n="homeCard3Title">What remains to verify</h3>
@@ -207,20 +220,20 @@
         <table>
           <thead>
             <tr>
-              <th>Need</th>
-              <th>Best tab</th>
-              <th>What you will find</th>
+              <th data-i18n="homeTableHeaderNeed">Need</th>
+              <th data-i18n="homeTableHeaderBestTab">Best tab</th>
+              <th data-i18n="homeTableHeaderWhatYouFind">What you will find</th>
             </tr>
           </thead>
           <tbody>
-            <tr><td>Understand the OBC category</td><td><a href="#obc-basics">OBC Basics</a></td><td>Plain-language explanation of backward classes, Muslim OBCs, and evidence logic.</td></tr>
-            <tr><td>Judge backwardness scientifically</td><td><a href="#methods">Methods</a></td><td>Indicators, data sources, caste census logic, representation data, benefits, risks, and missing evidence.</td></tr>
-            <tr><td>Follow a notification trail</td><td><a href="#timeline">Timeline</a></td><td>Chronological entries with related-document links and source PDFs.</td></tr>
-            <tr><td>Check whether a class is current or withdrawn</td><td><a href="#obc-list">OBC List</a></td><td>Status table with inclusion date, exclusion/withdrawal date, source trail, and current status.</td></tr>
-            <tr><td>Search inside extracted PDFs</td><td><a href="#documents">Source PDFs</a></td><td>Filterable document table with PDF links and text preview buttons.</td></tr>
-            <tr><td>Add court records</td><td><a href="#cases">Litigation</a></td><td>Litigation tracker, issue matrix, party/court fields, orders, affected notifications, and evidence gaps.</td></tr>
-            <tr><td>Check public-hearing notices</td><td><a href="#public-hearings">Hearings &amp; Gaps</a></td><td>Hearing dates, times, named communities, and local notice PDFs.</td></tr>
-            <tr><td>Add or audit files</td><td><a href="contribute.html">Report a source</a> / <a href="#entry-framework">Add Record Guide</a></td><td>A guided report route, structured fields, and the local PDF inventory.</td></tr>
+            <tr><td data-i18n="quickRefRow1Q">Understand the OBC category</td><td><a href="#obc-basics" data-i18n="quickRefRow1A">OBC Basics</a></td><td data-i18n="quickRefRow1Desc">Plain-language explanation of backward classes, Muslim OBCs, and evidence logic.</td></tr>
+            <tr><td data-i18n="quickRefRow2Q">Judge backwardness scientifically</td><td><a href="#methods" data-i18n="quickRefRow2A">Methods</a></td><td data-i18n="quickRefRow2Desc">Indicators, data sources, caste census logic, representation data, benefits, risks, and missing evidence.</td></tr>
+            <tr><td data-i18n="quickRefRow3Q">Follow a notification trail</td><td><a href="#timeline" data-i18n="quickRefRow3A">Timeline</a></td><td data-i18n="quickRefRow3Desc">Chronological entries with related-document links and source PDFs.</td></tr>
+            <tr><td data-i18n="quickRefRow4Q">Check whether a class is current or withdrawn</td><td><a href="#obc-list" data-i18n="quickRefRow4A">OBC List</a></td><td data-i18n="quickRefRow4Desc">Status table with inclusion date, exclusion/withdrawal date, source trail, and current status.</td></tr>
+            <tr><td data-i18n="quickRefRow5Q">Search inside extracted PDFs</td><td><a href="#documents" data-i18n="quickRefRow5A">Source PDFs</a></td><td data-i18n="quickRefRow5Desc">Filterable document table with PDF links and text preview buttons.</td></tr>
+            <tr><td data-i18n="quickRefRow6Q">Add court records</td><td><a href="#cases" data-i18n="quickRefRow6A">Litigation</a></td><td data-i18n="quickRefRow6Desc">Litigation tracker, issue matrix, party/court fields, orders, affected notifications, and evidence gaps.</td></tr>
+            <tr><td data-i18n="quickRefRow7Q">Check public-hearing notices</td><td><a href="#public-hearings" data-i18n="quickRefRow7A">Hearings &amp; Gaps</a></td><td data-i18n="quickRefRow7Desc">Hearing dates, times, named communities, and local notice PDFs.</td></tr>
+            <tr><td data-i18n="quickRefRow8Q">Add or audit files</td><td><a href="contribute.html" data-i18n="formReportSource">Report a source</a> / <a href="#entry-framework" data-i18n="navEntryFramework">Add Record Guide</a></td><td data-i18n="quickRefRow8Desc">A guided report route, structured fields, and the local PDF inventory.</td></tr>
           </tbody>
         </table>
       </div>
@@ -298,29 +311,39 @@
       </div>
     </section>
 
-    <section id="about" class="research about-section tab-panel" data-tab-panel="about" hidden>
-      <p class="panel-kicker">About this project</p>
-      <h2 class="section-heading">A source-led record of West Bengal OBC policy</h2>
-      <p class="section-sub">This independent research bundle brings together publicly available notifications, statutes, public-hearing notices, policy reports, and selected court records concerning Other Backward Classes (OBCs) in West Bengal.</p>
+<section id="about" class="research about-section tab-panel" data-tab-panel="about" hidden>
+      <p class="panel-kicker" data-i18n="aboutPanelKicker">About this project</p>
+      <h2 class="section-heading" data-i18n="aboutTitle">A source-led record of West Bengal OBC policy</h2>
+      <p class="section-sub" data-i18n="aboutSub">This independent research bundle brings together publicly available notifications, statutes, public-hearing notices, policy reports, and selected court records concerning Other Backward Classes (OBCs) in West Bengal.</p>
 
       <div class="report-grid">
-        <article class="report-card"><div class="report-meta">Purpose</div><h3>Make the record easier to examine</h3><p>The project is designed as a chronological research desk. It helps readers trace a claim from a timeline entry to a notification, a hearing notice, a policy source, or a court record without treating summaries as a substitute for the original document.</p></article>
-        <article class="report-card"><div class="report-meta">Scope</div><h3>Policy, process, and litigation</h3><p>The bundle covers the statutory framework, State OBC-list changes, reservation and roster records, the 2025–26 notification sequence, public hearings, and a growing litigation tracker. It does not claim to be a complete government archive.</p></article>
-        <article class="report-card"><div class="report-meta">Use with care</div><h3>Research aid, not legal advice</h3><p>Some records are text-extracted or copied from publicly accessible mirrors. Court status, operative directions, and notification validity should always be confirmed from the issuing authority or the relevant court.</p></article>
+        <article class="report-card"><div class="report-meta" data-i18n="aboutCard1Meta">Purpose</div><h3 data-i18n="aboutCard1Title">Make the record easier to examine</h3><p data-i18n="aboutCard1Desc">The project is designed as a chronological research desk. It helps readers trace a claim from a timeline entry to a notification, a hearing notice, a policy source, or a court record without treating summaries as a substitute for the original document.</p></article>
+        <article class="report-card"><div class="report-meta" data-i18n="aboutCard2Meta">Scope</div><h3 data-i18n="aboutCard2Title">Policy, process, and litigation</h3><p data-i18n="aboutCard2Desc">The bundle covers the statutory framework, State OBC-list changes, reservation and roster records, the 2025–26 notification sequence, public hearings, and a growing litigation tracker. It does not claim to be a complete government archive.</p></article>
+        <article class="report-card"><div class="report-meta" data-i18n="aboutCard3Meta">Use with care</div><h3 data-i18n="aboutCard3Title">Research aid, not legal advice</h3><p data-i18n="aboutCard3Desc">Some records are text-extracted or copied from publicly accessible mirrors. Court status, operative directions, and notification validity should always be confirmed from the issuing authority or the relevant court.</p></article>
       </div>
 
-      <div class="table-wrap about-table"><table><thead><tr><th>How records are handled</th><th>What this means</th></tr></thead><tbody>
-        <tr><td>Local source files</td><td>Relative links keep the site usable from a downloaded folder or GitHub Pages.</td></tr>
-        <tr><td>Source labels</td><td>Entries distinguish official downloads, scanned/text-extracted records, and mirror copies that need verification.</td></tr>
-        <tr><td>Large case bundles</td><td>Very large filings are catalogued but not added by default; this keeps Git history and page delivery practical.</td></tr>
-        <tr><td>Corrections and additions</td><td>Use the Framework tab’s fields to record date, authority, status, source URL, local file, and affected notification/case.</td></tr>
+      <div class="table-wrap about-table"><table><thead><tr><th data-i18n="aboutTableHeader1">How records are handled</th><th data-i18n="aboutTableHeader2">What this means</th></tr></thead><tbody>
+        <tr><td data-i18n="aboutTableRow1Cell1">Local source files</td><td data-i18n="aboutTableRow1Cell2">Relative links keep the site usable from a downloaded folder or GitHub Pages.</td></tr>
+        <tr><td data-i18n="aboutTableRow2Cell1">Source labels</td><td data-i18n="aboutTableRow2Cell2">Entries distinguish official downloads, scanned/text-extracted records, and mirror copies that need verification.</td></tr>
+        <tr><td data-i18n="aboutTableRow3Cell1">Large case bundles</td><td data-i18n="aboutTableRow3Cell2">Very large filings are catalogued but not added by default; this keeps Git history and page delivery practical.</td></tr>
+        <tr><td data-i18n="aboutTableRow4Cell1">Corrections and additions</td><td data-i18n="aboutTableRow4Cell2">Use the Framework tab's fields to record date, authority, status, source URL, local file, and affected notification/case.</td></tr>
       </tbody></table></div>
 
-      <div class="callout"><strong>Source principle:</strong> where this site summarizes a record, open the linked document and treat the primary source as controlling. The project does not endorse any political position or make findings about any community.</div>
+      <div class="callout"><strong data-i18n="aboutCalloutStrong">Source principle:</strong> <span data-i18n="aboutCalloutText">where this site summarizes a record, open the linked document and treat the primary source as controlling. The project does not endorse any political position or make findings about any community.</span></div>
+
+      <div class="maintainer-section" style="margin-top:2rem;padding-top:1.5rem;border-top:1px solid var(--border);">
+        <h3 data-i18n="whoMaintainsTitle">Who maintains this?</h3>
+        <p data-i18n="whoMaintainsText">A group of volunteers created and maintains this project lazily in their free time. There are many things to add. We plan to add all aspects of OBC reservation. Currently we have only added notifications and a few litigation related to WB OBC. We plan to add all. It runs on free vercel plan. We expect more people to come join us. Contribute us by providing old and new information that we may have missed.</p>
+        <p class="maintainer-contact" style="margin-top:0.75rem;">
+          <span data-i18n="maintainerContactLabel">Contact us:</span>
+          <a href="mailto:civicresearchgroup@gmail.com">civicresearchgroup@gmail.com</a>
+          · <a href="https://github.com/civicresearchgroup/wb-obc-document-bundle" target="_blank" rel="noreferrer">GitHub</a>
+        </p>
+      </div>
     </section>
 
     <section id="obc-basics" class="research report-section tab-panel" data-tab-panel="obc-basics" hidden>
-      <h2 class="section-heading">What OBC Means</h2>
+      <h2 class="section-heading" data-i18n="obcBasicsHeading">What OBC Means</h2>
       <p class="section-sub">OBC is a constitutional-administrative category for socially and educationally backward classes. It is not a religion quota, and it is not limited to Hindu caste names.</p>
 
       <div class="report-grid">
@@ -345,7 +368,7 @@
     </section>
 
     <section id="methods" class="research report-section tab-panel" data-tab-panel="methods" hidden>
-      <h2 class="section-heading">Scientific Methods for Determining Backwardness</h2>
+      <h2 class="section-heading" data-i18n="methodsHeading">Scientific Methods for Determining Backwardness</h2>
       <p class="section-sub">A fair OBC decision should be evidence-led: define the class, measure social and educational disadvantage, test representation in public institutions, publish the data trail, and periodically review whether the benefit is reaching the intended class.</p>
 
       <div class="report-grid">
@@ -413,7 +436,7 @@
         </table>
       </div>
 
-      <h2 class="section-heading">Why Caste Census and Departmental Data Matter</h2>
+      <h2 class="section-heading" data-i18n="censusDataHeading">Why Caste Census and Departmental Data Matter</h2>
       <p class="section-sub">A caste or class census is not useful because identity labels are magic. It is useful because policy needs denominators. Representation data is the numerator. Together they let the public ask whether reservation is proportionate, under-inclusive, over-inclusive, or captured.</p>
 
       <div class="framework-grid">
@@ -468,7 +491,7 @@
         </table>
       </div>
 
-      <h2 class="section-heading">Good Uses and Misuses of OBC Reservation</h2>
+      <h2 class="section-heading" data-i18n="goodUsesHeading">Good Uses and Misuses of OBC Reservation</h2>
       <div class="report-grid">
         <article class="report-card">
           <div class="report-meta">Good side</div>
@@ -495,7 +518,7 @@
     </section>
 
     <section id="reports" class="research report-section tab-panel" data-tab-panel="reports" hidden>
-      <h2 class="section-heading">Policy Reports & Backwardness Criteria</h2>
+      <h2 class="section-heading" data-i18n="reportsHeading">Policy Reports & Backwardness Criteria</h2>
       <p class="section-sub">These are not West Bengal notification files, but they explain the policy architecture used to understand OBC identification, Muslim OBCs, affirmative action, and evidence requirements.</p>
 
       <div class="report-grid">
@@ -740,7 +763,7 @@
     </section>
 
     <section id="entry-framework" class="research framework-section tab-panel" data-tab-panel="entry-framework" hidden>
-      <h2 class="section-heading">Framework for New & Missing Entries</h2>
+      <h2 class="section-heading" data-i18n="frameworkHeading">Framework for New & Missing Entries</h2>
       <p class="section-sub" data-i18n="frameworkSectionSub">Use this structure whenever a new PDF, court order, hearing notice, report, or missing source is added. The goal is to keep every entry searchable, source-linked, and auditable.</p>
 
       <div class="framework-grid">
@@ -822,7 +845,7 @@
 
 
     <section id="evidence" class="research tab-panel" data-tab-panel="evidence" hidden>
-      <h2 id="missing-records" class="section-heading">Completeness Audit</h2>
+      <h2 id="missing-records" class="section-heading" data-i18n="completenessAuditHeading">Completeness Audit</h2>
       <p class="section-sub">The local folders contain the core 2010, 2025, and 2026 notifications and a substantial public-hearing notice set. The remaining procedural gap is the West Bengal Commission for Backward Classes record behind the notices: benchmark-survey memos, class-wise advice reports, survey data, and later court records around the 2025 survey challenge.</p>
 
       <div class="research-grid">
@@ -840,7 +863,7 @@
         </div>
       </div>
 
-      <h2 id="public-hearings" class="section-heading">Public Hearings / Jana Shunani</h2>
+      <h2 id="public-hearings" class="section-heading" data-i18n="publicHearingsHeading">Public Hearings / Jana Shunani</h2>
       <p class="section-sub">The local PUBLIC HEARING folder now supplies a fuller Jana Shunani run from 29 April through 24 May 2025. The notices use Adivasi Bhavan, Premises No. 2221, Action Area 3A, Rajarhat, New Town, Kolkata-700160 as venue; visually read notices and text-extracted Bengali advertisements are listed below with source links.</p>
       <div class="table-wrap">
         <table>
@@ -858,7 +881,7 @@
         </table>
       </div>
 
-      <h2 class="section-heading">New Local Sources Checked</h2>
+      <h2 class="section-heading" data-i18n="newSourcesHeading">New Local Sources Checked</h2>
       <div class="table-wrap">
         <table>
           <thead>
@@ -875,17 +898,17 @@
               <td>Best local structured source. It records 66 pre-2010 entries, 114 struck-down/affected entries, and a 2025 comparison table.</td>
             </tr>
             <tr>
-              <td><a href="https://raw.githubusercontent.com/b4build/wb-obc-document-bundle/main/Document%20needed%20for%20Cast%20certificate%20Issue/1204-SBCW%20(1).pdf" target="_blank" rel="noreferrer">Document needed for Cast certificate Issue</a></td>
+              <td><a href="https://raw.githubusercontent.com/civicresearchgroup/wb-obc-document-bundle/main/Document%20needed%20for%20Cast%20certificate%20Issue/1204-SBCW%20(1).pdf" target="_blank" rel="noreferrer">Document needed for Cast certificate Issue</a></td>
               <td>Certificate-issuance procedure documents, including amended OBC certificate, document verification, Aadhaar/local residence proof, Kolkata hearing authority, and updated OBC certificate guidelines.</td>
               <td>Administrative/certificate layer. Useful for showing how certificates are issued/revalidated, not for deciding which class is OBC.</td>
             </tr>
             <tr>
-              <td><a href="https://raw.githubusercontent.com/b4build/wb-obc-document-bundle/main/BCW%20department%20orders%20and%20Notification/Reservation_SC_ST_Act.pdf" target="_blank" rel="noreferrer">BCW department orders and Notification</a></td>
+              <td><a href="https://raw.githubusercontent.com/civicresearchgroup/wb-obc-document-bundle/main/BCW%20department%20orders%20and%20Notification/Reservation_SC_ST_Act.pdf" target="_blank" rel="noreferrer">BCW department orders and Notification</a></td>
               <td>Acts, rules, roster/register orders, SC/ST identification law, EWS guidelines, and WBCBC constitution/administrative orders.</td>
               <td>Legal/admin background layer. Important for context, but only selected PDFs are directly OBC-list relevant.</td>
             </tr>
             <tr>
-              <td><a href="https://raw.githubusercontent.com/b4build/wb-obc-document-bundle/main/prd_wb_orders/orders_data.xlsx" target="_blank" rel="noreferrer">PRD orders Excel: "Backward" search</a></td>
+              <td><a href="https://raw.githubusercontent.com/civicresearchgroup/wb-obc-document-bundle/main/prd_wb_orders/orders_data.xlsx" target="_blank" rel="noreferrer">PRD orders Excel: "Backward" search</a></td>
               <td>Four matching rows: 2663, 2896, 3276, and 3804 on Backward Class panchayat survey work. The same PDF folder also supplied the missing first guideline, 2572/PN/O/1/1S-5/2012 dated 25 Apr 2012.</td>
               <td>Strong procedural evidence layer for caste/class population enumeration: survey rationale, GP-constituency units, Census/SECC reference records, draft publication, claims/objections, final publication, and software compilation.</td>
             </tr>
@@ -996,7 +1019,7 @@
     </section>
 
     <section class="inventory tab-panel" id="inventory" data-tab-panel="inventory" hidden>
-      <h2 class="section-heading">Document Inventory</h2>
+      <h2 class="section-heading" data-i18n="inventory.title">Document Inventory</h2>
       <div class="table-wrap">
         <table>
           <thead>
@@ -1015,8 +1038,8 @@
     </section>
 
     <section id="documents" class="research documents-section tab-panel" data-tab-panel="documents" hidden>
-      <h2 class="section-heading">Document Text Corpus</h2>
-      <p class="section-sub">Full extracted text from the OBC list corpus plus supplemental BCW legal, certificate, roster, Commission, RTPS, digitisation, and EWS records — searchable and reusable for documentation.</p>
+      <h2 class="section-heading" data-i18n="documents.title">Document Text Corpus</h2>
+      <p class="section-sub" data-i18n="documents.subtitle">Full extracted text from the OBC list corpus plus supplemental BCW legal, certificate, roster, Commission, RTPS, digitisation, and EWS records — searchable and reusable for documentation.</p>
 
       <div class="doc-toolbar">
         <input id="doc-search" type="search" class="search-input" data-i18n-placeholder="placeholder.docSearch" placeholder="Search documents (notification number, community name, year, keyword…)">
@@ -1078,6 +1101,22 @@
 
   </main>
 
+  <footer class="site-footer">
+    <div class="site-footer-inner">
+      <div class="site-footer-brand">
+        <img src="CRG_Logo_Dark.png" alt="Civic Research Group" width="200" height="44" decoding="async" loading="lazy">
+        <span data-i18n="footerTagline">An independent, volunteer-run public research archive on West Bengal OBC policy and litigation.</span>
+      </div>
+      <div class="site-footer-meta">
+        <span class="site-footer-contact">
+          <span data-i18n="footerContactLabel">Contact:</span>
+          <a href="mailto:civicresearchgroup@gmail.com">civicresearchgroup@gmail.com</a>
+        </span>
+        <span data-i18n="footerNoDonations">Free public resource.</span>
+      </div>
+    </div>
+  </footer>
+
 <style>
 :root {
   --ink: #1a1a2e;
@@ -1118,6 +1157,16 @@ html[lang="bn"] body, body.lang-bn {
 html[lang="bn"] h1, html[lang="bn"] h2, html[lang="bn"] h3,
 body.lang-bn h1, body.lang-bn h2, body.lang-bn h3 {
   font-weight: 700;
+}
+
+/* Language switching animation */
+body.lang-switching {
+  opacity: 0.95;
+  transition: opacity 0.15s ease;
+}
+
+body.lang-switching * {
+  transition: color 0.15s ease, background-color 0.15s ease, border-color 0.15s ease !important;
 }
 
 /* High contrast mode support */
@@ -1279,6 +1328,36 @@ a {
   color: #fff;
 }
 
+.lang-btn-small {
+  display: inline-flex;
+  align-items: center;
+  min-height: 24px;
+  padding: 4px 7px;
+  border: none;
+  border-radius: 999px;
+  background: transparent;
+  color: var(--text-muted);
+  font-family: var(--mono);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: .04em;
+  line-height: 1;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.lang-btn-small:hover {
+  background: rgba(16,37,63,.08);
+  color: var(--text);
+}
+
+.lang-btn-small.active {
+  background: rgba(16,37,63,.12);
+  color: var(--text);
+  font-weight: 800;
+}
+
 .lang-separator {
   color: rgba(255,255,255,.3);
   font-size: 10px;
@@ -1302,6 +1381,27 @@ a {
 
 .nav-toggle:hover {
   background: rgba(255,255,255,.12);
+}
+
+.nav-close {
+  display: none;
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  width: 40px;
+  height: 40px;
+  border: none;
+  border-radius: 999px;
+  background: rgba(255,255,255,.1);
+  color: #fff;
+  font-size: 1.4rem;
+  line-height: 1;
+  cursor: pointer;
+  z-index: 1000;
+}
+
+.nav-close:hover {
+  background: rgba(255,255,255,.18);
 }
 
 .nav-toggle-bar {
@@ -1333,14 +1433,9 @@ a {
   z-index: 998;
 }
 
+.nav-overlay.open,
 .nav-overlay.is-visible {
   display: block;
-}
-
-.nav-group {
-  position: relative;
-  display: inline-flex;
-  align-items: center;
 }
 
 .nav-group-toggle {
@@ -1396,7 +1491,8 @@ a {
   pointer-events: none;
 }
 
-.nav-group.is-open .nav-group-items {
+.nav-group.is-open .nav-group-items,
+.nav-group-toggle[aria-expanded="true"] + .nav-group-items {
   display: flex;
   opacity: 1;
   transform: translateX(-50%) translateY(0);
@@ -1827,28 +1923,51 @@ main {
 }
 
 .source-status {
-  min-height: 86px;
-  padding: 14px;
-  background: #f8faf9;
-  border: 1px solid var(--border);
-  border-radius: 8px;
+  position: relative;
+  min-height: 82px;
+  padding: 14px 14px 12px;
+  background: #fff;
+  border: 1px solid rgba(26,58,92,.08);
+  border-radius: 12px;
+  box-shadow: 0 10px 22px rgba(17,37,63,.06);
   text-decoration: none;
+  overflow: hidden;
 }
+
+.source-status::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto;
+  height: 5px;
+  border-radius: 12px 12px 0 0;
+  background: #2a8b81;
+}
+
+.source-status:nth-child(1) { background: rgba(42,139,129,.08); }
+.source-status:nth-child(2) { background: rgba(217,155,43,.08); }
+.source-status:nth-child(3) { background: rgba(184,87,74,.08); }
+.source-status:nth-child(4) { background: rgba(57,102,162,.08); }
+.source-status:nth-child(5) { background: rgba(217,155,43,.08); }
+.source-status:nth-child(6) { background: rgba(184,87,74,.08); }
+.source-status:nth-child(2)::before,
+.source-status:nth-child(5)::before { background: #d99b2b; }
+.source-status:nth-child(3)::before,
+.source-status:nth-child(6)::before { background: #b8574a; }
 
 .source-status strong {
   display: block;
-  color: var(--accent);
+  color: #10253f;
   font-family: var(--mono);
-  font-size: 22px;
-  line-height: 1.1;
+  font-size: 20px;
+  line-height: 1.05;
 }
 
 .source-status span {
   display: block;
-  margin-top: 6px;
+  margin-top: 5px;
   color: var(--muted);
-  font-size: 13px;
-  line-height: 1.35;
+  font-size: 12.75px;
+  line-height: 1.45;
 }
 
 .cloud-note {
@@ -1902,38 +2021,50 @@ main {
 }
 
 .search-scope {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 7px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 8px;
   margin: 0;
 }
 
 .search-scope span {
   display: inline-flex;
-  gap: 5px;
-  align-items: baseline;
-  min-height: 28px;
-  padding: 4px 8px;
-  background: var(--panel);
-  border: 1px solid var(--border);
+  flex-direction: column;
+  gap: 3px;
+  align-items: flex-start;
+  padding: 8px 10px;
+  background: rgba(255,255,255,.92);
+  border: 1px solid rgba(26,58,92,.12);
   border-radius: 999px;
-  color: var(--muted);
+  color: var(--text);
   font-size: 12px;
+}
+
+.search-scope span span {
+  color: var(--muted);
+  font-size: 11px;
+  line-height: 1.3;
 }
 
 .search-scope strong {
   color: var(--accent);
   font-family: var(--mono);
   font-size: 11px;
-  letter-spacing: .04em;
+  letter-spacing: .06em;
   text-transform: uppercase;
 }
 
 .query-actions {
   display: grid;
-  grid-template-columns: repeat(2, minmax(150px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
   gap: 8px;
-  min-width: min(440px, 100%);
+  min-width: 0;
+}
+
+.query-actions a {
+  min-height: 36px;
+  padding: 9px 10px;
+  font-size: 12px;
 }
 
 .query-actions a {
@@ -2071,49 +2202,57 @@ main {
 .toolbar {
   display: grid;
   grid-template-columns: 1fr auto;
-  gap: 12px;
+  gap: 16px;
   align-items: center;
-  margin: 20px 0;
+  margin: 24px 0;
 }
 
 .search, .search-input {
   width: 100%;
-  min-height: 44px;
-  padding: 10px 12px;
-  border: 1px solid #bfc7cf;
-  border-radius: 8px;
+  min-height: 48px;
+  padding: 12px 14px;
+  border: 1px solid #c5d0d9;
+  border-radius: 14px;
   background: #fff;
   color: var(--ink);
-  font-size: 16px;
+  font-size: 15px;
+  box-shadow: 0 10px 24px rgba(15,35,59,0.05);
 }
 
 .filters, .filter-btns {
   display: flex;
   flex-wrap: wrap;
-  gap: 8px;
+  gap: 10px;
   justify-content: flex-end;
 }
 
 .filter-btn, button {
-  min-height: 40px;
-  border: 1px solid #aeb8c0;
-  border-radius: 8px;
+  min-height: 44px;
+  border: 1px solid #c5d0d9;
+  border-radius: 999px;
   background: #fff;
   color: var(--ink);
   cursor: pointer;
   font-weight: 700;
-  padding: 8px 12px;
+  padding: 10px 16px;
+  letter-spacing: .01em;
+  transition: all 0.2s ease;
+}
+
+.filter-btn:hover,
+button:hover {
+  border-color: var(--primary);
 }
 
 .filter-btn.active, button.active {
-  background: #172026;
+  background: var(--primary);
   color: #fff;
-  border-color: #172026;
+  border-color: var(--primary);
 }
 
 .timeline {
   position: relative;
-  margin: 0;
+  margin: -4px 0 0;
   padding: 0;
   list-style: none;
 }
@@ -2121,39 +2260,45 @@ main {
 .timeline::before {
   content: "";
   position: absolute;
-  left: 116px;
+  left: 118px;
   top: 0;
   bottom: 0;
-  width: 2px;
-  background: var(--line);
+  width: 3px;
+  background: rgba(26,58,92,0.12);
 }
 
 .event {
   display: grid;
-  grid-template-columns: 94px 1fr;
-  gap: 44px;
+  grid-template-columns: 118px minmax(0, 1fr);
+  gap: 32px;
   position: relative;
-  margin: 0 0 16px;
+  margin: 0 0 28px;
+}
+
+.timeline .event:first-child .card {
+  margin-top: 0;
 }
 
 .date {
-  padding-top: 18px;
+  padding-top: 10px;
   text-align: right;
   color: var(--muted);
   font-weight: 700;
   font-size: 14px;
+  letter-spacing: .02em;
 }
 
 .dot {
   position: absolute;
-  left: 108px;
-  top: 22px;
+  left: 114px;
+  top: 18px;
   width: 18px;
   height: 18px;
-  border: 4px solid var(--paper);
+  border: 4px solid var(--panel);
   border-radius: 50%;
   background: var(--blue);
   z-index: 1;
+  box-shadow: 0 0 0 4px rgba(26,58,92,0.06);
 }
 
 .event[data-type="current"] .dot {
@@ -2170,57 +2315,66 @@ main {
 
 .card {
   background: var(--panel);
-  border: 1px solid var(--border);
-  border-radius: 12px;
-  box-shadow: var(--shadow-sm);
-  padding: 18px;
+  border: 1px solid rgba(135,149,163,0.16);
+  border-radius: 20px;
+  box-shadow: 0 16px 32px rgba(15,35,59,0.08);
+  padding: 24px;
+  transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card:hover {
+  transform: translateY(-1px);
+  border-color: rgba(26,58,92,0.16);
+  box-shadow: 0 20px 36px rgba(15,35,59,0.10);
 }
 
 .card h2 {
-  margin: 0 0 8px;
-  font-size: 20px;
-  line-height: 1.25;
+  margin: 0 0 10px;
+  font-size: 22px;
+  line-height: 1.28;
   letter-spacing: 0;
 }
 
 .card p {
-  margin: 8px 0;
+  margin: 10px 0;
+  color: var(--ink-light);
+  line-height: 1.75;
 }
 
 .tags {
   display: flex;
   flex-wrap: wrap;
-  gap: 6px;
-  margin: 12px 0 0;
+  gap: 8px;
+  margin: 16px 0 0;
 }
 
 .tag {
   border-radius: 999px;
-  padding: 4px 8px;
-  background: #edf1f4;
-  color: #34414c;
+  padding: 6px 10px;
+  background: #eef4f8;
+  color: #2f4f65;
   font-size: 12px;
   font-weight: 700;
 }
 
 .tag.current {
-  background: #e5f3ed;
+  background: #e8f5ed;
   color: #145f47;
 }
 
 .tag.withdrawn {
-  background: #fae8e7;
-  color: #87302e;
+  background: #fde8e8;
+  color: #8f2d2d;
 }
 
 .tag.scan {
-  background: #fff0d8;
-  color: #824c17;
+  background: #fff4d9;
+  color: #7f531f;
 }
 
 .related {
-  margin: 10px 0 0;
-  color: #52606a;
+  margin: 12px 0 0;
+  color: #47575f;
   font-size: 13px;
 }
 
@@ -2230,10 +2384,10 @@ main {
 
 .evidence-note {
   margin: 10px 0 0;
-  padding: 10px 12px;
+  padding: 12px 14px;
   background: #f5f8fb;
   border: 1px solid #d9e4ee;
-  border-radius: 8px;
+  border-radius: 12px;
   color: #34424d;
   font-size: 14px;
 }
@@ -2281,7 +2435,7 @@ summary {
 .research-card {
   background: #fff;
   border: 1px solid var(--line);
-  border-radius: 8px;
+  border-radius: 10px;
   box-shadow: var(--shadow);
   padding: 16px;
 }
@@ -2396,6 +2550,7 @@ summary {
 
 .table-wrap {
   overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
   background: var(--panel);
   border: 1px solid var(--border);
   border-radius: 12px;
@@ -2404,25 +2559,29 @@ summary {
 
 table {
   width: 100%;
+  max-width: 100%;
   border-collapse: collapse;
   min-width: 760px;
 }
 
 th,
 td {
-  padding: 10px 12px;
+  padding: 12px 14px;
   border-bottom: 1px solid #edf0f2;
   text-align: left;
   vertical-align: top;
   font-size: 14px;
+  color: var(--ink);
 }
 
 th {
-  background: #eef3f1;
-  color: #25313a;
+  background: linear-gradient(135deg, #e8f0ee, #f0f5f3);
+  color: #1a3a2e;
   font-size: 12px;
-  letter-spacing: .05em;
+  font-weight: 700;
+  letter-spacing: .06em;
   text-transform: uppercase;
+  border-bottom: 2px solid #c5d5cf;
 }
 
 tr:last-child td {
@@ -2841,7 +3000,10 @@ tr:last-child td {
 }
 .litigation-note {
   margin: 28px 0;
-  padding-top: 4px;
+  padding: 24px;
+  background: var(--blue-light);
+  border-radius: 12px;
+  border-left: 4px solid var(--blue);
 }
 .litigation-note > h3 {
   margin: 0 0 8px;
@@ -3035,6 +3197,7 @@ tr:last-child td {
 
   .table-wrap {
     overflow: visible;
+    overscroll-behavior-x: contain;
     background: transparent;
     border: 0;
     border-radius: 0;
@@ -3043,6 +3206,8 @@ tr:last-child td {
 
   .table-wrap table {
     min-width: 0;
+    width: 100%;
+    max-width: 100%;
     border-collapse: separate;
     border-spacing: 0 12px;
   }
@@ -3063,6 +3228,7 @@ tr:last-child td {
     position: relative;
     overflow: hidden;
     padding: 0;
+    margin-bottom: 1rem;
     background: #ffffff;
     border: 1px solid #c7d9e0;
     border-radius: 15px;
@@ -3087,6 +3253,7 @@ tr:last-child td {
     font-size: 13px;
     line-height: 1.48;
     overflow-wrap: anywhere;
+    word-break: break-word;
   }
 
   .table-wrap td:nth-child(odd) {
@@ -3255,9 +3422,27 @@ body { font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSyst
 .timeline .event[data-type="withdrawn"] .card { border-left-color: #be5b4b; }
 .cases-section { padding-bottom: 24px; }
 .case-summary-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin: 26px 0 34px; }
-.case-summary-grid article { padding: 18px; color: #fff; background: linear-gradient(140deg, #163551, #235473); border-radius: 14px; box-shadow: var(--shadow-md); }
-.case-summary-grid strong { display: block; margin-bottom: 8px; color: #f8dca2; font: 700 12px var(--mono); letter-spacing: .08em; text-transform: uppercase; }
-.case-summary-grid span { display: block; font-size: 15px; line-height: 1.45; }
+.case-summary-grid article {
+  padding: 18px;
+  color: #f3f7fb;
+  background: linear-gradient(140deg, #163551, #235473);
+  border-radius: 14px;
+  box-shadow: var(--shadow-md);
+}
+.case-summary-grid strong {
+  display: block;
+  margin-bottom: 8px;
+  color: #fff;
+  font: 700 12px var(--mono);
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+.case-summary-grid span {
+  display: block;
+  font-size: 15px;
+  line-height: 1.6;
+  color: rgba(255,255,255,0.92);
+}
 .case-timeline { margin: 0; padding: 0; list-style: none; border-left: 2px solid #b6c9d6; }
 .case-event { position: relative; display: grid; grid-template-columns: 150px minmax(0, 1fr); gap: 24px; padding: 0 0 30px 28px; }
 .case-event::before { content: ''; position: absolute; left: -8px; top: 6px; width: 14px; height: 14px; border: 3px solid #fff; border-radius: 50%; background: #b57917; box-shadow: 0 0 0 2px #b57917; }
@@ -3314,11 +3499,28 @@ body { font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSyst
   .case-event { padding-bottom: 22px; }
   .case-matrix table { font-size: 13px; }
   .home-brief { grid-template-columns: 1fr; }
+  .table-wrap td {
+    grid-template-columns: 1fr;
+    min-width: 0;
+    text-align: left;
+  }
+  .table-wrap td::before {
+    margin-bottom: 0.35rem;
+  }
+  .table-wrap td > * {
+    max-width: 100%;
+    word-break: break-word;
+    text-align: left;
+  }
 }
 
 /* Mobile off-canvas nav panel (overrides the inline-wrap nav above) */
 @media (max-width: 820px) {
   .nav-toggle {
+    display: inline-flex;
+  }
+
+  .nav-close {
     display: inline-flex;
   }
 
@@ -3348,6 +3550,7 @@ body { font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSyst
     z-index: 999;
   }
 
+  .site-nav.open,
   .site-nav.is-open {
     transform: translateX(0);
   }
@@ -3471,11 +3674,14 @@ body {
 
 .home-intro,
 .query-hub,
-.table-wrap,
 .research,
 .inventory {
   position: relative;
   overflow: hidden;
+}
+
+.table-wrap {
+  overflow: visible;
 }
 
 .home-intro::before,
@@ -3757,7 +3963,7 @@ th {
   padding: 20px;
   opacity: 0;
   visibility: hidden;
-  transition: opacity 0.2s ease, visibility 0.2s ease;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
 }
 
 .contribute-popup-overlay:not([hidden]) {
@@ -3779,10 +3985,20 @@ th {
   border-radius: 18px;
   max-width: 520px;
   width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
   padding: 32px 28px 28px;
   position: relative;
   box-shadow: 0 12px 48px rgba(17, 37, 63, 0.25);
   border: 1px solid #d5e0e8;
+  transform: translateY(-20px) scale(0.95);
+  opacity: 0;
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.3s ease;
+}
+
+.contribute-popup-overlay:not([hidden]) .contribute-popup {
+  transform: translateY(0) scale(1);
+  opacity: 1;
 }
 
 .popup-close {
@@ -3799,11 +4015,13 @@ th {
   border-radius: 6px;
   z-index: 10;
   pointer-events: auto;
+  transition: transform 0.2s ease, background 0.2s ease, color 0.2s ease;
 }
 
 .popup-close:hover {
   background: #edf2f5;
   color: #11253f;
+  transform: scale(1.1);
 }
 
 .popup-icon {
@@ -3909,6 +4127,407 @@ th {
     font-size: 20px;
   }
 }
+
+/* ===========================
+   UX IMPROVEMENTS CSS
+   =========================== */
+
+/* Glossary Tooltips */
+.glossary-term {
+  border-bottom: 1px dotted #1b5d7d;
+  cursor: help;
+  position: relative;
+  color: #1b5d7d;
+  font-weight: 500;
+}
+
+.glossary-term:hover,
+.glossary-term:focus {
+  background-color: rgba(27, 93, 125, 0.1);
+  outline: none;
+}
+
+.glossary-term::after {
+  content: attr(title);
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-8px);
+  background: #1b5d7d;
+  color: white;
+  padding: 8px 12px;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: normal;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+  z-index: 1000;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  max-width: 300px;
+  text-wrap: balance;
+}
+
+.glossary-term:hover::after,
+.glossary-term:focus::after {
+  opacity: 1;
+  transform: translateX(-50%) translateY(-4px);
+}
+
+@media (max-width: 600px) {
+  .glossary-term::after {
+    left: 0;
+    transform: translateY(-4px);
+    white-space: normal;
+    width: 200px;
+  }
+}
+
+/* Skeleton Loading States */
+.skeleton-loading {
+  position: relative;
+  overflow: hidden;
+}
+
+.skeleton-item {
+  height: 80px;
+  margin-bottom: 16px;
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 200% 100%;
+  animation: skeleton-pulse 1.5s infinite;
+  border-radius: 8px;
+}
+
+@keyframes skeleton-pulse {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+.dark-mode .skeleton-item {
+  background: linear-gradient(90deg, #2a2a2a 25%, #3a3a3a 50%, #2a2a2a 75%);
+  background-size: 200% 100%;
+}
+
+/* Export Button */
+.export-csv-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 16px;
+  background: linear-gradient(135deg, #1b5d7d 0%, #2d7da3 100%);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 8px rgba(27, 93, 125, 0.2);
+  margin-top: 16px;
+}
+
+.export-csv-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(27, 93, 125, 0.3);
+}
+
+.export-csv-btn:active {
+  transform: translateY(0);
+}
+
+/* Highlight for search results */
+mark.search-highlight {
+  background-color: #fff3cd;
+  color: #856404;
+  padding: 2px 4px;
+  border-radius: 3px;
+  font-weight: 600;
+}
+
+.dark-mode mark.search-highlight {
+  background-color: #856404;
+  color: #fff3cd;
+}
+
+/* Filter chip animations */
+.filter-chip {
+  transition: all 0.2s ease;
+}
+
+.filter-chip.active {
+  transform: scale(1.05);
+  box-shadow: 0 2px 8px rgba(27, 93, 125, 0.3);
+}
+
+/* Pagination improvements */
+.pagination-btn {
+  transition: all 0.2s ease;
+}
+
+.pagination-btn:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+}
+
+/* Date input styling */
+input[type="date"] {
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+input[type="date"]:focus {
+  border-color: #1b5d7d;
+  box-shadow: 0 0 0 3px rgba(27, 93, 125, 0.1);
+}
+
+/* ---------------------------------------------------------------
+   Homepage refresh: compact search-scope row, brighter stat cards,
+   utility buttons, and a wider responsive breakpoint for the
+   quick-reference table so it doesn't need to scroll on laptop-
+   width screens. Placed last so it wins over older duplicate rules.
+   --------------------------------------------------------------- */
+.search-scope.compact {
+  display: grid;
+  grid-template-columns: repeat(2, auto);
+  gap: 8px;
+  padding: 0;
+  background: none;
+  border: 0;
+  justify-content: start;
+}
+.search-scope.compact span {
+  display: inline-flex;
+  align-items: center;
+  padding: 5px 12px;
+  border-radius: 999px;
+  background: rgba(36, 84, 120, 0.08);
+  font-size: 12.5px;
+  line-height: 1.4;
+  color: #1b3a54;
+}
+.search-scope.compact strong {
+  font-weight: 700;
+  color: #1b3a54;
+}
+/* .query-hub is a dark panel elsewhere in this stylesheet (white/gold
+   text on a dark gradient) — the compact pills need matching contrast
+   here, since a light-mode default would render invisible on it. */
+.query-hub .search-scope.compact span {
+  background: rgba(255,255,255,.1);
+  border: 1px solid rgba(255,255,255,.2);
+  color: #e8f2f2;
+}
+.query-hub .search-scope.compact strong {
+  color: #ffda83;
+}
+
+.query-actions-utility {
+  margin-top: 8px;
+  padding-top: 8px;
+  border-top: 1px dashed rgba(0,0,0,0.08);
+}
+.query-actions-utility a {
+  display: inline-flex;
+  align-items: center;
+  font-size: 12.5px;
+  padding: 5px 12px;
+  border-radius: 999px;
+  background: rgba(0,0,0,0.04);
+  color: #46617a;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  text-decoration: none;
+}
+.query-actions-utility a:hover {
+  background: rgba(0,0,0,0.08);
+}
+.query-hub .query-actions-utility {
+  border-top-color: rgba(255,255,255,.2);
+}
+.query-hub .query-actions-utility a {
+  background: rgba(255,255,255,.1);
+  border: 1px solid rgba(255,255,255,.2);
+  color: #e8f2f2;
+}
+.query-hub .query-actions-utility a:hover {
+  background: rgba(255,255,255,.2);
+  color: #fff;
+}
+
+#home-stats.source-status-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px;
+}
+#home-stats .source-status {
+  background: #ffffff !important;
+  border: 1px solid #e2e8ee;
+  border-radius: 12px;
+  padding: 14px 16px !important;
+  min-height: 0 !important;
+  box-shadow: 0 2px 6px rgba(15, 40, 70, 0.06);
+}
+#home-stats .source-status::before { display: none; }
+#home-stats .source-status:nth-child(1) { border-top: 3px solid #245478; }
+#home-stats .source-status:nth-child(2) { border-top: 3px solid #b57917; }
+#home-stats .source-status:nth-child(3) { border-top: 3px solid #1a5c3e; }
+#home-stats .source-status:nth-child(4) { border-top: 3px solid #a94331; }
+#home-stats .source-status strong {
+  font-size: 28px !important;
+  color: #16324a !important;
+  display: block;
+  margin-bottom: 2px;
+}
+#home-stats .source-status span {
+  color: #55677a !important;
+  font-size: 12.5px !important;
+  line-height: 1.4;
+}
+@media (max-width: 720px) {
+  #home-stats.source-status-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+/* Quick-reference table: switch to a stacked card layout earlier
+   than the general 640px breakpoint, since 3 text-heavy columns
+   don't fit comfortably down to laptop widths. */
+@media (max-width: 900px) {
+  .home-table.table-wrap {
+    overflow: visible;
+    border: 0;
+    box-shadow: none;
+    background: transparent;
+  }
+  .home-table table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0 10px;
+  }
+  .home-table thead { display: none; }
+  .home-table table, .home-table tbody, .home-table tr, .home-table td {
+    display: block;
+    width: 100%;
+  }
+  .home-table tr {
+    background: #fff;
+    border: 1px solid #e2e8ee;
+    border-radius: 12px;
+    padding: 4px 0;
+  }
+  .home-table td {
+    padding: 8px 14px;
+    font-size: 13px;
+    overflow-wrap: anywhere;
+  }
+  .home-table td::before {
+    content: attr(data-label);
+    display: block;
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: #8a97a6;
+    margin-bottom: 2px;
+  }
+}
+
+/* Header logo: organization mark + wordmark, wordmark hidden on narrow screens */
+.site-logo {
+  display: inline-flex !important;
+  align-items: center;
+  gap: 10px;
+}
+.site-logo-mark {
+  flex: 0 0 auto;
+  display: block;
+  line-height: 0;
+}
+.site-logo-mark img {
+  display: block;
+  height: 38px;
+  width: auto;
+  max-width: 210px;
+  object-fit: contain;
+}
+.site-logo-text {
+  white-space: nowrap;
+}
+@media (max-width: 560px) {
+  .site-logo-mark img {
+    height: 30px;
+  }
+  .site-logo-text {
+    position: absolute;
+    width: 1px; height: 1px;
+    padding: 0; margin: -1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    white-space: nowrap;
+    border: 0;
+  }
+}
+
+/* Site footer */
+.site-footer {
+  margin-top: 3rem;
+  border-top: 1px solid var(--border);
+  background: var(--card-bg);
+}
+.site-footer-inner {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 1.75rem 1rem 2.25rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1rem 1.5rem;
+  justify-content: space-between;
+}
+.site-footer-brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+}
+.site-footer-brand img {
+  display: block;
+  height: 40px;
+  width: auto;
+  max-width: 220px;
+  object-fit: contain;
+}
+.site-footer-brand span {
+  color: var(--muted);
+  font-size: 0.85rem;
+  line-height: 1.4;
+  max-width: 22ch;
+}
+.site-footer-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  font-size: 0.9rem;
+  color: var(--muted);
+}
+.site-footer-meta a {
+  color: var(--primary);
+  text-decoration: none;
+  font-weight: 600;
+}
+.site-footer-meta a:hover,
+.site-footer-meta a:focus-visible {
+  text-decoration: underline;
+}
+.site-footer-contact {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  flex-wrap: wrap;
+}
+@media (max-width: 560px) {
+  .site-footer-inner {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
 </style>
 
 
@@ -3917,7 +4536,7 @@ const DATA_LOAD_ERRORS = [];
 const INLINE_JSON_DATA = window.OBC_INLINE_JSON || {};
 const OBC_DOCS = loadJsonSync('obc_documents.json');
 const SUPPLEMENTAL_DOCS = loadJsonSync('supplemental_documents.json');
-const PRIVATE_DOCS = loadOptionalJsonSync('private_documents.json');
+const PRIVATE_DOCS = loadOptionalJsonSync('private_documents.json', []);
 const SUPPLEMENTAL_TIMELINE = SUPPLEMENTAL_DOCS.filter(doc => doc.show_on_timeline);
 const OBC_CLASS_DATA = loadJsonSync('obc_classes.json', { current_classes_2026: [], first_inclusion: {}, class_changes: [] });
 const OBC_CLASSES_2026 = OBC_CLASS_DATA.current_classes_2026 || [];
@@ -3925,7 +4544,7 @@ const OBC_CLASS_FIRST_INCLUSION = OBC_CLASS_DATA.first_inclusion || {};
 const OBC_CLASS_CHANGES = OBC_CLASS_DATA.class_changes || [];
 const PUBLIC_HEARINGS = loadJsonSync('public_hearings.json');
 const DOCUMENT_INVENTORY = loadJsonSync('document_inventory.json');
-const PRIVATE_DOCUMENT_INVENTORY = loadOptionalJsonSync('private_document_inventory.json');
+const PRIVATE_DOCUMENT_INVENTORY = loadOptionalJsonSync('private_document_inventory.json', []);
 
 function escapeHtml(value) {
   return String(value || '').replace(/[&<>\"']/g, char => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '\"': '&quot;', "'": '&#39;' }[char]));
@@ -3936,11 +4555,12 @@ function escapeAttr(value) {
 }
 
 function getActiveLang() {
-  if (window.WBOBCI18n && window.WBOBCI18n.getCurrentLang) {
-    return window.WBOBCI18n.getCurrentLang();
-  }
   const urlLang = new URLSearchParams(window.location.search).get('lang');
   if (urlLang === 'bn' || urlLang === 'en') return urlLang;
+  if (window.WBOBCI18n && window.WBOBCI18n.getCurrentLang) {
+    const moduleLang = window.WBOBCI18n.getCurrentLang();
+    if (moduleLang === 'bn' || moduleLang === 'en') return moduleLang;
+  }
   try {
     const savedLang = localStorage.getItem('wb-obc-lang');
     if (savedLang === 'bn' || savedLang === 'en') return savedLang;
@@ -3967,6 +4587,11 @@ function loadJsonSync(path, fallback = []) {
     if ((request.status >= 200 && request.status < 300) || (request.status === 0 && request.responseText)) {
       return JSON.parse(request.responseText);
     }
+    // If status is 404, return fallback without warning
+    if (request.status === 404) {
+      recordDataLoadError(path);
+      return fallback;
+    }
   } catch (error) {
     console.warn('Could not load ' + path, error);
   }
@@ -3983,8 +4608,10 @@ function loadOptionalJsonSync(path, fallback = []) {
     if ((request.status >= 200 && request.status < 300) || (request.status === 0 && request.responseText)) {
       return JSON.parse(request.responseText);
     }
+    // If status is 404 or other error, return fallback without logging
+    return fallback;
   } catch (error) {
-    console.info('Optional local data not loaded: ' + path);
+    // Silently return fallback for optional files
   }
   return fallback;
 }
@@ -3996,7 +4623,7 @@ function showDataLoadWarning() {
   warning.innerHTML = `<strong>Some data files did not load.</strong> Missing: ${DATA_LOAD_ERRORS.map(escapeHtml).join(', ')}. If you opened this page directly as a file, run <code>npm run serve</code> and open <code>http://127.0.0.1:8123/index.html</code>.`;
 }
 
-function renderTimelineEvents(events) {
+function renderTimelineEvents(events, forceLang) {
   const timeline = document.getElementById('timeline');
   const loader = document.getElementById('timeline-loader');
 
@@ -4007,11 +4634,11 @@ function renderTimelineEvents(events) {
     return;
   }
 
-  const lang = getActiveLang();
-  timeline.innerHTML = events.map(event => {
+  const lang = forceLang || getActiveLang();
+  timeline.innerHTML = '<ul class="stagger-list">' + events.map(event => {
     const attrs = [
       event.id ? `id="${escapeAttr(event.id)}"` : '',
-      'class="event fade-in"',
+      'class="event scroll-fade-in"',
       event.type ? `data-type="${escapeAttr(event.type)}"` : '',
       event.confidence ? `data-confidence="${escapeAttr(event.confidence)}"` : '',
       event.date && /^\d{4}-\d{2}-\d{2}$/.test(event.date) ? `data-date="${escapeAttr(event.date)}"` : '',
@@ -4019,10 +4646,13 @@ function renderTimelineEvents(events) {
     ].filter(Boolean).join(' ');
     const body = (lang === 'bn' && event.html_bn) ? event.html_bn : (event.html || '');
     return `<li ${attrs}>${body}</li>`;
-  }).join('');
+  }).join('') + '</ul>';
+  
+  // Initialize scroll animations
+  initScrollAnimations();
 }
 
-function renderCaseEvents(events) {
+function renderCaseEvents(events, forceLang) {
   const timeline = document.querySelector('#cases .case-timeline');
   const loader = document.getElementById('litigation-loader');
 
@@ -4033,12 +4663,15 @@ function renderCaseEvents(events) {
     return;
   }
 
-  const lang = getActiveLang();
-  timeline.innerHTML = events.map(event => {
+  const lang = forceLang || getActiveLang();
+  timeline.innerHTML = '<ul class="stagger-list">' + events.map(event => {
     const id = event.id ? ` id="${escapeAttr(event.id)}"` : '';
     const body = (lang === 'bn' && event.html_bn) ? event.html_bn : (event.html || '');
-    return `<li${id} class="case-event fade-in">${body}</li>`;
-  }).join('');
+    return `<li${id} class="case-event scroll-fade-in">${body}</li>`;
+  }).join('') + '</ul>';
+  
+  // Initialize scroll animations
+  initScrollAnimations();
 }
 
 function updateCaseStats(events) {
@@ -4070,18 +4703,113 @@ function applyCaseSearch() {
 
 const TIMELINE_EVENTS = loadJsonSync('timeline_events.json');
 const CASE_EVENTS = loadJsonSync('case_events.json');
+
+// Glossary Data for tooltips
+const GLOSSARY_TERMS = {
+  'writ petition': { en: 'A formal written order issued by a court.', bn: 'আদালত কর্তৃক জারি করা একটি আনুষ্ঠানিক লিখিত আদেশ।' },
+  'public interest litigation': { en: 'Litigation undertaken for the protection of public interest.', bn: 'জনস্বার্থ রক্ষার জন্য করা মামলা।' },
+  'reservation': { en: 'Affirmative action policy for backward classes.', bn: 'পশ্চাৎপদ শ্রেণীর জন্য ইতিবাচক বৈষম্য নীতি।' },
+  'notification': { en: 'Official public announcement by the government.', bn: 'সরকার কর্তৃক জারি করা সরকারি বিজ্ঞপ্তি।' },
+  'commission': { en: 'An official group appointed to investigate or manage a specific area.', bn: 'নির্দিষ্ট বিষয় তদন্ত বা পরিচালনার জন্য নিযুক্ত সরকারি সংস্থা।' },
+  'petitioner': { en: 'Person who files a petition in court.', bn: 'যে ব্যক্তি আদালতে আবেদন দায়ের করেন।' },
+  'respondent': { en: 'Person against whom a petition is filed.', bn: 'যার বিরুদ্ধে আদালতে আবেদন দায়ের করা হয়েছে।' }
+};
+
+// Initialize with state restoration from URL
+restoreStateFromURL();
 renderTimelineEvents(TIMELINE_EVENTS);
 renderCaseEvents(CASE_EVENTS);
 updateCaseStats(CASE_EVENTS);
+
+const NOTIFICATION_LINKS = {
+  '6309-BCW': 'obc_pdfs/2010-09-24_6309-BCW-MR-84-10_categorisation.pdf',
+  '1673-BCW': 'obc_pdfs/2012-05-11_1673-BCW-MR-209-11_inclusion.pdf',
+  '845-BCW': 'obc_pdfs/2012-10-10_845-BCW-MR-147-12_inclusion.pdf',
+  '762-BCW': 'obc_pdfs/2013-03-01_762-BCW-MR-116-12_amendment.pdf',
+  '2770-BCW': 'obc_pdfs/2014-08-29_2770-BCW-MR-116-12_inclusion_amendment.pdf',
+  '183-BCW': 'obc_pdfs/2015-01-16_183-BCW-MR-209-11_inclusion.pdf',
+  '2102-BCW': 'obc_pdfs/2015-06-01_2102-BCW-MR-209-11_inclusion.pdf',
+  '468-BCW': 'obc_pdfs/2016-02-04_468-BCW-MR-209-11_inclusion_amendment.pdf',
+  '773-BCW': 'obc_pdfs/2016-02-26_773-BCW-MR-209-11_inclusion_amendment.pdf',
+  '4282-BCW': 'obc_pdfs/2016-12-26_4282-BCW-MR-118-16_inclusion.pdf',
+  '4283-BCW': 'obc_pdfs/2016-12-26_4283-BCW-MR-209-11-(Pt.I)_inclusion_amendment.pdf',
+  '1905-BCW': 'obc_pdfs/2017-06-07_1905-BCW-MR-19-17_inclusion.pdf',
+  '4144-BCW': 'obc_pdfs/2017-12-05_4144-BCW-MR-92-17_inclusion.pdf',
+  '1132-BCW': 'obc_pdfs/2018-03-28_1132-BCW-MR-05-17_inclusion.pdf',
+  'SBCW-165': 'obc_pdfs/2018-06-27_SBCW-165-MR-29-18_inclusion.pdf',
+  '2019-BCW': 'obc_pdfs/2022-07-11_2019-BCW-MR-30-2020_inclusion.pdf',
+  '2020-BCW': 'obc_pdfs/2022-07-11_2020-BCW-MR-03-2021_inclusion.pdf',
+  '1057-BCW': 'obc_pdfs/2025-05-27_1057-BCW-MR-38-2025_inclusion.pdf',
+  '1107-BCW': 'obc_pdfs/2025-06-03_1107-BCW-MR-38-2025_inclusion.pdf',
+  '1172-BCW': 'obc_pdfs/2025-06-03_1107-BCW-MR-38-2025_inclusion.pdf',
+  '944-BCW': 'obc_pdfs/2026-05-18_944-BCW-MR-23-2026_withdrawal.pdf',
+  '945-BCW': 'obc_pdfs/2026-05-18_945-BCW-MR-23-2026_current_list.pdf'
+};
+
+renderObcClassList();
+applyGlossaryTooltips();
+showSkeletonLoader(false);
 document.getElementById('case-search')?.addEventListener('input', applyCaseSearch);
 applyCaseSearch();
 showDataLoadWarning();
 
 // Re-render language-sensitive lists when the site language changes
+document.addEventListener('wbobc:langchange', (event) => {
+  const lang = event.detail?.lang || 'en';
+  
+  // Add a subtle fade-out effect before re-rendering
+  const timelineList = document.querySelector('#timeline .stagger-list');
+  const caseList = document.querySelector('#cases .stagger-list');
+  
+  if (timelineList) timelineList.style.opacity = '0';
+  if (caseList) caseList.style.opacity = '0';
+  
+  setTimeout(() => {
+    renderTimelineEvents(TIMELINE_EVENTS, lang);
+    renderCaseEvents(CASE_EVENTS, lang);
+    if (typeof applyFilters === 'function') applyFilters();
+    applyCaseSearch();
+    
+    // Fade back in after rendering
+    setTimeout(() => {
+      if (timelineList) timelineList.style.opacity = '1';
+      if (caseList) caseList.style.opacity = '1';
+    }, 50);
+  }, 150);
+});
+
+// Scroll-triggered animation for timeline and litigation entries
+function initScrollAnimations() {
+  if (typeof IntersectionObserver === 'undefined') {
+    // Fallback: show all items immediately
+    document.querySelectorAll('.scroll-fade-in').forEach(el => {
+      el.classList.add('visible');
+    });
+    return;
+  }
+  
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, {
+    threshold: 0.1,
+    rootMargin: '0px 0px -50px 0px'
+  });
+  
+  document.querySelectorAll('.scroll-fade-in:not(.visible)').forEach(el => {
+    observer.observe(el);
+  });
+}
+
+// Re-initialize scroll animations after language switch
 document.addEventListener('wbobc:langchange', () => {
-  renderTimelineEvents(TIMELINE_EVENTS);
-  renderCaseEvents(CASE_EVENTS);
-  applyCaseSearch();
+  setTimeout(() => {
+    initScrollAnimations();
+  }, 100);
 });
 
 function titleCase(value) {
@@ -4129,31 +4857,6 @@ function rewriteStaticAssetLinks() {
     }
   });
 }
-
-const NOTIFICATION_LINKS = {
-  '6309-BCW': 'obc_pdfs/2010-09-24_6309-BCW-MR-84-10_categorisation.pdf',
-  '1673-BCW': 'obc_pdfs/2012-05-11_1673-BCW-MR-209-11_inclusion.pdf',
-  '845-BCW': 'obc_pdfs/2012-10-10_845-BCW-MR-147-12_inclusion.pdf',
-  '762-BCW': 'obc_pdfs/2013-03-01_762-BCW-MR-116-12_amendment.pdf',
-  '2770-BCW': 'obc_pdfs/2014-08-29_2770-BCW-MR-116-12_inclusion_amendment.pdf',
-  '183-BCW': 'obc_pdfs/2015-01-16_183-BCW-MR-209-11_inclusion.pdf',
-  '2102-BCW': 'obc_pdfs/2015-06-01_2102-BCW-MR-209-11_inclusion.pdf',
-  '468-BCW': 'obc_pdfs/2016-02-04_468-BCW-MR-209-11_inclusion_amendment.pdf',
-  '773-BCW': 'obc_pdfs/2016-02-26_773-BCW-MR-209-11_inclusion_amendment.pdf',
-  '4282-BCW': 'obc_pdfs/2016-12-26_4282-BCW-MR-118-16_inclusion.pdf',
-  '4283-BCW': 'obc_pdfs/2016-12-26_4283-BCW-MR-209-11-(Pt.I)_inclusion_amendment.pdf',
-  '1905-BCW': 'obc_pdfs/2017-06-07_1905-BCW-MR-19-17_inclusion.pdf',
-  '4144-BCW': 'obc_pdfs/2017-12-05_4144-BCW-MR-92-17_inclusion.pdf',
-  '1132-BCW': 'obc_pdfs/2018-03-28_1132-BCW-MR-05-17_inclusion.pdf',
-  'SBCW-165': 'obc_pdfs/2018-06-27_SBCW-165-MR-29-18_inclusion.pdf',
-  '2019-BCW': 'obc_pdfs/2022-07-11_2019-BCW-MR-30-2020_inclusion.pdf',
-  '2020-BCW': 'obc_pdfs/2022-07-11_2020-BCW-MR-03-2021_inclusion.pdf',
-  '1057-BCW': 'obc_pdfs/2025-05-27_1057-BCW-MR-38-2025_inclusion.pdf',
-  '1107-BCW': 'obc_pdfs/2025-06-03_1107-BCW-MR-38-2025_inclusion.pdf',
-  '1172-BCW': 'obc_pdfs/2025-06-03_1107-BCW-MR-38-2025_inclusion.pdf',
-  '944-BCW': 'obc_pdfs/2026-05-18_944-BCW-MR-23-2026_withdrawal.pdf',
-  '945-BCW': 'obc_pdfs/2026-05-18_945-BCW-MR-23-2026_current_list.pdf'
-};
 
 function linkedNotificationTrail(source) {
   const parts = String(source || '').split(';').map(part => part.trim()).filter(Boolean);
@@ -4448,6 +5151,57 @@ renderObcClassList();
 renderPublicHearings();
 renderDocumentInventory();
 labelResponsiveTables();
+
+// --- Homepage stat cards: real counts + count-up animation ---
+function refreshHomeStatDigits() {
+  const lang = (window.WBOBCI18n && window.WBOBCI18n.getCurrentLang) ? window.WBOBCI18n.getCurrentLang() : 'en';
+  const bnDigits = { '0':'০','1':'১','2':'২','3':'৩','4':'৪','5':'৫','6':'৬','7':'৭','8':'৮','9':'৯' };
+  document.querySelectorAll('#home-stats [data-count-target]').forEach(el => {
+    const strongEl = el.querySelector('strong');
+    if (!strongEl) return;
+    const value = strongEl.dataset.finalValue || strongEl.textContent;
+    strongEl.dataset.finalValue = value;
+    strongEl.textContent = lang === 'bn' ? String(value).replace(/[0-9]/g, d => bnDigits[d]) : value;
+  });
+}
+
+function animateHomeStats() {
+  const docCount = OBC_DOCS.length || 84;
+  const hearingCount = PUBLIC_HEARINGS.length || 17;
+  const reportCount = document.querySelectorAll('#reports .report-card').length || 6;
+  const cards = document.querySelectorAll('#home-stats [data-count-target]');
+  const targets = [docCount, hearingCount, reportCount, null]; // 4th (gaps) stays as authored
+  cards.forEach((card, i) => {
+    const target = targets[i];
+    if (target == null) return;
+    card.dataset.countTarget = String(target);
+  });
+  if (!('IntersectionObserver' in window)) { refreshHomeStatDigits(); return; }
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      const strongEl = entry.target.querySelector('strong');
+      const target = parseInt(entry.target.dataset.countTarget, 10);
+      if (!strongEl || Number.isNaN(target)) { observer.unobserve(entry.target); return; }
+      const suffix = strongEl.textContent.replace(/[0-9]/g, '');
+      const duration = 900;
+      const start = performance.now();
+      function tick(now) {
+        const progress = Math.min(1, (now - start) / duration);
+        const eased = 1 - Math.pow(1 - progress, 3);
+        strongEl.textContent = Math.round(eased * target) + suffix;
+        if (progress < 1) requestAnimationFrame(tick);
+        else { strongEl.dataset.finalValue = target + suffix; refreshHomeStatDigits(); }
+      }
+      requestAnimationFrame(tick);
+      observer.unobserve(entry.target);
+    });
+  }, { threshold: 0.4 });
+  cards.forEach(card => observer.observe(card));
+}
+animateHomeStats();
+document.addEventListener('wbobc:langchange', refreshHomeStatDigits);
+
 ['obc-class-search', 'obc-source-filter'].forEach(id => {
   document.getElementById(id)?.addEventListener('input', filterObcClassList);
 });
@@ -4482,9 +5236,9 @@ let previousBodyOverflow = '';
 
 const HERO_CONTENT = {
   home: {
-    eyebrow: 'West Bengal · Backward Classes Welfare Department · 1993–2026',
-    title: 'OBC Research Dashboard',
-    sub: 'A source-led record from the 1993 Commission Act through the 2026 notification and litigation record: timeline, OBC class status, extracted PDF text, hearings, policy reports, audit gaps, and local source links.',
+    eyebrow: 'West Bengal OBC Archive · 1993–2026',
+    titleKey: 'heroTitle',
+    subKey: 'heroSub',
     stats: [
       ['84', 'PDF sources bundled locally across notifications, hearings, reports, and litigation records.'],
       ['OBC List', 'Current 66-class list plus searchable source records.'],
@@ -4494,8 +5248,8 @@ const HERO_CONTENT = {
   },
   about: {
     eyebrow: 'About · Scope, method, and source care',
-    title: 'About the OBC Research Bundle',
-    sub: 'A source-led research desk for West Bengal OBC policy and litigation records. It is designed to make documents easier to find, compare, and verify.',
+    titleKey: 'aboutTitle',
+    subKey: 'aboutSub',
     stats: [
       ['Local', 'Relative document links work from a downloaded folder or GitHub Pages.'],
       ['Primary', 'Original notifications and court records should control over summaries.'],
@@ -4505,8 +5259,8 @@ const HERO_CONTENT = {
   },
   'obc-basics': {
     eyebrow: 'Concept · Class-specific backwardness',
-    title: 'What OBC Means',
-    sub: 'OBC is a constitutional-administrative category for socially and educationally backward classes. It is not a blanket religious label and it is not proved by a slogan.',
+    titleKey: 'obcBasicsHeading',
+    subKey: 'obcBasicsSub',
     stats: [
       ['Class', 'The relevant unit is a caste, sub-caste, occupation, or socially known backward class.'],
       ['Evidence', 'Backwardness requires social, educational, economic, and representation indicators.'],
@@ -4516,8 +5270,8 @@ const HERO_CONTENT = {
   },
   methods: {
     eyebrow: 'Method · Data, census, representation',
-    title: 'Scientific Backwardness Assessment',
-    sub: 'A data-based method tests population, social disadvantage, educational lag, economic vulnerability, inadequate representation, public hearing records, and outcome audits.',
+    titleKey: 'methodsHeading',
+    subKey: 'methodsSub',
     stats: [
       ['3', 'Core indicator groups: social, educational, and economic conditions.'],
       ['1', 'Representation test: whether the class is inadequately present in public institutions.'],
@@ -4527,8 +5281,8 @@ const HERO_CONTENT = {
   },
   reports: {
     eyebrow: 'Reports · Mandal, Sachar, West Bengal',
-    title: 'Policy Reports and Criteria',
-    sub: 'Context reports explain backwardness indicators, Muslim OBC evidence, affirmative action, and how state notifications should be read against broader data.',
+    titleKey: 'reportsHeading',
+    subKey: 'reportsSub',
     stats: [
       ['1980', 'Mandal Commission criteria and weighted indicators.'],
       ['2006', 'Sachar Committee evidence on Muslim socio-economic and educational conditions.'],
@@ -4538,8 +5292,8 @@ const HERO_CONTENT = {
   },
   timeline: {
     eyebrow: 'Timeline · Notifications and changes',
-    title: 'OBC Reservation and List Timeline',
-    sub: 'Trace the record from the 1993 Commission Act and founding notifications through the 2025 expansion attempt and the 18 May 2026 withdrawal/list reset.',
+    titleKey: 'timelineTitle',
+    subKey: 'timelineSub',
     stats: [
       ['1993', 'Commission Act and Rules establish the statutory foundation in the local bundle.'],
       ['2025', 'Expansion and sub-categorisation package later withdrawn.'],
@@ -4549,8 +5303,8 @@ const HERO_CONTENT = {
   },
   documents: {
     eyebrow: 'Source PDFs · Search extracted text',
-    title: 'Source PDF Text',
-    sub: 'Search notification numbers, dates, community names, statuses, summaries, and extracted text from the bundled PDF set.',
+    titleKey: 'documents.title',
+    subKey: 'documents.subtitle',
     stats: [
       ['56', 'PDF texts embedded with summaries.'],
       ['Text', 'Open preview modals without leaving the HTML file.'],
@@ -4560,8 +5314,8 @@ const HERO_CONTENT = {
   },
   evidence: {
     eyebrow: 'Hearings & gaps · Public notices and audit',
-    title: 'Public Hearings and Completeness Audit',
-    sub: 'Review the Jana Shunani notice table, missing records, original-source links, and procedural gaps behind the notification trail.',
+    titleKey: 'completenessAuditHeading',
+    subKey: 'evidenceSub',
     stats: [
       ['17', 'Hearing/public-notice PDFs bundled locally.'],
       ['29 Apr', 'Earliest 2025 hearing notice in the table.'],
@@ -4571,8 +5325,8 @@ const HERO_CONTENT = {
   },
   cases: {
     eyebrow: 'Litigation · Orders and procedural record',
-    title: 'West Bengal OBC Litigation Tracker',
-    sub: 'Follow the principal court records alongside the notification timeline. Each entry distinguishes a bundled primary record, a mirror, and a record that still needs an official copy.',
+    titleKey: 'cases.title',
+    subKey: 'casesSectionSub',
     stats: [
       ['2024', 'Calcutta High Court judgment bundled as a research copy.'],
       ['Local', 'Court records and court-text mirror prints are bundled with provenance labels.'],
@@ -4582,8 +5336,8 @@ const HERO_CONTENT = {
   },
   'obc-list': {
     eyebrow: 'OBC List · Notification 945-BCW',
-    title: 'OBC Class Status List',
-    sub: 'A dedicated lookup table for current, historical, affected, and withdrawn classes found in the bundled West Bengal OBC record.',
+    titleKey: 'obcList.title',
+    subKey: 'obcListSub',
     stats: [
       ['66', 'Classes listed in the current notification.'],
       ['7%', 'Reservation position stated for services and posts.'],
@@ -4593,8 +5347,8 @@ const HERO_CONTENT = {
   },
   'entry-framework': {
     eyebrow: 'Add record guide · Add and audit records',
-    title: 'New Record Guide',
-    sub: 'Use structured fields, evidence checks, status labels, and cross-links when adding new PDFs, orders, hearings, court records, reports, or missing sources.',
+    titleKey: 'frameworkHeading',
+    subKey: 'frameworkSub',
     stats: [
       ['Date', 'Use ISO dates and exact document numbers.'],
       ['Status', 'Track current, withdrawn, superseded, legacy, missing, and verification-needed.'],
@@ -4604,8 +5358,8 @@ const HERO_CONTENT = {
   },
   inventory: {
     eyebrow: 'Files · Local bundle inventory',
-    title: 'Document Inventory and Bundle Files',
-    sub: 'A file-by-file table of local PDFs, pages, timeline roles, manifests, and supporting bundle assets.',
+    titleKey: 'inventory.title',
+    subKey: 'inventorySub',
     stats: [
       ['PDF', 'Local source files are linked directly.'],
       ['JSON', 'Manifest files support migration or cloud replacement.'],
@@ -4755,6 +5509,24 @@ document.querySelectorAll('[data-lang-switch]').forEach(link => {
 
 // Language toggle functionality
 const langButtons = document.querySelectorAll('.lang-btn');
+const popupLangButtons = document.querySelectorAll('.lang-btn-small');
+
+function syncLanguageButtons(lang = getActiveLang()) {
+  // Sync main navigation language buttons
+  langButtons.forEach(button => {
+    const isActive = button.getAttribute('data-lang') === lang;
+    button.classList.toggle('active', isActive);
+    button.setAttribute('aria-pressed', isActive ? 'true' : 'false');
+  });
+  
+  // Sync popup language buttons
+  popupLangButtons.forEach(button => {
+    const isActive = button.getAttribute('data-lang-switch') === lang;
+    button.classList.toggle('active', isActive);
+    button.setAttribute('aria-pressed', isActive ? 'true' : 'false');
+  });
+}
+
 langButtons.forEach(btn => {
   btn.addEventListener('click', () => {
     const lang = btn.getAttribute('data-lang');
@@ -4762,13 +5534,7 @@ langButtons.forEach(btn => {
       window.WBOBCI18n.switchLanguage(lang);
     }
     
-    // Update button states
-    langButtons.forEach(b => {
-      b.classList.remove('active');
-      b.setAttribute('aria-pressed', 'false');
-    });
-    btn.classList.add('active');
-    btn.setAttribute('aria-pressed', 'true');
+    syncLanguageButtons(lang);
     
     // Update URL without reload
     const url = new URL(window.location);
@@ -4776,6 +5542,222 @@ langButtons.forEach(btn => {
     window.history.pushState({}, '', url);
   });
 });
+
+// Popup language buttons
+popupLangButtons.forEach(btn => {
+  btn.addEventListener('click', () => {
+    const lang = btn.getAttribute('data-lang-switch');
+    if (window.WBOBCI18n) {
+      window.WBOBCI18n.switchLanguage(lang);
+    }
+    
+    syncLanguageButtons(lang);
+    
+    // Update URL without reload
+    const url = new URL(window.location);
+    url.searchParams.set('lang', lang);
+    window.history.pushState({}, '', url);
+  });
+});
+
+document.addEventListener('wbobc:langchange', event => {
+  syncLanguageButtons(event.detail?.lang);
+  // Re-apply glossary tooltips after language change
+  applyGlossaryTooltips();
+});
+syncLanguageButtons();
+
+// ===========================
+// DEEP LINKING & STATE PERSISTENCE
+// ===========================
+function restoreStateFromURL() {
+  const params = new URLSearchParams(window.location.search);
+  const search = params.get('search');
+  const filters = params.get('filters');
+  const page = params.get('page');
+  const dateFrom = params.get('dateFrom');
+  const dateTo = params.get('dateTo');
+  
+  if (search) {
+    const searchInput = document.getElementById('timeline-search') || document.getElementById('case-search');
+    if (searchInput) searchInput.value = search;
+  }
+  
+  if (filters) {
+    activeFilters.clear();
+    filters.split(',').forEach(f => activeFilters.add(f));
+    document.querySelectorAll('.filter-chip').forEach(chip => {
+      const filterType = chip.dataset.filter;
+      if (filterType && activeFilters.has(filterType)) {
+        chip.classList.add('active');
+      } else {
+        chip.classList.remove('active');
+      }
+    });
+  }
+  
+  if (page) {
+    currentPage = parseInt(page, 10) || 1;
+  }
+  
+  if (dateFrom) {
+    const fromInput = document.getElementById('date-from');
+    if (fromInput) fromInput.value = dateFrom;
+    currentDateRange.from = dateFrom;
+  }
+  
+  if (dateTo) {
+    const toInput = document.getElementById('date-to');
+    if (toInput) toInput.value = dateTo;
+    currentDateRange.to = dateTo;
+  }
+}
+
+function updateURLState() {
+  const url = new URL(window.location);
+  const searchInput = document.getElementById('timeline-search') || document.getElementById('case-search');
+  const searchTerm = searchInput?.value || '';
+  const filtersStr = Array.from(activeFilters).join(',');
+  
+  if (searchTerm) url.searchParams.set('search', searchTerm);
+  else url.searchParams.delete('search');
+  
+  if (filtersStr) url.searchParams.set('filters', filtersStr);
+  else url.searchParams.delete('filters');
+  
+  if (currentPage > 1) url.searchParams.set('page', String(currentPage));
+  else url.searchParams.delete('page');
+  
+  if (currentDateRange.from) url.searchParams.set('dateFrom', currentDateRange.from);
+  else url.searchParams.delete('dateFrom');
+  
+  if (currentDateRange.to) url.searchParams.set('dateTo', currentDateRange.to);
+  else url.searchParams.delete('dateTo');
+  
+  window.history.pushState({}, '', url);
+}
+
+// ===========================
+// FUZZY SEARCH
+// ===========================
+function fuzzyMatch(text, pattern) {
+  if (!pattern) return true;
+  text = String(text || '').toLowerCase();
+  pattern = String(pattern || '').toLowerCase();
+  
+  // Exact match first
+  if (text.includes(pattern)) return true;
+  
+  // Fuzzy match - allow character skips
+  let textIdx = 0;
+  let patternIdx = 0;
+  let matches = 0;
+  
+  while (textIdx < text.length && patternIdx < pattern.length) {
+    if (text[textIdx] === pattern[patternIdx]) {
+      matches++;
+      patternIdx++;
+    }
+    textIdx++;
+  }
+  
+  // Return true if we matched at least 70% of pattern characters
+  return patternIdx === pattern.length || (matches / pattern.length) >= 0.7;
+}
+
+// ===========================
+// EXPORT TO CSV
+// ===========================
+function exportToCSV(data, filename) {
+  if (!data || !data.length) return;
+  
+  const headers = Object.keys(data[0]);
+  const csvContent = [
+    headers.join(','),
+    ...data.map(row => 
+      headers.map(header => {
+        const value = String(row[header] || '').replace(/"/g, '""');
+        return `"${value}"`;
+      }).join(',')
+    )
+  ].join('\n');
+  
+  const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+  const link = document.createElement('a');
+  link.href = URL.createObjectURL(blob);
+  link.download = `${filename}_${new Date().toISOString().split('T')[0]}.csv`;
+  link.click();
+}
+
+function addExportButton(containerId, dataGetter, filenameBase) {
+  const container = document.getElementById(containerId);
+  if (!container) return;
+  
+  const existingBtn = container.querySelector('.export-csv-btn');
+  if (existingBtn) return;
+  
+  const btn = document.createElement('button');
+  btn.className = 'export-csv-btn';
+  btn.innerHTML = '📥 Export CSV';
+  btn.setAttribute('aria-label', 'Export current view to CSV file');
+  btn.onclick = () => {
+    const data = dataGetter();
+    exportToCSV(data, filenameBase);
+  };
+  container.appendChild(btn);
+}
+
+// ===========================
+// GLOSSARY TOOLTIPS
+// ===========================
+function applyGlossaryTooltips() {
+  const lang = getActiveLang();
+  
+  // Remove existing tooltips first
+  document.querySelectorAll('.glossary-term').forEach(el => {
+    const parent = el.parentNode;
+    if (parent) {
+      parent.replaceChild(document.createTextNode(el.textContent), el);
+    }
+  });
+  
+  // Apply new tooltips
+  Object.keys(GLOSSARY_TERMS).forEach(term => {
+    const regex = new RegExp(`\\b(${term})\\b`, 'gi');
+    
+    document.querySelectorAll('.event, .case-event, .doc-row, td').forEach(el => {
+      if (el.querySelector('.glossary-term')) return; // Skip if already processed
+      
+      const html = el.innerHTML;
+      if (regex.test(html)) {
+        const newHtml = html.replace(regex, (match) => {
+          const definition = GLOSSARY_TERMS[term.toLowerCase()][lang] || GLOSSARY_TERMS[term.toLowerCase()].en;
+          return `<span class="glossary-term" tabindex="0" aria-label="${definition}" title="${definition}">${match}</span>`;
+        });
+        el.innerHTML = newHtml;
+      }
+    });
+  });
+}
+
+// ===========================
+// SKELETON LOADING STATES
+// ===========================
+function showSkeletonLoader(show) {
+  const containers = ['#timeline', '#cases .case-timeline'];
+  
+  containers.forEach(selector => {
+    const container = document.querySelector(selector);
+    if (!container) return;
+    
+    if (show) {
+      container.classList.add('skeleton-loading');
+      container.innerHTML = '<div class="skeleton-item"></div><div class="skeleton-item"></div><div class="skeleton-item"></div>';
+    } else {
+      container.classList.remove('skeleton-loading');
+    }
+  });
+}
 
 function tabForHash(hash) {
   const id = String(hash || '').replace(/^#/, '');
@@ -4797,13 +5779,31 @@ function tabForHash(hash) {
 function updateHero(tabName) {
   const content = HERO_CONTENT[tabName] || HERO_CONTENT.home;
   if (heroEyebrow) heroEyebrow.textContent = content.eyebrow;
-  if (heroTitle) heroTitle.textContent = content.title;
-  if (heroSub) heroSub.textContent = content.sub;
-  heroStatEls.forEach((item, index) => {
-    const stat = content.stats[index] || ['', ''];
-    if (item.value) item.value.textContent = stat[0];
-    if (item.label) item.label.textContent = stat[1];
-  });
+  
+  // Use translation keys for title and subtitle to support language switching
+  if (heroTitle && content.titleKey) {
+    heroTitle.innerHTML = window.WBOBCI18n ? window.WBOBCI18n.t(content.titleKey) : content.titleKey;
+    heroTitle.setAttribute('data-i18n', content.titleKey);
+  }
+  if (heroSub && content.subKey) {
+    heroSub.innerHTML = window.WBOBCI18n ? window.WBOBCI18n.t(content.subKey) : content.subKey;
+    heroSub.setAttribute('data-i18n', content.subKey);
+  }
+  
+  if (tabName === 'home') {
+    heroStatEls.forEach((item, index) => {
+      const valueKey = `heroStat${index + 1}Value`;
+      const labelKey = `heroStat${index + 1}Label`;
+      if (item.value) item.value.textContent = window.WBOBCI18n ? window.WBOBCI18n.t(valueKey) : (HERO_CONTENT.home.stats[index] || ['', ''])[0];
+      if (item.label) item.label.innerHTML = window.WBOBCI18n ? window.WBOBCI18n.t(labelKey) : (HERO_CONTENT.home.stats[index] || ['', ''])[1];
+    });
+  } else {
+    heroStatEls.forEach((item, index) => {
+      const stat = content.stats[index] || ['', ''];
+      if (item.value) item.value.textContent = stat[0];
+      if (item.label) item.label.innerHTML = stat[1];
+    });
+  }
 }
 
 function showTab(tabName, targetHash) {
@@ -4985,7 +5985,6 @@ document.addEventListener('keydown', event => {
 
 const search = document.querySelector('#tl-search');
 const buttons = Array.from(document.querySelectorAll('.filter-btn'));
-const events = Array.from(document.querySelectorAll('.event, .tl-event'));
 let activeFilter = 'all';
 
 function matchesFilter(event) {
@@ -4996,6 +5995,7 @@ function matchesFilter(event) {
 
 function applyFilters() {
   const term = normalise(search && search.value);
+  const events = Array.from(document.querySelectorAll('#timeline .event, #timeline .tl-event'));
   events.forEach(event => {
     const text = normalise(event.textContent + ' ' + (event.dataset.search || ''));
     const visible = matchesFilter(event) && (!term || text.includes(term));
@@ -5077,11 +6077,16 @@ document.addEventListener('keydown', event => {
 const navToggle = document.querySelector('.nav-toggle');
 const siteNav = document.getElementById('site-nav');
 const navOverlay = document.querySelector('.nav-overlay');
+const navCloseButton = document.querySelector('.nav-close');
 
 function openMobileNav() {
   if (!siteNav) return;
   siteNav.classList.add('is-open');
-  if (navOverlay) navOverlay.classList.add('is-visible');
+  siteNav.classList.add('open');
+  if (navOverlay) {
+    navOverlay.classList.add('is-visible');
+    navOverlay.classList.add('open');
+  }
   if (navToggle) navToggle.setAttribute('aria-expanded', 'true');
   document.body.style.overflow = 'hidden';
 }
@@ -5089,7 +6094,11 @@ function openMobileNav() {
 function closeMobileNav() {
   if (!siteNav) return;
   siteNav.classList.remove('is-open');
-  if (navOverlay) navOverlay.classList.remove('is-visible');
+  siteNav.classList.remove('open');
+  if (navOverlay) {
+    navOverlay.classList.remove('is-visible');
+    navOverlay.classList.remove('open');
+  }
   if (navToggle) navToggle.setAttribute('aria-expanded', 'false');
   document.body.style.overflow = '';
   navGroups.forEach(closeGroup);
@@ -5097,7 +6106,8 @@ function closeMobileNav() {
 
 if (navToggle) {
   navToggle.addEventListener('click', () => {
-    if (siteNav && siteNav.classList.contains('is-open')) {
+    const isOpen = siteNav && (siteNav.classList.contains('is-open') || siteNav.classList.contains('open'));
+    if (isOpen) {
       closeMobileNav();
     } else {
       openMobileNav();
@@ -5105,7 +6115,14 @@ if (navToggle) {
   });
 }
 
+if (navCloseButton) navCloseButton.addEventListener('click', closeMobileNav);
 if (navOverlay) navOverlay.addEventListener('click', closeMobileNav);
+
+document.addEventListener('click', event => {
+  if (!siteNav || !siteNav.classList.contains('is-open')) return;
+  if (event.target.closest('#site-nav') || event.target.closest('.nav-toggle')) return;
+  closeMobileNav();
+});
 
 document.addEventListener('keydown', event => {
   if (event.key === 'Escape') closeMobileNav();
@@ -5233,6 +6250,68 @@ window.addEventListener('resize', () => {
   
   // Show popup on page load
   showPopup();
+})();
+
+// Smart Sticky Header - Hide on scroll down, show on scroll up
+(function() {
+  const header = document.querySelector('.site-header');
+  if (!header) return;
+  
+  let lastScrollY = window.scrollY;
+  let ticking = false;
+  
+  function updateHeader() {
+    const currentScrollY = window.scrollY;
+    
+    if (currentScrollY > lastScrollY && currentScrollY > 100) {
+      // Scrolling down - hide header
+      header.classList.add('header-hidden');
+    } else {
+      // Scrolling up - show header
+      header.classList.remove('header-hidden');
+    }
+    
+    lastScrollY = currentScrollY;
+    ticking = false;
+  }
+  
+  window.addEventListener('scroll', () => {
+    if (!ticking) {
+      window.requestAnimationFrame(updateHeader);
+      ticking = true;
+    }
+  }, { passive: true });
+})();
+
+// Scroll to Top Button
+(function() {
+  const scrollBtn = document.createElement('button');
+  scrollBtn.className = 'scroll-to-top';
+  scrollBtn.innerHTML = '↑';
+  scrollBtn.setAttribute('aria-label', 'Scroll to top');
+  document.body.appendChild(scrollBtn);
+  
+  let ticking = false;
+  
+  function toggleButton() {
+    if (window.scrollY > 300) {
+      scrollBtn.classList.add('visible');
+    } else {
+      scrollBtn.classList.remove('visible');
+    }
+    ticking = false;
+  }
+  
+  window.addEventListener('scroll', () => {
+    if (!ticking) {
+      window.requestAnimationFrame(toggleButton);
+      ticking = true;
+    }
+  }, { passive: true });
+  
+  scrollBtn.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
 })();
 
 // Service Worker Registration for PWA support
