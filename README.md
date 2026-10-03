@@ -1,6 +1,6 @@
 # WB OBC Document Bundle
 
-This repository hosts a self-contained static research site and its source files. Open
+This repository hosts a multi-page static research site and its source files. Open
 `index.html` locally or publish the repository through GitHub Pages.
 
 ## Contents
@@ -8,19 +8,21 @@ This repository hosts a self-contained static research site and its source files
 - `obc_pdfs/` - locally bundled PDF source documents used by the timeline, corpus, reports, hearings, and inventory sections.
 - `case_pdfs/` - locally bundled litigation records; see its README for provenance and verification notes.
 - `case_manifest.json` - structured litigation-record index.
-- `case_events.json` - litigation timeline entries rendered by `index.html`.
+- `case_events.json` - litigation timeline entries rendered by `litigation.html`.
 - `related_sources_catalog.json` - triage of additional local OBC-related material, including large court bundles deliberately not committed.
 - `obc_documents.json` - extracted text and structured summaries for the document corpus.
 - `obc_classes.json` - current 66-class list metadata plus historical/withdrawn class status rows.
 - `public_hearings.json` - displayed Jana Shunani/public-hearing dates, times, communities, and local notice PDFs.
 - `supplemental_documents.json` - supplemental BCW/framework document records; rows marked `show_on_timeline` are also rendered into the timeline.
-- `timeline_events.json` - notification/policy timeline entries rendered by `index.html`.
+- `timeline_events.json` - notification/policy timeline entries rendered by `timeline.html`.
 - `obc_pdf_manifest.json` - PDF manifest for renamed local source files.
 - `obc_hearing_pdf_manifest.json` - hearing/public notice PDF manifest.
 - `evidence_file_inventory.csv` - local evidence file inventory.
 - `contribute.html` - public source/correction report page; it prepares a reviewable GitHub issue without collecting data itself.
-- `document_inventory.json` - display rows for the Document Inventory tab.
-- `index.html?lang=bn` - Bengali mode for the research bundle, linking readers to the full searchable corpus and source records.
+- `document_inventory.json` - display rows for `inventory.html`.
+- `site-src/app-template.html` - shared source template for the page header, footer, panels, styles, and application logic.
+- `scripts/build-pages.js` - builds the twelve public HTML pages plus the shared `css/site.css` and `js/site.js` assets.
+- `index.html?lang=bn` - Bengali mode for the research homepage; the language choice persists across pages.
 - `SURVEY_SETUP.md` - privacy-aware guidance for adding a Google Forms survey alongside the public GitHub reporting route.
 - `QUICK_REFERENCE.txt` and `README_WB_OBC_SITE.md` - supporting notes from the local bundle.
 
@@ -60,13 +62,23 @@ Run the local data checks before publishing:
 npm run validate:data
 ```
 
+Build all public pages and the standalone fallback after editing the shared template:
+
+```sh
+npm run build
+```
+
+Use `npm run build:pages` when only the multi-page site needs rebuilding.
+
 To create a double-clickable fallback copy with the JSON embedded into the HTML:
 
 ```sh
 npm run build:standalone
 ```
 
-This writes `index-standalone.html`; keep editing `index.html` and the JSON files as the source of truth.
+This writes `index-standalone.html`. Edit `site-src/app-template.html`, the shared
+translation/data files, and then run the build; generated page files should not be
+edited independently.
 
 ## GitHub Pages
 

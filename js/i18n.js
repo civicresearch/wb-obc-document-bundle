@@ -5,10 +5,12 @@
   let currentLang = 'en';
   let translations = {};
 
-  // Load translations from JSON file
+  // Load translations from JSON file.
+  // cache: 'no-store' keeps translations fresh on devices where the HTTP cache
+  // would otherwise serve a stale copy for days (heuristic caching).
   async function loadTranslations() {
     try {
-      const response = await fetch('data/i18n.json');
+      const response = await fetch('data/i18n.json', { cache: 'no-store' });
       if (!response.ok) throw new Error('Failed to load translations');
       translations = await response.json();
       return true;
@@ -46,7 +48,8 @@
     // Update document title
     const titleEl = document.querySelector('title');
     if (titleEl && translations[currentLang]?.siteTitle) {
-      titleEl.textContent = translations[currentLang].siteTitle;
+      const pageKey = document.body.dataset.page ? `pageTitle.${document.body.dataset.page}` : 'siteTitle';
+      titleEl.textContent = translations[currentLang][pageKey] || translations[currentLang].siteTitle;
     }
 
     // Update body class for font switching

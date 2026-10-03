@@ -1,0 +1,360 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="WB OBC Archive - A consolidated archive of West Bengal OBC notifications, court orders, hearings, source PDFs, and policy documents from 1993-2026">
+  <meta name="theme-color" content="#10253f">
+  <title>Public Hearings and Evidence Gaps · Civic Research Group</title>
+  <link rel="manifest" href="pwa-manifest.json">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@100..900&display=swap">
+  <link rel="stylesheet" href="css/shared.css?v=20261004">
+  <script src="js/i18n.js?v=20261004" defer></script>
+  <script>
+    // This page is deployed in two places:
+    //  - GitHub Pages, where obc_pdfs/, case_pdfs/ and obc_pdf_manifest.json
+    //    are served alongside this file, so relative links work as-is.
+    //  - Vercel (or any other host that only deploys this HTML file), where
+    //    those folders are not present. On those hosts, rewrite the relative
+    //    asset links to point at the raw GitHub copy instead.
+    // Edit GITHUB_RAW_BASE below if the repo/branch ever changes.
+    (function () {
+      var GITHUB_RAW_BASE = 'https://raw.githubusercontent.com/civicresearch/wb-obc-document-bundle/main/';
+      var host = window.location.hostname;
+      var isGithubPages = /(^|\.)github\.io$/.test(host);
+      var isLocal = host === 'localhost' || host === '127.0.0.1' || host === '' || window.location.protocol === 'file:';
+      window.OBC_ASSET_BASE = (isGithubPages || isLocal) ? '' : GITHUB_RAW_BASE;
+    })();
+    (function () {
+      try {
+        var savedTheme = localStorage.getItem('wb-obc-theme');
+        document.documentElement.dataset.theme = savedTheme === 'dark' ? 'dark' : 'light';
+      } catch (error) {
+        document.documentElement.dataset.theme = 'light';
+      }
+    })();
+  </script>
+</head>
+<body data-page="evidence">
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <header class="site-header">
+    <div class="site-header-inner">
+      <a href="index.html" class="site-logo" aria-label="West Bengal OBC Archive — home">
+        <img src="obcwb-flat-dark-logo.webp" data-theme-logo data-light-src="obcwb-flat-dark-logo.webp" data-dark-src="obcwb-flat-light-logo.webp" alt="West Bengal OBC Archive" width="720" height="240" decoding="async">
+      </a>
+      <script>
+        // Swap the header logo to the theme-correct file before first paint;
+        // otherwise a dark-theme load briefly (or, if a later script fails,
+        // permanently) shows the dark-text logo on the dark header.
+        (function () {
+          if (document.documentElement.dataset.theme !== 'dark') return;
+          var logo = document.querySelector('img[data-theme-logo]');
+          if (logo && logo.dataset.darkSrc) logo.setAttribute('src', logo.dataset.darkSrc);
+        })();
+      </script>
+      <button type="button" class="nav-toggle" aria-expanded="false" aria-controls="site-nav" aria-label="Open navigation menu">
+        <span class="nav-toggle-bar"></span>
+        <span class="nav-toggle-bar"></span>
+        <span class="nav-toggle-bar"></span>
+      </button>
+      <nav class="site-nav" id="site-nav" aria-label="Sections">
+        <button type="button" class="nav-close" aria-label="Close navigation menu">×</button>
+        <a href="index.html" class="active" data-tab-target="home" data-i18n="navHome">Home</a>
+        <div class="nav-group">
+          <button type="button" class="nav-group-toggle" aria-expanded="false">
+            <span data-i18n="navResearch">Research</span>
+            <span class="nav-caret" aria-hidden="true">▾</span>
+          </button>
+          <div class="nav-group-items">
+            <a href="timeline.html" data-tab-target="timeline" data-i18n="navTimeline">Timeline</a>
+            <a href="litigation.html" data-tab-target="cases" data-i18n="navCases">Litigation</a>
+            <a href="obc-list.html" data-tab-target="obc-list" data-i18n="navOBCList">OBC List</a>
+            <a href="documents.html" data-tab-target="documents" data-i18n="navDocuments">Source PDFs</a>
+            <a href="#evidence" data-tab-target="evidence" data-i18n="navEvidence" class="active" aria-current="page">Hearings &amp; Gaps</a>
+            <a href="record-guide.html" data-tab-target="entry-framework" data-i18n="navEntryFramework">Add Record Guide</a>
+            <a href="inventory.html" data-tab-target="inventory" data-i18n="navInventory">File Inventory</a>
+          </div>
+        </div>
+        <div class="nav-group">
+          <button type="button" class="nav-group-toggle" aria-expanded="false">
+            <span data-i18n="navLearn">Learn</span>
+            <span class="nav-caret" aria-hidden="true">▾</span>
+          </button>
+          <div class="nav-group-items">
+            <a href="obc-basics.html" data-tab-target="obc-basics" data-i18n="navOBCBasics">OBC Basics</a>
+            <a href="methods.html" data-tab-target="methods" data-i18n="navMethods">Evidence Method</a>
+            <a href="reports.html" data-tab-target="reports" data-i18n="navReports">Policy Reports</a>
+          </div>
+        </div>
+        <a href="contribute.html" data-i18n="navContribute">Contribute</a>
+        <a href="about.html" data-tab-target="about" data-i18n="navAbout">About</a>
+        <a href="https://github.com/civicresearch/wb-obc-document-bundle" target="_blank" rel="noreferrer" data-i18n="navGitHub">GitHub</a>
+        <div class="nav-preferences" aria-label="Language and appearance">
+          <span class="language-switch" aria-label="Language">
+            <button type="button" id="lang-en" class="lang-btn active" data-lang="en" data-lang-switch="en" aria-pressed="true">EN</button>
+            <span class="lang-separator">|</span>
+            <button type="button" id="lang-bn" class="lang-btn" data-lang="bn" data-lang-switch="bn" aria-pressed="false">বাংলা</button>
+          </span>
+          <span class="preference-divider" aria-hidden="true"></span>
+          <button type="button" id="theme-toggle" class="theme-toggle" aria-label="Switch to dark theme" title="Switch to dark theme">
+            <svg class="theme-icon theme-icon-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.2 15.2A8.5 8.5 0 0 1 8.8 3.8 8.5 8.5 0 1 0 20.2 15.2Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <svg class="theme-icon theme-icon-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="3.8" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M12 2v2.2M12 19.8V22M4.93 4.93l1.56 1.56M17.51 17.51l1.56 1.56M2 12h2.2M19.8 12H22M4.93 19.07l1.56-1.56M17.51 6.49l1.56-1.56" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+          </button>
+        </div>
+      </nav>
+      <div class="nav-overlay"></div>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="hero-inner wrap">
+      <p class="hero-eyebrow" id="hero-eyebrow" data-i18n="heroEyebrow">West Bengal · Backward Classes Welfare Department · 1993–2026</p>
+      <h1 id="hero-title" data-i18n="heroTitle">OBC Reservation and List Timeline</h1>
+      <p class="hero-sub" id="hero-sub" data-i18n="heroSub">A consolidated database on West Bengal OBC Reservation starting with the 1993 Commission Act and continuing through the latest notification and court case records.</p>
+      <div class="hero-stats stagger-in">
+        <div class="hero-stat lift"><strong id="hero-stat-1-value" data-i18n="heroStat1Value">84</strong><span id="hero-stat-1-label" data-i18n="heroStat1Label">PDF sources bundled across notifications, hearings, reports, and court records.</span></div>
+        <div class="hero-stat lift"><strong id="hero-stat-2-value" data-i18n="heroStat2Value">66</strong><span id="hero-stat-2-label" data-i18n="heroStat2Label">Classes listed in Notification No. 945-BCW/MR-23/2026.</span></div>
+        <div class="hero-stat lift"><strong id="hero-stat-3-value" data-i18n="heroStat3Value">7%</strong><span id="hero-stat-3-label" data-i18n="heroStat3Label">Reservation position stated in the 18 May 2026 list notification.</span></div>
+        <div class="hero-stat lift"><strong id="hero-stat-4-value" data-i18n="heroStat4Value">5</strong><span id="hero-stat-4-label" data-i18n="heroStat4Label">Priority evidence gaps and follow-ups tracked in the audit.</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contribution Popup Modal -->
+  <div id="contribute-popup" class="contribute-popup-overlay" hidden>
+    <div class="contribute-popup" role="dialog" aria-labelledby="popup-title" aria-describedby="popup-desc">
+      <button type="button" class="popup-close" aria-label="Close popup">&times;</button>
+      <div class="popup-brand">
+        <img src="CRG_Logo_Dark.png" data-theme-logo data-light-src="CRG_Logo_Dark.png" data-dark-src="CRG_LOGO_light.png" alt="Civic Research Group" width="400" height="81" decoding="async">
+      </div>
+      <h2 id="popup-title" data-i18n="popupTitle">Help Improve This Resource</h2>
+      <p id="popup-desc" data-i18n="popupDesc">A volunteer-maintained public research archive. Contributions and corrections are welcome.</p>
+      <div class="popup-actions">
+        <a href="contribute.html" class="popup-btn primary" data-i18n="popupBtn">Contribute Documents &amp; Corrections</a>
+      </div>
+      <div class="popup-network">
+        <p data-i18n="popupNetworkTitle">Explore our latest work</p>
+        <div class="popup-network-links">
+          <a href="https://civicresearch.in" target="_blank" rel="noopener noreferrer" data-i18n="popupCRGLink">Visit our website civicresearch.in</a>
+          <a href="https://appeal.civicresearch.in" target="_blank" rel="noopener noreferrer" data-i18n="popupAppealLink">Tribunal Appeal Evidence · appeal.civicresearch.in</a>
+          <a href="https://rti.votercards.in" target="_blank" rel="noopener noreferrer" data-i18n="popupRTILink">RTI Karo · rti.votercards.in</a>
+        </div>
+      </div>
+      <div class="popup-preferences">
+        <label><input type="checkbox" id="dont-show-again"> <span data-i18n="popupDontShow">Don't show this message again</span></label>
+        <div class="popup-lang-switch" aria-label="Language">
+          <button type="button" class="lang-btn-small" data-lang-switch="en" aria-pressed="false">EN</button>
+          <span aria-hidden="true">|</span>
+          <button type="button" class="lang-btn-small" data-lang-switch="bn" aria-pressed="false">বাংলা</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <main id="main-content" class="wrap" tabindex="-1">
+    <div id="data-load-warning" class="data-load-warning" hidden role="status"></div>
+
+    <section id="evidence" class="research tab-panel" data-tab-panel="evidence">
+      <h2 id="missing-records" class="section-heading" data-i18n="completenessAuditHeading">Completeness Audit</h2>
+      <p class="section-sub">The local folders contain the core 2010, 2025, and 2026 notifications and a substantial public-hearing notice set. The remaining procedural gap is the West Bengal Commission for Backward Classes record behind the notices: benchmark-survey memos, class-wise advice reports, survey data, and later court records around the 2025 survey challenge.</p>
+
+      <div class="research-grid">
+        <div class="research-card found">
+          <h3 data-i18n="evidenceFoundOnline">Found online from original sources</h3>
+          <p>Official BCW order indexes, official WBCBC public-hearing notice list, and the official 2025 notification-wise OBC list.</p>
+        </div>
+        <div class="research-card gap">
+          <h3 data-i18n="evidencePartlyFound">Partly found</h3>
+          <p>Benchmark-survey memos are quoted or mirrored online, but the original Commission PDF locations still need recovery or download from the department/Commission if available.</p>
+        </div>
+        <div class="research-card missing">
+          <h3 data-i18n="evidenceStillMissing">Still missing locally</h3>
+          <p>Class-wise Commission advice/survey reports, the benchmark-survey memo trail, complete court filings/orders after the 2025 survey challenge, and original source pages for any hearing notices that are present only as local scanned files.</p>
+        </div>
+      </div>
+
+      <h2 id="public-hearings" class="section-heading" data-i18n="publicHearingsHeading">Public Hearings / Jana Shunani</h2>
+      <p class="section-sub">The local PUBLIC HEARING folder now supplies a fuller Jana Shunani run from 29 April through 24 May 2025. The notices use Adivasi Bhavan, Premises No. 2221, Action Area 3A, Rajarhat, New Town, Kolkata-700160 as venue; visually read notices and text-extracted Bengali advertisements are listed below with source links.</p>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Date</th>
+              <th>Time</th>
+              <th>Classes / communities named in notice</th>
+              <th>Official advertisement</th>
+            </tr>
+          </thead>
+          <tbody id="public-hearings-tbody">
+            <!-- Public hearing rows are rendered from public_hearings.json. -->
+          </tbody>
+        </table>
+      </div>
+
+      <h2 class="section-heading" data-i18n="newSourcesHeading">New Local Sources Checked</h2>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Local source</th>
+              <th>What it adds</th>
+              <th>Use in final dataset</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><span class="missing-pill">Missing locally</span> OBC ANALYSIS REPORT WITH NOTIFICATION.xlsx</td>
+              <td>Six sheets: 66 pre-2010 classes; old OBC list; 2025 new list; notification plus hearing dates; classes struck down by High Court; A/B movement analysis.</td>
+              <td>Best local structured source. It records 66 pre-2010 entries, 114 struck-down/affected entries, and a 2025 comparison table.</td>
+            </tr>
+            <tr>
+              <td><a href="https://raw.githubusercontent.com/civicresearch/wb-obc-document-bundle/main/Document%20needed%20for%20Cast%20certificate%20Issue/1204-SBCW%20(1).pdf" target="_blank" rel="noreferrer">Document needed for Cast certificate Issue</a></td>
+              <td>Certificate-issuance procedure documents, including amended OBC certificate, document verification, Aadhaar/local residence proof, Kolkata hearing authority, and updated OBC certificate guidelines.</td>
+              <td>Administrative/certificate layer. Useful for showing how certificates are issued/revalidated, not for deciding which class is OBC.</td>
+            </tr>
+            <tr>
+              <td><a href="https://raw.githubusercontent.com/civicresearch/wb-obc-document-bundle/main/BCW%20department%20orders%20and%20Notification/Reservation_SC_ST_Act.pdf" target="_blank" rel="noreferrer">BCW department orders and Notification</a></td>
+              <td>Acts, rules, roster/register orders, SC/ST identification law, EWS guidelines, and WBCBC constitution/administrative orders.</td>
+              <td>Legal/admin background layer. Important for context, but only selected PDFs are directly OBC-list relevant.</td>
+            </tr>
+            <tr>
+              <td><a href="https://raw.githubusercontent.com/civicresearch/wb-obc-document-bundle/main/prd_wb_orders/orders_data.xlsx" target="_blank" rel="noreferrer">PRD orders Excel: "Backward" search</a></td>
+              <td>Four matching rows: 2663, 2896, 3276, and 3804 on Backward Class panchayat survey work. The same PDF folder also supplied the missing first guideline, 2572/PN/O/1/1S-5/2012 dated 25 Apr 2012.</td>
+              <td>Strong procedural evidence layer for caste/class population enumeration: survey rationale, GP-constituency units, Census/SECC reference records, draft publication, claims/objections, final publication, and software compilation.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>What to add</th>
+              <th>Why it matters</th>
+              <th>Original / best source link</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>BCW official 2025 order index</td>
+              <td>Confirms the official publication entries for 917, 1056, 1057, 1106, 1107, the 2025 model roster, and related downloads.</td>
+              <td><a class="external" href="https://anagrasarkalyan.gov.in/side_menu/eyJpdiI6IjBDRmtaWitqUk9GSHVPSnN4SlFVekE9PSIsInZhbHVlIjoiTGNBelZPWTYyZHdxbmtCQVRoNnRVdz09IiwibWFjIjoiMTEyMGFjMDNhODlhZTcxYzdjZDY1MjAxMmIwNzk5MjRmY2U5YmY5Njg5ZGI4YmY4ODAwYzI1ODVlZjE1ZWQ3OSIsInRhZyI6IiJ9" target="_blank" rel="noreferrer">Backward Classes Welfare Department orders page</a></td>
+            </tr>
+            <tr>
+              <td>BCW official 2026 order index</td>
+              <td>Confirms official publication of 944-BCW and 945-BCW dated 18 May 2026.</td>
+              <td><a class="external" href="https://www.anagrasarkalyan.gov.in/side_menu/eyJpdiI6IlRtbW9McnJYSkZaRml5YTgzQys0Umc9PSIsInZhbHVlIjoiMkNIZk93VDY5YjdXMHVwQTZDeDNpUT09IiwibWFjIjoiNjAzNDc2YjQ2ZTJiOWM2ZDllY2FjYTNjNzRjODlhYThkMTk2MDQ1ZWM0OWJjNzU5ODM3MzM0MGZiNzNmMjU2OCIsInRhZyI6IiJ9" target="_blank" rel="noreferrer">Backward Classes Welfare Department orders page</a></td>
+            </tr>
+            <tr>
+              <td>Notification-wise OBC list up to 03 Jun 2025</td>
+              <td>This is the missing full 2025 data table: it links communities to approval memo numbers and notifications before the 2026 withdrawal.</td>
+              <td><a href="obc_pdfs/2025-06-03_OFFICIAL-New-List-of-OBCs-Notification-wise-up-to-03-06-2025.pdf" target="_blank" rel="noreferrer">Bundled official PDF</a> <span class="tag current">Fetched from BCW</span></td>
+            </tr>
+            <tr>
+              <td>WBCBC public notice for inclusion</td>
+              <td>Shows the Commission's public invitation for communities/classes to apply for inclusion before hearings and surveys.</td>
+              <td><a class="external" href="obc_pdfs/2025-04-00_PUBLIC-NOTICE_Newspaper-Advertisement-in-English.pdf" target="_blank" rel="noreferrer">English public notice</a> | <a class="external" href="https://wbcbc.in/html/Newspaper%20Advertisement%20in%20Bengali.pdf" target="_blank" rel="noreferrer">Bengali public notice</a></td>
+            </tr>
+            <tr>
+              <td>Public hearing notices, 29 Apr to 4 May 2025</td>
+              <td>These are part of the "jana shunani" trail before the 2025 recommendations.</td>
+              <td>
+                <ul class="source-list">
+                  <li><a class="external" href="obc_pdfs/2025-04-29_PUBLIC-HEARING_OBC-29.04.2025.pdf" target="_blank" rel="noreferrer">29 Apr 2025</a></li>
+                  <li><a class="external" href="obc_pdfs/2025-04-30_PUBLIC-HEARING_Hearing-for-Notice-30.04.2025.pdf" target="_blank" rel="noreferrer">30 Apr 2025</a></li>
+                  <li><a class="external" href="obc_pdfs/2025-05-02_PUBLIC-HEARING_Hearing-for-Notice-02.05.2025.pdf" target="_blank" rel="noreferrer">2 May 2025</a></li>
+                  <li><a class="external" href="obc_pdfs/2025-05-03_PUBLIC-HEARING_Hearing-for-Notice-03.05.2025.pdf" target="_blank" rel="noreferrer">3 May 2025</a></li>
+                  <li><a class="external" href="obc_pdfs/2025-05-04_PUBLIC-HEARING_Hearing-for-Notice-04.05.2025.pdf" target="_blank" rel="noreferrer">4 May 2025</a></li>
+                </ul>
+              </td>
+            </tr>
+            <tr>
+              <td>Public hearing notices, 13 May to 24 May 2025</td>
+              <td>These complete the visible WBCBC public-hearing chain that is absent from the local folders.</td>
+              <td>
+                <ul class="source-list">
+                  <li><a class="external" href="obc_pdfs/2025-05-13_PUBLIC-HEARING_Newspaper-Advertisement-13.05.2025.pdf" target="_blank" rel="noreferrer">13 May 2025</a></li>
+                  <li><a class="external" href="obc_pdfs/2025-05-14_PUBLIC-HEARING_newspaper-advertisement-14.05.2025.pdf" target="_blank" rel="noreferrer">14 May 2025</a></li>
+                  <li><a class="external" href="obc_pdfs/2025-05-15_PUBLIC-HEARING_newspaper-advertisement-part8.docx-15.5.25.pdf" target="_blank" rel="noreferrer">15 May 2025</a></li>
+                  <li><a class="external" href="obc_pdfs/2025-05-16_PUBLIC-HEARING_newspaper-advertisement-part9-16.5.25.pdf" target="_blank" rel="noreferrer">16 May 2025</a></li>
+                  <li><a class="external" href="obc_pdfs/2025-05-18_PUBLIC-HEARING_newspaper-advertisement-for-18.05.25.pdf" target="_blank" rel="noreferrer">18 May 2025</a></li>
+                  <li><a class="external" href="obc_pdfs/2025-05-19_PUBLIC-HEARING_newspaper-advertisement-part10-19.5.25.pdf" target="_blank" rel="noreferrer">19 May 2025</a></li>
+                  <li><a class="external" href="obc_pdfs/2025-05-20_PUBLIC-HEARING_newspaper-advertisement-part11-20.5.25.pdf" target="_blank" rel="noreferrer">20 May 2025</a></li>
+                  <li><a class="external" href="obc_pdfs/2025-05-21_PUBLIC-HEARING_newspaper-advertisement-part12-21.5.25.pdf" target="_blank" rel="noreferrer">21 May 2025</a></li>
+                  <li><a class="external" href="obc_pdfs/2025-05-22_PUBLIC-HEARING_newspaper-advertisement-part13-22.5.25.pdf" target="_blank" rel="noreferrer">22 May 2025</a></li>
+                  <li><a class="external" href="obc_pdfs/2025-05-23_PUBLIC-HEARING_newspaper-advertisement-part14-23.5.25.pdf" target="_blank" rel="noreferrer">23 May 2025</a></li>
+                  <li><a class="external" href="obc_pdfs/2025-05-24_PUBLIC-HEARING_newspaper-advertisement-24.05.2025.pdf" target="_blank" rel="noreferrer">24 May 2025</a></li>
+                </ul>
+              </td>
+            </tr>
+            <tr>
+              <td>Benchmark Survey memo dated 28 Feb 2025 and Nadia memo dated 1 Mar 2025</td>
+              <td>These are the survey-start documents challenged in later litigation. They are not in the local folders.</td>
+              <td>Original file not yet located. The 17 Jun 2025 High Court order records the 28 Feb Commission memo and 1 Mar District Welfare Officer communication; secondary mirrors reproduce the Nadia memo text.</td>
+            </tr>
+            <tr>
+              <td>Class-wise WBCBC advice / recommendation reports for the 2025 inclusions</td>
+              <td>The 2025 notifications say the Commission relied on detailed surveys, public hearings, and reasoned opinions. Those reports are the strongest missing evidentiary layer.</td>
+              <td>Add if supplied by WBCBC/BCW Department, RTI response, or court record annexures.</td>
+            </tr>
+            <tr>
+              <td>Raw or tabulated benchmark survey data</td>
+              <td>Needed to test whether each community’s social, educational, and economic backwardness findings match the notified outcome.</td>
+              <td>Add district/block survey tables if obtained from the Commission, district offices, or litigation annexures.</td>
+            </tr>
+            <tr>
+              <td>WBCBC No. 390-Estt./WBCBC dated 26 May 2025</td>
+              <td>Requests benchmark survey for seven communities: Mahishya, Baishya Saha, Kayastha, Samudra Banik, Deswali Majhi, Beniya/Gandha Banik, and Ekadash Tili.</td>
+              <td>Original file not yet located on the WBCBC home page. Mirror/source text found at <a class="external" href="https://manuals.plus/m/2628692e585f9c707016d9b0a58a75bc762beed76b92e687015c84220ec7f713" target="_blank" rel="noreferrer">Manuals+ copy</a>.</td>
+            </tr>
+            <tr>
+              <td>Standalone Gazette page for Corrigendum No. 1172-BCW/MR-38/2025</td>
+              <td>Covered inside the bundled 1107 PDF, but a standalone copy may be useful for citation hygiene.</td>
+              <td>Official BCW download for 1107 includes the corrigendum page; keep as optional, not a blocking gap.</td>
+            </tr>
+            <tr>
+              <td>17 Jun 2025 High Court interim order</td>
+              <td>Important legal update after your local 2025 notification set: the order discusses the benchmark survey challenge, 113 sub-castes, and the 2025 notifications.</td>
+              <td><a class="external" href="https://indiankanoon.org/doc/44591998/" target="_blank" rel="noreferrer">Order text on Indian Kanoon</a></td>
+            </tr>
+            <tr>
+              <td>22 May 2024 High Court judgment</td>
+              <td>The judgment is the legal hinge for the 2025 re-survey/sub-categorisation effort and the 2026 reset.</td>
+              <td><a class="external" href="https://indiankanoon.org/doc/77807826/" target="_blank" rel="noreferrer">Judgment text on Indian Kanoon</a> | <a class="external" href="https://images.assettype.com/barandbench/2024-05/91d28f32-2fbc-46a4-91b3-10d4b353240b/Amal_Chandra_Das_vs_State_of_West_Bengal.pdf" target="_blank" rel="noreferrer">PDF copy</a></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="site-footer-inner">
+      <div class="site-footer-brand">
+        <img src="obcwb-flat-dark-logo.webp" data-theme-logo data-light-src="obcwb-flat-dark-logo.webp" data-dark-src="obcwb-flat-light-logo.webp" alt="West Bengal OBC Archive" width="720" height="240" decoding="async" loading="lazy">
+        <span data-i18n="footerTagline">An independent, volunteer-run public research archive on West Bengal OBC policy and litigation.</span>
+      </div>
+      <div class="site-footer-meta">
+        <a class="footer-parent-brand" href="https://civicresearch.in" target="_blank" rel="noopener noreferrer">
+          <span data-i18n="footerInitiativeLabel">A research initiative by</span>
+          <img src="CRG_Logo_Dark.png" data-theme-logo data-light-src="CRG_Logo_Dark.png" data-dark-src="CRG_LOGO_light.png" alt="Civic Research Group" width="400" height="81" decoding="async" loading="lazy">
+        </a>
+        <span class="site-footer-contact">
+          <span data-i18n="footerContactLabel">Contact:</span>
+          <a href="mailto:civicresearchgroup@gmail.com">civicresearchgroup@gmail.com</a>
+        </span>
+        <span data-i18n="footerNoDonations">Free public resource.</span>
+      </div>
+    </div>
+  </footer>
+
+  <link rel="stylesheet" href="css/site.css">
+
+<script src="js/site.js"></script>
+
+</body>
+</html>

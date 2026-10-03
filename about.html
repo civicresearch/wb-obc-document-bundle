@@ -1,0 +1,212 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="WB OBC Archive - A consolidated archive of West Bengal OBC notifications, court orders, hearings, source PDFs, and policy documents from 1993-2026">
+  <meta name="theme-color" content="#10253f">
+  <title>About the WB OBC Archive · Civic Research Group</title>
+  <link rel="manifest" href="pwa-manifest.json">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@100..900&display=swap">
+  <link rel="stylesheet" href="css/shared.css?v=20261004">
+  <script src="js/i18n.js?v=20261004" defer></script>
+  <script>
+    // This page is deployed in two places:
+    //  - GitHub Pages, where obc_pdfs/, case_pdfs/ and obc_pdf_manifest.json
+    //    are served alongside this file, so relative links work as-is.
+    //  - Vercel (or any other host that only deploys this HTML file), where
+    //    those folders are not present. On those hosts, rewrite the relative
+    //    asset links to point at the raw GitHub copy instead.
+    // Edit GITHUB_RAW_BASE below if the repo/branch ever changes.
+    (function () {
+      var GITHUB_RAW_BASE = 'https://raw.githubusercontent.com/civicresearch/wb-obc-document-bundle/main/';
+      var host = window.location.hostname;
+      var isGithubPages = /(^|\.)github\.io$/.test(host);
+      var isLocal = host === 'localhost' || host === '127.0.0.1' || host === '' || window.location.protocol === 'file:';
+      window.OBC_ASSET_BASE = (isGithubPages || isLocal) ? '' : GITHUB_RAW_BASE;
+    })();
+    (function () {
+      try {
+        var savedTheme = localStorage.getItem('wb-obc-theme');
+        document.documentElement.dataset.theme = savedTheme === 'dark' ? 'dark' : 'light';
+      } catch (error) {
+        document.documentElement.dataset.theme = 'light';
+      }
+    })();
+  </script>
+</head>
+<body data-page="about">
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <header class="site-header">
+    <div class="site-header-inner">
+      <a href="index.html" class="site-logo" aria-label="West Bengal OBC Archive — home">
+        <img src="obcwb-flat-dark-logo.webp" data-theme-logo data-light-src="obcwb-flat-dark-logo.webp" data-dark-src="obcwb-flat-light-logo.webp" alt="West Bengal OBC Archive" width="720" height="240" decoding="async">
+      </a>
+      <script>
+        // Swap the header logo to the theme-correct file before first paint;
+        // otherwise a dark-theme load briefly (or, if a later script fails,
+        // permanently) shows the dark-text logo on the dark header.
+        (function () {
+          if (document.documentElement.dataset.theme !== 'dark') return;
+          var logo = document.querySelector('img[data-theme-logo]');
+          if (logo && logo.dataset.darkSrc) logo.setAttribute('src', logo.dataset.darkSrc);
+        })();
+      </script>
+      <button type="button" class="nav-toggle" aria-expanded="false" aria-controls="site-nav" aria-label="Open navigation menu">
+        <span class="nav-toggle-bar"></span>
+        <span class="nav-toggle-bar"></span>
+        <span class="nav-toggle-bar"></span>
+      </button>
+      <nav class="site-nav" id="site-nav" aria-label="Sections">
+        <button type="button" class="nav-close" aria-label="Close navigation menu">×</button>
+        <a href="index.html" class="active" data-tab-target="home" data-i18n="navHome">Home</a>
+        <div class="nav-group">
+          <button type="button" class="nav-group-toggle" aria-expanded="false">
+            <span data-i18n="navResearch">Research</span>
+            <span class="nav-caret" aria-hidden="true">▾</span>
+          </button>
+          <div class="nav-group-items">
+            <a href="timeline.html" data-tab-target="timeline" data-i18n="navTimeline">Timeline</a>
+            <a href="litigation.html" data-tab-target="cases" data-i18n="navCases">Litigation</a>
+            <a href="obc-list.html" data-tab-target="obc-list" data-i18n="navOBCList">OBC List</a>
+            <a href="documents.html" data-tab-target="documents" data-i18n="navDocuments">Source PDFs</a>
+            <a href="evidence.html" data-tab-target="evidence" data-i18n="navEvidence">Hearings &amp; Gaps</a>
+            <a href="record-guide.html" data-tab-target="entry-framework" data-i18n="navEntryFramework">Add Record Guide</a>
+            <a href="inventory.html" data-tab-target="inventory" data-i18n="navInventory">File Inventory</a>
+          </div>
+        </div>
+        <div class="nav-group">
+          <button type="button" class="nav-group-toggle" aria-expanded="false">
+            <span data-i18n="navLearn">Learn</span>
+            <span class="nav-caret" aria-hidden="true">▾</span>
+          </button>
+          <div class="nav-group-items">
+            <a href="obc-basics.html" data-tab-target="obc-basics" data-i18n="navOBCBasics">OBC Basics</a>
+            <a href="methods.html" data-tab-target="methods" data-i18n="navMethods">Evidence Method</a>
+            <a href="reports.html" data-tab-target="reports" data-i18n="navReports">Policy Reports</a>
+          </div>
+        </div>
+        <a href="contribute.html" data-i18n="navContribute">Contribute</a>
+        <a href="#about" data-tab-target="about" data-i18n="navAbout" class="active" aria-current="page">About</a>
+        <a href="https://github.com/civicresearch/wb-obc-document-bundle" target="_blank" rel="noreferrer" data-i18n="navGitHub">GitHub</a>
+        <div class="nav-preferences" aria-label="Language and appearance">
+          <span class="language-switch" aria-label="Language">
+            <button type="button" id="lang-en" class="lang-btn active" data-lang="en" data-lang-switch="en" aria-pressed="true">EN</button>
+            <span class="lang-separator">|</span>
+            <button type="button" id="lang-bn" class="lang-btn" data-lang="bn" data-lang-switch="bn" aria-pressed="false">বাংলা</button>
+          </span>
+          <span class="preference-divider" aria-hidden="true"></span>
+          <button type="button" id="theme-toggle" class="theme-toggle" aria-label="Switch to dark theme" title="Switch to dark theme">
+            <svg class="theme-icon theme-icon-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.2 15.2A8.5 8.5 0 0 1 8.8 3.8 8.5 8.5 0 1 0 20.2 15.2Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <svg class="theme-icon theme-icon-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="3.8" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M12 2v2.2M12 19.8V22M4.93 4.93l1.56 1.56M17.51 17.51l1.56 1.56M2 12h2.2M19.8 12H22M4.93 19.07l1.56-1.56M17.51 6.49l1.56-1.56" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+          </button>
+        </div>
+      </nav>
+      <div class="nav-overlay"></div>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="hero-inner wrap">
+      <p class="hero-eyebrow" id="hero-eyebrow" data-i18n="heroEyebrow">West Bengal · Backward Classes Welfare Department · 1993–2026</p>
+      <h1 id="hero-title" data-i18n="heroTitle">OBC Reservation and List Timeline</h1>
+      <p class="hero-sub" id="hero-sub" data-i18n="heroSub">A consolidated database on West Bengal OBC Reservation starting with the 1993 Commission Act and continuing through the latest notification and court case records.</p>
+      <div class="hero-stats stagger-in">
+        <div class="hero-stat lift"><strong id="hero-stat-1-value" data-i18n="heroStat1Value">84</strong><span id="hero-stat-1-label" data-i18n="heroStat1Label">PDF sources bundled across notifications, hearings, reports, and court records.</span></div>
+        <div class="hero-stat lift"><strong id="hero-stat-2-value" data-i18n="heroStat2Value">66</strong><span id="hero-stat-2-label" data-i18n="heroStat2Label">Classes listed in Notification No. 945-BCW/MR-23/2026.</span></div>
+        <div class="hero-stat lift"><strong id="hero-stat-3-value" data-i18n="heroStat3Value">7%</strong><span id="hero-stat-3-label" data-i18n="heroStat3Label">Reservation position stated in the 18 May 2026 list notification.</span></div>
+        <div class="hero-stat lift"><strong id="hero-stat-4-value" data-i18n="heroStat4Value">5</strong><span id="hero-stat-4-label" data-i18n="heroStat4Label">Priority evidence gaps and follow-ups tracked in the audit.</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contribution Popup Modal -->
+  <div id="contribute-popup" class="contribute-popup-overlay" hidden>
+    <div class="contribute-popup" role="dialog" aria-labelledby="popup-title" aria-describedby="popup-desc">
+      <button type="button" class="popup-close" aria-label="Close popup">&times;</button>
+      <div class="popup-brand">
+        <img src="CRG_Logo_Dark.png" data-theme-logo data-light-src="CRG_Logo_Dark.png" data-dark-src="CRG_LOGO_light.png" alt="Civic Research Group" width="400" height="81" decoding="async">
+      </div>
+      <h2 id="popup-title" data-i18n="popupTitle">Help Improve This Resource</h2>
+      <p id="popup-desc" data-i18n="popupDesc">A volunteer-maintained public research archive. Contributions and corrections are welcome.</p>
+      <div class="popup-actions">
+        <a href="contribute.html" class="popup-btn primary" data-i18n="popupBtn">Contribute Documents &amp; Corrections</a>
+      </div>
+      <div class="popup-network">
+        <p data-i18n="popupNetworkTitle">Explore our latest work</p>
+        <div class="popup-network-links">
+          <a href="https://civicresearch.in" target="_blank" rel="noopener noreferrer" data-i18n="popupCRGLink">Visit our website civicresearch.in</a>
+          <a href="https://appeal.civicresearch.in" target="_blank" rel="noopener noreferrer" data-i18n="popupAppealLink">Tribunal Appeal Evidence · appeal.civicresearch.in</a>
+          <a href="https://rti.votercards.in" target="_blank" rel="noopener noreferrer" data-i18n="popupRTILink">RTI Karo · rti.votercards.in</a>
+        </div>
+      </div>
+      <div class="popup-preferences">
+        <label><input type="checkbox" id="dont-show-again"> <span data-i18n="popupDontShow">Don't show this message again</span></label>
+        <div class="popup-lang-switch" aria-label="Language">
+          <button type="button" class="lang-btn-small" data-lang-switch="en" aria-pressed="false">EN</button>
+          <span aria-hidden="true">|</span>
+          <button type="button" class="lang-btn-small" data-lang-switch="bn" aria-pressed="false">বাংলা</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <main id="main-content" class="wrap" tabindex="-1">
+    <div id="data-load-warning" class="data-load-warning" hidden role="status"></div>
+
+<section id="about" class="research about-section tab-panel" data-tab-panel="about">
+      <p class="panel-kicker" data-i18n="aboutPanelKicker">About this project</p>
+      <h2 class="section-heading" data-i18n="aboutTitle">A source-led record of West Bengal OBC policy</h2>
+      <p class="section-sub" data-i18n="aboutSub">This independent research archive brings together publicly available notifications, statutes, public-hearing notices, policy reports, and selected court records concerning Other Backward Classes (OBCs) in West Bengal, and publishes them online for free public access.</p>
+
+      <div class="report-grid">
+        <article class="report-card"><div class="report-meta" data-i18n="aboutCard1Meta">Purpose</div><h3 data-i18n="aboutCard1Title">Make the record easier to examine</h3><p data-i18n="aboutCard1Desc">The project is designed as a chronological research desk. It helps readers trace a claim from a timeline entry to a notification, a hearing notice, a policy source, or a court record without treating summaries as a substitute for the original document.</p></article>
+        <article class="report-card"><div class="report-meta" data-i18n="aboutCard2Meta">Scope</div><h3 data-i18n="aboutCard2Title">Policy, process, and litigation</h3><p data-i18n="aboutCard2Desc">The archive covers the statutory framework, State OBC-list changes, reservation and roster records, the 2025–26 notification sequence, public hearings, and a growing litigation tracker. It does not claim to be a complete government archive.</p></article>
+        <article class="report-card"><div class="report-meta" data-i18n="aboutCard3Meta">Use with care</div><h3 data-i18n="aboutCard3Title">Research aid, not legal advice</h3><p data-i18n="aboutCard3Desc">Some records are text-extracted or copied from publicly accessible mirrors. Court status, operative directions, and notification validity should always be confirmed from the issuing authority or the relevant court.</p></article>
+      </div>
+
+      <div class="table-wrap about-table"><table><thead><tr><th data-i18n="aboutTableHeader1">How records are handled</th><th data-i18n="aboutTableHeader2">What this means</th></tr></thead><tbody>
+        <tr><td data-i18n="aboutTableRow1Cell1">Published online</td><td data-i18n="aboutTableRow1Cell2">The archive is hosted on the open web and served straight from the repository — no download or installation needed.</td></tr>
+        <tr><td data-i18n="aboutTableRow2Cell1">Source labels</td><td data-i18n="aboutTableRow2Cell2">Entries distinguish official downloads, scanned/text-extracted records, and mirror copies that need verification.</td></tr>
+        <tr><td data-i18n="aboutTableRow3Cell1">Large case bundles</td><td data-i18n="aboutTableRow3Cell2">Very large filings are catalogued but not added by default; this keeps the site fast and practical to maintain.</td></tr>
+        <tr><td data-i18n="aboutTableRow4Cell1">Corrections and additions</td><td data-i18n="aboutTableRow4Cell2">Use the Add Record guide's fields to record date, authority, status, source URL, and the affected notification or case.</td></tr>
+      </tbody></table></div>
+
+      <div class="callout"><strong data-i18n="aboutCalloutStrong">Source principle:</strong> <span data-i18n="aboutCalloutText">where this site summarizes a record, open the linked document and treat the primary source as controlling. The project does not endorse any political position or make findings about any community.</span></div>
+
+      <div class="maintainer-section" style="margin-top:2rem;padding-top:1.5rem;border-top:1px solid var(--border);">
+        <h3 data-i18n="whoMaintainsTitle">Who maintains this?</h3>
+        <p data-i18n="whoMaintainsText">This archive is built and maintained by a small team of volunteers, supported by the Civic Research Group community. It is an ongoing effort: notifications, court records, and policy reports are added as they are collected and verified, and the coverage keeps growing. If you hold a document, a correction, or a gap we have missed, the Contribute page is the fastest way to help improve the record.</p>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="site-footer-inner">
+      <div class="site-footer-brand">
+        <img src="obcwb-flat-dark-logo.webp" data-theme-logo data-light-src="obcwb-flat-dark-logo.webp" data-dark-src="obcwb-flat-light-logo.webp" alt="West Bengal OBC Archive" width="720" height="240" decoding="async" loading="lazy">
+        <span data-i18n="footerTagline">An independent, volunteer-run public research archive on West Bengal OBC policy and litigation.</span>
+      </div>
+      <div class="site-footer-meta">
+        <a class="footer-parent-brand" href="https://civicresearch.in" target="_blank" rel="noopener noreferrer">
+          <span data-i18n="footerInitiativeLabel">A research initiative by</span>
+          <img src="CRG_Logo_Dark.png" data-theme-logo data-light-src="CRG_Logo_Dark.png" data-dark-src="CRG_LOGO_light.png" alt="Civic Research Group" width="400" height="81" decoding="async" loading="lazy">
+        </a>
+        <span class="site-footer-contact">
+          <span data-i18n="footerContactLabel">Contact:</span>
+          <a href="mailto:civicresearchgroup@gmail.com">civicresearchgroup@gmail.com</a>
+        </span>
+        <span data-i18n="footerNoDonations">Free public resource.</span>
+      </div>
+    </div>
+  </footer>
+
+  <link rel="stylesheet" href="css/site.css">
+
+<script src="js/site.js"></script>
+
+</body>
+</html>

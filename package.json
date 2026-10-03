@@ -1,6 +1,8 @@
 {
   "scripts": {
+    "build:pages": "node scripts/build-pages.js",
     "build:standalone": "node scripts/build-standalone.js",
+    "build": "npm run build:pages && npm run build:standalone",
     "serve": "python3 -m http.server 8123",
     "validate:data": "node scripts/validate-data.js"
   }

@@ -1,0 +1,332 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="WB OBC Archive - A consolidated archive of West Bengal OBC notifications, court orders, hearings, source PDFs, and policy documents from 1993-2026">
+  <meta name="theme-color" content="#10253f">
+  <title>OBC Litigation Tracker · Civic Research Group</title>
+  <link rel="manifest" href="pwa-manifest.json">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@100..900&display=swap">
+  <link rel="stylesheet" href="css/shared.css?v=20261004">
+  <script src="js/i18n.js?v=20261004" defer></script>
+  <script>
+    // This page is deployed in two places:
+    //  - GitHub Pages, where obc_pdfs/, case_pdfs/ and obc_pdf_manifest.json
+    //    are served alongside this file, so relative links work as-is.
+    //  - Vercel (or any other host that only deploys this HTML file), where
+    //    those folders are not present. On those hosts, rewrite the relative
+    //    asset links to point at the raw GitHub copy instead.
+    // Edit GITHUB_RAW_BASE below if the repo/branch ever changes.
+    (function () {
+      var GITHUB_RAW_BASE = 'https://raw.githubusercontent.com/civicresearch/wb-obc-document-bundle/main/';
+      var host = window.location.hostname;
+      var isGithubPages = /(^|\.)github\.io$/.test(host);
+      var isLocal = host === 'localhost' || host === '127.0.0.1' || host === '' || window.location.protocol === 'file:';
+      window.OBC_ASSET_BASE = (isGithubPages || isLocal) ? '' : GITHUB_RAW_BASE;
+    })();
+    (function () {
+      try {
+        var savedTheme = localStorage.getItem('wb-obc-theme');
+        document.documentElement.dataset.theme = savedTheme === 'dark' ? 'dark' : 'light';
+      } catch (error) {
+        document.documentElement.dataset.theme = 'light';
+      }
+    })();
+  </script>
+</head>
+<body data-page="cases">
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <header class="site-header">
+    <div class="site-header-inner">
+      <a href="index.html" class="site-logo" aria-label="West Bengal OBC Archive — home">
+        <img src="obcwb-flat-dark-logo.webp" data-theme-logo data-light-src="obcwb-flat-dark-logo.webp" data-dark-src="obcwb-flat-light-logo.webp" alt="West Bengal OBC Archive" width="720" height="240" decoding="async">
+      </a>
+      <script>
+        // Swap the header logo to the theme-correct file before first paint;
+        // otherwise a dark-theme load briefly (or, if a later script fails,
+        // permanently) shows the dark-text logo on the dark header.
+        (function () {
+          if (document.documentElement.dataset.theme !== 'dark') return;
+          var logo = document.querySelector('img[data-theme-logo]');
+          if (logo && logo.dataset.darkSrc) logo.setAttribute('src', logo.dataset.darkSrc);
+        })();
+      </script>
+      <button type="button" class="nav-toggle" aria-expanded="false" aria-controls="site-nav" aria-label="Open navigation menu">
+        <span class="nav-toggle-bar"></span>
+        <span class="nav-toggle-bar"></span>
+        <span class="nav-toggle-bar"></span>
+      </button>
+      <nav class="site-nav" id="site-nav" aria-label="Sections">
+        <button type="button" class="nav-close" aria-label="Close navigation menu">×</button>
+        <a href="index.html" class="active" data-tab-target="home" data-i18n="navHome">Home</a>
+        <div class="nav-group">
+          <button type="button" class="nav-group-toggle" aria-expanded="false">
+            <span data-i18n="navResearch">Research</span>
+            <span class="nav-caret" aria-hidden="true">▾</span>
+          </button>
+          <div class="nav-group-items">
+            <a href="timeline.html" data-tab-target="timeline" data-i18n="navTimeline">Timeline</a>
+            <a href="#cases" data-tab-target="cases" data-i18n="navCases" class="active" aria-current="page">Litigation</a>
+            <a href="obc-list.html" data-tab-target="obc-list" data-i18n="navOBCList">OBC List</a>
+            <a href="documents.html" data-tab-target="documents" data-i18n="navDocuments">Source PDFs</a>
+            <a href="evidence.html" data-tab-target="evidence" data-i18n="navEvidence">Hearings &amp; Gaps</a>
+            <a href="record-guide.html" data-tab-target="entry-framework" data-i18n="navEntryFramework">Add Record Guide</a>
+            <a href="inventory.html" data-tab-target="inventory" data-i18n="navInventory">File Inventory</a>
+          </div>
+        </div>
+        <div class="nav-group">
+          <button type="button" class="nav-group-toggle" aria-expanded="false">
+            <span data-i18n="navLearn">Learn</span>
+            <span class="nav-caret" aria-hidden="true">▾</span>
+          </button>
+          <div class="nav-group-items">
+            <a href="obc-basics.html" data-tab-target="obc-basics" data-i18n="navOBCBasics">OBC Basics</a>
+            <a href="methods.html" data-tab-target="methods" data-i18n="navMethods">Evidence Method</a>
+            <a href="reports.html" data-tab-target="reports" data-i18n="navReports">Policy Reports</a>
+          </div>
+        </div>
+        <a href="contribute.html" data-i18n="navContribute">Contribute</a>
+        <a href="about.html" data-tab-target="about" data-i18n="navAbout">About</a>
+        <a href="https://github.com/civicresearch/wb-obc-document-bundle" target="_blank" rel="noreferrer" data-i18n="navGitHub">GitHub</a>
+        <div class="nav-preferences" aria-label="Language and appearance">
+          <span class="language-switch" aria-label="Language">
+            <button type="button" id="lang-en" class="lang-btn active" data-lang="en" data-lang-switch="en" aria-pressed="true">EN</button>
+            <span class="lang-separator">|</span>
+            <button type="button" id="lang-bn" class="lang-btn" data-lang="bn" data-lang-switch="bn" aria-pressed="false">বাংলা</button>
+          </span>
+          <span class="preference-divider" aria-hidden="true"></span>
+          <button type="button" id="theme-toggle" class="theme-toggle" aria-label="Switch to dark theme" title="Switch to dark theme">
+            <svg class="theme-icon theme-icon-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.2 15.2A8.5 8.5 0 0 1 8.8 3.8 8.5 8.5 0 1 0 20.2 15.2Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <svg class="theme-icon theme-icon-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="3.8" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M12 2v2.2M12 19.8V22M4.93 4.93l1.56 1.56M17.51 17.51l1.56 1.56M2 12h2.2M19.8 12H22M4.93 19.07l1.56-1.56M17.51 6.49l1.56-1.56" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+          </button>
+        </div>
+      </nav>
+      <div class="nav-overlay"></div>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="hero-inner wrap">
+      <p class="hero-eyebrow" id="hero-eyebrow" data-i18n="heroEyebrow">West Bengal · Backward Classes Welfare Department · 1993–2026</p>
+      <h1 id="hero-title" data-i18n="heroTitle">OBC Reservation and List Timeline</h1>
+      <p class="hero-sub" id="hero-sub" data-i18n="heroSub">A consolidated database on West Bengal OBC Reservation starting with the 1993 Commission Act and continuing through the latest notification and court case records.</p>
+      <div class="hero-stats stagger-in">
+        <div class="hero-stat lift"><strong id="hero-stat-1-value" data-i18n="heroStat1Value">84</strong><span id="hero-stat-1-label" data-i18n="heroStat1Label">PDF sources bundled across notifications, hearings, reports, and court records.</span></div>
+        <div class="hero-stat lift"><strong id="hero-stat-2-value" data-i18n="heroStat2Value">66</strong><span id="hero-stat-2-label" data-i18n="heroStat2Label">Classes listed in Notification No. 945-BCW/MR-23/2026.</span></div>
+        <div class="hero-stat lift"><strong id="hero-stat-3-value" data-i18n="heroStat3Value">7%</strong><span id="hero-stat-3-label" data-i18n="heroStat3Label">Reservation position stated in the 18 May 2026 list notification.</span></div>
+        <div class="hero-stat lift"><strong id="hero-stat-4-value" data-i18n="heroStat4Value">5</strong><span id="hero-stat-4-label" data-i18n="heroStat4Label">Priority evidence gaps and follow-ups tracked in the audit.</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contribution Popup Modal -->
+  <div id="contribute-popup" class="contribute-popup-overlay" hidden>
+    <div class="contribute-popup" role="dialog" aria-labelledby="popup-title" aria-describedby="popup-desc">
+      <button type="button" class="popup-close" aria-label="Close popup">&times;</button>
+      <div class="popup-brand">
+        <img src="CRG_Logo_Dark.png" data-theme-logo data-light-src="CRG_Logo_Dark.png" data-dark-src="CRG_LOGO_light.png" alt="Civic Research Group" width="400" height="81" decoding="async">
+      </div>
+      <h2 id="popup-title" data-i18n="popupTitle">Help Improve This Resource</h2>
+      <p id="popup-desc" data-i18n="popupDesc">A volunteer-maintained public research archive. Contributions and corrections are welcome.</p>
+      <div class="popup-actions">
+        <a href="contribute.html" class="popup-btn primary" data-i18n="popupBtn">Contribute Documents &amp; Corrections</a>
+      </div>
+      <div class="popup-network">
+        <p data-i18n="popupNetworkTitle">Explore our latest work</p>
+        <div class="popup-network-links">
+          <a href="https://civicresearch.in" target="_blank" rel="noopener noreferrer" data-i18n="popupCRGLink">Visit our website civicresearch.in</a>
+          <a href="https://appeal.civicresearch.in" target="_blank" rel="noopener noreferrer" data-i18n="popupAppealLink">Tribunal Appeal Evidence · appeal.civicresearch.in</a>
+          <a href="https://rti.votercards.in" target="_blank" rel="noopener noreferrer" data-i18n="popupRTILink">RTI Karo · rti.votercards.in</a>
+        </div>
+      </div>
+      <div class="popup-preferences">
+        <label><input type="checkbox" id="dont-show-again"> <span data-i18n="popupDontShow">Don't show this message again</span></label>
+        <div class="popup-lang-switch" aria-label="Language">
+          <button type="button" class="lang-btn-small" data-lang-switch="en" aria-pressed="false">EN</button>
+          <span aria-hidden="true">|</span>
+          <button type="button" class="lang-btn-small" data-lang-switch="bn" aria-pressed="false">বাংলা</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <main id="main-content" class="wrap" tabindex="-1">
+    <div id="data-load-warning" class="data-load-warning" hidden role="status"></div>
+
+    <section id="cases" class="research cases-section tab-panel" data-tab-panel="cases">
+      <p class="panel-kicker" data-i18n="casesPanelKicker">Litigation tracker · curated record</p>
+      <h2 class="section-heading" data-i18n="cases.title">West Bengal OBC Litigation Timeline</h2>
+      <p class="section-sub" data-i18n="casesSectionSub">This tracker separates what an order actually records from later policy action. It is a research index, not legal advice; case status must be checked with the relevant court before reliance.</p>
+
+      <!-- Stats Cards -->
+      <div class="stats-grid">
+        <div class="stat-card">
+          <span class="stat-number" id="total-cases">0</span>
+          <span class="stat-label" data-i18n="litigation.stat.total">Total Cases</span>
+        </div>
+        <div class="stat-card warning">
+          <span class="stat-number" id="pending-cases">0</span>
+          <span class="stat-label" data-i18n="litigation.stat.pending">Pending</span>
+        </div>
+        <div class="stat-card success">
+          <span class="stat-number" id="resolved-cases">0</span>
+          <span class="stat-label" data-i18n="litigation.stat.resolved">Resolved</span>
+        </div>
+      </div>
+
+      <div class="case-summary-grid">
+        <article><strong data-i18n="cases.summary.date1">22 May 2024</strong><span data-i18n="cases.summary.may2024">Calcutta High Court judgment in the connected OBC matters</span></article>
+        <article><strong data-i18n="cases.summary.date2">2024–25</strong><span data-i18n="cases.summary.slp">Supreme Court SLP proceedings, including the 28 July 2025 stay order</span></article>
+        <article><strong data-i18n="cases.summary.date3">2026</strong><span data-i18n="cases.summary.recruitment">Recruitment-related OBC classification challenges added to the tracker</span></article>
+      </div>
+
+      <div class="callout litigation-note-jump"><strong data-i18n="cases.employeeProtectionCallout">Employee-protection argument note:</strong> <span data-i18n="cases.employeeProtectionDesc">user-supplied grounds and precedent links for bona fide employees appointed on government-issued OBC certificates are included after the timeline.</span> <a href="#employee-protection-note" data-i18n="cases.openLegalNote">Open the legal-principles note</a>.</div>
+
+      <!-- Search -->
+      <div class="search-box">
+        <input type="text" id="case-search" data-i18n-placeholder="litigation.searchPlaceholder" placeholder="Search by case name, number, or judge...">
+        <span class="search-icon">🔍</span>
+      </div>
+
+      <!-- Loading Skeleton -->
+      <div id="litigation-loader" class="skeleton-container hidden">
+        <div class="skeleton-item tall"></div>
+        <div class="skeleton-item tall"></div>
+        <div class="skeleton-item tall"></div>
+      </div>
+
+      <ol class="case-timeline stagger-list">
+        <!-- Case events are rendered from case_events.json. -->
+      </ol>
+
+      <div id="cases-empty" class="empty-state hidden" data-i18n="litigation.noResults">
+        No cases found matching your search.
+      </div>
+
+      <section id="employee-protection-note" class="litigation-note" aria-labelledby="employee-protection-title">
+        <p class="panel-kicker" data-i18n="employeeProtectionKicker">Litigation support note · not an official order</p>
+        <h3 id="employee-protection-title" data-i18n="employeeProtectionTitle">Legal principles for existing OBC-certificate appointees</h3>
+        <p class="section-sub" data-i18n="employeeProtectionSub">A user-supplied bilingual note argues that bona fide employees appointed on government-issued and verified OBC certificates should not face blanket termination merely because a reservation policy or class-list process is later invalidated. Treat this as an argument map: verify every citation against the actual judgment before using it.</p>
+
+        <div class="report-grid">
+          <article class="report-card">
+            <div class="report-meta">Factual premise</div>
+            <h3>No fraud or false claim</h3>
+            <p>The note’s protection argument depends on the employee having acted in good faith, without misrepresentation, and on certificates having been issued and verified by competent government authorities before appointment.</p>
+          </article>
+          <article class="report-card">
+            <div class="report-meta">Service finality</div>
+            <h3>Completed appointments</h3>
+            <p>It distinguishes policy validity from appointment validity and says completed recruitment, seniority, promotion, pension, vested rights, and livelihood interests require individualised treatment.</p>
+          </article>
+          <article class="report-card">
+            <div class="report-meta">Process safeguard</div>
+            <h3>No blanket cancellation</h3>
+            <p>The note relies on Articles 14, 16, and 21, natural justice, proportionality, legitimate expectation, and administrative fairness to oppose mass termination without hearing.</p>
+          </article>
+        </div>
+
+        <div class="table-wrap legal-note-table">
+          <table>
+            <thead>
+              <tr><th data-i18n="tableGroundFromNote">Ground from the note</th><th data-i18n="tableShortArgument">Short argument preserved from the DOCX</th><th data-i18n="tableLegalHook">Legal hook cited in the note</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>No fraud or misrepresentation</td><td>Employees did not secure appointment by deception; the certificates were government-issued and were relied on in good faith.</td><td>Article 14; doctrine of good faith; rule of law</td></tr>
+              <tr><td>Government verification</td><td>The appointing authority verified the certificate before employment, so a later policy defect should not be equated with employee misconduct.</td><td>Articles 14 and 16; service jurisprudence</td></tr>
+              <tr><td>State-caused administrative error</td><td>The State should not punish innocent employees for its own administrative acts or lapses.</td><td>Article 14; administrative fairness; doctrine of fairness</td></tr>
+              <tr><td>Policy validity versus appointment validity</td><td>Invalidity of a policy or class-list process does not automatically invalidate all appointments already completed under government-issued certificates.</td><td><em>Milind</em>; Article 142</td></tr>
+              <tr><td>Long service and vested rights</td><td>Long service creates reliance interests in salary, seniority, promotion, retirement benefits, pension, and career stability.</td><td>Doctrine of vested rights; right to livelihood under Article 21</td></tr>
+              <tr><td>Natural justice</td><td>No employee should be removed by a blanket order without notice, individual hearing, and a specific finding.</td><td>Audi alteram partem; Articles 14 and 21</td></tr>
+              <tr><td>Collective punishment</td><td>The note rejects mass termination because constitutional liability should be individual, not collective.</td><td>Articles 14 and 21; proportionality</td></tr>
+              <tr><td>Burden of proof</td><td>Fraud, false claim, or illegality should be proved by the person alleging it.</td><td>Sections 101-102, Indian Evidence Act, 1872</td></tr>
+              <tr><td>Re-verification limits</td><td>Blanket re-verification or reopening of completed verification requires lawful authority and should not be arbitrary.</td><td>Rule of law; Article 14; finality</td></tr>
+              <tr><td>Public interest and stability</td><td>Continuity of service supports public administration and avoids disruption from large-scale dismissal.</td><td>Public interest doctrine; Article 142</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="table-wrap legal-note-table">
+          <table>
+            <thead>
+              <tr><th data-i18n="tableTheme">Theme</th><th data-i18n="tableHowNoteUses">How the note uses it</th><th data-i18n="tableCitedAuthorities">Cited authorities to verify</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Bona fide appointment protection</td><td>Invalidation of caste status or policy should not automatically undo completed appointments where there is no fraud.</td><td><a href="https://indiankanoon.org/doc/678652/" target="_blank" rel="noreferrer"><em>State of Maharashtra v. Milind</em></a> (2001) 1 SCC 4; <a href="https://indiankanoon.org/doc/44390798/" target="_blank" rel="noreferrer"><em>Kavita Solunke v. State of Maharashtra</em></a> (2012) 8 SCC 430</td></tr>
+              <tr><td>Fraud exception</td><td>Protection is weaker or unavailable if appointment was obtained through fraud or a false caste claim.</td><td><a href="https://indiankanoon.org/doc/1475926/" target="_blank" rel="noreferrer"><em>R. Vishwanatha Pillai v. State of Kerala</em></a> (2004) 2 SCC 105; <a href="https://indiankanoon.org/doc/151832745/" target="_blank" rel="noreferrer"><em>Chairman, FCI v. Jagdish Balaram Bahira</em></a> (2017) 8 SCC 670</td></tr>
+              <tr><td>Non-arbitrariness and livelihood</td><td>Mass dismissal after long service may be attacked as arbitrary, disproportionate, and harmful to livelihood.</td><td><a href="https://indiankanoon.org/doc/1327287/" target="_blank" rel="noreferrer"><em>E.P. Royappa</em></a> (1974) 4 SCC 3; <a href="https://indiankanoon.org/doc/1766147/" target="_blank" rel="noreferrer"><em>Maneka Gandhi</em></a> (1978) 1 SCC 248; <a href="https://indiankanoon.org/doc/709776/" target="_blank" rel="noreferrer"><em>Olga Tellis</em></a> (1985) 3 SCC 545</td></tr>
+              <tr><td>Reliance on government action</td><td>Employees may argue legitimate expectation, promissory estoppel, good faith, and administrative fairness because they relied on official certificates and verification.</td><td><a href="https://indiankanoon.org/doc/813925/" target="_blank" rel="noreferrer"><em>Navjyoti Co-operative Group Housing Society</em></a> (1992) 4 SCC 477; <a href="https://indiankanoon.org/doc/1964881/" target="_blank" rel="noreferrer"><em>Hindustan Development Corporation</em></a> (1993) 3 SCC 499; <a href="https://indiankanoon.org/doc/871220/" target="_blank" rel="noreferrer"><em>Motilal Padampat Sugar Mills</em></a> (1979) 2 SCC 409</td></tr>
+              <tr><td>Recruitment finality</td><td>The note says completed recruitment should not ordinarily be reopened after many years, especially without individual findings.</td><td><a href="https://indiankanoon.org/doc/302891/" target="_blank" rel="noreferrer"><em>K. Manjusree v. State of Andhra Pradesh</em></a> (2008) 3 SCC 512; <a href="https://indiankanoon.org/doc/560061/" target="_blank" rel="noreferrer"><em>State of Punjab v. Jagdip Singh</em></a>, AIR 1964 SC 521</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="table-wrap legal-note-table">
+          <table>
+            <thead>
+              <tr><th data-i18n="tableConstitutionalLabel">Constitutional / doctrinal label</th><th data-i18n="tableUseInNote">Use in the note</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Article 14</td><td>Opposes arbitrary cancellation and demands fairness by the State.</td></tr>
+              <tr><td>Article 16</td><td>Frames public employment as requiring non-arbitrary, equal treatment of already appointed employees.</td></tr>
+              <tr><td>Article 21</td><td>Links long-standing government employment with livelihood and dignified continuity.</td></tr>
+              <tr><td>Article 142</td><td>Supports a complete-justice argument for protecting bona fide employees where facts justify it.</td></tr>
+              <tr><td>Legitimate expectation</td><td>Employees relied on official certificates, official verification, and completed recruitment decisions.</td></tr>
+              <tr><td>Promissory estoppel</td><td>The note argues that the State should not resile from its own representation after citizens acted on it.</td></tr>
+              <tr><td>Proportionality</td><td>Mass dismissal is presented as disproportionate where the alleged defect is administrative or procedural.</td></tr>
+              <tr><td>Finality and good faith</td><td>Completed recruitment should not be reopened after years unless fraud or a legally sufficient ground is shown.</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="callout"><strong>Use discipline:</strong> this note is useful for framing questions in employee-protection litigation, but it is not a substitute for the operative order in the pending West Bengal OBC matters. It should be read with the fraud exception in <em>Vishwanatha Pillai</em> and <em>Jagdish Balaram Bahira</em>, and with actual court orders, pleadings, and verified SCC/official judgment links before treating any principle as controlling.</div>
+      </section>
+
+      <div class="table-wrap case-matrix">
+        <table><thead><tr><th data-i18n="tableRecord">Record</th><th data-i18n="tableForum">Forum</th><th data-i18n="tableIssueTracked">Issue tracked</th><th data-i18n="tableLocalEvidence">Local evidence</th><th data-i18n="tableStatusDiscipline">Status discipline</th></tr></thead><tbody>
+          <tr><td>WPO 60/2011 and connected matters</td><td>Calcutta High Court</td><td>Validity/process of OBC-list and reservation actions</td><td>Bundled judgment copy</td><td>Read the operative portion; verify with court record.</td></tr>
+          <tr><td>SLP(C) 17751–17755/2024</td><td>Supreme Court of India</td><td>Appeal from the 22 May 2024 High Court judgment</td><td>Bundled official 22 Nov 2024 order</td><td>Check latest case status before describing as pending or decided.</td></tr>
+          <tr><td>Connected 2024 SLPs/diaries</td><td>Supreme Court of India</td><td>Related appeals and interventions arising from the 22 May 2024 judgment</td><td>Bundled official 7 Jan 2025 record; official 5 May 2026 cause list</td><td>Listed for final hearing; this audit found no final merits disposal order.</td></tr>
+          <tr><td>WPA(P) 387/2024 &amp; 430/2024</td><td>Calcutta High Court</td><td>Implementation of the 2024 judgment in recruitment/admission processes</td><td>21 Jan 2025 court-text mirror</td><td>Listed for further consideration; not a merits disposal.</td></tr>
+          <tr><td>WPA 9132/2025; MAT 943 &amp; 955/2025</td><td>Calcutta High Court</td><td>JEMAS PG 2024–25 OBC reservation and merit-list implementation</td><td>21 May 2025 court-text mirror; 7 Aug 2025 bundled follow-up</td><td>The 21 May order was disposed of; later appeal status must be checked separately.</td></tr>
+          <tr><td>2025 benchmark-survey challenge</td><td>Calcutta High Court</td><td>Survey process and documents underlying the 2025 exercise</td><td>Bundled 17 Jun 2025 order</td><td>Read together with the 28 Jul 2025 Supreme Court stay order.</td></tr>
+          <tr><td>SLP(C) 17422, 17528, 17973–17974/2025; Diary 45526 &amp; 45628/2025</td><td>Supreme Court of India</td><td>Appeals from the 17 Jun 2025 order and related JEMAS PG contempt proceeding</td><td>Bundled official 11 Mar office report; official 5 May cause list; 28 Jul / 22 Aug stay orders</td><td>Vacation-of-stay applications were listed; no later disposal order was located in this audit.</td></tr>
+          <tr><td>WPA 14695 &amp; 14698/2026</td><td>Calcutta High Court</td><td>Recruitment impact of the 18 May 2026 notification reset</td><td>Bundled 1 Jul orders and 8 Jul withdrawal order in WPA 14695</td><td>WPA 14695 was withdrawn with liberty to file afresh; WPA 14698 requires a separate current-status check.</td></tr>
+          <tr><td>WPA(P) 305/2026</td><td>Calcutta High Court</td><td>PIL challenge to Notifications 944/945 and Letter 946</td><td>Bundled 3 Jul 2026 order</td><td>PIL dismissed because the Supreme Court was already seized of the principal issues.</td></tr>
+        </tbody></table>
+      </div>
+
+      <div class="callout"><strong>Source discipline:</strong> the local bundle now includes key 2025–26 orders, but the large Supreme Court filing bundles remain catalogued rather than published. Add later certified/official orders, then map each order to the exact notification, survey memo, recruitment process, or admission process affected.</div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="site-footer-inner">
+      <div class="site-footer-brand">
+        <img src="obcwb-flat-dark-logo.webp" data-theme-logo data-light-src="obcwb-flat-dark-logo.webp" data-dark-src="obcwb-flat-light-logo.webp" alt="West Bengal OBC Archive" width="720" height="240" decoding="async" loading="lazy">
+        <span data-i18n="footerTagline">An independent, volunteer-run public research archive on West Bengal OBC policy and litigation.</span>
+      </div>
+      <div class="site-footer-meta">
+        <a class="footer-parent-brand" href="https://civicresearch.in" target="_blank" rel="noopener noreferrer">
+          <span data-i18n="footerInitiativeLabel">A research initiative by</span>
+          <img src="CRG_Logo_Dark.png" data-theme-logo data-light-src="CRG_Logo_Dark.png" data-dark-src="CRG_LOGO_light.png" alt="Civic Research Group" width="400" height="81" decoding="async" loading="lazy">
+        </a>
+        <span class="site-footer-contact">
+          <span data-i18n="footerContactLabel">Contact:</span>
+          <a href="mailto:civicresearchgroup@gmail.com">civicresearchgroup@gmail.com</a>
+        </span>
+        <span data-i18n="footerNoDonations">Free public resource.</span>
+      </div>
+    </div>
+  </footer>
+
+  <link rel="stylesheet" href="css/site.css">
+
+<script src="js/site.js"></script>
+
+</body>
+</html>

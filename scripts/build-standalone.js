@@ -19,7 +19,7 @@ for (const file of jsonFiles) {
   inlineJson[file] = JSON.parse(fs.readFileSync(path.join(root, file), 'utf8'));
 }
 
-const inputPath = path.join(root, 'index.html');
+const inputPath = path.join(root, 'site-src', 'app-template.html');
 const outputPath = path.join(root, 'index-standalone.html');
 const html = fs.readFileSync(inputPath, 'utf8');
 const inlineScript = [
