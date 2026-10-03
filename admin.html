@@ -1,0 +1,733 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex,nofollow">
+  <meta name="description" content="Data admin tool for the WB OBC Archive maintainers.">
+  <title>Data Admin · WB OBC Archive</title>
+  <style>
+    :root {
+      --ink: #11253f; --ink-light: #3d4c5d; --paper: #edf2f5; --panel: #fff;
+      --border: #d5e0e8; --muted: #536a7d; --accent: #a94331; --gold: #b57917;
+      --ok: #147d53; --err: #b3261e;
+      --sans: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+      --mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    }
+    * { box-sizing: border-box; }
+    body { margin: 0; color: var(--ink); background: var(--paper); font: 15px/1.6 var(--sans); }
+    header { background: linear-gradient(125deg, #11253f, #183858); color: #fff; padding: 18px 20px; }
+    header h1 { margin: 0; font-size: 20px; }
+    header p { margin: 4px 0 0; color: #c8d5df; font-size: 13px; }
+    header a { color: #ffd879; }
+    main { max-width: 1180px; margin: 0 auto; padding: 18px 16px 60px; }
+    .card { background: var(--panel); border: 1px solid var(--border); border-radius: 12px; box-shadow: 0 2px 10px rgba(17,37,63,.06); padding: 16px 18px; margin: 14px 0; }
+    h2 { margin: 0 0 4px; font-size: 17px; }
+    .hint { color: var(--muted); font-size: 13px; margin: 0 0 12px; }
+    button { font: 600 14px var(--sans); padding: 8px 14px; border-radius: 8px; border: 1px solid var(--border); background: #fff; color: var(--ink); cursor: pointer; }
+    button.primary { background: #1b5d7d; border-color: #1b5d7d; color: #fff; }
+    button.danger { color: var(--err); border-color: #e2b4b0; }
+    button:disabled { opacity: .5; cursor: not-allowed; }
+    input, select, textarea { font: inherit; padding: 8px 10px; border: 1px solid #9bb5c6; border-radius: 8px; background: #fff; color: var(--ink); width: 100%; }
+    textarea { resize: vertical; }
+    textarea.code, textarea.htmlarea { font-family: var(--mono); font-size: 12.5px; }
+    label.field { display: block; margin: 10px 0; }
+    label.field > span { display: block; font-size: 12px; font-weight: 700; color: var(--ink-light); margin-bottom: 4px; text-transform: uppercase; letter-spacing: .04em; }
+    .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 0 14px; }
+    .grid3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 0 14px; }
+    @media (max-width: 760px) { .grid2, .grid3 { grid-template-columns: 1fr; } }
+    .toolbar { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin-bottom: 12px; }
+    .toolbar input { max-width: 260px; }
+    .tabs { display: flex; flex-wrap: wrap; gap: 6px; margin: 16px 0 0; }
+    .tabs button { border-radius: 999px; }
+    .tabs button.active { background: var(--ink); border-color: var(--ink); color: #fff; }
+    table.list { width: 100%; border-collapse: collapse; font-size: 14px; }
+    table.list th { text-align: left; font-size: 11px; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); padding: 8px 10px; border-bottom: 2px solid var(--border); }
+    table.list td { padding: 8px 10px; border-bottom: 1px solid var(--border); vertical-align: top; }
+    table.list tr:hover td { background: #f4f9fb; }
+    td.actions { white-space: nowrap; text-align: right; }
+    td.actions button { padding: 4px 10px; font-size: 12.5px; margin-left: 4px; }
+    .pill { display: inline-block; padding: 2px 9px; border-radius: 999px; font: 700 11px var(--mono); text-transform: uppercase; }
+    .pill.current { background: #d8f5e8; color: #00654b; }
+    .pill.withdrawn { background: #ffe1dc; color: #8a211b; }
+    .pill.legacy { background: #e7eef7; color: #426f8c; }
+    .pill.text { background: #eef3f7; color: #43606f; }
+    .pill.visual { background: #fff0c9; color: #744a00; }
+    .modal-overlay { position: fixed; inset: 0; background: rgba(8, 18, 30, .55); display: none; align-items: flex-start; justify-content: center; padding: 30px 14px; z-index: 50; overflow: auto; }
+    .modal-overlay.open { display: flex; }
+    .modal { background: #fff; border-radius: 14px; box-shadow: 0 24px 70px rgba(0,0,0,.3); width: min(860px, 100%); padding: 20px 22px; }
+    .modal h3 { margin: 0 0 8px; }
+    .modal .row { display: flex; gap: 10px; justify-content: flex-end; margin-top: 16px; }
+    .chips { display: flex; flex-wrap: wrap; gap: 6px; }
+    .chip { display: inline-flex; align-items: center; gap: 6px; background: #eef4f8; border: 1px solid var(--border); border-radius: 999px; padding: 3px 6px 3px 12px; font-size: 13px; }
+    .chip button { border: 0; background: transparent; padding: 0 6px; font-size: 14px; color: var(--err); }
+    #validation-out { font-family: var(--mono); font-size: 12.5px; white-space: pre-wrap; max-height: 320px; overflow: auto; background: #0d1f30; color: #d7e6ee; border-radius: 8px; padding: 12px 14px; }
+    .status-ok { color: var(--ok); font-weight: 700; }
+    .status-err { color: var(--err); font-weight: 700; }
+    .savebar { position: sticky; bottom: 0; background: #10253f; color: #fff; border-radius: 12px; padding: 12px 16px; display: flex; flex-wrap: wrap; gap: 10px; align-items: center; box-shadow: 0 -6px 24px rgba(0,0,0,.18); }
+    .savebar .spacer { flex: 1; }
+    .savebar button { background: rgba(255,255,255,.1); border-color: rgba(255,255,255,.25); color: #fff; }
+    .savebar button.primary { background: #f0c96a; border-color: #f0c96a; color: #10253f; }
+    .log { font-family: var(--mono); font-size: 12.5px; white-space: pre-wrap; background: #f4f7f9; border: 1px solid var(--border); border-radius: 8px; padding: 10px 12px; max-height: 220px; overflow: auto; }
+    .badge { font: 700 11px var(--mono); padding: 2px 8px; border-radius: 999px; background: #b7e4cd; color: #0b5c3f; }
+    .badge.dirty { background: #ffd8a8; color: #7a4a00; }
+    details { margin-top: 10px; }
+    summary { cursor: pointer; font-weight: 600; }
+    .kv-table td { padding: 6px 8px; }
+    .muted { color: var(--muted); }
+  </style>
+</head>
+<body>
+<header>
+  <div style="display:flex;align-items:center;gap:16px;flex-wrap:wrap;">
+    <img src="obcwb-flat-light-logo.webp" alt="West Bengal OBC Archive" style="height:46px;width:auto;display:block;">
+    <div>
+      <h1 style="margin-top:2px;">WB OBC Archive · Data Admin</h1>
+      <p>Maintainer tool for the research datasets behind the site. Changes are saved as the same JSON files the site loads — nothing here edits the live site directly. Internal tool: <a href="index.html">back to the archive</a>.</p>
+    </div>
+  </div>
+</header>
+<main>
+  <section class="card" id="load-card">
+    <h2>1 · Load the data</h2>
+    <p class="hint">Website mode reads the JSON published with this site (works on GitHub Pages — good for reviewing and preparing changes). Folder mode reads and writes your local repository clone directly (Chrome/Edge, needs the repo downloaded).</p>
+    <div class="toolbar">
+      <button class="primary" id="btn-load-site">Load from this website</button>
+      <button id="btn-load-folder">Open local repository folder…</button>
+      <span id="load-status" class="muted"></span>
+    </div>
+  </section>
+
+  <section class="card" id="work-card" hidden>
+    <div class="tabs" id="tabs"></div>
+  </section>
+
+  <section class="card" id="validate-card" hidden>
+    <h2>3 · Validate</h2>
+    <p class="hint">Runs the same structural rules as <code>scripts/validate-data.js</code>: required fields, duplicate ids, enum values, and the 66-class list size. Linked-file existence is checked separately because it needs requests.</p>
+    <div class="toolbar">
+      <button class="primary" id="btn-validate">Validate now</button>
+      <button id="btn-check-files">Check linked PDF/file references</button>
+    </div>
+    <div id="validation-out">Not run yet.</div>
+  </section>
+
+  <section class="card" id="github-card" hidden>
+    <h2>4 · Publish changes</h2>
+    <p class="hint">Folder mode saves straight into your clone — then commit and push as usual. To contribute without a local clone, push the changed files to a branch and open a pull request with a personal access token (fine-grained, Contents: Read and write). The token is used only from this page in this tab and is never stored.</p>
+    <details>
+      <summary>GitHub push (opens a pull request)</summary>
+      <div class="grid3">
+        <label class="field"><span>Owner / repository</span><input id="gh-repo" value="civicresearch/wb-obc-document-bundle"></label>
+        <label class="field"><span>Base branch</span><input id="gh-branch" value="main"></label>
+        <label class="field"><span>Access token</span><input id="gh-token" type="password" placeholder="github_pat_…"></label>
+      </div>
+      <div class="toolbar">
+        <button class="primary" id="btn-gh-push">Push branch &amp; open PR</button>
+      </div>
+      <div class="log" id="gh-log" hidden></div>
+    </details>
+  </section>
+
+  <div class="savebar" id="savebar" hidden>
+    <span id="dirty-summary">No changes yet.</span>
+    <span class="spacer"></span>
+    <button id="btn-download">Download changed files</button>
+    <button class="primary" id="btn-save-folder" hidden>Save to repository folder</button>
+  </div>
+</main>
+
+<div class="modal-overlay" id="modal-overlay">
+  <div class="modal" id="modal"></div>
+</div>
+
+<script>
+'use strict';
+
+/* ---------- dataset registry ---------- */
+
+const DATA_FILES = [
+  'timeline_events.json', 'case_events.json', 'obc_classes.json', 'public_hearings.json',
+  'obc_documents.json', 'supplemental_documents.json', 'document_inventory.json',
+  'case_manifest.json', 'obc_pdf_manifest.json', 'obc_hearing_pdf_manifest.json',
+  'related_sources_catalog.json'
+];
+const EDITABLE = new Set(['timeline_events.json', 'case_events.json', 'obc_classes.json', 'public_hearings.json']);
+
+const DATASETS = {
+  'timeline_events.json': {
+    label: 'Timeline', array: true, titleOf: row => (row.html.match(/<h2>([^<]+)<\/h2>/) || [, row.id])[1],
+    fields: [
+      { key: 'id', label: 'ID (evt-…)', type: 'text', required: true, hint: 'Used for anchor links; must be unique' },
+      { key: 'date', label: 'Date', type: 'text', required: true, dateHelper: true, hint: 'Year, YYYY-MM, or DD-MM-YYYY — pick on the right to fill' },
+      { key: 'type', label: 'Type', type: 'select', options: ['legacy', 'current', 'withdrawn'], required: true },
+      { key: 'confidence', label: 'Confidence', type: 'select', options: ['text', 'visual'] },
+      { key: 'search', label: 'Search keywords', type: 'textarea', rows: 2 },
+      { key: 'html', label: 'Entry HTML (English)', type: 'htmlarea', rows: 10, required: true },
+      { key: 'html_bn', label: 'Entry HTML (Bengali)', type: 'htmlarea', rows: 10 }
+    ],
+    columns: [
+      { heading: 'Date', value: r => r.date }, { heading: 'ID', value: r => r.id },
+      { heading: 'Type', value: r => `<span class="pill ${r.type}">${r.type || '?'}</span>` },
+      { heading: 'Title', value: r => esc((r.html.match(/<h2>([^<]+)<\/h2>/) || [, r.id || '—'])[1]) }
+    ]
+  },
+  'case_events.json': {
+    label: 'Litigation', array: true, titleOf: row => row.title,
+    fields: [
+      { key: 'id', label: 'ID (optional)', type: 'text' },
+      { key: 'date', label: 'Date', type: 'date', required: true },
+      { key: 'displayDate', label: 'Display date', type: 'text' },
+      { key: 'title', label: 'Title', type: 'text', required: true },
+      { key: 'html', label: 'Entry HTML (English)', type: 'htmlarea', rows: 10, required: true },
+      { key: 'html_bn', label: 'Entry HTML (Bengali)', type: 'htmlarea', rows: 10 }
+    ],
+    columns: [
+      { heading: 'Date', value: r => r.displayDate || r.date },
+      { heading: 'Title', value: r => esc(r.title) },
+      { heading: 'ID', value: r => r.id ? esc(r.id) : '<span class="muted">—</span>' }
+    ]
+  },
+  'public_hearings.json': {
+    label: 'Hearings', array: true,
+    fields: [
+      { key: 'date_label', label: 'Date label (DD-MM-YYYY)', type: 'text', required: true, dateHelper: true },
+      { key: 'time', label: 'Time', type: 'text', required: true },
+      { key: 'communities', label: 'Communities', type: 'textarea', rows: 2, required: true },
+      { key: 'local_pdf', label: 'Local PDF (obc_pdfs/…)', type: 'text', required: true },
+      { key: 'source', label: 'Provenance note', type: 'text' }
+    ],
+    columns: [
+      { heading: 'Date', value: r => esc(r.date_label) }, { heading: 'Time', value: r => esc(r.time) },
+      { heading: 'Communities', value: r => esc(r.communities).slice(0, 90) },
+      { heading: 'PDF', value: r => esc(r.local_pdf) }
+    ]
+  },
+  'obc_classes.json': { label: 'OBC classes', array: false }
+};
+
+const state = {
+  mode: null,            // 'site' | 'folder'
+  dirHandle: null,
+  original: new Map(),   // file -> exact original text
+  data: new Map(),       // file -> parsed value
+  activeTab: null
+};
+
+/* ---------- helpers ---------- */
+
+const $ = sel => document.querySelector(sel);
+const esc = s => String(s ?? '').replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+
+function serialize(file) {
+  const txt = JSON.stringify(state.data.get(file), null, 2);
+  return txt + (state.original.get(file).endsWith('\n') ? '\n' : '');
+}
+function dirtyFiles() {
+  // Only the four editable datasets are tracked: the tool cannot modify the
+  // other files, and some of them use a different JSON layout that a
+  // re-serialize would rewrite even with no real change.
+  return DATA_FILES.filter(f => EDITABLE.has(f) && state.original.has(f) && serialize(f) !== state.original.get(f));
+}
+function updateSavebar() {
+  const dirty = dirtyFiles();
+  $('#dirty-summary').innerHTML = dirty.length
+    ? `<strong>${dirty.length} file${dirty.length > 1 ? 's' : ''} changed:</strong> ${esc(dirty.join(', '))}`
+    : 'No changes yet.';
+  $('#savebar').hidden = false;
+}
+
+function logTo(sel, msg) {
+  const el = $(sel);
+  el.hidden = false;
+  el.textContent += msg + '\n';
+  el.scrollTop = el.scrollHeight;
+}
+
+/* ---------- loading ---------- */
+
+async function loadFromSite() {
+  $('#load-status').textContent = 'Loading…';
+  const failures = [];
+  await Promise.all(DATA_FILES.map(async file => {
+    try {
+      const res = await fetch(file + '?t=' + Date.now(), { cache: 'no-store' });
+      if (!res.ok) throw new Error(res.status);
+      const text = await res.text();
+      state.original.set(file, text);
+      state.data.set(file, JSON.parse(text));
+    } catch (e) { failures.push(file); }
+  }));
+  if (failures.length === DATA_FILES.length) { $('#load-status').textContent = 'Could not load data from this location.'; return; }
+  state.mode = 'site';
+  finishLoad(failures);
+}
+
+async function loadFromFolder() {
+  if (!window.showDirectoryPicker) { alert('This browser cannot open folders. Use Chrome or Edge, or load from the website.'); return; }
+  try {
+    state.dirHandle = await showDirectoryPicker({ mode: 'readwrite' });
+  } catch (e) { return; }
+  $('#load-status').textContent = 'Reading ' + state.dirHandle.name + '…';
+  const failures = [];
+  for (const file of DATA_FILES) {
+    try {
+      const fh = await state.dirHandle.getFileHandle(file);
+      const text = await (await fh.getFile()).text();
+      state.original.set(file, text);
+      state.data.set(file, JSON.parse(text));
+    } catch (e) { failures.push(file); }
+  }
+  if (failures.length === DATA_FILES.length) { $('#load-status').textContent = 'No data files found in that folder.'; return; }
+  state.mode = 'folder';
+  $('#btn-save-folder').hidden = false;
+  finishLoad(failures);
+}
+
+function finishLoad(failures) {
+  $('#load-status').textContent = failures.length
+    ? `Loaded ${DATA_FILES.length - failures.length}/${DATA_FILES.length} files (missing: ${failures.join(', ')}).`
+    : `Loaded ${DATA_FILES.length} files (${state.mode === 'folder' ? 'folder mode — saving writes your clone' : 'website mode — publish via download or GitHub PR'}).`;
+  $('#work-card').hidden = false;
+  $('#validate-card').hidden = false;
+  $('#github-card').hidden = false;
+  buildTabs();
+  updateSavebar();
+}
+
+/* ---------- tabs & generic editors ---------- */
+
+function buildTabs() {
+  const tabs = $('#tabs');
+  tabs.innerHTML = '';
+  for (const [file, ds] of Object.entries(DATASETS)) {
+    const b = document.createElement('button');
+    b.textContent = ds.label + ' ';
+    const count = document.createElement('span');
+    count.className = 'badge';
+    count.textContent = ds.array ? (state.data.get(file) || []).length + ' rows' : '3 sets';
+    b.appendChild(count);
+    b.onclick = () => { state.activeTab = file; renderTab(); };
+    tabs.appendChild(b);
+  }
+  state.activeTab = state.activeTab || 'timeline_events.json';
+  renderTab();
+}
+
+function renderTab() {
+  [...$('#tabs').children].forEach(b => b.classList.toggle('active', b.textContent.startsWith(DATASETS[state.activeTab].label)));
+  const host = $('#work-card');
+  host.querySelectorAll('.tab-body').forEach(n => n.remove());
+  const body = document.createElement('div');
+  body.className = 'tab-body';
+  const ds = DATASETS[state.activeTab];
+  const h = document.createElement('h2');
+  h.textContent = '2 · ' + ds.label + ' (' + state.activeTab + ')';
+  body.appendChild(h);
+  if (ds.array) renderArrayEditor(body, state.activeTab, ds);
+  else renderClassesEditor(body);
+  host.appendChild(body);
+}
+
+function renderArrayEditor(body, file, ds) {
+  const rows = state.data.get(file);
+  const bar = document.createElement('div');
+  bar.className = 'toolbar';
+  const search = document.createElement('input');
+  search.placeholder = 'Filter rows…';
+  const add = document.createElement('button');
+  add.className = 'primary';
+  add.textContent = '+ Add entry';
+  add.onclick = () => openRowModal(file, ds, -1);
+  const sort = document.createElement('button');
+  sort.textContent = 'Sort by date';
+  sort.onclick = () => { rows.sort((a, b) => String(a.date || '').localeCompare(String(b.date || ''))); renderTab(); updateSavebar(); };
+  bar.append(search, add, sort);
+  body.appendChild(bar);
+
+  const wrap = document.createElement('div');
+  wrap.style.overflowX = 'auto';
+  body.appendChild(wrap);
+  const draw = () => {
+    const q = search.value.trim().toLowerCase();
+    const visible = rows.map((r, i) => ({ r, i })).filter(({ r }) => !q || JSON.stringify(r).toLowerCase().includes(q));
+    wrap.innerHTML = '';
+    const table = document.createElement('table');
+    table.className = 'list';
+    table.innerHTML = '<thead><tr>' + ds.columns.map(c => `<th>${c.heading}</th>`).join('') + '<th></th></tr></thead>';
+    const tb = document.createElement('tbody');
+    for (const { r, i } of visible) {
+      const tr = document.createElement('tr');
+      tr.innerHTML = ds.columns.map(c => '<td>' + c.value(r) + '</td>').join('')
+        + `<td class="actions"><button data-edit="${i}">Edit</button><button class="danger" data-del="${i}">Delete</button></td>`;
+      tb.appendChild(tr);
+    }
+    table.appendChild(tb);
+    wrap.appendChild(table);
+    table.onclick = e => {
+      const edit = e.target.getAttribute && e.target.getAttribute('data-edit');
+      const del = e.target.getAttribute && e.target.getAttribute('data-del');
+      if (edit !== null && edit !== undefined) openRowModal(file, ds, Number(edit));
+      if (del !== null && del !== undefined) {
+        if (confirm('Delete this entry from ' + file + '?')) { rows.splice(Number(del), 1); draw(); updateSavebar(); }
+      }
+    };
+  };
+  search.oninput = draw;
+  draw();
+}
+
+function openRowModal(file, ds, index) {
+  const rows = state.data.get(file);
+  const isNew = index < 0;
+  const row = isNew ? {} : JSON.parse(JSON.stringify(rows[index]));
+  const modal = $('#modal');
+  const fieldsHtml = ds.fields.map(f => {
+    const v = row[f.key] ?? '';
+    if (f.type === 'select') {
+      return `<label class="field"><span>${f.label}${f.required ? ' *' : ''}</span><select data-key="${f.key}">${f.options.map(o => `<option ${o === v ? 'selected' : ''}>${o}</option>`).join('')}</select>${f.hint ? `<div class="hint">${f.hint}</div>` : ''}</label>`;
+    }
+    if (f.type === 'date') {
+      return `<label class="field"><span>${f.label}${f.required ? ' *' : ''}</span><input type="date" data-key="${f.key}" value="${esc(v)}">${f.hint ? `<div class="hint">${f.hint}</div>` : ''}</label>`;
+    }
+    if (f.dateHelper) {
+      return `<label class="field"><span>${f.label}${f.required ? ' *' : ''}</span><input data-key="${f.key}" value="${esc(v)}">${f.hint ? `<div class="hint">${f.hint}</div>` : ''}<input type="date" data-helper="${f.key}" title="Pick a date to fill the field (DD-MM-YYYY)" style="margin-top:6px;"></label>`;
+    }
+    const cls = f.type === 'textarea' || f.type === 'htmlarea' ? (f.type === 'htmlarea' ? 'code htmlarea' : '') : '';
+    return `<label class="field"><span>${f.label}${f.required ? ' *' : ''}</span><textarea class="${cls}" rows="${f.rows || 1}" data-key="${f.key}">${esc(v)}</textarea>${f.hint ? `<div class="hint">${f.hint}</div>` : ''}</label>`;
+  }).join('');
+  modal.innerHTML = `
+    <h3>${isNew ? 'New entry' : 'Edit entry'} · ${ds.label}</h3>
+    <div class="grid2">${fieldsHtml}</div>
+    <details><summary>Raw JSON for this row</summary>
+      <label class="field"><textarea class="code" rows="8" id="raw-row">${esc(JSON.stringify(row, null, 2))}</textarea></label>
+      <div class="hint">Editing this replaces the fields above when you press Apply.</div>
+    </details>
+    <div class="row">
+      <button id="m-cancel">Cancel</button>
+      <button class="primary" id="m-save">${isNew ? 'Add' : 'Save'}</button>
+    </div>`;
+  modal.querySelectorAll('[data-helper]').forEach(helper => {
+    helper.onchange = () => {
+      if (!helper.value) return;
+      const [y, m, d] = helper.value.split('-');
+      const target = modal.querySelector(`[data-key="${helper.getAttribute('data-helper')}"]`);
+      if (target) target.value = `${d}-${m}-${y}`;
+    };
+  });
+  $('#modal-overlay').classList.add('open');
+  $('#m-cancel').onclick = closeModal;
+  modal.querySelector('#m-save').onclick = () => {
+    let next;
+    if ($('#raw-row').value.trim() && modal.querySelector('#raw-row').dataset.applied === '1') {
+      try { next = JSON.parse($('#raw-row').value); } catch (e) { alert('Raw JSON is not valid: ' + e.message); return; }
+    } else {
+      next = { ...row };
+      modal.querySelectorAll('[data-key]').forEach(inp => {
+        const k = inp.getAttribute('data-key');
+        if (inp.value === '') delete next[k]; else next[k] = inp.value;
+      });
+    }
+    const missing = ds.fields.filter(f => f.required && (next[f.key] === undefined || String(next[f.key]).trim() === ''));
+    if (missing.length) { alert('Missing required fields: ' + missing.map(f => f.key).join(', ')); return; }
+    if (isNew) rows.push(next); else rows[index] = next;
+    closeModal(); renderTab(); updateSavebar();
+  };
+  $('#raw-row').onchange = e => { e.target.dataset.applied = '1'; };
+}
+function closeModal() { $('#modal-overlay').classList.remove('open'); }
+$('#modal-overlay').addEventListener('click', e => { if (e.target === $('#modal-overlay')) closeModal(); });
+
+/* ---------- obc_classes editor ---------- */
+
+function renderClassesEditor(body) {
+  const cls = state.data.get('obc_classes.json');
+
+  const current = document.createElement('div');
+  current.className = 'card';
+  current.innerHTML = `<h2>Current 2026 classes <span class="badge" id="cls-count"></span></h2><p class="hint">The live validator expects exactly 66 entries — if you intentionally change the count, update the expectation in scripts/validate-data.js too.</p>`;
+  const chipHost = document.createElement('div');
+  chipHost.className = 'chips';
+  const drawChips = () => {
+    chipHost.innerHTML = '';
+    current.querySelector('#cls-count').textContent = cls.current_classes_2026.length + ' classes';
+    cls.current_classes_2026.forEach((name, i) => {
+      const chip = document.createElement('span');
+      chip.className = 'chip';
+      chip.innerHTML = esc(name) + `<button data-i="${i}" title="Remove">×</button>`;
+      chip.querySelector('button').onclick = () => { cls.current_classes_2026.splice(i, 1); drawChips(); updateSavebar(); };
+      chipHost.appendChild(chip);
+    });
+  };
+  const addRow = document.createElement('div');
+  addRow.className = 'toolbar';
+  addRow.innerHTML = '<input id="cls-new" placeholder="Add class name…"><button class="primary" id="cls-add">Add</button>';
+  addRow.querySelector('#cls-add').onclick = () => {
+    const v = $('#cls-new').value.trim();
+    if (v && !cls.current_classes_2026.includes(v)) { cls.current_classes_2026.push(v); $('#cls-new').value = ''; drawChips(); updateSavebar(); }
+  };
+  current.append(addRow, chipHost);
+  drawChips();
+
+  const map = document.createElement('div');
+  map.className = 'card';
+  map.innerHTML = '<h2>First inclusion map</h2><p class="hint">Class → "date; Notification No." — the source trail shown on the OBC list page.</p>';
+  const mapTable = document.createElement('table');
+  mapTable.className = 'list kv-table';
+  const drawMap = () => {
+    const keys = Object.keys(cls.first_inclusion).sort((a, b) => a.localeCompare(b));
+    mapTable.innerHTML = `<thead><tr><th>Class</th><th>First inclusion</th><th></th></tr></thead><tbody>` +
+      keys.map(k => `<tr><td><strong>${esc(k)}</strong></td><td><input data-k="${esc(k)}" value="${esc(cls.first_inclusion[k])}"></td><td class="actions"><button class="danger" data-delk="${esc(k)}">×</button></td></tr>`).join('') +
+      `</tbody>`;
+  };
+  mapTable.oninput = e => { const k = e.target.getAttribute('data-k'); if (k !== null) { cls.first_inclusion[k] = e.target.value; updateSavebar(); } };
+  mapTable.onclick = e => { const k = e.target.getAttribute('data-delk'); if (k) { delete cls.first_inclusion[k]; drawMap(); updateSavebar(); } };
+  const mapAdd = document.createElement('div');
+  mapAdd.className = 'toolbar';
+  mapAdd.innerHTML = '<input id="map-new-k" placeholder="Class name"><input id="map-new-v" placeholder="1994-07-13; Notification No. 346-TW/EC"><button class="primary" id="map-add">Add</button>';
+  mapAdd.querySelector('#map-add').onclick = () => {
+    const k = $('#map-new-k').value.trim(), v = $('#map-new-v').value.trim();
+    if (k && v) { cls.first_inclusion[k] = v; $('#map-new-k').value = ''; $('#map-new-v').value = ''; drawMap(); updateSavebar(); }
+  };
+  drawMap();
+  map.append(mapAdd, mapTable);
+
+  const changes = document.createElement('div');
+  changes.className = 'card';
+  changes.innerHTML = '<h2>Class changes</h2><p class="hint">Inclusion / withdrawal trail with sources.</p>';
+  const cFields = [
+    { key: 'name', label: 'Class name', required: true },
+    { key: 'included', label: 'Included (date)', required: true, type: 'date' },
+    { key: 'removed', label: 'Removed / withdrawn (date)', type: 'date' },
+    { key: 'status', label: 'Status note', required: true },
+    { key: 'source', label: 'Source trail', required: true }
+  ];
+  const cTable = document.createElement('table');
+  cTable.className = 'list';
+  const drawChanges = () => {
+    cTable.innerHTML = `<thead><tr><th>Class</th><th>Included</th><th>Removed</th><th>Status</th><th>Source</th><th></th></tr></thead><tbody>` +
+      cls.class_changes.map((r, i) => `<tr><td><strong>${esc(r.name)}</strong></td><td>${esc(r.included)}</td><td>${esc(r.removed || '—')}</td><td>${esc(r.status)}</td><td class="muted">${esc(r.source)}</td><td class="actions"><button data-ci="${i}">Edit</button><button class="danger" data-cd="${i}">×</button></td></tr>`).join('') +
+      `</tbody>`;
+  };
+  cTable.onclick = e => {
+    const ei = e.target.getAttribute('data-ci'), ed = e.target.getAttribute('data-cd');
+    if (ei !== null && ei !== undefined) openGenericModal('Edit class change', cFields, cls.class_changes[Number(ei)], v => { Object.assign(cls.class_changes[Number(ei)], v); drawChanges(); updateSavebar(); });
+    if (ed !== null && ed !== undefined) { cls.class_changes.splice(Number(ed), 1); drawChanges(); updateSavebar(); }
+  };
+  const cAdd = document.createElement('div');
+  cAdd.className = 'toolbar';
+  cAdd.innerHTML = '<button class="primary" id="c-add">+ Add class change</button>';
+  cAdd.querySelector('#c-add').onclick = () => openGenericModal('New class change', cFields, {}, v => { cls.class_changes.push(v); drawChanges(); updateSavebar(); });
+  drawChanges();
+  changes.append(cAdd, cTable);
+
+  body.append(current, map, changes);
+}
+
+function openGenericModal(title, fields, row, onSave) {
+  const modal = $('#modal');
+  modal.innerHTML = `<h3>${title}</h3>` + fields.map(f =>
+    f.type === 'date'
+      ? `<label class="field"><span>${f.label}${f.required ? ' *' : ''}</span><input type="date" data-key="${f.key}" value="${esc(row[f.key] ?? '')}"></label>`
+      : `<label class="field"><span>${f.label}${f.required ? ' *' : ''}</span><input data-key="${f.key}" value="${esc(row[f.key] ?? '')}"></label>`
+  ).join('') + `<div class="row"><button id="m-cancel">Cancel</button><button class="primary" id="m-save">Save</button></div>`;
+  $('#modal-overlay').classList.add('open');
+  $('#m-cancel').onclick = closeModal;
+  modal.querySelector('#m-save').onclick = () => {
+    const next = { ...row };
+    modal.querySelectorAll('[data-key]').forEach(inp => { next[inp.getAttribute('data-key')] = inp.value; });
+    const missing = fields.filter(f => f.required && !String(next[f.key] ?? '').trim());
+    if (missing.length) { alert('Missing: ' + missing.map(f => f.key).join(', ')); return; }
+    onSave(next); closeModal();
+  };
+}
+
+/* ---------- validation (ports scripts/validate-data.js) ---------- */
+
+function collectIssues() {
+  const out = [];
+  const req = (file, row, i, field) => { if (row[field] === undefined || row[field] === null || String(row[field]).trim() === '') out.push(`${file}[${i}]: missing ${field}`); };
+  const get = f => state.data.get(f);
+  const timeline = get('timeline_events.json') || [];
+  timeline.forEach((e, i) => { req('timeline_events.json', e, i, 'id'); req('timeline_events.json', e, i, 'date'); req('timeline_events.json', e, i, 'html'); });
+  const seenT = new Set();
+  timeline.forEach(e => { if (e.id) { if (seenT.has(e.id)) out.push(`timeline_events.json: duplicate id ${e.id}`); seenT.add(e.id); } });
+  (get('case_events.json') || []).forEach((e, i) => { req('case_events.json', e, i, 'date'); req('case_events.json', e, i, 'title'); req('case_events.json', e, i, 'html'); });
+  (get('public_hearings.json') || []).forEach((r, i) => { req('public_hearings.json', r, i, 'date_label'); req('public_hearings.json', r, i, 'time'); req('public_hearings.json', r, i, 'communities'); req('public_hearings.json', r, i, 'local_pdf'); });
+  (get('obc_documents.json') || []).forEach((d, i) => { req('obc_documents.json', d, i, 'notif_no'); req('obc_documents.json', d, i, 'date'); req('obc_documents.json', d, i, 'summary'); req('obc_documents.json', d, i, 'local_pdf'); });
+  const cls = get('obc_classes.json');
+  if (cls) {
+    if (!Array.isArray(cls.current_classes_2026)) out.push('obc_classes.json: missing current_classes_2026 array');
+    else if (cls.current_classes_2026.length !== 66) out.push(`obc_classes.json: expected 66 current classes, found ${cls.current_classes_2026.length} (if intentional, update scripts/validate-data.js)`);
+    if (!cls.first_inclusion || typeof cls.first_inclusion !== 'object' || Array.isArray(cls.first_inclusion)) out.push('obc_classes.json: missing first_inclusion object');
+    (cls.class_changes || []).forEach((r, i) => { req('obc_classes.json', r, i, 'name'); req('obc_classes.json', r, i, 'included'); req('obc_classes.json', r, i, 'status'); req('obc_classes.json', r, i, 'source'); });
+  }
+  for (const f of ['obc_documents.json', 'supplemental_documents.json', 'document_inventory.json', 'case_manifest.json', 'related_sources_catalog.json']) {
+    const v = get(f);
+    if (v !== undefined && !Array.isArray(v)) out.push(`${f}: expected top-level array`);
+  }
+  const dupClass = cls ? cls.current_classes_2026.filter((n, i, a) => a.indexOf(n) !== i) : [];
+  if (dupClass.length) out.push('obc_classes.json: duplicate current classes: ' + [...new Set(dupClass)].join(', '));
+  return out;
+}
+
+function isValidJsonEverywhere() {
+  return dirtyFiles().every(f => { try { JSON.parse(serialize(f)); return true; } catch (e) { return false; } });
+}
+
+$('#btn-validate').onclick = () => {
+  const out = $('#validation-out');
+  const issues = collectIssues();
+  const dirty = dirtyFiles();
+  const head = dirty.length ? `Changed files: ${dirty.join(', ')}\n` : '';
+  out.textContent = head + (issues.length
+    ? `✗ ${issues.length} issue(s):\n- ` + issues.join('\n- ')
+    : '✓ Structural validation passed (same rules as scripts/validate-data.js).');
+};
+
+$('#btn-check-files').onclick = checkLinkedFiles;
+
+async function checkLinkedFiles() {
+  const out = $('#validation-out');
+  out.textContent = 'Collecting references…';
+  const refs = new Set();
+  const add = href => {
+    if (!href) return;
+    const clean = String(href).split('#')[0].split('?')[0];
+    if (!clean || /^(https?:|mailto:|tel:|#)/i.test(clean) || clean.startsWith('/')) return;
+    if (clean.startsWith('obc_pdfs/') || clean.startsWith('case_pdfs/') || clean.endsWith('.json')) refs.add(clean);
+  };
+  for (const file of DATA_FILES) {
+    const v = state.data.get(file);
+    if (Array.isArray(v)) v.forEach(row => {
+      add(row.local_pdf); add(row.href); add(row.local_file);
+      if (Array.isArray(row.local_files)) row.local_files.forEach(add);
+      for (const hk of ['html', 'html_bn']) {
+        let m; const re = /href="([^"]+)"/g;
+        while ((m = re.exec(row[hk] || ''))) add(m[1]);
+      }
+    });
+  }
+  out.textContent = `Checking ${refs.size} unique file references…`;
+  const missing = [];
+  const list = [...refs];
+  let done = 0;
+  const workers = Array.from({ length: 6 }, async () => {
+    while (list.length) {
+      const ref = list.shift();
+      let ok = false;
+      try {
+        if (state.mode === 'folder') {
+          const parts = ref.split('/');
+          let handle = state.dirHandle;
+          for (let i = 0; i < parts.length - 1; i++) handle = await handle.getDirectoryHandle(parts[i]);
+          await handle.getFileHandle(parts[parts.length - 1]);
+          ok = true;
+        } else {
+          const res = await fetch(ref, { method: 'HEAD' });
+          ok = res.ok;
+        }
+      } catch (e) { ok = false; }
+      if (!ok) missing.push(ref);
+      out.textContent = `Checking ${++done}/${refs.size} unique file references…`;
+    }
+  });
+  await Promise.all(workers);
+  out.textContent += missing.length
+    ? `\n✗ ${missing.length} missing file(s):\n- ` + missing.sort().join('\n- ')
+    : '\n✓ All referenced files exist.';
+}
+
+/* ---------- saving ---------- */
+
+$('#btn-download').onclick = () => {
+  const dirty = dirtyFiles();
+  if (!dirty.length) { alert('No changes to download.'); return; }
+  if (!isValidJsonEverywhere()) { alert('A changed file is not valid JSON — fix it before downloading.'); return; }
+  dirty.forEach(file => {
+    const blob = new Blob([serialize(file)], { type: 'application/json' });
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = file;
+    a.click();
+    setTimeout(() => URL.revokeObjectURL(a.href), 5000);
+  });
+};
+
+$('#btn-save-folder').onclick = async () => {
+  const dirty = dirtyFiles();
+  if (!dirty.length) { alert('No changes to save.'); return; }
+  if (!isValidJsonEverywhere()) { alert('A changed file is not valid JSON — fix it before saving.'); return; }
+  for (const file of dirty) {
+    try {
+      const fh = await state.dirHandle.getFileHandle(file, { create: false });
+      const w = await fh.createWritable();
+      await w.write(serialize(file));
+      await w.close();
+      state.original.set(file, serialize(file));
+    } catch (e) { alert('Could not write ' + file + ': ' + e.message); return; }
+  }
+  alert('Saved ' + dirty.length + ' file(s) to your repository folder.\n\nNext: git add + commit + push, and run\n  node scripts/validate-data.js');
+  updateSavebar();
+};
+
+/* ---------- GitHub push ---------- */
+
+$('#btn-gh-push').onclick = async () => {
+  const dirty = dirtyFiles();
+  if (!dirty.length) { alert('No changes to push.'); return; }
+  const token = $('#gh-token').value.trim();
+  const repo = $('#gh-repo').value.trim();
+  const base = $('#gh-branch').value.trim() || 'main';
+  if (!token) { alert('Paste a fine-grained personal access token (Contents: Read and write).'); return; }
+  const log = m => logTo('#gh-log', m);
+  $('#gh-log').textContent = '';
+  const api = async (path, opts = {}) => {
+    const res = await fetch('https://api.github.com' + path, {
+      ...opts,
+      headers: {
+        Authorization: 'Bearer ' + token,
+        Accept: 'application/vnd.github+json',
+        'X-GitHub-Api-Version': '2022-11-28',
+        ...(opts.body ? { 'Content-Type': 'application/json' } : {}),
+        ...(opts.headers || {})
+      }
+    });
+    const body = res.status === 204 ? null : await res.json().catch(() => null);
+    if (!res.ok) throw new Error(`${res.status} ${res.statusText}: ${body?.message || ''}`);
+    return body;
+  };
+  try {
+    log(`Pushing ${dirty.length} file(s) to ${repo}…`);
+    const ref = await api(`/repos/${repo}/git/ref/heads/${base}`);
+    const branch = 'data-admin-' + new Date().toISOString().slice(0, 16).replace(/[-:T]/g, '');
+    await api(`/repos/${repo}/git/refs`, { method: 'POST', body: JSON.stringify({ ref: 'refs/heads/' + branch, sha: ref.object.sha }) });
+    log('Created branch ' + branch);
+    for (const file of dirty) {
+      let sha;
+      try { const existing = await api(`/repos/${repo}/contents/${file}?ref=${branch}`); sha = existing.sha; } catch (e) { sha = undefined; }
+      await api(`/repos/${repo}/contents/${file}`, {
+        method: 'PUT',
+        body: JSON.stringify({ message: 'data-admin: update ' + file, content: btoa(unescape(encodeURIComponent(serialize(file)))), branch, ...(sha ? { sha } : {}) })
+      });
+      log('Committed ' + file);
+    }
+    let prUrl = `https://github.com/${repo}/compare/${branch}?expand=1`;
+    try {
+      const pr = await api(`/repos/${repo}/pulls`, { method: 'POST', body: JSON.stringify({ title: 'Data updates from admin tool (' + dirty.length + ' file' + (dirty.length > 1 ? 's' : '') + ')', head: branch, base, body: 'Edited with the archive data admin tool.\n\nFiles: ' + dirty.map(f => '- `' + f + '`').join('\n') }) });
+      prUrl = pr.html_url; log('Opened pull request');
+    } catch (e) { log('PR could not be opened automatically (' + e.message + ') — use the compare link.'); }
+    log('Done: ' + prUrl);
+    window.open(prUrl, '_blank', 'noopener');
+  } catch (e) {
+    log('FAILED: ' + e.message);
+  }
+};
+
+/* ---------- boot ---------- */
+
+$('#btn-load-site').onclick = loadFromSite;
+$('#btn-load-folder').onclick = loadFromFolder;
+</script>
+</body>
+</html>
