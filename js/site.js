@@ -3,7 +3,7 @@ const INLINE_JSON_DATA = window.OBC_INLINE_JSON || {};
 const OBC_DOCS = loadJsonSync('obc_documents.json');
 const SUPPLEMENTAL_DOCS = loadJsonSync('supplemental_documents.json');
 // Private manifests are intentionally excluded from the public build. Keeping
-// these arrays local avoids a pair of expected 404 requests on every page.
+// Keeping these optional arrays empty avoids expected 404 requests on every page.
 const PRIVATE_DOCS = [];
 const SUPPLEMENTAL_TIMELINE = SUPPLEMENTAL_DOCS.filter(doc => doc.show_on_timeline);
 const OBC_CLASS_DATA = loadJsonSync('obc_classes.json', { current_classes_2026: [], first_inclusion: {}, class_changes: [] });
@@ -33,7 +33,7 @@ function getActiveLang() {
     const savedLang = localStorage.getItem('wb-obc-lang');
     if (savedLang === 'bn' || savedLang === 'en') return savedLang;
   } catch (error) {
-    // localStorage can be unavailable in some file:// or privacy contexts.
+    // Browser storage can be unavailable in restricted privacy contexts.
   }
   return document.documentElement.lang === 'bn' || document.body.classList.contains('lang-bn') ? 'bn' : 'en';
 }
@@ -88,7 +88,7 @@ function showDataLoadWarning() {
   const warning = document.getElementById('data-load-warning');
   if (!warning || !DATA_LOAD_ERRORS.length) return;
   warning.hidden = false;
-  warning.innerHTML = `<strong>Some data files did not load.</strong> Missing: ${DATA_LOAD_ERRORS.map(escapeHtml).join(', ')}. If you opened this page directly as a file, run <code>npm run serve</code> and open <code>http://127.0.0.1:8123/index.html</code>.`;
+  warning.innerHTML = `<strong>Some published data files did not load.</strong> Missing: ${DATA_LOAD_ERRORS.map(escapeHtml).join(', ')}. Please reload the page or report the missing files.`;
 }
 
 function renderTimelineEvents(events, forceLang) {
@@ -285,8 +285,7 @@ function titleCase(value) {
 }
 
 function resolveAssetPath(path) {
-  // Prepends the raw-GitHub base (set in <head>) to relative asset paths
-  // when this page isn't served from GitHub Pages or run locally.
+  // Prepends the configured public asset base to relative repository paths.
   if (!path || /^https?:\/\//.test(path)) return path;
   return (window.OBC_ASSET_BASE || '') + path;
 }
@@ -295,10 +294,9 @@ function githubBundleUrl(doc, fallbackPath = '') {
   if (!doc) return resolveAssetPath(fallbackPath);
   if (/^https?:\/\//.test(doc.local_pdf || '')) return doc.local_pdf;
   if (/^https?:\/\//.test(fallbackPath)) return fallbackPath;
-  // Research manifests sometimes retain a machine-local absolute path. Such
-  // paths are never valid public URLs, so omit the preview instead of leaking
-  // or displaying them in the document table.
+  // Absolute filesystem paths are never valid public URLs.
   if (/^(?:[A-Za-z]:[\\/]|\/)/.test(doc.local_pdf || '')) return '';
+  if (!doc.local_pdf && !fallbackPath) return '';
   if (doc.local_pdf && (doc.local_pdf.includes('/') || doc.local_pdf.includes('\\'))) {
     return resolveAssetPath(doc.local_pdf);
   }
@@ -318,7 +316,7 @@ function rewriteStaticAssetLinks() {
   // The markup that was rendered server-side (not through pdfHref/githubBundleUrl
   // above) still has plain relative hrefs like "obc_pdfs/foo.pdf" or
   // "case_pdfs/bar.pdf" or "obc_pdf_manifest.json". Rewrite those too when
-  // OBC_ASSET_BASE is set (i.e. we are not on GitHub Pages or local).
+  // OBC_ASSET_BASE is set when assets are served from a separate public base.
   const base = window.OBC_ASSET_BASE;
   if (!base) return;
   document.querySelectorAll('a[href]').forEach(a => {
@@ -501,7 +499,7 @@ function renderPrivateDocs() {
     tbody.appendChild(renderDocRow(sourceDoc, idx, {
       supplemental: true,
       statusLabel: sourceDoc.status || 'private',
-      summaryPrefix: sourceDoc.source_batch || 'private local source'
+      summaryPrefix: sourceDoc.source_batch || 'supplemental source'
     }));
   });
 }
@@ -681,7 +679,7 @@ const HERO_CONTENT = {
     titleKey: 'aboutTitle',
     subKey: 'aboutSub',
     stats: [
-      ['Local', 'aboutStat1Label', 'aboutStat1Value'],
+      ['Sources', 'aboutStat1Label', 'aboutStat1Value'],
       ['Primary', 'aboutStat2Label', 'aboutStat2Value'],
       ['Scope', 'aboutStat3Label', 'aboutStat3Value'],
       ['Care', 'aboutStat4Label', 'aboutStat4Value']
@@ -766,7 +764,7 @@ const HERO_CONTENT = {
     subKey: 'casesSectionSub',
     stats: [
       ['2024', 'casesStat1Label'],
-      ['Local', 'casesStat2Label', 'casesStat2Value'],
+      ['Orders', 'casesStat2Label', 'casesStat2Value'],
       ['Sources', 'casesStat3Label', 'casesStat3Value'],
       ['Verify', 'casesStat4Label', 'casesStat4Value']
     ]
@@ -796,14 +794,14 @@ const HERO_CONTENT = {
     ]
   },
   inventory: {
-    eyebrow: 'Files · Local bundle inventory',
+    eyebrow: 'Files · Published source inventory',
     titleKey: 'inventory.title',
     subKey: 'inventorySub',
     stats: [
-      ['PDF', 'Local source files are linked directly.'],
+      ['PDF', 'Published source files are linked directly.'],
       ['JSON', 'Manifest files support migration or cloud replacement.'],
       ['Pages', 'Inventory rows include page counts where available.'],
-      ['Offline', 'The HTML remains usable with bundled local files.']
+      ['Links', 'Repository assets use stable public paths.']
     ]
   }
 };

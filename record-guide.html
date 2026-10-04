@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en" data-theme="light">
+<html lang="en" data-theme="dark">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -30,9 +30,9 @@
     (function () {
       try {
         var savedTheme = localStorage.getItem('wb-obc-theme');
-        document.documentElement.dataset.theme = savedTheme === 'dark' ? 'dark' : 'light';
+        document.documentElement.dataset.theme = savedTheme === 'light' ? 'light' : 'dark';
       } catch (error) {
-        document.documentElement.dataset.theme = 'light';
+        document.documentElement.dataset.theme = 'dark';
       }
     })();
   </script>
@@ -169,7 +169,7 @@
             <li><strong>Document type:</strong> notification, order, corrigendum, hearing notice, court order, report, act, roster, certificate guideline.</li>
             <li><strong>Status:</strong> current, withdrawn, superseded, legacy, missing, draft, or verification-needed.</li>
             <li><strong>Short summary:</strong> one sentence describing legal or documentary effect.</li>
-            <li><strong>Source:</strong> local PDF path now, cloud URL later, plus source authority if known.</li>
+            <li><strong>Source:</strong> published PDF URL plus source authority, when known.</li>
           </ul>
         </article>
 
@@ -187,7 +187,7 @@
         <article class="framework-card">
           <h3 data-i18n="frameworkCard3Title">3. Missing-entry statuses</h3>
           <ul class="content-list">
-            <li><strong>Missing locally:</strong> known source exists, file not yet added.</li>
+            <li><strong>Not yet archived:</strong> known source exists, file not yet added.</li>
             <li><strong>Source not found:</strong> cited in another record, original PDF not located.</li>
             <li><strong>Partial:</strong> source found only as quote, mirror, OCR, or bundled page inside another PDF.</li>
             <li><strong>Needs OCR:</strong> scanned source exists but text is not searchable.</li>

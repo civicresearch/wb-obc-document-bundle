@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en" data-theme="light">
+<html lang="en" data-theme="dark">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -30,9 +30,9 @@
     (function () {
       try {
         var savedTheme = localStorage.getItem('wb-obc-theme');
-        document.documentElement.dataset.theme = savedTheme === 'dark' ? 'dark' : 'light';
+        document.documentElement.dataset.theme = savedTheme === 'light' ? 'light' : 'dark';
       } catch (error) {
-        document.documentElement.dataset.theme = 'light';
+        document.documentElement.dataset.theme = 'dark';
       }
     })();
   </script>
@@ -286,7 +286,7 @@
       </section>
 
       <div class="table-wrap case-matrix">
-        <table><thead><tr><th data-i18n="tableRecord">Record</th><th data-i18n="tableForum">Forum</th><th data-i18n="tableIssueTracked">Issue tracked</th><th data-i18n="tableLocalEvidence">Local evidence</th><th data-i18n="tableStatusDiscipline">Status discipline</th></tr></thead><tbody>
+        <table><thead><tr><th data-i18n="tableRecord">Record</th><th data-i18n="tableForum">Forum</th><th data-i18n="tableIssueTracked">Issue tracked</th><th data-i18n="tableLocalEvidence">Archived evidence</th><th data-i18n="tableStatusDiscipline">Status discipline</th></tr></thead><tbody>
           <tr><td>WPO 60/2011 and connected matters</td><td>Calcutta High Court</td><td>Validity/process of OBC-list and reservation actions</td><td>Bundled judgment copy</td><td>Read the operative portion; verify with court record.</td></tr>
           <tr><td>SLP(C) 17751–17755/2024</td><td>Supreme Court of India</td><td>Appeal from the 22 May 2024 High Court judgment</td><td>Bundled official 22 Nov 2024 order</td><td>Check latest case status before describing as pending or decided.</td></tr>
           <tr><td>Connected 2024 SLPs/diaries</td><td>Supreme Court of India</td><td>Related appeals and interventions arising from the 22 May 2024 judgment</td><td>Bundled official 7 Jan 2025 record; official 5 May 2026 cause list</td><td>Listed for final hearing; this audit found no final merits disposal order.</td></tr>
@@ -299,7 +299,7 @@
         </tbody></table>
       </div>
 
-      <div class="callout"><strong>Source discipline:</strong> the local bundle now includes key 2025–26 orders, but the large Supreme Court filing bundles remain catalogued rather than published. Add later certified/official orders, then map each order to the exact notification, survey memo, recruitment process, or admission process affected.</div>
+      <div class="callout"><strong>Source discipline:</strong> the archive includes key 2025–26 orders, but the large Supreme Court filing bundles remain catalogued rather than published. Add later certified/official orders, then map each order to the exact notification, survey memo, recruitment process, or admission process affected.</div>
     </section>
 
   </main>

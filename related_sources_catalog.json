@@ -1,6 +1,5 @@
 [
   {
-    "source_path": "/home/mhbook/Downloads/OBC OLD/obc_related/1993_WB_OBC_act1-1993.pdf",
     "local_file": "obc_pdfs/1993-03-15_WB-Commission-for-Backward-Classes-Act-1993.pdf",
     "title": "West Bengal Commission for Backward Classes Act, 1993",
     "pages": 6,
@@ -9,7 +8,6 @@
     "reason": "Foundational statutory record; compact and directly relevant."
   },
   {
-    "source_path": "/home/mhbook/Downloads/OBC OLD/obc_related/1993 OBC Rules.pdf",
     "local_file": "obc_pdfs/1993-11-25_WB-Commission-for-Backward-Classes-Rules-1993.pdf",
     "title": "West Bengal Commission for Backward Classes Rules, 1993",
     "pages": 9,
@@ -18,7 +16,6 @@
     "reason": "Directly supports the Commission process described in the timeline."
   },
   {
-    "source_path": "/home/mhbook/Downloads/OBC OLD/obc_related/diary-no-27287.2024-17751-17755.pdf",
     "title": "Supreme Court diary bundle relating to SLP(C) 17751-17755/2024",
     "pages": 4478,
     "bytes": 373604895,
@@ -26,7 +23,6 @@
     "reason": "Very large filing bundle. The site instead includes the shorter official Supreme Court record of proceedings and links this source for later curated extraction."
   },
   {
-    "source_path": "/home/mhbook/Downloads/OBC OLD/obc_related/diary-no-36073-2024.pdf",
     "title": "Supreme Court diary bundle 36073/2024",
     "pages": 2311,
     "bytes": 248765910,
@@ -34,7 +30,6 @@
     "reason": "Very large filing bundle; inspect and extract discrete orders, pleadings, or annexures before adding them."
   },
   {
-    "source_path": "/home/mhbook/Downloads/OBC OLD/obc_related/OBC SLP Copy.pdf",
     "title": "OBC SLP copy",
     "pages": 875,
     "bytes": 42987171,
@@ -42,7 +37,6 @@
     "reason": "Large case-paper compilation; add individual orders or material annexures rather than the whole bundle."
   },
   {
-    "source_path": "/home/mhbook/Downloads/OBC OLD/obc_related/WPA(P)-430-2024.pdf",
     "title": "WPA(P)-430-2024",
     "pages": 74,
     "bytes": 1733895,
@@ -50,7 +44,6 @@
     "reason": "Manageable size but requires case-title and provenance review before publication."
   },
   {
-    "source_path": "/home/mhbook/Downloads/OBC OLD/obc_related/Atmadeep Job Case.pdf",
     "title": "Atmadeep Job Case",
     "pages": 39,
     "bytes": 6636082,
@@ -59,7 +52,6 @@
     "reason": "Included as a party paper book and explicitly labelled as context material, not a judicial order."
   },
   {
-    "source_path": "/home/mhbook/Downloads/OBC OLD/obc_related/নতুন সার্ভের উপর স্থগিতাদেশ HC.pdf",
     "local_file": "case_pdfs/2025-06-17_Calcutta-High-Court_WPA-P-111-119-132-2025_benchmark-survey_order.pdf",
     "title": "17 June 2025 benchmark-survey order",
     "pages": 13,
@@ -68,7 +60,6 @@
     "reason": "Key High Court order on the 2025 benchmark-survey challenge; later subject to the 28 July 2025 Supreme Court interim stay."
   },
   {
-    "source_path": "/home/mhbook/Downloads/OBC OLD/obc_related/Supreme Court OBC Order_28-Jul-2025 (1).pdf",
     "local_file": "case_pdfs/2025-07-28_Supreme-Court_SLP-C-17422-17528-17973-17974-2025_stay_order.pdf",
     "title": "28 July 2025 Supreme Court interim stay order",
     "pages": 3,
@@ -77,7 +68,6 @@
     "reason": "Directly records the interim stay of the 17 June 2025 High Court order."
   },
   {
-    "source_path": "/home/mhbook/Downloads/OBC OLD/obc_related/display_pdf - 2026-06-15T094123.179.pdf",
     "local_file": "case_pdfs/2025-08-07_Calcutta-High-Court_CPAN-1362-1365-2025_JEMAS_contempt_order.pdf",
     "title": "7 August 2025 JEMAS PG contempt order",
     "pages": 12,
@@ -86,7 +76,6 @@
     "reason": "Connects the 2024 judgment to medical-admission implementation proceedings."
   },
   {
-    "source_path": "/home/mhbook/Downloads/OBC OLD/obc_related/WPA(P)-319-2026-document.pdf",
     "title": "WPA(P)-319-2026 document bundle",
     "pages": 117,
     "bytes": 3223900,
@@ -94,16 +83,14 @@
     "reason": "Image-only party filing in WPA(P) 319/2026, Mijanul Kabir & Anr. v. State of West Bengal & Ors.; it contains personal contact information and is not published in this bundle."
   },
   {
-    "source_path": "/home/mhbook/Downloads/OBC OLD/obc_related/Central obc related.pdf",
     "local_file": "obc_pdfs/2011_NCBC-Advice-West-Bengal_Compilation.pdf",
     "title": "NCBC advice concerning West Bengal compilation",
     "pages": 80,
     "bytes": 11088773,
     "decision": "included_with_provenance_label",
-    "reason": "Central-list context collection. Included as a local scan and clearly distinguished from State-list notifications."
+    "reason": "Central-list context collection. Included as a archived scan and clearly distinguished from State-list notifications."
   },
   {
-    "source_path": "/home/mhbook/Downloads/OBC OLD/obc_related/OBC Survey Block Form.pdf",
     "local_file": "obc_pdfs/WBCBC_OBC-Survey-Block-Proforma.pdf",
     "title": "West Bengal Commission for Backward Classes block survey proforma",
     "pages": 7,
@@ -112,7 +99,6 @@
     "reason": "Useful primary process template for population, social, educational, occupational, and representation evidence."
   },
   {
-    "source_path": "/home/mhbook/Downloads/OBC OLD/obc_related/display_pdf-17_260703200059.pdf",
     "local_file": "case_pdfs/2026-07-03_Calcutta-High-Court_WPA-P-305-2026_notifications-944-945-946_order.pdf",
     "title": "WPA(P) 305/2026 order",
     "pages": 4,
@@ -121,7 +107,6 @@
     "reason": "Directly addresses the PIL challenge to Notifications 944/945 and Letter 946."
   },
   {
-    "source_path": "/home/mhbook/Downloads/OBC OLD/obc_related/1033-BCW.pdf",
     "local_file": "obc_pdfs/2026-05-14_1033-Secy-BCW_caste-certificate-reverification.pdf",
     "title": "14 May 2026 caste-certificate re-verification instruction",
     "pages": 2,
@@ -130,16 +115,14 @@
     "reason": "Compact departmental instruction with direct administrative relevance; added as a visually checked scan and described as covering SC, ST, and OBC certificates, not OBC alone."
   },
   {
-    "source_path": "/home/mhbook/Downloads/OBC OLD/obc_related/display_pdf (3).pdf",
     "local_file": "case_pdfs/2026-07-08_Calcutta-High-Court_WPA-14695-2026_withdrawal_order.pdf",
     "title": "WPA 14695/2026 withdrawal order",
     "pages": 2,
     "bytes": 54057,
     "decision": "included_with_provenance_label",
-    "reason": "Compact, text-readable follow-up order in a tracked 2026 OBC recruitment-category case; included as a local source copy and clearly described as procedural."
+    "reason": "Compact, text-readable follow-up order in a tracked 2026 OBC recruitment-category case; included as a archived source copy and clearly described as procedural."
   },
   {
-    "source_path": "/home/mhbook/Downloads/OBC OLD/obc_related/Stay on HC Order.pdf",
     "local_file": "case_pdfs/2025-08-22_Supreme-Court_Diary-45526-45628-2025_JEMAS_stay_order.pdf",
     "title": "22 August 2025 Supreme Court JEMAS stay order",
     "pages": 2,
@@ -148,7 +131,6 @@
     "reason": "Direct follow-up order to the included 7 August 2025 JEMAS contempt matter; it records an interim stay and tagging with a tracked OBC SLP."
   },
   {
-    "source_path": "/home/mhbook/Downloads/OBC OLD/obc_related/OLD OBC guidelines.pdf",
     "local_file": "obc_pdfs/2010-04-30_1464-BCW-MR-59-10_OBC-certificate-guidelines.pdf",
     "title": "2010 OBC certificate guidelines",
     "pages": 8,
@@ -157,7 +139,6 @@
     "reason": "Direct West Bengal BCW memorandum; included as a visually checked historical source and labelled as superseded by the 2015 update."
   },
   {
-    "source_path": "/home/mhbook/Downloads/OBC OLD/obc_related/2010  Hundred point roster.pdf",
     "local_file": "obc_pdfs/2010-09-24_6320-BCW-MR-84-10_100-point-roster.pdf",
     "title": "2010 model 100-point roster",
     "pages": 5,
@@ -166,7 +147,6 @@
     "reason": "Direct gazetted implementation record for the 2010 OBC Category-A/Category-B arrangement."
   },
   {
-    "source_path": "/home/mhbook/Downloads/OBC OLD/obc_related/Update guidelines for issuance of OBC certificates (2015).pdf",
     "local_file": "obc_pdfs/2015-07-27_1204-SBCW-MR-67-10_updated-OBC-certificate-guidelines.pdf",
     "title": "2015 updated OBC certificate guidelines",
     "pages": 11,
@@ -175,7 +155,6 @@
     "reason": "Direct West Bengal BCW memorandum superseding the 2010 certificate guidelines; included with an explicit historical-status caution."
   },
   {
-    "source_path": "/home/mhbook/Downloads/OBC OLD/obc_related/Report on Sub-Categorization within OBCs -2015- Pandey635681469081640773.pdf",
     "local_file": "obc_pdfs/2015-03-02_NCBC_sub-categorization-within-OBCs_report.pdf",
     "title": "NCBC report on sub-categorization within OBCs",
     "pages": 17,
@@ -208,7 +187,7 @@
     "pages": 2,
     "bytes": 370709,
     "decision": "included_court_text_mirror_print",
-    "reason": "Relevant Calcutta High Court listing order in WPA(P) 387/2024 and 430/2024. A local print of the public court-text mirror is bundled for offline reading; retain the mirror URL and verify against an official or certified court PDF."
+    "reason": "Relevant Calcutta High Court listing order in WPA(P) 387/2024 and 430/2024. A archived print of the public court-text mirror is published in the archive; retain the mirror URL and verify against an official or certified court PDF."
   },
   {
     "source_url": "https://indiankanoon.org/doc/30501968/",
@@ -217,6 +196,6 @@
     "pages": 3,
     "bytes": 446460,
     "decision": "included_court_text_mirror_print",
-    "reason": "Relevant Calcutta High Court order in WPA 9132/2025. A local print of the public court-text mirror is bundled for offline reading; retain the mirror URL and verify against an official or certified court PDF."
+    "reason": "Relevant Calcutta High Court order in WPA 9132/2025. A archived print of the public court-text mirror is published in the archive; retain the mirror URL and verify against an official or certified court PDF."
   }
 ]

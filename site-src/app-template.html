@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en" data-theme="light">
+<html lang="en" data-theme="dark">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -30,9 +30,9 @@
     (function () {
       try {
         var savedTheme = localStorage.getItem('wb-obc-theme');
-        document.documentElement.dataset.theme = savedTheme === 'dark' ? 'dark' : 'light';
+        document.documentElement.dataset.theme = savedTheme === 'light' ? 'light' : 'dark';
       } catch (error) {
-        document.documentElement.dataset.theme = 'light';
+        document.documentElement.dataset.theme = 'dark';
       }
     })();
   </script>
@@ -255,13 +255,13 @@
             <tr><td data-i18n="quickRefRow4Q">Check whether a class is current or withdrawn</td><td><a href="#obc-list" data-i18n="quickRefRow4A">OBC List</a></td><td data-i18n="quickRefRow4Desc">Status table with inclusion date, exclusion/withdrawal date, source trail, and current status.</td></tr>
             <tr><td data-i18n="quickRefRow5Q">Search inside extracted PDFs</td><td><a href="#documents" data-i18n="quickRefRow5A">Source PDFs</a></td><td data-i18n="quickRefRow5Desc">Filterable document table with PDF links and text preview buttons.</td></tr>
             <tr><td data-i18n="quickRefRow6Q">Add court records</td><td><a href="#cases" data-i18n="quickRefRow6A">Litigation</a></td><td data-i18n="quickRefRow6Desc">Litigation tracker, issue matrix, party/court fields, orders, affected notifications, and evidence gaps.</td></tr>
-            <tr><td data-i18n="quickRefRow7Q">Check public-hearing notices</td><td><a href="#public-hearings" data-i18n="quickRefRow7A">Hearings &amp; Gaps</a></td><td data-i18n="quickRefRow7Desc">Hearing dates, times, named communities, and local notice PDFs.</td></tr>
-            <tr><td data-i18n="quickRefRow8Q">Add or audit files</td><td><a href="contribute.html" data-i18n="formReportSource">Report a source</a> / <a href="#entry-framework" data-i18n="navEntryFramework">Add Record Guide</a></td><td data-i18n="quickRefRow8Desc">A guided report route, structured fields, and the local PDF inventory.</td></tr>
+            <tr><td data-i18n="quickRefRow7Q">Check public-hearing notices</td><td><a href="#public-hearings" data-i18n="quickRefRow7A">Hearings &amp; Gaps</a></td><td data-i18n="quickRefRow7Desc">Hearing dates, times, named communities, and archived notice PDFs.</td></tr>
+            <tr><td data-i18n="quickRefRow8Q">Add or audit files</td><td><a href="contribute.html" data-i18n="formReportSource">Report a source</a> / <a href="#entry-framework" data-i18n="navEntryFramework">Add Record Guide</a></td><td data-i18n="quickRefRow8Desc">A guided report route, structured fields, and the source inventory.</td></tr>
           </tbody>
         </table>
       </div>
 
-      <p class="cloud-note">Portable bundle: source links use relative paths, so this page works from the repository, GitHub Pages, or a downloaded folder. Court-text mirror PDFs are retained locally for offline reading and always keep a link to their original mirror or official source.</p>
+      <p class="cloud-note">Source links point to published repository assets. Court-text mirror PDFs retain a link to their original mirror or official source.</p>
     </section>
 
     <section id="obc-list" class="research tab-panel" data-tab-panel="obc-list" hidden>
@@ -565,7 +565,7 @@
         <article class="report-card">
           <div class="report-meta">2015 · West Bengal research</div>
           <h3>Muslim OBCs in West Bengal</h3>
-          <p>This local research note links Mandal, Sachar, and West Bengal lists. It discusses Muslim OBC population estimates, classification issues, implementation problems, and the state’s Category-A/Category-B framework.</p>
+          <p>This research note links Mandal, Sachar, and West Bengal lists. It discusses Muslim OBC population estimates, classification issues, implementation problems, and the state’s Category-A/Category-B framework.</p>
           <ul class="content-list">
             <li><strong>Use here:</strong> contextualize West Bengal-specific Muslim OBC entries and gaps in identification or benefit delivery.</li>
             <li><strong>Relevant sections:</strong> Muslim OBC population, proforma/listing in West Bengal, implementation problems.</li>
@@ -576,10 +576,10 @@
         <article class="report-card">
           <div class="report-meta">2011 · NCBC advice compilation</div>
           <h3>Central OBC advice concerning West Bengal</h3>
-          <p>This 80-page local compilation begins with National Commission for Backward Classes advice concerning West Bengal communities. It is included as a source collection for Central-list context; it does not itself determine the current State OBC list.</p>
+          <p>This 80-page compilation begins with National Commission for Backward Classes advice concerning West Bengal communities. It is included as a source collection for Central-list context; it does not itself determine the current State OBC list.</p>
           <ul class="content-list">
             <li><strong>Use here:</strong> trace Central Commission advice and compare it carefully with State notifications.</li>
-            <li><strong>Source care:</strong> locally preserved scan; confirm the original NCBC record before relying on individual pages.</li>
+            <li><strong>Source care:</strong> archived scan; confirm the original NCBC record before relying on individual pages.</li>
           </ul>
           <div class="doc-actions"><a class="pdf-link" href="obc_pdfs/2011_NCBC-Advice-West-Bengal_Compilation.pdf" target="_blank" rel="noreferrer">Preview</a></div>
         </article>
@@ -597,7 +597,7 @@
           <p>This NCBC report was prepared for the Central List and considers methods, categories, and related issues for sub-categorisation. It is national policy context, not authority for the West Bengal State List or a substitute for a State notification.</p>
           <ul class="content-list">
             <li><strong>Use here:</strong> compare proposed sub-categorisation methods with the evidence and process used in State exercises.</li>
-            <li><strong>Source care:</strong> local scan dated 2 March 2015; verify the primary NCBC publication before relying on specific recommendations.</li>
+            <li><strong>Source care:</strong> archived scan dated 2 March 2015; verify the primary NCBC publication before relying on specific recommendations.</li>
           </ul>
           <div class="doc-actions"><a class="pdf-link" href="obc_pdfs/2015-03-02_NCBC_sub-categorization-within-OBCs_report.pdf" target="_blank" rel="noreferrer">Preview</a></div>
         </article>
@@ -614,7 +614,7 @@
           <button class="filter-btn" type="button" data-filter="legacy" data-i18n="timeline.filter.legacy">Legacy</button>
         </div>
       </div>
-      <p class="note" data-i18n="timelineNote">Reading note: green items reflect the latest position found in the local documents. Red items were expressly withdrawn by Notification No. 944-BCW/MR-23/2026. Amber items are scanned PDFs; where a scanned item is described, the detail is limited to what is text-extracted from the source PDF.</p>
+      <p class="note" data-i18n="timelineNote">Reading note: green items reflect the latest position found in the archived documents. Red items were expressly withdrawn by Notification No. 944-BCW/MR-23/2026. Amber items are scanned PDFs; where a scanned item is described, the detail is limited to what is text-extracted from the source PDF.</p>
       
       <!-- Loading Skeleton -->
       <div id="timeline-loader" class="skeleton-container hidden">
@@ -764,7 +764,7 @@
       </section>
 
       <div class="table-wrap case-matrix">
-        <table><thead><tr><th data-i18n="tableRecord">Record</th><th data-i18n="tableForum">Forum</th><th data-i18n="tableIssueTracked">Issue tracked</th><th data-i18n="tableLocalEvidence">Local evidence</th><th data-i18n="tableStatusDiscipline">Status discipline</th></tr></thead><tbody>
+        <table><thead><tr><th data-i18n="tableRecord">Record</th><th data-i18n="tableForum">Forum</th><th data-i18n="tableIssueTracked">Issue tracked</th><th data-i18n="tableLocalEvidence">Archived evidence</th><th data-i18n="tableStatusDiscipline">Status discipline</th></tr></thead><tbody>
           <tr><td>WPO 60/2011 and connected matters</td><td>Calcutta High Court</td><td>Validity/process of OBC-list and reservation actions</td><td>Bundled judgment copy</td><td>Read the operative portion; verify with court record.</td></tr>
           <tr><td>SLP(C) 17751–17755/2024</td><td>Supreme Court of India</td><td>Appeal from the 22 May 2024 High Court judgment</td><td>Bundled official 22 Nov 2024 order</td><td>Check latest case status before describing as pending or decided.</td></tr>
           <tr><td>Connected 2024 SLPs/diaries</td><td>Supreme Court of India</td><td>Related appeals and interventions arising from the 22 May 2024 judgment</td><td>Bundled official 7 Jan 2025 record; official 5 May 2026 cause list</td><td>Listed for final hearing; this audit found no final merits disposal order.</td></tr>
@@ -777,7 +777,7 @@
         </tbody></table>
       </div>
 
-      <div class="callout"><strong>Source discipline:</strong> the local bundle now includes key 2025–26 orders, but the large Supreme Court filing bundles remain catalogued rather than published. Add later certified/official orders, then map each order to the exact notification, survey memo, recruitment process, or admission process affected.</div>
+      <div class="callout"><strong>Source discipline:</strong> the archive includes key 2025–26 orders, but the large Supreme Court filing bundles remain catalogued rather than published. Add later certified/official orders, then map each order to the exact notification, survey memo, recruitment process, or admission process affected.</div>
     </section>
 
     <section id="entry-framework" class="research framework-section tab-panel" data-tab-panel="entry-framework" hidden>
@@ -793,7 +793,7 @@
             <li><strong>Document type:</strong> notification, order, corrigendum, hearing notice, court order, report, act, roster, certificate guideline.</li>
             <li><strong>Status:</strong> current, withdrawn, superseded, legacy, missing, draft, or verification-needed.</li>
             <li><strong>Short summary:</strong> one sentence describing legal or documentary effect.</li>
-            <li><strong>Source:</strong> local PDF path now, cloud URL later, plus source authority if known.</li>
+            <li><strong>Source:</strong> published PDF URL plus source authority, when known.</li>
           </ul>
         </article>
 
@@ -811,7 +811,7 @@
         <article class="framework-card">
           <h3 data-i18n="frameworkCard3Title">3. Missing-entry statuses</h3>
           <ul class="content-list">
-            <li><strong>Missing locally:</strong> known source exists, file not yet added.</li>
+            <li><strong>Not yet archived:</strong> known source exists, file not yet added.</li>
             <li><strong>Source not found:</strong> cited in another record, original PDF not located.</li>
             <li><strong>Partial:</strong> source found only as quote, mirror, OCR, or bundled page inside another PDF.</li>
             <li><strong>Needs OCR:</strong> scanned source exists but text is not searchable.</li>
@@ -864,7 +864,7 @@
 
     <section id="evidence" class="research tab-panel" data-tab-panel="evidence" hidden>
       <h2 id="missing-records" class="section-heading" data-i18n="completenessAuditHeading">Completeness Audit</h2>
-      <p class="section-sub">The local folders contain the core 2010, 2025, and 2026 notifications and a substantial public-hearing notice set. The remaining procedural gap is the West Bengal Commission for Backward Classes record behind the notices: benchmark-survey memos, class-wise advice reports, survey data, and later court records around the 2025 survey challenge.</p>
+      <p class="section-sub">The archive contains the core 2010, 2025, and 2026 notifications and a substantial public-hearing notice set. The remaining procedural gap is the West Bengal Commission for Backward Classes record behind the notices: benchmark-survey memos, class-wise advice reports, survey data, and later court records around the 2025 survey challenge.</p>
 
       <div class="research-grid">
         <div class="research-card found">
@@ -876,13 +876,13 @@
           <p>Benchmark-survey memos are quoted or mirrored online, but the original Commission PDF locations still need recovery or download from the department/Commission if available.</p>
         </div>
         <div class="research-card missing">
-          <h3 data-i18n="evidenceStillMissing">Still missing locally</h3>
-          <p>Class-wise Commission advice/survey reports, the benchmark-survey memo trail, complete court filings/orders after the 2025 survey challenge, and original source pages for any hearing notices that are present only as local scanned files.</p>
+          <h3 data-i18n="evidenceStillMissing">Not yet archived</h3>
+          <p>Class-wise Commission advice/survey reports, the benchmark-survey memo trail, complete court filings/orders after the 2025 survey challenge, and original source pages for hearing notices currently represented only by archived scans.</p>
         </div>
       </div>
 
       <h2 id="public-hearings" class="section-heading" data-i18n="publicHearingsHeading">Public Hearings / Jana Shunani</h2>
-      <p class="section-sub">The local PUBLIC HEARING folder now supplies a fuller Jana Shunani run from 29 April through 24 May 2025. The notices use Adivasi Bhavan, Premises No. 2221, Action Area 3A, Rajarhat, New Town, Kolkata-700160 as venue; visually read notices and text-extracted Bengali advertisements are listed below with source links.</p>
+      <p class="section-sub">The published hearing archive supplies a fuller Jana Shunani run from 29 April through 24 May 2025. The notices use Adivasi Bhavan, Premises No. 2221, Action Area 3A, Rajarhat, New Town, Kolkata-700160 as venue; visually read notices and text-extracted Bengali advertisements are listed below with source links.</p>
       <div class="table-wrap">
         <table>
           <thead>
@@ -899,21 +899,21 @@
         </table>
       </div>
 
-      <h2 class="section-heading" data-i18n="newSourcesHeading">New Local Sources Checked</h2>
+      <h2 class="section-heading" data-i18n="newSourcesHeading">New Sources Checked</h2>
       <div class="table-wrap">
         <table>
           <thead>
             <tr>
-              <th>Local source</th>
+              <th>Source</th>
               <th>What it adds</th>
               <th>Use in final dataset</th>
             </tr>
           </thead>
           <tbody>
             <tr>
-              <td><span class="missing-pill">Missing locally</span> OBC ANALYSIS REPORT WITH NOTIFICATION.xlsx</td>
+              <td><span class="missing-pill">Not archived</span> OBC ANALYSIS REPORT WITH NOTIFICATION.xlsx</td>
               <td>Six sheets: 66 pre-2010 classes; old OBC list; 2025 new list; notification plus hearing dates; classes struck down by High Court; A/B movement analysis.</td>
-              <td>Best local structured source. It records 66 pre-2010 entries, 114 struck-down/affected entries, and a 2025 comparison table.</td>
+              <td>Strong structured source. It records 66 pre-2010 entries, 114 struck-down/affected entries, and a 2025 comparison table.</td>
             </tr>
             <tr>
               <td><a href="https://raw.githubusercontent.com/civicresearch/wb-obc-document-bundle/main/Document%20needed%20for%20Cast%20certificate%20Issue/1204-SBCW%20(1).pdf" target="_blank" rel="noreferrer">Document needed for Cast certificate Issue</a></td>
@@ -979,7 +979,7 @@
             </tr>
             <tr>
               <td>Public hearing notices, 13 May to 24 May 2025</td>
-              <td>These complete the visible WBCBC public-hearing chain that is absent from the local folders.</td>
+              <td>These complete the visible WBCBC public-hearing chain that is not yet fully represented in the archive.</td>
               <td>
                 <ul class="source-list">
                   <li><a class="external" href="obc_pdfs/2025-05-13_PUBLIC-HEARING_Newspaper-Advertisement-13.05.2025.pdf" target="_blank" rel="noreferrer">13 May 2025</a></li>
@@ -998,7 +998,7 @@
             </tr>
             <tr>
               <td>Benchmark Survey memo dated 28 Feb 2025 and Nadia memo dated 1 Mar 2025</td>
-              <td>These are the survey-start documents challenged in later litigation. They are not in the local folders.</td>
+              <td>These are the survey-start documents challenged in later litigation. They are not yet in the archive.</td>
               <td>Original file not yet located. The 17 Jun 2025 High Court order records the 28 Feb Commission memo and 1 Mar District Welfare Officer communication; secondary mirrors reproduce the Nadia memo text.</td>
             </tr>
             <tr>
@@ -1023,7 +1023,7 @@
             </tr>
             <tr>
               <td>17 Jun 2025 High Court interim order</td>
-              <td>Important legal update after your local 2025 notification set: the order discusses the benchmark survey challenge, 113 sub-castes, and the 2025 notifications.</td>
+              <td>Important legal update after the 2025 notification set: the order discusses the benchmark survey challenge, 113 sub-castes, and the 2025 notifications.</td>
               <td><a class="external" href="https://indiankanoon.org/doc/44591998/" target="_blank" rel="noreferrer">Order text on Indian Kanoon</a></td>
             </tr>
             <tr>
@@ -3407,8 +3407,8 @@ tr:last-child td {
   --ink: #11253f;
   --paper: #edf2f5;
   --panel: #ffffff;
-  --accent: #a94331;
-  --gold: #b57917;
+  --accent: #f59e0b;
+  --gold: #f0b232;
   --border: #d5e0e8;
 }
 body { font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; line-height: 1.62; }
@@ -3609,7 +3609,7 @@ body { font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSyst
 :root {
   --surface-gradient: linear-gradient(145deg, #ffffff 0%, #f7fafb 100%);
   --surface-gradient-cool: linear-gradient(145deg, #f8fbfc 0%, #eef6f5 100%);
-  --accent-gradient: linear-gradient(120deg, #b24c35 0%, #c18b32 52%, #147a73 100%);
+  --accent-gradient: linear-gradient(120deg, #fbbf24 0%, #f97316 50%, #2dd4bf 100%);
   --blue-gradient: linear-gradient(135deg, #10253f 0%, #173f5f 58%, #126b70 100%);
   --table-head: #f6f9fb;
   --table-head-accent: #dfeaf0;
@@ -5647,6 +5647,13 @@ html[data-theme="dark"] .modal-related a {
     gap: 4px;
   }
 }
+
+@media (max-width: 640px) {
+  #obc-class-table :is(th, td):nth-child(n),
+  #docs-table :is(th, td):nth-child(n) {
+    width: 100%;
+  }
+}
 </style>
 
 
@@ -5656,7 +5663,7 @@ const INLINE_JSON_DATA = window.OBC_INLINE_JSON || {};
 const OBC_DOCS = loadJsonSync('obc_documents.json');
 const SUPPLEMENTAL_DOCS = loadJsonSync('supplemental_documents.json');
 // Private manifests are intentionally excluded from the public build. Keeping
-// these arrays local avoids a pair of expected 404 requests on every page.
+// Keeping these optional arrays empty avoids expected 404 requests on every page.
 const PRIVATE_DOCS = [];
 const SUPPLEMENTAL_TIMELINE = SUPPLEMENTAL_DOCS.filter(doc => doc.show_on_timeline);
 const OBC_CLASS_DATA = loadJsonSync('obc_classes.json', { current_classes_2026: [], first_inclusion: {}, class_changes: [] });
@@ -5686,7 +5693,7 @@ function getActiveLang() {
     const savedLang = localStorage.getItem('wb-obc-lang');
     if (savedLang === 'bn' || savedLang === 'en') return savedLang;
   } catch (error) {
-    // localStorage can be unavailable in some file:// or privacy contexts.
+    // Browser storage can be unavailable in restricted privacy contexts.
   }
   return document.documentElement.lang === 'bn' || document.body.classList.contains('lang-bn') ? 'bn' : 'en';
 }
@@ -5741,7 +5748,7 @@ function showDataLoadWarning() {
   const warning = document.getElementById('data-load-warning');
   if (!warning || !DATA_LOAD_ERRORS.length) return;
   warning.hidden = false;
-  warning.innerHTML = `<strong>Some data files did not load.</strong> Missing: ${DATA_LOAD_ERRORS.map(escapeHtml).join(', ')}. If you opened this page directly as a file, run <code>npm run serve</code> and open <code>http://127.0.0.1:8123/index.html</code>.`;
+  warning.innerHTML = `<strong>Some published data files did not load.</strong> Missing: ${DATA_LOAD_ERRORS.map(escapeHtml).join(', ')}. Please reload the page or report the missing files.`;
 }
 
 function renderTimelineEvents(events, forceLang) {
@@ -5938,8 +5945,7 @@ function titleCase(value) {
 }
 
 function resolveAssetPath(path) {
-  // Prepends the raw-GitHub base (set in <head>) to relative asset paths
-  // when this page isn't served from GitHub Pages or run locally.
+  // Prepends the configured public asset base to relative repository paths.
   if (!path || /^https?:\/\//.test(path)) return path;
   return (window.OBC_ASSET_BASE || '') + path;
 }
@@ -5948,10 +5954,9 @@ function githubBundleUrl(doc, fallbackPath = '') {
   if (!doc) return resolveAssetPath(fallbackPath);
   if (/^https?:\/\//.test(doc.local_pdf || '')) return doc.local_pdf;
   if (/^https?:\/\//.test(fallbackPath)) return fallbackPath;
-  // Research manifests sometimes retain a machine-local absolute path. Such
-  // paths are never valid public URLs, so omit the preview instead of leaking
-  // or displaying them in the document table.
+  // Absolute filesystem paths are never valid public URLs.
   if (/^(?:[A-Za-z]:[\\/]|\/)/.test(doc.local_pdf || '')) return '';
+  if (!doc.local_pdf && !fallbackPath) return '';
   if (doc.local_pdf && (doc.local_pdf.includes('/') || doc.local_pdf.includes('\\'))) {
     return resolveAssetPath(doc.local_pdf);
   }
@@ -5971,7 +5976,7 @@ function rewriteStaticAssetLinks() {
   // The markup that was rendered server-side (not through pdfHref/githubBundleUrl
   // above) still has plain relative hrefs like "obc_pdfs/foo.pdf" or
   // "case_pdfs/bar.pdf" or "obc_pdf_manifest.json". Rewrite those too when
-  // OBC_ASSET_BASE is set (i.e. we are not on GitHub Pages or local).
+  // OBC_ASSET_BASE is set when assets are served from a separate public base.
   const base = window.OBC_ASSET_BASE;
   if (!base) return;
   document.querySelectorAll('a[href]').forEach(a => {
@@ -6154,7 +6159,7 @@ function renderPrivateDocs() {
     tbody.appendChild(renderDocRow(sourceDoc, idx, {
       supplemental: true,
       statusLabel: sourceDoc.status || 'private',
-      summaryPrefix: sourceDoc.source_batch || 'private local source'
+      summaryPrefix: sourceDoc.source_batch || 'supplemental source'
     }));
   });
 }
@@ -6334,7 +6339,7 @@ const HERO_CONTENT = {
     titleKey: 'aboutTitle',
     subKey: 'aboutSub',
     stats: [
-      ['Local', 'aboutStat1Label', 'aboutStat1Value'],
+      ['Sources', 'aboutStat1Label', 'aboutStat1Value'],
       ['Primary', 'aboutStat2Label', 'aboutStat2Value'],
       ['Scope', 'aboutStat3Label', 'aboutStat3Value'],
       ['Care', 'aboutStat4Label', 'aboutStat4Value']
@@ -6419,7 +6424,7 @@ const HERO_CONTENT = {
     subKey: 'casesSectionSub',
     stats: [
       ['2024', 'casesStat1Label'],
-      ['Local', 'casesStat2Label', 'casesStat2Value'],
+      ['Orders', 'casesStat2Label', 'casesStat2Value'],
       ['Sources', 'casesStat3Label', 'casesStat3Value'],
       ['Verify', 'casesStat4Label', 'casesStat4Value']
     ]
@@ -6449,14 +6454,14 @@ const HERO_CONTENT = {
     ]
   },
   inventory: {
-    eyebrow: 'Files · Local bundle inventory',
+    eyebrow: 'Files · Published source inventory',
     titleKey: 'inventory.title',
     subKey: 'inventorySub',
     stats: [
-      ['PDF', 'Local source files are linked directly.'],
+      ['PDF', 'Published source files are linked directly.'],
       ['JSON', 'Manifest files support migration or cloud replacement.'],
       ['Pages', 'Inventory rows include page counts where available.'],
-      ['Offline', 'The HTML remains usable with bundled local files.']
+      ['Links', 'Repository assets use stable public paths.']
     ]
   }
 };

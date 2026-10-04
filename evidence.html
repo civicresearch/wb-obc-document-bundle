@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en" data-theme="light">
+<html lang="en" data-theme="dark">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -30,9 +30,9 @@
     (function () {
       try {
         var savedTheme = localStorage.getItem('wb-obc-theme');
-        document.documentElement.dataset.theme = savedTheme === 'dark' ? 'dark' : 'light';
+        document.documentElement.dataset.theme = savedTheme === 'light' ? 'light' : 'dark';
       } catch (error) {
-        document.documentElement.dataset.theme = 'light';
+        document.documentElement.dataset.theme = 'dark';
       }
     })();
   </script>
@@ -158,7 +158,7 @@
 
     <section id="evidence" class="research tab-panel" data-tab-panel="evidence">
       <h2 id="missing-records" class="section-heading" data-i18n="completenessAuditHeading">Completeness Audit</h2>
-      <p class="section-sub">The local folders contain the core 2010, 2025, and 2026 notifications and a substantial public-hearing notice set. The remaining procedural gap is the West Bengal Commission for Backward Classes record behind the notices: benchmark-survey memos, class-wise advice reports, survey data, and later court records around the 2025 survey challenge.</p>
+      <p class="section-sub">The archive contains the core 2010, 2025, and 2026 notifications and a substantial public-hearing notice set. The remaining procedural gap is the West Bengal Commission for Backward Classes record behind the notices: benchmark-survey memos, class-wise advice reports, survey data, and later court records around the 2025 survey challenge.</p>
 
       <div class="research-grid">
         <div class="research-card found">
@@ -170,13 +170,13 @@
           <p>Benchmark-survey memos are quoted or mirrored online, but the original Commission PDF locations still need recovery or download from the department/Commission if available.</p>
         </div>
         <div class="research-card missing">
-          <h3 data-i18n="evidenceStillMissing">Still missing locally</h3>
-          <p>Class-wise Commission advice/survey reports, the benchmark-survey memo trail, complete court filings/orders after the 2025 survey challenge, and original source pages for any hearing notices that are present only as local scanned files.</p>
+          <h3 data-i18n="evidenceStillMissing">Not yet archived</h3>
+          <p>Class-wise Commission advice/survey reports, the benchmark-survey memo trail, complete court filings/orders after the 2025 survey challenge, and original source pages for hearing notices currently represented only by archived scans.</p>
         </div>
       </div>
 
       <h2 id="public-hearings" class="section-heading" data-i18n="publicHearingsHeading">Public Hearings / Jana Shunani</h2>
-      <p class="section-sub">The local PUBLIC HEARING folder now supplies a fuller Jana Shunani run from 29 April through 24 May 2025. The notices use Adivasi Bhavan, Premises No. 2221, Action Area 3A, Rajarhat, New Town, Kolkata-700160 as venue; visually read notices and text-extracted Bengali advertisements are listed below with source links.</p>
+      <p class="section-sub">The published hearing archive supplies a fuller Jana Shunani run from 29 April through 24 May 2025. The notices use Adivasi Bhavan, Premises No. 2221, Action Area 3A, Rajarhat, New Town, Kolkata-700160 as venue; visually read notices and text-extracted Bengali advertisements are listed below with source links.</p>
       <div class="table-wrap">
         <table>
           <thead>
@@ -193,21 +193,21 @@
         </table>
       </div>
 
-      <h2 class="section-heading" data-i18n="newSourcesHeading">New Local Sources Checked</h2>
+      <h2 class="section-heading" data-i18n="newSourcesHeading">New Sources Checked</h2>
       <div class="table-wrap">
         <table>
           <thead>
             <tr>
-              <th>Local source</th>
+              <th>Source</th>
               <th>What it adds</th>
               <th>Use in final dataset</th>
             </tr>
           </thead>
           <tbody>
             <tr>
-              <td><span class="missing-pill">Missing locally</span> OBC ANALYSIS REPORT WITH NOTIFICATION.xlsx</td>
+              <td><span class="missing-pill">Not archived</span> OBC ANALYSIS REPORT WITH NOTIFICATION.xlsx</td>
               <td>Six sheets: 66 pre-2010 classes; old OBC list; 2025 new list; notification plus hearing dates; classes struck down by High Court; A/B movement analysis.</td>
-              <td>Best local structured source. It records 66 pre-2010 entries, 114 struck-down/affected entries, and a 2025 comparison table.</td>
+              <td>Strong structured source. It records 66 pre-2010 entries, 114 struck-down/affected entries, and a 2025 comparison table.</td>
             </tr>
             <tr>
               <td><a href="https://raw.githubusercontent.com/civicresearch/wb-obc-document-bundle/main/Document%20needed%20for%20Cast%20certificate%20Issue/1204-SBCW%20(1).pdf" target="_blank" rel="noreferrer">Document needed for Cast certificate Issue</a></td>
@@ -273,7 +273,7 @@
             </tr>
             <tr>
               <td>Public hearing notices, 13 May to 24 May 2025</td>
-              <td>These complete the visible WBCBC public-hearing chain that is absent from the local folders.</td>
+              <td>These complete the visible WBCBC public-hearing chain that is not yet fully represented in the archive.</td>
               <td>
                 <ul class="source-list">
                   <li><a class="external" href="obc_pdfs/2025-05-13_PUBLIC-HEARING_Newspaper-Advertisement-13.05.2025.pdf" target="_blank" rel="noreferrer">13 May 2025</a></li>
@@ -292,7 +292,7 @@
             </tr>
             <tr>
               <td>Benchmark Survey memo dated 28 Feb 2025 and Nadia memo dated 1 Mar 2025</td>
-              <td>These are the survey-start documents challenged in later litigation. They are not in the local folders.</td>
+              <td>These are the survey-start documents challenged in later litigation. They are not yet in the archive.</td>
               <td>Original file not yet located. The 17 Jun 2025 High Court order records the 28 Feb Commission memo and 1 Mar District Welfare Officer communication; secondary mirrors reproduce the Nadia memo text.</td>
             </tr>
             <tr>
@@ -317,7 +317,7 @@
             </tr>
             <tr>
               <td>17 Jun 2025 High Court interim order</td>
-              <td>Important legal update after your local 2025 notification set: the order discusses the benchmark survey challenge, 113 sub-castes, and the 2025 notifications.</td>
+              <td>Important legal update after the 2025 notification set: the order discusses the benchmark survey challenge, 113 sub-castes, and the 2025 notifications.</td>
               <td><a class="external" href="https://indiankanoon.org/doc/44591998/" target="_blank" rel="noreferrer">Order text on Indian Kanoon</a></td>
             </tr>
             <tr>

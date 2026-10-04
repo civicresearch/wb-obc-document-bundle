@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en" data-theme="light">
+<html lang="en" data-theme="dark">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -30,9 +30,9 @@
     (function () {
       try {
         var savedTheme = localStorage.getItem('wb-obc-theme');
-        document.documentElement.dataset.theme = savedTheme === 'dark' ? 'dark' : 'light';
+        document.documentElement.dataset.theme = savedTheme === 'light' ? 'light' : 'dark';
       } catch (error) {
-        document.documentElement.dataset.theme = 'light';
+        document.documentElement.dataset.theme = 'dark';
       }
     })();
   </script>
@@ -166,7 +166,7 @@
           <button class="filter-btn" type="button" data-filter="legacy" data-i18n="timeline.filter.legacy">Legacy</button>
         </div>
       </div>
-      <p class="note" data-i18n="timelineNote">Reading note: green items reflect the latest position found in the local documents. Red items were expressly withdrawn by Notification No. 944-BCW/MR-23/2026. Amber items are scanned PDFs; where a scanned item is described, the detail is limited to what is text-extracted from the source PDF.</p>
+      <p class="note" data-i18n="timelineNote">Reading note: green items reflect the latest position found in the archived documents. Red items were expressly withdrawn by Notification No. 944-BCW/MR-23/2026. Amber items are scanned PDFs; where a scanned item is described, the detail is limited to what is text-extracted from the source PDF.</p>
 
       <!-- Loading Skeleton -->
       <div id="timeline-loader" class="skeleton-container hidden">

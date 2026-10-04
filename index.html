@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en" data-theme="light">
+<html lang="en" data-theme="dark">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -30,9 +30,9 @@
     (function () {
       try {
         var savedTheme = localStorage.getItem('wb-obc-theme');
-        document.documentElement.dataset.theme = savedTheme === 'dark' ? 'dark' : 'light';
+        document.documentElement.dataset.theme = savedTheme === 'light' ? 'light' : 'dark';
       } catch (error) {
-        document.documentElement.dataset.theme = 'light';
+        document.documentElement.dataset.theme = 'dark';
       }
     })();
   </script>
@@ -255,13 +255,13 @@
             <tr><td data-i18n="quickRefRow4Q">Check whether a class is current or withdrawn</td><td><a href="obc-list.html" data-i18n="quickRefRow4A">OBC List</a></td><td data-i18n="quickRefRow4Desc">Status table with inclusion date, exclusion/withdrawal date, source trail, and current status.</td></tr>
             <tr><td data-i18n="quickRefRow5Q">Search inside extracted PDFs</td><td><a href="documents.html" data-i18n="quickRefRow5A">Source PDFs</a></td><td data-i18n="quickRefRow5Desc">Filterable document table with PDF links and text preview buttons.</td></tr>
             <tr><td data-i18n="quickRefRow6Q">Add court records</td><td><a href="litigation.html" data-i18n="quickRefRow6A">Litigation</a></td><td data-i18n="quickRefRow6Desc">Litigation tracker, issue matrix, party/court fields, orders, affected notifications, and evidence gaps.</td></tr>
-            <tr><td data-i18n="quickRefRow7Q">Check public-hearing notices</td><td><a href="evidence.html#public-hearings" data-i18n="quickRefRow7A">Hearings &amp; Gaps</a></td><td data-i18n="quickRefRow7Desc">Hearing dates, times, named communities, and local notice PDFs.</td></tr>
-            <tr><td data-i18n="quickRefRow8Q">Add or audit files</td><td><a href="contribute.html" data-i18n="formReportSource">Report a source</a> / <a href="record-guide.html" data-i18n="navEntryFramework">Add Record Guide</a></td><td data-i18n="quickRefRow8Desc">A guided report route, structured fields, and the local PDF inventory.</td></tr>
+            <tr><td data-i18n="quickRefRow7Q">Check public-hearing notices</td><td><a href="evidence.html#public-hearings" data-i18n="quickRefRow7A">Hearings &amp; Gaps</a></td><td data-i18n="quickRefRow7Desc">Hearing dates, times, named communities, and archived notice PDFs.</td></tr>
+            <tr><td data-i18n="quickRefRow8Q">Add or audit files</td><td><a href="contribute.html" data-i18n="formReportSource">Report a source</a> / <a href="record-guide.html" data-i18n="navEntryFramework">Add Record Guide</a></td><td data-i18n="quickRefRow8Desc">A guided report route, structured fields, and the source inventory.</td></tr>
           </tbody>
         </table>
       </div>
 
-      <p class="cloud-note">Portable bundle: source links use relative paths, so this page works from the repository, GitHub Pages, or a downloaded folder. Court-text mirror PDFs are retained locally for offline reading and always keep a link to their original mirror or official source.</p>
+      <p class="cloud-note">Source links point to published repository assets. Court-text mirror PDFs retain a link to their original mirror or official source.</p>
     </section>
 
   </main>
