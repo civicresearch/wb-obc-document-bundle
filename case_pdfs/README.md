@@ -1,6 +1,6 @@
 # Litigation source bundle
 
-This directory holds court material used by the `Cases` tab in `obc_timeline.html`.
+This directory holds court material used by `litigation.html` and the standalone archive.
 It is a research archive, not a statement of current case status. Check the relevant court's case-status service before relying on any entry.
 
 | Archived file | Record | Source and provenance |
@@ -22,3 +22,16 @@ It is a research archive, not a statement of current case status. Check the rele
 | `2026-07-08_Calcutta-High-Court_WPA-14695-2026_withdrawal_order.pdf` | Bistriti Parveen withdrawal order | Archived source copy. The writ petition was dismissed as withdrawn with liberty to file afresh; any interim order was vacated, and the merits were not determined. SHA-256: `157f5fa4d9fbdf57e2a36a8b895f29573022303a69033cce5467db07ca9273da`. |
 
 The pre-2010 OBC orders bundle is in `../obc_pdfs/1993-2010_Official-Combined-OBC-Orders-and-Notifications.pdf`; it was downloaded from the West Bengal Anagrasar Kalyan Department and has SHA-256 `76a8e964210ea2999e4198c9039486187d85d2402b986dc4510bea8f34366132`.
+
+## Research refresh — 4 November 2026
+
+The six new court records below are locally typeset reproductions of public Indian Kanoon court text, not official or certified court PDFs. Their pagination differs from the originals. The July withdrawal applies only to the petitions named in that order. The October order directs listing on 23 November 2026; that is a future direction, not a verified hearing outcome.
+
+| File | Source | SHA-256 |
+| --- | --- | --- |
+| `2026-07-14_Supreme-Court_OBC-SLPs_withdrawal_order.pdf` | [Court-text mirror](https://indiankanoon.org/doc/16492254/) | `fce585e2163e85dc243d944d389429364474b5dab640dada2b86bce4c61d8366` |
+| `2026-08-12_Calcutta-High-Court_MAT-1320-2026_Shreyasi-Dhang_judgment.pdf` | [Court-text mirror](https://indiankanoon.org/doc/60350638/) | `52800a5b60d31cbfa4e167423783b3ca6fe409aa95e6e372ccf5fe92dacf82ea` |
+| `2026-10-01_Supreme-Court_Diary-41300-50605-2026_order.pdf` | [Court-text mirror](https://indiankanoon.org/doc/147304353/) | `70f598adb58686fa6225cd49f5d171c45f56a0c89f2944158097002f64e77f08` |
+| `2026-10-13_Calcutta-High-Court_WPA-29788-2026_Nilanjona-Kundu_order.pdf` | [Court-text mirror](https://indiankanoon.org/doc/100359379/) | `72d5e6107853c1c1d9b179cced27f4d682cbbc7c768dd1cc008f5721caf439c3` |
+| `2026-10-15_Calcutta-High-Court_WPA-30672-2026_Abeda-Khatoon_order.pdf` | [Court-text mirror](https://indiankanoon.org/doc/174058171/) | `bf2987f8c5ab6d499e7a3ea9d934150ab69f28b26fc5c88fae35b754a5a796a4` |
+| `2026-10-31_Calcutta-High-Court_WPA-31572-2026_Mohabul-Islam_order.pdf` | [Court-text mirror](https://indiankanoon.org/doc/190165311/) | `33239e1eaf509b904de68a7f7347098bc4d4fbfa8e17e8940c19f9035be9b7dc` |

@@ -197,5 +197,112 @@
     "bytes": 446460,
     "decision": "included_court_text_mirror_print",
     "reason": "Relevant Calcutta High Court order in WPA 9132/2025. A archived print of the public court-text mirror is published in the archive; retain the mirror URL and verify against an official or certified court PDF."
+  },
+  {
+    "title": "2026-07-14_Supreme-Court_OBC-SLPs_withdrawal_order",
+    "decision": "included",
+    "reason": "4 November 2026 research refresh; provenance and hash recorded.",
+    "bytes": 9073,
+    "source_url": "https://indiankanoon.org/doc/16492254/",
+    "local_file": "case_pdfs/2026-07-14_Supreme-Court_OBC-SLPs_withdrawal_order.pdf",
+    "pages": 5,
+    "sha256": "fce585e2163e85dc243d944d389429364474b5dab640dada2b86bce4c61d8366"
+  },
+  {
+    "title": "2026-08-12_Calcutta-High-Court_MAT-1320-2026_Shreyasi-Dhang_judgment",
+    "decision": "included",
+    "reason": "4 November 2026 research refresh; provenance and hash recorded.",
+    "bytes": 18187,
+    "source_url": "https://indiankanoon.org/doc/60350638/",
+    "local_file": "case_pdfs/2026-08-12_Calcutta-High-Court_MAT-1320-2026_Shreyasi-Dhang_judgment.pdf",
+    "pages": 9,
+    "sha256": "52800a5b60d31cbfa4e167423783b3ca6fe409aa95e6e372ccf5fe92dacf82ea"
+  },
+  {
+    "title": "2026-10-01_Supreme-Court_Diary-41300-50605-2026_order",
+    "decision": "included",
+    "reason": "4 November 2026 research refresh; provenance and hash recorded.",
+    "bytes": 6403,
+    "source_url": "https://indiankanoon.org/doc/147304353/",
+    "local_file": "case_pdfs/2026-10-01_Supreme-Court_Diary-41300-50605-2026_order.pdf",
+    "pages": 3,
+    "sha256": "70f598adb58686fa6225cd49f5d171c45f56a0c89f2944158097002f64e77f08"
+  },
+  {
+    "title": "2026-10-13_Calcutta-High-Court_WPA-29788-2026_Nilanjona-Kundu_order",
+    "decision": "included",
+    "reason": "4 November 2026 research refresh; provenance and hash recorded.",
+    "bytes": 13955,
+    "source_url": "https://indiankanoon.org/doc/100359379/",
+    "local_file": "case_pdfs/2026-10-13_Calcutta-High-Court_WPA-29788-2026_Nilanjona-Kundu_order.pdf",
+    "pages": 7,
+    "sha256": "72d5e6107853c1c1d9b179cced27f4d682cbbc7c768dd1cc008f5721caf439c3"
+  },
+  {
+    "title": "2026-10-15_Calcutta-High-Court_WPA-30672-2026_Abeda-Khatoon_order",
+    "decision": "included",
+    "reason": "4 November 2026 research refresh; provenance and hash recorded.",
+    "bytes": 15149,
+    "source_url": "https://indiankanoon.org/doc/174058171/",
+    "local_file": "case_pdfs/2026-10-15_Calcutta-High-Court_WPA-30672-2026_Abeda-Khatoon_order.pdf",
+    "pages": 7,
+    "sha256": "bf2987f8c5ab6d499e7a3ea9d934150ab69f28b26fc5c88fae35b754a5a796a4"
+  },
+  {
+    "title": "2026-10-31_Calcutta-High-Court_WPA-31572-2026_Mohabul-Islam_order",
+    "decision": "included",
+    "reason": "4 November 2026 research refresh; provenance and hash recorded.",
+    "bytes": 11979,
+    "source_url": "https://indiankanoon.org/doc/190165311/",
+    "local_file": "case_pdfs/2026-10-31_Calcutta-High-Court_WPA-31572-2026_Mohabul-Islam_order.pdf",
+    "pages": 6,
+    "sha256": "33239e1eaf509b904de68a7f7347098bc4d4fbfa8e17e8940c19f9035be9b7dc"
+  },
+  {
+    "title": "2026-07-15_658-L_amendment-act",
+    "decision": "included",
+    "reason": "4 November 2026 research refresh; provenance and hash recorded.",
+    "bytes": 868539,
+    "source_url": "https://anagrasarkalyan.gov.in/documnts/658-L%20Dated%2015072026.pdf",
+    "local_file": "obc_pdfs/2026-07-15_658-L_amendment-act.pdf",
+    "pages": 3,
+    "sha256": "65535f813a16a83b6b380b9a51b22bbc64117306b9cef1d46b830beb5c5844fc"
+  },
+  {
+    "title": "2026-07-15_659-L_amendment-act",
+    "decision": "included",
+    "reason": "4 November 2026 research refresh; provenance and hash recorded.",
+    "bytes": 548508,
+    "source_url": "https://anagrasarkalyan.gov.in/documnts/659-L%20Dated%2015072026.pdf",
+    "local_file": "obc_pdfs/2026-07-15_659-L_amendment-act.pdf",
+    "pages": 2,
+    "sha256": "a7ca489e008a991b31e9fe5d8947aea854d41b5ab103e357c2b2167faffc6da0"
+  },
+  {
+    "title": "2026-07-27_1579-BCW_commencement",
+    "decision": "included",
+    "reason": "4 November 2026 research refresh; provenance and hash recorded.",
+    "bytes": 246548,
+    "source_url": "https://anagrasarkalyan.gov.in/documnts/1579-BCW%20Dt.%20Kolkata%20the%2027%20July,%202026.pdf",
+    "local_file": "obc_pdfs/2026-07-27_1579-BCW_commencement.pdf",
+    "pages": 1,
+    "sha256": "ae4f4ff638331eee659b4de264116c04737fcfb96b5fa3a5c388cc3d5c9f2f04"
+  },
+  {
+    "title": "2026-07-27_1580-BCW_commencement",
+    "decision": "included",
+    "reason": "4 November 2026 research refresh; provenance and hash recorded.",
+    "bytes": 238176,
+    "source_url": "https://anagrasarkalyan.gov.in/documnts/1580-BCW%20Dt.%20Kolkata%20the%2027%20July,%202026.pdf",
+    "local_file": "obc_pdfs/2026-07-27_1580-BCW_commencement.pdf",
+    "pages": 1,
+    "sha256": "5bebafda7cd97ccbeef704496ee1e0b02c96a31d164dcc1b75702b492c308e03"
+  },
+  {
+    "title": "Memo 1060/Secy/BCW/7P-63/2024 dated 7 August 2026 — ongoing recruitment guidance",
+    "source_url": "https://wbxpress.com/recruitment-rules-obc-reservation-policy/",
+    "decision": "verification_needed",
+    "reason": "Public transcription located; official PDF not collected in this refresh. Later court orders refer to this memo. Obtain the government copy before adding extracted operative text or claiming universal employee protection.",
+    "reviewed_on": "2026-11-04"
   }
 ]

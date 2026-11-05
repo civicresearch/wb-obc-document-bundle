@@ -87,10 +87,15 @@ checkDuplicateIds('timeline_events.json', timelineEvents);
 
 const caseEvents = parsed.get('case_events.json');
 caseEvents.forEach((event, index) => {
+  requireField('case_events.json', event, index, 'id');
   requireField('case_events.json', event, index, 'date');
   requireField('case_events.json', event, index, 'title');
   requireField('case_events.json', event, index, 'html');
+  if (!['order', 'office_report', 'party_filing'].includes(event.record_kind)) {
+    failures.push(`case_events.json[${index}]: invalid record_kind ${event.record_kind}`);
+  }
   checkHtmlLinks('case_events.json', event.html, event.title || `row ${index}`);
+  checkHtmlLinks('case_events.json', event.html_bn, event.title || `row ${index}`);
 });
 checkDuplicateIds('case_events.json', caseEvents);
 
@@ -155,6 +160,10 @@ const caseManifest = parsed.get('case_manifest.json');
 caseManifest.forEach((record, index) => {
   requireField('case_manifest.json', record, index, 'date');
   requireField('case_manifest.json', record, index, 'title');
+  if (record.sha256 && record.local_file && fs.existsSync(path.join(root, record.local_file))) {
+    const actual = require('crypto').createHash('sha256').update(fs.readFileSync(path.join(root, record.local_file))).digest('hex');
+    if (actual !== record.sha256) failures.push(`case_manifest.json[${index}]: SHA-256 mismatch`);
+  }
   if (!record.local_file && !Array.isArray(record.local_files)) {
     failures.push(`case_manifest.json[${index}]: missing local_file or local_files`);
   }

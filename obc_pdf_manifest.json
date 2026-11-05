@@ -332,5 +332,45 @@
     "date": "2015-03-02",
     "local_pdf": "obc_pdfs/2015-03-02_NCBC_sub-categorization-within-OBCs_report.pdf",
     "summary": "National Commission for Backward Classes report on sub-categorisation within OBCs; Central-list policy context, not a West Bengal State-list notification."
+  },
+  {
+    "status": "copied",
+    "notif_no": "658-L / West Bengal Act VIII of 2026",
+    "date": "2026-07-15",
+    "local_pdf": "obc_pdfs/2026-07-15_658-L_amendment-act.pdf",
+    "summary": "The amendment revises the statutory definitions, reservation and sub-categorisation provisions, certificate requirements and schedules, and omits section 16. Percentage-setting and sub-categorisation require consultation with the Commission. Published on 15 July; brought into force on 27 July 2026 by BCW/15011/17/1579. The amendment does not itself publish a new class list or restore 17% reservation.",
+    "source_url": "https://anagrasarkalyan.gov.in/documnts/658-L%20Dated%2015072026.pdf",
+    "pages": 3,
+    "sha256": "65535f813a16a83b6b380b9a51b22bbc64117306b9cef1d46b830beb5c5844fc"
+  },
+  {
+    "status": "copied",
+    "notif_no": "659-L / West Bengal Act IX of 2026",
+    "date": "2026-07-15",
+    "local_pdf": "obc_pdfs/2026-07-15_659-L_amendment-act.pdf",
+    "summary": "The amendment revises member-secretary eligibility and tenure, and substitutes section 9 on inclusion requests, over-/under-inclusion complaints and ordinarily binding Commission advice. Published on 15 July; brought into force on 27 July 2026 by BCW/15011/18/1580. Read with the principal 1993 Act rather than treating the original text as the complete current statute.",
+    "source_url": "https://anagrasarkalyan.gov.in/documnts/659-L%20Dated%2015072026.pdf",
+    "pages": 2,
+    "sha256": "a7ca489e008a991b31e9fe5d8947aea854d41b5ab103e357c2b2167faffc6da0"
+  },
+  {
+    "status": "copied",
+    "notif_no": "BCW/15011/17/1579",
+    "date": "2026-07-27",
+    "local_pdf": "obc_pdfs/2026-07-27_1579-BCW_commencement.pdf",
+    "summary": "The Gazette notification appoints 27 July 2026 as the commencement date of the amendment to the 2012 reservation Act. Publication of the Act on 15 July and its commencement on 27 July are separate events.",
+    "source_url": "https://anagrasarkalyan.gov.in/documnts/1579-BCW%20Dt.%20Kolkata%20the%2027%20July,%202026.pdf",
+    "pages": 1,
+    "sha256": "ae4f4ff638331eee659b4de264116c04737fcfb96b5fa3a5c388cc3d5c9f2f04"
+  },
+  {
+    "status": "copied",
+    "notif_no": "BCW/15011/18/1580",
+    "date": "2026-07-27",
+    "local_pdf": "obc_pdfs/2026-07-27_1580-BCW_commencement.pdf",
+    "summary": "The Gazette notification appoints 27 July 2026 as the commencement date of the amendment to the 1993 Commission Act.",
+    "source_url": "https://anagrasarkalyan.gov.in/documnts/1580-BCW%20Dt.%20Kolkata%20the%2027%20July,%202026.pdf",
+    "pages": 1,
+    "sha256": "5bebafda7cd97ccbeef704496ee1e0b02c96a31d164dcc1b75702b492c308e03"
   }
 ]

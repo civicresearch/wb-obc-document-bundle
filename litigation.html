@@ -1,48 +1,56 @@
 <!doctype html>
-<html lang="en" data-theme="dark">
+<html lang="en" data-theme="light">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="WB OBC Archive - A consolidated archive of West Bengal OBC notifications, court orders, hearings, source PDFs, and policy documents from 1993-2026">
+  <meta name="description" content="Track West Bengal OBC litigation, including Calcutta High Court judgments, Supreme Court orders, case numbers and archived source records.">
   <meta name="theme-color" content="#10253f">
   <title>OBC Litigation Tracker · Civic Research Group</title>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <script src="js/navigation.js?v=20261104-records" defer></script>
   <link rel="manifest" href="pwa-manifest.json">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@100..900&display=swap">
-  <link rel="stylesheet" href="css/shared.css?v=20261004">
-  <script src="js/i18n.js?v=20261004" defer></script>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anek+Bangla:wght@400;500;600;700;800&family=Hind+Siliguri:wght@400;500;600;700&family=Noto+Sans+Bengali:wght@400;500;600;700&display=swap">
+  <link rel="stylesheet" href="css/shared.css?v=20261104-records">
+  <script src="js/i18n.js?v=20261104-records" defer></script>
   <script>
-    // This page is deployed in two places:
-    //  - GitHub Pages, where obc_pdfs/, case_pdfs/ and obc_pdf_manifest.json
-    //    are served alongside this file, so relative links work as-is.
-    //  - Vercel (or any other host that only deploys this HTML file), where
-    //    those folders are not present. On those hosts, rewrite the relative
-    //    asset links to point at the raw GitHub copy instead.
-    // Edit GITHUB_RAW_BASE below if the repo/branch ever changes.
-    (function () {
-      var GITHUB_RAW_BASE = 'https://raw.githubusercontent.com/civicresearch/wb-obc-document-bundle/main/';
-      var host = window.location.hostname;
-      var isGithubPages = /(^|\.)github\.io$/.test(host);
-      var isLocal = host === 'localhost' || host === '127.0.0.1' || host === '' || window.location.protocol === 'file:';
-      window.OBC_ASSET_BASE = (isGithubPages || isLocal) ? '' : GITHUB_RAW_BASE;
-    })();
+    window.OBC_ASSET_BASE = "";
     (function () {
       try {
         var savedTheme = localStorage.getItem('wb-obc-theme');
-        document.documentElement.dataset.theme = savedTheme === 'light' ? 'light' : 'dark';
+        var preference = ['light', 'dark'].includes(savedTheme) ? savedTheme : 'auto';
+        document.documentElement.dataset.themePreference = preference;
+        document.documentElement.dataset.theme = preference === 'auto' ? (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : preference;
       } catch (error) {
-        document.documentElement.dataset.theme = 'dark';
+        document.documentElement.dataset.themePreference = 'auto';
+        document.documentElement.dataset.theme = matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
       }
     })();
   </script>
+  <link rel="stylesheet" href="css/site.css?v=20261104-records">
+  <link rel="stylesheet" href="css/polish.css?v=20261104-records">
+<link rel="canonical" href="https://obcwb.civicresearch.in/litigation.html">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="WB OBC Archive">
+  <meta property="og:title" content="OBC Litigation Tracker · Civic Research Group">
+  <meta property="og:description" content="Track West Bengal OBC litigation, including Calcutta High Court judgments, Supreme Court orders, case numbers and archived source records.">
+  <meta property="og:url" content="https://obcwb.civicresearch.in/litigation.html">
+  <meta property="og:image" content="https://obcwb.civicresearch.in/obcwb-light-logo.png">
+  <meta property="og:image:alt" content="West Bengal OBC Archive">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="OBC Litigation Tracker · Civic Research Group">
+  <meta name="twitter:description" content="Track West Bengal OBC litigation, including Calcutta High Court judgments, Supreme Court orders, case numbers and archived source records.">
+  <meta name="twitter:image" content="https://obcwb.civicresearch.in/obcwb-light-logo.png">
+  <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://obcwb.civicresearch.in/#organization","name":"Civic Research Group","url":"https://civicresearch.in"},{"@type":"WebSite","@id":"https://obcwb.civicresearch.in/#website","url":"https://obcwb.civicresearch.in/","name":"WB OBC Archive","inLanguage":["en","bn"],"publisher":{"@id":"https://obcwb.civicresearch.in/#organization"}},{"@type":"WebPage","@id":"https://obcwb.civicresearch.in/litigation.html#webpage","url":"https://obcwb.civicresearch.in/litigation.html","name":"OBC Litigation Tracker","description":"Track West Bengal OBC litigation, including Calcutta High Court judgments, Supreme Court orders, case numbers and archived source records.","inLanguage":"en","isPartOf":{"@id":"https://obcwb.civicresearch.in/#website"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://obcwb.civicresearch.in/"},{"@type":"ListItem","position":2,"name":"OBC Litigation Tracker","item":"https://obcwb.civicresearch.in/litigation.html"}]}]}</script>
 </head>
 <body data-page="cases">
   <a class="skip-link" href="#main-content">Skip to main content</a>
   <header class="site-header">
     <div class="site-header-inner">
       <a href="index.html" class="site-logo" aria-label="West Bengal OBC Archive — home">
-        <img src="obcwb-flat-dark-logo.webp" data-theme-logo data-light-src="obcwb-flat-dark-logo.webp" data-dark-src="obcwb-flat-light-logo.webp" alt="West Bengal OBC Archive" width="720" height="240" decoding="async">
+        <img src="obcwb-flat-light-logo.webp" data-theme-logo data-light-src="obcwb-flat-light-logo.webp" data-dark-src="obcwb-flat-light-logo.webp" alt="West Bengal OBC Archive" width="720" height="240" decoding="async">
       </a>
       <script>
         // Swap the header logo to the theme-correct file before first paint;
@@ -54,12 +62,25 @@
           if (logo && logo.dataset.darkSrc) logo.setAttribute('src', logo.dataset.darkSrc);
         })();
       </script>
+      <div class="nav-preferences" aria-label="Language and appearance">
+        <div class="language-switch" role="group" aria-label="Language">
+          <button type="button" id="lang-en" class="lang-btn active" data-lang="en" data-lang-switch="en" aria-pressed="true" lang="en" aria-label="English" title="English">EN</button>
+          <button type="button" id="lang-bn" class="lang-btn" data-lang="bn" data-lang-switch="bn" aria-pressed="false" lang="bn">বাংলা</button>
+        </div>
+        <select id="theme-select" class="theme-select" aria-label="Appearance">
+          <option value="auto" data-i18n="appearance.auto">Auto</option>
+          <option value="light" data-i18n="appearance.light">Light</option>
+          <option value="dark" data-i18n="appearance.dark">Dark</option>
+        </select>
+      </div>
+      <div class="masthead-title"><span data-i18n="masthead.eyebrow">Civic Research Group</span><strong data-i18n="masthead.title">West Bengal OBC Archive</strong><small data-i18n="masthead.subtitle">Policy, court records &amp; public evidence</small></div>
       <button type="button" class="nav-toggle" aria-expanded="false" aria-controls="site-nav" aria-label="Open navigation menu">
         <span class="nav-toggle-bar"></span>
         <span class="nav-toggle-bar"></span>
         <span class="nav-toggle-bar"></span>
       </button>
       <nav class="site-nav" id="site-nav" aria-label="Sections">
+        <p class="drawer-title" data-i18n="navigation.title">Explore the archive</p>
         <button type="button" class="nav-close" aria-label="Close navigation menu">×</button>
         <a href="index.html" class="active" data-tab-target="home" data-i18n="navHome">Home</a>
         <div class="nav-group">
@@ -91,104 +112,72 @@
         <a href="contribute.html" data-i18n="navContribute">Contribute</a>
         <a href="about.html" data-tab-target="about" data-i18n="navAbout">About</a>
         <a href="https://github.com/civicresearch/wb-obc-document-bundle" target="_blank" rel="noreferrer" data-i18n="navGitHub">GitHub</a>
-        <div class="nav-preferences" aria-label="Language and appearance">
-          <span class="language-switch" aria-label="Language">
-            <button type="button" id="lang-en" class="lang-btn active" data-lang="en" data-lang-switch="en" aria-pressed="true">EN</button>
-            <span class="lang-separator">|</span>
-            <button type="button" id="lang-bn" class="lang-btn" data-lang="bn" data-lang-switch="bn" aria-pressed="false">বাংলা</button>
-          </span>
-          <span class="preference-divider" aria-hidden="true"></span>
-          <button type="button" id="theme-toggle" class="theme-toggle" aria-label="Switch to dark theme" title="Switch to dark theme">
-            <svg class="theme-icon theme-icon-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.2 15.2A8.5 8.5 0 0 1 8.8 3.8 8.5 8.5 0 1 0 20.2 15.2Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            <svg class="theme-icon theme-icon-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="3.8" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M12 2v2.2M12 19.8V22M4.93 4.93l1.56 1.56M17.51 17.51l1.56 1.56M2 12h2.2M19.8 12H22M4.93 19.07l1.56-1.56M17.51 6.49l1.56-1.56" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
-          </button>
-        </div>
+
       </nav>
       <div class="nav-overlay"></div>
     </div>
   </header>
 
   <section class="hero">
-    <div class="hero-inner wrap">
-      <p class="hero-eyebrow" id="hero-eyebrow" data-i18n="heroEyebrow">West Bengal · Backward Classes Welfare Department · 1993–2026</p>
-      <h1 id="hero-title" data-i18n="heroTitle">OBC Reservation and List Timeline</h1>
-      <p class="hero-sub" id="hero-sub" data-i18n="heroSub">A consolidated database on West Bengal OBC Reservation starting with the 1993 Commission Act and continuing through the latest notification and court case records.</p>
+    <div class="hero-inner wrap"><nav class="breadcrumbs" aria-label="Breadcrumb"><a href="index.html" data-i18n="navHome">Home</a><span aria-hidden="true">/</span><span aria-current="page" data-i18n="cases.title">West Bengal OBC Litigation Timeline</span></nav>
+      <p class="hero-eyebrow" id="hero-eyebrow" data-i18n="casesHeroEyebrow">Litigation · Orders and procedural record</p>
+      <h1 id="hero-title" data-i18n="cases.title">West Bengal OBC Litigation Timeline</h1>
+      <p class="hero-sub" id="hero-sub" data-i18n="casesSectionSub">This tracker separates what an order actually records from later policy action. It is a research index, not legal advice; case status must be checked with the relevant court before reliance.</p>
       <div class="hero-stats stagger-in">
-        <div class="hero-stat lift"><strong id="hero-stat-1-value" data-i18n="heroStat1Value">84</strong><span id="hero-stat-1-label" data-i18n="heroStat1Label">PDF sources bundled across notifications, hearings, reports, and court records.</span></div>
-        <div class="hero-stat lift"><strong id="hero-stat-2-value" data-i18n="heroStat2Value">66</strong><span id="hero-stat-2-label" data-i18n="heroStat2Label">Classes listed in Notification No. 945-BCW/MR-23/2026.</span></div>
-        <div class="hero-stat lift"><strong id="hero-stat-3-value" data-i18n="heroStat3Value">7%</strong><span id="hero-stat-3-label" data-i18n="heroStat3Label">Reservation position stated in the 18 May 2026 list notification.</span></div>
-        <div class="hero-stat lift"><strong id="hero-stat-4-value" data-i18n="heroStat4Value">5</strong><span id="hero-stat-4-label" data-i18n="heroStat4Label">Priority evidence gaps and follow-ups tracked in the audit.</span></div>
+        <div class="hero-stat lift"><strong id="hero-stat-1-value" data-i18n="heroStat1Value">94</strong><span id="hero-stat-1-label" data-i18n="heroStat1Label">Archived source PDFs</span></div>
+        <div class="hero-stat lift"><strong id="hero-stat-2-value" data-i18n="heroStat2Value">66</strong><span id="hero-stat-2-label" data-i18n="heroStat2Label">Classes in Notification 945</span></div>
+        <div class="hero-stat lift"><strong id="hero-stat-3-value" data-i18n="heroStat3Value">7%</strong><span id="hero-stat-3-label" data-i18n="heroStat3Label">Reservation in the May 2026 notice</span></div>
+        <div class="hero-stat lift"><strong id="hero-stat-4-value" data-i18n="heroStat4Value">5</strong><span id="hero-stat-4-label" data-i18n="heroStat4Label">Evidence gaps tracked</span></div>
       </div>
     </div>
   </section>
 
-  <!-- Contribution Popup Modal -->
-  <div id="contribute-popup" class="contribute-popup-overlay" hidden>
-    <div class="contribute-popup" role="dialog" aria-labelledby="popup-title" aria-describedby="popup-desc">
-      <button type="button" class="popup-close" aria-label="Close popup">&times;</button>
-      <div class="popup-brand">
-        <img src="CRG_Logo_Dark.png" data-theme-logo data-light-src="CRG_Logo_Dark.png" data-dark-src="CRG_LOGO_light.png" alt="Civic Research Group" width="400" height="81" decoding="async">
-      </div>
-      <h2 id="popup-title" data-i18n="popupTitle">Help Improve This Resource</h2>
-      <p id="popup-desc" data-i18n="popupDesc">A volunteer-maintained public research archive. Contributions and corrections are welcome.</p>
-      <div class="popup-actions">
-        <a href="contribute.html" class="popup-btn primary" data-i18n="popupBtn">Contribute Documents &amp; Corrections</a>
-      </div>
-      <div class="popup-network">
-        <p data-i18n="popupNetworkTitle">Explore our latest work</p>
-        <div class="popup-network-links">
-          <a href="https://civicresearch.in" target="_blank" rel="noopener noreferrer" data-i18n="popupCRGLink">Visit our website civicresearch.in</a>
-          <a href="https://appeal.civicresearch.in" target="_blank" rel="noopener noreferrer" data-i18n="popupAppealLink">Tribunal Appeal Evidence · appeal.civicresearch.in</a>
-          <a href="https://rti.votercards.in" target="_blank" rel="noopener noreferrer" data-i18n="popupRTILink">RTI Karo · rti.votercards.in</a>
-        </div>
-      </div>
-      <div class="popup-preferences">
-        <label><input type="checkbox" id="dont-show-again"> <span data-i18n="popupDontShow">Don't show this message again</span></label>
-        <div class="popup-lang-switch" aria-label="Language">
-          <button type="button" class="lang-btn-small" data-lang-switch="en" aria-pressed="false">EN</button>
-          <span aria-hidden="true">|</span>
-          <button type="button" class="lang-btn-small" data-lang-switch="bn" aria-pressed="false">বাংলা</button>
-        </div>
-      </div>
+  <nav class="section-nav" aria-label="Archive sections">
+    <div class="wrap">
+      <a href="timeline.html" data-section="timeline" data-i18n="navTimeline">Timeline</a>
+      <a href="litigation.html" data-section="cases" aria-current="page" data-i18n="navCases">Litigation</a>
+      <a href="obc-list.html" data-section="obc-list" data-i18n="navOBCList">OBC List</a>
+      <a href="documents.html" data-section="documents" data-i18n="navDocuments">Source PDFs</a>
+      <a href="evidence.html" data-section="evidence" data-i18n="navEvidence">Hearings &amp; Gaps</a>
     </div>
-  </div>
+  </nav>
 
   <main id="main-content" class="wrap" tabindex="-1">
     <div id="data-load-warning" class="data-load-warning" hidden role="status"></div>
 
     <section id="cases" class="research cases-section tab-panel" data-tab-panel="cases">
-      <p class="panel-kicker" data-i18n="casesPanelKicker">Litigation tracker · curated record</p>
-      <h2 class="section-heading" data-i18n="cases.title">West Bengal OBC Litigation Timeline</h2>
-      <p class="section-sub" data-i18n="casesSectionSub">This tracker separates what an order actually records from later policy action. It is a research index, not legal advice; case status must be checked with the relevant court before reliance.</p>
+
+      <div class="callout" data-i18n="cases.latestReview"><strong>Reviewed 4 November 2026.</strong> The State’s specified SLPs were withdrawn on 14 July. The 12 August certificate-validity judgment is followed by fresh Supreme Court proceedings on 1 October: appointments must abide by the outcome and carry that condition in appointment letters. That order does not restore 17% reservation or grant a general stay. It directs listing on <strong>23 November 2026</strong>; verify the eventual cause list. <a href="#case-2026-07-14">July withdrawal</a> · <a href="#case-2026-08-12">August judgment</a> · <a href="#case-2026-10-01">October order</a></div>
 
       <!-- Stats Cards -->
       <div class="stats-grid">
         <div class="stat-card">
-          <span class="stat-number" id="total-cases">0</span>
-          <span class="stat-label" data-i18n="litigation.stat.total">Total Cases</span>
+          <span class="stat-number" id="total-cases">21</span>
+          <span class="stat-label" data-i18n="litigation.stat.total">Timeline records</span>
         </div>
         <div class="stat-card warning">
-          <span class="stat-number" id="pending-cases">0</span>
-          <span class="stat-label" data-i18n="litigation.stat.pending">Pending</span>
+          <span class="stat-number" id="court-records">18</span>
+          <span class="stat-label" data-i18n="litigation.stat.orders">Judgments and orders</span>
         </div>
         <div class="stat-card success">
-          <span class="stat-number" id="resolved-cases">0</span>
-          <span class="stat-label" data-i18n="litigation.stat.resolved">Resolved</span>
+          <span class="stat-number" id="supporting-records">3</span>
+          <span class="stat-label" data-i18n="litigation.stat.supporting">Reports and party filings</span>
         </div>
       </div>
 
       <div class="case-summary-grid">
-        <article><strong data-i18n="cases.summary.date1">22 May 2024</strong><span data-i18n="cases.summary.may2024">Calcutta High Court judgment in the connected OBC matters</span></article>
-        <article><strong data-i18n="cases.summary.date2">2024–25</strong><span data-i18n="cases.summary.slp">Supreme Court SLP proceedings, including the 28 July 2025 stay order</span></article>
-        <article><strong data-i18n="cases.summary.date3">2026</strong><span data-i18n="cases.summary.recruitment">Recruitment-related OBC classification challenges added to the tracker</span></article>
+        <article><strong data-i18n="cases.summary.date1">14 July 2026</strong><span data-i18n="cases.summary.may2024">Specified State and Commission SLPs dismissed as withdrawn</span></article>
+        <article><strong data-i18n="cases.summary.date2">12 August 2026</strong><span data-i18n="cases.summary.slp">Shreyasi Dhang: certificate-validity judgment</span></article>
+        <article><strong data-i18n="cases.summary.date3">1 October 2026</strong><span data-i18n="cases.summary.recruitment">Fresh Supreme Court challenges; appointments subject to outcome</span></article>
       </div>
 
       <div class="callout litigation-note-jump"><strong data-i18n="cases.employeeProtectionCallout">Employee-protection argument note:</strong> <span data-i18n="cases.employeeProtectionDesc">user-supplied grounds and precedent links for bona fide employees appointed on government-issued OBC certificates are included after the timeline.</span> <a href="#employee-protection-note" data-i18n="cases.openLegalNote">Open the legal-principles note</a>.</div>
 
+      <h2 data-i18n="cases.recordsHeading">Court records and updates</h2>
       <!-- Search -->
       <div class="search-box">
-        <input type="text" id="case-search" data-i18n-placeholder="litigation.searchPlaceholder" placeholder="Search by case name, number, or judge...">
-        <span class="search-icon">🔍</span>
+        <input type="text" id="case-search" aria-label="Search litigation records" data-i18n-placeholder="litigation.searchPlaceholder" placeholder="Search by case name, number, or judge...">
+        <span class="search-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 4.5 4.5" stroke-linecap="round"/></svg></span>
       </div>
 
       <!-- Loading Skeleton -->
@@ -199,7 +188,42 @@
       </div>
 
       <ol class="case-timeline stagger-list">
-        <!-- Case events are rendered from case_events.json. -->
+        <li id="case-2024-05-22" class="case-event"><time datetime="2024-05-22">22 May 2024</time>
+          <div><h3>Calcutta High Court: connected OBC-list and reservation matters</h3><p><strong>WPO 60 of 2011 and connected matters</strong>, including WPA 22145 of 2010, WPO 1160 of 2013 and WPO 578 of 2012. The judgment is the legal turning point cited by the later 2025 and 2026 notifications. It should be read directly for the operative directions and the exact scope of the findings.</p><p class="case-links"><a href="case_pdfs/2024-05-22_Calcutta-High-Court_Amal-Chandra-Das-WPO-60-2011_judgment.pdf" target="_blank" rel="noreferrer">Bundled judgment copy (211 pp.)</a> <span>Mirror copy; verify against the High Court record.</span></p></div></li>
+<li id="case-2024-07-28" class="case-event"><time datetime="2024-07-28">28 Jul 2024</time>
+          <div><h3>Supreme Court: Aatmadeep’s SLP paper book</h3><p><strong>SLP(C) 16936/2024, Aatmadeep v. State of West Bengal &amp; Ors.</strong> The paper book states that it arises from the 22 May 2024 High Court judgment in WPA 8844/2020. It is a party filing, not an order of the Court.</p><p class="case-links"><a href="case_pdfs/2024-07-28_Supreme-Court_SLP-C-16936-2024_Aatmadeep_paper-book.pdf" target="_blank" rel="noreferrer">Bundled party paper book (39 pp.)</a> <span>Use for pleadings context; verify every assertion against the court record.</span></p></div></li>
+<li id="case-2024-11-22" class="case-event"><time datetime="2024-11-22">22 Nov 2024</time>
+          <div><h3>Supreme Court: SLP(C) 17751–17755 of 2024</h3><p><strong>State of West Bengal &amp; Anr. v. Amal Chandra Das.</strong> The bundled official Supreme Court record of proceedings arises from the 22 May 2024 High Court judgment. Use it with the Supreme Court case-status service for the current listing and later orders.</p><p class="case-links"><a href="case_pdfs/2024-11-22_Supreme-Court_SLP-C-17751-17755-2024_order.pdf" target="_blank" rel="noreferrer">Bundled official order (4 pp.)</a></p></div></li>
+<li id="case-2025-01-07" class="case-event"><time datetime="2025-01-07">7 Jan 2025</time>
+          <div><h3>Supreme Court: broader connected-appeal cluster listed for final hearing</h3><p>The official record groups the State’s main appeal with proceedings involving <strong>Tuhina Parvin</strong> (Diary 30078/2024), <strong>Md. Nawsad Siddique</strong> (Diary 31942/2024), <strong>Sk. Serafuddin</strong> (Diary 31944/2024), <strong>Aatmadeep</strong> (SLP(C) 16936/2024), <strong>Mustafijur Rahaman</strong> (SLP(C) 18931–18935/2024), <strong>Bengal Madrasah Education Forum</strong> (SLP(C) 18926–18930/2024), <strong>West Bengal Commission for Backward Classes</strong> (Diary 36073/2024), <strong>Md. Taiedul Islam</strong> (SLP(C) 20849/2024), and <strong>Md. Najmul Hoque</strong> (SLP(C) 29017–29021/2024). By consent, the Court listed the matters for final hearing on 28 January 2025. The official 5 May 2026 cause list still identifies this connected cluster; this evidence does not establish a final merits disposal.</p><p class="case-links"><a href="case_pdfs/2025-01-07_Supreme-Court_SLP-C-17751-17755-2024_connected-appeals_order.pdf" target="_blank" rel="noreferrer">Bundled official record (5 pp.)</a> · <a href="https://api.sci.gov.in/jonew/cl/2026-05-05/M_J_1.pdf" target="_blank" rel="noreferrer">Official 5 May 2026 cause list</a></p><p><strong>Later development: see the 14 July 2026 withdrawal order and 1 October 2026 fresh proceedings below. Earlier listings and stays do not establish the current position.</strong></p></div></li>
+<li id="case-2025-01-21" class="case-event"><time datetime="2025-01-21">21 Jan 2025</time>
+          <div><h3>Calcutta High Court: Aatmadeep PIL and Amal Chandra Das PIL listed together</h3><p>In <strong>WPA(P) 387/2024 (Aatmadeep)</strong> with <strong>WPA(P) 430/2024 (Amal Chandra Das)</strong>, the Court recorded a State affidavit about implementation of the 22 May 2024 judgment and allegations that recruitment/admission bodies continued to use the struck-down OBC-A/OBC-B categories. The Court did not determine the merits in this order; it listed the matters for further consideration.</p><p class="case-links"><a href="case_pdfs/2025-01-21_Calcutta-High-Court_WPA-P-387-430-2024_listing-order.pdf" target="_blank" rel="noreferrer">Bundled court-text mirror print (2 pp.)</a> · <a href="https://indiankanoon.org/doc/174462035/" target="_blank" rel="noreferrer">Original court-text mirror</a> <span>Not a certified or official High Court PDF; verify against the court record.</span></p></div></li>
+<li id="case-2025-05-21" class="case-event"><time datetime="2025-05-21">21 May 2025</time>
+          <div><h3>Calcutta High Court: WBJEE PG admission implementation order</h3><p>In <strong>WPA 9132/2025, Supriya Mondal &amp; Ors. v. State of West Bengal &amp; Ors.</strong>, concerning JEMAS PG 2024–25 admissions, the Court directed the Joint Entrance Board to identify candidates among the 66 pre-2010 classes, recast the panel at 7% OBC reservation, and complete the specified admission steps. The order was later the subject of appeals <strong>MAT 943/2025</strong> and <strong>MAT 955/2025</strong>, referenced in the 7 August 2025 proceeding; this tracker does not treat those appeals as decided.</p><p class="case-links"><a href="case_pdfs/2025-05-21_Calcutta-High-Court_WPA-9132-2025_JEMAS-PG-order.pdf" target="_blank" rel="noreferrer">Bundled court-text mirror print (3 pp.)</a> · <a href="https://indiankanoon.org/doc/30501968/" target="_blank" rel="noreferrer">Original court-text mirror</a> <span>Not a certified or official High Court PDF; verify against the court record.</span></p></div></li>
+<li id="case-2025-06-17" class="case-event"><time datetime="2025-06-17">17 Jun 2025</time>
+          <div><h3>Calcutta High Court: challenge to the 2025 benchmark-survey process</h3><p>The order in WPA(P) 111, 119 and 132 of 2025, with WPA(P) 430 of 2024, records challenges to the benchmark survey, the 28 February 2025 Commission memo, the 1 March 2025 district communication, and the 8 and 27 May 2025 notifications.</p><p class="case-links"><a href="case_pdfs/2025-06-17_Calcutta-High-Court_WPA-P-111-119-132-2025_benchmark-survey_order.pdf" target="_blank" rel="noreferrer">Bundled High Court order (13 pp.)</a> <span>Source copy; obtain a certified/official court copy when available.</span></p><p><strong>Later development: see the 14 July 2026 withdrawal order and 1 October 2026 fresh proceedings below. Earlier listings and stays do not establish the current position.</strong></p></div></li>
+<li id="case-2025-07-18" class="case-event"><time datetime="2025-07-18">18 Jul 2025</time>
+          <div><h3>Supreme Court: later 2025 appeal record</h3><p><strong>SLP(C) 17528/2025, State of West Bengal v. Amal Chandra Das &amp; Ors.</strong> The bundled official office report identifies the related 17 June 2025 High Court order. It is a procedural record, not a merits judgment.</p><p class="case-links"><a href="case_pdfs/2025-07-18_Supreme-Court_SLP-C-17528-2025_office-report.pdf" target="_blank" rel="noreferrer">Bundled official office report (3 pp.)</a></p></div></li>
+<li id="case-2025-07-28" class="case-event"><time datetime="2025-07-28">28 Jul 2025</time>
+          <div><h3>Supreme Court: stay of the 17 June 2025 High Court order</h3><p>In <strong>SLP(C) 17422/2025, 17528/2025 and 17973–17974/2025</strong>, the Supreme Court issued notice and recorded an interim stay of the 17 June 2025 High Court judgment and order. This is an interim procedural development, not a final disposal of the underlying issues.</p><p class="case-links"><a href="case_pdfs/2025-07-28_Supreme-Court_SLP-C-17422-17528-17973-17974-2025_stay_order.pdf" target="_blank" rel="noreferrer">Bundled Supreme Court order (3 pp.)</a></p><p><strong>Later development: see the 14 July 2026 withdrawal order and 1 October 2026 fresh proceedings below. Earlier listings and stays do not establish the current position.</strong></p></div></li>
+<li id="case-2025-08-07" class="case-event"><time datetime="2025-08-07">7 Aug 2025</time>
+          <div><h3>Calcutta High Court: JEMAS PG contempt proceedings</h3><p>The order in CPAN 1362 and 1365 of 2025 records contempt proceedings linked to implementation of the 22 May 2024 judgment and the <a href="case_pdfs/2025-05-21_Calcutta-High-Court_WPA-9132-2025_JEMAS-PG-order.pdf" target="_blank" rel="noreferrer">21 May 2025 WPA 9132 court-text mirror print</a>. It describes the proceedings and related pending appeals; it should be read for its own operative directions and procedural setting.</p><p class="case-links"><a href="case_pdfs/2025-08-07_Calcutta-High-Court_CPAN-1362-1365-2025_JEMAS_contempt_order.pdf" target="_blank" rel="noreferrer">Bundled High Court order (12 pp.)</a></p></div></li>
+<li id="case-2025-08-22" class="case-event"><time datetime="2025-08-22">22 Aug 2025</time>
+          <div><h3>Supreme Court: interim stay in the JEMAS PG contempt appeal</h3><p>In Diary Nos. <strong>45526/2025 and 45628/2025</strong>, arising from the 7 August 2025 Calcutta High Court order in CPAN 1362/2025, the Supreme Court issued notice, stayed the impugned order until further orders, and tagged the matters with SLP(C) 17422/2025. This is an interim procedural order, not a decision on the underlying OBC issues.</p><p class="case-links"><a href="case_pdfs/2025-08-22_Supreme-Court_Diary-45526-45628-2025_JEMAS_stay_order.pdf" target="_blank" rel="noreferrer">Bundled Supreme Court order (2 pp.)</a> <span>Archived source copy; verify subsequent proceedings.</span></p><p><strong>Later development: see the 14 July 2026 withdrawal order and 1 October 2026 fresh proceedings below. Earlier listings and stays do not establish the current position.</strong></p></div></li>
+<li id="case-2026-03-11" class="case-event"><time datetime="2026-03-11">11 Mar 2026</time>
+          <div><h3>Supreme Court: connected OBC SLPs listed with applications to vacate stay</h3><p>An official office report for <strong>SLP(C) 17422, 17528 and 17973–17974 of 2025</strong> records that the matters were listed with applications for clarification/direction and for vacation of the interim stay. It also records incomplete service on specified respondents. The official 5 May 2026 cause list again lists the vacation applications. Neither record is a disposal order, and neither should be used to infer what happened in the later July withdrawal proceedings.</p><p class="case-links"><a href="case_pdfs/2026-03-11_Supreme-Court_SLP-C-17422-17528-17973-17974_office-report.pdf" target="_blank" rel="noreferrer">Bundled official office report (5 pp.)</a> · <a href="https://api.sci.gov.in/jonew/cl/2026-05-05/M_J_1.pdf" target="_blank" rel="noreferrer">Official 5 May 2026 cause list</a></p><p><strong>Later development: see the 14 July 2026 withdrawal order and 1 October 2026 fresh proceedings below. Earlier listings and stays do not establish the current position.</strong></p></div></li>
+<li id="case-2026-07-01" class="case-event"><time datetime="2026-07-01">1 Jul 2026</time>
+          <div><h3>Calcutta High Court: recruitment-category challenges after the 2026 reset</h3><p>Orders in <strong>WPA 14695/2026 (Bistriti Parveen)</strong> and <strong>WPA 14698/2026 (Yasin Chowdhury)</strong> concern candidates who had applied as OBC-A candidates before the 18 May 2026 notifications. The Court directed an extension of the application-editing date while listing the matters for further hearing; the orders do not finally determine the merits.</p><p class="case-links"><a href="case_pdfs/2026-07-01_Calcutta-High-Court_WPA-14695-2026_Bistriti-Parveen_order.pdf" target="_blank" rel="noreferrer">WPA 14695/2026 order (4 pp.)</a> · <a href="case_pdfs/2026-07-01_Calcutta-High-Court_WPA-14698-2026_Yasin-Chowdhury_order.pdf" target="_blank" rel="noreferrer">WPA 14698/2026 order (4 pp.)</a></p></div></li>
+<li id="case-2026-07-03" class="case-event"><time datetime="2026-07-03">3 Jul 2026</time>
+          <div><h3>Calcutta High Court: PIL challenging the 18 May 2026 notifications</h3><p>In <strong>WPA(P) 305/2026, Right and Justice Foundation &amp; Anr. v. State of West Bengal &amp; Ors.</strong>, the PIL challenged Notifications 944 and 945 and Letter 946. The Division Bench declined to entertain the PIL, recording that the Supreme Court was already seized of the principal issues and that the State’s 18 May 2026 decision should be placed before the Supreme Court in the pending SLP.</p><p class="case-links"><a href="case_pdfs/2026-07-03_Calcutta-High-Court_WPA-P-305-2026_notifications-944-945-946_order.pdf" target="_blank" rel="noreferrer">Bundled High Court order (4 pp.)</a></p><p><strong>Later development: see the 14 July 2026 withdrawal order and 1 October 2026 fresh proceedings below. Earlier listings and stays do not establish the current position.</strong></p></div></li>
+<li id="case-2026-07-08" class="case-event"><time datetime="2026-07-08">8 Jul 2026</time>
+          <div><h3>Calcutta High Court: Bistriti Parveen petition withdrawn</h3><p>In <strong>WPA 14695/2026, Bistriti Parveen v. State of West Bengal &amp; Ors.</strong>, the petitioner stated that she had exercised the option available under the challenged 12 June 2026 notification and sought permission to withdraw. The Court dismissed the writ petition as withdrawn with liberty to file afresh, vacated any interim order, and disposed of connected applications. This is a procedural closure of that petition, not a merits ruling on the OBC classification issues.</p><p class="case-links"><a href="case_pdfs/2026-07-08_Calcutta-High-Court_WPA-14695-2026_withdrawal_order.pdf" target="_blank" rel="noreferrer">Bundled High Court order (2 pp.)</a> <span>Archived source copy; verify with the court record.</span></p></div></li>
+<li id="case-2026-07-14" class="case-event"><time datetime="2026-07-14">14 Jul 2026</time><div><h3>Supreme Court: State and Commission petitions dismissed as withdrawn</h3><p>The Court permitted withdrawal of the State’s listed 2024 and 2025 SLPs and expressly included Diary 45526/2025, SLP(C) 26497/2025 and the Commission’s Diary 36073/2024. Other affected persons remain free to approach the Court. This closes the specified petitions without a merits ruling; it does not dispose of every connected party’s appeal. Read the August judgment for its account of the effect on the July 2025 stay.</p><p class="case-links"><a href="case_pdfs/2026-07-14_Supreme-Court_OBC-SLPs_withdrawal_order.pdf" target="_blank" rel="noreferrer">Archived court-text mirror (5 pp.)</a> · <a href="https://indiankanoon.org/doc/16492254/" target="_blank" rel="noreferrer">Source court text</a> <span>Local reproduction; not an official or certified court PDF. Reviewed 4 November 2026.</span></p></div></li>
+<li id="case-2026-08-12" class="case-event"><time datetime="2026-08-12">12 Aug 2026</time><div><h3>Calcutta High Court: Shreyasi Dhang certificate-validity judgment</h3><p>In Shreyasi Dhang, the Division Bench rejected the admission-related appeal and held the May–June 2025 re-declaration unlawful. Paragraph 25 treats certificates issued during 8 May–12 June 2025 and 10 June 2025–18 May 2026 as void from inception and requires fresh certification for eligible pre-2010 classes. The judgment records that withdrawal of the State’s SLPs extinguished the interim stay and revived the High Court order. It must now be read with the fresh Supreme Court proceedings of 1 October. The mirror contains inconsistent historical dates for the 2025 orders; the archived orders establish 17 June and 28 July 2025.</p><p class="case-links"><a href="case_pdfs/2026-08-12_Calcutta-High-Court_MAT-1320-2026_Shreyasi-Dhang_judgment.pdf" target="_blank" rel="noreferrer">Archived court-text mirror (9 pp.)</a> · <a href="https://indiankanoon.org/doc/60350638/" target="_blank" rel="noreferrer">Source court text</a> <span>Local reproduction; not an official or certified court PDF. Reviewed 4 November 2026.</span></p></div></li>
+<li id="case-2026-10-01" class="case-event"><time datetime="2026-10-01">1 Oct 2026</time><div><h3>Supreme Court: fresh challenges; appointments subject to outcome</h3><p>In Right and Justice Foundation and the connected petition, the Court issued notice, allowed intervention/impleadment and directed tagging with Diary 54999/2026. Appointments must follow the eventual SLP result, with that condition included in appointment letters. It allowed four weeks for counters and two more for rejoinders, and directed listing on 23 November 2026. The order grants no general stay of the August judgment and does not restore 17% reservation. The listing date is a future direction as of the 4 November review, not a completed hearing.</p><p class="case-links"><a href="case_pdfs/2026-10-01_Supreme-Court_Diary-41300-50605-2026_order.pdf" target="_blank" rel="noreferrer">Archived court-text mirror (3 pp.)</a> · <a href="https://indiankanoon.org/doc/147304353/" target="_blank" rel="noreferrer">Source court text</a> <span>Local reproduction; not an official or certified court PDF. Reviewed 4 November 2026.</span></p></div></li>
+<li id="case-2026-10-13" class="case-event"><time datetime="2026-10-13">13 Oct 2026</time><div><h3>Calcutta High Court: Nilanjona Kundu category-update representations</h3><p>For 2nd SLST candidates claiming membership of retained OBC classes, the Court permitted representations to the Commission by 15 October with earlier certificates, the 2025 update and current category details. The Commission must verify eligibility and decide within ten working days after reopening following Laxmi Puja. The petition was disposed of; the order expressly creates no automatic right to reservation. This was relief for the petitioners, not a general reopening of the editing window. The representation deadline has passed.</p><p class="case-links"><a href="case_pdfs/2026-10-13_Calcutta-High-Court_WPA-29788-2026_Nilanjona-Kundu_order.pdf" target="_blank" rel="noreferrer">Archived court-text mirror (7 pp.)</a> · <a href="https://indiankanoon.org/doc/100359379/" target="_blank" rel="noreferrer">Source court text</a> <span>Local reproduction; not an official or certified court PDF. Reviewed 4 November 2026.</span></p></div></li>
+<li id="case-2026-10-15" class="case-event"><time datetime="2026-10-15">15 Oct 2026</time><div><h3>Calcutta High Court: Abeda Khatoon retained-class candidates</h3><p>The Court permitted the petitioners, described as untainted in-service 2nd SLST candidates from retained OBC classes, to make representations by 22 October. It required verification of their certificates and prior updates and consideration of their position under Bibek Paria. The writ was disposed of with no automatic entitlement to reservation. This concerns a missed category update within retained classes; it does not reintroduce excluded classes or protect every certificate. The representation deadline has passed.</p><p class="case-links"><a href="case_pdfs/2026-10-15_Calcutta-High-Court_WPA-30672-2026_Abeda-Khatoon_order.pdf" target="_blank" rel="noreferrer">Archived court-text mirror (7 pp.)</a> · <a href="https://indiankanoon.org/doc/174058171/" target="_blank" rel="noreferrer">Source court text</a> <span>Local reproduction; not an official or certified court PDF. Reviewed 4 November 2026.</span></p></div></li>
+<li id="case-2026-10-31" class="case-event"><time datetime="2026-10-31">31 Oct 2026</time><div><h3>Calcutta High Court: Mohabul Islam OBC-to-EWS claim requires affidavits</h3><p>Former OBC-A/OBC-B primary-teacher applicants who later obtained EWS certificates challenged the refusal to accept an EWS category update. The Court called for opposition affidavits within three weeks after Puja Vacation and replies within one week thereafter, with listing before the Regular Bench after that period. All intervening steps are subject to the writ’s result. It has not decided an entitlement to EWS conversion or ordered a general extension of the Board’s editing window.</p><p class="case-links"><a href="case_pdfs/2026-10-31_Calcutta-High-Court_WPA-31572-2026_Mohabul-Islam_order.pdf" target="_blank" rel="noreferrer">Archived court-text mirror (6 pp.)</a> · <a href="https://indiankanoon.org/doc/190165311/" target="_blank" rel="noreferrer">Source court text</a> <span>Local reproduction; not an official or certified court PDF. Reviewed 4 November 2026.</span></p></div></li>
       </ol>
 
       <div id="cases-empty" class="empty-state hidden" data-i18n="litigation.noResults">
@@ -288,15 +312,19 @@
       <div class="table-wrap case-matrix">
         <table><thead><tr><th data-i18n="tableRecord">Record</th><th data-i18n="tableForum">Forum</th><th data-i18n="tableIssueTracked">Issue tracked</th><th data-i18n="tableLocalEvidence">Archived evidence</th><th data-i18n="tableStatusDiscipline">Status discipline</th></tr></thead><tbody>
           <tr><td>WPO 60/2011 and connected matters</td><td>Calcutta High Court</td><td>Validity/process of OBC-list and reservation actions</td><td>Bundled judgment copy</td><td>Read the operative portion; verify with court record.</td></tr>
-          <tr><td>SLP(C) 17751–17755/2024</td><td>Supreme Court of India</td><td>Appeal from the 22 May 2024 High Court judgment</td><td>Bundled official 22 Nov 2024 order</td><td>Check latest case status before describing as pending or decided.</td></tr>
-          <tr><td>Connected 2024 SLPs/diaries</td><td>Supreme Court of India</td><td>Related appeals and interventions arising from the 22 May 2024 judgment</td><td>Bundled official 7 Jan 2025 record; official 5 May 2026 cause list</td><td>Listed for final hearing; this audit found no final merits disposal order.</td></tr>
+          <tr><td>SLP(C) 17751–17755/2024</td><td>Supreme Court of India</td><td>State appeal from the 22 May 2024 judgment</td><td>14 Jul 2026 withdrawal order (court-text mirror)</td><td>Dismissed as withdrawn; no merits ruling. Other affected persons may approach the Court.</td></tr>
+          <tr><td>Connected 2024 SLPs/diaries</td><td>Supreme Court of India</td><td>Separate party appeals and interventions</td><td>7 Jan 2025 record; 14 Jul 2026 withdrawal order</td><td>Do not infer disposal of every party appeal. Diary 36073/2024 is expressly withdrawn; unnamed proceedings need separate checks.</td></tr>
           <tr><td>WPA(P) 387/2024 &amp; 430/2024</td><td>Calcutta High Court</td><td>Implementation of the 2024 judgment in recruitment/admission processes</td><td>21 Jan 2025 court-text mirror</td><td>Listed for further consideration; not a merits disposal.</td></tr>
           <tr><td>WPA 9132/2025; MAT 943 &amp; 955/2025</td><td>Calcutta High Court</td><td>JEMAS PG 2024–25 OBC reservation and merit-list implementation</td><td>21 May 2025 court-text mirror; 7 Aug 2025 bundled follow-up</td><td>The 21 May order was disposed of; later appeal status must be checked separately.</td></tr>
-          <tr><td>2025 benchmark-survey challenge</td><td>Calcutta High Court</td><td>Survey process and documents underlying the 2025 exercise</td><td>Bundled 17 Jun 2025 order</td><td>Read together with the 28 Jul 2025 Supreme Court stay order.</td></tr>
-          <tr><td>SLP(C) 17422, 17528, 17973–17974/2025; Diary 45526 &amp; 45628/2025</td><td>Supreme Court of India</td><td>Appeals from the 17 Jun 2025 order and related JEMAS PG contempt proceeding</td><td>Bundled official 11 Mar office report; official 5 May cause list; 28 Jul / 22 Aug stay orders</td><td>Vacation-of-stay applications were listed; no later disposal order was located in this audit.</td></tr>
+          <tr><td>2025 benchmark-survey challenge</td><td>Calcutta High Court</td><td>Survey process and 2025 notifications</td><td>17 Jun 2025 order; 12 Aug 2026 judgment</td><td>The August judgment records revival of the High Court order after withdrawal of the State’s SLPs. See fresh October proceedings.</td></tr>
+          <tr><td>SLP(C) 17422, 17528, 17973–17974/2025; Diary 45526 &amp; 45628/2025</td><td>Supreme Court of India</td><td>2025 notifications and JEMAS PG contempt appeals</td><td>14 Jul 2026 withdrawal order (court-text mirror)</td><td>Specified 2025 SLPs and Diary 45526/2025 withdrawn; SLP(C) 26497/2025 is also named. Check Diary 45628/2025 independently; tagging alone does not prove its disposal.</td></tr>
           <tr><td>WPA 14695 &amp; 14698/2026</td><td>Calcutta High Court</td><td>Recruitment impact of the 18 May 2026 notification reset</td><td>Bundled 1 Jul orders and 8 Jul withdrawal order in WPA 14695</td><td>WPA 14695 was withdrawn with liberty to file afresh; WPA 14698 requires a separate current-status check.</td></tr>
-          <tr><td>WPA(P) 305/2026</td><td>Calcutta High Court</td><td>PIL challenge to Notifications 944/945 and Letter 946</td><td>Bundled 3 Jul 2026 order</td><td>PIL dismissed because the Supreme Court was already seized of the principal issues.</td></tr>
-        </tbody></table>
+          <tr><td>WPA(P) 305/2026</td><td>Calcutta High Court / Supreme Court</td><td>Notifications 944/945 and Letter 946</td><td>3 Jul High Court order; 1 Oct Supreme Court order</td><td>PIL dismissed; fresh challenge in Diary 41300/2026 received notice on 1 October.</td></tr>
+        <tr><td>MAT 1320/2026</td><td>Calcutta High Court</td><td>Certificate validity / admissions</td><td>12 Aug 2026 Shreyasi Dhang judgment (mirror)</td><td>Appeal disposed of; read with fresh Supreme Court challenges.</td></tr>
+<tr><td>Diary 41300 &amp; 50605/2026; tagged Diary 54999/2026</td><td>Supreme Court of India</td><td>Fresh challenges after the State’s withdrawal</td><td>1 Oct 2026 order (mirror)</td><td>Notice issued; appointments subject to outcome. Directed listing: 23 Nov 2026. No general stay recorded.</td></tr>
+<tr><td>WPA 29788 &amp; 30672/2026</td><td>Calcutta High Court</td><td>Retained-class SLST applicants who missed updates</td><td>13 &amp; 15 Oct 2026 orders (mirrors)</td><td>Petitions disposed of with representation/verification directions; no automatic reservation entitlement.</td></tr>
+<tr><td>WPA 31572/2026</td><td>Calcutta High Court</td><td>Former OBC applicants seeking EWS category update</td><td>31 Oct 2026 order (mirror)</td><td>Affidavits called for; intervening steps subject to result. EWS entitlement remains undecided.</td></tr>
+</tbody></table>
       </div>
 
       <div class="callout"><strong>Source discipline:</strong> the archive includes key 2025–26 orders, but the large Supreme Court filing bundles remain catalogued rather than published. Add later certified/official orders, then map each order to the exact notification, survey memo, recruitment process, or admission process affected.</div>
@@ -310,6 +338,7 @@
         <img src="obcwb-flat-dark-logo.webp" data-theme-logo data-light-src="obcwb-flat-dark-logo.webp" data-dark-src="obcwb-flat-light-logo.webp" alt="West Bengal OBC Archive" width="720" height="240" decoding="async" loading="lazy">
         <span data-i18n="footerTagline">An independent, volunteer-run public research archive on West Bengal OBC policy and litigation.</span>
       </div>
+      <nav class="footer-links" aria-label="Footer"><a href="obc-basics.html" data-i18n="navOBCBasics">OBC Basics</a><a href="reports.html" data-i18n="navReports">Policy Reports</a><a href="record-guide.html" data-i18n="navEntryFramework">Add Record Guide</a><a href="about.html" data-i18n="navAbout">About</a><a href="methods.html" data-i18n="navMethods">Evidence Method</a><a href="inventory.html" data-i18n="navInventory">File Inventory</a><a href="contribute.html" data-i18n="navContribute">Contribute</a></nav>
       <div class="site-footer-meta">
         <a class="footer-parent-brand" href="https://civicresearch.in" target="_blank" rel="noopener noreferrer">
           <span data-i18n="footerInitiativeLabel">A research initiative by</span>
@@ -324,9 +353,7 @@
     </div>
   </footer>
 
-  <link rel="stylesheet" href="css/site.css">
-
-<script src="js/site.js"></script>
+<script src="js/archive-loader.js?v=20261104-records" defer></script>
 
 </body>
 </html>

@@ -1,4 +1,4 @@
-const DATA_LOAD_ERRORS = [];
+const DATA_LOAD_ERRORS = window.OBC_DATA_ERRORS || [];
 const INLINE_JSON_DATA = window.OBC_INLINE_JSON || {};
 const OBC_DOCS = loadJsonSync('obc_documents.json');
 const SUPPLEMENTAL_DOCS = loadJsonSync('supplemental_documents.json');
@@ -47,48 +47,14 @@ function recordDataLoadError(path) {
 }
 
 function loadJsonSync(path, fallback = []) {
-  if (Object.prototype.hasOwnProperty.call(INLINE_JSON_DATA, path)) return INLINE_JSON_DATA[path];
-  try {
-    const request = new XMLHttpRequest();
-    request.open('GET', localJsonPath(path), false);
-    request.send(null);
-    if ((request.status >= 200 && request.status < 300) || (request.status === 0 && request.responseText)) {
-      return JSON.parse(request.responseText);
-    }
-    // If status is 404, return fallback without warning
-    if (request.status === 404) {
-      recordDataLoadError(path);
-      return fallback;
-    }
-  } catch (error) {
-    console.warn('Could not load ' + path, error);
-  }
-  recordDataLoadError(path);
-  return fallback;
-}
-
-function loadOptionalJsonSync(path, fallback = []) {
-  if (Object.prototype.hasOwnProperty.call(INLINE_JSON_DATA, path)) return INLINE_JSON_DATA[path];
-  try {
-    const request = new XMLHttpRequest();
-    request.open('GET', localJsonPath(path), false);
-    request.send(null);
-    if ((request.status >= 200 && request.status < 300) || (request.status === 0 && request.responseText)) {
-      return JSON.parse(request.responseText);
-    }
-    // If status is 404 or other error, return fallback without logging
-    return fallback;
-  } catch (error) {
-    // Silently return fallback for optional files
-  }
-  return fallback;
+  return Object.prototype.hasOwnProperty.call(INLINE_JSON_DATA, path) ? INLINE_JSON_DATA[path] : fallback;
 }
 
 function showDataLoadWarning() {
   const warning = document.getElementById('data-load-warning');
   if (!warning || !DATA_LOAD_ERRORS.length) return;
   warning.hidden = false;
-  warning.innerHTML = `<strong>Some published data files did not load.</strong> Missing: ${DATA_LOAD_ERRORS.map(escapeHtml).join(', ')}. Please reload the page or report the missing files.`;
+  warning.innerHTML = `<strong>Some published data files did not load.</strong> The archived records below are still available. Reload to restore search and filters.`;
 }
 
 function renderTimelineEvents(events, forceLang) {
@@ -98,8 +64,7 @@ function renderTimelineEvents(events, forceLang) {
   if (loader) loader.hidden = !Array.isArray(events) || !events.length;
   if (!timeline) return;
   if (!Array.isArray(events) || !events.length) {
-    timeline.innerHTML = '';
-    return;
+    return; // Keep the pre-rendered record if a data request fails.
   }
 
   const lang = forceLang || getActiveLang();
@@ -127,8 +92,7 @@ function renderCaseEvents(events, forceLang) {
   if (loader) loader.hidden = !Array.isArray(events) || !events.length;
   if (!timeline) return;
   if (!Array.isArray(events) || !events.length) {
-    timeline.innerHTML = '';
-    return;
+    return; // Keep the pre-rendered record if a data request fails.
   }
 
   const lang = forceLang || getActiveLang();
@@ -143,16 +107,17 @@ function renderCaseEvents(events, forceLang) {
 }
 
 function updateCaseStats(events) {
-  const total = Array.isArray(events) ? events.length : 0;
-  const resolved = Array.isArray(events)
-    ? events.filter(event => /\b(disposed|dismissed|withdrawn|settled)\b/i.test(`${event.title || ''} ${event.html || ''}`)).length
-    : 0;
+  // These are records, not distinct cases. A historical order cannot establish
+  // whether the proceeding is currently pending or disposed of.
+  const records = Array.isArray(events) ? events : [];
+  const orders = records.filter(event => event.record_kind === 'order').length;
+  const supporting = records.filter(event => ['office_report', 'party_filing'].includes(event.record_kind)).length;
   const totalEl = document.getElementById('total-cases');
-  const pendingEl = document.getElementById('pending-cases');
-  const resolvedEl = document.getElementById('resolved-cases');
-  if (totalEl) totalEl.textContent = String(total);
-  if (pendingEl) pendingEl.textContent = String(Math.max(0, total - resolved));
-  if (resolvedEl) resolvedEl.textContent = String(resolved);
+  const ordersEl = document.getElementById('court-records');
+  const supportingEl = document.getElementById('supporting-records');
+  if (totalEl) totalEl.textContent = String(records.length);
+  if (ordersEl) ordersEl.textContent = String(orders);
+  if (supportingEl) supportingEl.textContent = String(supporting);
 }
 
 function applyCaseSearch() {
@@ -508,6 +473,7 @@ function renderSupplementalTimeline() {
   const timeline = document.getElementById('timeline');
   if (!timeline || !SUPPLEMENTAL_TIMELINE.length) return;
   SUPPLEMENTAL_TIMELINE.forEach((doc, offset) => {
+    if (document.getElementById(`evt-framework-${offset}`)) return;
     const idx = OBC_DOCS.findIndex(item => item.filename === doc.filename && item.notif_no === doc.notif_no);
     const li = document.createElement('li');
     li.className = 'event tl-event supplemental-timeline-event';
@@ -1036,39 +1002,6 @@ function syncLanguageButtons(lang = getActiveLang()) {
   });
 }
 
-langButtons.forEach(btn => {
-  btn.addEventListener('click', () => {
-    const lang = btn.getAttribute('data-lang');
-    if (window.WBOBCI18n) {
-      window.WBOBCI18n.switchLanguage(lang);
-    }
-    
-    syncLanguageButtons(lang);
-    
-    // Update URL without reload
-    const url = new URL(window.location);
-    url.searchParams.set('lang', lang);
-    window.history.pushState({}, '', url);
-  });
-});
-
-// Popup language buttons
-popupLangButtons.forEach(btn => {
-  btn.addEventListener('click', () => {
-    const lang = btn.getAttribute('data-lang-switch');
-    if (window.WBOBCI18n) {
-      window.WBOBCI18n.switchLanguage(lang);
-    }
-    
-    syncLanguageButtons(lang);
-    
-    // Update URL without reload
-    const url = new URL(window.location);
-    url.searchParams.set('lang', lang);
-    window.history.pushState({}, '', url);
-  });
-});
-
 document.addEventListener('wbobc:langchange', event => {
   syncLanguageButtons(event.detail?.lang);
   // Re-apply glossary tooltips after language change
@@ -1278,11 +1211,11 @@ function updateHero(tabName = SITE_PAGE || document.body.dataset.activeTab || 'h
   
   // Use translation keys for title and subtitle to support language switching
   if (heroTitle && content.titleKey) {
-    heroTitle.innerHTML = window.WBOBCI18n ? window.WBOBCI18n.t(content.titleKey) : content.titleKey;
+    heroTitle.innerHTML = heroT(content.titleKey, heroTitle.innerHTML);
     heroTitle.setAttribute('data-i18n', content.titleKey);
   }
   if (heroSub && content.subKey) {
-    heroSub.innerHTML = window.WBOBCI18n ? window.WBOBCI18n.t(content.subKey) : content.subKey;
+    heroSub.innerHTML = heroT(content.subKey, heroSub.innerHTML);
     heroSub.setAttribute('data-i18n', content.subKey);
   }
   
@@ -1290,8 +1223,8 @@ function updateHero(tabName = SITE_PAGE || document.body.dataset.activeTab || 'h
     heroStatEls.forEach((item, index) => {
       const valueKey = `heroStat${index + 1}Value`;
       const labelKey = `heroStat${index + 1}Label`;
-      if (item.value) item.value.textContent = window.WBOBCI18n ? window.WBOBCI18n.t(valueKey) : (HERO_CONTENT.home.stats[index] || ['', ''])[0];
-      if (item.label) item.label.innerHTML = window.WBOBCI18n ? window.WBOBCI18n.t(labelKey) : (HERO_CONTENT.home.stats[index] || ['', ''])[1];
+      if (item.value) item.value.textContent = heroT(valueKey, item.value.textContent);
+      if (item.label) item.label.innerHTML = heroT(labelKey, item.label.innerHTML);
     });
   } else {
     heroStatEls.forEach((item, index) => {
@@ -1303,6 +1236,10 @@ function updateHero(tabName = SITE_PAGE || document.body.dataset.activeTab || 'h
 }
 
 function showTab(tabName, targetHash) {
+  if (SITE_PAGE && tabName !== SITE_PAGE) {
+    window.location.href = pageHref(tabName, (targetHash || `#${tabName}`).slice(1));
+    return;
+  }
   document.body.dataset.activeTab = tabName;
   tabPanels.forEach(panel => {
     panel.hidden = panel.dataset.tabPanel !== tabName;
@@ -1327,7 +1264,7 @@ function showTab(tabName, targetHash) {
   if (target && !isTopLevelTab && hash !== '#guide' && hash !== '#query-hub' && hash !== '#home') {
     requestAnimationFrame(() => {
       setTimeout(() => {
-        const headerOffset = document.querySelector('.site-header')?.offsetHeight || 0;
+        const headerOffset = document.querySelector('.section-nav')?.offsetHeight || 0;
         const top = target.getBoundingClientRect().top + window.scrollY - headerOffset - 16;
         window.scrollTo({ top: Math.max(0, top) });
       }, 30);
@@ -1404,9 +1341,11 @@ function sourcePreviewText(doc) {
   return text.replace(/\n{3,}/g, '\n\n');
 }
 
+let previewReturnFocus = null;
 function openDocPreview(idx) {
   const doc = OBC_DOCS[idx];
   if (!doc || !modal) return;
+  previewReturnFocus = document.activeElement;
   modalMeta.textContent = `${doc.notif_no} · ${doc.date} · ${String(doc.status || '').toUpperCase()}`;
   modalTitle.textContent = doc.summary || doc.notif_no || 'Document preview';
   modalSummary.innerHTML = `
@@ -1449,6 +1388,7 @@ function closeDocPreview() {
   modal.style.display = 'none';
   modal.setAttribute('aria-hidden', 'true');
   document.body.style.overflow = previousBodyOverflow;
+  if (previewReturnFocus?.isConnected) previewReturnFocus.focus();
 }
 
 if (docSearch) docSearch.addEventListener('input', applyDocFilters);
@@ -1477,7 +1417,14 @@ document.addEventListener('click', event => {
 
 if (modalClose) modalClose.addEventListener('click', closeDocPreview);
 document.addEventListener('keydown', event => {
-  if (event.key === 'Escape' && modal && modal.style.display !== 'none') closeDocPreview();
+  if (!modal || modal.getAttribute('aria-hidden') !== 'false') return;
+  if (event.key === 'Escape') closeDocPreview();
+  if (event.key === 'Tab') {
+    const focusable = Array.from(modal.querySelectorAll('a[href], button, input, select, textarea, [tabindex="0"]')).filter(el => el.getClientRects().length && !el.disabled);
+    const first = focusable[0], last = focusable[focusable.length - 1];
+    if (event.shiftKey && document.activeElement === first) { event.preventDefault(); last?.focus(); }
+    else if (!event.shiftKey && document.activeElement === last) { event.preventDefault(); first?.focus(); }
+  }
 });
 
 const search = document.querySelector('#tl-search');
@@ -1512,130 +1459,6 @@ applyFilters();
 applyDocFilters();
 syncTabFromHash();
 if (window.location.hash === '#home') requestAnimationFrame(() => window.scrollTo({ top: 0 }));
-
-// Submenu (Research / Learn) dropdown on desktop, accordion on mobile
-const navGroups = Array.from(document.querySelectorAll('.nav-group'));
-const isMobileNav = () => window.matchMedia('(max-width: 1040px)').matches;
-
-function closeGroup(group) {
-  group.classList.remove('is-open');
-  const toggle = group.querySelector('.nav-group-toggle');
-  if (toggle) toggle.setAttribute('aria-expanded', 'false');
-}
-
-function openGroup(group) {
-  navGroups.forEach(other => { if (other !== group) closeGroup(other); });
-  group.classList.add('is-open');
-  const toggle = group.querySelector('.nav-group-toggle');
-  if (toggle) toggle.setAttribute('aria-expanded', 'true');
-}
-
-navGroups.forEach(group => {
-  const toggle = group.querySelector('.nav-group-toggle');
-  let closeTimer = null;
-  const scheduleClose = () => {
-    clearTimeout(closeTimer);
-    closeTimer = setTimeout(() => closeGroup(group), 200);
-  };
-
-  group.addEventListener('mouseenter', () => {
-    if (isMobileNav()) return;
-    clearTimeout(closeTimer);
-    openGroup(group);
-  });
-  group.addEventListener('mouseleave', () => {
-    if (isMobileNav()) return;
-    scheduleClose();
-  });
-
-  if (toggle) {
-    toggle.addEventListener('click', event => {
-      event.preventDefault();
-      if (group.classList.contains('is-open')) {
-        closeGroup(group);
-      } else {
-        openGroup(group);
-      }
-    });
-  }
-});
-
-document.addEventListener('click', event => {
-  navGroups.forEach(group => {
-    if (!group.contains(event.target)) closeGroup(group);
-  });
-});
-
-document.addEventListener('keydown', event => {
-  if (event.key === 'Escape') navGroups.forEach(closeGroup);
-});
-
-// Mobile off-canvas nav panel
-const navToggle = document.querySelector('.nav-toggle');
-const siteNav = document.getElementById('site-nav');
-const navOverlay = document.querySelector('.nav-overlay');
-const navCloseButton = document.querySelector('.nav-close');
-
-function openMobileNav() {
-  if (!siteNav) return;
-  siteNav.classList.add('is-open');
-  siteNav.classList.add('open');
-  if (navOverlay) {
-    navOverlay.classList.add('is-visible');
-    navOverlay.classList.add('open');
-  }
-  if (navToggle) navToggle.setAttribute('aria-expanded', 'true');
-  document.body.style.overflow = 'hidden';
-}
-
-function closeMobileNav() {
-  if (!siteNav) return;
-  siteNav.classList.remove('is-open');
-  siteNav.classList.remove('open');
-  if (navOverlay) {
-    navOverlay.classList.remove('is-visible');
-    navOverlay.classList.remove('open');
-  }
-  if (navToggle) navToggle.setAttribute('aria-expanded', 'false');
-  document.body.style.overflow = '';
-  navGroups.forEach(closeGroup);
-}
-
-if (navToggle) {
-  navToggle.addEventListener('click', () => {
-    const isOpen = siteNav && (siteNav.classList.contains('is-open') || siteNav.classList.contains('open'));
-    if (isOpen) {
-      closeMobileNav();
-    } else {
-      openMobileNav();
-    }
-  });
-}
-
-if (navCloseButton) navCloseButton.addEventListener('click', closeMobileNav);
-if (navOverlay) navOverlay.addEventListener('click', closeMobileNav);
-
-document.addEventListener('click', event => {
-  if (!siteNav || !siteNav.classList.contains('is-open')) return;
-  if (event.target.closest('#site-nav') || event.target.closest('.nav-toggle')) return;
-  closeMobileNav();
-});
-
-document.addEventListener('keydown', event => {
-  if (event.key === 'Escape') closeMobileNav();
-});
-
-// Close the off-canvas panel automatically if a link inside it is followed
-if (siteNav) {
-  siteNav.addEventListener('click', event => {
-    if (event.target.closest('a')) closeMobileNav();
-  });
-}
-
-// Close the off-canvas panel if the viewport grows back to desktop size
-window.addEventListener('resize', () => {
-  if (!isMobileNav()) closeMobileNav();
-});
 
 // Reveal meaningful groups as the reader reaches them. This keeps the initial
 // viewport calm and gives long research pages a clear sense of progression.
@@ -1683,121 +1506,6 @@ window.addEventListener('resize', () => {
   elements.forEach(element => observer.observe(element));
 })();
 
-// Contribution Popup Logic
-(function() {
-  const popup = document.getElementById('contribute-popup');
-  const closeBtn = popup ? popup.querySelector('.popup-close') : null;
-  const dontShowAgain = popup ? popup.querySelector('#dont-show-again') : null;
-  
-  function showPopup() {
-    if (!popup) return;
-    
-    // Check if user opted out
-    const suppressed = localStorage.getItem('contributePopupSuppressed');
-    if (suppressed === 'true') return;
-    
-    // Show popup after a short delay
-    setTimeout(() => {
-      popup.hidden = false;
-      // Force reflow to trigger transition
-      void popup.offsetWidth;
-      document.body.style.overflow = 'hidden';
-      closeBtn.focus();
-    }, 1500);
-  }
-  
-  function hidePopup() {
-    if (!popup) return;
-    popup.hidden = true;
-    document.body.style.overflow = '';
-  }
-  
-  // Close button
-  if (closeBtn) {
-    closeBtn.addEventListener('click', function(e) {
-      e.stopPropagation();
-      hidePopup();
-    });
-  }
-  
-  // Click on overlay to close
-  if (popup) {
-    popup.addEventListener('click', (e) => {
-      if (e.target === popup) hidePopup();
-    });
-  }
-  
-  // Don't show again checkbox
-  if (dontShowAgain) {
-    dontShowAgain.addEventListener('change', () => {
-      if (dontShowAgain.checked) {
-        localStorage.setItem('contributePopupSuppressed', 'true');
-      } else {
-        localStorage.removeItem('contributePopupSuppressed');
-      }
-    });
-  }
-  
-  // Escape key to close
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && popup && !popup.hidden) {
-      hidePopup();
-    }
-  });
-  
-  // Show popup on page load
-  showPopup();
-})();
-
-// One persistent theme control updates colors and theme-appropriate brand marks.
-(function initThemeToggle() {
-  const root = document.documentElement;
-  const toggle = document.getElementById('theme-toggle');
-  const themeColor = document.querySelector('meta[name="theme-color"]');
-  const logos = document.querySelectorAll('[data-theme-logo]');
-
-  function applyTheme(theme, persist) {
-    const activeTheme = theme === 'dark' ? 'dark' : 'light';
-    const isDark = activeTheme === 'dark';
-    root.dataset.theme = activeTheme;
-
-    logos.forEach(logo => {
-      const nextSource = isDark ? logo.dataset.darkSrc : logo.dataset.lightSrc;
-      if (nextSource && logo.getAttribute('src') !== nextSource) logo.setAttribute('src', nextSource);
-    });
-
-    if (toggle) {
-      const label = isDark ? 'Switch to light theme' : 'Switch to dark theme';
-      toggle.setAttribute('aria-label', label);
-      toggle.setAttribute('title', label);
-      toggle.setAttribute('aria-pressed', String(isDark));
-    }
-
-    if (themeColor) themeColor.setAttribute('content', isDark ? '#0c1d31' : '#f8fbfb');
-
-    if (persist) {
-      try {
-        localStorage.setItem('wb-obc-theme', activeTheme);
-      } catch (error) {
-        // Theme still applies when storage is unavailable (private/file contexts).
-      }
-    }
-  }
-
-  applyTheme(root.dataset.theme, false);
-  if (toggle) {
-    toggle.addEventListener('click', () => {
-      applyTheme(root.dataset.theme === 'dark' ? 'light' : 'dark', true);
-    });
-  }
-
-  // Language switching rewrites translated nodes; re-assert the theme-correct
-  // logo sources in case any themed image was re-created with its default src.
-  document.addEventListener('wbobc:langchange', () => {
-    applyTheme(root.dataset.theme, false);
-  });
-})();
-
 // i18n rewrites the shared hero nodes with the home-page keys after the
 // page-specific updateHero has run; re-apply this page's hero content
 // (eyebrow, title, subtitle, stats) in the active language.
@@ -1805,46 +1513,3 @@ document.addEventListener('wbobc:langchange', () => {
   updateHero(SITE_PAGE || 'home');
 });
 
-// Scroll to Top Button
-(function() {
-  const scrollBtn = document.createElement('button');
-  scrollBtn.className = 'scroll-to-top';
-  scrollBtn.innerHTML = '↑';
-  scrollBtn.setAttribute('aria-label', 'Scroll to top');
-  document.body.appendChild(scrollBtn);
-  
-  let ticking = false;
-  
-  function toggleButton() {
-    if (window.scrollY > 300) {
-      scrollBtn.classList.add('visible');
-    } else {
-      scrollBtn.classList.remove('visible');
-    }
-    ticking = false;
-  }
-  
-  window.addEventListener('scroll', () => {
-    if (!ticking) {
-      window.requestAnimationFrame(toggleButton);
-      ticking = true;
-    }
-  }, { passive: true });
-  
-  scrollBtn.addEventListener('click', () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  });
-})();
-
-// Service Worker Registration for PWA support
-if ('serviceWorker' in navigator) {
-  window.addEventListener('load', () => {
-    navigator.serviceWorker.register('./sw.js')
-      .then((registration) => {
-        console.log('[PWA] Service Worker registered:', registration.scope);
-      })
-      .catch((error) => {
-        console.log('[PWA] Service Worker registration failed:', error);
-      });
-  });
-}

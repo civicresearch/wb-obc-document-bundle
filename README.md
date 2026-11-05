@@ -3,6 +3,12 @@
 This repository hosts a multi-page static research site and its source files. Open
 `index.html` in a development server or publish the repository through GitHub Pages.
 
+Research refreshed on **4 November 2026**: six later court records, the July
+amendment Acts and their commencement notices, bilingual litigation summaries,
+and corrected record counters. See [the dated research note](RESEARCH_UPDATE_2026-11-04.md)
+for source links, scope and follow-up gaps. The 23 November Supreme Court listing
+is a future direction in the 1 October order, not a completed hearing.
+
 ## Contents
 
 - `obc_pdfs/` - published PDF source documents used by the timeline, corpus, reports, hearings, and inventory sections.
@@ -60,6 +66,7 @@ Run the data checks before publishing:
 
 ```sh
 npm run validate:data
+npm run validate:site
 ```
 
 Build all public pages and the standalone fallback after editing the shared template:
@@ -79,6 +86,22 @@ npm run build:standalone
 This writes `index-standalone.html`. Edit `site-src/app-template.html`, the shared
 translation/data files, and then run the build; generated page files should not be
 edited independently.
+
+The contribution form has its own source at `site-src/contribute-template.html`.
+Shared responsive styling lives in `css/polish.css`; `js/navigation.js` handles
+navigation and preferences independently of archive downloads. The page loader
+fetches only the data needed for each section, while built HTML includes the core
+records for search engines and readers without JavaScript.
+
+The masthead, typography, and light/dark palette follow the CRG appeal report's
+visual style. Language controls stay visible in the header on mobile. Appearance
+offers Auto (the device setting), Light, and Dark; explicit choices persist across
+pages. Keep these controls in the shared header rather than inside the mobile menu.
+
+`scripts/site-publishing.js` generates unique page metadata, canonical URLs,
+social previews, structured data, `sitemap.xml`, and `robots.txt`. The canonical
+hostname comes from `CNAME`; rebuild after changing it. Run `validate:site` after
+building to check metadata, discoverability, static records, and local asset links.
 
 ## GitHub Pages
 

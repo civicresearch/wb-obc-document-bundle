@@ -57,7 +57,12 @@
     document.documentElement.lang = currentLang;
 
     // Save preference
-    localStorage.setItem('wb-obc-lang', currentLang);
+    try { localStorage.setItem('wb-obc-lang', currentLang); } catch {}
+    document.querySelectorAll('[data-lang-switch]').forEach(button => {
+      const active = button.dataset.langSwitch === currentLang;
+      button.classList.toggle('active', active);
+      button.setAttribute('aria-pressed', String(active));
+    });
   }
 
   // Switch language with smooth animation
@@ -107,7 +112,8 @@
 
     // Check saved preference or URL parameter - default to English
     const urlParams = new URLSearchParams(window.location.search);
-    const savedLang = localStorage.getItem('wb-obc-lang');
+    let savedLang;
+    try { savedLang = localStorage.getItem('wb-obc-lang'); } catch {}
     const urlLang = urlParams.get('lang');
     
     // Default to English unless explicitly set to Bengali
@@ -122,18 +128,18 @@
       link.addEventListener('click', (e) => {
         e.preventDefault();
         const lang = link.getAttribute('data-lang-switch');
-        switchLanguage(lang);
-        
         // Update URL without reload
         const url = new URL(window.location);
         url.searchParams.set('lang', lang);
         window.history.pushState({}, '', url);
+        switchLanguage(lang);
       });
     });
 
     // Initial render
     updatePageContent();
     document.dispatchEvent(new CustomEvent('wbobc:langchange', { detail: { lang: currentLang } }));
+    window.addEventListener('popstate', () => switchLanguage(new URLSearchParams(location.search).get('lang') === 'bn' ? 'bn' : 'en'));
   }
 
   // Expose globally

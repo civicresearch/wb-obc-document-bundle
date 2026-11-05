@@ -1,38 +1,30 @@
 <!doctype html>
-<html lang="en" data-theme="dark">
+<html lang="en" data-theme="light">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="WB OBC Archive - A consolidated archive of West Bengal OBC notifications, court orders, hearings, source PDFs, and policy documents from 1993-2026">
   <meta name="theme-color" content="#10253f">
   <title>WB OBC Archive</title>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <script src="js/navigation.js?v=20261104-records" defer></script>
   <link rel="manifest" href="pwa-manifest.json">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@100..900&display=swap">
-  <link rel="stylesheet" href="css/shared.css?v=20261004">
-  <script src="js/i18n.js?v=20261004" defer></script>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anek+Bangla:wght@400;500;600;700;800&family=Hind+Siliguri:wght@400;500;600;700&family=Noto+Sans+Bengali:wght@400;500;600;700&display=swap">
+  <link rel="stylesheet" href="css/shared.css?v=20261104-records">
+  <script src="js/i18n.js?v=20261104-records" defer></script>
   <script>
-    // This page is deployed in two places:
-    //  - GitHub Pages, where obc_pdfs/, case_pdfs/ and obc_pdf_manifest.json
-    //    are served alongside this file, so relative links work as-is.
-    //  - Vercel (or any other host that only deploys this HTML file), where
-    //    those folders are not present. On those hosts, rewrite the relative
-    //    asset links to point at the raw GitHub copy instead.
-    // Edit GITHUB_RAW_BASE below if the repo/branch ever changes.
-    (function () {
-      var GITHUB_RAW_BASE = 'https://raw.githubusercontent.com/civicresearch/wb-obc-document-bundle/main/';
-      var host = window.location.hostname;
-      var isGithubPages = /(^|\.)github\.io$/.test(host);
-      var isLocal = host === 'localhost' || host === '127.0.0.1' || host === '' || window.location.protocol === 'file:';
-      window.OBC_ASSET_BASE = (isGithubPages || isLocal) ? '' : GITHUB_RAW_BASE;
-    })();
+    window.OBC_ASSET_BASE = "";
     (function () {
       try {
         var savedTheme = localStorage.getItem('wb-obc-theme');
-        document.documentElement.dataset.theme = savedTheme === 'light' ? 'light' : 'dark';
+        var preference = ['light', 'dark'].includes(savedTheme) ? savedTheme : 'auto';
+        document.documentElement.dataset.themePreference = preference;
+        document.documentElement.dataset.theme = preference === 'auto' ? (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : preference;
       } catch (error) {
-        document.documentElement.dataset.theme = 'dark';
+        document.documentElement.dataset.themePreference = 'auto';
+        document.documentElement.dataset.theme = matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
       }
     })();
   </script>
@@ -42,7 +34,7 @@
   <header class="site-header">
     <div class="site-header-inner">
       <a href="#home" class="site-logo" aria-label="West Bengal OBC Archive — home">
-        <img src="obcwb-flat-dark-logo.webp" data-theme-logo data-light-src="obcwb-flat-dark-logo.webp" data-dark-src="obcwb-flat-light-logo.webp" alt="West Bengal OBC Archive" width="720" height="240" decoding="async">
+        <img src="obcwb-flat-light-logo.webp" data-theme-logo data-light-src="obcwb-flat-light-logo.webp" data-dark-src="obcwb-flat-light-logo.webp" alt="West Bengal OBC Archive" width="720" height="240" decoding="async">
       </a>
       <script>
         // Swap the header logo to the theme-correct file before first paint;
@@ -54,12 +46,25 @@
           if (logo && logo.dataset.darkSrc) logo.setAttribute('src', logo.dataset.darkSrc);
         })();
       </script>
+      <div class="nav-preferences" aria-label="Language and appearance">
+        <div class="language-switch" role="group" aria-label="Language">
+          <button type="button" id="lang-en" class="lang-btn active" data-lang="en" data-lang-switch="en" aria-pressed="true" lang="en" aria-label="English" title="English">EN</button>
+          <button type="button" id="lang-bn" class="lang-btn" data-lang="bn" data-lang-switch="bn" aria-pressed="false" lang="bn">বাংলা</button>
+        </div>
+        <select id="theme-select" class="theme-select" aria-label="Appearance">
+          <option value="auto" data-i18n="appearance.auto">Auto</option>
+          <option value="light" data-i18n="appearance.light">Light</option>
+          <option value="dark" data-i18n="appearance.dark">Dark</option>
+        </select>
+      </div>
+      <div class="masthead-title"><span data-i18n="masthead.eyebrow">Civic Research Group</span><strong data-i18n="masthead.title">West Bengal OBC Archive</strong><small data-i18n="masthead.subtitle">Policy, court records &amp; public evidence</small></div>
       <button type="button" class="nav-toggle" aria-expanded="false" aria-controls="site-nav" aria-label="Open navigation menu">
         <span class="nav-toggle-bar"></span>
         <span class="nav-toggle-bar"></span>
         <span class="nav-toggle-bar"></span>
       </button>
       <nav class="site-nav" id="site-nav" aria-label="Sections">
+        <p class="drawer-title" data-i18n="navigation.title">Explore the archive</p>
         <button type="button" class="nav-close" aria-label="Close navigation menu">×</button>
         <a href="#home" class="active" data-tab-target="home" data-i18n="navHome">Home</a>
         <div class="nav-group">
@@ -91,18 +96,7 @@
         <a href="contribute.html" data-i18n="navContribute">Contribute</a>
         <a href="#about" data-tab-target="about" data-i18n="navAbout">About</a>
         <a href="https://github.com/civicresearch/wb-obc-document-bundle" target="_blank" rel="noreferrer" data-i18n="navGitHub">GitHub</a>
-        <div class="nav-preferences" aria-label="Language and appearance">
-          <span class="language-switch" aria-label="Language">
-            <button type="button" id="lang-en" class="lang-btn active" data-lang="en" data-lang-switch="en" aria-pressed="true">EN</button>
-            <span class="lang-separator">|</span>
-            <button type="button" id="lang-bn" class="lang-btn" data-lang="bn" data-lang-switch="bn" aria-pressed="false">বাংলা</button>
-          </span>
-          <span class="preference-divider" aria-hidden="true"></span>
-          <button type="button" id="theme-toggle" class="theme-toggle" aria-label="Switch to dark theme" title="Switch to dark theme">
-            <svg class="theme-icon theme-icon-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.2 15.2A8.5 8.5 0 0 1 8.8 3.8 8.5 8.5 0 1 0 20.2 15.2Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            <svg class="theme-icon theme-icon-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="3.8" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M12 2v2.2M12 19.8V22M4.93 4.93l1.56 1.56M17.51 17.51l1.56 1.56M2 12h2.2M19.8 12H22M4.93 19.07l1.56-1.56M17.51 6.49l1.56-1.56" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
-          </button>
-        </div>
+
       </nav>
       <div class="nav-overlay"></div>
     </div>
@@ -110,48 +104,27 @@
 
   <section class="hero">
     <div class="hero-inner wrap">
-      <p class="hero-eyebrow" id="hero-eyebrow" data-i18n="heroEyebrow">West Bengal · Backward Classes Welfare Department · 1993–2026</p>
-      <h1 id="hero-title" data-i18n="heroTitle">OBC Reservation and List Timeline</h1>
-      <p class="hero-sub" id="hero-sub" data-i18n="heroSub">A consolidated database on West Bengal OBC Reservation starting with the 1993 Commission Act and continuing through the latest notification and court case records.</p>
+      <p class="hero-eyebrow" id="hero-eyebrow" data-i18n="heroEyebrow">Independent research archive · West Bengal</p>
+      <h1 id="hero-title" data-i18n="heroTitle">West Bengal OBC records, in one place.</h1>
+      <p class="hero-sub" id="hero-sub" data-i18n="heroSub">Trace policy changes, follow court proceedings, and find the source behind every record. An open archive for researchers, communities and the public.</p>
       <div class="hero-stats stagger-in">
-        <div class="hero-stat lift"><strong id="hero-stat-1-value" data-i18n="heroStat1Value">84</strong><span id="hero-stat-1-label" data-i18n="heroStat1Label">PDF sources bundled across notifications, hearings, reports, and court records.</span></div>
-        <div class="hero-stat lift"><strong id="hero-stat-2-value" data-i18n="heroStat2Value">66</strong><span id="hero-stat-2-label" data-i18n="heroStat2Label">Classes listed in Notification No. 945-BCW/MR-23/2026.</span></div>
-        <div class="hero-stat lift"><strong id="hero-stat-3-value" data-i18n="heroStat3Value">7%</strong><span id="hero-stat-3-label" data-i18n="heroStat3Label">Reservation position stated in the 18 May 2026 list notification.</span></div>
-        <div class="hero-stat lift"><strong id="hero-stat-4-value" data-i18n="heroStat4Value">5</strong><span id="hero-stat-4-label" data-i18n="heroStat4Label">Priority evidence gaps and follow-ups tracked in the audit.</span></div>
+        <div class="hero-stat lift"><strong id="hero-stat-1-value" data-i18n="heroStat1Value">94</strong><span id="hero-stat-1-label" data-i18n="heroStat1Label">Archived source PDFs</span></div>
+        <div class="hero-stat lift"><strong id="hero-stat-2-value" data-i18n="heroStat2Value">66</strong><span id="hero-stat-2-label" data-i18n="heroStat2Label">Classes in Notification 945</span></div>
+        <div class="hero-stat lift"><strong id="hero-stat-3-value" data-i18n="heroStat3Value">7%</strong><span id="hero-stat-3-label" data-i18n="heroStat3Label">Reservation in the May 2026 notice</span></div>
+        <div class="hero-stat lift"><strong id="hero-stat-4-value" data-i18n="heroStat4Value">5</strong><span id="hero-stat-4-label" data-i18n="heroStat4Label">Evidence gaps tracked</span></div>
       </div>
     </div>
   </section>
 
-  <!-- Contribution Popup Modal -->
-  <div id="contribute-popup" class="contribute-popup-overlay" hidden>
-    <div class="contribute-popup" role="dialog" aria-labelledby="popup-title" aria-describedby="popup-desc">
-      <button type="button" class="popup-close" aria-label="Close popup">&times;</button>
-      <div class="popup-brand">
-        <img src="CRG_Logo_Dark.png" data-theme-logo data-light-src="CRG_Logo_Dark.png" data-dark-src="CRG_LOGO_light.png" alt="Civic Research Group" width="400" height="81" decoding="async">
-      </div>
-      <h2 id="popup-title" data-i18n="popupTitle">Help Improve This Resource</h2>
-      <p id="popup-desc" data-i18n="popupDesc">A volunteer-maintained public research archive. Contributions and corrections are welcome.</p>
-      <div class="popup-actions">
-        <a href="contribute.html" class="popup-btn primary" data-i18n="popupBtn">Contribute Documents &amp; Corrections</a>
-      </div>
-      <div class="popup-network">
-        <p data-i18n="popupNetworkTitle">Explore our latest work</p>
-        <div class="popup-network-links">
-          <a href="https://civicresearch.in" target="_blank" rel="noopener noreferrer" data-i18n="popupCRGLink">Visit our website civicresearch.in</a>
-          <a href="https://appeal.civicresearch.in" target="_blank" rel="noopener noreferrer" data-i18n="popupAppealLink">Tribunal Appeal Evidence · appeal.civicresearch.in</a>
-          <a href="https://rti.votercards.in" target="_blank" rel="noopener noreferrer" data-i18n="popupRTILink">RTI Karo · rti.votercards.in</a>
-        </div>
-      </div>
-      <div class="popup-preferences">
-        <label><input type="checkbox" id="dont-show-again"> <span data-i18n="popupDontShow">Don't show this message again</span></label>
-        <div class="popup-lang-switch" aria-label="Language">
-          <button type="button" class="lang-btn-small" data-lang-switch="en" aria-pressed="false">EN</button>
-          <span aria-hidden="true">|</span>
-          <button type="button" class="lang-btn-small" data-lang-switch="bn" aria-pressed="false">বাংলা</button>
-        </div>
-      </div>
+  <nav class="section-nav" aria-label="Archive sections">
+    <div class="wrap">
+      <a href="timeline.html" data-section="timeline" data-i18n="navTimeline">Timeline</a>
+      <a href="litigation.html" data-section="cases" data-i18n="navCases">Litigation</a>
+      <a href="obc-list.html" data-section="obc-list" data-i18n="navOBCList">OBC List</a>
+      <a href="documents.html" data-section="documents" data-i18n="navDocuments">Source PDFs</a>
+      <a href="evidence.html" data-section="evidence" data-i18n="navEvidence">Hearings &amp; Gaps</a>
     </div>
-  </div>
+  </nav>
 
   <main id="main-content" class="wrap" tabindex="-1">
     <div id="data-load-warning" class="data-load-warning" hidden role="status"></div>
@@ -160,8 +133,8 @@
       <div id="query-hub" class="query-hub" aria-label="OBC query hub">
         <div class="search-intro">
           <p class="panel-kicker" data-i18n="searchHubKicker">Bundle search</p>
-          <h2 data-i18n="searchHubTitle">Search the timeline, litigation, OBC list, and source PDFs together</h2>
-          <p data-i18n="searchHubDesc">This searches connected indexes at once: timeline entries, litigation records, class-list rows, and extracted document text. Results are labelled by source area and open the matching tab.</p>
+          <h2 data-i18n="searchHubTitle">Find the record you need</h2>
+          <p data-i18n="searchHubDesc">Search a community, notification number, court case or topic across the archive.</p>
         </div>
         <div class="search-panel">
           <label class="visually-hidden" for="site-search">Search the research bundle</label>
@@ -192,7 +165,7 @@
       <div class="home-layout stagger-in">
         <article class="home-card lift accent-blue">
           <h3 data-i18n="homeCard1Title">Documented position in this bundle</h3>
-          <p data-i18n="homeCard1Desc">Notification No. 944-BCW/MR-23/2026 withdraws the 2025 package. Notification No. 945-BCW/MR-23/2026 lists 66 classes and states the 7% reservation position. Litigation can affect implementation, so read the linked case record before relying on a summary.</p>
+          <p data-i18n="homeCard1Desc">Reviewed 4 November 2026: Notification 945 lists 66 classes at 7%. The July statutory amendments took effect on 27 July. After withdrawal of the State’s specified SLPs and the August certificate judgment, the Supreme Court issued notice on fresh challenges on 1 October, making appointments subject to the outcome. <a href="litigation.html#case-2026-10-01">Read the latest court record</a>.</p>
           <p><a href="#evt-2026-944" data-i18n="homeCard1Link1">Open withdrawal entry</a> · <a href="#evt-2026-945" data-i18n="homeCard1Link2">Open current list entry</a></p>
         </article>
         <article class="home-card lift accent-gold">
@@ -614,7 +587,7 @@
           <button class="filter-btn" type="button" data-filter="legacy" data-i18n="timeline.filter.legacy">Legacy</button>
         </div>
       </div>
-      <p class="note" data-i18n="timelineNote">Reading note: green items reflect the latest position found in the archived documents. Red items were expressly withdrawn by Notification No. 944-BCW/MR-23/2026. Amber items are scanned PDFs; where a scanned item is described, the detail is limited to what is text-extracted from the source PDF.</p>
+      <p class="note" data-i18n="timelineNote">Reading note: green marks the documented notification or statutory position, not a guarantee that litigation is concluded. The July 2026 amendments and commencement notifications are included. Read the litigation tracker for the July withdrawal, August certificate judgment and October Supreme Court order. Red marks the 2025 measures withdrawn by Notification 944; amber indicates scanned sources.</p>
       
       <!-- Loading Skeleton -->
       <div id="timeline-loader" class="skeleton-container hidden">
@@ -639,34 +612,37 @@
       <h2 class="section-heading" data-i18n="cases.title">West Bengal OBC Litigation Timeline</h2>
       <p class="section-sub" data-i18n="casesSectionSub">This tracker separates what an order actually records from later policy action. It is a research index, not legal advice; case status must be checked with the relevant court before reliance.</p>
 
+      <div class="callout" data-i18n="cases.latestReview"><strong>Reviewed 4 November 2026.</strong> The State’s specified SLPs were withdrawn on 14 July. The 12 August certificate-validity judgment is followed by fresh Supreme Court proceedings on 1 October: appointments must abide by the outcome and carry that condition in appointment letters. That order does not restore 17% reservation or grant a general stay. It directs listing on <strong>23 November 2026</strong>; verify the eventual cause list. <a href="#case-2026-07-14">July withdrawal</a> · <a href="#case-2026-08-12">August judgment</a> · <a href="#case-2026-10-01">October order</a></div>
+
       <!-- Stats Cards -->
       <div class="stats-grid">
         <div class="stat-card">
           <span class="stat-number" id="total-cases">0</span>
-          <span class="stat-label" data-i18n="litigation.stat.total">Total Cases</span>
+          <span class="stat-label" data-i18n="litigation.stat.total">Timeline records</span>
         </div>
         <div class="stat-card warning">
-          <span class="stat-number" id="pending-cases">0</span>
-          <span class="stat-label" data-i18n="litigation.stat.pending">Pending</span>
+          <span class="stat-number" id="court-records">0</span>
+          <span class="stat-label" data-i18n="litigation.stat.orders">Judgments and orders</span>
         </div>
         <div class="stat-card success">
-          <span class="stat-number" id="resolved-cases">0</span>
-          <span class="stat-label" data-i18n="litigation.stat.resolved">Resolved</span>
+          <span class="stat-number" id="supporting-records">0</span>
+          <span class="stat-label" data-i18n="litigation.stat.supporting">Reports and party filings</span>
         </div>
       </div>
 
       <div class="case-summary-grid">
-        <article><strong data-i18n="cases.summary.date1">22 May 2024</strong><span data-i18n="cases.summary.may2024">Calcutta High Court judgment in the connected OBC matters</span></article>
-        <article><strong data-i18n="cases.summary.date2">2024–25</strong><span data-i18n="cases.summary.slp">Supreme Court SLP proceedings, including the 28 July 2025 stay order</span></article>
-        <article><strong data-i18n="cases.summary.date3">2026</strong><span data-i18n="cases.summary.recruitment">Recruitment-related OBC classification challenges added to the tracker</span></article>
+        <article><strong data-i18n="cases.summary.date1">14 July 2026</strong><span data-i18n="cases.summary.may2024">Specified State and Commission SLPs dismissed as withdrawn</span></article>
+        <article><strong data-i18n="cases.summary.date2">12 August 2026</strong><span data-i18n="cases.summary.slp">Shreyasi Dhang: certificate-validity judgment</span></article>
+        <article><strong data-i18n="cases.summary.date3">1 October 2026</strong><span data-i18n="cases.summary.recruitment">Fresh Supreme Court challenges; appointments subject to outcome</span></article>
       </div>
 
       <div class="callout litigation-note-jump"><strong data-i18n="cases.employeeProtectionCallout">Employee-protection argument note:</strong> <span data-i18n="cases.employeeProtectionDesc">user-supplied grounds and precedent links for bona fide employees appointed on government-issued OBC certificates are included after the timeline.</span> <a href="#employee-protection-note" data-i18n="cases.openLegalNote">Open the legal-principles note</a>.</div>
 
+      <h2 data-i18n="cases.recordsHeading">Court records and updates</h2>
       <!-- Search -->
       <div class="search-box">
-        <input type="text" id="case-search" data-i18n-placeholder="litigation.searchPlaceholder" placeholder="Search by case name, number, or judge...">
-        <span class="search-icon">🔍</span>
+        <input type="text" id="case-search" aria-label="Search litigation records" data-i18n-placeholder="litigation.searchPlaceholder" placeholder="Search by case name, number, or judge...">
+        <span class="search-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 4.5 4.5" stroke-linecap="round"/></svg></span>
       </div>
 
       <!-- Loading Skeleton -->
@@ -766,15 +742,19 @@
       <div class="table-wrap case-matrix">
         <table><thead><tr><th data-i18n="tableRecord">Record</th><th data-i18n="tableForum">Forum</th><th data-i18n="tableIssueTracked">Issue tracked</th><th data-i18n="tableLocalEvidence">Archived evidence</th><th data-i18n="tableStatusDiscipline">Status discipline</th></tr></thead><tbody>
           <tr><td>WPO 60/2011 and connected matters</td><td>Calcutta High Court</td><td>Validity/process of OBC-list and reservation actions</td><td>Bundled judgment copy</td><td>Read the operative portion; verify with court record.</td></tr>
-          <tr><td>SLP(C) 17751–17755/2024</td><td>Supreme Court of India</td><td>Appeal from the 22 May 2024 High Court judgment</td><td>Bundled official 22 Nov 2024 order</td><td>Check latest case status before describing as pending or decided.</td></tr>
-          <tr><td>Connected 2024 SLPs/diaries</td><td>Supreme Court of India</td><td>Related appeals and interventions arising from the 22 May 2024 judgment</td><td>Bundled official 7 Jan 2025 record; official 5 May 2026 cause list</td><td>Listed for final hearing; this audit found no final merits disposal order.</td></tr>
+          <tr><td>SLP(C) 17751–17755/2024</td><td>Supreme Court of India</td><td>State appeal from the 22 May 2024 judgment</td><td>14 Jul 2026 withdrawal order (court-text mirror)</td><td>Dismissed as withdrawn; no merits ruling. Other affected persons may approach the Court.</td></tr>
+          <tr><td>Connected 2024 SLPs/diaries</td><td>Supreme Court of India</td><td>Separate party appeals and interventions</td><td>7 Jan 2025 record; 14 Jul 2026 withdrawal order</td><td>Do not infer disposal of every party appeal. Diary 36073/2024 is expressly withdrawn; unnamed proceedings need separate checks.</td></tr>
           <tr><td>WPA(P) 387/2024 &amp; 430/2024</td><td>Calcutta High Court</td><td>Implementation of the 2024 judgment in recruitment/admission processes</td><td>21 Jan 2025 court-text mirror</td><td>Listed for further consideration; not a merits disposal.</td></tr>
           <tr><td>WPA 9132/2025; MAT 943 &amp; 955/2025</td><td>Calcutta High Court</td><td>JEMAS PG 2024–25 OBC reservation and merit-list implementation</td><td>21 May 2025 court-text mirror; 7 Aug 2025 bundled follow-up</td><td>The 21 May order was disposed of; later appeal status must be checked separately.</td></tr>
-          <tr><td>2025 benchmark-survey challenge</td><td>Calcutta High Court</td><td>Survey process and documents underlying the 2025 exercise</td><td>Bundled 17 Jun 2025 order</td><td>Read together with the 28 Jul 2025 Supreme Court stay order.</td></tr>
-          <tr><td>SLP(C) 17422, 17528, 17973–17974/2025; Diary 45526 &amp; 45628/2025</td><td>Supreme Court of India</td><td>Appeals from the 17 Jun 2025 order and related JEMAS PG contempt proceeding</td><td>Bundled official 11 Mar office report; official 5 May cause list; 28 Jul / 22 Aug stay orders</td><td>Vacation-of-stay applications were listed; no later disposal order was located in this audit.</td></tr>
+          <tr><td>2025 benchmark-survey challenge</td><td>Calcutta High Court</td><td>Survey process and 2025 notifications</td><td>17 Jun 2025 order; 12 Aug 2026 judgment</td><td>The August judgment records revival of the High Court order after withdrawal of the State’s SLPs. See fresh October proceedings.</td></tr>
+          <tr><td>SLP(C) 17422, 17528, 17973–17974/2025; Diary 45526 &amp; 45628/2025</td><td>Supreme Court of India</td><td>2025 notifications and JEMAS PG contempt appeals</td><td>14 Jul 2026 withdrawal order (court-text mirror)</td><td>Specified 2025 SLPs and Diary 45526/2025 withdrawn; SLP(C) 26497/2025 is also named. Check Diary 45628/2025 independently; tagging alone does not prove its disposal.</td></tr>
           <tr><td>WPA 14695 &amp; 14698/2026</td><td>Calcutta High Court</td><td>Recruitment impact of the 18 May 2026 notification reset</td><td>Bundled 1 Jul orders and 8 Jul withdrawal order in WPA 14695</td><td>WPA 14695 was withdrawn with liberty to file afresh; WPA 14698 requires a separate current-status check.</td></tr>
-          <tr><td>WPA(P) 305/2026</td><td>Calcutta High Court</td><td>PIL challenge to Notifications 944/945 and Letter 946</td><td>Bundled 3 Jul 2026 order</td><td>PIL dismissed because the Supreme Court was already seized of the principal issues.</td></tr>
-        </tbody></table>
+          <tr><td>WPA(P) 305/2026</td><td>Calcutta High Court / Supreme Court</td><td>Notifications 944/945 and Letter 946</td><td>3 Jul High Court order; 1 Oct Supreme Court order</td><td>PIL dismissed; fresh challenge in Diary 41300/2026 received notice on 1 October.</td></tr>
+        <tr><td>MAT 1320/2026</td><td>Calcutta High Court</td><td>Certificate validity / admissions</td><td>12 Aug 2026 Shreyasi Dhang judgment (mirror)</td><td>Appeal disposed of; read with fresh Supreme Court challenges.</td></tr>
+<tr><td>Diary 41300 &amp; 50605/2026; tagged Diary 54999/2026</td><td>Supreme Court of India</td><td>Fresh challenges after the State’s withdrawal</td><td>1 Oct 2026 order (mirror)</td><td>Notice issued; appointments subject to outcome. Directed listing: 23 Nov 2026. No general stay recorded.</td></tr>
+<tr><td>WPA 29788 &amp; 30672/2026</td><td>Calcutta High Court</td><td>Retained-class SLST applicants who missed updates</td><td>13 &amp; 15 Oct 2026 orders (mirrors)</td><td>Petitions disposed of with representation/verification directions; no automatic reservation entitlement.</td></tr>
+<tr><td>WPA 31572/2026</td><td>Calcutta High Court</td><td>Former OBC applicants seeking EWS category update</td><td>31 Oct 2026 order (mirror)</td><td>Affidavits called for; intervening steps subject to result. EWS entitlement remains undecided.</td></tr>
+</tbody></table>
       </div>
 
       <div class="callout"><strong>Source discipline:</strong> the archive includes key 2025–26 orders, but the large Supreme Court filing bundles remain catalogued rather than published. Add later certified/official orders, then map each order to the exact notification, survey memo, recruitment process, or admission process affected.</div>
@@ -1061,7 +1041,7 @@
 
       <div class="doc-toolbar">
         <input id="doc-search" type="search" class="search-input" data-i18n-placeholder="placeholder.docSearch" placeholder="Search documents (notification number, community name, year, keyword…)">
-        <select id="doc-status-filter" class="doc-status-filter">
+        <select id="doc-status-filter" class="doc-status-filter" aria-label="Filter documents by status">
           <option value="all">All statuses</option>
           <option value="current">Current</option>
           <option value="withdrawn">Withdrawn</option>
@@ -1125,6 +1105,7 @@
         <img src="obcwb-flat-dark-logo.webp" data-theme-logo data-light-src="obcwb-flat-dark-logo.webp" data-dark-src="obcwb-flat-light-logo.webp" alt="West Bengal OBC Archive" width="720" height="240" decoding="async" loading="lazy">
         <span data-i18n="footerTagline">An independent, volunteer-run public research archive on West Bengal OBC policy and litigation.</span>
       </div>
+      <nav class="footer-links" aria-label="Footer"><a href="obc-basics.html" data-i18n="navOBCBasics">OBC Basics</a><a href="reports.html" data-i18n="navReports">Policy Reports</a><a href="record-guide.html" data-i18n="navEntryFramework">Add Record Guide</a><a href="about.html" data-i18n="navAbout">About</a><a href="methods.html" data-i18n="navMethods">Evidence Method</a><a href="inventory.html" data-i18n="navInventory">File Inventory</a><a href="contribute.html" data-i18n="navContribute">Contribute</a></nav>
       <div class="site-footer-meta">
         <a class="footer-parent-brand" href="https://civicresearch.in" target="_blank" rel="noopener noreferrer">
           <span data-i18n="footerInitiativeLabel">A research initiative by</span>
@@ -3454,6 +3435,7 @@ body { font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSyst
 }
 .case-timeline { margin: 0; padding: 0; list-style: none; border-left: 2px solid #b6c9d6; }
 .case-event { position: relative; display: grid; grid-template-columns: 150px minmax(0, 1fr); gap: 24px; padding: 0 0 30px 28px; }
+.case-event[hidden] { display: none; }
 .case-event::before { content: ''; position: absolute; left: -8px; top: 6px; width: 14px; height: 14px; border: 3px solid #fff; border-radius: 50%; background: #b57917; box-shadow: 0 0 0 2px #b57917; }
 .case-event time { color: #63748b; font: 700 12px var(--mono); letter-spacing: .05em; }
 .case-event > div { padding: 20px 22px; background: #fff; border: 1px solid var(--border); border-radius: 14px; box-shadow: var(--shadow-sm); }
@@ -5655,10 +5637,11 @@ html[data-theme="dark"] .modal-related a {
   }
 }
 </style>
+<link rel="stylesheet" href="css/polish.css?v=20261104-records">
 
 
 <script>
-const DATA_LOAD_ERRORS = [];
+const DATA_LOAD_ERRORS = window.OBC_DATA_ERRORS || [];
 const INLINE_JSON_DATA = window.OBC_INLINE_JSON || {};
 const OBC_DOCS = loadJsonSync('obc_documents.json');
 const SUPPLEMENTAL_DOCS = loadJsonSync('supplemental_documents.json');
@@ -5707,48 +5690,14 @@ function recordDataLoadError(path) {
 }
 
 function loadJsonSync(path, fallback = []) {
-  if (Object.prototype.hasOwnProperty.call(INLINE_JSON_DATA, path)) return INLINE_JSON_DATA[path];
-  try {
-    const request = new XMLHttpRequest();
-    request.open('GET', localJsonPath(path), false);
-    request.send(null);
-    if ((request.status >= 200 && request.status < 300) || (request.status === 0 && request.responseText)) {
-      return JSON.parse(request.responseText);
-    }
-    // If status is 404, return fallback without warning
-    if (request.status === 404) {
-      recordDataLoadError(path);
-      return fallback;
-    }
-  } catch (error) {
-    console.warn('Could not load ' + path, error);
-  }
-  recordDataLoadError(path);
-  return fallback;
-}
-
-function loadOptionalJsonSync(path, fallback = []) {
-  if (Object.prototype.hasOwnProperty.call(INLINE_JSON_DATA, path)) return INLINE_JSON_DATA[path];
-  try {
-    const request = new XMLHttpRequest();
-    request.open('GET', localJsonPath(path), false);
-    request.send(null);
-    if ((request.status >= 200 && request.status < 300) || (request.status === 0 && request.responseText)) {
-      return JSON.parse(request.responseText);
-    }
-    // If status is 404 or other error, return fallback without logging
-    return fallback;
-  } catch (error) {
-    // Silently return fallback for optional files
-  }
-  return fallback;
+  return Object.prototype.hasOwnProperty.call(INLINE_JSON_DATA, path) ? INLINE_JSON_DATA[path] : fallback;
 }
 
 function showDataLoadWarning() {
   const warning = document.getElementById('data-load-warning');
   if (!warning || !DATA_LOAD_ERRORS.length) return;
   warning.hidden = false;
-  warning.innerHTML = `<strong>Some published data files did not load.</strong> Missing: ${DATA_LOAD_ERRORS.map(escapeHtml).join(', ')}. Please reload the page or report the missing files.`;
+  warning.innerHTML = `<strong>Some published data files did not load.</strong> The archived records below are still available. Reload to restore search and filters.`;
 }
 
 function renderTimelineEvents(events, forceLang) {
@@ -5758,8 +5707,7 @@ function renderTimelineEvents(events, forceLang) {
   if (loader) loader.hidden = !Array.isArray(events) || !events.length;
   if (!timeline) return;
   if (!Array.isArray(events) || !events.length) {
-    timeline.innerHTML = '';
-    return;
+    return; // Keep the pre-rendered record if a data request fails.
   }
 
   const lang = forceLang || getActiveLang();
@@ -5787,8 +5735,7 @@ function renderCaseEvents(events, forceLang) {
   if (loader) loader.hidden = !Array.isArray(events) || !events.length;
   if (!timeline) return;
   if (!Array.isArray(events) || !events.length) {
-    timeline.innerHTML = '';
-    return;
+    return; // Keep the pre-rendered record if a data request fails.
   }
 
   const lang = forceLang || getActiveLang();
@@ -5803,16 +5750,17 @@ function renderCaseEvents(events, forceLang) {
 }
 
 function updateCaseStats(events) {
-  const total = Array.isArray(events) ? events.length : 0;
-  const resolved = Array.isArray(events)
-    ? events.filter(event => /\b(disposed|dismissed|withdrawn|settled)\b/i.test(`${event.title || ''} ${event.html || ''}`)).length
-    : 0;
+  // These are records, not distinct cases. A historical order cannot establish
+  // whether the proceeding is currently pending or disposed of.
+  const records = Array.isArray(events) ? events : [];
+  const orders = records.filter(event => event.record_kind === 'order').length;
+  const supporting = records.filter(event => ['office_report', 'party_filing'].includes(event.record_kind)).length;
   const totalEl = document.getElementById('total-cases');
-  const pendingEl = document.getElementById('pending-cases');
-  const resolvedEl = document.getElementById('resolved-cases');
-  if (totalEl) totalEl.textContent = String(total);
-  if (pendingEl) pendingEl.textContent = String(Math.max(0, total - resolved));
-  if (resolvedEl) resolvedEl.textContent = String(resolved);
+  const ordersEl = document.getElementById('court-records');
+  const supportingEl = document.getElementById('supporting-records');
+  if (totalEl) totalEl.textContent = String(records.length);
+  if (ordersEl) ordersEl.textContent = String(orders);
+  if (supportingEl) supportingEl.textContent = String(supporting);
 }
 
 function applyCaseSearch() {
@@ -6168,6 +6116,7 @@ function renderSupplementalTimeline() {
   const timeline = document.getElementById('timeline');
   if (!timeline || !SUPPLEMENTAL_TIMELINE.length) return;
   SUPPLEMENTAL_TIMELINE.forEach((doc, offset) => {
+    if (document.getElementById(`evt-framework-${offset}`)) return;
     const idx = OBC_DOCS.findIndex(item => item.filename === doc.filename && item.notif_no === doc.notif_no);
     const li = document.createElement('li');
     li.className = 'event tl-event supplemental-timeline-event';
@@ -6696,39 +6645,6 @@ function syncLanguageButtons(lang = getActiveLang()) {
   });
 }
 
-langButtons.forEach(btn => {
-  btn.addEventListener('click', () => {
-    const lang = btn.getAttribute('data-lang');
-    if (window.WBOBCI18n) {
-      window.WBOBCI18n.switchLanguage(lang);
-    }
-    
-    syncLanguageButtons(lang);
-    
-    // Update URL without reload
-    const url = new URL(window.location);
-    url.searchParams.set('lang', lang);
-    window.history.pushState({}, '', url);
-  });
-});
-
-// Popup language buttons
-popupLangButtons.forEach(btn => {
-  btn.addEventListener('click', () => {
-    const lang = btn.getAttribute('data-lang-switch');
-    if (window.WBOBCI18n) {
-      window.WBOBCI18n.switchLanguage(lang);
-    }
-    
-    syncLanguageButtons(lang);
-    
-    // Update URL without reload
-    const url = new URL(window.location);
-    url.searchParams.set('lang', lang);
-    window.history.pushState({}, '', url);
-  });
-});
-
 document.addEventListener('wbobc:langchange', event => {
   syncLanguageButtons(event.detail?.lang);
   // Re-apply glossary tooltips after language change
@@ -6938,11 +6854,11 @@ function updateHero(tabName = SITE_PAGE || document.body.dataset.activeTab || 'h
   
   // Use translation keys for title and subtitle to support language switching
   if (heroTitle && content.titleKey) {
-    heroTitle.innerHTML = window.WBOBCI18n ? window.WBOBCI18n.t(content.titleKey) : content.titleKey;
+    heroTitle.innerHTML = heroT(content.titleKey, heroTitle.innerHTML);
     heroTitle.setAttribute('data-i18n', content.titleKey);
   }
   if (heroSub && content.subKey) {
-    heroSub.innerHTML = window.WBOBCI18n ? window.WBOBCI18n.t(content.subKey) : content.subKey;
+    heroSub.innerHTML = heroT(content.subKey, heroSub.innerHTML);
     heroSub.setAttribute('data-i18n', content.subKey);
   }
   
@@ -6950,8 +6866,8 @@ function updateHero(tabName = SITE_PAGE || document.body.dataset.activeTab || 'h
     heroStatEls.forEach((item, index) => {
       const valueKey = `heroStat${index + 1}Value`;
       const labelKey = `heroStat${index + 1}Label`;
-      if (item.value) item.value.textContent = window.WBOBCI18n ? window.WBOBCI18n.t(valueKey) : (HERO_CONTENT.home.stats[index] || ['', ''])[0];
-      if (item.label) item.label.innerHTML = window.WBOBCI18n ? window.WBOBCI18n.t(labelKey) : (HERO_CONTENT.home.stats[index] || ['', ''])[1];
+      if (item.value) item.value.textContent = heroT(valueKey, item.value.textContent);
+      if (item.label) item.label.innerHTML = heroT(labelKey, item.label.innerHTML);
     });
   } else {
     heroStatEls.forEach((item, index) => {
@@ -6963,6 +6879,10 @@ function updateHero(tabName = SITE_PAGE || document.body.dataset.activeTab || 'h
 }
 
 function showTab(tabName, targetHash) {
+  if (SITE_PAGE && tabName !== SITE_PAGE) {
+    window.location.href = pageHref(tabName, (targetHash || `#${tabName}`).slice(1));
+    return;
+  }
   document.body.dataset.activeTab = tabName;
   tabPanels.forEach(panel => {
     panel.hidden = panel.dataset.tabPanel !== tabName;
@@ -6987,7 +6907,7 @@ function showTab(tabName, targetHash) {
   if (target && !isTopLevelTab && hash !== '#guide' && hash !== '#query-hub' && hash !== '#home') {
     requestAnimationFrame(() => {
       setTimeout(() => {
-        const headerOffset = document.querySelector('.site-header')?.offsetHeight || 0;
+        const headerOffset = document.querySelector('.section-nav')?.offsetHeight || 0;
         const top = target.getBoundingClientRect().top + window.scrollY - headerOffset - 16;
         window.scrollTo({ top: Math.max(0, top) });
       }, 30);
@@ -7064,9 +6984,11 @@ function sourcePreviewText(doc) {
   return text.replace(/\n{3,}/g, '\n\n');
 }
 
+let previewReturnFocus = null;
 function openDocPreview(idx) {
   const doc = OBC_DOCS[idx];
   if (!doc || !modal) return;
+  previewReturnFocus = document.activeElement;
   modalMeta.textContent = `${doc.notif_no} · ${doc.date} · ${String(doc.status || '').toUpperCase()}`;
   modalTitle.textContent = doc.summary || doc.notif_no || 'Document preview';
   modalSummary.innerHTML = `
@@ -7109,6 +7031,7 @@ function closeDocPreview() {
   modal.style.display = 'none';
   modal.setAttribute('aria-hidden', 'true');
   document.body.style.overflow = previousBodyOverflow;
+  if (previewReturnFocus?.isConnected) previewReturnFocus.focus();
 }
 
 if (docSearch) docSearch.addEventListener('input', applyDocFilters);
@@ -7137,7 +7060,14 @@ document.addEventListener('click', event => {
 
 if (modalClose) modalClose.addEventListener('click', closeDocPreview);
 document.addEventListener('keydown', event => {
-  if (event.key === 'Escape' && modal && modal.style.display !== 'none') closeDocPreview();
+  if (!modal || modal.getAttribute('aria-hidden') !== 'false') return;
+  if (event.key === 'Escape') closeDocPreview();
+  if (event.key === 'Tab') {
+    const focusable = Array.from(modal.querySelectorAll('a[href], button, input, select, textarea, [tabindex="0"]')).filter(el => el.getClientRects().length && !el.disabled);
+    const first = focusable[0], last = focusable[focusable.length - 1];
+    if (event.shiftKey && document.activeElement === first) { event.preventDefault(); last?.focus(); }
+    else if (!event.shiftKey && document.activeElement === last) { event.preventDefault(); first?.focus(); }
+  }
 });
 
 const search = document.querySelector('#tl-search');
@@ -7172,130 +7102,6 @@ applyFilters();
 applyDocFilters();
 syncTabFromHash();
 if (window.location.hash === '#home') requestAnimationFrame(() => window.scrollTo({ top: 0 }));
-
-// Submenu (Research / Learn) dropdown on desktop, accordion on mobile
-const navGroups = Array.from(document.querySelectorAll('.nav-group'));
-const isMobileNav = () => window.matchMedia('(max-width: 1040px)').matches;
-
-function closeGroup(group) {
-  group.classList.remove('is-open');
-  const toggle = group.querySelector('.nav-group-toggle');
-  if (toggle) toggle.setAttribute('aria-expanded', 'false');
-}
-
-function openGroup(group) {
-  navGroups.forEach(other => { if (other !== group) closeGroup(other); });
-  group.classList.add('is-open');
-  const toggle = group.querySelector('.nav-group-toggle');
-  if (toggle) toggle.setAttribute('aria-expanded', 'true');
-}
-
-navGroups.forEach(group => {
-  const toggle = group.querySelector('.nav-group-toggle');
-  let closeTimer = null;
-  const scheduleClose = () => {
-    clearTimeout(closeTimer);
-    closeTimer = setTimeout(() => closeGroup(group), 200);
-  };
-
-  group.addEventListener('mouseenter', () => {
-    if (isMobileNav()) return;
-    clearTimeout(closeTimer);
-    openGroup(group);
-  });
-  group.addEventListener('mouseleave', () => {
-    if (isMobileNav()) return;
-    scheduleClose();
-  });
-
-  if (toggle) {
-    toggle.addEventListener('click', event => {
-      event.preventDefault();
-      if (group.classList.contains('is-open')) {
-        closeGroup(group);
-      } else {
-        openGroup(group);
-      }
-    });
-  }
-});
-
-document.addEventListener('click', event => {
-  navGroups.forEach(group => {
-    if (!group.contains(event.target)) closeGroup(group);
-  });
-});
-
-document.addEventListener('keydown', event => {
-  if (event.key === 'Escape') navGroups.forEach(closeGroup);
-});
-
-// Mobile off-canvas nav panel
-const navToggle = document.querySelector('.nav-toggle');
-const siteNav = document.getElementById('site-nav');
-const navOverlay = document.querySelector('.nav-overlay');
-const navCloseButton = document.querySelector('.nav-close');
-
-function openMobileNav() {
-  if (!siteNav) return;
-  siteNav.classList.add('is-open');
-  siteNav.classList.add('open');
-  if (navOverlay) {
-    navOverlay.classList.add('is-visible');
-    navOverlay.classList.add('open');
-  }
-  if (navToggle) navToggle.setAttribute('aria-expanded', 'true');
-  document.body.style.overflow = 'hidden';
-}
-
-function closeMobileNav() {
-  if (!siteNav) return;
-  siteNav.classList.remove('is-open');
-  siteNav.classList.remove('open');
-  if (navOverlay) {
-    navOverlay.classList.remove('is-visible');
-    navOverlay.classList.remove('open');
-  }
-  if (navToggle) navToggle.setAttribute('aria-expanded', 'false');
-  document.body.style.overflow = '';
-  navGroups.forEach(closeGroup);
-}
-
-if (navToggle) {
-  navToggle.addEventListener('click', () => {
-    const isOpen = siteNav && (siteNav.classList.contains('is-open') || siteNav.classList.contains('open'));
-    if (isOpen) {
-      closeMobileNav();
-    } else {
-      openMobileNav();
-    }
-  });
-}
-
-if (navCloseButton) navCloseButton.addEventListener('click', closeMobileNav);
-if (navOverlay) navOverlay.addEventListener('click', closeMobileNav);
-
-document.addEventListener('click', event => {
-  if (!siteNav || !siteNav.classList.contains('is-open')) return;
-  if (event.target.closest('#site-nav') || event.target.closest('.nav-toggle')) return;
-  closeMobileNav();
-});
-
-document.addEventListener('keydown', event => {
-  if (event.key === 'Escape') closeMobileNav();
-});
-
-// Close the off-canvas panel automatically if a link inside it is followed
-if (siteNav) {
-  siteNav.addEventListener('click', event => {
-    if (event.target.closest('a')) closeMobileNav();
-  });
-}
-
-// Close the off-canvas panel if the viewport grows back to desktop size
-window.addEventListener('resize', () => {
-  if (!isMobileNav()) closeMobileNav();
-});
 
 // Reveal meaningful groups as the reader reaches them. This keeps the initial
 // viewport calm and gives long research pages a clear sense of progression.
@@ -7343,121 +7149,6 @@ window.addEventListener('resize', () => {
   elements.forEach(element => observer.observe(element));
 })();
 
-// Contribution Popup Logic
-(function() {
-  const popup = document.getElementById('contribute-popup');
-  const closeBtn = popup ? popup.querySelector('.popup-close') : null;
-  const dontShowAgain = popup ? popup.querySelector('#dont-show-again') : null;
-  
-  function showPopup() {
-    if (!popup) return;
-    
-    // Check if user opted out
-    const suppressed = localStorage.getItem('contributePopupSuppressed');
-    if (suppressed === 'true') return;
-    
-    // Show popup after a short delay
-    setTimeout(() => {
-      popup.hidden = false;
-      // Force reflow to trigger transition
-      void popup.offsetWidth;
-      document.body.style.overflow = 'hidden';
-      closeBtn.focus();
-    }, 1500);
-  }
-  
-  function hidePopup() {
-    if (!popup) return;
-    popup.hidden = true;
-    document.body.style.overflow = '';
-  }
-  
-  // Close button
-  if (closeBtn) {
-    closeBtn.addEventListener('click', function(e) {
-      e.stopPropagation();
-      hidePopup();
-    });
-  }
-  
-  // Click on overlay to close
-  if (popup) {
-    popup.addEventListener('click', (e) => {
-      if (e.target === popup) hidePopup();
-    });
-  }
-  
-  // Don't show again checkbox
-  if (dontShowAgain) {
-    dontShowAgain.addEventListener('change', () => {
-      if (dontShowAgain.checked) {
-        localStorage.setItem('contributePopupSuppressed', 'true');
-      } else {
-        localStorage.removeItem('contributePopupSuppressed');
-      }
-    });
-  }
-  
-  // Escape key to close
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && popup && !popup.hidden) {
-      hidePopup();
-    }
-  });
-  
-  // Show popup on page load
-  showPopup();
-})();
-
-// One persistent theme control updates colors and theme-appropriate brand marks.
-(function initThemeToggle() {
-  const root = document.documentElement;
-  const toggle = document.getElementById('theme-toggle');
-  const themeColor = document.querySelector('meta[name="theme-color"]');
-  const logos = document.querySelectorAll('[data-theme-logo]');
-
-  function applyTheme(theme, persist) {
-    const activeTheme = theme === 'dark' ? 'dark' : 'light';
-    const isDark = activeTheme === 'dark';
-    root.dataset.theme = activeTheme;
-
-    logos.forEach(logo => {
-      const nextSource = isDark ? logo.dataset.darkSrc : logo.dataset.lightSrc;
-      if (nextSource && logo.getAttribute('src') !== nextSource) logo.setAttribute('src', nextSource);
-    });
-
-    if (toggle) {
-      const label = isDark ? 'Switch to light theme' : 'Switch to dark theme';
-      toggle.setAttribute('aria-label', label);
-      toggle.setAttribute('title', label);
-      toggle.setAttribute('aria-pressed', String(isDark));
-    }
-
-    if (themeColor) themeColor.setAttribute('content', isDark ? '#0c1d31' : '#f8fbfb');
-
-    if (persist) {
-      try {
-        localStorage.setItem('wb-obc-theme', activeTheme);
-      } catch (error) {
-        // Theme still applies when storage is unavailable (private/file contexts).
-      }
-    }
-  }
-
-  applyTheme(root.dataset.theme, false);
-  if (toggle) {
-    toggle.addEventListener('click', () => {
-      applyTheme(root.dataset.theme === 'dark' ? 'light' : 'dark', true);
-    });
-  }
-
-  // Language switching rewrites translated nodes; re-assert the theme-correct
-  // logo sources in case any themed image was re-created with its default src.
-  document.addEventListener('wbobc:langchange', () => {
-    applyTheme(root.dataset.theme, false);
-  });
-})();
-
 // i18n rewrites the shared hero nodes with the home-page keys after the
 // page-specific updateHero has run; re-apply this page's hero content
 // (eyebrow, title, subtitle, stats) in the active language.
@@ -7465,49 +7156,6 @@ document.addEventListener('wbobc:langchange', () => {
   updateHero(SITE_PAGE || 'home');
 });
 
-// Scroll to Top Button
-(function() {
-  const scrollBtn = document.createElement('button');
-  scrollBtn.className = 'scroll-to-top';
-  scrollBtn.innerHTML = '↑';
-  scrollBtn.setAttribute('aria-label', 'Scroll to top');
-  document.body.appendChild(scrollBtn);
-  
-  let ticking = false;
-  
-  function toggleButton() {
-    if (window.scrollY > 300) {
-      scrollBtn.classList.add('visible');
-    } else {
-      scrollBtn.classList.remove('visible');
-    }
-    ticking = false;
-  }
-  
-  window.addEventListener('scroll', () => {
-    if (!ticking) {
-      window.requestAnimationFrame(toggleButton);
-      ticking = true;
-    }
-  }, { passive: true });
-  
-  scrollBtn.addEventListener('click', () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  });
-})();
-
-// Service Worker Registration for PWA support
-if ('serviceWorker' in navigator) {
-  window.addEventListener('load', () => {
-    navigator.serviceWorker.register('./sw.js')
-      .then((registration) => {
-        console.log('[PWA] Service Worker registered:', registration.scope);
-      })
-      .catch((error) => {
-        console.log('[PWA] Service Worker registration failed:', error);
-      });
-  });
-}
 </script>
 
 

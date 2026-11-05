@@ -2312,6 +2312,7 @@ body { font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSyst
 }
 .case-timeline { margin: 0; padding: 0; list-style: none; border-left: 2px solid #b6c9d6; }
 .case-event { position: relative; display: grid; grid-template-columns: 150px minmax(0, 1fr); gap: 24px; padding: 0 0 30px 28px; }
+.case-event[hidden] { display: none; }
 .case-event::before { content: ''; position: absolute; left: -8px; top: 6px; width: 14px; height: 14px; border: 3px solid #fff; border-radius: 50%; background: #b57917; box-shadow: 0 0 0 2px #b57917; }
 .case-event time { color: #63748b; font: 700 12px var(--mono); letter-spacing: .05em; }
 .case-event > div { padding: 20px 22px; background: #fff; border: 1px solid var(--border); border-radius: 14px; box-shadow: var(--shadow-sm); }

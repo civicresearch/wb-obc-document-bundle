@@ -1,48 +1,56 @@
 <!doctype html>
-<html lang="en" data-theme="dark">
+<html lang="en" data-theme="light">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="WB OBC Archive - A consolidated archive of West Bengal OBC notifications, court orders, hearings, source PDFs, and policy documents from 1993-2026">
+  <meta name="description" content="Follow West Bengal OBC policy changes from 1993 to 2026, with dated notifications, amendment Acts and linked source documents.">
   <meta name="theme-color" content="#10253f">
   <title>OBC Notification Timeline · Civic Research Group</title>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <script src="js/navigation.js?v=20261104-records" defer></script>
   <link rel="manifest" href="pwa-manifest.json">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@100..900&display=swap">
-  <link rel="stylesheet" href="css/shared.css?v=20261004">
-  <script src="js/i18n.js?v=20261004" defer></script>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anek+Bangla:wght@400;500;600;700;800&family=Hind+Siliguri:wght@400;500;600;700&family=Noto+Sans+Bengali:wght@400;500;600;700&display=swap">
+  <link rel="stylesheet" href="css/shared.css?v=20261104-records">
+  <script src="js/i18n.js?v=20261104-records" defer></script>
   <script>
-    // This page is deployed in two places:
-    //  - GitHub Pages, where obc_pdfs/, case_pdfs/ and obc_pdf_manifest.json
-    //    are served alongside this file, so relative links work as-is.
-    //  - Vercel (or any other host that only deploys this HTML file), where
-    //    those folders are not present. On those hosts, rewrite the relative
-    //    asset links to point at the raw GitHub copy instead.
-    // Edit GITHUB_RAW_BASE below if the repo/branch ever changes.
-    (function () {
-      var GITHUB_RAW_BASE = 'https://raw.githubusercontent.com/civicresearch/wb-obc-document-bundle/main/';
-      var host = window.location.hostname;
-      var isGithubPages = /(^|\.)github\.io$/.test(host);
-      var isLocal = host === 'localhost' || host === '127.0.0.1' || host === '' || window.location.protocol === 'file:';
-      window.OBC_ASSET_BASE = (isGithubPages || isLocal) ? '' : GITHUB_RAW_BASE;
-    })();
+    window.OBC_ASSET_BASE = "";
     (function () {
       try {
         var savedTheme = localStorage.getItem('wb-obc-theme');
-        document.documentElement.dataset.theme = savedTheme === 'light' ? 'light' : 'dark';
+        var preference = ['light', 'dark'].includes(savedTheme) ? savedTheme : 'auto';
+        document.documentElement.dataset.themePreference = preference;
+        document.documentElement.dataset.theme = preference === 'auto' ? (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : preference;
       } catch (error) {
-        document.documentElement.dataset.theme = 'dark';
+        document.documentElement.dataset.themePreference = 'auto';
+        document.documentElement.dataset.theme = matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
       }
     })();
   </script>
+  <link rel="stylesheet" href="css/site.css?v=20261104-records">
+  <link rel="stylesheet" href="css/polish.css?v=20261104-records">
+<link rel="canonical" href="https://obcwb.civicresearch.in/timeline.html">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="WB OBC Archive">
+  <meta property="og:title" content="OBC Notification Timeline · Civic Research Group">
+  <meta property="og:description" content="Follow West Bengal OBC policy changes from 1993 to 2026, with dated notifications, amendment Acts and linked source documents.">
+  <meta property="og:url" content="https://obcwb.civicresearch.in/timeline.html">
+  <meta property="og:image" content="https://obcwb.civicresearch.in/obcwb-light-logo.png">
+  <meta property="og:image:alt" content="West Bengal OBC Archive">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="OBC Notification Timeline · Civic Research Group">
+  <meta name="twitter:description" content="Follow West Bengal OBC policy changes from 1993 to 2026, with dated notifications, amendment Acts and linked source documents.">
+  <meta name="twitter:image" content="https://obcwb.civicresearch.in/obcwb-light-logo.png">
+  <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://obcwb.civicresearch.in/#organization","name":"Civic Research Group","url":"https://civicresearch.in"},{"@type":"WebSite","@id":"https://obcwb.civicresearch.in/#website","url":"https://obcwb.civicresearch.in/","name":"WB OBC Archive","inLanguage":["en","bn"],"publisher":{"@id":"https://obcwb.civicresearch.in/#organization"}},{"@type":"WebPage","@id":"https://obcwb.civicresearch.in/timeline.html#webpage","url":"https://obcwb.civicresearch.in/timeline.html","name":"OBC Notification Timeline","description":"Follow West Bengal OBC policy changes from 1993 to 2026, with dated notifications, amendment Acts and linked source documents.","inLanguage":"en","isPartOf":{"@id":"https://obcwb.civicresearch.in/#website"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://obcwb.civicresearch.in/"},{"@type":"ListItem","position":2,"name":"OBC Notification Timeline","item":"https://obcwb.civicresearch.in/timeline.html"}]}]}</script>
 </head>
 <body data-page="timeline">
   <a class="skip-link" href="#main-content">Skip to main content</a>
   <header class="site-header">
     <div class="site-header-inner">
       <a href="index.html" class="site-logo" aria-label="West Bengal OBC Archive — home">
-        <img src="obcwb-flat-dark-logo.webp" data-theme-logo data-light-src="obcwb-flat-dark-logo.webp" data-dark-src="obcwb-flat-light-logo.webp" alt="West Bengal OBC Archive" width="720" height="240" decoding="async">
+        <img src="obcwb-flat-light-logo.webp" data-theme-logo data-light-src="obcwb-flat-light-logo.webp" data-dark-src="obcwb-flat-light-logo.webp" alt="West Bengal OBC Archive" width="720" height="240" decoding="async">
       </a>
       <script>
         // Swap the header logo to the theme-correct file before first paint;
@@ -54,12 +62,25 @@
           if (logo && logo.dataset.darkSrc) logo.setAttribute('src', logo.dataset.darkSrc);
         })();
       </script>
+      <div class="nav-preferences" aria-label="Language and appearance">
+        <div class="language-switch" role="group" aria-label="Language">
+          <button type="button" id="lang-en" class="lang-btn active" data-lang="en" data-lang-switch="en" aria-pressed="true" lang="en" aria-label="English" title="English">EN</button>
+          <button type="button" id="lang-bn" class="lang-btn" data-lang="bn" data-lang-switch="bn" aria-pressed="false" lang="bn">বাংলা</button>
+        </div>
+        <select id="theme-select" class="theme-select" aria-label="Appearance">
+          <option value="auto" data-i18n="appearance.auto">Auto</option>
+          <option value="light" data-i18n="appearance.light">Light</option>
+          <option value="dark" data-i18n="appearance.dark">Dark</option>
+        </select>
+      </div>
+      <div class="masthead-title"><span data-i18n="masthead.eyebrow">Civic Research Group</span><strong data-i18n="masthead.title">West Bengal OBC Archive</strong><small data-i18n="masthead.subtitle">Policy, court records &amp; public evidence</small></div>
       <button type="button" class="nav-toggle" aria-expanded="false" aria-controls="site-nav" aria-label="Open navigation menu">
         <span class="nav-toggle-bar"></span>
         <span class="nav-toggle-bar"></span>
         <span class="nav-toggle-bar"></span>
       </button>
       <nav class="site-nav" id="site-nav" aria-label="Sections">
+        <p class="drawer-title" data-i18n="navigation.title">Explore the archive</p>
         <button type="button" class="nav-close" aria-label="Close navigation menu">×</button>
         <a href="index.html" class="active" data-tab-target="home" data-i18n="navHome">Home</a>
         <div class="nav-group">
@@ -91,67 +112,35 @@
         <a href="contribute.html" data-i18n="navContribute">Contribute</a>
         <a href="about.html" data-tab-target="about" data-i18n="navAbout">About</a>
         <a href="https://github.com/civicresearch/wb-obc-document-bundle" target="_blank" rel="noreferrer" data-i18n="navGitHub">GitHub</a>
-        <div class="nav-preferences" aria-label="Language and appearance">
-          <span class="language-switch" aria-label="Language">
-            <button type="button" id="lang-en" class="lang-btn active" data-lang="en" data-lang-switch="en" aria-pressed="true">EN</button>
-            <span class="lang-separator">|</span>
-            <button type="button" id="lang-bn" class="lang-btn" data-lang="bn" data-lang-switch="bn" aria-pressed="false">বাংলা</button>
-          </span>
-          <span class="preference-divider" aria-hidden="true"></span>
-          <button type="button" id="theme-toggle" class="theme-toggle" aria-label="Switch to dark theme" title="Switch to dark theme">
-            <svg class="theme-icon theme-icon-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.2 15.2A8.5 8.5 0 0 1 8.8 3.8 8.5 8.5 0 1 0 20.2 15.2Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            <svg class="theme-icon theme-icon-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="3.8" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M12 2v2.2M12 19.8V22M4.93 4.93l1.56 1.56M17.51 17.51l1.56 1.56M2 12h2.2M19.8 12H22M4.93 19.07l1.56-1.56M17.51 6.49l1.56-1.56" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
-          </button>
-        </div>
+
       </nav>
       <div class="nav-overlay"></div>
     </div>
   </header>
 
   <section class="hero">
-    <div class="hero-inner wrap">
-      <p class="hero-eyebrow" id="hero-eyebrow" data-i18n="heroEyebrow">West Bengal · Backward Classes Welfare Department · 1993–2026</p>
-      <h1 id="hero-title" data-i18n="heroTitle">OBC Reservation and List Timeline</h1>
-      <p class="hero-sub" id="hero-sub" data-i18n="heroSub">A consolidated database on West Bengal OBC Reservation starting with the 1993 Commission Act and continuing through the latest notification and court case records.</p>
+    <div class="hero-inner wrap"><nav class="breadcrumbs" aria-label="Breadcrumb"><a href="index.html" data-i18n="navHome">Home</a><span aria-hidden="true">/</span><span aria-current="page" data-i18n="timelineTitle">OBC Reservation and List Timeline</span></nav>
+      <p class="hero-eyebrow" id="hero-eyebrow" data-i18n="timelineHeroEyebrow">Timeline · Notifications and changes</p>
+      <h1 id="hero-title" data-i18n="timelineTitle">OBC Reservation and List Timeline</h1>
+      <p class="hero-sub" id="hero-sub" data-i18n="timelineSub">Trace the record from the 1993 Commission Act and founding notifications through the 2025 expansion attempt and the 18 May 2026 withdrawal/list reset.</p>
       <div class="hero-stats stagger-in">
-        <div class="hero-stat lift"><strong id="hero-stat-1-value" data-i18n="heroStat1Value">84</strong><span id="hero-stat-1-label" data-i18n="heroStat1Label">PDF sources bundled across notifications, hearings, reports, and court records.</span></div>
-        <div class="hero-stat lift"><strong id="hero-stat-2-value" data-i18n="heroStat2Value">66</strong><span id="hero-stat-2-label" data-i18n="heroStat2Label">Classes listed in Notification No. 945-BCW/MR-23/2026.</span></div>
-        <div class="hero-stat lift"><strong id="hero-stat-3-value" data-i18n="heroStat3Value">7%</strong><span id="hero-stat-3-label" data-i18n="heroStat3Label">Reservation position stated in the 18 May 2026 list notification.</span></div>
-        <div class="hero-stat lift"><strong id="hero-stat-4-value" data-i18n="heroStat4Value">5</strong><span id="hero-stat-4-label" data-i18n="heroStat4Label">Priority evidence gaps and follow-ups tracked in the audit.</span></div>
+        <div class="hero-stat lift"><strong id="hero-stat-1-value" data-i18n="heroStat1Value">94</strong><span id="hero-stat-1-label" data-i18n="heroStat1Label">Archived source PDFs</span></div>
+        <div class="hero-stat lift"><strong id="hero-stat-2-value" data-i18n="heroStat2Value">66</strong><span id="hero-stat-2-label" data-i18n="heroStat2Label">Classes in Notification 945</span></div>
+        <div class="hero-stat lift"><strong id="hero-stat-3-value" data-i18n="heroStat3Value">7%</strong><span id="hero-stat-3-label" data-i18n="heroStat3Label">Reservation in the May 2026 notice</span></div>
+        <div class="hero-stat lift"><strong id="hero-stat-4-value" data-i18n="heroStat4Value">5</strong><span id="hero-stat-4-label" data-i18n="heroStat4Label">Evidence gaps tracked</span></div>
       </div>
     </div>
   </section>
 
-  <!-- Contribution Popup Modal -->
-  <div id="contribute-popup" class="contribute-popup-overlay" hidden>
-    <div class="contribute-popup" role="dialog" aria-labelledby="popup-title" aria-describedby="popup-desc">
-      <button type="button" class="popup-close" aria-label="Close popup">&times;</button>
-      <div class="popup-brand">
-        <img src="CRG_Logo_Dark.png" data-theme-logo data-light-src="CRG_Logo_Dark.png" data-dark-src="CRG_LOGO_light.png" alt="Civic Research Group" width="400" height="81" decoding="async">
-      </div>
-      <h2 id="popup-title" data-i18n="popupTitle">Help Improve This Resource</h2>
-      <p id="popup-desc" data-i18n="popupDesc">A volunteer-maintained public research archive. Contributions and corrections are welcome.</p>
-      <div class="popup-actions">
-        <a href="contribute.html" class="popup-btn primary" data-i18n="popupBtn">Contribute Documents &amp; Corrections</a>
-      </div>
-      <div class="popup-network">
-        <p data-i18n="popupNetworkTitle">Explore our latest work</p>
-        <div class="popup-network-links">
-          <a href="https://civicresearch.in" target="_blank" rel="noopener noreferrer" data-i18n="popupCRGLink">Visit our website civicresearch.in</a>
-          <a href="https://appeal.civicresearch.in" target="_blank" rel="noopener noreferrer" data-i18n="popupAppealLink">Tribunal Appeal Evidence · appeal.civicresearch.in</a>
-          <a href="https://rti.votercards.in" target="_blank" rel="noopener noreferrer" data-i18n="popupRTILink">RTI Karo · rti.votercards.in</a>
-        </div>
-      </div>
-      <div class="popup-preferences">
-        <label><input type="checkbox" id="dont-show-again"> <span data-i18n="popupDontShow">Don't show this message again</span></label>
-        <div class="popup-lang-switch" aria-label="Language">
-          <button type="button" class="lang-btn-small" data-lang-switch="en" aria-pressed="false">EN</button>
-          <span aria-hidden="true">|</span>
-          <button type="button" class="lang-btn-small" data-lang-switch="bn" aria-pressed="false">বাংলা</button>
-        </div>
-      </div>
+  <nav class="section-nav" aria-label="Archive sections">
+    <div class="wrap">
+      <a href="timeline.html" data-section="timeline" aria-current="page" data-i18n="navTimeline">Timeline</a>
+      <a href="litigation.html" data-section="cases" data-i18n="navCases">Litigation</a>
+      <a href="obc-list.html" data-section="obc-list" data-i18n="navOBCList">OBC List</a>
+      <a href="documents.html" data-section="documents" data-i18n="navDocuments">Source PDFs</a>
+      <a href="evidence.html" data-section="evidence" data-i18n="navEvidence">Hearings &amp; Gaps</a>
     </div>
-  </div>
+  </nav>
 
   <main id="main-content" class="wrap" tabindex="-1">
     <div id="data-load-warning" class="data-load-warning" hidden role="status"></div>
@@ -166,7 +155,7 @@
           <button class="filter-btn" type="button" data-filter="legacy" data-i18n="timeline.filter.legacy">Legacy</button>
         </div>
       </div>
-      <p class="note" data-i18n="timelineNote">Reading note: green items reflect the latest position found in the archived documents. Red items were expressly withdrawn by Notification No. 944-BCW/MR-23/2026. Amber items are scanned PDFs; where a scanned item is described, the detail is limited to what is text-extracted from the source PDF.</p>
+      <p class="note" data-i18n="timelineNote">Reading note: green marks the documented notification or statutory position, not a guarantee that litigation is concluded. The July 2026 amendments and commencement notifications are included. Read the litigation tracker for the July withdrawal, August certificate judgment and October Supreme Court order. Red marks the 2025 measures withdrawn by Notification 944; amber indicates scanned sources.</p>
 
       <!-- Loading Skeleton -->
       <div id="timeline-loader" class="skeleton-container hidden">
@@ -179,7 +168,758 @@
     </section>
 
     <ol class="timeline tab-panel stagger-list" id="timeline" data-tab-panel="timeline">
-      <!-- Timeline events are rendered from timeline_events.json. -->
+      <li id="evt-framework-0" class="event" data-type="legacy" data-date="1976-05-05"><div class="date">1976-05-05</div><span class="dot" aria-hidden="true"></span><article class="card"><h2>Reservation_SC_ST_Act</h2><p>To provide for the reservation of vacancies in services and posts for members of the Scheduled Castes and Scheduled Tribes in West Bengal. The West Bengal Scheduled Castes and Scheduled Tribes (Reservation of Vacancies in Services and Posts) Act, 1976 – West Bengal Act XXVII of 1976</p></article></li>
+<li id="evt-1993-act" class="event" data-type="legacy" data-date="1993"><div class="date">1993</div>
+        <span class="dot" aria-hidden="true"></span>
+        <article class="card">
+          <h2>Statutory basis for OBC lists</h2>
+          <p>The later notifications repeatedly rely on the West Bengal Commission for Backward Classes Act, 1993, especially the definitions of backward classes and lists, and the Commission's advisory role.</p>
+          <div class="tags"><span class="tag">Legal basis</span><span class="tag">Referenced in later PDFs</span></div>
+          <details><summary>Source files</summary><ul class="docs"><li><a href="obc_pdfs/1993-03-15_WB-Commission-for-Backward-Classes-Act-1993.pdf" target="_blank" rel="noreferrer">West Bengal Commission for Backward Classes Act, 1993</a></li><li><a href="obc_pdfs/1993-11-25_WB-Commission-for-Backward-Classes-Rules-1993.pdf" target="_blank" rel="noreferrer">West Bengal Commission for Backward Classes Rules, 1993</a></li></ul></details>
+        </article></li>
+<li id="evt-1994-347" class="event" data-type="legacy" data-date="13 Jul 1994"><div class="date">13 Jul 1994</div>
+        <span class="dot" aria-hidden="true"></span>
+        <article class="card">
+          <h2>Founding reservation order: 5% for Backward Classes, with a creamy-layer schedule</h2>
+          <p>Order No. 347-TW/EC, dated 13 July 1994 (Scheduled Castes &amp; Tribes Welfare Department), made the first reservation of <strong>5% of vacancies</strong> filled by direct recruitment in state government service, local/statutory bodies, government-majority corporations, universities, aided schools, and the public sector, in favour of Backward Classes notified under the West Bengal Commission for Backward Classes Act, 1993. Clause (b) attached a detailed exclusion Schedule (Categories I–VI: constitutional posts, Class I/II officers, armed forces, professional class, property owners, and an income/wealth test then set at Rs. 2.5 lakh/year) — an early version of what later came to be called the "creamy layer" test. This order was later amended to raise the percentage (see <a href="#evt-1997-1056">6 Nov 1997</a>) and was still being cited as the source of the creamy-layer schedule in certificates issued in 2001.</p>
+          <p class="related">Related: <a href="#evt-1994-346">346-TW/EC list of 13.7.1994</a>, <a href="#evt-1994-374">374(71)-TW/EC certificate instructions</a>, <a href="#evt-1997-1056">1056-BCW/EC 7% increase</a>.</p>
+          <div class="tags"><span class="tag">Text extracted</span><span class="tag">Founding order</span><span class="tag">5% reservation</span><span class="tag">Creamy layer schedule</span></div>
+          <details>
+            <summary>Source file</summary>
+            <ul class="docs"><li><a href="obc_pdfs/1993-2010_Official-Combined-OBC-Orders-and-Notifications.pdf" target="_blank" rel="noreferrer">Combined pre-2011 OBC order/notification bundle (Anagrasar Kalyan Dept.) — Order No. 347-TW/EC, 13.7.1994</a></li></ul>
+          </details>
+        </article></li>
+<li id="evt-1994-346" class="event" data-type="legacy" data-date="13 Jul 1994"><div class="date">13 Jul 1994</div>
+        <span class="dot" aria-hidden="true"></span>
+        <article class="card">
+          <h2>First OBC list notified: 14 classes</h2>
+          <p>Notification No. 346-TW/EC, dated 13 July 1994, issued the same day as the reservation order, specified the founding list of Backward Classes under section 2(a)/2(c) of the 1993 Act: <strong>Kapali, Baishya Kapali, Kurmi, Sutradhar, Karmakar, Kumbhakar, Swarnakar, Teli, Napit, Yogi-Nath, Goala-Gope, Moira-Modak (Halwai), Barujibi, Satchasi</strong>. Every later addition notification (see entries below) is framed as "further" to this list.</p>
+          <p class="related">Related: <a href="#evt-1994-347">347-TW/EC reservation order</a>, <a href="#evt-1997-92">92-TW/EC 1997 amendment to the Goala-Gope entry</a>.</p>
+          <div class="tags"><span class="tag">Text extracted</span><span class="tag">Founding list</span><span class="tag">14 classes</span></div>
+          <details>
+            <summary>Source file</summary>
+            <ul class="docs"><li><a href="obc_pdfs/1993-2010_Official-Combined-OBC-Orders-and-Notifications.pdf" target="_blank" rel="noreferrer">Combined pre-2011 OBC order/notification bundle — Notification No. 346-TW/EC, 13.7.1994</a></li></ul>
+          </details>
+        </article></li>
+<li id="evt-1994-374" class="event" data-type="legacy" data-date="27 Jul 1994"><div class="date">27 Jul 1994</div>
+        <span class="dot" aria-hidden="true"></span>
+        <article class="card">
+          <h2>Certificate machinery set up: SDOs as issuing authority</h2>
+          <p>Circular No. 374(71)-TW/EC/MR-103/94, dated 27 July 1994, circulated the two 13 July orders to all District Magistrates and Sub-Divisional Officers and directed that reservation be maintained in direct recruitment as specified. It made the <strong>Sub-Divisional Officer</strong> of the concerned sub-division the competent authority to issue Backward Classes certificates (District Magistrate, South 24-Parganas, for Calcutta town), applying the existing SC/ST certificate procedure mutatis mutandis. It enclosed the first application form and certificate proforma.</p>
+          <div class="tags"><span class="tag">Text extracted</span><span class="tag">Certificate procedure</span><span class="tag">SDO as authority</span></div>
+          <details>
+            <summary>Source file</summary>
+            <ul class="docs"><li><a href="obc_pdfs/1993-2010_Official-Combined-OBC-Orders-and-Notifications.pdf" target="_blank" rel="noreferrer">Combined pre-2011 OBC order/notification bundle — Circular No. 374(71)-TW/EC/MR-103/94, 27.7.1994</a></li></ul>
+          </details>
+        </article></li>
+<li id="evt-framework-1" class="event" data-type="legacy" data-date="1994-08-03"><div class="date">1994-08-03</div><span class="dot" aria-hidden="true"></span><article class="card"><h2>SCST-Identification-Act-1994</h2><p>To provide for the identification of Scheduled Castes and Scheduled Tribes in West Bengal by certificate. The West Bengal Scheduled Castes and Scheduled Tribes (Identification) Act, 1994 – West Bengal Act XXXVIII of 1994</p></article></li>
+<li id="evt-1994-705" class="event" data-type="legacy" data-date="13 Dec 1994"><div class="date">13 Dec 1994</div>
+        <span class="dot" aria-hidden="true"></span>
+        <article class="card">
+          <h2>List extended: 12 more classes, including Jolah (Ansari-Momin)</h2>
+          <p>Notification No. 705-TW/EC, dated 13 December 1994, added <strong>Malakar, Tanti, Kansari, Shankhakar, Keori/Koiri, Raju, Tamboli/Tamali, Nagar, Karani, Dhanuk, Sarak, and Jolah (Ansari-Momin)</strong> to the Backward Classes list. This is the first entry naming a Muslim weaving community (Jolah/Ansari-Momin) in the notified list.</p>
+          <p class="related">Related: <a href="#evt-1994-346">346-TW/EC founding list</a>, <a href="#evt-1997-421">421(35)-TW/EC Central List acceptance of six of these communities</a>.</p>
+          <div class="tags"><span class="tag">Text extracted</span><span class="tag">12 classes added</span></div>
+          <details>
+            <summary>Source file</summary>
+            <ul class="docs"><li><a href="obc_pdfs/1993-2010_Official-Combined-OBC-Orders-and-Notifications.pdf" target="_blank" rel="noreferrer">Combined pre-2011 OBC order/notification bundle — Notification No. 705-TW/EC, 13.12.1994</a></li></ul>
+          </details>
+        </article></li>
+<li id="evt-1995-261" class="event" data-type="legacy" data-date="6 Apr 1995"><div class="date">6 Apr 1995</div>
+        <span class="dot" aria-hidden="true"></span>
+        <article class="card">
+          <h2>First 100-point roster for BC quota</h2>
+          <p>Order No. 261-TW/EC, dated 6 April 1995, directed that a separate 100-point roster be maintained for implementing the 5% BC quota, reserving points <strong>9, 29, 49, 69, and 89</strong> for Backward Classes, and named the SDO (District Magistrate/ADM, South 24-Parganas, for Calcutta) as the certifying authority.</p>
+          <div class="tags"><span class="tag">Text extracted</span><span class="tag">Roster mechanics</span></div>
+          <details>
+            <summary>Source file</summary>
+            <ul class="docs"><li><a href="obc_pdfs/1993-2010_Official-Combined-OBC-Orders-and-Notifications.pdf" target="_blank" rel="noreferrer">Combined pre-2011 OBC order/notification bundle — Order No. 261-TW/EC, 6.4.1995</a></li></ul>
+          </details>
+        </article></li>
+<li id="evt-1995-370" class="event" data-type="legacy" data-date="12 May 1995"><div class="date">12 May 1995</div>
+        <span class="dot" aria-hidden="true"></span>
+        <article class="card">
+          <h2>List extended: Roniwar, Kosta/Kostha, and SC-converted Christians</h2>
+          <p>Notification No. 370-TW/EC, dated 12 May 1995, added three further classes: <strong>Roniwar, Kosta/Kostha, and Christians converted from Scheduled Castes</strong>. This is the first entry naming a Christian-convert category in the OBC list.</p>
+          <div class="tags"><span class="tag">Text extracted</span><span class="tag">3 classes added</span></div>
+          <details>
+            <summary>Source file</summary>
+            <ul class="docs"><li><a href="obc_pdfs/1993-2010_Official-Combined-OBC-Orders-and-Notifications.pdf" target="_blank" rel="noreferrer">Combined pre-2011 OBC order/notification bundle — Notification No. 370-TW/EC, 12.5.1995</a></li></ul>
+          </details>
+        </article></li>
+<li id="evt-1995-559" class="event" data-type="legacy" data-date="26 Jun 1995"><div class="date">26 Jun 1995</div>
+        <span class="dot" aria-hidden="true"></span>
+        <article class="card">
+          <h2>Certificate form revised for Central acceptance</h2>
+          <p>Circular No. 559(71)-TW/EC/MR-166/93, dated 26 June 1995, records that Government of India establishments were rejecting SDO-issued certificates because they lacked the Government of India circular number. A revised certificate proforma was prescribed, explicitly requiring the certificate to cite both the State notification and, where applicable, the Government of India resolution/notification number.</p>
+          <div class="tags"><span class="tag">Text extracted</span><span class="tag">Certificate form</span><span class="tag">Central acceptance</span></div>
+          <details>
+            <summary>Source file</summary>
+            <ul class="docs"><li><a href="obc_pdfs/1993-2010_Official-Combined-OBC-Orders-and-Notifications.pdf" target="_blank" rel="noreferrer">Combined pre-2011 OBC order/notification bundle — Circular No. 559(71)-TW/EC/MR-166/93, 26.6.1995</a></li></ul>
+          </details>
+        </article></li>
+<li id="evt-1995-1179" class="event" data-type="legacy" data-date="1 Dec 1995"><div class="date">1 Dec 1995</div>
+        <span class="dot" aria-hidden="true"></span>
+        <article class="card">
+          <h2>List extended: 9 Nepali/Himalayan-origin classes</h2>
+          <p>Notification No. 1179-TW/EC, dated 1 December 1995, added <strong>Bhujel, Newar, Mangar (Thapa, Rana), Nembang, Sampang, Bungchheng, Thami, Jogi, and Dhimal</strong>. The bracketed sub-groups "Thapa" and "Rana" under Mangar were later omitted in 2001 (see <a href="#evt-2001-2928">10 Jul 2001</a>).</p>
+          <p class="related">Related: <a href="#evt-2001-2928">2928-BCW 2001 amendment removing Thapa/Rana bracket</a>.</p>
+          <div class="tags"><span class="tag">Text extracted</span><span class="tag">9 classes added</span></div>
+          <details>
+            <summary>Source file</summary>
+            <ul class="docs"><li><a href="obc_pdfs/1993-2010_Official-Combined-OBC-Orders-and-Notifications.pdf" target="_blank" rel="noreferrer">Combined pre-2011 OBC order/notification bundle — Notification No. 1179-TW/EC, 1.12.1995</a></li></ul>
+          </details>
+        </article></li>
+<li id="evt-1996-183" class="event" data-type="legacy" data-date="8 Mar 1996"><div class="date">8 Mar 1996</div>
+        <span class="dot" aria-hidden="true"></span>
+        <article class="card">
+          <h2>List extended: Fakir, Sain among 6 new classes</h2>
+          <p>Notification No. 183-TW/EC, dated 8 March 1996, added <strong>Lakhera/Laahera, Fakir, Sain, Kahar, Tamang, Betkar (Bentkar), and Chitrakar</strong>. Fakir and Sain are Muslim mendicant/devotional-lineage communities.</p>
+          <div class="tags"><span class="tag">Text extracted</span><span class="tag">6 classes added</span></div>
+          <details>
+            <summary>Source file</summary>
+            <ul class="docs"><li><a href="obc_pdfs/1993-2010_Official-Combined-OBC-Orders-and-Notifications.pdf" target="_blank" rel="noreferrer">Combined pre-2011 OBC order/notification bundle — Notification No. 183-TW/EC, 8.3.1996</a></li></ul>
+          </details>
+        </article></li>
+<li id="evt-1997-378f" class="event" data-type="legacy" data-date="10 Jan 1997"><div class="date">10 Jan 1997</div>
+        <span class="dot" aria-hidden="true"></span>
+        <article class="card">
+          <h2>3-year upper-age relaxation granted</h2>
+          <p>Memorandum No. 378-F, dated 10 January 1997 (Finance Department, Audit Branch), granted candidates belonging to the notified Backward Classes a relaxation of <strong>three years over the prescribed upper age-limit</strong> for direct recruitment across state government, local/statutory bodies, government-majority corporations, universities, aided schools, and the public sector.</p>
+          <div class="tags"><span class="tag">Text extracted</span><span class="tag">Age relaxation</span><span class="tag">Finance Dept</span></div>
+          <details>
+            <summary>Source file</summary>
+            <ul class="docs"><li><a href="obc_pdfs/1993-2010_Official-Combined-OBC-Orders-and-Notifications.pdf" target="_blank" rel="noreferrer">Combined pre-2011 OBC order/notification bundle — Memo No. 378-F, 10.1.1997</a></li></ul>
+          </details>
+        </article></li>
+<li id="evt-1997-92" class="event" data-type="legacy" data-date="11 Feb 1997"><div class="date">11 Feb 1997</div>
+        <span class="dot" aria-hidden="true"></span>
+        <article class="card">
+          <h2>Entry 11 amended: "Goala-Gope" expanded to include Ahir/Yadav synonyms</h2>
+          <p>Notification No. 92-TW/EC, dated 11 February 1997, amended the 13 July 1994 list, substituting serial no. 11 to read <strong>"Goala-Gope (Pallav Gope, Ballav Gope, Yadav Gope, Gope, Ahir and Yadav)"</strong> — folding several synonymous/allied names into the single notified entry.</p>
+          <p class="related">Related: <a href="#evt-1994-346">346-TW/EC founding list</a>.</p>
+          <div class="tags"><span class="tag">Text extracted</span><span class="tag">Amendment</span><span class="tag">Synonym expansion</span></div>
+          <details>
+            <summary>Source file</summary>
+            <ul class="docs"><li><a href="obc_pdfs/1993-2010_Official-Combined-OBC-Orders-and-Notifications.pdf" target="_blank" rel="noreferrer">Combined pre-2011 OBC order/notification bundle — Notification No. 92-TW/EC, 11.2.1997</a></li></ul>
+          </details>
+        </article></li>
+<li id="evt-1997-93" class="event" data-type="legacy" data-date="11 Feb 1997"><div class="date">11 Feb 1997</div>
+        <span class="dot" aria-hidden="true"></span>
+        <article class="card">
+          <h2>List extended: 8 more classes</h2>
+          <p>Notification No. 93-TW/EC, dated 11 February 1997, added <strong>Hawari, Turha, Bhar, Dhunia, Khandait, Patidar, Gangot, and Kasai</strong>, in continuation of the 8 March 1996 list.</p>
+          <div class="tags"><span class="tag">Text extracted</span><span class="tag">8 classes added</span></div>
+          <details>
+            <summary>Source file</summary>
+            <ul class="docs"><li><a href="obc_pdfs/1993-2010_Official-Combined-OBC-Orders-and-Notifications.pdf" target="_blank" rel="noreferrer">Combined pre-2011 OBC order/notification bundle — Notification No. 93-TW/EC, 11.2.1997</a></li></ul>
+          </details>
+        </article></li>
+<li id="evt-1997-421" class="event" data-type="legacy" data-date="9 Jul 1997"><div class="date">9 Jul 1997</div>
+        <span class="dot" aria-hidden="true"></span>
+        <article class="card">
+          <h2>Six West Bengal classes accepted into the Central OBC list</h2>
+          <p>Circular No. 421(35)-TW/EC, dated 9 July 1997, forwarded Ministry of Welfare (Govt. of India) Resolution No. 12011/44/96-BCC, dated 6 December 1996, which added six West Bengal communities to the <strong>Central List of OBCs</strong>: <strong>Nagar, Karani, Raju, Keori/Koiri, Sarak, and Kosta/Kostha</strong> — communities the State had already notified vide 705-TW/EC (13.12.1994) and 370-TW/EC (12.5.1995). Certificate-issuing authorities were told to cite both the State and Central notification numbers going forward.</p>
+          <p class="related">Related: <a href="#evt-1994-705">705-TW/EC 1994 list</a>, <a href="#evt-1995-370">370-TW/EC 1995 list</a>.</p>
+          <div class="tags"><span class="tag">Text extracted</span><span class="tag">Central List</span><span class="tag">Govt. of India Resolution</span></div>
+          <details>
+            <summary>Source file</summary>
+            <ul class="docs"><li><a href="obc_pdfs/1993-2010_Official-Combined-OBC-Orders-and-Notifications.pdf" target="_blank" rel="noreferrer">Combined pre-2011 OBC order/notification bundle — Circular No. 421(35)-TW/EC, 9.7.1997, enclosing GoI Resolution No. 12011/44/96-BCC, 6.12.1996</a></li></ul>
+          </details>
+        </article></li>
+<li id="evt-1997-1056" class="event" data-type="legacy" data-date="6 Nov 1997"><div class="date">6 Nov 1997</div>
+        <span class="dot" aria-hidden="true"></span>
+        <article class="card">
+          <h2>Reservation increased from 5% to 7%</h2>
+          <p>Order No. 1056-BCW/EC/MR-302/97, dated 6 November 1997, amended the enabling paragraph of the 13 July 1994 notification, substituting <strong>"7%"</strong> for <strong>"5%"</strong> as the reservation quantum for Backward Classes. This is the department's first order under the renamed "Backward Classes Welfare Department" letterhead (previously Scheduled Castes &amp; Tribes Welfare Department).</p>
+          <p class="related">Related: <a href="#evt-1994-347">347-TW/EC founding 5% order</a>.</p>
+          <div class="tags"><span class="tag">Text extracted</span><span class="tag">7% reservation</span></div>
+          <details>
+            <summary>Source file</summary>
+            <ul class="docs"><li><a href="obc_pdfs/1993-2010_Official-Combined-OBC-Orders-and-Notifications.pdf" target="_blank" rel="noreferrer">Combined pre-2011 OBC order/notification bundle — Order No. 1056-BCW/EC/MR-302/97, 6.11.1997</a></li></ul>
+          </details>
+        </article></li>
+<li id="evt-1997-1054" class="event" data-type="legacy" data-date="6 Nov 1997"><div class="date">6 Nov 1997</div>
+        <span class="dot" aria-hidden="true"></span>
+        <article class="card">
+          <h2>List extended: Hele/Halia/Chasi-Kaibbartta</h2>
+          <p>Notification No. 1054-BCW/EC/MR-302/97, issued the same day as the 7% order, added a single class: <strong>Hele/Halia/Chasi-Kaibbartta</strong>.</p>
+          <div class="tags"><span class="tag">Text extracted</span><span class="tag">1 class added</span></div>
+          <details>
+            <summary>Source file</summary>
+            <ul class="docs"><li><a href="obc_pdfs/1993-2010_Official-Combined-OBC-Orders-and-Notifications.pdf" target="_blank" rel="noreferrer">Combined pre-2011 OBC order/notification bundle — Notification No. 1054-BCW/EC/MR-302/97, 6.11.1997</a></li></ul>
+          </details>
+        </article></li>
+<li id="evt-1999-84" class="event" data-type="legacy" data-date="1 Mar 1999"><div class="date">1 Mar 1999</div>
+        <span class="dot" aria-hidden="true"></span>
+        <article class="card">
+          <h2>List extended: Nashya Sekh, Pahadia Muslim among 7 new classes</h2>
+          <p>Notification No. 84-BCW/RC/MR-302/97, dated 1 March 1999, added <strong>Banshi Barman, Nashya Sekh, Pahadia Muslim, Khen, Sukli, Sunuwar, and Bhar Bhuja</strong> — the first explicit "Muslim" qualifier attached to a community name in this list (Pahadia Muslim), alongside Nashya Sekh.</p>
+          <div class="tags"><span class="tag">Text extracted</span><span class="tag">7 classes added</span></div>
+          <details>
+            <summary>Source file</summary>
+            <ul class="docs"><li><a href="obc_pdfs/1993-2010_Official-Combined-OBC-Orders-and-Notifications.pdf" target="_blank" rel="noreferrer">Combined pre-2011 OBC order/notification bundle — Notification No. 84-BCW/RC/MR-302/97, 1.3.1999</a></li></ul>
+          </details>
+        </article></li>
+<li id="evt-1999-134" class="event" data-type="legacy" data-date="25 Mar 1999"><div class="date">25 Mar 1999</div>
+        <span class="dot" aria-hidden="true"></span>
+        <article class="card">
+          <h2>SC/ST model roster revised — BC points folded into the "General" slots</h2>
+          <p>Order No. 134-BCW/RC, dated 25 March 1999 (Reservation Cell), superseded all previous rosters and prescribed a fresh SC/ST 100-point model roster under the West Bengal SC/ST (Reservation of Vacancies) Act, 1976. Paragraph 2 directed that within this roster, the <strong>9th, 19th, 29th, 49th, 59th, 69th, and 89th</strong> vacancies shown as "General" be reserved for Backward Classes — i.e., the BC quota was implemented as carve-outs inside the combined roster rather than a wholly separate one.</p>
+          <div class="tags"><span class="tag">Text extracted</span><span class="tag">Roster mechanics</span></div>
+          <details>
+            <summary>Source file</summary>
+            <ul class="docs"><li><a href="obc_pdfs/1993-2010_Official-Combined-OBC-Orders-and-Notifications.pdf" target="_blank" rel="noreferrer">Combined pre-2011 OBC order/notification bundle — Order No. 134-BCW/RC, 25.3.1999</a></li></ul>
+          </details>
+        </article></li>
+<li id="evt-1999-1228" class="event" data-type="legacy" data-date="27 May 1999"><div class="date">27 May 1999</div>
+        <span class="dot" aria-hidden="true"></span>
+        <article class="card">
+          <h2>Reference date for permanent residence fixed at 15 March 1993</h2>
+          <p>Memorandum No. 1228-BCW, dated 27 May 1999, resolved confusion among certificate-issuing authorities by fixing <strong>15 March 1993</strong> (the date the West Bengal Commission for Backward Classes was notified) as the reference date for determining permanent residential status of non-SC/ST Backward Class applicants. A person residing permanently in the state "on or before" that date qualifies, subject to belonging to a notified class and meeting other criteria. (The words "on or before" were substituted for an original "and from" by the corrigendum below.)</p>
+          <p class="related">Related: <a href="#evt-2000-944">944-BCW corrigendum, 28 Feb 2000</a>.</p>
+          <div class="tags"><span class="tag">Text extracted</span><span class="tag">Residence criterion</span></div>
+          <details>
+            <summary>Source file</summary>
+            <ul class="docs"><li><a href="obc_pdfs/1993-2010_Official-Combined-OBC-Orders-and-Notifications.pdf" target="_blank" rel="noreferrer">Combined pre-2011 OBC order/notification bundle — Memo No. 1228-BCW, 27.5.1999</a></li></ul>
+          </details>
+        </article></li>
+<li id="evt-1999-2004" class="event" data-type="legacy" data-date="27 Jul 1999"><div class="date">27 Jul 1999</div>
+        <span class="dot" aria-hidden="true"></span>
+        <article class="card">
+          <h2>No de-reservation without State Government sanction</h2>
+          <p>Notification No. 2004-BCW/MRD-238/98, dated 27 July 1999, laid down that a vacancy reserved for Backward Classes must <strong>ordinarily remain unfilled</strong> if no qualified BC candidate is available, rather than being de-reserved by the appointing authority. De-reservation is possible only on reference to, and by order of, the State Government, and even then the reservation must be <strong>carried forward</strong> to the next unreserved vacancy.</p>
+          <div class="tags"><span class="tag">Text extracted</span><span class="tag">Vacancy carry-forward</span></div>
+          <details>
+            <summary>Source file</summary>
+            <ul class="docs"><li><a href="obc_pdfs/1993-2010_Official-Combined-OBC-Orders-and-Notifications.pdf" target="_blank" rel="noreferrer">Combined pre-2011 OBC order/notification bundle — Notification No. 2004-BCW/MRD-238/98, 27.7.1999</a></li></ul>
+          </details>
+        </article></li>
+<li id="evt-2000-944" class="event" data-type="legacy" data-date="28 Feb 2000"><div class="date">28 Feb 2000</div>
+        <span class="dot" aria-hidden="true"></span>
+        <article class="card">
+          <h2>Corrigendum: "on or before" replaces "on and from"</h2>
+          <p>Corrigendum No. 944-BCW, dated 28 February 2000, corrected Memo No. 1228-BCW (27 May 1999) so that the residence cut-off reads <strong>"on or before"</strong> 15 March 1993, replacing the earlier "on and from" wording — removing an ambiguity about whether later-settled residents could ever qualify.</p>
+          <p class="related">Related: <a href="#evt-1999-1228">1228-BCW, 27 May 1999</a>.</p>
+          <div class="tags"><span class="tag">Text extracted</span><span class="tag">Correction</span></div>
+          <details>
+            <summary>Source file</summary>
+            <ul class="docs"><li><a href="obc_pdfs/1993-2010_Official-Combined-OBC-Orders-and-Notifications.pdf" target="_blank" rel="noreferrer">Combined pre-2011 OBC order/notification bundle — Corrigendum No. 944-BCW, 28.2.2000</a></li></ul>
+          </details>
+        </article></li>
+<li id="evt-2000-1134" class="event" data-type="legacy" data-date="3 Mar 2000"><div class="date">3 Mar 2000</div>
+        <span class="dot" aria-hidden="true"></span>
+        <article class="card">
+          <h2>Age band fixed for issuing OBC certificates: 18 to max recruitment age</h2>
+          <p>Memorandum No. 1134-BCW/MR-105/95, dated 3 March 2000, prescribed for the first time an age restriction on issuing Caste Identification Certificates to OBC applicants: certificates would <strong>not be issued to minors (below 18)</strong> or to those who had crossed the maximum prescribed age for direct recruitment, since the certificate's only use was said to be reservation in direct recruitment.</p>
+          <p class="related">Related: <a href="#evt-2000-2171">2171(17)-BCW clarification, 15 May 2000</a>, <a href="#evt-2000-2880">2880-BCW proviso for above 40, 7 Jul 2000</a>, <a href="#evt-2001-1632">1632-BCW lower minimum to 16, 12 Apr 2001</a>.</p>
+          <div class="tags"><span class="tag">Text extracted</span><span class="tag">Age eligibility</span></div>
+          <details>
+            <summary>Source file</summary>
+            <ul class="docs"><li><a href="obc_pdfs/1993-2010_Official-Combined-OBC-Orders-and-Notifications.pdf" target="_blank" rel="noreferrer">Combined pre-2011 OBC order/notification bundle — Memo No. 1134-BCW/MR-105/95, 3.3.2000</a></li></ul>
+          </details>
+        </article></li>
+<li id="evt-2000-2171" class="event" data-type="legacy" data-date="15 May 2000"><div class="date">15 May 2000</div>
+        <span class="dot" aria-hidden="true"></span>
+        <article class="card">
+          <h2>Clarified: age restriction applies only to OBC, not SC/ST</h2>
+          <p>Fax Message No. 2171(17)-BCW/MR-105/95, dated 15 May 2000, clarified to all District Magistrates that the age-limit restriction under Memo 1134-BCW applied <strong>only to Other Backward Classes</strong> certificate applicants, and expressly did not apply to certificates issued to SC and ST candidates.</p>
+          <div class="tags"><span class="tag">Text extracted</span><span class="tag">Clarification</span></div>
+          <details>
+            <summary>Source file</summary>
+            <ul class="docs"><li><a href="obc_pdfs/1993-2010_Official-Combined-OBC-Orders-and-Notifications.pdf" target="_blank" rel="noreferrer">Combined pre-2011 OBC order/notification bundle — Fax Message No. 2171(17)-BCW/MR-105/95, 15.5.2000</a></li></ul>
+          </details>
+        </article></li>
+<li id="evt-2000-2880" class="event" data-type="legacy" data-date="7 Jul 2000"><div class="date">7 Jul 2000</div>
+        <span class="dot" aria-hidden="true"></span>
+        <article class="card">
+          <h2>Proviso added: certificates allowed above 40 for scheme benefits</h2>
+          <p>Memorandum No. 2880-BCW/MR-105/95, dated 7 July 2000, added a proviso to Memo 1134-BCW permitting OBC certificates to be issued to applicants <strong>above the age of 40</strong> where they satisfy the issuing authority that the certificate is needed to avail benefits under a specific State or Central government scheme (e.g., loans), rather than for direct recruitment.</p>
+          <div class="tags"><span class="tag">Text extracted</span><span class="tag">Age eligibility</span></div>
+          <details>
+            <summary>Source file</summary>
+            <ul class="docs"><li><a href="obc_pdfs/1993-2010_Official-Combined-OBC-Orders-and-Notifications.pdf" target="_blank" rel="noreferrer">Combined pre-2011 OBC order/notification bundle — Memo No. 2880-BCW/MR-105/95, 7.7.2000</a></li></ul>
+          </details>
+        </article></li>
+<li id="evt-2001-1632" class="event" data-type="legacy" data-date="12 Apr 2001"><div class="date">12 Apr 2001</div>
+        <span class="dot" aria-hidden="true"></span>
+        <article class="card">
+          <h2>Minimum certificate age lowered from 18 to 16</h2>
+          <p>Memorandum No. 1632-BCW/MR-105/95, dated 12 April 2001, lowered the minimum age for issuing OBC certificates from <strong>18 to 16 years</strong>, citing Medical Council of India regulation changes allowing OBC mark-concession admission to MBBS from age 17 (on or before 31 December of the admission year). The order was deemed effective from 3 January 2001.</p>
+          <div class="tags"><span class="tag">Text extracted</span><span class="tag">Age eligibility</span></div>
+          <details>
+            <summary>Source file</summary>
+            <ul class="docs"><li><a href="obc_pdfs/1993-2010_Official-Combined-OBC-Orders-and-Notifications.pdf" target="_blank" rel="noreferrer">Combined pre-2011 OBC order/notification bundle — Memo No. 1632-BCW/MR-105/95, 12.4.2001</a></li></ul>
+          </details>
+        </article></li>
+<li id="evt-2001-2489" class="event" data-type="legacy" data-date="21 Jun 2001"><div class="date">21 Jun 2001</div>
+        <span class="dot" aria-hidden="true"></span>
+        <article class="card">
+          <h2>Merit-qualifying BC candidates not deducted from the reserved quota</h2>
+          <p>Order No. 2489-BCW/MR-389/99, dated 21 June 2001, directed that when computing the reserved vacancies available to Backward Classes, candidates from that class who qualify <strong>on merit</strong> for an unreserved vacancy shall <strong>not be deducted</strong> from the reserved quota for that post — i.e., BC merit selections are treated as additional to, not a substitute for, the reserved seats.</p>
+          <div class="tags"><span class="tag">Text extracted</span><span class="tag">Quota computation</span></div>
+          <details>
+            <summary>Source file</summary>
+            <ul class="docs"><li><a href="obc_pdfs/1993-2010_Official-Combined-OBC-Orders-and-Notifications.pdf" target="_blank" rel="noreferrer">Combined pre-2011 OBC order/notification bundle — Order No. 2489-BCW/MR-389/99, 21.6.2001</a></li></ul>
+          </details>
+        </article></li>
+<li id="evt-2001-2927" class="event" data-type="legacy" data-date="10 Jul 2001"><div class="date">10 Jul 2001</div>
+        <span class="dot" aria-hidden="true"></span>
+        <article class="card">
+          <h2>List extended: Dewan, Rai (including Chamling)</h2>
+          <p>Notification No. 2927-BCW/MR-436/99, dated 10 July 2001, added <strong>Dewan</strong> and <strong>Rai (including Chamling)</strong> to the list, in continuation of the 1 March 1999 notification.</p>
+          <div class="tags"><span class="tag">Text extracted</span><span class="tag">2 classes added</span></div>
+          <details>
+            <summary>Source file</summary>
+            <ul class="docs"><li><a href="obc_pdfs/1993-2010_Official-Combined-OBC-Orders-and-Notifications.pdf" target="_blank" rel="noreferrer">Combined pre-2011 OBC order/notification bundle — Notification No. 2927-BCW/MR-436/99, 10.7.2001</a></li></ul>
+          </details>
+        </article></li>
+<li id="evt-2001-2928" class="event" data-type="legacy" data-date="10 Jul 2001"><div class="date">10 Jul 2001</div>
+        <span class="dot" aria-hidden="true"></span>
+        <article class="card">
+          <h2>Amendment: "Mangar" treated as one class, sub-names dropped</h2>
+          <p>Notification No. 2928-BCW/MR-436/99, dated 10 July 2001, amended the 1 December 1995 notification on the West Bengal Commission for Backward Classes' recommendation, omitting the bracketed sub-classes <strong>"(Thapa, Rana)"</strong> after "Mangar" at serial no. 3, so that Mangar as a whole is treated as a single backward class rather than being read as limited to those sub-groups.</p>
+          <p class="related">Related: <a href="#evt-1995-1179">1179-TW/EC original Mangar (Thapa, Rana) entry, 1 Dec 1995</a>.</p>
+          <div class="tags"><span class="tag">Text extracted</span><span class="tag">Amendment</span></div>
+          <details>
+            <summary>Source file</summary>
+            <ul class="docs"><li><a href="obc_pdfs/1993-2010_Official-Combined-OBC-Orders-and-Notifications.pdf" target="_blank" rel="noreferrer">Combined pre-2011 OBC order/notification bundle — Notification No. 2928-BCW/MR-436/99, 10.7.2001</a></li></ul>
+          </details>
+        </article></li>
+<li id="evt-2010-1464" class="event" data-type="legacy" data-date="30 Apr 2010"><div class="date">30 Apr 2010</div>
+        <span class="dot" aria-hidden="true"></span>
+        <article class="card">
+          <h2>Comprehensive OBC certificate guidelines issued</h2>
+          <p>Memorandum No. 1464-BCW/MR-59/10 set out procedures, competent and recommending authorities, application handling, hearings, and supporting-document requirements for OBC certificates. The source is superseded by the 2015 updated guidelines.</p>
+          <p class="related">Related: <a href="#evt-2015-1204">2015 updated certificate guidelines</a>, <a href="#evt-2026-1033">2026 re-verification instruction</a>.</p>
+          <div class="tags"><span class="tag scan">Scan / visually checked</span><span class="tag withdrawn">Superseded in 2015</span><span class="tag">Certificate administration</span></div>
+          <details><summary>Source file</summary><ul class="docs"><li><a href="obc_pdfs/2010-04-30_1464-BCW-MR-59-10_OBC-certificate-guidelines.pdf">Memo No. 1464-BCW/MR-59/10.pdf</a></li></ul></details>
+        </article></li>
+<li id="evt-2010-6309" class="event" data-type="legacy" data-date="24 Sep 2010"><div class="date">24 Sep 2010</div>
+        <span class="dot" aria-hidden="true"></span>
+        <article class="card">
+          <h2>OBCs split into Category-A and Category-B</h2>
+          <p>Notification No. 6309-BCW/MR-84/10, dated 24 September 2010, categorised the then OBC list into Category-A "More Backward" and Category-B "Backward" after referring to the Commission survey report. The visible pages list 56 Category-A classes and 52 Category-B classes.</p>
+          <p class="related">Related: <a href="#evt-2010-6312">6312-BCW reservation increase</a>, <a href="#evt-2025-917">917-BCW 2025 sub-categorisation</a>, <a href="#evt-2024-high-court">2024 High Court judgment reference</a>.</p>
+          <div class="tags"><span class="tag scan">Scan / visually verified</span><span class="tag">A/B categories</span></div>
+          <details>
+            <summary>Source file</summary>
+            <ul class="docs"><li><a href="obc_pdfs/2010-09-24_6309-BCW-MR-84-10_categorisation.pdf">6309-BCW24-09-10 BCA 56 BCB 52.pdf</a></li></ul>
+          </details>
+        </article></li>
+<li id="evt-2010-6312" class="event" data-type="legacy" data-date="24 Sep 2010"><div class="date">24 Sep 2010</div>
+        <span class="dot" aria-hidden="true"></span>
+        <article class="card">
+          <h2>Reservation raised to 17%</h2>
+          <p>Order No. 6312-BCW/MR-84/10 increased total OBC reservation to 17%, split as 10% for Category-A and 7% for Category-B. It expressly refers back to <a href="#evt-1994-347">347-TW/EC/M-6/82(I)</a>, <a href="#evt-1997-1056">1056-BCW/EC/MR-302/97</a>, and <a href="#evt-2010-6309">6309-BCW/MR-84/10</a>.</p>
+          <div class="tags"><span class="tag">Text extracted</span><span class="tag">17% reservation</span></div>
+          <details>
+            <summary>Source file</summary>
+            <ul class="docs"><li><a href="obc_pdfs/2010-09-24_6312-BCW-MR-84-10_reservation_hike.pdf">6312-BCW reservation policy 2010.pdf</a></li></ul>
+          </details>
+        </article></li>
+<li id="evt-2010-6320" class="event" data-type="legacy" data-date="24 Sep 2010"><div class="date">24 Sep 2010</div>
+        <span class="dot" aria-hidden="true"></span>
+        <article class="card">
+          <h2>100-point roster aligned to the 2010 A/B structure</h2>
+          <p>Order No. 6320-BCW/MR-84/10 publishes a model 100-point roster after the 2010 categorisation and reservation changes. It is a historical implementation record and must be read with later statutory, notification, and roster changes.</p>
+          <p class="related">Related: <a href="#evt-2010-6309">2010 categorisation</a>, <a href="#evt-2010-6312">2010 reservation increase</a>, <a href="#evt-2026-roster">2026 roster modification</a>.</p>
+          <div class="tags"><span class="tag">Text extracted</span><span class="tag">Roster</span><span class="tag">Historical implementation</span></div>
+          <details><summary>Source file</summary><ul class="docs"><li><a href="obc_pdfs/2010-09-24_6320-BCW-MR-84-10_100-point-roster.pdf">Order No. 6320-BCW/MR-84/10.pdf</a></li></ul></details>
+        </article></li>
+<li id="evt-framework-2" class="event" data-type="legacy" data-date="2010-09-24"><div class="date">2010-09-24</div><span class="dot" aria-hidden="true"></span><article class="card"><h2>6316-BCW</h2><p>In exercise of powers under sections 10 and 11 of the WB SC&amp;ST (Reservation of Vacancies in Services and Posts) Act 1976, supersedes all previous orders and notifies the Model 100-Point Roster for direct recruitment along with OBC reserved positions. No. 6316-BCW/MR-84/10 – Kolkata Gazette Extraordinary, 24 September 2010 Key provisions: Supersedes all previous roster orders; Establishes the definitive Model 100-Point Roster for direct recruitment; SC reserved positions (22 out of 100): 1,7,11,15,18,21,28,32,36,40,47,51,57,61,65,68,71,78,82,86,90,97</p></article></li>
+<li id="evt-2012-1673" class="event" data-type="legacy" data-date="11 May 2012"><div class="date">11 May 2012</div>
+        <span class="dot" aria-hidden="true"></span>
+        <article class="card">
+          <h2>35 new communities included</h2>
+          <p>Notification No. 1673-BCW/MR-209/11, dated 11 May 2012 and published in the Kolkata Gazette on 22 May 2012, continues Notification No. 6309-BCW/MR-84/10. The visible list places 9 communities in OBC Category-A and 26 communities in OBC Category-B.</p>
+          <p class="related">Related: <a href="#evt-2010-6309">6309-BCW 2010 categorisation</a>, <a href="#evt-2012-panchayat-survey">2012 panchayat survey clarification</a>, <a href="#evt-2013-762">762-BCW amendment</a>, <a href="#evt-2012-845">845-BCW Sekh/Seikh entry</a>.</p>
+          <div class="tags"><span class="tag scan">Scan / visually checked</span><span class="tag">Community inclusion</span></div>
+          <details>
+            <summary>Source file</summary>
+            <ul class="docs"><li><a href="obc_pdfs/2012-05-11_1673-BCW-MR-209-11_inclusion.pdf">1673-BCW Incl 35 com May 2012.pdf</a></li></ul>
+          </details>
+        </article></li>
+<li id="evt-2012-panchayat-survey" class="event" data-type="legacy" data-date="Apr-Jul 2012"><div class="date">Apr-Jul 2012</div>
+        <span class="dot" aria-hidden="true"></span>
+        <article class="card">
+          <h2>Panchayat survey guideline trail issued</h2>
+          <p>The Panchayat & Rural Development Department first ordered a statewide survey by No. 2572/PN/O/1/1S-5/2012 dated 25 April 2012 because Gram Panchayat constituency-wise Backward Class population figures were not otherwise published. Later clarifications covered 100% household visits, use of Census/SECC/electoral roll reference records, local enquiry, draft and final publication, claims and objections, data entry, and the 143-class reference list after 35 new classes were notified.</p>
+          <div class="tags"><span class="tag">Text extracted</span><span class="tag">Survey / election reservation</span></div>
+          <details>
+            <summary>Source files from PRD order sheet</summary>
+            <ul class="docs">
+              <li><a href="obc_pdfs/2012-04-25_2572-PN-O-I-1S-5-2012_first_panchayat_survey_guideline.pdf">2572_PN_O_1_1S-5_2012 first statewide survey guideline.pdf</a></li>
+              <li><a href="obc_pdfs/2012-05-02_2663-PN-O-I-1S-5-2012_panchayat_survey_guideline.pdf">2663_PN_O_I_1S-5_2012.pdf</a></li>
+              <li><a href="obc_pdfs/2012-05-15_2896-PN-O-I-1S-5-2012_administrative.pdf">2896_PN_O_I_1S-5_2012.pdf</a></li>
+              <li><a href="obc_pdfs/2012-06-11_3276-PN-O-I-1S-5-2012_fourth_panchayat_survey_guideline.pdf">3276(18)_PN_O_I_1S-5_2012 fourth guideline.pdf</a></li>
+              <li><a href="obc_pdfs/2012-06-11_3276-PN-O-I-1S-5-2012_claims_objections_form.pdf">3276(18)_PN_O_I_1S-5_2012 claims and objections form.pdf</a></li>
+              <li><a href="obc_pdfs/2012-07-06_3804-PN-O-I-1S-5-2012_panchayat_survey_data_entry.pdf">3804_PN_O_I_1S-5_12.pdf</a></li>
+            </ul>
+          </details>
+        </article></li>
+<li id="evt-2012-845" class="event" data-type="legacy" data-date="10 Oct 2012"><div class="date">10 Oct 2012</div>
+        <span class="dot" aria-hidden="true"></span>
+        <article class="card">
+          <h2>Community inclusion: Sekh/Seikh</h2>
+          <p>Notification No. 845-BCW/MR-147/12, dated 10 October 2012, continues Notification No. 1673-BCW/MR-209/11 and categorises <strong>Sekh/Seikh</strong> under OBC Category-A.</p>
+          <p class="related">Related: <a href="#evt-2012-1673">1673-BCW 2012 inclusion notification</a>.</p>
+          <div class="tags"><span class="tag scan">Scan / visually checked</span><span class="tag">Community inclusion</span></div>
+          <details>
+            <summary>Source file</summary>
+            <ul class="docs"><li><a href="obc_pdfs/2012-10-10_845-BCW-MR-147-12_inclusion.pdf">845-BCW Incl shaikh 2012.pdf</a></li></ul>
+          </details>
+        </article></li>
+<li id="evt-2013-762" class="event" data-type="legacy" data-date="1 Mar 2013"><div class="date">1 Mar 2013</div>
+        <span class="dot" aria-hidden="true"></span>
+        <article class="card">
+          <h2>Amendment to 2012 inclusion notification</h2>
+          <p>Notification No. 762-BCW/MR-116/12, dated 1 March 2013, amends Notification No. 1673-BCW/MR-209/11. The visible amendment substitutes Category-B serial 11 as <strong>Sadhukhan (Muslim)</strong>, marks serial 20 as <strong>Deleted</strong>, and substitutes serial 22 as <strong>Shah (Shah/Shahaji)</strong>.</p>
+          <p class="related">Related: <a href="#evt-2012-1673">1673-BCW 2012 inclusion notification</a>.</p>
+          <div class="tags"><span class="tag scan">Scan / visually checked</span><span class="tag">Amendment</span></div>
+          <details>
+            <summary>Source file</summary>
+            <ul class="docs"><li><a href="obc_pdfs/2013-03-01_762-BCW-MR-116-12_amendment.pdf">762-bcw_01-03-13 ammendment 1673.pdf</a></li></ul>
+          </details>
+        </article></li>
+<li id="evt-2013-reservation-act" class="event" data-type="legacy" data-date="2013-03-25"><div class="date">25 Mar 2013</div>
+        <span class="dot" aria-hidden="true"></span>
+        <article class="card">
+          <h2>Reservation Act reference document</h2>
+          <p>This is the Kolkata Gazette publication of West Bengal Act XXXIX of 2012: <strong>The West Bengal Backward Classes (Other than Scheduled Castes and Scheduled Tribes) (Reservation of Vacancies in Services and Posts) Act, 2012</strong>, published on 25 March 2013. It contains definitions, reservation provisions, exclusion rules, and Schedule III roster positions.</p>
+          <div class="tags"><span class="tag scan">Scan / visually checked</span><span class="tag">Reference law</span></div>
+          <details>
+            <summary>Source file</summary>
+            <ul class="docs"><li><a href="obc_pdfs/2013-03-25_WB-Act-XXXIX-of-2012_act.pdf">Backward-Class-Other-than-SC-ST-Reservation (1) (1).pdf</a></li></ul>
+          </details>
+        </article></li>
+<li id="evt-2013-3182" class="event" data-type="legacy" data-date="12 Sep 2013"><div class="date">12 Sep 2013</div>
+        <span class="dot" aria-hidden="true"></span>
+        <article class="card">
+          <h2>Amendment at serial no. 11</h2>
+          <p>Notification No. 3182-BCW/MR-127/13, dated 12 September 2013, substitutes serial 11 with <strong>Goala, Gope (Pallav Gope, Ballav Gope, Yadav Gope, Gope, Ahir and Yadav)</strong>.</p>
+          <div class="tags"><span class="tag scan">Scan / visually checked</span><span class="tag">Amendment</span></div>
+          <details>
+            <summary>Source file</summary>
+            <ul class="docs"><li><a href="obc_pdfs/2013-09-12_3182-BCW-MR-127-13_amendment.pdf">3182-BCW AMMENDMENT SL 11 BC B.pdf</a></li></ul>
+          </details>
+        </article></li>
+<li id="evt-2014-2770" class="event" data-type="legacy" data-date="29 Aug 2014"><div class="date">29 Aug 2014</div>
+        <span class="dot" aria-hidden="true"></span>
+        <article class="card">
+          <h2>OBC list amendment across A and B categories</h2>
+          <p>Order No. 2770-BCW/MR-116/12, dated 29 August 2014, records that the Commission recommended 15 new classes: 9 as More Backward (Category-A) and 6 as Backward (Category-B). It also corrects 24 existing entries. The visible additions are A-66 to A-75 and B-79 to B-84.</p>
+          <p class="related">Related: <a href="#evt-2015-183">183-BCW B-85</a>, <a href="#evt-2015-2102">2102-BCW A-76 to A-78 / B-86 to B-88</a>.</p>
+          <div class="tags"><span class="tag scan">Scan / visually checked</span><span class="tag">A/B categories</span></div>
+          <details>
+            <summary>Source file</summary>
+            <ul class="docs"><li><a href="obc_pdfs/2014-08-29_2770-BCW-MR-116-12_inclusion_amendment.pdf">2770-BCW BCA 66-75,BC B 79-84.pdf</a></li></ul>
+          </details>
+        </article></li>
+<li id="evt-framework-3" class="event" data-type="legacy" data-date="2014-09-15"><div class="date">2014-09-15</div><span class="dot" aria-hidden="true"></span><article class="card"><h2>3024-BCW</h2><p>Re-constitutes the West Bengal Commission for Backward Classes under section 3 of the WB Commission for Backward Classes Act, 1993 (West Ben. Act I of 1993), superseding Notification No. 2529-BCW/MR-279/99 dated 7th September 2006. Notification No. 3024-BCW/MR-103/2014 dated 15th September 2014 Key provisions: Legal basis: Section 3 of WB Commission for Backward Classes Act, 1993 (WB Act I of 1993); Supersedes Notification No. 2529-BCW/MR-279/99 dated 7th September 2006; Composition: Chairperson (former Chief Justice Malay Sengupta) + 3 Members (1 MLA, 2 academics/professionals)</p></article></li>
+<li id="evt-2015-183" class="event" data-type="legacy" data-date="16 Jan 2015"><div class="date">16 Jan 2015</div>
+        <span class="dot" aria-hidden="true"></span>
+        <article class="card">
+          <h2>Category-B serial 85: Kalal/Iraqi</h2>
+          <p>Order No. 183-BCW/MR-209/11, dated 16 January 2015, continues Order No. 2770-BCW/MR-116/12 and inserts <strong>85. Kalal/Iraqi</strong> under Backward (Category-B).</p>
+          <p class="related">Related: <a href="#evt-2014-2770">2770-BCW 2014 amendments</a>, <a href="#evt-2015-2102">2102-BCW next serial additions</a>.</p>
+          <div class="tags"><span class="tag scan">Scan / visually checked</span><span class="tag">Category-B</span></div>
+          <details>
+            <summary>Source file</summary>
+            <ul class="docs"><li><a href="obc_pdfs/2015-01-16_183-BCW-MR-209-11_inclusion.pdf">183-BCW sl BC B 85 kalal sub cast.pdf</a></li></ul>
+          </details>
+        </article></li>
+<li id="evt-2015-2102" class="event" data-type="legacy" data-date="1 Jun 2015"><div class="date">1 Jun 2015</div>
+        <span class="dot" aria-hidden="true"></span>
+        <article class="card">
+          <h2>Additional A/B serial entries</h2>
+          <p>Order No. 2102-BCW/MR-209/11, dated 1 June 2015, continues Order No. 183-BCW/MR-209/11 and inserts Category-A serials <strong>76 Kalwar, 77 Atta (Muslim), 78 Khansama</strong>, and Category-B serials <strong>86 Sarala/Sarwala (Muslim), 87 Bagani (Muslim), 88 Bhandari (Muslim)</strong>.</p>
+          <p class="related">Related: <a href="#evt-2015-183">183-BCW B-85</a>.</p>
+          <div class="tags"><span class="tag scan">Scan / visually checked</span><span class="tag">A/B categories</span></div>
+          <details>
+            <summary>Source file</summary>
+            <ul class="docs"><li><a href="obc_pdfs/2015-06-01_2102-BCW-MR-209-11_inclusion.pdf">2102-BCW BCA 76-78,BC B 86-88.pdf</a></li></ul>
+          </details>
+        </article></li>
+<li id="evt-2015-1204" class="event" data-type="legacy" data-date="27 Jul 2015"><div class="date">27 Jul 2015</div>
+        <span class="dot" aria-hidden="true"></span>
+        <article class="card">
+          <h2>Updated OBC certificate guidelines issued</h2>
+          <p>Memorandum No. 1204-SBCW/MR-67/10 supersedes the 2010 certificate guidelines and compiles the then-applicable procedure for issuing OBC certificates. It is an administrative source from 2015; check later rules, notifications, and court directions before treating any step as current.</p>
+          <p class="related">Related: <a href="#evt-2010-1464">2010 certificate guidelines</a>, <a href="#evt-2026-1033">2026 re-verification instruction</a>.</p>
+          <div class="tags"><span class="tag">Text extracted</span><span class="tag">Certificate administration</span><span class="tag">Historical guidance</span></div>
+          <details><summary>Source file</summary><ul class="docs"><li><a href="obc_pdfs/2015-07-27_1204-SBCW-MR-67-10_updated-OBC-certificate-guidelines.pdf">Memo No. 1204-SBCW/MR-67/10.pdf</a></li></ul></details>
+        </article></li>
+<li id="evt-framework-4" class="event" data-type="legacy" data-date="2015-07-27"><div class="date">2015-07-27</div><span class="dot" aria-hidden="true"></span><article class="card"><h2>No. 1204-SBCW/MR-67/10</h2><p>Updated Guidelines for Issuance of OBC Certificates (superseding Memo No. 1464-BCW/MR-59/10 dated 30.04.2010) Key provisions: Comprehensive updated guidelines superseding Memo No. 1464-BCW/MR-59/10 dated 30.04.2010; OBC entitlement: member of notified community + non-creamy layer (income below Rs. 6 lakh); Online application at www.castcertificatewb.gov.in; physical documents on 2nd and 4th Wednesdays within 60 days</p></article></li>
+<li id="evt-2016-468" class="event" data-type="legacy" data-date="4 Feb 2016"><div class="date">4 Feb 2016</div>
+        <span class="dot" aria-hidden="true"></span>
+        <article class="card">
+          <h2>Entries added around A 79-80 and B 89-91</h2>
+          <p>Order No. 468-BCW/MR-209/11 (Pt.), dated 4 February 2016, adds <strong>79 Hawaikar (Muslim)</strong> and <strong>80 Khajonkriya/Khajankriya (Muslim)</strong> under More Backward (Category-A), and <strong>89 Katha (Muslim)</strong>, <strong>90 Mudi/Mehedi (Muslim)</strong>, and <strong>91 Sahana (Muslim)</strong> under Backward (Category-B). It also corrects A-35 and A-69 entries.</p>
+          <div class="tags"><span class="tag scan">Scan / visually checked</span><span class="tag">A/B categories</span></div>
+          <details>
+            <summary>Source file</summary>
+            <ul class="docs"><li><a href="obc_pdfs/2016-02-04_468-BCW-MR-209-11_inclusion_amendment.pdf">468-BCW79-80A , 89-91 B.pdf</a></li></ul>
+          </details>
+        </article></li>
+<li id="evt-2016-773" class="event" data-type="legacy" data-date="26 Feb 2016"><div class="date">26 Feb 2016</div>
+        <span class="dot" aria-hidden="true"></span>
+        <article class="card">
+          <h2>Category-B serial 92: Kazi/Kaji/Quazi/Quaji Muslim</h2>
+          <p>Order No. 773-BCW/MR-209/11, dated 26 February 2016, inserts <strong>92. Kazi/Kaji/Quazi/Quaji (Muslim)</strong> under Backward (Category-B), after serial 91. It also substitutes the B-61 entry from Gazi (Muslim) to <strong>Gazi (Muslim), Par (Muslim)</strong>.</p>
+          <p class="related">Related: <a href="#evt-2016-468">468-BCW B-89 to B-91</a>, <a href="#evt-2016-4283">4283-BCW B-93</a>.</p>
+          <div class="tags"><span class="tag scan">Scan / visually checked</span><span class="tag">Category-B</span></div>
+          <details>
+            <summary>Source file</summary>
+            <ul class="docs"><li><a href="obc_pdfs/2016-02-26_773-BCW-MR-209-11_inclusion_amendment.pdf">773-BCW BC B 92 kaji muslim.pdf</a></li></ul>
+          </details>
+        </article></li>
+<li id="evt-2016-4283" class="event" data-type="legacy" data-date="26 Dec 2016"><div class="date">26 Dec 2016</div>
+        <span class="dot" aria-hidden="true"></span>
+        <article class="card">
+          <h2>Category-B serial 93: Kotal Muslim</h2>
+          <p>Order No. 4283-BCW/MR-209/11 (Pt. I), dated 26 December 2016, corrects entries in both categories and inserts <strong>93. Kotal (Muslim)</strong> under Backward (Category-B).</p>
+          <p class="related">Related: <a href="#evt-2016-4282">4282-BCW B-94 Gurung</a>.</p>
+          <div class="tags"><span class="tag scan">Scan / visually checked</span><span class="tag">Category-B</span></div>
+          <details>
+            <summary>Source file</summary>
+            <ul class="docs"><li><a href="obc_pdfs/2016-12-26_4283-BCW-MR-209-11-(Pt.I)_inclusion_amendment.pdf">4283-BCW BC B 93 KOTAL MUSLIM.pdf</a></li></ul>
+          </details>
+        </article></li>
+<li id="evt-2016-4282" class="event" data-type="legacy" data-date="26 Dec 2016"><div class="date">26 Dec 2016</div>
+        <span class="dot" aria-hidden="true"></span>
+        <article class="card">
+          <h2>Category-B serial 94: Gurung</h2>
+          <p>Order No. 4282-BCW/MR-118/16, dated 26 December 2016, inserts <strong>94. Gurung</strong> under Backward (Category-B), after serial 93.</p>
+          <p class="related">Related: <a href="#evt-2016-4283">4283-BCW B-93 Kotal (Muslim)</a>.</p>
+          <div class="tags"><span class="tag scan">Scan / visually checked</span><span class="tag">Category-B</span></div>
+          <details>
+            <summary>Source file</summary>
+            <ul class="docs"><li><a href="obc_pdfs/2016-12-26_4282-BCW-MR-118-16_inclusion.pdf">4282-BCW Incl BC B 94 SL.pdf</a></li></ul>
+          </details>
+        </article></li>
+<li id="evt-2017-1905" class="event" data-type="legacy" data-date="7 Jun 2017"><div class="date">7 Jun 2017</div>
+        <span class="dot" aria-hidden="true"></span>
+        <article class="card">
+          <h2>Category-A serial 81 reference</h2>
+          <p>Order No. 1905-BCW/MR-19/17, dated 7 June 2017, inserts <strong>81. Hazari (Muslim)</strong> under More Backward (Category-A), after serial 80.</p>
+          <div class="tags"><span class="tag scan">Scan / visually checked</span><span class="tag">Category-A</span></div>
+          <details>
+            <summary>Source file</summary>
+            <ul class="docs"><li><a href="obc_pdfs/2017-06-07_1905-BCW-MR-19-17_inclusion.pdf">1905-BCW 81 A.pdf</a></li></ul>
+          </details>
+        </article></li>
+<li id="evt-2017-3230" class="event" data-type="legacy" data-date="14 Sep 2017"><div class="date">14 Sep 2017</div>
+        <span class="dot" aria-hidden="true"></span>
+        <article class="card">
+          <h2>Category-B serial 24 amended: Khen</h2>
+          <p>Notification No. 3230-BCW/MR-116/12 changes Category-B serial 24 to <strong>Khen (Non-Bania category)</strong>.</p>
+          <div class="tags"><span class="tag scan">Scan / visually checked</span><span class="tag">Category-B</span></div>
+          <details>
+            <summary>Source file</summary>
+            <ul class="docs"><li><a href="obc_pdfs/2017-09-14_3230-BCW-MR-116-12_amendment.pdf">3230-BCW.pdf</a></li></ul>
+          </details>
+        </article></li>
+<li id="evt-2017-3231" class="event" data-type="legacy" data-date="14 Sep 2017"><div class="date">14 Sep 2017</div>
+        <span class="dot" aria-hidden="true"></span>
+        <article class="card">
+          <h2>Category-B entries 11 and 17 amended</h2>
+          <p>Notification No. 3231-BCW/MR-74/17 updates Category-B serial 11 to <strong>Scheduled Castes converts to Christianity and their progeny</strong>, and serial 17 to <strong>Hele/Halia/Chasi-Kaibartta, Das Kaibartta</strong>.</p>
+          <div class="tags"><span class="tag scan">Scan / visually checked</span><span class="tag">Category-B</span></div>
+          <details><summary>Source file</summary><ul class="docs"><li><a href="obc_pdfs/2017-09-14_3231-BCW-MR-74-17_amendment.pdf">3231-BCW.pdf</a></li></ul></details>
+        </article></li>
+<li id="evt-2017-4144" class="event" data-type="legacy" data-date="5 Dec 2017"><div class="date">5 Dec 2017</div>
+        <span class="dot" aria-hidden="true"></span>
+        <article class="card">
+          <h2>Category-B serial 95: Layek (Muslim)</h2>
+          <p>Notification No. 4144-BCW/MR-92/17 adds <strong>Layek (Muslim)</strong> as Category-B serial 95.</p>
+          <div class="tags"><span class="tag scan">Scan / visually checked</span><span class="tag">Category-B</span><span class="tag">Community inclusion</span></div>
+          <details><summary>Source file</summary><ul class="docs"><li><a href="obc_pdfs/2017-12-05_4144-BCW-MR-92-17_inclusion.pdf">4144-BCW 95 B.pdf</a></li></ul></details>
+        </article></li>
+<li id="evt-2018-1132" class="event" data-type="legacy" data-date="28 Mar 2018"><div class="date">28 Mar 2018</div>
+        <span class="dot" aria-hidden="true"></span>
+        <article class="card">
+          <h2>Category-B serial 96: Khas</h2>
+          <p>Notification No. 1132-BCW/MR-05/17 adds <strong>Khas</strong> as Category-B serial 96.</p>
+          <div class="tags"><span class="tag scan">Scan / visually checked</span><span class="tag">Category-B</span><span class="tag">Community inclusion</span></div>
+          <details><summary>Source file</summary><ul class="docs"><li><a href="obc_pdfs/2018-03-28_1132-BCW-MR-05-17_inclusion.pdf">1132-BCW 96 B.pdf</a></li></ul></details>
+        </article></li>
+<li id="evt-2018-sbcw-165" class="event" data-type="legacy" data-date="27 Jun 2018"><div class="date">27 Jun 2018</div>
+        <span class="dot" aria-hidden="true"></span>
+        <article class="card">
+          <h2>Category-B serial 97: Shikder/Shikdar/Sikder/Sikdar (Muslim)</h2>
+          <p>Order No. SBCW-165/MR-29/18 adds <strong>Shikder/Shikdar/Sikder/Sikdar (Muslim)</strong> as Category-B serial 97.</p>
+          <div class="tags"><span class="tag scan">Scan / visually checked</span><span class="tag">Category-B</span><span class="tag">Community inclusion</span></div>
+          <details><summary>Source file</summary><ul class="docs"><li><a href="obc_pdfs/2018-06-27_SBCW-165-MR-29-18_inclusion.pdf">SBCW-165 97 B.pdf</a></li></ul></details>
+        </article></li>
+<li id="evt-2022-2019" class="event" data-type="legacy" data-date="11 Jul 2022"><div class="date">11 Jul 2022</div>
+        <span class="dot" aria-hidden="true"></span>
+        <article class="card">
+          <h2>Chowdhury/Chowdhuri (Muslim) added as Category-B serial 98</h2>
+          <p>Notification No. 2019-BCW/MR-30/2020 added "Chowdhury/Chowdhuri (Muslim)" under Backward Category-B.</p>
+          <div class="tags"><span class="tag">Text extracted</span><span class="tag">Category-B</span><span class="tag">Community inclusion</span></div>
+          <details>
+            <summary>Source file</summary>
+            <ul class="docs"><li><a href="obc_pdfs/2022-07-11_2019-BCW-MR-30-2020_inclusion.pdf">2019-BCW_98 B[.pdf</a></li></ul>
+          </details>
+        </article></li>
+<li id="evt-2022-2020" class="event" data-type="legacy" data-date="11 Jul 2022"><div class="date">11 Jul 2022</div>
+        <span class="dot" aria-hidden="true"></span>
+        <article class="card">
+          <h2>Bairagi/Baishnab added as Category-B serial 99</h2>
+          <p>Notification No. 2020-BCW/MR-03/2021 added "Bairagi/Baishnab" under Backward Category-B.</p>
+          <div class="tags"><span class="tag">Text extracted</span><span class="tag">Category-B</span><span class="tag">Community inclusion</span></div>
+          <details>
+            <summary>Source file</summary>
+            <ul class="docs"><li><a href="obc_pdfs/2022-07-11_2020-BCW-MR-03-2021_inclusion.pdf">2020-BCW 99B .pdf</a></li></ul>
+          </details>
+        </article></li>
+<li id="evt-framework-5" class="event" data-type="legacy" data-date="2022-10-21"><div class="date">2022-10-21</div><span class="dot" aria-hidden="true"></span><article class="card"><h2>No.BCW-22099/6/2022-SECTION(BCW)-Dept. of BCW/503776</h2><p>Introduction of digitally signed caste certificates through e-signature for all Sub-Divisions of West Bengal Key provisions: Completes the statewide rollout of digitally signed caste certificates (e-signature) across all Sub-Divisions of West Bengal; Legal basis: Section 2(1)(p) of IT Act, 2000; mandated under WB Ease of Doing Business and Business Action Reforms Plan; Pilot phase (Order dated 29.09.2022) had already covered: Bidhannagar Sub-division (North 24 Parganas), Sadar Sub-division (South 24 Parganas), Sadar Sub-Division (Howrah), and Kolkata District</p></article></li>
+<li id="evt-framework-6" class="event" data-type="legacy" data-date="2022-11-28"><div class="date">2022-11-28</div><span class="dot" aria-hidden="true"></span><article class="card"><h2>1152-L</h2><p>Inserts a new Section 9A into the WB SC/ST Identification Act, 1994, providing a right of appeal against cancellation, impounding or revocation of caste certificates, which previously had no statutory appeal mechanism. West Bengal Act XIII of 2022 – The West Bengal Scheduled Castes and Scheduled Tribes (Identification) (Amendment) Act, 2022 Key provisions: Gap filled: prior to this amendment, Section 9 of the 1994 Act allowed cancellation/impounding/revocation of caste certificates but provided NO statutory right of appeal against such cancellation – this amendment creates that right; New Section 9A inserted after Section 9; Appeal against cancellation/impounding/revocation by SDO → lies to District Magistrate or authorised ADM</p></article></li>
+<li id="evt-framework-7" class="event" data-type="legacy" data-date="2023-05-18"><div class="date">2023-05-18</div><span class="dot" aria-hidden="true"></span><article class="card"><h2>959-BCW</h2><p>BCW Department (acting as Nodal Department for EWS reservation) issues modifications to the EWS certificate issuance procedure and strengthens the reservation system for EWS, building on the foundational P&amp;AR Memo 325-PAR(AR)/3P-1/2019 dated 09.07.2019. Memorandum No. 959-BCW/MR-52/2019 dated 18.05.2023 Key provisions: BCW Department acts as Nodal Department for EWS reservation; Key modification from 325-PAR: Issuing authority changed from DM/ADM/SDO to specifically Additional District Magistrate (in charge of development) and DWO Kolkata/Ex-officio Joint Director BCW &amp; TD for Kolkata; Adds Aadhaar Card/Khadyasathi card and PAN Card as mandatory additional documents</p></article></li>
+<li id="evt-2024-high-court" class="event" data-type="withdrawn" data-date="22 May 2024"><div class="date">22 May 2024</div>
+        <span class="dot" aria-hidden="true"></span>
+        <article class="card">
+          <h2>Calcutta High Court judgment becomes the turning point</h2>
+          <p>The 2025 and 2026 notifications repeatedly refer to the High Court judgment/order in WPO 60 of 2011 and connected matters. The 2026 notification says the 66 pre-2010 classes were not interfered with, while the 10%/7% A/B distribution was struck down.</p>
+          <div class="tags"><span class="tag">Court reference</span><span class="tag">Turning point</span></div>
+        </article></li>
+<li id="evt-2025-supreme-court" class="event" data-type="withdrawn" data-date="18 Mar 2025"><div class="date">18 Mar 2025</div>
+        <span class="dot" aria-hidden="true"></span>
+        <article class="card">
+          <h2>Supreme Court proceedings referenced</h2>
+          <p>Notification No. 917-BCW/MR-33/2025 says the Supreme Court recorded the fresh exercise examining backward classes and fixed the appeals for hearing in July 2025.</p>
+          <div class="tags"><span class="tag">Court reference</span><span class="tag">Referenced in 2025 notification</span></div>
+        </article></li>
+<li id="evt-2025-commission-462" class="event" data-type="withdrawn" data-date="29 Apr 2025"><div class="date">29 Apr 2025</div>
+        <span class="dot" aria-hidden="true"></span>
+        <article class="card">
+          <h2>Commission recommends fresh sub-categorisation approach</h2>
+          <p>Notification No. 917 says the Commission's 462nd meeting recommended two categories: More Backward (Category-A) and Backward (Category-B), based on benchmark scores.</p>
+          <div class="tags"><span class="tag">Commission</span><span class="tag">Benchmark survey</span></div>
+        </article></li>
+<li id="evt-2025-917" class="event" data-type="withdrawn" data-date="8 May 2025"><div class="date">8 May 2025</div>
+        <span class="dot" aria-hidden="true"></span>
+        <article class="card">
+          <h2>Fresh OBC Category-A / Category-B framework notified</h2>
+          <p>Notification No. 917-BCW/MR-33/2025 sub-categorised the State OBC list into Category-A "More Backward" and Category-B "Backward". It expressly cites the 22 May 2024 High Court judgment, the pending Supreme Court appeals, the Supreme Court order dated 18 March 2025, and the Commission recommendation from its 462nd meeting on 29 April 2025. This notification was later withdrawn on 18 May 2026.</p>
+          <p class="related">Related: <a href="#evt-2024-high-court">2024 High Court judgment</a>, <a href="#evt-2025-supreme-court">Supreme Court reference</a>, <a href="#evt-2025-commission-462">Commission 462nd meeting</a>, <a href="#evt-2026-944">944-BCW withdrawal</a>.</p>
+          <div class="tags"><span class="tag withdrawn">Withdrawn in 2026</span><span class="tag">A/B categories</span></div>
+          <details>
+            <summary>Source file</summary>
+            <ul class="docs"><li><a href="obc_pdfs/2025-05-08_917-BCW-MR-33-2025_sub_categorisation.pdf">917-BCW SUB CATAGORIGATION OBC A &amp; B.pdf</a></li></ul>
+          </details>
+        </article></li>
+<li id="evt-2025-1056" class="event" data-type="withdrawn" data-date="27 May 2025"><div class="date">27 May 2025</div>
+        <span class="dot" aria-hidden="true"></span>
+        <article class="card">
+          <h2>64 of the 66 pre-2010 classes sub-categorised</h2>
+          <p>Notification No. 1056-BCW/MR-33/2025 (Pt. I) placed 64 of the 66 pre-2010 classes into Category-A and Category-B after a benchmark survey by the Bureau of Applied Economics and Statistics and Cultural Research Institute. Later text says this broke down as 14 Category-A and 50 Category-B. This notification was withdrawn in 2026.</p>
+          <p class="related">Related: <a href="#evt-2025-917">917-BCW framework</a>, <a href="#evt-2026-944">944-BCW withdrawal</a>.</p>
+          <div class="tags"><span class="tag withdrawn">Withdrawn in 2026</span><span class="tag">64 classes</span><span class="tag">14 A / 50 B</span></div>
+          <details>
+            <summary>Source file</summary>
+            <ul class="docs"><li><a href="obc_pdfs/2025-05-27_1056-BCW-MR-33-2025-(Pt.I)_sub_categorisation.pdf">1056-BCW 64 O 66 SUB CAT.pdf</a></li></ul>
+          </details>
+        </article></li>
+<li id="evt-2025-1057" class="event" data-type="withdrawn" data-date="27 May 2025"><div class="date">27 May 2025</div>
+        <span class="dot" aria-hidden="true"></span>
+        <article class="card">
+          <h2>51 additional communities included and categorised</h2>
+          <p>Notification No. 1057-BCW/MR-38/2025 included 51 communities in the State OBC list and placed them into Category-A and Category-B. Later text says this was 27 Category-A and 24 Category-B. The public-hearing notices in the published hearing archive correspond to this procedural layer. This notification was withdrawn in 2026.</p>
+          <p class="related">Related: <a href="evidence.html#public-hearings">public hearings / jana shunani notices</a>, <a href="#evt-2026-944">944-BCW withdrawal</a>.</p>
+          <div class="tags"><span class="tag withdrawn">Withdrawn in 2026</span><span class="tag">51 communities</span><span class="tag">27 A / 24 B</span></div>
+          <details>
+            <summary>Source file</summary>
+            <ul class="docs"><li><a href="obc_pdfs/2025-05-27_1057-BCW-MR-38-2025_inclusion.pdf">1057-BCW Incl 51 ccommunity in sub cat.pdf</a></li></ul>
+          </details>
+        </article></li>
+<li id="evt-2025-1106" class="event" data-type="withdrawn" data-date="3 Jun 2025"><div class="date">3 Jun 2025</div>
+        <span class="dot" aria-hidden="true"></span>
+        <article class="card">
+          <h2>Reservation raised again to 17%</h2>
+          <p>Notification No. 1106-BCW/MR-33/2025 stated that there were then 115 OBC classes: 41 Category-A and 74 Category-B. It raised reservation to 17%, with 10% for Category-A and 7% for Category-B. This was withdrawn in 2026.</p>
+          <div class="tags"><span class="tag withdrawn">Withdrawn in 2026</span><span class="tag">17% reservation</span><span class="tag">115 classes</span></div>
+          <details>
+            <summary>Source file</summary>
+            <ul class="docs"><li><a href="obc_pdfs/2025-06-03_1106-BCW-MR-33-2025_reservation_hike.pdf">1106-BCW _ hike Res 7 to 17.pdf</a></li></ul>
+          </details>
+        </article></li>
+<li id="evt-2025-1107" class="event" data-type="withdrawn" data-date="3 Jun 2025"><div class="date">3 Jun 2025</div>
+        <span class="dot" aria-hidden="true"></span>
+        <article class="card">
+          <h2>25 more communities included and categorised</h2>
+          <p>Notification No. 1107-BCW/MR-38/2025 included 25 additional communities and sub-categorised them. The same PDF set also contains Corrigendum Notification No. 1172-BCW/MR-38/2025 dated 12 June 2025, correcting serial numbers in the Category-B list. Both were withdrawn in 2026.</p>
+          <p class="related">Related: <a href="#evt-2025-1172">1172-BCW corrigendum</a>, <a href="#evt-2026-944">944-BCW withdrawal</a>.</p>
+          <div class="tags"><span class="tag withdrawn">Withdrawn in 2026</span><span class="tag">25 communities</span></div>
+          <details>
+            <summary>Source file</summary>
+            <ul class="docs"><li><a href="obc_pdfs/2025-06-03_1107-BCW-MR-38-2025_inclusion.pdf">1107-BCW Incl 25 community sub cat.pdf</a></li></ul>
+          </details>
+        </article></li>
+<li id="evt-2025-1172" class="event" data-type="withdrawn" data-date="12 Jun 2025"><div class="date">12 Jun 2025</div>
+        <span class="dot" aria-hidden="true"></span>
+        <article class="card">
+          <h2>Corrigendum to the 2025 inclusion notification</h2>
+          <p>Corrigendum Notification No. 1172-BCW/MR-38/2025 dated 12 June 2025 is included in the 1107-BCW PDF. It corrects serial numbers for Muslim Penchi, Shikari/Sikari (Muslim), Sadgope/Sadgop, and Nepali Brahmin in the Category-B list. Notification No. 944-BCW/MR-23/2026 later withdraws it along with the main 2025 notifications.</p>
+          <p class="related">Related: <a href="#evt-2025-1107">1107-BCW inclusion notification</a>, <a href="#evt-2026-944">944-BCW withdrawal</a>.</p>
+          <div class="tags"><span class="tag withdrawn">Withdrawn in 2026</span><span class="tag">Corrigendum</span></div>
+        </article></li>
+<li id="evt-2026-1033" class="event" data-type="current" data-date="14 May 2026"><div class="date">14 May 2026</div>
+        <span class="dot" aria-hidden="true"></span>
+        <article class="card">
+          <h2>Re-verification of caste certificates issued since 2011 instructed</h2>
+          <p>Letter No. 1033/Secy/BCW, dated 14 May 2026, asks District Magistrates to advise the issuing authorities to re-verify caste certificates issued since 2011, including related second-generation certificates, under the applicable norms and statutory provisions. Its stated scope is broader than OBC certificates: it refers to SC, ST, and OBC certificate totals and to certificates issued during Duare Sarkar.</p>
+          <div class="tags"><span class="tag scan">Scan / visually checked</span><span class="tag">Certificate administration</span><span class="tag">Re-verification</span></div>
+          <details>
+            <summary>Source file</summary>
+            <ul class="docs"><li><a href="obc_pdfs/2026-05-14_1033-Secy-BCW_caste-certificate-reverification.pdf">Letter No. 1033/Secy/BCW dated 14 May 2026.pdf</a></li></ul>
+          </details>
+        </article></li>
+<li id="evt-2026-944" class="event" data-type="current" data-date="18 May 2026"><div class="date">18 May 2026</div>
+        <span class="dot" aria-hidden="true"></span>
+        <article class="card">
+          <h2>2025 notification package withdrawn</h2>
+          <p>Notification No. 944-BCW/MR-23/2026 withdraws, with immediate effect, Notifications <a href="#evt-2025-917">917</a>, <a href="#evt-2025-1056">1056</a>, <a href="#evt-2025-1057">1057</a>, <a href="#evt-2025-1106">1106</a>, <a href="#evt-2025-1107">1107</a>, and Corrigendum <a href="#evt-2025-1172">1172</a>. This is the clean break from the 2025 expansion/categorisation structure.</p>
+          <div class="tags"><span class="tag current">Current control point</span><span class="tag">Withdrawal</span></div>
+          <details>
+            <summary>Source files</summary>
+            <ul class="docs">
+              <li><a href="obc_pdfs/2026-05-18_944-BCW-MR-23-2026_withdrawal.pdf">Notification No 944-BCW Dt 18.05.2026.pdf</a></li>
+              <li><a href="obc_pdfs/2026-05-18_946-Secy-BCW-MR-23-2026_administrative.pdf">Roster Modification_BCW Department May 2026.pdf</a></li>
+            </ul>
+          </details>
+        </article></li>
+<li id="evt-2026-945" class="event" data-type="current" data-date="18 May 2026"><div class="date">18 May 2026</div>
+        <span class="dot" aria-hidden="true"></span>
+        <article class="card">
+          <h2>Current documented position: 66 classes, 7% reservation</h2>
+          <p>Notification No. 945-BCW/MR-23/2026 states that the State List of OBCs consists of 66 classes to avail 7% reservation in services and posts under the Government of West Bengal.</p>
+          <div class="tags"><span class="tag current">Current list</span><span class="tag">66 classes</span><span class="tag">7% reservation</span></div>
+          <details open>
+            <summary>Source files and 66-class list</summary>
+            <ul class="docs">
+              <li><a href="obc_pdfs/2026-05-18_945-BCW-MR-23-2026_current_list.pdf">Notification No 945-BCW Dt 18.05.2026.pdf</a></li>
+              <li><a href="obc_pdfs/2026-05-18_945-BCW-MR-23-2026-(Gazette)_current_list.pdf">OBC List_BCW_26.pdf</a></li>
+            </ul>
+            <p>Classes listed: Kapali; Baishya Kapali; Kurmi; Sutradhar; Karmakar; Kumbhakar; Swarnakar; Teli/Kolu; Napit; Yogi/Nath; Goala/Gope including Pallav Gope, Ballav Gope, Yadav Gope, Gope, Ahir and Yadav; Moira/Halwai and Modak/Halwai; Barujibi; Satchasi; Malakar; Jolah/Ansari-Momin; Kansari; Tanti/Tantubaya; Dhanuk; Shankakar; Keori/Koiri; Raju; Nagar; Karani; Sarak; Tamboli/Tamali; Kosta/Kostha; Roniwar/Rauniyar; Scheduled Castes converts to Christianity and their progeny; Lakhera/Laahera; Fakir/Sain; Kahar; Betkar/Bentkar; Chitrakar; Bhujel; Newar; Mangar; Nembang; Sampang; Bungchheng; Thami; Jogi; Dhimal; Hawari/Dhobi other than those included in the SC list; Bhar; Khandait; Gangot; Turha; Dhunia; Patidar; Kasai; Hele/Halia/Chasi-Kaibartta/Das Kaibartta; Bansi Barman; Nashya-Sekh; Pahadia Muslim; Khen (Non-Bania category); Sukli; Sunuwar; Bharbhuja; Dewan; Rai including Chamling; Rayeen/Kunjra; Shershabadia; Devanga; Hajjam (Muslim); Chowduli (Muslim).</p>
+          </details>
+        </article></li>
+<li id="evt-2026-roster" class="event" data-type="current" data-date="18 May 2026"><div class="date">18 May 2026</div>
+        <span class="dot" aria-hidden="true"></span>
+        <article class="card">
+          <h2>Roster modification instructed</h2>
+          <p>The Secretary, Backward Classes Welfare Department, wrote to the Labour Department enclosing Notifications 944 and 945 and requesting revision of the Model 100-Point Roster in line with the fresh notification.</p>
+          <div class="tags"><span class="tag current">Implementation follow-up</span><span class="tag">Roster</span></div>
+          <details>
+            <summary>Source file</summary>
+            <ul class="docs"><li><a href="obc_pdfs/2026-05-18_946-Secy-BCW-MR-23-2026_administrative.pdf">Roster Modification_BCW Department May 2026.pdf</a></li></ul>
+          </details>
+        </article></li>
+<li id="evt-2026-658" class="event" data-type="current" data-date="2026-07-15"><div class="date">2026-07-15</div><span class="dot" aria-hidden="true"></span><article class="card"><h2>2012 reservation Act amended</h2><p><strong>658-L / West Bengal Act VIII of 2026</strong>. The amendment revises the statutory definitions, reservation and sub-categorisation provisions, certificate requirements and schedules, and omits section 16. Percentage-setting and sub-categorisation require consultation with the Commission. Published on 15 July; brought into force on 27 July 2026 by BCW/15011/17/1579. The amendment does not itself publish a new class list or restore 17% reservation.</p><details><summary>Source file</summary><ul class="docs"><li><a href="obc_pdfs/2026-07-15_658-L_amendment-act.pdf" target="_blank" rel="noreferrer">658-L / West Bengal Act VIII of 2026 — PDF</a></li></ul></details></article></li>
+<li id="evt-2026-659" class="event" data-type="current" data-date="2026-07-15"><div class="date">2026-07-15</div><span class="dot" aria-hidden="true"></span><article class="card"><h2>1993 Commission Act amended</h2><p><strong>659-L / West Bengal Act IX of 2026</strong>. The amendment revises member-secretary eligibility and tenure, and substitutes section 9 on inclusion requests, over-/under-inclusion complaints and ordinarily binding Commission advice. Published on 15 July; brought into force on 27 July 2026 by BCW/15011/18/1580. Read with the principal 1993 Act rather than treating the original text as the complete current statute.</p><details><summary>Source file</summary><ul class="docs"><li><a href="obc_pdfs/2026-07-15_659-L_amendment-act.pdf" target="_blank" rel="noreferrer">659-L / West Bengal Act IX of 2026 — PDF</a></li></ul></details></article></li>
+<li id="evt-2026-1579" class="event" data-type="current" data-date="2026-07-27"><div class="date">2026-07-27</div><span class="dot" aria-hidden="true"></span><article class="card"><h2>Act VIII of 2026 commences</h2><p><strong>BCW/15011/17/1579</strong>. The Gazette notification appoints 27 July 2026 as the commencement date of the amendment to the 2012 reservation Act. Publication of the Act on 15 July and its commencement on 27 July are separate events.</p><details><summary>Source file</summary><ul class="docs"><li><a href="obc_pdfs/2026-07-27_1579-BCW_commencement.pdf" target="_blank" rel="noreferrer">BCW/15011/17/1579 — PDF</a></li></ul></details></article></li>
+<li id="evt-2026-1580" class="event" data-type="current" data-date="2026-07-27"><div class="date">2026-07-27</div><span class="dot" aria-hidden="true"></span><article class="card"><h2>Act IX of 2026 commences</h2><p><strong>BCW/15011/18/1580</strong>. The Gazette notification appoints 27 July 2026 as the commencement date of the amendment to the 1993 Commission Act.</p><details><summary>Source file</summary><ul class="docs"><li><a href="obc_pdfs/2026-07-27_1580-BCW_commencement.pdf" target="_blank" rel="noreferrer">BCW/15011/18/1580 — PDF</a></li></ul></details></article></li>
     </ol>
 
     <div id="timeline-empty" class="empty-state hidden" data-i18n="timeline.noResults">
@@ -194,6 +934,7 @@
         <img src="obcwb-flat-dark-logo.webp" data-theme-logo data-light-src="obcwb-flat-dark-logo.webp" data-dark-src="obcwb-flat-light-logo.webp" alt="West Bengal OBC Archive" width="720" height="240" decoding="async" loading="lazy">
         <span data-i18n="footerTagline">An independent, volunteer-run public research archive on West Bengal OBC policy and litigation.</span>
       </div>
+      <nav class="footer-links" aria-label="Footer"><a href="obc-basics.html" data-i18n="navOBCBasics">OBC Basics</a><a href="reports.html" data-i18n="navReports">Policy Reports</a><a href="record-guide.html" data-i18n="navEntryFramework">Add Record Guide</a><a href="about.html" data-i18n="navAbout">About</a><a href="methods.html" data-i18n="navMethods">Evidence Method</a><a href="inventory.html" data-i18n="navInventory">File Inventory</a><a href="contribute.html" data-i18n="navContribute">Contribute</a></nav>
       <div class="site-footer-meta">
         <a class="footer-parent-brand" href="https://civicresearch.in" target="_blank" rel="noopener noreferrer">
           <span data-i18n="footerInitiativeLabel">A research initiative by</span>
@@ -208,9 +949,7 @@
     </div>
   </footer>
 
-  <link rel="stylesheet" href="css/site.css">
-
-<script src="js/site.js"></script>
+<script src="js/archive-loader.js?v=20261104-records" defer></script>
 
 </body>
 </html>

@@ -5,6 +5,7 @@ const path = require('path');
 
 const root = path.resolve(__dirname, '..');
 const templatePath = path.join(root, 'site-src', 'app-template.html');
+const { publish, writeDiscovery } = require('./site-publishing');
 
 const pages = [
   { tab: 'home', file: 'index.html', title: 'WB OBC Reservation Archive' },
@@ -104,7 +105,8 @@ function removeOtherPageOnlyElements(html, activeTab) {
 }
 
 if (!fs.existsSync(templatePath)) throw new Error(`Missing template: ${templatePath}`);
-const template = fs.readFileSync(templatePath, 'utf8');
+// Windows checkouts may use CRLF; block extraction below uses LF boundaries.
+const template = fs.readFileSync(templatePath, 'utf8').replace(/\r\n/g, '\n');
 
 const styleMatch = template.match(/\n<style>\n([\s\S]*?)\n<\/style>/);
 if (!styleMatch) throw new Error('Template is missing its main <style> block');
@@ -117,10 +119,12 @@ const scriptSource = template.slice(lastScriptStart + '\n<script>'.length, lastS
 fs.writeFileSync(path.join(root, 'css', 'site.css'), `${styleMatch[1]}\n`);
 fs.writeFileSync(path.join(root, 'js', 'site.js'), `${scriptSource}\n`);
 
-let shell = template.replace(styleMatch[0], '\n  <link rel="stylesheet" href="css/site.css">');
+let shell = template.replace(styleMatch[0], '');
+shell = shell.replace(/<link rel="stylesheet" href="css\/polish\.css[^>]*>/, '');
+shell = shell.replace('</head>', '  <link rel="stylesheet" href="css/site.css?v=20261104-records">\n  <link rel="stylesheet" href="css/polish.css?v=20261104-records">\n</head>');
 const shellScriptStart = shell.lastIndexOf('\n<script>');
 const shellScriptEnd = shell.indexOf('</script>', shellScriptStart) + '</script>'.length;
-shell = shell.slice(0, shellScriptStart) + '\n<script src="js/site.js"></script>' + shell.slice(shellScriptEnd);
+shell = shell.slice(0, shellScriptStart) + '\n<script src="js/archive-loader.js?v=20261104-records" defer></script>' + shell.slice(shellScriptEnd);
 
 for (const page of pages) {
   let html = keepOnlyPanel(shell, page.tab);
@@ -129,8 +133,25 @@ for (const page of pages) {
   html = html.replace(/<title>[^<]*<\/title>/, `<title>${page.title} · Civic Research Group</title>`);
   html = rewriteInternalLinks(html, page.tab);
   html = markActiveNavigation(html, page.tab);
+  html = publish(html, page);
+  html = rewriteInternalLinks(html, page.tab);
   html = html.replace(/^[ \t]+$/gm, '').replace(/\n{3,}/g, '\n\n');
   fs.writeFileSync(path.join(root, page.file), html);
 }
 
-console.log(`Built ${pages.length} HTML pages plus shared css/site.css and js/site.js.`);
+const contributionPage = { tab: 'contribute', file: 'contribute.html', title: 'Contribute a Source or Correction' };
+let contribution = fs.readFileSync(path.join(root, 'site-src', 'contribute-template.html'), 'utf8').replace(/\r\n/g, '\n');
+// Keep the contribution page's form, but derive its navigation and footer from
+// the same source as every other public page.
+for (const tag of ['header', 'footer']) {
+  const pattern = new RegExp(`<${tag}\\b[\\s\\S]*?</${tag}>`);
+  let shared = rewriteInternalLinks(shell.match(pattern)[0], 'contribute');
+  if (tag === 'header') {
+    shared = shared.replace(' class="active"', '').replace('href="contribute.html"', 'href="contribute.html" class="active" aria-current="page"');
+  }
+  contribution = contribution.replace(pattern, () => shared);
+}
+contribution = contribution.replace(/<title>[^<]*<\/title>/, `<title>${contributionPage.title} · Civic Research Group</title>`);
+fs.writeFileSync(path.join(root, contributionPage.file), publish(contribution, contributionPage));
+writeDiscovery([...pages, contributionPage]);
+console.log(`Built ${pages.length + 1} public pages, shared assets, sitemap.xml and robots.txt.`);

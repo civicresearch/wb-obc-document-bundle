@@ -1,0 +1,363 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Report a source, correction, or gap to the WB OBC Archive: guided public forms and a structured GitHub issue route.">
+  <meta name="theme-color" content="#10253f">
+  <title>Report a source · Civic Research Group</title>
+  <link rel="manifest" href="pwa-manifest.json">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anek+Bangla:wght@400;500;600;700;800&family=Hind+Siliguri:wght@400;500;600;700&family=Noto+Sans+Bengali:wght@400;500;600;700&display=swap">
+  <link rel="stylesheet" href="css/shared.css?v=20261104-records">
+  <script src="js/i18n.js?v=20261104-records" defer></script>
+  <script>
+    window.OBC_ASSET_BASE = "";
+    (function () {
+      try {
+        var savedTheme = localStorage.getItem('wb-obc-theme');
+        var preference = ['light', 'dark'].includes(savedTheme) ? savedTheme : 'auto';
+        document.documentElement.dataset.themePreference = preference;
+        document.documentElement.dataset.theme = preference === 'auto' ? (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : preference;
+      } catch (error) {
+        document.documentElement.dataset.themePreference = 'auto';
+        document.documentElement.dataset.theme = matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+      }
+    })();
+  </script>
+  <link rel="stylesheet" href="css/site.css?v=20261104-records">
+  <style>
+    /* Page-specific styles for the contribution form sections; everything
+       else (header, nav, footer, hero, theme) comes from the shared shell. */
+    .section-sub {
+      max-width: 760px;
+      margin: 8px 0 0;
+      color: var(--ink-light);
+    }
+
+    .notice {
+      margin: 18px 0 0;
+      padding: 14px 16px;
+      background: var(--amber-light);
+      border-left: 4px solid var(--amber);
+      border-radius: 0 8px 8px 0;
+      color: #5d360d;
+    }
+
+    .choices {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin: 18px 0 0;
+    }
+
+    .choice {
+      padding: 16px;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      background: var(--panel);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .choice strong { display: block; margin-bottom: 5px; }
+    .choice p { margin: 0; color: var(--muted); font-size: 14px; }
+
+    .form-route-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+      margin: 22px 0 0;
+    }
+
+    .form-route {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      padding: 14px;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      background: var(--panel);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .form-route-icon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 34px;
+      height: 34px;
+      margin-bottom: 4px;
+      color: var(--accent);
+      background: var(--amber-light);
+      border-radius: 8px;
+      transition: background .15s, color .15s, transform .15s;
+    }
+
+    .form-route-icon:hover { color: #fff; background: var(--accent); transform: translateY(-1px); }
+    .form-route-icon svg { width: 18px; height: 18px; }
+    .form-route h3 { margin: 0; font-size: 16px; line-height: 1.25; }
+    .form-route h3 a { color: var(--ink); text-decoration: none; }
+    .form-route h3 a:hover { color: var(--accent); text-decoration: underline; }
+    .form-route p { margin: 0; color: var(--muted); font-size: 13px; }
+
+    #report-form {
+      display: grid;
+      gap: 18px;
+      margin-top: 22px;
+      padding-top: 22px;
+      border-top: 1px solid var(--border);
+    }
+
+    .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    #report-form label { display: grid; gap: 6px; font-weight: 700; }
+    .optional { color: var(--muted); font-size: 13px; font-weight: 400; }
+
+    #report-form input,
+    #report-form select,
+    #report-form textarea {
+      width: 100%;
+      padding: 11px 12px;
+      color: var(--ink);
+      font: inherit;
+      background: #fff;
+      border: 1px solid #9bb5c6;
+      border-radius: 8px;
+    }
+
+    #report-form textarea { min-height: 128px; resize: vertical; }
+    .fine { color: var(--muted); font-size: 13px; }
+
+    #report-form button[type="submit"] {
+      width: max-content;
+      padding: 11px 16px;
+      color: #fff;
+      font: 700 15px inherit;
+      background: #1b5d7d;
+      border: 0;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
+    #report-form button[type="submit"]:hover { background: #124760; }
+
+    html[data-theme="dark"] body {
+      --amber-light: #0f3044;
+      --amber: #f0c96a;
+    }
+
+    html[data-theme="dark"] .notice { color: #d5e3ee; }
+    html[data-theme="dark"] :is(.choice, .form-route) { color: var(--ink); background: #102438; border-color: #35546a; }
+    html[data-theme="dark"] :is(.choice p, .form-route p, .section-sub, .fine, .optional) { color: var(--muted); }
+    html[data-theme="dark"] .form-route h3 a { color: #e8f1f6; }
+    html[data-theme="dark"] :is(#report-form input, #report-form select, #report-form textarea) { color: #e8f1f6; background: #0c1e2e; border-color: #45657a; }
+
+    @media (max-width: 900px) {
+      .form-route-grid { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 680px) {
+      .choices, .form-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="css/polish.css?v=20261104-records">
+  <script src="js/navigation.js?v=20261104-records" defer></script>
+</head>
+<body data-page="contribute">
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <header class="site-header">
+    <div class="site-header-inner">
+      <a href="index.html" class="site-logo" aria-label="West Bengal OBC Archive — home">
+        <img src="obcwb-flat-dark-logo.webp" data-theme-logo data-light-src="obcwb-flat-dark-logo.webp" data-dark-src="obcwb-flat-light-logo.webp" alt="West Bengal OBC Archive" width="720" height="240" decoding="async">
+      </a>
+      <script>
+        // Swap the header logo to the theme-correct file before first paint;
+        // otherwise a dark-theme load briefly (or, if a later script fails,
+        // permanently) shows the dark-text logo on the dark header.
+        (function () {
+          if (document.documentElement.dataset.theme !== 'dark') return;
+          var logo = document.querySelector('img[data-theme-logo]');
+          if (logo && logo.dataset.darkSrc) logo.setAttribute('src', logo.dataset.darkSrc);
+        })();
+      </script>
+      <button type="button" class="nav-toggle" aria-expanded="false" aria-controls="site-nav" aria-label="Open navigation menu">
+        <span class="nav-toggle-bar"></span>
+        <span class="nav-toggle-bar"></span>
+        <span class="nav-toggle-bar"></span>
+      </button>
+      <nav class="site-nav" id="site-nav" aria-label="Sections">
+        <button type="button" class="nav-close" aria-label="Close navigation menu">×</button>
+        <a href="index.html" data-tab-target="home" data-i18n="navHome">Home</a>
+        <div class="nav-group">
+          <button type="button" class="nav-group-toggle" aria-expanded="false">
+            <span data-i18n="navResearch">Research</span>
+            <span class="nav-caret" aria-hidden="true">▾</span>
+          </button>
+          <div class="nav-group-items">
+            <a href="timeline.html" data-tab-target="timeline" data-i18n="navTimeline">Timeline</a>
+            <a href="litigation.html" data-tab-target="cases" data-i18n="navCases">Litigation</a>
+            <a href="obc-list.html" data-tab-target="obc-list" data-i18n="navOBCList">OBC List</a>
+            <a href="documents.html" data-tab-target="documents" data-i18n="navDocuments">Source PDFs</a>
+            <a href="evidence.html" data-tab-target="evidence" data-i18n="navEvidence">Hearings &amp; Gaps</a>
+            <a href="record-guide.html" data-tab-target="entry-framework" data-i18n="navEntryFramework">Add Record Guide</a>
+            <a href="inventory.html" data-tab-target="inventory" data-i18n="navInventory">File Inventory</a>
+          </div>
+        </div>
+        <div class="nav-group">
+          <button type="button" class="nav-group-toggle" aria-expanded="false">
+            <span data-i18n="navLearn">Learn</span>
+            <span class="nav-caret" aria-hidden="true">▾</span>
+          </button>
+          <div class="nav-group-items">
+            <a href="obc-basics.html" data-tab-target="obc-basics" data-i18n="navOBCBasics">OBC Basics</a>
+            <a href="methods.html" data-tab-target="methods" data-i18n="navMethods">Evidence Method</a>
+            <a href="reports.html" data-tab-target="reports" data-i18n="navReports">Policy Reports</a>
+          </div>
+        </div>
+        <a href="contribute.html" class="active" aria-current="page" data-i18n="navContribute">Contribute</a>
+        <a href="about.html" data-tab-target="about" data-i18n="navAbout">About</a>
+        <a href="https://github.com/civicresearch/wb-obc-document-bundle" target="_blank" rel="noreferrer" data-i18n="navGitHub">GitHub</a>
+        <div class="nav-preferences" aria-label="Language and appearance">
+          <span class="language-switch" aria-label="Language">
+            <button type="button" id="lang-en" class="lang-btn active" data-lang="en" data-lang-switch="en" aria-pressed="true">EN</button>
+            <span class="lang-separator">|</span>
+            <button type="button" id="lang-bn" class="lang-btn" data-lang="bn" data-lang-switch="bn" aria-pressed="false">বাংলা</button>
+          </span>
+          <span class="preference-divider" aria-hidden="true"></span>
+          <button type="button" id="theme-toggle" class="theme-toggle" aria-label="Switch to dark theme" title="Switch to dark theme">
+            <svg class="theme-icon theme-icon-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.2 15.2A8.5 8.5 0 0 1 8.8 3.8 8.5 8.5 0 1 0 20.2 15.2Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <svg class="theme-icon theme-icon-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="3.8" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M12 2v2.2M12 19.8V22M4.93 4.93l1.56 1.56M17.51 17.51l1.56 1.56M2 12h2.2M19.8 12H22M4.93 19.07l1.56-1.56M17.51 6.49l1.56-1.56" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+          </button>
+        </div>
+      </nav>
+      <div class="nav-overlay"></div>
+    </div>
+  </header>
+  <section class="hero">
+    <div class="hero-inner wrap">
+      <p class="hero-eyebrow" data-i18n="contribute.heroKicker">Contribute a record</p>
+      <h1 data-i18n="contribute.heroTitle">Report a source, correction, or gap</h1>
+      <p class="hero-sub" data-i18n="contribute.heroSub">Help improve this public research archive by sharing a document trail—not personal case files or sensitive information.</p>
+    </div>
+  </section>
+  <nav class="section-nav" aria-label="Archive sections">
+    <div class="wrap">
+      <a href="timeline.html" data-section="timeline" data-i18n="navTimeline">Timeline</a>
+      <a href="litigation.html" data-section="cases" data-i18n="navCases">Litigation</a>
+      <a href="obc-list.html" data-section="obc-list" data-i18n="navOBCList">OBC List</a>
+      <a href="documents.html" data-section="documents" data-i18n="navDocuments">Source PDFs</a>
+      <a href="evidence.html" data-section="evidence" data-i18n="navEvidence">Hearings &amp; Gaps</a>
+    </div>
+  </nav>
+
+  <main id="main-content" class="wrap" tabindex="-1">
+    <section id="public-forms" class="research" aria-labelledby="public-forms-title">
+      <p class="panel-kicker" data-i18n="contribute.formsKicker">Public Google Forms</p>
+      <h2 id="public-forms-title" data-i18n="contribute.formsTitle">Share information through the guided forms</h2>
+      <p class="section-sub" data-i18n="contribute.formsSub">Use these first for structured public inputs: office or certificate problems, court updates, legal records, government documents, and media reports.</p>
+      <div class="notice"><strong data-i18n="contribute.beforeStrong">Before you submit:</strong> <span data-i18n="contribute.beforeText">link to the original publisher or court where possible; state what the source proves; and do not upload Aadhaar numbers, addresses, phone numbers, private pleadings, or other personal data.</span></div>
+      <div class="form-route-grid" aria-label="Public data collection forms">
+        <article class="form-route">
+          <a class="form-route-icon" href="https://forms.gle/A9jJxPrRt83aBRLB8" target="_blank" rel="noreferrer" aria-label="Open office or certificate problem form">
+            <svg viewBox="0 0 48 48" aria-hidden="true"><rect x="8" y="4" width="32" height="40" rx="4" fill="none" stroke="currentColor" stroke-width="2.5"/><line x1="15" y1="14" x2="33" y2="14" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/><line x1="15" y1="22" x2="33" y2="22" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/><line x1="15" y1="30" x2="26" y2="30" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/><path d="M29 33l3 3 6-6" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+          <h3><a href="https://forms.gle/A9jJxPrRt83aBRLB8" target="_blank" rel="noreferrer" data-i18n="contribute.form1Title">Report office or certificate problems</a></h3>
+          <p data-i18n="contribute.form1Text">Share procedural issues at BDO/SDO offices so repeated problems can be identified.</p>
+        </article>
+        <article class="form-route">
+          <a class="form-route-icon" href="https://forms.gle/tJFuB4Fie61mAHk76" target="_blank" rel="noreferrer" aria-label="Open court case update or legal record form">
+            <svg viewBox="0 0 48 48" aria-hidden="true"><path d="M14 4h14l8 8v28a2 2 0 0 1-2 2H14a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linejoin="round"/><path d="M28 4v8h8" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linejoin="round"/><line x1="17" y1="24" x2="31" y2="24" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/><line x1="17" y1="31" x2="31" y2="31" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/><line x1="17" y1="38" x2="25" y2="38" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/></svg>
+          </a>
+          <h3><a href="https://forms.gle/tJFuB4Fie61mAHk76" target="_blank" rel="noreferrer" data-i18n="contribute.form2Title">Submit court case updates or legal records</a></h3>
+          <p data-i18n="contribute.form2Text">Submit verifiable orders or judgments. Public-domain records only, not private or confidential files.</p>
+        </article>
+        <article class="form-route">
+          <a class="form-route-icon" href="https://forms.gle/885nfjh7fev8sxtV6" target="_blank" rel="noreferrer" aria-label="Open government document or media report form">
+            <svg viewBox="0 0 48 48" aria-hidden="true"><rect x="6" y="10" width="36" height="28" rx="3" fill="none" stroke="currentColor" stroke-width="2.5"/><circle cx="16" cy="20" r="3.2" fill="none" stroke="currentColor" stroke-width="2.5"/><path d="M6 33l10-9 8 6 8-7 10 8" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/></svg>
+          </a>
+          <h3><a href="https://forms.gle/885nfjh7fev8sxtV6" target="_blank" rel="noreferrer" data-i18n="contribute.form3Title">Submit government documents, records, or media reports</a></h3>
+          <p data-i18n="contribute.form3Text">Help improve the research record by submitting relevant documents or corrections.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="research" aria-labelledby="github-report-title">
+      <p class="panel-kicker" data-i18n="contribute.githubKicker">Public GitHub issue</p>
+      <h2 id="github-report-title" data-i18n="contribute.githubTitle">Open a structured source or correction report</h2>
+      <p class="section-sub" data-i18n="contribute.githubSub">Use this route when the issue should be tracked publicly in the repository: source additions, corrections, missing court records, broken links, or file problems. You will review the prefilled GitHub issue before posting.</p>
+      <div class="choices">
+        <article class="choice"><strong data-i18n="contribute.choice1Title">Source or correction</strong><p data-i18n="contribute.choice1Text">Best for verifiable public records that should become part of the archive.</p></article>
+        <article class="choice"><strong data-i18n="contribute.choice2Title">Missing or broken record</strong><p data-i18n="contribute.choice2Text">Use this for missing case orders, broken PDF links, incorrect dates, or source-label problems.</p></article>
+        <article class="choice"><strong data-i18n="contribute.choice3Title">Sensitive material</strong><p data-i18n="contribute.choice3Text">Do not submit it here. Remove personal data and use a trusted private route instead.</p></article>
+      </div>
+      <form id="report-form">
+        <div class="form-grid">
+          <label><span data-i18n="contribute.typeLabel">Report type</span>
+            <select id="type" required><option value="Source addition" data-i18n="contribute.typeSource">Source addition</option><option value="Correction" data-i18n="contribute.typeCorrection">Correction</option><option value="Missing case or order" data-i18n="contribute.typeMissing">Missing case or order</option><option value="Broken link or file problem" data-i18n="contribute.typeBroken">Broken link or file problem</option><option value="Survey feedback" data-i18n="contribute.typeSurvey">Survey feedback</option></select>
+          </label>
+          <label><span data-i18n="contribute.dateLabel">Record date</span> <span class="optional" data-i18n="contribute.ifKnown">if known</span>
+            <input id="date" type="date">
+          </label>
+        </div>
+        <label><span data-i18n="contribute.titleLabel">Title / notification / case number</span>
+          <input id="title" required placeholder="Example: WPA 1234 of 2025 or Notification No. ..." data-i18n-placeholder="contribute.titlePlaceholder">
+        </label>
+        <label><span data-i18n="contribute.urlLabel">Official or public source URL</span> <span class="optional" data-i18n="contribute.ifAvailable">if available</span>
+          <input id="url" type="url" placeholder="https://...">
+        </label>
+        <label><span data-i18n="contribute.detailsLabel">What should be added or corrected?</span>
+          <textarea id="details" required placeholder="Briefly describe the record, its court/authority, why it matters, and any date or status information." data-i18n-placeholder="contribute.detailsPlaceholder"></textarea>
+        </label>
+        <label><span data-i18n="contribute.provenanceLabel">Provenance / verification notes</span> <span class="optional" data-i18n="contribute.whereFound">where did you find it?</span>
+          <textarea id="provenance" placeholder="Official download, gazette, court record, newspaper notice, public mirror, etc." data-i18n-placeholder="contribute.provenancePlaceholder"></textarea>
+        </label>
+        <button type="submit" data-i18n="contribute.submitButton">Open structured GitHub report</button>
+        <p class="fine"><span data-i18n="contribute.fineText">Submitting opens a prefilled issue on GitHub. You review it before posting; nothing is transmitted from this page automatically.</span></p>
+      </form>
+    </section>
+    <p class="fine" style="margin:26px 0 0;">
+      Maintainers: <a href="admin.html">open the data admin tool</a> to update the timeline, litigation tracker, hearings, and OBC class data directly.
+    </p>
+  </main>
+  <footer class="site-footer">
+    <div class="site-footer-inner">
+      <div class="site-footer-brand">
+        <img src="obcwb-flat-dark-logo.webp" data-theme-logo data-light-src="obcwb-flat-dark-logo.webp" data-dark-src="obcwb-flat-light-logo.webp" alt="West Bengal OBC Archive" width="720" height="240" decoding="async" loading="lazy">
+        <span data-i18n="footerTagline">An independent, volunteer-run public research archive on West Bengal OBC policy and litigation.</span>
+      </div>
+      <div class="site-footer-meta">
+        <a class="footer-parent-brand" href="https://civicresearch.in" target="_blank" rel="noopener noreferrer">
+          <span data-i18n="footerInitiativeLabel">A research initiative by</span>
+          <img src="CRG_Logo_Dark.png" data-theme-logo data-light-src="CRG_Logo_Dark.png" data-dark-src="CRG_LOGO_light.png" alt="Civic Research Group" width="400" height="81" decoding="async" loading="lazy">
+        </a>
+        <span class="site-footer-contact">
+          <span data-i18n="footerContactLabel">Contact:</span>
+          <a href="mailto:civicresearchgroup@gmail.com">civicresearchgroup@gmail.com</a>
+        </span>
+        <span data-i18n="footerNoDonations">Free public resource.</span>
+      </div>
+    </div>
+  </footer>
+  <script src="js/archive-loader.js?v=20261104-records" defer></script>
+  <script>
+    document.getElementById('report-form').addEventListener('submit', event => {
+      event.preventDefault();
+      const value = id => document.getElementById(id).value.trim();
+      const kind = value('type');
+      const subject = value('title');
+      const body = [
+        '## Report type', kind,
+        '', '## Record', subject,
+        '', '## Date', value('date') || 'Unknown',
+        '', '## Source URL', value('url') || 'Not supplied',
+        '', '## Details', value('details'),
+        '', '## Provenance / verification', value('provenance') || 'Not supplied',
+        '', '## Checklist', '- [ ] No personal or sensitive information included', '- [ ] Source/provenance stated', '- [ ] I understand this report will be public'
+      ].join('\n');
+      const params = new URLSearchParams({ title: `[${kind}] ${subject}`, body, labels: 'source-report' });
+      window.open(`https://github.com/civicresearch/wb-obc-document-bundle/issues/new?${params}`, '_blank', 'noopener');
+    });
+  </script>
+</body>
+</html>

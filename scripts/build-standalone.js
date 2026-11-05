@@ -21,11 +21,18 @@ for (const file of jsonFiles) {
 
 const inputPath = path.join(root, 'site-src', 'app-template.html');
 const outputPath = path.join(root, 'index-standalone.html');
-const html = fs.readFileSync(inputPath, 'utf8');
+let html = fs.readFileSync(inputPath, 'utf8').replace(/\r\n/g, '\n')
+  .replace('<meta name="viewport"', '<meta name="robots" content="noindex, follow">\n  <meta name="viewport"');
+const styles = html.match(/\n<style>\n[\s\S]*?\n<\/style>/);
+if (styles) {
+  html = html.replace(styles[0], '').replace(/<link rel="stylesheet" href="css\/polish\.css[^>]*>/, '');
+  html = html.replace('</head>', () => `${styles[0]}\n<link rel="stylesheet" href="css/polish.css?v=20261104-records">\n</head>`);
+}
 const inlineScript = [
   '<script>',
   'window.OBC_INLINE_JSON = ',
-  JSON.stringify(inlineJson),
+  // Data is text inside a script element, never HTML or replacement syntax.
+  JSON.stringify(inlineJson).replace(/</g, '\\u003c'),
   ';',
   '</script>'
 ].join('');
@@ -34,5 +41,5 @@ if (!html.includes('</head>')) {
   throw new Error('index.html is missing </head>');
 }
 
-fs.writeFileSync(outputPath, html.replace('</head>', `  ${inlineScript}\n</head>`));
+fs.writeFileSync(outputPath, html.replace('</head>', () => `  ${inlineScript}\n</head>`));
 console.log(`Built ${path.relative(root, outputPath)} with ${jsonFiles.length} embedded JSON files.`);
