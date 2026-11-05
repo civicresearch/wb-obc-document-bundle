@@ -8,10 +8,12 @@
   <title>OBC Evidence Method · Civic Research Group</title>
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <script src="js/navigation.js?v=20261104-records" defer></script>
+  <script src="js/export-pdf.js?v=20261106-print" defer></script>
   <link rel="manifest" href="pwa-manifest.json">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anek+Bangla:wght@400;500;600;700;800&family=Hind+Siliguri:wght@400;500;600;700&family=Noto+Sans+Bengali:wght@400;500;600;700&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Tiro+Bangla:ital@0;1&display=swap">
   <link rel="stylesheet" href="css/shared.css?v=20261104-records">
   <script src="js/i18n.js?v=20261104-records" defer></script>
   <script>
@@ -30,6 +32,7 @@
   </script>
   <link rel="stylesheet" href="css/site.css?v=20261104-records">
   <link rel="stylesheet" href="css/polish.css?v=20261104-records">
+  <link rel="stylesheet" href="css/print.css?v=20261106-print">
 <link rel="canonical" href="https://obcwb.civicresearch.in/methods.html">
   <meta name="robots" content="index, follow, max-image-preview:large">
   <meta property="og:type" content="website">
@@ -73,7 +76,7 @@
           <option value="dark" data-i18n="appearance.dark">Dark</option>
         </select>
       </div>
-      <div class="masthead-title"><span data-i18n="masthead.eyebrow">Civic Research Group</span><strong data-i18n="masthead.title">West Bengal OBC Archive</strong><small data-i18n="masthead.subtitle">Policy, court records &amp; public evidence</small></div>
+      <div class="masthead-title"><strong data-i18n="masthead.title">West Bengal OBC Archive</strong><small data-i18n="masthead.subtitle">Policy, court records &amp; public evidence</small></div>
       <button type="button" class="nav-toggle" aria-expanded="false" aria-controls="site-nav" aria-label="Open navigation menu">
         <span class="nav-toggle-bar"></span>
         <span class="nav-toggle-bar"></span>
@@ -112,6 +115,7 @@
         <a href="contribute.html" data-i18n="navContribute">Contribute</a>
         <a href="about.html" data-tab-target="about" data-i18n="navAbout">About</a>
         <a href="https://github.com/civicresearch/wb-obc-document-bundle" target="_blank" rel="noreferrer" data-i18n="navGitHub">GitHub</a>
+        <a class="drawer-crg" href="https://civicresearch.in" target="_blank" rel="noopener noreferrer" aria-label="Civic Research Group"><img src="assets/crg-on-light.png" data-theme-logo data-light-src="assets/crg-on-light.png" data-dark-src="assets/crg-on-dark.png" alt="Civic Research Group" width="2003" height="378" decoding="async"><span data-i18n="drawer.research">Independent public interest research</span></a>
 
       </nav>
       <div class="nav-overlay"></div>
@@ -152,20 +156,20 @@
       <div class="report-grid">
         <article class="report-card">
           <div class="report-meta">Step 1 · Define the unit</div>
-          <h3>Backwardness is class-specific</h3>
+          <h3 data-i18n="methodsTitle1">Backwardness is class-specific</h3>
           <p>The correct unit is not an entire religion or a vague surname group. It is the specific caste, sub-caste, occupational community, converted community, or locally known class whose disadvantage can be measured. West Bengal records show this logic: entries such as <a href="documents.html#doc-3">Bhangi (Muslim)</a>, <a href="documents.html#doc-4">Sekh/Seikh</a>, <a href="documents.html#doc-11">Kazi/Kaji/Quazi/Quaji (Muslim)</a>, and <a href="documents.html#doc-18">SBCW-165 Category-B serial 97</a> are document-specific, not blanket religious reservation.</p>
         </article>
 
         <article class="report-card">
           <div class="report-meta">Step 2 · Measure disadvantage</div>
-          <h3>Use multiple indicators, not one slogan</h3>
-          <p>The Mandal framework grouped indicators into social, educational, and economic heads and used a weighted score. That is the right spirit: no single number proves backwardness by itself. A robust method checks school completion, literacy, dropout, landholding, occupation, housing, income, social stigma, manual or hereditary work, and exclusion from public posts.</p>
+          <h3 data-i18n="methodsTitle2">Use multiple indicators, not one slogan</h3>
+          <p data-i18n="methodsText2">The Mandal framework grouped indicators into social, educational, and economic heads and used a weighted score. That is the right spirit: no single number proves backwardness by itself. A robust method checks school completion, literacy, dropout, landholding, occupation, housing, income, social stigma, manual or hereditary work, and exclusion from public posts.</p>
         </article>
 
         <article class="report-card">
           <div class="report-meta">Step 3 · Publish representation</div>
-          <h3>Reservation depends on inadequate representation</h3>
-          <p>Backwardness is incomplete without representation data. Departments should publish class-wise and category-wise counts in recruitment, promotions where relevant, educational admissions, scholarships, hostels, certificate issuance, and pending vacancies. Without this, the public cannot test whether a class is under-represented or whether benefits are being captured by better-placed groups.</p>
+          <h3 data-i18n="methodsTitle3">Reservation depends on inadequate representation</h3>
+          <p data-i18n="methodsText3">Backwardness is incomplete without representation data. Departments should publish class-wise and category-wise counts in recruitment, promotions where relevant, educational admissions, scholarships, hostels, certificate issuance, and pending vacancies. Without this, the public cannot test whether a class is under-represented or whether benefits are being captured by better-placed groups.</p>
         </article>
       </div>
 
@@ -219,19 +223,19 @@
 
       <div class="framework-grid">
         <article class="framework-card">
-          <h3>Population denominator</h3>
-          <p>If a class has no reliable population estimate, every percentage argument becomes guesswork. The 2012 panchayat survey documents in this bundle show the practical problem: officials were instructed to enumerate households, carry the backward-class list, publish draft lists, and process claims and objections. That kind of procedure is the beginning of auditable data.</p>
-          <p><a href="timeline.html#evt-2012-panchayat-survey">Open 2012 survey trail</a></p>
+          <h3 data-i18n="methodsTitle4">Population denominator</h3>
+          <p data-i18n="methodsText4">If a class has no reliable population estimate, every percentage argument becomes guesswork. The 2012 panchayat survey documents in this bundle show the practical problem: officials were instructed to enumerate households, carry the backward-class list, publish draft lists, and process claims and objections. That kind of procedure is the beginning of auditable data.</p>
+          <p data-i18n="methodsLink1"><a href="timeline.html#evt-2012-panchayat-survey">Open 2012 survey trail</a></p>
         </article>
 
         <article class="framework-card">
-          <h3>Representation numerator</h3>
-          <p>Departments should publish annual tables showing how many people from each OBC category and, where legally and administratively possible, each listed class are present in services and admissions. This is how one can distinguish genuine inadequate representation from a merely loud demand.</p>
+          <h3 data-i18n="methodsTitle5">Representation numerator</h3>
+          <p data-i18n="methodsText5">Departments should publish annual tables showing how many people from each OBC category and, where legally and administratively possible, each listed class are present in services and admissions. This is how one can distinguish genuine inadequate representation from a merely loud demand.</p>
         </article>
 
         <article class="framework-card">
-          <h3>Outcome audit</h3>
-          <p>Reservation should be checked against outcomes: who received certificates, who applied, who was selected, who remained excluded, which districts lagged, and whether the creamy layer is filtering better-off households. Good data protects deserving groups and exposes misuse.</p>
+          <h3 data-i18n="methodsTitle6">Outcome audit</h3>
+          <p data-i18n="methodsText6">Reservation should be checked against outcomes: who received certificates, who applied, who was selected, who remained excluded, which districts lagged, and whether the creamy layer is filtering better-off households. Good data protects deserving groups and exposes misuse.</p>
         </article>
       </div>
 
@@ -307,12 +311,17 @@
       <div class="site-footer-meta">
         <a class="footer-parent-brand" href="https://civicresearch.in" target="_blank" rel="noopener noreferrer">
           <span data-i18n="footerInitiativeLabel">A research initiative by</span>
-          <img src="CRG_Logo_Dark.png" data-theme-logo data-light-src="CRG_Logo_Dark.png" data-dark-src="CRG_LOGO_light.png" alt="Civic Research Group" width="400" height="81" decoding="async" loading="lazy">
+          <img src="assets/crg-on-light.png" data-theme-logo data-light-src="assets/crg-on-light.png" data-dark-src="assets/crg-on-dark.png" alt="Civic Research Group" width="2003" height="378" decoding="async" loading="lazy">
         </a>
         <span class="site-footer-contact">
           <span data-i18n="footerContactLabel">Contact:</span>
           <a href="mailto:civicresearchgroup@gmail.com">civicresearchgroup@gmail.com</a>
         </span>
+        <nav class="footer-social" aria-label="Civic Research Group social media">
+          <a href="https://www.facebook.com/civicresearch" target="_blank" rel="noopener noreferrer">Facebook <span>@civicresearch</span></a>
+          <a href="https://www.instagram.com/civicresearch" target="_blank" rel="noopener noreferrer">Instagram <span>@civicresearch</span></a>
+          <a href="https://x.com/CivicResearchX" target="_blank" rel="noopener noreferrer">X <span>@CivicResearchX</span></a>
+        </nav>
         <span data-i18n="footerNoDonations">Free public resource.</span>
       </div>
     </div>

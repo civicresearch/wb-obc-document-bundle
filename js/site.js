@@ -22,6 +22,11 @@ function escapeAttr(value) {
   return escapeHtml(value).replace(/`/g, '&#96;');
 }
 
+function uiText(key, fallback, values = {}) {
+  const i18n = window.WBOBCI18n;
+  return i18n?.getTranslations()?.en?.[key] ? i18n.t(key, values) : fallback;
+}
+
 function getActiveLang() {
   const urlLang = new URLSearchParams(window.location.search).get('lang');
   if (urlLang === 'bn' || urlLang === 'en') return urlLang;
@@ -77,7 +82,8 @@ function renderTimelineEvents(events, forceLang) {
       event.date && /^\d{4}-\d{2}-\d{2}$/.test(event.date) ? `data-date="${escapeAttr(event.date)}"` : '',
       event.search ? `data-search="${escapeAttr(event.search)}"` : ''
     ].filter(Boolean).join(' ');
-    const body = (lang === 'bn' && event.html_bn) ? event.html_bn : (event.html || '');
+    const key = `narrative.timeline.${event.id}`;
+    const body = window.WBOBCI18n?.getTranslations()?.[lang]?.[key] || ((lang === 'bn' && event.html_bn) ? event.html_bn : (event.html || ''));
     return `<li ${attrs}>${body}</li>`;
   }).join('');
   
@@ -98,7 +104,8 @@ function renderCaseEvents(events, forceLang) {
   const lang = forceLang || getActiveLang();
   timeline.innerHTML = events.map(event => {
     const id = event.id ? ` id="${escapeAttr(event.id)}"` : '';
-    const body = (lang === 'bn' && event.html_bn) ? event.html_bn : (event.html || '');
+    const key = `narrative.case.${event.id}`;
+    const body = window.WBOBCI18n?.getTranslations()?.[lang]?.[key] || ((lang === 'bn' && event.html_bn) ? event.html_bn : (event.html || ''));
     return `<li${id} class="case-event scroll-fade-in">${body}</li>`;
   }).join('');
   
@@ -189,6 +196,8 @@ showDataLoadWarning();
 // Re-render language-sensitive lists when the site language changes
 document.addEventListener('wbobc:langchange', (event) => {
   const lang = event.detail?.lang || 'en';
+  renderPublicHearings();
+  filterObcClassList();
   
   // Add a subtle fade-out effect before re-rendering
   const timelineList = document.querySelector('#timeline.stagger-list');
@@ -387,7 +396,7 @@ function filterObcClassList() {
   let visible = 0;
 
   rows.forEach(row => {
-    const matchesText = !textTerm || (row.dataset.search || '').includes(textTerm);
+    const matchesText = !textTerm || normalise(`${row.dataset.search || ''} ${row.textContent}`).includes(textTerm);
     const matchesSource = !sourceTerm || (row.dataset.source || '').includes(sourceTerm);
     const matchesStatus = status === 'all' || row.dataset.statusGroup === status;
     const matchesPeriod = period === 'all' || row.dataset.period === period;
@@ -397,7 +406,7 @@ function filterObcClassList() {
   });
 
   const count = document.getElementById('obc-class-count');
-  if (count) count.textContent = `${visible} of ${rows.length} class rows shown`;
+  if (count) count.textContent = uiText('count.classes', `${visible} of ${rows.length} class rows shown`, {shown: visible, total: rows.length});
 }
 
 function docStatusClass(status) {
@@ -418,16 +427,17 @@ function renderDocRow(doc, idx, options = {}) {
   tr.dataset.docfilename = doc.filename || '';
   tr.dataset.doctext = String(doc.text || '').slice(0, 1200);
   const status = options.statusLabel || doc.status || '';
+  tr.dataset.recordStatus = status;
   const summary = options.summaryPrefix
-    ? `<strong>${escapeHtml(options.summaryPrefix)}</strong><br>${escapeHtml(doc.summary || '').slice(0, 520)}`
-    : escapeHtml(doc.summary || '').slice(0, 520);
+    ? `<span>${escapeHtml(doc.summary || '')}</span><small class="doc-provenance"><span>Source collection:</span> ${escapeHtml(options.summaryPrefix)}</small>`
+    : escapeHtml(doc.summary || '');
   tr.innerHTML = `
       <td><a class="doc-jump" href="#doc-${idx}"><code>${escapeHtml(doc.notif_no || doc.filename)}</code></a></td>
       <td>${escapeHtml(doc.date || '')}</td>
       <td><span class="tag">${escapeHtml(titleCase(doc.type || 'Document'))}</span></td>
       <td><span class="tag ${docStatusClass(status)}">${escapeHtml(titleCase(status || 'Record'))}</span></td>
       <td class="doc-summary-cell">${summary}</td>
-      <td class="doc-actions">${href ? `<a class="pdf-link" href="${href}" target="_blank" rel="noreferrer">Preview</a>` : ''}<button class="view-doc-btn" type="button" data-idx="${idx}">Text</button></td>`;
+      <td class="doc-actions">${href ? `<a class="pdf-link" href="${href}" target="_blank" rel="noreferrer">Open PDF</a>` : ''}<button class="view-doc-btn" type="button" data-idx="${idx}">Read text</button></td>`;
   return tr;
 }
 
@@ -487,7 +497,7 @@ function renderSupplementalTimeline() {
       <span class="dot" aria-hidden="true"></span>
       <article class="card">
         <h2>${escapeHtml(doc.notif_no || doc.filename)}</h2>
-        <p>${escapeHtml(doc.summary || '').slice(0, 620)}</p>
+        <p>${escapeHtml(doc.summary || '')}</p>
         <p class="related">Related corpus entry: ${idx >= 0 ? `<a href="#doc-${idx}">open extracted text</a>` : 'available in supplemental corpus'}${href ? ` · <a href="${href}" target="_blank" rel="noreferrer">open PDF</a>` : ''}</p>
         <div class="tags"><span class="tag framework">Framework</span><span class="tag">${escapeHtml(titleCase(doc.type || 'Record'))}</span></div>
       </article>`;
@@ -500,10 +510,10 @@ function renderPublicHearings() {
   if (!tbody || !PUBLIC_HEARINGS.length) return;
   tbody.innerHTML = PUBLIC_HEARINGS.map(row => `
             <tr>
-              <td>${escapeHtml(row.date_label || row.date || '')}</td>
+              <td>${escapeHtml(getActiveLang() === 'bn' ? window.WBOBCI18n?.date(row.date_label || row.date || '') : (row.date_label || row.date || ''))}</td>
               <td>${escapeHtml(row.time || '')}</td>
               <td>${escapeHtml(row.communities || '')}</td>
-              <td><a class="external" href="${resolveAssetPath(row.local_pdf || '')}" target="_blank" rel="noreferrer">PDF</a></td>
+              <td><a class="external" href="${resolveAssetPath(row.local_pdf || '')}" target="_blank" rel="noreferrer">Open PDF</a></td>
             </tr>`).join('');
 }
 
@@ -947,7 +957,7 @@ function renderBundleSearch() {
   }
   const status = document.createElement('p');
   status.className = 'search-result-status';
-  status.textContent = `Showing ${matches.length} best match${matches.length === 1 ? '' : 'es'} across timeline, litigation, OBC list, and source PDFs.`;
+  status.textContent = uiText('count.search', `Showing ${matches.length} best matches across timeline, litigation, OBC list, and source PDFs.`, {count:matches.length});
   siteSearchResults.append(status);
   matches.forEach(item => {
     const link = document.createElement('a');
@@ -1315,7 +1325,7 @@ function applyDocFilters() {
     const doc = OBC_DOCS[idx];
     const fullText = doc ? [doc.notif_no, doc.date, doc.type, doc.status, doc.summary, doc.filename, doc.text].join(' ') : '';
     const haystack = normalise(fullText + ' ' + row.dataset.doctext + ' ' + row.textContent);
-    const rowStatus = normalise(row.querySelector('td:nth-child(4)')?.textContent);
+    const rowStatus = normalise(row.dataset.recordStatus || doc?.status || '');
     const matchTerm = !term || haystack.includes(term);
     const matchStatus = status === 'all' || rowStatus.includes(status);
     row.classList.toggle('hidden', !(matchTerm && matchStatus));
@@ -1360,7 +1370,7 @@ function openDocPreview(idx) {
   const wordCount = previewText.trim().split(/\s+/).filter(w => w.length > 0).length;
   const textSizeEl = document.getElementById('modal-text-size');
   if (textSizeEl) {
-    textSizeEl.textContent = `${charCount.toLocaleString()} chars · ${wordCount.toLocaleString()} words`;
+    textSizeEl.textContent = window.WBOBCI18n?.t('count.text', {chars:charCount.toLocaleString(), words:wordCount.toLocaleString()}) || `${charCount} chars · ${wordCount} words`;
   }
 
   modalFilename.textContent = doc.filename || doc.local_pdf || '';

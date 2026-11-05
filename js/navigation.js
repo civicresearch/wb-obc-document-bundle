@@ -2,6 +2,13 @@
 const navGroups = Array.from(document.querySelectorAll('.nav-group'));
 const mobileNavQuery = window.matchMedia('(max-width: 1040px)');
 const isMobileNav = () => mobileNavQuery.matches;
+document.querySelector('.skip-link')?.addEventListener('click', event => {
+  const main = document.getElementById('main-content');
+  if (!main) return;
+  event.preventDefault();
+  main.focus({ preventScroll: true });
+  main.scrollIntoView({ block: 'start' });
+});
 const siteNav = document.getElementById('site-nav');
 const navToggle = document.querySelector('.nav-toggle');
 const navOverlay = document.querySelector('.nav-overlay');
@@ -117,7 +124,7 @@ document.body.appendChild(scrollButton);
 function syncScrollButton() { scrollButton.hidden = window.scrollY < 600; scrollButton.classList.toggle('visible', !scrollButton.hidden); }
 window.addEventListener('scroll', syncScrollButton, { passive: true });
 scrollButton.addEventListener('click', () => {
-  window.scrollTo({ top: 0, behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth' });
+  window.scrollTo({ top: 0, behavior: 'instant' });
   document.querySelector('.skip-link')?.focus({ preventScroll: true });
 });
 

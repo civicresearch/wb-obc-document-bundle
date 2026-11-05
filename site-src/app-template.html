@@ -8,10 +8,12 @@
   <title>WB OBC Archive</title>
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <script src="js/navigation.js?v=20261104-records" defer></script>
+  <script src="js/export-pdf.js?v=20261106-print" defer></script>
   <link rel="manifest" href="pwa-manifest.json">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anek+Bangla:wght@400;500;600;700;800&family=Hind+Siliguri:wght@400;500;600;700&family=Noto+Sans+Bengali:wght@400;500;600;700&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Tiro+Bangla:ital@0;1&display=swap">
   <link rel="stylesheet" href="css/shared.css?v=20261104-records">
   <script src="js/i18n.js?v=20261104-records" defer></script>
   <script>
@@ -57,7 +59,7 @@
           <option value="dark" data-i18n="appearance.dark">Dark</option>
         </select>
       </div>
-      <div class="masthead-title"><span data-i18n="masthead.eyebrow">Civic Research Group</span><strong data-i18n="masthead.title">West Bengal OBC Archive</strong><small data-i18n="masthead.subtitle">Policy, court records &amp; public evidence</small></div>
+      <div class="masthead-title"><strong data-i18n="masthead.title">West Bengal OBC Archive</strong><small data-i18n="masthead.subtitle">Policy, court records &amp; public evidence</small></div>
       <button type="button" class="nav-toggle" aria-expanded="false" aria-controls="site-nav" aria-label="Open navigation menu">
         <span class="nav-toggle-bar"></span>
         <span class="nav-toggle-bar"></span>
@@ -96,6 +98,7 @@
         <a href="contribute.html" data-i18n="navContribute">Contribute</a>
         <a href="#about" data-tab-target="about" data-i18n="navAbout">About</a>
         <a href="https://github.com/civicresearch/wb-obc-document-bundle" target="_blank" rel="noreferrer" data-i18n="navGitHub">GitHub</a>
+        <a class="drawer-crg" href="https://civicresearch.in" target="_blank" rel="noopener noreferrer" aria-label="Civic Research Group"><img src="assets/crg-on-light.png" data-theme-logo data-light-src="assets/crg-on-light.png" data-dark-src="assets/crg-on-dark.png" alt="Civic Research Group" width="2003" height="378" decoding="async"><span data-i18n="drawer.research">Independent public interest research</span></a>
 
       </nav>
       <div class="nav-overlay"></div>
@@ -340,20 +343,20 @@
       <div class="report-grid">
         <article class="report-card">
           <div class="report-meta">Core idea</div>
-          <h3>OBC is about backward classes</h3>
+          <h3 data-i18n="obcBasicsTitle1">OBC is about backward classes</h3>
           <p>“Other Backward Classes” refers to communities or classes identified as socially and educationally backward and inadequately represented. In practice, state lists use caste, sub-caste, occupation, community, conversion history, and social location as evidence markers, but the legal category is backward class.</p>
         </article>
 
         <article class="report-card">
           <div class="report-meta">Common myth</div>
           <h3>“Muslims have no caste, so they cannot be OBC”</h3>
-          <p>That is too simple. Islam as a faith does not prescribe caste, but South Asian Muslim society has long had socially ranked occupational and descent communities. Groups such as Jolah/Ansari-Momin, Fakir/Sain, Nashya-Sekh, Pahadia Muslim, Rayeen/Kunjra, Hajjam, and Chowduli appear in West Bengal OBC records because the class or community was treated as backward, not because reservation was given to all Muslims.</p>
+          <p data-i18n="obcBasicsText2">That is too simple. Islam as a faith does not prescribe caste, but South Asian Muslim society has long had socially ranked occupational and descent communities. Groups such as Jolah/Ansari-Momin, Fakir/Sain, Nashya-Sekh, Pahadia Muslim, Rayeen/Kunjra, Hajjam, and Chowduli appear in West Bengal OBC records because the class or community was treated as backward, not because reservation was given to all Muslims.</p>
         </article>
 
         <article class="report-card">
           <div class="report-meta">How to read the files</div>
-          <h3>Community evidence still matters</h3>
-          <p>The useful question is not whether a whole religion has caste. The useful question is whether a particular class has evidence of social and educational backwardness, inadequate representation, and proper process through the Commission, survey, hearing, or notification route. This page keeps those source trails visible.</p>
+          <h3 data-i18n="obcBasicsTitle3">Community evidence still matters</h3>
+          <p data-i18n="obcBasicsText3">The useful question is not whether a whole religion has caste. The useful question is whether a particular class has evidence of social and educational backwardness, inadequate representation, and proper process through the Commission, survey, hearing, or notification route. This page keeps those source trails visible.</p>
         </article>
       </div>
     </section>
@@ -365,20 +368,20 @@
       <div class="report-grid">
         <article class="report-card">
           <div class="report-meta">Step 1 · Define the unit</div>
-          <h3>Backwardness is class-specific</h3>
+          <h3 data-i18n="methodsTitle1">Backwardness is class-specific</h3>
           <p>The correct unit is not an entire religion or a vague surname group. It is the specific caste, sub-caste, occupational community, converted community, or locally known class whose disadvantage can be measured. West Bengal records show this logic: entries such as <a href="#doc-3">Bhangi (Muslim)</a>, <a href="#doc-4">Sekh/Seikh</a>, <a href="#doc-11">Kazi/Kaji/Quazi/Quaji (Muslim)</a>, and <a href="#doc-18">SBCW-165 Category-B serial 97</a> are document-specific, not blanket religious reservation.</p>
         </article>
 
         <article class="report-card">
           <div class="report-meta">Step 2 · Measure disadvantage</div>
-          <h3>Use multiple indicators, not one slogan</h3>
-          <p>The Mandal framework grouped indicators into social, educational, and economic heads and used a weighted score. That is the right spirit: no single number proves backwardness by itself. A robust method checks school completion, literacy, dropout, landholding, occupation, housing, income, social stigma, manual or hereditary work, and exclusion from public posts.</p>
+          <h3 data-i18n="methodsTitle2">Use multiple indicators, not one slogan</h3>
+          <p data-i18n="methodsText2">The Mandal framework grouped indicators into social, educational, and economic heads and used a weighted score. That is the right spirit: no single number proves backwardness by itself. A robust method checks school completion, literacy, dropout, landholding, occupation, housing, income, social stigma, manual or hereditary work, and exclusion from public posts.</p>
         </article>
 
         <article class="report-card">
           <div class="report-meta">Step 3 · Publish representation</div>
-          <h3>Reservation depends on inadequate representation</h3>
-          <p>Backwardness is incomplete without representation data. Departments should publish class-wise and category-wise counts in recruitment, promotions where relevant, educational admissions, scholarships, hostels, certificate issuance, and pending vacancies. Without this, the public cannot test whether a class is under-represented or whether benefits are being captured by better-placed groups.</p>
+          <h3 data-i18n="methodsTitle3">Reservation depends on inadequate representation</h3>
+          <p data-i18n="methodsText3">Backwardness is incomplete without representation data. Departments should publish class-wise and category-wise counts in recruitment, promotions where relevant, educational admissions, scholarships, hostels, certificate issuance, and pending vacancies. Without this, the public cannot test whether a class is under-represented or whether benefits are being captured by better-placed groups.</p>
         </article>
       </div>
 
@@ -432,19 +435,19 @@
 
       <div class="framework-grid">
         <article class="framework-card">
-          <h3>Population denominator</h3>
-          <p>If a class has no reliable population estimate, every percentage argument becomes guesswork. The 2012 panchayat survey documents in this bundle show the practical problem: officials were instructed to enumerate households, carry the backward-class list, publish draft lists, and process claims and objections. That kind of procedure is the beginning of auditable data.</p>
-          <p><a href="#evt-2012-panchayat-survey">Open 2012 survey trail</a></p>
+          <h3 data-i18n="methodsTitle4">Population denominator</h3>
+          <p data-i18n="methodsText4">If a class has no reliable population estimate, every percentage argument becomes guesswork. The 2012 panchayat survey documents in this bundle show the practical problem: officials were instructed to enumerate households, carry the backward-class list, publish draft lists, and process claims and objections. That kind of procedure is the beginning of auditable data.</p>
+          <p data-i18n="methodsLink1"><a href="#evt-2012-panchayat-survey">Open 2012 survey trail</a></p>
         </article>
 
         <article class="framework-card">
-          <h3>Representation numerator</h3>
-          <p>Departments should publish annual tables showing how many people from each OBC category and, where legally and administratively possible, each listed class are present in services and admissions. This is how one can distinguish genuine inadequate representation from a merely loud demand.</p>
+          <h3 data-i18n="methodsTitle5">Representation numerator</h3>
+          <p data-i18n="methodsText5">Departments should publish annual tables showing how many people from each OBC category and, where legally and administratively possible, each listed class are present in services and admissions. This is how one can distinguish genuine inadequate representation from a merely loud demand.</p>
         </article>
 
         <article class="framework-card">
-          <h3>Outcome audit</h3>
-          <p>Reservation should be checked against outcomes: who received certificates, who applied, who was selected, who remained excluded, which districts lagged, and whether the creamy layer is filtering better-off households. Good data protects deserving groups and exposes misuse.</p>
+          <h3 data-i18n="methodsTitle6">Outcome audit</h3>
+          <p data-i18n="methodsText6">Reservation should be checked against outcomes: who received certificates, who applied, who was selected, who remained excluded, which districts lagged, and whether the creamy layer is filtering better-off households. Good data protects deserving groups and exposes misuse.</p>
         </article>
       </div>
 
@@ -521,7 +524,7 @@
             <li><strong>Use here:</strong> evaluate whether a notification or class-wise report explains social, educational, and economic backwardness.</li>
             <li><strong>Relevant chapters:</strong> socio-educational field survey, criteria of backwardness, identification of OBCs, recommendations.</li>
           </ul>
-          <div class="doc-actions"><a class="pdf-link" href="obc_pdfs/1980-12-31_MANDAL-Commission-Report-First-Part-English.pdf" target="_blank" rel="noreferrer">Preview</a></div>
+          <div class="doc-actions"><a class="pdf-link" href="obc_pdfs/1980-12-31_MANDAL-Commission-Report-First-Part-English.pdf" target="_blank" rel="noreferrer">Open PDF</a></div>
         </article>
 
         <article class="report-card">
@@ -532,7 +535,7 @@
             <li><strong>Use here:</strong> distinguish religious identity from backwardness evidence and locate Muslim OBC disadvantage in measurable indicators.</li>
             <li><strong>Relevant chapter:</strong> “The Muslim OBCs and Affirmative Action.”</li>
           </ul>
-          <div class="doc-actions"><a class="pdf-link" href="obc_pdfs/2006-11-17_SACHAR-Committee-Report-Muslim-Social-Economic-Educational-Status.pdf" target="_blank" rel="noreferrer">Preview</a></div>
+          <div class="doc-actions"><a class="pdf-link" href="obc_pdfs/2006-11-17_SACHAR-Committee-Report-Muslim-Social-Economic-Educational-Status.pdf" target="_blank" rel="noreferrer">Open PDF</a></div>
         </article>
 
         <article class="report-card">
@@ -543,7 +546,7 @@
             <li><strong>Use here:</strong> contextualize West Bengal-specific Muslim OBC entries and gaps in identification or benefit delivery.</li>
             <li><strong>Relevant sections:</strong> Muslim OBC population, proforma/listing in West Bengal, implementation problems.</li>
           </ul>
-          <div class="doc-actions"><a class="pdf-link" href="obc_pdfs/2015-00-00_Research-Muslim-OBCs-in-West-Bengal.pdf" target="_blank" rel="noreferrer">Preview</a></div>
+          <div class="doc-actions"><a class="pdf-link" href="obc_pdfs/2015-00-00_Research-Muslim-OBCs-in-West-Bengal.pdf" target="_blank" rel="noreferrer">Open PDF</a></div>
         </article>
 
         <article class="report-card">
@@ -554,14 +557,14 @@
             <li><strong>Use here:</strong> trace Central Commission advice and compare it carefully with State notifications.</li>
             <li><strong>Source care:</strong> archived scan; confirm the original NCBC record before relying on individual pages.</li>
           </ul>
-          <div class="doc-actions"><a class="pdf-link" href="obc_pdfs/2011_NCBC-Advice-West-Bengal_Compilation.pdf" target="_blank" rel="noreferrer">Preview</a></div>
+          <div class="doc-actions"><a class="pdf-link" href="obc_pdfs/2011_NCBC-Advice-West-Bengal_Compilation.pdf" target="_blank" rel="noreferrer">Open PDF</a></div>
         </article>
 
         <article class="report-card">
           <div class="report-meta">Commission survey proforma</div>
           <h3>Block-level evidence template</h3>
           <p>The West Bengal Commission for Backward Classes proforma asks for block-wise population, social background, education, occupation, representation, and comparative local information. It is a useful example of the evidence trail that should accompany a class-identification exercise.</p>
-          <div class="doc-actions"><a class="pdf-link" href="obc_pdfs/WBCBC_OBC-Survey-Block-Proforma.pdf" target="_blank" rel="noreferrer">Preview</a></div>
+          <div class="doc-actions"><a class="pdf-link" href="obc_pdfs/WBCBC_OBC-Survey-Block-Proforma.pdf" target="_blank" rel="noreferrer">Open PDF</a></div>
         </article>
 
         <article class="report-card">
@@ -572,7 +575,7 @@
             <li><strong>Use here:</strong> compare proposed sub-categorisation methods with the evidence and process used in State exercises.</li>
             <li><strong>Source care:</strong> archived scan dated 2 March 2015; verify the primary NCBC publication before relying on specific recommendations.</li>
           </ul>
-          <div class="doc-actions"><a class="pdf-link" href="obc_pdfs/2015-03-02_NCBC_sub-categorization-within-OBCs_report.pdf" target="_blank" rel="noreferrer">Preview</a></div>
+          <div class="doc-actions"><a class="pdf-link" href="obc_pdfs/2015-03-02_NCBC_sub-categorization-within-OBCs_report.pdf" target="_blank" rel="noreferrer">Open PDF</a></div>
         </article>
       </div>
     </section>
@@ -823,10 +826,10 @@
         <table>
           <thead>
             <tr>
-              <th>Entry type</th>
-              <th>Where it belongs</th>
-              <th>Required cross-links</th>
-              <th>Useful summary pattern</th>
+              <th data-i18n="tableEntryType">Entry type</th>
+              <th data-i18n="tableWhereBelongs">Where it belongs</th>
+              <th data-i18n="tableRequiredCrossLinks">Required cross-links</th>
+              <th data-i18n="tableSummaryPattern">Useful summary pattern</th>
             </tr>
           </thead>
           <tbody>
@@ -867,10 +870,10 @@
         <table>
           <thead>
             <tr>
-              <th>Date</th>
-              <th>Time</th>
-              <th>Classes / communities named in notice</th>
-              <th>Official advertisement</th>
+              <th data-i18n="entry-frameworkStat1Value">Date</th>
+              <th data-i18n="tableTime">Time</th>
+              <th data-i18n="tableClassesCommunities">Classes / communities named in notice</th>
+              <th data-i18n="tableOfficialAd">Official advertisement</th>
             </tr>
           </thead>
           <tbody id="public-hearings-tbody">
@@ -884,9 +887,9 @@
         <table>
           <thead>
             <tr>
-              <th>Source</th>
-              <th>What it adds</th>
-              <th>Use in final dataset</th>
+              <th data-i18n="tableLocalSource">Source</th>
+              <th data-i18n="tableWhatItAdds">What it adds</th>
+              <th data-i18n="tableUseInDataset">Use in final dataset</th>
             </tr>
           </thead>
           <tbody>
@@ -918,9 +921,9 @@
         <table>
           <thead>
             <tr>
-              <th>What to add</th>
-              <th>Why it matters</th>
-              <th>Original / best source link</th>
+              <th data-i18n="tableWhatToAdd">What to add</th>
+              <th data-i18n="tableWhyMatters">Why it matters</th>
+              <th data-i18n="tableOriginalSource">Original / best source link</th>
             </tr>
           </thead>
           <tbody>
@@ -948,7 +951,7 @@
               <td>Public hearing notices, 29 Apr to 4 May 2025</td>
               <td>These are part of the "jana shunani" trail before the 2025 recommendations.</td>
               <td>
-                <ul class="source-list">
+                <ul class="source-list source-date-links">
                   <li><a class="external" href="obc_pdfs/2025-04-29_PUBLIC-HEARING_OBC-29.04.2025.pdf" target="_blank" rel="noreferrer">29 Apr 2025</a></li>
                   <li><a class="external" href="obc_pdfs/2025-04-30_PUBLIC-HEARING_Hearing-for-Notice-30.04.2025.pdf" target="_blank" rel="noreferrer">30 Apr 2025</a></li>
                   <li><a class="external" href="obc_pdfs/2025-05-02_PUBLIC-HEARING_Hearing-for-Notice-02.05.2025.pdf" target="_blank" rel="noreferrer">2 May 2025</a></li>
@@ -961,7 +964,7 @@
               <td>Public hearing notices, 13 May to 24 May 2025</td>
               <td>These complete the visible WBCBC public-hearing chain that is not yet fully represented in the archive.</td>
               <td>
-                <ul class="source-list">
+                <ul class="source-list source-date-links">
                   <li><a class="external" href="obc_pdfs/2025-05-13_PUBLIC-HEARING_Newspaper-Advertisement-13.05.2025.pdf" target="_blank" rel="noreferrer">13 May 2025</a></li>
                   <li><a class="external" href="obc_pdfs/2025-05-14_PUBLIC-HEARING_newspaper-advertisement-14.05.2025.pdf" target="_blank" rel="noreferrer">14 May 2025</a></li>
                   <li><a class="external" href="obc_pdfs/2025-05-15_PUBLIC-HEARING_newspaper-advertisement-part8.docx-15.5.25.pdf" target="_blank" rel="noreferrer">15 May 2025</a></li>
@@ -1022,10 +1025,10 @@
         <table>
           <thead>
             <tr>
-              <th>Folder</th>
-              <th>File</th>
-              <th>Pages</th>
-              <th>Timeline role</th>
+              <th data-i18n="tableFolder">Folder</th>
+              <th data-i18n="tableFile">File</th>
+              <th data-i18n="tablePages">Pages</th>
+              <th data-i18n="tableTimelineRole">Timeline role</th>
             </tr>
           </thead>
           <tbody id="inventory-tbody">
@@ -1061,11 +1064,11 @@
         <table id="docs-table">
           <thead>
             <tr>
-              <th>Notification No.</th>
-              <th>Date</th>
-              <th>Type</th>
-              <th>Status</th>
-              <th>Summary</th>
+              <th data-i18n="tableNotificationNo">Notification No.</th>
+              <th data-i18n="entry-frameworkStat1Value">Date</th>
+              <th data-i18n="tableType">Type</th>
+              <th data-i18n="entry-frameworkStat2Value">Status</th>
+              <th data-i18n="tableSummary">Summary</th>
               <th></th>
             </tr>
           </thead>
@@ -1109,12 +1112,17 @@
       <div class="site-footer-meta">
         <a class="footer-parent-brand" href="https://civicresearch.in" target="_blank" rel="noopener noreferrer">
           <span data-i18n="footerInitiativeLabel">A research initiative by</span>
-          <img src="CRG_Logo_Dark.png" data-theme-logo data-light-src="CRG_Logo_Dark.png" data-dark-src="CRG_LOGO_light.png" alt="Civic Research Group" width="400" height="81" decoding="async" loading="lazy">
+          <img src="assets/crg-on-light.png" data-theme-logo data-light-src="assets/crg-on-light.png" data-dark-src="assets/crg-on-dark.png" alt="Civic Research Group" width="2003" height="378" decoding="async" loading="lazy">
         </a>
         <span class="site-footer-contact">
           <span data-i18n="footerContactLabel">Contact:</span>
           <a href="mailto:civicresearchgroup@gmail.com">civicresearchgroup@gmail.com</a>
         </span>
+        <nav class="footer-social" aria-label="Civic Research Group social media">
+          <a href="https://www.facebook.com/civicresearch" target="_blank" rel="noopener noreferrer">Facebook <span>@civicresearch</span></a>
+          <a href="https://www.instagram.com/civicresearch" target="_blank" rel="noopener noreferrer">Instagram <span>@civicresearch</span></a>
+          <a href="https://x.com/CivicResearchX" target="_blank" rel="noopener noreferrer">X <span>@CivicResearchX</span></a>
+        </nav>
         <span data-i18n="footerNoDonations">Free public resource.</span>
       </div>
     </div>
@@ -5637,7 +5645,7 @@ html[data-theme="dark"] .modal-related a {
   }
 }
 </style>
-<link rel="stylesheet" href="css/polish.css?v=20261104-records">
+  <link rel="stylesheet" href="css/polish.css?v=20261104-records">
 
 
 <script>
@@ -5663,6 +5671,11 @@ function escapeHtml(value) {
 
 function escapeAttr(value) {
   return escapeHtml(value).replace(/`/g, '&#96;');
+}
+
+function uiText(key, fallback, values = {}) {
+  const i18n = window.WBOBCI18n;
+  return i18n?.getTranslations()?.en?.[key] ? i18n.t(key, values) : fallback;
 }
 
 function getActiveLang() {
@@ -5720,7 +5733,8 @@ function renderTimelineEvents(events, forceLang) {
       event.date && /^\d{4}-\d{2}-\d{2}$/.test(event.date) ? `data-date="${escapeAttr(event.date)}"` : '',
       event.search ? `data-search="${escapeAttr(event.search)}"` : ''
     ].filter(Boolean).join(' ');
-    const body = (lang === 'bn' && event.html_bn) ? event.html_bn : (event.html || '');
+    const key = `narrative.timeline.${event.id}`;
+    const body = window.WBOBCI18n?.getTranslations()?.[lang]?.[key] || ((lang === 'bn' && event.html_bn) ? event.html_bn : (event.html || ''));
     return `<li ${attrs}>${body}</li>`;
   }).join('');
   
@@ -5741,7 +5755,8 @@ function renderCaseEvents(events, forceLang) {
   const lang = forceLang || getActiveLang();
   timeline.innerHTML = events.map(event => {
     const id = event.id ? ` id="${escapeAttr(event.id)}"` : '';
-    const body = (lang === 'bn' && event.html_bn) ? event.html_bn : (event.html || '');
+    const key = `narrative.case.${event.id}`;
+    const body = window.WBOBCI18n?.getTranslations()?.[lang]?.[key] || ((lang === 'bn' && event.html_bn) ? event.html_bn : (event.html || ''));
     return `<li${id} class="case-event scroll-fade-in">${body}</li>`;
   }).join('');
   
@@ -5832,6 +5847,8 @@ showDataLoadWarning();
 // Re-render language-sensitive lists when the site language changes
 document.addEventListener('wbobc:langchange', (event) => {
   const lang = event.detail?.lang || 'en';
+  renderPublicHearings();
+  filterObcClassList();
   
   // Add a subtle fade-out effect before re-rendering
   const timelineList = document.querySelector('#timeline.stagger-list');
@@ -6030,7 +6047,7 @@ function filterObcClassList() {
   let visible = 0;
 
   rows.forEach(row => {
-    const matchesText = !textTerm || (row.dataset.search || '').includes(textTerm);
+    const matchesText = !textTerm || normalise(`${row.dataset.search || ''} ${row.textContent}`).includes(textTerm);
     const matchesSource = !sourceTerm || (row.dataset.source || '').includes(sourceTerm);
     const matchesStatus = status === 'all' || row.dataset.statusGroup === status;
     const matchesPeriod = period === 'all' || row.dataset.period === period;
@@ -6040,7 +6057,7 @@ function filterObcClassList() {
   });
 
   const count = document.getElementById('obc-class-count');
-  if (count) count.textContent = `${visible} of ${rows.length} class rows shown`;
+  if (count) count.textContent = uiText('count.classes', `${visible} of ${rows.length} class rows shown`, {shown: visible, total: rows.length});
 }
 
 function docStatusClass(status) {
@@ -6061,16 +6078,17 @@ function renderDocRow(doc, idx, options = {}) {
   tr.dataset.docfilename = doc.filename || '';
   tr.dataset.doctext = String(doc.text || '').slice(0, 1200);
   const status = options.statusLabel || doc.status || '';
+  tr.dataset.recordStatus = status;
   const summary = options.summaryPrefix
-    ? `<strong>${escapeHtml(options.summaryPrefix)}</strong><br>${escapeHtml(doc.summary || '').slice(0, 520)}`
-    : escapeHtml(doc.summary || '').slice(0, 520);
+    ? `<span>${escapeHtml(doc.summary || '')}</span><small class="doc-provenance"><span>Source collection:</span> ${escapeHtml(options.summaryPrefix)}</small>`
+    : escapeHtml(doc.summary || '');
   tr.innerHTML = `
       <td><a class="doc-jump" href="#doc-${idx}"><code>${escapeHtml(doc.notif_no || doc.filename)}</code></a></td>
       <td>${escapeHtml(doc.date || '')}</td>
       <td><span class="tag">${escapeHtml(titleCase(doc.type || 'Document'))}</span></td>
       <td><span class="tag ${docStatusClass(status)}">${escapeHtml(titleCase(status || 'Record'))}</span></td>
       <td class="doc-summary-cell">${summary}</td>
-      <td class="doc-actions">${href ? `<a class="pdf-link" href="${href}" target="_blank" rel="noreferrer">Preview</a>` : ''}<button class="view-doc-btn" type="button" data-idx="${idx}">Text</button></td>`;
+      <td class="doc-actions">${href ? `<a class="pdf-link" href="${href}" target="_blank" rel="noreferrer">Open PDF</a>` : ''}<button class="view-doc-btn" type="button" data-idx="${idx}">Read text</button></td>`;
   return tr;
 }
 
@@ -6130,7 +6148,7 @@ function renderSupplementalTimeline() {
       <span class="dot" aria-hidden="true"></span>
       <article class="card">
         <h2>${escapeHtml(doc.notif_no || doc.filename)}</h2>
-        <p>${escapeHtml(doc.summary || '').slice(0, 620)}</p>
+        <p>${escapeHtml(doc.summary || '')}</p>
         <p class="related">Related corpus entry: ${idx >= 0 ? `<a href="#doc-${idx}">open extracted text</a>` : 'available in supplemental corpus'}${href ? ` · <a href="${href}" target="_blank" rel="noreferrer">open PDF</a>` : ''}</p>
         <div class="tags"><span class="tag framework">Framework</span><span class="tag">${escapeHtml(titleCase(doc.type || 'Record'))}</span></div>
       </article>`;
@@ -6143,10 +6161,10 @@ function renderPublicHearings() {
   if (!tbody || !PUBLIC_HEARINGS.length) return;
   tbody.innerHTML = PUBLIC_HEARINGS.map(row => `
             <tr>
-              <td>${escapeHtml(row.date_label || row.date || '')}</td>
+              <td>${escapeHtml(getActiveLang() === 'bn' ? window.WBOBCI18n?.date(row.date_label || row.date || '') : (row.date_label || row.date || ''))}</td>
               <td>${escapeHtml(row.time || '')}</td>
               <td>${escapeHtml(row.communities || '')}</td>
-              <td><a class="external" href="${resolveAssetPath(row.local_pdf || '')}" target="_blank" rel="noreferrer">PDF</a></td>
+              <td><a class="external" href="${resolveAssetPath(row.local_pdf || '')}" target="_blank" rel="noreferrer">Open PDF</a></td>
             </tr>`).join('');
 }
 
@@ -6590,7 +6608,7 @@ function renderBundleSearch() {
   }
   const status = document.createElement('p');
   status.className = 'search-result-status';
-  status.textContent = `Showing ${matches.length} best match${matches.length === 1 ? '' : 'es'} across timeline, litigation, OBC list, and source PDFs.`;
+  status.textContent = uiText('count.search', `Showing ${matches.length} best matches across timeline, litigation, OBC list, and source PDFs.`, {count:matches.length});
   siteSearchResults.append(status);
   matches.forEach(item => {
     const link = document.createElement('a');
@@ -6958,7 +6976,7 @@ function applyDocFilters() {
     const doc = OBC_DOCS[idx];
     const fullText = doc ? [doc.notif_no, doc.date, doc.type, doc.status, doc.summary, doc.filename, doc.text].join(' ') : '';
     const haystack = normalise(fullText + ' ' + row.dataset.doctext + ' ' + row.textContent);
-    const rowStatus = normalise(row.querySelector('td:nth-child(4)')?.textContent);
+    const rowStatus = normalise(row.dataset.recordStatus || doc?.status || '');
     const matchTerm = !term || haystack.includes(term);
     const matchStatus = status === 'all' || rowStatus.includes(status);
     row.classList.toggle('hidden', !(matchTerm && matchStatus));
@@ -7003,7 +7021,7 @@ function openDocPreview(idx) {
   const wordCount = previewText.trim().split(/\s+/).filter(w => w.length > 0).length;
   const textSizeEl = document.getElementById('modal-text-size');
   if (textSizeEl) {
-    textSizeEl.textContent = `${charCount.toLocaleString()} chars · ${wordCount.toLocaleString()} words`;
+    textSizeEl.textContent = window.WBOBCI18n?.t('count.text', {chars:charCount.toLocaleString(), words:wordCount.toLocaleString()}) || `${charCount} chars · ${wordCount} words`;
   }
 
   modalFilename.textContent = doc.filename || doc.local_pdf || '';

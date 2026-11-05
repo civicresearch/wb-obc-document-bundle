@@ -8,10 +8,12 @@
   <title>OBC Policy Reports · Civic Research Group</title>
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <script src="js/navigation.js?v=20261104-records" defer></script>
+  <script src="js/export-pdf.js?v=20261106-print" defer></script>
   <link rel="manifest" href="pwa-manifest.json">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anek+Bangla:wght@400;500;600;700;800&family=Hind+Siliguri:wght@400;500;600;700&family=Noto+Sans+Bengali:wght@400;500;600;700&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Tiro+Bangla:ital@0;1&display=swap">
   <link rel="stylesheet" href="css/shared.css?v=20261104-records">
   <script src="js/i18n.js?v=20261104-records" defer></script>
   <script>
@@ -30,6 +32,7 @@
   </script>
   <link rel="stylesheet" href="css/site.css?v=20261104-records">
   <link rel="stylesheet" href="css/polish.css?v=20261104-records">
+  <link rel="stylesheet" href="css/print.css?v=20261106-print">
 <link rel="canonical" href="https://obcwb.civicresearch.in/reports.html">
   <meta name="robots" content="index, follow, max-image-preview:large">
   <meta property="og:type" content="website">
@@ -73,7 +76,7 @@
           <option value="dark" data-i18n="appearance.dark">Dark</option>
         </select>
       </div>
-      <div class="masthead-title"><span data-i18n="masthead.eyebrow">Civic Research Group</span><strong data-i18n="masthead.title">West Bengal OBC Archive</strong><small data-i18n="masthead.subtitle">Policy, court records &amp; public evidence</small></div>
+      <div class="masthead-title"><strong data-i18n="masthead.title">West Bengal OBC Archive</strong><small data-i18n="masthead.subtitle">Policy, court records &amp; public evidence</small></div>
       <button type="button" class="nav-toggle" aria-expanded="false" aria-controls="site-nav" aria-label="Open navigation menu">
         <span class="nav-toggle-bar"></span>
         <span class="nav-toggle-bar"></span>
@@ -112,6 +115,7 @@
         <a href="contribute.html" data-i18n="navContribute">Contribute</a>
         <a href="about.html" data-tab-target="about" data-i18n="navAbout">About</a>
         <a href="https://github.com/civicresearch/wb-obc-document-bundle" target="_blank" rel="noreferrer" data-i18n="navGitHub">GitHub</a>
+        <a class="drawer-crg" href="https://civicresearch.in" target="_blank" rel="noopener noreferrer" aria-label="Civic Research Group"><img src="assets/crg-on-light.png" data-theme-logo data-light-src="assets/crg-on-light.png" data-dark-src="assets/crg-on-dark.png" alt="Civic Research Group" width="2003" height="378" decoding="async"><span data-i18n="drawer.research">Independent public interest research</span></a>
 
       </nav>
       <div class="nav-overlay"></div>
@@ -158,7 +162,7 @@
             <li><strong>Use here:</strong> evaluate whether a notification or class-wise report explains social, educational, and economic backwardness.</li>
             <li><strong>Relevant chapters:</strong> socio-educational field survey, criteria of backwardness, identification of OBCs, recommendations.</li>
           </ul>
-          <div class="doc-actions"><a class="pdf-link" href="obc_pdfs/1980-12-31_MANDAL-Commission-Report-First-Part-English.pdf" target="_blank" rel="noreferrer">Preview</a></div>
+          <div class="doc-actions"><a class="pdf-link" href="obc_pdfs/1980-12-31_MANDAL-Commission-Report-First-Part-English.pdf" target="_blank" rel="noreferrer">Open PDF</a></div>
         </article>
 
         <article class="report-card">
@@ -169,7 +173,7 @@
             <li><strong>Use here:</strong> distinguish religious identity from backwardness evidence and locate Muslim OBC disadvantage in measurable indicators.</li>
             <li><strong>Relevant chapter:</strong> “The Muslim OBCs and Affirmative Action.”</li>
           </ul>
-          <div class="doc-actions"><a class="pdf-link" href="obc_pdfs/2006-11-17_SACHAR-Committee-Report-Muslim-Social-Economic-Educational-Status.pdf" target="_blank" rel="noreferrer">Preview</a></div>
+          <div class="doc-actions"><a class="pdf-link" href="obc_pdfs/2006-11-17_SACHAR-Committee-Report-Muslim-Social-Economic-Educational-Status.pdf" target="_blank" rel="noreferrer">Open PDF</a></div>
         </article>
 
         <article class="report-card">
@@ -180,7 +184,7 @@
             <li><strong>Use here:</strong> contextualize West Bengal-specific Muslim OBC entries and gaps in identification or benefit delivery.</li>
             <li><strong>Relevant sections:</strong> Muslim OBC population, proforma/listing in West Bengal, implementation problems.</li>
           </ul>
-          <div class="doc-actions"><a class="pdf-link" href="obc_pdfs/2015-00-00_Research-Muslim-OBCs-in-West-Bengal.pdf" target="_blank" rel="noreferrer">Preview</a></div>
+          <div class="doc-actions"><a class="pdf-link" href="obc_pdfs/2015-00-00_Research-Muslim-OBCs-in-West-Bengal.pdf" target="_blank" rel="noreferrer">Open PDF</a></div>
         </article>
 
         <article class="report-card">
@@ -191,14 +195,14 @@
             <li><strong>Use here:</strong> trace Central Commission advice and compare it carefully with State notifications.</li>
             <li><strong>Source care:</strong> archived scan; confirm the original NCBC record before relying on individual pages.</li>
           </ul>
-          <div class="doc-actions"><a class="pdf-link" href="obc_pdfs/2011_NCBC-Advice-West-Bengal_Compilation.pdf" target="_blank" rel="noreferrer">Preview</a></div>
+          <div class="doc-actions"><a class="pdf-link" href="obc_pdfs/2011_NCBC-Advice-West-Bengal_Compilation.pdf" target="_blank" rel="noreferrer">Open PDF</a></div>
         </article>
 
         <article class="report-card">
           <div class="report-meta">Commission survey proforma</div>
           <h3>Block-level evidence template</h3>
           <p>The West Bengal Commission for Backward Classes proforma asks for block-wise population, social background, education, occupation, representation, and comparative local information. It is a useful example of the evidence trail that should accompany a class-identification exercise.</p>
-          <div class="doc-actions"><a class="pdf-link" href="obc_pdfs/WBCBC_OBC-Survey-Block-Proforma.pdf" target="_blank" rel="noreferrer">Preview</a></div>
+          <div class="doc-actions"><a class="pdf-link" href="obc_pdfs/WBCBC_OBC-Survey-Block-Proforma.pdf" target="_blank" rel="noreferrer">Open PDF</a></div>
         </article>
 
         <article class="report-card">
@@ -209,7 +213,7 @@
             <li><strong>Use here:</strong> compare proposed sub-categorisation methods with the evidence and process used in State exercises.</li>
             <li><strong>Source care:</strong> archived scan dated 2 March 2015; verify the primary NCBC publication before relying on specific recommendations.</li>
           </ul>
-          <div class="doc-actions"><a class="pdf-link" href="obc_pdfs/2015-03-02_NCBC_sub-categorization-within-OBCs_report.pdf" target="_blank" rel="noreferrer">Preview</a></div>
+          <div class="doc-actions"><a class="pdf-link" href="obc_pdfs/2015-03-02_NCBC_sub-categorization-within-OBCs_report.pdf" target="_blank" rel="noreferrer">Open PDF</a></div>
         </article>
       </div>
     </section>
@@ -226,12 +230,17 @@
       <div class="site-footer-meta">
         <a class="footer-parent-brand" href="https://civicresearch.in" target="_blank" rel="noopener noreferrer">
           <span data-i18n="footerInitiativeLabel">A research initiative by</span>
-          <img src="CRG_Logo_Dark.png" data-theme-logo data-light-src="CRG_Logo_Dark.png" data-dark-src="CRG_LOGO_light.png" alt="Civic Research Group" width="400" height="81" decoding="async" loading="lazy">
+          <img src="assets/crg-on-light.png" data-theme-logo data-light-src="assets/crg-on-light.png" data-dark-src="assets/crg-on-dark.png" alt="Civic Research Group" width="2003" height="378" decoding="async" loading="lazy">
         </a>
         <span class="site-footer-contact">
           <span data-i18n="footerContactLabel">Contact:</span>
           <a href="mailto:civicresearchgroup@gmail.com">civicresearchgroup@gmail.com</a>
         </span>
+        <nav class="footer-social" aria-label="Civic Research Group social media">
+          <a href="https://www.facebook.com/civicresearch" target="_blank" rel="noopener noreferrer">Facebook <span>@civicresearch</span></a>
+          <a href="https://www.instagram.com/civicresearch" target="_blank" rel="noopener noreferrer">Instagram <span>@civicresearch</span></a>
+          <a href="https://x.com/CivicResearchX" target="_blank" rel="noopener noreferrer">X <span>@CivicResearchX</span></a>
+        </nav>
         <span data-i18n="footerNoDonations">Free public resource.</span>
       </div>
     </div>

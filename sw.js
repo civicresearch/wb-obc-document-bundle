@@ -1,5 +1,5 @@
 // Service Worker for WB OBC Archive - Offline Support
-const CACHE_NAME = 'wb-obc-archive-v18';
+const CACHE_NAME = 'wb-obc-archive-v21';
 const ASSETS_TO_CACHE = [
   './',
   './index.html',
@@ -19,7 +19,9 @@ const ASSETS_TO_CACHE = [
   './css/shared.css',
   './css/site.css',
   './css/polish.css',
+  './css/print.css',
   './js/navigation.js',
+  './js/export-pdf.js',
   './js/archive-loader.js',
   './favicon.svg',
   './js/i18n.js',
@@ -28,6 +30,8 @@ const ASSETS_TO_CACHE = [
   './obcwb-flat-dark-logo.webp',
   './obcwb-flat-light-logo.webp',
   './CRG_LOGO_light.png',
+  './assets/crg-on-light.png',
+  './assets/crg-on-dark.png',
   './CRG_Logo_Dark.png',
   './obc_documents.json',
   './obc_classes.json',

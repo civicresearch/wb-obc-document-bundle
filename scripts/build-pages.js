@@ -121,7 +121,8 @@ fs.writeFileSync(path.join(root, 'js', 'site.js'), `${scriptSource}\n`);
 
 let shell = template.replace(styleMatch[0], '');
 shell = shell.replace(/<link rel="stylesheet" href="css\/polish\.css[^>]*>/, '');
-shell = shell.replace('</head>', '  <link rel="stylesheet" href="css/site.css?v=20261104-records">\n  <link rel="stylesheet" href="css/polish.css?v=20261104-records">\n</head>');
+shell = shell.replace(/<link rel="stylesheet" href="css\/print\.css[^>]*>/, '');
+shell = shell.replace('</head>', '  <link rel="stylesheet" href="css/site.css?v=20261104-records">\n  <link rel="stylesheet" href="css/polish.css?v=20261104-records">\n  <link rel="stylesheet" href="css/print.css?v=20261106-print">\n</head>');
 const shellScriptStart = shell.lastIndexOf('\n<script>');
 const shellScriptEnd = shell.indexOf('</script>', shellScriptStart) + '</script>'.length;
 shell = shell.slice(0, shellScriptStart) + '\n<script src="js/archive-loader.js?v=20261104-records" defer></script>' + shell.slice(shellScriptEnd);
