@@ -7,7 +7,7 @@
   <meta name="theme-color" content="#10253f">
   <title>WB OBC Archive</title>
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
-  <script src="js/navigation.js?v=20261105-crg" defer></script>
+  <script src="js/navigation.js?v=20261105-cases" defer></script>
   <script src="js/export-pdf.js?v=20261105-icon" defer></script>
   <link rel="manifest" href="pwa-manifest.json">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -74,16 +74,17 @@
           <a href="#home" class="active" data-tab-target="home" data-i18n="navHome">Home</a>
           <a href="#timeline" data-tab-target="timeline" data-i18n="navTimeline">Timeline</a>
           <a href="#cases" data-tab-target="cases" data-i18n="navCases">Litigation</a>
+          <a href="#media" data-tab-target="media" data-i18n="navMedia">Media</a>
           <a href="#obc-list" data-tab-target="obc-list" data-i18n="navOBCList">OBC List</a>
           <a href="#documents" data-tab-target="documents" data-i18n="navDocuments">Source PDFs</a>
           <a href="#evidence" data-tab-target="evidence" data-i18n="navEvidence">Hearings &amp; Gaps</a>
-          <a href="#reports" data-tab-target="reports" data-i18n="navReports">Policy Reports</a>
           <div class="nav-group">
             <button type="button" class="nav-group-toggle" aria-expanded="false">
               <span data-i18n="navMore">More</span>
               <span class="nav-caret" aria-hidden="true">▾</span>
             </button>
             <div class="nav-group-items">
+              <a href="#reports" data-tab-target="reports" data-i18n="navReports">Policy Reports</a>
               <a href="#obc-basics" data-tab-target="obc-basics" data-i18n="navOBCBasics">OBC Basics</a>
               <a href="#methods" data-tab-target="methods" data-i18n="navMethods">Evidence Method</a>
               <a href="#inventory" data-tab-target="inventory" data-i18n="navInventory">File Inventory</a>
@@ -632,11 +633,24 @@
         </div>
       </div>
 
-      <div class="case-summary-grid">
-        <article><strong data-i18n="cases.summary.date1">14 July 2026</strong><span data-i18n="cases.summary.may2024">Specified State and Commission SLPs dismissed as withdrawn</span></article>
-        <article><strong data-i18n="cases.summary.date2">12 August 2026</strong><span data-i18n="cases.summary.slp">Shreyasi Dhang: certificate-validity judgment</span></article>
-        <article><strong data-i18n="cases.summary.date3">1 October 2026</strong><span data-i18n="cases.summary.recruitment">Fresh Supreme Court challenges; appointments subject to outcome</span></article>
-      </div>
+      <section class="case-files-section" aria-labelledby="case-files-title">
+        <div class="case-files-head">
+          <div>
+            <p class="panel-kicker" data-i18n="caseFiles.kicker">Cases at a glance</p>
+            <h2 id="case-files-title" data-i18n="caseFiles.title">Proceedings and where they stand</h2>
+            <p class="section-sub" data-i18n="caseFiles.sub">Each card groups the orders of one proceeding, with its case numbers, current position, linked court records and news coverage.</p>
+          </div>
+          <div class="case-files-filter" role="group" aria-label="Filter cases by status" data-case-filter>
+            <button type="button" class="chip-btn active" data-status="all" aria-pressed="true" data-i18n="caseFiles.all">All</button>
+            <button type="button" class="chip-btn" data-status="pending" aria-pressed="false" data-i18n="caseFiles.pending">Pending</button>
+            <button type="button" class="chip-btn" data-status="stayed" aria-pressed="false" data-i18n="caseFiles.stayed">Stayed</button>
+            <button type="button" class="chip-btn" data-status="decided" aria-pressed="false" data-i18n="caseFiles.closed">Decided or withdrawn</button>
+          </div>
+        </div>
+        <div class="case-files-grid" id="case-files">
+          <!-- Case files are rendered from data/case_files.json. -->
+        </div>
+      </section>
 
       <div class="callout litigation-note-jump"><strong data-i18n="cases.employeeProtectionCallout">Employee-protection argument note:</strong> <span data-i18n="cases.employeeProtectionDesc">user-supplied grounds and precedent links for bona fide employees appointed on government-issued OBC certificates are included after the timeline.</span> <a href="#employee-protection-note" data-i18n="cases.openLegalNote">Open the legal-principles note</a>.</div>
 
@@ -760,6 +774,25 @@
       </div>
 
       <div class="callout"><strong>Source discipline:</strong> the archive includes key 2025–26 orders, but the large Supreme Court filing bundles remain catalogued rather than published. Add later certified/official orders, then map each order to the exact notification, survey memo, recruitment process, or admission process affected.</div>
+    </section>
+
+    <section id="media" class="research media-section tab-panel" data-tab-panel="media" hidden>
+      <h2 class="section-heading" data-i18n="media.title">OBC reservation in the news</h2>
+      <p class="section-sub" data-i18n="media.sub">Reporting on West Bengal OBC policy and litigation, newest first, each linked to the case it covers. Read the original article and the court record before citing.</p>
+      <div class="media-toolbar" data-media-filter>
+        <label class="visually-hidden" for="media-search" data-i18n="media.searchLabel">Search media coverage</label>
+        <input type="search" id="media-search" autocomplete="off" data-i18n-placeholder="media.searchPlaceholder" placeholder="Search headlines, outlets or topics">
+        <label class="visually-hidden" for="media-case" data-i18n="media.caseLabel">Case</label>
+        <select id="media-case"><option value="" data-i18n="media.allCases">All cases</option><!-- media-case-options --></select>
+        <label class="visually-hidden" for="media-year" data-i18n="media.yearLabel">Year</label>
+        <select id="media-year"><option value="" data-i18n="media.allYears">All years</option><!-- media-year-options --></select>
+        <p class="media-count" aria-live="polite"><span id="media-count">0</span> <span data-i18n="media.reports">reports</span></p>
+      </div>
+      <ol class="media-list" id="media-list">
+        <!-- Media coverage is rendered from data/media_coverage.json. -->
+      </ol>
+      <p class="empty-state" id="media-empty" hidden data-i18n="media.empty">No reports match these filters.</p>
+      <p class="media-note" data-i18n="media.note">Headlines link to the publisher. “Archived copies” opens the Internet Archive’s saved versions of the page. Know of coverage we have missed? Use the Contribute page.</p>
     </section>
 
     <section id="entry-framework" class="research framework-section tab-panel" data-tab-panel="entry-framework" hidden>
@@ -6395,6 +6428,13 @@ const HERO_CONTENT = {
       ['Verify', 'casesStat4Label', 'casesStat4Value']
     ]
   },
+  media: {
+    eyebrowKey: 'media.eyebrow',
+    eyebrow: 'Media coverage · news and legal reporting',
+    titleKey: 'media.title',
+    subKey: 'media.sub',
+    stats: []
+  },
   'obc-list': {
     eyebrowKey: 'obcListHeroEyebrow',
     eyebrow: 'OBC List · Notification 945-BCW',
@@ -6445,6 +6485,7 @@ const PAGE_FILES = {
   home: 'index.html',
   timeline: 'timeline.html',
   cases: 'litigation.html',
+  media: 'media.html',
   'obc-list': 'obc-list.html',
   documents: 'documents.html',
   evidence: 'evidence.html',
@@ -6847,6 +6888,8 @@ function tabForHash(hash) {
   if (id.startsWith('evt-') || id === 'timeline') return 'timeline';
   if (id.startsWith('doc-') || id === 'documents') return 'documents';
   if (id === 'public-hearings' || id === 'missing-records' || id === 'evidence') return 'evidence';
+  if (id === 'media' || id.startsWith('media-')) return 'media';
+  if (id.startsWith('casefile-')) return 'cases';
   if (id === 'cases' || id.startsWith('case-') || id === 'employee-protection-note' || id.startsWith('litigation-note-')) return 'cases';
   if (id === 'entry-framework') return 'entry-framework';
   if (id === 'inventory') return 'inventory';

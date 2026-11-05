@@ -17,6 +17,7 @@ const config = {
   'obc-basics': ['obcBasicsHeading', 'obcBasicsSub', 'obcBasicsHeroEyebrow', 'Understand OBC classification, backwardness, reservation and evidence requirements through the West Bengal policy and legal record.'],
   methods: ['methodsHeading', 'methodsSub', 'methodsHeroEyebrow', 'Read the archive’s evidence method: backwardness indicators, representation data, surveys, verification and transparent source documentation.'],
   reports: ['reportsHeading', 'reportsSub', 'reportsHeroEyebrow', 'Read the Mandal and Sachar reports alongside West Bengal OBC research, with source PDFs and context for studying backwardness and reservation.'],
+  media: ['media.title', 'media.sub', 'media.eyebrow', 'Read news and legal reporting on West Bengal OBC reservation, the 2024 judgment, the 2026 notifications and certificate cases, linked to the court records.'],
   about: ['aboutTitle', 'aboutSub', 'aboutHeroEyebrow', 'About the independent WB OBC Archive by Civic Research Group: its scope, research methods, source verification and ways to contribute.'],
   contribute: ['contribute.heroTitle', 'contribute.heroSub', 'contribute.heroKicker', 'Contribute a public document, court update or correction to the WB OBC Archive through guided forms and a structured source-report process.']
 };
@@ -50,7 +51,71 @@ function pdfLink(href, label = 'Open PDF') { return href ? `<a href="${escape(hr
 function fillBody(html, id, rows) {
   return html.replace(new RegExp(`(<tbody[^>]*id="${id}"[^>]*>)[\\s\\S]*?(</tbody>)`), (_, open, close) => open + rows + close);
 }
+const months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+const monthsBn = ['জানু','ফেব্রু','মার্চ','এপ্রিল','মে','জুন','জুলাই','আগস্ট','সেপ্টে','অক্টো','নভে','ডিসে'];
+function shortDate(iso) { const [y,m,d] = iso.split('-').map(Number); return `${d} ${months[m-1]} ${y}`; }
+function bnDigits(text) { return String(text).replace(/[0-9]/g, n => '০১২৩৪৫৬৭৮৯'[n]); }
+function shortDateBn(iso) { const [y,m,d] = iso.split('-').map(Number); return bnDigits(`${d} ${monthsBn[m-1]} ${y}`); }
+function bi(en, bn, tag = 'span', cls = '') { return `<${tag}${cls ? ` class="${cls}"` : ''} data-en="${escape(en)}"${bn ? ` data-bn="${escape(bn)}"` : ''}>${escape(en)}</${tag}>`; }
+function renderCaseFiles(html, pageLinks = {}) {
+  if (!html.includes('<!-- Case files are rendered from data/case_files.json. -->')) return html;
+  const files = read('data/case_files.json').cases;
+  const events = Object.fromEntries(read('case_events.json').map(e => [e.id, e]));
+  const manifest = read('case_manifest.json');
+  const media = read('data/media_coverage.json').items;
+  const byId = Object.fromEntries(files.map(c => [c.id, c]));
+  const caseHref = id => `${pageLinks.cases || ''}#${id}`;
+  const cards = files.map(c => {
+    const records = c.records.map(id => {
+      const e = events[id], date = id.replace('case-', '');
+      const pdfs = manifest.filter(m => m.date === date).map(m => `<a class="cf-pdf" href="${escape(m.local_file)}" target="_blank" rel="noreferrer">PDF</a>`).join(' ');
+      return `<li><time datetime="${date}">${escape(shortDate(date))}</time> <a href="${caseHref(id)}">${escape(e.title)}</a> ${pdfs}</li>`;
+    }).join('');
+    const reports = media.filter(m => m.cases.includes(c.id));
+    const reportList = reports.length ? `<h4>${bi('In the news','সংবাদমাধ্যমে')}</h4><ul class="cf-media">${reports.map(m => `<li><a href="${escape(m.url)}" target="_blank" rel="noopener noreferrer">${escape(m.headline)}</a> <span class="cf-media-meta">${escape(m.outlet)} · ${escape(shortDate(m.date))}</span></li>`).join('')}</ul>` : '';
+    const related = (c.related || []).filter(id => byId[id]).map(id => `<a href="${caseHref(id)}">${bi(byId[id].title, byId[id].title_bn)}</a>`).join(' · ');
+    const next = c.next_date ? `<p class="cf-next"><strong>${bi('Next listing','পরবর্তী তালিকা')}</strong> <time datetime="${c.next_date}" data-en="${escape(shortDate(c.next_date))}" data-bn="${escape(shortDateBn(c.next_date))}">${escape(shortDate(c.next_date))}</time></p>` : '';
+    return `<article id="${c.id}" class="case-file" data-status="${escape(c.status)}" data-text="${escape([c.title,c.title_bn,c.court,c.forum,...c.case_numbers,c.summary].join(' ').toLowerCase())}">
+  <div class="cf-top"><span class="cf-court">${escape(c.court)}</span><span class="cf-status cf-status--${escape(c.status)}">${bi(c.status_label, c.status_label_bn)}</span></div>
+  ${bi(c.title, c.title_bn, 'h3')}
+  <p class="cf-numbers">${c.case_numbers.map(n => `<code>${escape(n)}</code>`).join(' ')}</p>
+  ${bi(c.summary, c.summary_bn, 'p', 'cf-summary')}
+  ${next}
+  <details class="cf-details"><summary>${bi(`${c.records.length} court record${c.records.length === 1 ? '' : 's'}${reports.length ? ` · ${reports.length} news report${reports.length === 1 ? '' : 's'}` : ''}`, `${bnDigits(c.records.length)}টি আদালত-নথি${reports.length ? ` · ${bnDigits(reports.length)}টি সংবাদ` : ''}`)}</summary>
+    <ol class="cf-records">${records}</ol>
+    ${reportList}
+  </details>
+  ${related ? `<p class="cf-related"><span>${bi('Related','সম্পর্কিত')}:</span> ${related}</p>` : ''}
+</article>`;
+  }).join('\n');
+  return html.replace('<!-- Case files are rendered from data/case_files.json. -->', cards).replace(/(id="case-file-count"[^>]*>)0/, (_, open) => open + files.length);
+}
+function renderMedia(html, pageLinks = {}) {
+  if (!html.includes('<!-- Media coverage is rendered from data/media_coverage.json. -->')) return html;
+  const items = read('data/media_coverage.json').items.slice().sort((a,b) => b.date.localeCompare(a.date));
+  const files = Object.fromEntries(read('data/case_files.json').cases.map(c => [c.id, c]));
+  const list = items.map(m => {
+    const cases = m.cases.filter(id => files[id]).map(id => `<a href="${pageLinks.cases || ''}#${id}">${bi(files[id].title, files[id].title_bn)}</a>`).join(' · ');
+    return `<li id="${m.id}" class="media-item" data-year="${m.date.slice(0,4)}" data-cases="${escape(m.cases.join(' '))}" data-text="${escape([m.headline,m.outlet,m.author,m.summary,...m.topics].join(' ').toLowerCase())}">
+  <time datetime="${m.date}" data-en="${escape(shortDate(m.date))}" data-bn="${escape(shortDateBn(m.date))}">${escape(shortDate(m.date))}</time>
+  <div class="media-body">
+    <p class="media-outlet"><strong>${escape(m.outlet)}</strong>${m.author && !m.outlet.includes(m.author) ? ` · ${escape(m.author)}` : ''} · ${escape(m.type)}</p>
+    <h3><a href="${escape(m.url)}" target="_blank" rel="noopener noreferrer">${escape(m.headline)}</a></h3>
+    <p>${escape(m.summary)}</p>
+    <p class="media-links">${m.topics.map(t => `<span class="tag">${escape(t)}</span>`).join(' ')}${cases ? ` <span class="media-case">${bi('Case','মামলা')}: ${cases}</span>` : ''} <a class="media-archive" href="https://web.archive.org/web/*/${escape(m.url)}" target="_blank" rel="noopener noreferrer">${bi('Archived copies','সংরক্ষিত কপি')}</a></p>
+  </div>
+</li>`;
+  }).join('\n');
+  const years = [...new Set(items.map(m => m.date.slice(0,4)))];
+  const options = Object.values(files).filter(c => items.some(m => m.cases.includes(c.id))).map(c => `<option value="${c.id}" data-en="${escape(c.title)}" data-bn="${escape(c.title_bn)}">${escape(c.title)}</option>`).join('');
+  return html.replace('<!-- Media coverage is rendered from data/media_coverage.json. -->', list)
+    .replace('<!-- media-year-options -->', years.map(y => `<option value="${y}">${y}</option>`).join(''))
+    .replace('<!-- media-case-options -->', options)
+    .replace(/(id="media-count"[^>]*>)0/, (_, open) => open + items.length);
+}
 function prerender(html, page) {
+  html = renderCaseFiles(html);
+  html = renderMedia(html, { cases: 'litigation.html' });
   if (page.tab === 'cases') {
     const events = read('case_events.json');
     html = html.replace('<!-- Case events are rendered from case_events.json. -->', events.map(e => `<li id="${escape(e.id)}" class="case-event">${e.html}</li>`).join('\n'));
@@ -107,4 +172,4 @@ function writeDiscovery(pages) {
   fs.writeFileSync(path.join(root,'sitemap.xml'),`<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${pages.map(p=>`  <url><loc>${urlFor(p)}</loc></url>`).join('\n')}\n</urlset>\n`);
   fs.writeFileSync(path.join(root,'robots.txt'),`User-agent: *\nAllow: /\n\nSitemap: ${origin}/sitemap.xml\n`);
 }
-module.exports = { publish, writeDiscovery };
+module.exports = { publish, writeDiscovery, renderCaseFiles, renderMedia };

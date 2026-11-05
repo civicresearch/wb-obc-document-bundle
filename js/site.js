@@ -745,6 +745,13 @@ const HERO_CONTENT = {
       ['Verify', 'casesStat4Label', 'casesStat4Value']
     ]
   },
+  media: {
+    eyebrowKey: 'media.eyebrow',
+    eyebrow: 'Media coverage · news and legal reporting',
+    titleKey: 'media.title',
+    subKey: 'media.sub',
+    stats: []
+  },
   'obc-list': {
     eyebrowKey: 'obcListHeroEyebrow',
     eyebrow: 'OBC List · Notification 945-BCW',
@@ -795,6 +802,7 @@ const PAGE_FILES = {
   home: 'index.html',
   timeline: 'timeline.html',
   cases: 'litigation.html',
+  media: 'media.html',
   'obc-list': 'obc-list.html',
   documents: 'documents.html',
   evidence: 'evidence.html',
@@ -1197,6 +1205,8 @@ function tabForHash(hash) {
   if (id.startsWith('evt-') || id === 'timeline') return 'timeline';
   if (id.startsWith('doc-') || id === 'documents') return 'documents';
   if (id === 'public-hearings' || id === 'missing-records' || id === 'evidence') return 'evidence';
+  if (id === 'media' || id.startsWith('media-')) return 'media';
+  if (id.startsWith('casefile-')) return 'cases';
   if (id === 'cases' || id.startsWith('case-') || id === 'employee-protection-note' || id.startsWith('litigation-note-')) return 'cases';
   if (id === 'entry-framework') return 'entry-framework';
   if (id === 'inventory') return 'inventory';

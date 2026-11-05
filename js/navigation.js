@@ -164,3 +164,66 @@ if ('serviceWorker' in navigator && location.protocol !== 'file:') {
     input.select();
   });
 })();
+
+// Bilingual data rendered at build time carries both languages in data-en / data-bn.
+function syncBilingualData() {
+  const bn = document.documentElement.lang === 'bn';
+  document.querySelectorAll('[data-en]').forEach(el => {
+    const text = bn && el.dataset.bn ? el.dataset.bn : el.dataset.en;
+    if (el.textContent !== text) el.textContent = text;
+  });
+}
+document.addEventListener('wbobc:langchange', syncBilingualData);
+syncBilingualData();
+
+// Litigation: filter case cards by status.
+(() => {
+  const group = document.querySelector('[data-case-filter]');
+  if (!group) return;
+  const sets = { all: null, pending: ['pending', 'listed'], stayed: ['stayed'], decided: ['decided', 'withdrawn', 'dismissed'] };
+  group.addEventListener('click', event => {
+    const button = event.target.closest('button[data-status]');
+    if (!button) return;
+    group.querySelectorAll('button').forEach(b => { const on = b === button; b.classList.toggle('active', on); b.setAttribute('aria-pressed', String(on)); });
+    const allowed = sets[button.dataset.status];
+    document.querySelectorAll('.case-file').forEach(card => { card.hidden = !!allowed && !allowed.includes(card.dataset.status); });
+  });
+  // Opening a linked case card from elsewhere expands its record list.
+  function openFromHash() {
+    const card = location.hash.startsWith('#casefile-') && document.getElementById(location.hash.slice(1));
+    if (card) { card.hidden = false; card.querySelector('details')?.setAttribute('open', ''); card.classList.add('is-target'); }
+  }
+  window.addEventListener('hashchange', openFromHash);
+  openFromHash();
+})();
+
+// Media: search, case and year filters.
+(() => {
+  const toolbar = document.querySelector('[data-media-filter]');
+  if (!toolbar) return;
+  const search = document.getElementById('media-search');
+  const caseSelect = document.getElementById('media-case');
+  const yearSelect = document.getElementById('media-year');
+  const count = document.getElementById('media-count');
+  const empty = document.getElementById('media-empty');
+  const items = Array.from(document.querySelectorAll('.media-item'));
+  const params = new URLSearchParams(location.search);
+  if (params.get('case')) caseSelect.value = params.get('case');
+  function apply() {
+    const terms = search.value.toLowerCase().split(/\s+/).filter(Boolean);
+    let shown = 0;
+    items.forEach(item => {
+      const ok = terms.every(t => item.dataset.text.includes(t))
+        && (!caseSelect.value || item.dataset.cases.split(' ').includes(caseSelect.value))
+        && (!yearSelect.value || item.dataset.year === yearSelect.value);
+      item.hidden = !ok;
+      if (ok) shown += 1;
+    });
+    const bn = document.documentElement.lang === 'bn';
+    count.textContent = bn ? String(shown).replace(/[0-9]/g, n => '০১২৩৪৫৬৭৮৯'[n]) : String(shown);
+    empty.hidden = shown > 0;
+  }
+  [search, caseSelect, yearSelect].forEach(el => el.addEventListener('input', apply));
+  document.addEventListener('wbobc:langchange', apply);
+  apply();
+})();
