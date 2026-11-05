@@ -92,6 +92,24 @@
    ]
   },
   {
+   "id": "media-2025-03-18-livelaw",
+   "date": "2025-03-18",
+   "outlet": "LiveLaw",
+   "author": "Debby Jain",
+   "language": "en",
+   "type": "Legal news",
+   "headline": "West Bengal OBC Classification Issue: State Commission Conducting Fresh Exercise To Identify Backward Classes; Supreme Court Posts Matter To July",
+   "url": "https://livelaw.in/top-stories/supreme-court-west-bengal-obc-classification-exercise-to-be-conducted-afresh-hearing-in-july-286758",
+   "summary": "The State tells Justices B.R. Gavai and A.G. Masih that the Commission is redoing the identification exercise; the appeals are posted to July.",
+   "cases": [
+    "casefile-sc-state-appeals-2024"
+   ],
+   "topics": [
+    "Supreme Court",
+    "Commission"
+   ]
+  },
+  {
    "id": "media-2025-06-18-barandbench",
    "date": "2025-06-18",
    "outlet": "Bar & Bench",
@@ -119,6 +137,24 @@
    "headline": "New OBC list: State seeks urgent hearing in SC over Cal HC stay",
    "url": "https://www.millenniumpost.in/bengal/new-obc-list-state-seeks-urgent-hearing-in-sc-over-cal-hc-stay-620188",
    "summary": "The State seeks an urgent Supreme Court hearing against the 17 June 2025 High Court stay.",
+   "cases": [
+    "casefile-sc-purabi-das-2025"
+   ],
+   "topics": [
+    "2025 list",
+    "Supreme Court"
+   ]
+  },
+  {
+   "id": "media-2025-07-24-livelaw",
+   "date": "2025-07-24",
+   "outlet": "LiveLaw",
+   "author": "LiveLaw News Network",
+   "language": "en",
+   "type": "Legal news",
+   "headline": "West Bengal Govt Approaches Supreme Court Challenging Calcutta HC Staying New OBC List Notification",
+   "url": "https://www.livelaw.in/top-stories/west-bengal-govt-approaches-supreme-court-challenging-calcutta-hc-staying-new-obc-list-notification-298617",
+   "summary": "Senior Advocate Kapil Sibal seeks urgent listing of the State's challenge to the 17 June 2025 stay.",
    "cases": [
     "casefile-sc-purabi-das-2025"
    ],
@@ -156,9 +192,65 @@
    "headline": "Calcutta HC orders fresh WBJEE merit list 2025 within 15 days, 7% reservation for 66 classes of OBC",
    "url": "https://news.careers360.com/wbjee-merit-list-2025-calcutta-high-court-orders-15-days-reservation-66-obc-classes-west-bengal-jee-result-date",
    "summary": "Justice Kausik Chanda directs a new WBJEE 2025 merit list applying 7% reservation for the 66 pre-2010 classes.",
-   "cases": [],
+   "cases": [
+    "casefile-jemas-pg-2025"
+   ],
    "topics": [
     "Admissions",
+    "WBJEE"
+   ]
+  },
+  {
+   "id": "media-2025-08-07-theweek",
+   "date": "2025-08-07",
+   "outlet": "The Week (PTI)",
+   "author": "PTI",
+   "language": "en",
+   "type": "News",
+   "headline": "Cal HC orders WBJEE Board to publish new merit list",
+   "url": "https://www.theweek.in/wire-updates/national/2025/08/07/lgc5-wb-hc-wbjee.html",
+   "summary": "Justice Kausik Chanda finds the WBJEE 2025 merit list breached the 21 May order and directs a fresh list within 15 days.",
+   "cases": [
+    "casefile-jemas-pg-2025"
+   ],
+   "topics": [
+    "Admissions",
+    "WBJEE"
+   ]
+  },
+  {
+   "id": "media-2025-08-22-livelaw",
+   "date": "2025-08-22",
+   "outlet": "LiveLaw",
+   "author": "Anmol Kaur Bawa",
+   "language": "en",
+   "type": "Legal news",
+   "headline": "Supreme Court Stays Calcutta HC Direction To Recast WBJEB Results As Per Pre-2010 OBC Reservation",
+   "url": "https://www.livelaw.in/top-stories/supreme-court-stays-calcutta-hc-direction-to-recast-wbjeb-results-as-per-pre-2010-obc-reservation-301711",
+   "summary": "CJI B.R. Gavai and Justice K. Vinod Chandran stay the 7 August direction in State of West Bengal v. X, Diary 45628 of 2025.",
+   "cases": [
+    "casefile-jemas-pg-2025"
+   ],
+   "topics": [
+    "Supreme Court",
+    "WBJEE"
+   ]
+  },
+  {
+   "id": "media-2025-08-23-barandbench",
+   "date": "2025-08-23",
+   "outlet": "Bar & Bench",
+   "author": "Debayan Roy",
+   "language": "en",
+   "type": "Legal news",
+   "headline": "Supreme Court stays Calcutta HC order on WBJEE merit list; paves way for applying new quota policy",
+   "url": "https://www.barandbench.com/news/supreme-court-stays-calcutta-hc-order-on-wbjee-merit-list-paves-way-for-applying-new-quota-policy",
+   "summary": "The stay lets WBJEE 2025 results be declared under the State's June 2025 policy.",
+   "cases": [
+    "casefile-jemas-pg-2025"
+   ],
+   "topics": [
+    "Supreme Court",
     "WBJEE"
    ]
   },
@@ -191,7 +283,27 @@
    "headline": "Cal HC seeks reasoned order on plea against accepting invalid OBC certificates in SIR",
    "url": "https://theprint.in/india/cal-hc-seeks-reasoned-order-on-plea-against-accepting-invalid-obc-certificates-in-sir/2812213",
    "summary": "The High Court asks the Chief Electoral Officer to decide within a week whether certificates struck down in 2024 may be used in the electoral roll revision.",
-   "cases": [],
+   "cases": [
+    "casefile-sir-certificates-2025"
+   ],
+   "topics": [
+    "Certificates",
+    "Electoral rolls"
+   ]
+  },
+  {
+   "id": "media-2025-12-24-lawchakra",
+   "date": "2025-12-24",
+   "outlet": "LawChakra",
+   "author": "",
+   "language": "en",
+   "type": "Legal news",
+   "headline": "Calcutta High Court Asks EC To Decide On Use Of Invalid OBC Certificates In Electoral Roll Revision",
+   "url": "https://lawchakra.in/high-court/calcutta-ec-obc-electoral-roll-revision",
+   "summary": "Justice Krishna Rao directs the CEO to decide within a week on a voter's representation.",
+   "cases": [
+    "casefile-sir-certificates-2025"
+   ],
    "topics": [
     "Certificates",
     "Electoral rolls"
@@ -207,7 +319,9 @@
    "headline": "Invalid OBC certificates barred from use in SIR hearings: EC",
    "url": "https://www.millenniumpost.in/bengal/invalid-obc-certificates-barred-from-use-in-sir-hearings-ec-642281",
    "summary": "The Chief Electoral Officer tells district officers not to accept OBC certificates voided by the High Court during the roll revision.",
-   "cases": [],
+   "cases": [
+    "casefile-sir-certificates-2025"
+   ],
    "topics": [
     "Certificates",
     "Electoral rolls"
@@ -333,6 +447,42 @@
    "topics": [
     "Certificates",
     "Stay"
+   ]
+  },
+  {
+   "id": "media-2026-08-14-livelaw",
+   "date": "2026-08-14",
+   "outlet": "LiveLaw",
+   "author": "Srinjoy Das",
+   "language": "en",
+   "type": "Legal news",
+   "headline": "NEET-UG 2026: Candidates Can't Claim EWS Reservation After Declaration Of Results: Calcutta High Court",
+   "url": "https://www.livelaw.in/high-court/calcutta-high-court/neet-ug-2026-candidates-cant-claim-ews-reservation-after-applying-under-general-or-obc-category-calcutta-high-court-545870",
+   "summary": "Justice Amrita Sinha dismisses WPA 21501 of 2026.",
+   "cases": [
+    "casefile-admission-recruitment-claims-2026"
+   ],
+   "topics": [
+    "Admissions",
+    "EWS"
+   ]
+  },
+  {
+   "id": "media-2026-09-07-livelaw",
+   "date": "2026-09-07",
+   "outlet": "LiveLaw",
+   "author": "Srinjoy Das",
+   "language": "en",
+   "type": "Legal news",
+   "headline": "'OBC-A Category Struck Down': Calcutta High Court Denies Relief To SLST Aspirants Seeking Reservation Benefits",
+   "url": "https://www.livelaw.in/high-court/calcutta-high-court/obc-a-slst-aspirants-cannot-claim-reserved-status-after-caste-categories-were-struck-down-before-recruitment-calcutta-high-court-548919",
+   "summary": "Justice Aniruddha Roy dismisses WPA 23207 and 23209 of 2026.",
+   "cases": [
+    "casefile-admission-recruitment-claims-2026"
+   ],
+   "topics": [
+    "Recruitment",
+    "SLST"
    ]
   },
   {

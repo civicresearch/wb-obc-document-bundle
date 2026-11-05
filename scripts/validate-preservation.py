@@ -21,7 +21,13 @@ def main():
             assert hashlib.sha256(file.read_bytes()).digest() == hashlib.sha256(original).digest(), path
             counts['pdfs'] += 1
         elif path.endswith('.json') and '/' not in path:
-            assert json.loads(file.read_text(encoding='utf-8')) == json.loads(git('show', f'{CHECKPOINT}:{path}')), path
+            current = json.loads(file.read_text(encoding='utf-8'))
+            original = json.loads(git('show', f'{CHECKPOINT}:{path}'))
+            if isinstance(original, list) and isinstance(current, list):
+                # Research refreshes may add records; every original record must survive unchanged.
+                assert all(item in current for item in original), path
+            else:
+                assert current == original, path
             counts['data_files'] += 1
         elif path.endswith('.html') and '/' not in path:
             old = git('show', f'{CHECKPOINT}:{path}').decode()
