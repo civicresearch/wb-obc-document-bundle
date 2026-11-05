@@ -26,7 +26,7 @@ let html = fs.readFileSync(inputPath, 'utf8').replace(/\r\n/g, '\n')
 const styles = html.match(/\n<style>\n[\s\S]*?\n<\/style>/);
 if (styles) {
   html = html.replace(styles[0], '').replace(/<link rel="stylesheet" href="css\/polish\.css[^>]*>/, '').replace(/<link rel="stylesheet" href="css\/print\.css[^>]*>/, '');
-  html = html.replace('</head>', () => `${styles[0]}\n<link rel="stylesheet" href="css/polish.css?v=20261104-records">\n<link rel="stylesheet" href="css/crg.css?v=20261105-crg">\n<link rel="stylesheet" href="css/print.css?v=20261106-print">\n</head>`);
+  html = html.replace('</head>', () => `${styles[0]}\n<link rel="stylesheet" href="css/polish.css?v=20261104-records">\n<link rel="stylesheet" href="css/crg.css?v=20261105-icon">\n<link rel="stylesheet" href="css/print.css?v=20261106-print">\n</head>`);
 }
 const inlineScript = [
   '<script>',
