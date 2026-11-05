@@ -487,9 +487,9 @@
     "appearance.auto": "Auto",
     "appearance.light": "Light",
     "appearance.dark": "Dark",
-    "masthead.eyebrow": "Civic Research Group",
-    "masthead.title": "West Bengal OBC Archive",
-    "masthead.subtitle": "Policy, court records & public evidence",
+    "masthead.eyebrow": "WB OBC Archive",
+    "masthead.title": "OBC Reservation Records of West Bengal",
+    "masthead.subtitle": "Notifications, court records, hearings and source documents, 1993–2026",
     "navigation.title": "Explore the archive",
     "editorial.0": "Skip to main content",
     "editorial.1": "Search the research bundle",
@@ -1104,7 +1104,11 @@
     "inventory.role.16": "States 66 classes and 7% reservation.",
     "inventory.role.17": "Sub-categorised 64 of 66 pre-2010 classes, later withdrawn.",
     "inventory.role.18": "Withdraws the 2025 notification package.",
-    "drawer.research": "Independent public interest research"
+    "drawer.research": "Independent public interest research",
+    "navMore": "More",
+    "appearance.label": "Theme",
+    "navSearchLabel": "Search the archive",
+    "navSearchPlaceholder": "Search notifications, cases, communities, documents"
   },
   "bn": {
     "siteTitle": "পশ্চিমবঙ্গ ওবিসি আর্কাইভ",
@@ -1597,9 +1601,9 @@
     "appearance.auto": "স্বয়ংক্রিয়",
     "appearance.light": "হালকা",
     "appearance.dark": "গাঢ়",
-    "masthead.eyebrow": "সিভিক রিসার্চ গ্রুপ",
-    "masthead.title": "পশ্চিমবঙ্গ ওবিসি আর্কাইভ",
-    "masthead.subtitle": "নীতি, আদালতের নথি ও জনশুনানির তথ্য",
+    "masthead.eyebrow": "পশ্চিমবঙ্গ ওবিসি আর্কাইভ",
+    "masthead.title": "পশ্চিমবঙ্গের ওবিসি সংরক্ষণ সংক্রান্ত নথি",
+    "masthead.subtitle": "বিজ্ঞপ্তি, আদালতের নথি, শুনানি ও মূল নথি, ১৯৯৩–২০২৬",
     "navigation.title": "আর্কাইভ দেখুন",
     "editorial.0": "মূল বিষয়বস্তুতে যান",
     "editorial.1": "গবেষণা সংকলনে খুঁজুন",
@@ -2214,6 +2218,10 @@
     "inventory.role.16": "৬৬টি শ্রেণি ও ৭% সংরক্ষণ উল্লেখিত।",
     "inventory.role.17": "২০১০-পূর্ব ৬৬টির মধ্যে ৬৪টি শ্রেণির উপবিভাগ; পরে প্রত্যাহৃত।",
     "inventory.role.18": "২০২৫ সালের বিজ্ঞপ্তিগুলি প্রত্যাহার করে।",
-    "drawer.research": "জনস্বার্থে স্বাধীন গবেষণা"
+    "drawer.research": "জনস্বার্থে স্বাধীন গবেষণা",
+    "navMore": "আরও",
+    "appearance.label": "থিম",
+    "navSearchLabel": "আর্কাইভে খুঁজুন",
+    "navSearchPlaceholder": "বিজ্ঞপ্তি, মামলা, সম্প্রদায় বা নথি খুঁজুন"
   }
 }

@@ -138,3 +138,29 @@ document.querySelectorAll('.table-wrap').forEach((wrapper, index) => {
 if ('serviceWorker' in navigator && location.protocol !== 'file:') {
   navigator.serviceWorker.register('./sw.js').catch(() => {});
 }
+
+// Universal search in the navigation bar. On the home page it drives the
+// archive search panel directly; elsewhere it opens the home page with ?q=.
+(() => {
+  const form = document.querySelector('[data-nav-search]');
+  const input = document.getElementById('nav-search-input');
+  if (!form || !input) return;
+  const initial = new URLSearchParams(location.search).get('q');
+  if (initial) input.value = initial;
+  form.addEventListener('submit', event => {
+    const panel = document.getElementById('site-search');
+    if (!panel) return;
+    event.preventDefault();
+    panel.value = input.value;
+    panel.dispatchEvent(new Event('input', { bubbles: true }));
+    document.getElementById('query-hub')?.scrollIntoView({ block: 'start', behavior: 'smooth' });
+  });
+  document.addEventListener('keydown', event => {
+    if (event.key !== '/' || event.metaKey || event.ctrlKey || event.altKey) return;
+    const target = event.target;
+    if (target.closest?.('input, textarea, select, [contenteditable="true"]')) return;
+    event.preventDefault();
+    input.focus();
+    input.select();
+  });
+})();

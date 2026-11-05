@@ -7,7 +7,7 @@
   <meta name="theme-color" content="#10253f">
   <title>WB OBC Archive</title>
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
-  <script src="js/navigation.js?v=20261104-records" defer></script>
+  <script src="js/navigation.js?v=20261105-crg" defer></script>
   <script src="js/export-pdf.js?v=20261106-print" defer></script>
   <link rel="manifest" href="pwa-manifest.json">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -33,75 +33,74 @@
 </head>
 <body>
   <a class="skip-link" href="#main-content">Skip to main content</a>
-  <header class="site-header">
-    <div class="site-header-inner">
-      <a href="#home" class="site-logo" aria-label="West Bengal OBC Archive — home">
-        <img src="obcwb-flat-light-logo.webp" data-theme-logo data-light-src="obcwb-flat-light-logo.webp" data-dark-src="obcwb-flat-light-logo.webp" alt="West Bengal OBC Archive" width="720" height="240" decoding="async">
+  <header class="site-header masthead">
+    <div class="mast-band">
+    <div class="site-header-inner wrap">
+      <a class="brandmark" href="https://civicresearch.in" target="_blank" rel="noopener noreferrer" aria-label="Civic Research Group">
+        <img src="assets/crg-on-dark.png" alt="Civic Research Group" width="2003" height="378" decoding="async">
       </a>
-      <script>
-        // Swap the header logo to the theme-correct file before first paint;
-        // otherwise a dark-theme load briefly (or, if a later script fails,
-        // permanently) shows the dark-text logo on the dark header.
-        (function () {
-          if (document.documentElement.dataset.theme !== 'dark') return;
-          var logo = document.querySelector('img[data-theme-logo]');
-          if (logo && logo.dataset.darkSrc) logo.setAttribute('src', logo.dataset.darkSrc);
-        })();
-      </script>
+      <a href="#home" class="masthead-title" aria-label="West Bengal OBC Archive — home">
+        <span class="mast-eyebrow" data-i18n="masthead.eyebrow">WB OBC Archive</span>
+        <strong data-i18n="masthead.title">OBC Reservation Records of West Bengal</strong>
+        <small data-i18n="masthead.subtitle">Notifications, court records, hearings and source documents, 1993–2026</small>
+      </a>
       <div class="nav-preferences" aria-label="Language and appearance">
         <div class="language-switch" role="group" aria-label="Language">
-          <button type="button" id="lang-en" class="lang-btn active" data-lang="en" data-lang-switch="en" aria-pressed="true" lang="en" aria-label="English" title="English">EN</button>
+          <button type="button" id="lang-en" class="lang-btn active" data-lang="en" data-lang-switch="en" aria-pressed="true" lang="en">English</button>
           <button type="button" id="lang-bn" class="lang-btn" data-lang="bn" data-lang-switch="bn" aria-pressed="false" lang="bn">বাংলা</button>
         </div>
-        <select id="theme-select" class="theme-select" aria-label="Appearance">
-          <option value="auto" data-i18n="appearance.auto">Auto</option>
-          <option value="light" data-i18n="appearance.light">Light</option>
-          <option value="dark" data-i18n="appearance.dark">Dark</option>
-        </select>
+        <label class="theme-label">
+          <span class="visually-hidden" data-i18n="appearance.label">Theme</span>
+          <select id="theme-select" class="theme-select" aria-label="Appearance">
+            <option value="auto" data-i18n="appearance.auto">Auto</option>
+            <option value="light" data-i18n="appearance.light">Light</option>
+            <option value="dark" data-i18n="appearance.dark">Dark</option>
+          </select>
+        </label>
       </div>
-      <div class="masthead-title"><strong data-i18n="masthead.title">West Bengal OBC Archive</strong><small data-i18n="masthead.subtitle">Policy, court records &amp; public evidence</small></div>
-      <button type="button" class="nav-toggle" aria-expanded="false" aria-controls="site-nav" aria-label="Open navigation menu">
-        <span class="nav-toggle-bar"></span>
-        <span class="nav-toggle-bar"></span>
-        <span class="nav-toggle-bar"></span>
-      </button>
-      <nav class="site-nav" id="site-nav" aria-label="Sections">
-        <p class="drawer-title" data-i18n="navigation.title">Explore the archive</p>
-        <button type="button" class="nav-close" aria-label="Close navigation menu">×</button>
-        <a href="#home" class="active" data-tab-target="home" data-i18n="navHome">Home</a>
-        <div class="nav-group">
-          <button type="button" class="nav-group-toggle" aria-expanded="false">
-            <span data-i18n="navResearch">Research</span>
-            <span class="nav-caret" aria-hidden="true">▾</span>
-          </button>
-          <div class="nav-group-items">
-            <a href="#timeline" data-tab-target="timeline" data-i18n="navTimeline">Timeline</a>
-            <a href="#cases" data-tab-target="cases" data-i18n="navCases">Litigation</a>
-            <a href="#obc-list" data-tab-target="obc-list" data-i18n="navOBCList">OBC List</a>
-            <a href="#documents" data-tab-target="documents" data-i18n="navDocuments">Source PDFs</a>
-            <a href="#evidence" data-tab-target="evidence" data-i18n="navEvidence">Hearings &amp; Gaps</a>
-            <a href="#entry-framework" data-tab-target="entry-framework" data-i18n="navEntryFramework">Add Record Guide</a>
-            <a href="#inventory" data-tab-target="inventory" data-i18n="navInventory">File Inventory</a>
-          </div>
-        </div>
-        <div class="nav-group">
-          <button type="button" class="nav-group-toggle" aria-expanded="false">
-            <span data-i18n="navLearn">Learn</span>
-            <span class="nav-caret" aria-hidden="true">▾</span>
-          </button>
-          <div class="nav-group-items">
-            <a href="#obc-basics" data-tab-target="obc-basics" data-i18n="navOBCBasics">OBC Basics</a>
-            <a href="#methods" data-tab-target="methods" data-i18n="navMethods">Evidence Method</a>
-            <a href="#reports" data-tab-target="reports" data-i18n="navReports">Policy Reports</a>
-          </div>
-        </div>
-        <a href="contribute.html" data-i18n="navContribute">Contribute</a>
-        <a href="#about" data-tab-target="about" data-i18n="navAbout">About</a>
-        <a href="https://github.com/civicresearch/wb-obc-document-bundle" target="_blank" rel="noreferrer" data-i18n="navGitHub">GitHub</a>
-        <a class="drawer-crg" href="https://civicresearch.in" target="_blank" rel="noopener noreferrer" aria-label="Civic Research Group"><img src="assets/crg-on-light.png" data-theme-logo data-light-src="assets/crg-on-light.png" data-dark-src="assets/crg-on-dark.png" alt="Civic Research Group" width="2003" height="378" decoding="async"><span data-i18n="drawer.research">Independent public interest research</span></a>
-
-      </nav>
       <div class="nav-overlay"></div>
+    </div>
+    </div>
+    <div class="navbar">
+      <div class="wrap navbar-inner">
+        <button type="button" class="nav-toggle" aria-expanded="false" aria-controls="site-nav" aria-label="Open navigation menu">
+          <span class="nav-toggle-bar"></span>
+          <span class="nav-toggle-bar"></span>
+          <span class="nav-toggle-bar"></span>
+        </button>
+        <nav class="site-nav" id="site-nav" aria-label="Sections">
+          <p class="drawer-title" data-i18n="navigation.title">Explore the archive</p>
+          <button type="button" class="nav-close" aria-label="Close navigation menu">×</button>
+          <a href="#home" class="active" data-tab-target="home" data-i18n="navHome">Home</a>
+          <a href="#timeline" data-tab-target="timeline" data-i18n="navTimeline">Timeline</a>
+          <a href="#cases" data-tab-target="cases" data-i18n="navCases">Litigation</a>
+          <a href="#obc-list" data-tab-target="obc-list" data-i18n="navOBCList">OBC List</a>
+          <a href="#documents" data-tab-target="documents" data-i18n="navDocuments">Source PDFs</a>
+          <a href="#evidence" data-tab-target="evidence" data-i18n="navEvidence">Hearings &amp; Gaps</a>
+          <a href="#reports" data-tab-target="reports" data-i18n="navReports">Policy Reports</a>
+          <div class="nav-group">
+            <button type="button" class="nav-group-toggle" aria-expanded="false">
+              <span data-i18n="navMore">More</span>
+              <span class="nav-caret" aria-hidden="true">▾</span>
+            </button>
+            <div class="nav-group-items">
+              <a href="#obc-basics" data-tab-target="obc-basics" data-i18n="navOBCBasics">OBC Basics</a>
+              <a href="#methods" data-tab-target="methods" data-i18n="navMethods">Evidence Method</a>
+              <a href="#inventory" data-tab-target="inventory" data-i18n="navInventory">File Inventory</a>
+              <a href="#entry-framework" data-tab-target="entry-framework" data-i18n="navEntryFramework">Add Record Guide</a>
+              <a href="#about" data-tab-target="about" data-i18n="navAbout">About</a>
+              <a href="https://github.com/civicresearch/wb-obc-document-bundle" target="_blank" rel="noreferrer" data-i18n="navGitHub">GitHub</a>
+            </div>
+          </div>
+          <a href="contribute.html" data-i18n="navContribute">Contribute</a>
+        </nav>
+        <form class="nav-search" role="search" action="index.html" method="get" data-nav-search>
+          <svg aria-hidden="true" viewBox="0 0 20 20" width="16" height="16"><circle cx="8.5" cy="8.5" r="5.5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M13 13l4.5 4.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+          <label class="visually-hidden" for="nav-search-input" data-i18n="navSearchLabel">Search the archive</label>
+          <input id="nav-search-input" name="q" type="search" autocomplete="off" data-i18n-placeholder="navSearchPlaceholder" placeholder="Search notifications, cases, communities, documents">
+          <kbd aria-hidden="true">/</kbd>
+        </form>
+      </div>
     </div>
   </header>
 
