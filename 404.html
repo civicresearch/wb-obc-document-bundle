@@ -25,8 +25,23 @@
   <script>
     window.OBC_ASSET_BASE = "";
     // Clean URLs: show /timeline rather than /timeline.html in the address bar.
+    // Language: each page has an English and a Bengali address. ?lang=bn (used
+    // by older links) or a saved choice of Bengali opens the Bengali page.
     (function () {
       try {
+        var root = document.documentElement, alt = root.dataset.altHref;
+        if (alt && /^https?:$/.test(location.protocol)) {
+          var params = new URLSearchParams(location.search), asked = params.get('lang'), saved = null;
+          try { saved = localStorage.getItem('wb-obc-lang'); } catch (e) {}
+          if (asked === 'en' || asked === 'bn') { try { localStorage.setItem('wb-obc-lang', asked); } catch (e) {} }
+          var want = asked === 'en' || asked === 'bn' ? asked : (root.lang === 'en' && saved === 'bn' ? 'bn' : root.lang);
+          if (want !== root.lang) {
+            params.delete('lang');
+            var q = params.toString();
+            location.replace(alt + (q ? '?' + q : '') + location.hash);
+            return;
+          }
+        }
         if (/^https?:$/.test(location.protocol) && /\.html$/.test(location.pathname) && !/standalone|admin/.test(location.pathname)) {
           history.replaceState(history.state, '', location.pathname.replace(/(^|\/)index\.html$/, '$1').replace(/\.html$/, '') + location.search + location.hash);
         }
@@ -205,7 +220,7 @@
     </div>
   </footer>
 
-<script src="js/archive-loader.js?v=20261106-notes" defer></script>
+<script src="js/archive-loader.js?v=20261106-bn" defer></script>
 
 </body>
 </html>

@@ -7,13 +7,22 @@ const sitemap = read('sitemap.xml');
 const translations = JSON.parse(read('data/i18n.json'));
 assert.ok(translations.en && translations.bn, 'Both language dictionaries must parse');
 const urls = [...sitemap.matchAll(/<loc>(.*?)<\/loc>/g)].map(m => m[1]);
-assert.equal(urls.length, 17, 'All public pages must be discoverable');
+assert.equal(urls.length, 34, 'All public pages must be discoverable in English and Bengali');
 const titles = new Set(), descriptions = new Set();
 for (const url of urls) {
   const slug = new URL(url).pathname.slice(1);
   assert.ok(!slug.endsWith('.html'), `${url}: sitemap uses clean URLs`);
-  const file = slug ? `${slug}.html` : 'index.html';
+  const file = !slug || slug.endsWith('/') ? `${slug}index.html` : `${slug}.html`;
+  const bengali = slug.startsWith('bn/');
   const html = read(file), head = html.split('</head>')[0];
+  assert.ok(html.includes(`<html lang="${bengali ? 'bn' : 'en'}"`), `${file}: page language`);
+  if (bengali) {
+    const main = html.slice(html.indexOf('<main'), html.indexOf('</main>')).replace(/<[^>]+>/g, ' ');
+    const bnChars = (main.match(/[\u0980-\u09FF]/g) || []).length;
+    assert.ok(bnChars > 200, `${file}: Bengali text is in the page itself (${bnChars} Bengali letters)`);
+    assert.ok(/[\u0980-\u09FF]/.test(head.match(/<title[^>]*>(.*?)<\/title>/)[1]), `${file}: Bengali title`);
+  }
+  for (const lang of ['en', 'bn']) assert.ok(head.includes(`hreflang="${lang}"`), `${file}: hreflang ${lang}`);
   assert.equal((html.match(/<h1\b/g) || []).length, 1, `${file}: one main heading`);
   assert.equal((head.match(/rel="canonical"/g) || []).length, 1, `${file}: one canonical`);
   assert.ok(head.includes(`rel="canonical" href="${url}"`), `${file}: canonical matches sitemap`);
@@ -36,7 +45,7 @@ for (const url of urls) {
   for (const match of html.matchAll(/(?:src|href)="([^"#?]+)(?:[?#][^"]*)?"/g)) {
     const target = match[1];
     if (/^(?:[a-z]+:|\/\/)/i.test(target)) continue;
-    const local = path.resolve(root, target);
+    const local = target.startsWith("/") ? path.join(root, target) : path.resolve(root, path.dirname(file), target);
     assert.ok(fs.existsSync(local) || fs.existsSync(`${local}.html`), `${file}: missing local page or asset ${target}`);
   }
 }

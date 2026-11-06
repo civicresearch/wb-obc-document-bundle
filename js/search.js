@@ -7,7 +7,13 @@
   const BASE = window.OBC_ASSET_BASE || '';
   // Results link to clean page addresses ("litigation#case-…"). The standalone
   // edition has every section in one file, so it keeps only the #anchor.
-  const resultHref = u => document.body.dataset.page ? BASE + u : u.replace(/^[a-z-]+(?=#)/, '');
+  // Page links stay relative, so a Bengali page leads to other Bengali pages;
+  // files (PDFs) use BASE.
+  const resultHref = u => {
+    const pageLink = /^[a-z-]+#/.test(u);
+    if (!document.body.dataset.page) return pageLink ? u.replace(/^[a-z-]+/, '') : u;
+    return pageLink ? u : BASE + u;
+  };
   const STOP = new Set(`a an and are as at be by for from has have in is it its of on or that the this to was were will with
 which who whom whose not no but if into than then there these those their they them he she his her we our you your
 shall may any all such other also been being under over per upon above below after before between same each only

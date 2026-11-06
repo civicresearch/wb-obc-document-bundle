@@ -36,7 +36,9 @@ const config = {
 // Clean URLs: GitHub Pages serves timeline.html at /timeline, so links,
 // canonicals and the sitemap use the address without the extension.
 function slugFor(file) { return file === 'index.html' ? '' : file.replace(/\.html$/, ''); }
-function urlFor(page) { return `${origin}/${slugFor(page.file)}`; }
+function urlFor(page, lang = 'en') { return `${origin}/${lang === 'bn' ? 'bn/' : ''}${slugFor(page.file)}`; }
+// Root-relative address of a page, used by the language switch.
+function pathFor(page, lang = 'en') { return `/${lang === 'bn' ? 'bn/' : ''}${slugFor(page.file)}`; }
 const PAGE_FILE_PATTERN = /^(index|timeline|litigation|case-map|projects|case-orders|media|obc-list|documents|evidence|record-guide|inventory|obc-basics|methods|reports|about|contribute)\.html$/;
 // Rewrites links to public pages ("timeline.html#x", "index.html") to their
 // clean form ("timeline#x", "./"), including links inside data-en/data-bn
@@ -63,30 +65,32 @@ function seoFor(tab) {
 }
 const REVIEWED = read('data/case_files.json').reviewed;
 const PAGE_TYPES = { about: 'AboutPage', contribute: 'ContactPage', cases: 'CollectionPage', media: 'CollectionPage', documents: 'CollectionPage', 'obc-list': 'CollectionPage', inventory: 'CollectionPage', timeline: 'CollectionPage', projects: 'CollectionPage', reports: 'CollectionPage', evidence: 'CollectionPage' };
-function structuredData(page, url, description) {
+function structuredData(page, url, description, lang = 'en') {
+  const bn = lang === 'bn', name = bn ? seoFor(page.tab).title_bn.split(' | ')[0] : page.title, home = `${origin}/${bn ? 'bn/' : ''}`;
   const org = {'@type':'Organization','@id':`${origin}/#organization`,name:'Civic Research Group',url:'https://civicresearch.in',logo:`${origin}/assets/crg-on-light.png`,email:'civicresearchgroup@gmail.com',sameAs:SOCIAL.map(s => s.url)};
   const graph = [
     org,
     {'@type':'WebSite','@id':`${origin}/#website`,url:`${origin}/`,name:'WB OBC Archive',alternateName:'পশ্চিমবঙ্গ ওবিসি আর্কাইভ',inLanguage:['en','bn'],publisher:{'@id':`${origin}/#organization`},potentialAction:{'@type':'SearchAction',target:`${origin}/?q={search_term_string}`,'query-input':'required name=search_term_string'}},
-    {'@type':PAGE_TYPES[page.tab] || 'WebPage','@id':`${url}#webpage`,url,name:page.title,headline:page.title,description,inLanguage:'en',dateModified:REVIEWED,isPartOf:{'@id':`${origin}/#website`},publisher:{'@id':`${origin}/#organization`},about:{'@type':'Thing',name:'Other Backward Classes reservation in West Bengal'},...(page.tab !== 'home' ? {breadcrumb:{'@id':`${url}#breadcrumb`}} : {}),primaryImageOfPage:{'@type':'ImageObject',url:`${origin}/assets/og/${page.tab}.png`,width:1200,height:630}}
+    {'@type':PAGE_TYPES[page.tab] || 'WebPage','@id':`${url}#webpage`,url,name,headline:name,description,inLanguage:lang,dateModified:REVIEWED,isPartOf:{'@id':`${origin}/#website`},publisher:{'@id':`${origin}/#organization`},about:{'@type':'Thing',name:'Other Backward Classes reservation in West Bengal'},...(page.tab !== 'home' ? {breadcrumb:{'@id':`${url}#breadcrumb`}} : {}),primaryImageOfPage:{'@type':'ImageObject',url:`${origin}/assets/og/${bn ? 'bn/' : ''}${page.tab}.png`,width:1200,height:630}}
   ];
-  if (page.tab !== 'home') graph.push({'@type':'BreadcrumbList','@id':`${url}#breadcrumb`,itemListElement:[{'@type':'ListItem',position:1,name:'Home',item:`${origin}/`},{'@type':'ListItem',position:2,name:page.title,item:url}]});
+  if (page.tab !== 'home') graph.push({'@type':'BreadcrumbList','@id':`${url}#breadcrumb`,itemListElement:[{'@type':'ListItem',position:1,name:bn ? 'হোম' : 'Home',item:home},{'@type':'ListItem',position:2,name,item:url}]});
   if (page.tab === 'home') graph.push({'@type':'Dataset','@id':`${origin}/#dataset`,name:'West Bengal OBC reservation records, 1993–2026',description:'Notifications, OBC class lists, court orders, public-hearing notices and source PDFs on Other Backward Classes reservation in West Bengal, with extracted text and provenance notes.',url:`${origin}/`,creator:{'@id':`${origin}/#organization`},inLanguage:['en','bn'],spatialCoverage:'West Bengal, India',temporalCoverage:'1993/2026',dateModified:REVIEWED,isAccessibleForFree:true,keywords:['OBC','Other Backward Classes','West Bengal','reservation','Calcutta High Court','Supreme Court of India']});
   if (page.tab === 'cases') graph.push({'@type':'ItemList','@id':`${url}#cases`,name:'West Bengal OBC court proceedings',itemListElement:read('data/case_files.json').cases.map((c,i)=>({'@type':'ListItem',position:i+1,url:`${url}#${c.id}`,name:c.title}))});
   if (page.tab === 'media') graph.push({'@type':'ItemList','@id':`${url}#coverage`,name:'Media coverage of West Bengal OBC reservation',itemListElement:read('data/media_coverage.json').items.slice().sort((a,b)=>b.date.localeCompare(a.date)).map((m,i)=>({'@type':'ListItem',position:i+1,item:{'@type':'NewsArticle',headline:m.headline.slice(0,110),url:m.url,datePublished:m.date,publisher:{'@type':'Organization',name:m.outlet.replace(/\s*\(.*\)$/,'')}}}))});
   return JSON.stringify({'@context':'https://schema.org','@graph':graph}).replace(/</g,'\\u003c');
 }
-function metadata(page) {
-  const seo = seoFor(page.tab);
-  const url = urlFor(page), description = seo.description;
-  const title = seo.title;
-  const image = `${origin}/assets/og/${page.tab}.png`;
-  const alt = `${page.title}, WB OBC Archive by Civic Research Group. ${seo.facts.join(', ')}.`;
-  const bnUrl = `${url}${url.includes('?') ? '&' : '?'}lang=bn`;
+function metadata(page, lang = 'en') {
+  const seo = seoFor(page.tab), bn = lang === 'bn';
+  const enUrl = urlFor(page), bnUrl = urlFor(page, 'bn'), url = bn ? bnUrl : enUrl;
+  const description = bn ? seo.description_bn : seo.description;
+  const title = bn ? seo.title_bn : seo.title;
+  const image = `${origin}/assets/og/${bn ? 'bn/' : ''}${page.tab}.png`;
+  const alt = bn ? `${seo.title_bn.split(' | ')[0]}, সিভিক রিসার্চ গ্রুপের পশ্চিমবঙ্গ ওবিসি আর্কাইভ। ${seo.facts_bn.join(', ')}।`
+    : `${page.title}, WB OBC Archive by Civic Research Group. ${seo.facts.join(', ')}.`;
   return `<link rel="canonical" href="${url}">
-  <link rel="alternate" hreflang="en" href="${url}">
+  <link rel="alternate" hreflang="en" href="${enUrl}">
   <link rel="alternate" hreflang="bn" href="${bnUrl}">
-  <link rel="alternate" hreflang="x-default" href="${url}">
+  <link rel="alternate" hreflang="x-default" href="${enUrl}">
   <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
   <meta name="author" content="Civic Research Group">
   <meta name="publisher" content="Civic Research Group">
@@ -97,9 +101,9 @@ function metadata(page) {
   <link rel="author" href="https://civicresearch.in/">
   <link rel="sitemap" type="application/xml" href="sitemap.xml">
   <meta property="og:type" content="website">
-  <meta property="og:site_name" content="WB OBC Archive">
-  <meta property="og:locale" content="en_IN">
-  <meta property="og:locale:alternate" content="bn_IN">
+  <meta property="og:site_name" content="${bn ? 'পশ্চিমবঙ্গ ওবিসি আর্কাইভ' : 'WB OBC Archive'}">
+  <meta property="og:locale" content="${bn ? 'bn_IN' : 'en_IN'}">
+  <meta property="og:locale:alternate" content="${bn ? 'en_IN' : 'bn_IN'}">
   <meta property="og:title" content="${escape(title)}">
   <meta property="og:description" content="${escape(description)}">
   <meta property="og:url" content="${url}">
@@ -115,7 +119,7 @@ function metadata(page) {
   <meta name="twitter:description" content="${escape(description)}">
   <meta name="twitter:image" content="${image}">
   <meta name="twitter:image:alt" content="${escape(alt)}">
-  <script type="application/ld+json">${structuredData(page, url, description)}</script>`;
+  <script type="application/ld+json">${structuredData(page, url, description, lang)}</script>`;
 }
 function cell(value, label) { return `<td data-label="${escape(label)}">${value}</td>`; }
 function pdfLink(href, label = 'Open PDF') { return href ? `<a href="${escape(href)}" target="_blank" rel="noreferrer">${escape(label)}</a>` : ''; }
@@ -351,6 +355,7 @@ function publish(html, page) {
   html = html.replace(/<title>[^<]*<\/title>/, `<title data-bn="${escape(seo.title_bn)}">${escape(seo.title)}</title>`);
   html = html.replace(/<meta name="description"[^>]*>/,`<meta name="description" content="${escape(seo.description)}" data-bn="${escape(seo.description_bn)}">`);
   html = html.replace('</head>', () => `${metadata(page)}\n</head>`);
+  html = html.replace(/<html lang="en"/, `<html lang="en" data-alt-href="${pathFor(page, 'bn')}"`);
   for (const [id,key] of [['hero-title',titleKey],['hero-sub',subKey],['hero-eyebrow',eyebrowKey]]) {
     if (!key) continue;
     html = html.replace(new RegExp(`(<(h1|p)[^>]*id="${id}"[^>]*>)[\\s\\S]*?(</\\2>)`), (_,open,tag,close) => open.replace(/data-i18n="[^"]*"/,`data-i18n="${key}"`) + (translations[key]||page.title) + close);
@@ -374,8 +379,34 @@ function publish(html, page) {
 }
 function writeDiscovery(pages) {
   const priority = { home: '1.0', cases: '0.9', 'obc-list': '0.9', timeline: '0.9', documents: '0.9', 'case-orders': '0.8', 'case-map': '0.8', media: '0.8', evidence: '0.7' };
-  const entry = p => { const url = urlFor(p); return `  <url>\n    <loc>${url}</loc>\n    <lastmod>${REVIEWED}</lastmod>\n    <changefreq>${['home','cases','case-orders','case-map','media','timeline'].includes(p.tab) ? 'weekly' : 'monthly'}</changefreq>\n    <priority>${priority[p.tab] || '0.6'}</priority>\n    <xhtml:link rel="alternate" hreflang="en" href="${url}"/>\n    <xhtml:link rel="alternate" hreflang="bn" href="${url}?lang=bn"/>\n    <xhtml:link rel="alternate" hreflang="x-default" href="${url}"/>\n    <image:image><image:loc>${origin}/assets/og/${p.tab}.png</image:loc></image:image>\n  </url>`; };
-  fs.writeFileSync(path.join(root,'sitemap.xml'),`<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">\n${pages.map(entry).join('\n')}\n</urlset>\n`);
+  const entry = (p, lang) => { const url = urlFor(p, lang); return `  <url>\n    <loc>${url}</loc>\n    <lastmod>${REVIEWED}</lastmod>\n    <changefreq>${['home','cases','case-orders','case-map','media','timeline'].includes(p.tab) ? 'weekly' : 'monthly'}</changefreq>\n    <priority>${priority[p.tab] || '0.6'}</priority>\n    <xhtml:link rel="alternate" hreflang="en" href="${urlFor(p)}"/>\n    <xhtml:link rel="alternate" hreflang="bn" href="${urlFor(p, 'bn')}"/>\n    <xhtml:link rel="alternate" hreflang="x-default" href="${urlFor(p)}"/>\n    <image:image><image:loc>${origin}/assets/og/${lang === 'bn' ? 'bn/' : ''}${p.tab}.png</image:loc></image:image>\n  </url>`; };
+  fs.writeFileSync(path.join(root,'sitemap.xml'),`<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">\n${pages.flatMap(p => [entry(p, 'en'), entry(p, 'bn')]).join('\n')}\n</urlset>\n`);
   fs.writeFileSync(path.join(root,'robots.txt'),`User-agent: *\nAllow: /\n\nSitemap: ${origin}/sitemap.xml\n`);
 }
-module.exports = { publish, writeDiscovery, renderCaseFiles, renderMedia, renderCaseMap, renderCaseOrders, config, cleanUrls, seoFor, urlFor, slugFor, SOCIAL };
+const PAGE_SLUGS = new Set(['', 'timeline', 'litigation', 'case-map', 'projects', 'case-orders', 'media', 'obc-list', 'documents', 'evidence', 'record-guide', 'inventory', 'obc-basics', 'methods', 'reports', 'about', 'contribute']);
+// Turns a finished English page into its Bengali twin at /bn/<page>. Page
+// links stay relative, so they lead to other Bengali pages; links to files
+// (PDFs, styles, scripts, images) step up one folder. The visible text is
+// translated afterwards by scripts/build-bengali.js, and js/i18n.js covers
+// anything rendered in the browser.
+function bengaliVariant(html, page) {
+  const seo = seoFor(page.tab);
+  const start = html.indexOf('<link rel="canonical"');
+  const ldEnd = html.indexOf('</script>', html.indexOf('<script type="application/ld+json">', start)) + '</script>'.length;
+  if (start < 0 || ldEnd < start) throw new Error(`${page.file}: metadata block not found`);
+  html = html.slice(0, start) + metadata(page, 'bn') + html.slice(ldEnd);
+  html = html.replace(/<html lang="en" data-alt-href="[^"]*"/, `<html lang="bn" data-alt-href="${pathFor(page)}"`)
+    .replace(/<title data-bn="([^"]*)">[^<]*<\/title>/, (_, bn) => `<title data-bn="${bn}">${bn}</title>`)
+    .replace(/<meta name="description" content="[^"]*" data-bn="([^"]*)">/, (_, bn) => `<meta name="description" content="${bn}" data-bn="${bn}">`)
+    .replace('window.OBC_ASSET_BASE = "";', 'window.OBC_ASSET_BASE = "../";')
+    .replace(/<body([^>]*)>/, (m, attrs) => /class="/.test(attrs) ? m.replace('class="', 'class="lang-bn ') : `<body${attrs} class="lang-bn">`)
+    .replace(/class="lang-btn active"([^>]*)aria-pressed="true"/, 'class="lang-btn"$1aria-pressed="false"')
+    .replace(/class="lang-btn"([^>]*data-lang="bn"[^>]*)aria-pressed="false"/, 'class="lang-btn active"$1aria-pressed="true"');
+  return html.replace(/(\s(?:href|src|action|data-light-src|data-dark-src|poster)=")([^"]*)"/g, (full, open, value) => {
+    if (!value || /^(?:#|\/|[a-z][a-z0-9+.-]*:|\.\.\/)/i.test(value)) return full;
+    const page = /^(?:\.\/)?([a-z-]*)(?:[#?].*)?$/.exec(value);
+    if (page && PAGE_SLUGS.has(page[1])) return full;
+    return `${open}../${value}"`;
+  });
+}
+module.exports = { bengaliVariant, pathFor, publish, writeDiscovery, renderCaseFiles, renderMedia, renderCaseMap, renderCaseOrders, config, cleanUrls, seoFor, urlFor, slugFor, SOCIAL };

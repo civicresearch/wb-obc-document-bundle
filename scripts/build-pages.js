@@ -5,7 +5,8 @@ const path = require('path');
 
 const root = path.resolve(__dirname, '..');
 const templatePath = path.join(root, 'site-src', 'app-template.html');
-const { publish, writeDiscovery, cleanUrls } = require('./site-publishing');
+const { publish, writeDiscovery, cleanUrls, bengaliVariant } = require('./site-publishing');
+fs.mkdirSync(path.join(root, 'bn'), { recursive: true });
 
 const pages = [
   { tab: 'home', file: 'index.html', title: 'WB OBC Reservation Archive' },
@@ -135,7 +136,7 @@ shell = shell.replace(/<link rel="stylesheet" href="css\/crg\.css[^>]*>/, '');
 shell = shell.replace('</head>', '  <link rel="stylesheet" href="css/site.css?v=20261104-records">\n  <link rel="stylesheet" href="css/polish.css?v=20261104-records">\n  <link rel="stylesheet" href="css/crg.css?v=20261106-seo">\n  <link rel="stylesheet" href="css/print.css?v=20261106-print">\n</head>');
 const shellScriptStart = shell.lastIndexOf('\n<script>');
 const shellScriptEnd = shell.indexOf('</script>', shellScriptStart) + '</script>'.length;
-shell = shell.slice(0, shellScriptStart) + '\n<script src="js/archive-loader.js?v=20261106-notes" defer></script>' + shell.slice(shellScriptEnd);
+shell = shell.slice(0, shellScriptStart) + '\n<script src="js/archive-loader.js?v=20261106-bn" defer></script>' + shell.slice(shellScriptEnd);
 
 for (const page of pages) {
   let html = keepOnlyPanel(shell, page.tab);
@@ -149,6 +150,7 @@ for (const page of pages) {
   html = cleanUrls(html);
   html = html.replace(/^[ \t]+$/gm, '').replace(/\n{3,}/g, '\n\n');
   fs.writeFileSync(path.join(root, page.file), html);
+  fs.writeFileSync(path.join(root, 'bn', page.file), bengaliVariant(html, page));
 }
 
 const contributionPage = { tab: 'contribute', file: 'contribute.html', title: 'Contribute a Source or Correction' };
@@ -164,7 +166,9 @@ for (const tag of ['header', 'footer']) {
   contribution = contribution.replace(pattern, () => shared);
 }
 contribution = contribution.replace(/<title>[^<]*<\/title>/, `<title>${contributionPage.title} · Civic Research Group</title>`);
-fs.writeFileSync(path.join(root, contributionPage.file), cleanUrls(publish(contribution, contributionPage)));
+contribution = cleanUrls(publish(contribution, contributionPage));
+fs.writeFileSync(path.join(root, contributionPage.file), contribution);
+fs.writeFileSync(path.join(root, 'bn', contributionPage.file), bengaliVariant(contribution, contributionPage));
 writeDiscovery([...pages, contributionPage]);
 
 // 404 page. GitHub Pages serves it for any unknown address, so asset paths
@@ -194,4 +198,4 @@ writeDiscovery([...pages, contributionPage]);
   notFound = cleanUrls(notFound).replace(/^[ \t]+$/gm, '').replace(/\n{3,}/g, '\n\n');
   fs.writeFileSync(path.join(root, '404.html'), notFound);
 }
-console.log(`Built ${pages.length + 1} public pages, a 404 page, shared assets, sitemap.xml and robots.txt.`);
+console.log(`Built ${pages.length + 1} public pages in English and Bengali (bn/), a 404 page, shared assets, sitemap.xml and robots.txt.`);
