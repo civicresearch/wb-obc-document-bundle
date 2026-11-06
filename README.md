@@ -1,124 +1,139 @@
-# WB OBC Document Bundle
+# West Bengal OBC Archive (OBCWB)
 
-This repository hosts a multi-page static research site and its source files. Open
-`index.html` in a development server or publish the repository through GitHub Pages.
+**A public, bilingual archive of the documents behind Other Backward Classes (OBC) reservation in West Bengal, from 1993 to 2026.**
 
-Research refreshed on **4 November 2026**: six later court records, the July
-amendment Acts and their commencement notices, bilingual litigation summaries,
-and corrected record counters. See [the dated research note](RESEARCH_UPDATE_2026-11-04.md)
-for source links, scope and follow-up gaps. The 23 November Supreme Court listing
-is a future direction in the 1 October order, not a completed hearing.
+Live site: **<https://obcwb.civicresearch.in>** · বাংলা: <https://obcwb.civicresearch.in/?lang=bn>
 
-## Search, exports and sharing (November 2026)
+A research initiative of [Civic Research Group (CRG)](https://civicresearch.in).
 
-- `js/search.js` runs the site-wide search in the navigation bar (press `/`) and on the home page. It combines keyword ranking (BM25) with meaning-based ranking from latent semantic vectors, over every record, the news list and the text inside the PDFs. The index in `data/search/` is built by `npm run build:search` (`scripts/build-search.py`, needs numpy and `pdftotext`); it loads only when someone searches.
-- `js/export.js` adds a download icon next to the print icon on data pages. It exports the records currently shown as CSV, Excel (.xlsx) or a branded PDF report.
-- `data/case_files.json` groups court records into proceedings for the case cards on `litigation.html`; `data/media_coverage.json` feeds `media.html`.
-- `assets/og/` holds the 1200×630 sharing images for every page in English and Bengali (`npm run build:og`).
-- `npm run build` rebuilds pages, the standalone edition and the search index. Rebuild the sharing images when page titles change.
+---
 
-## Contents
+## What this archive is
 
-- `obc_pdfs/` - published PDF source documents used by the timeline, corpus, reports, hearings, and inventory sections.
-- `case_pdfs/` - published litigation records; see its README for provenance and verification notes.
-- `case_manifest.json` - structured litigation-record index.
-- `case_events.json` - litigation timeline entries rendered by `litigation.html`.
-- `related_sources_catalog.json` - triage of additional OBC-related material, including large court bundles deliberately not committed.
-- `obc_documents.json` - extracted text and structured summaries for the document corpus.
-- `obc_classes.json` - current 66-class list metadata plus historical/withdrawn class status rows.
-- `public_hearings.json` - displayed Jana Shunani/public-hearing dates, times, communities, and archived notice PDFs.
-- `supplemental_documents.json` - supplemental BCW/framework document records; rows marked `show_on_timeline` are also rendered into the timeline.
-- `timeline_events.json` - notification/policy timeline entries rendered by `timeline.html`.
-- `obc_pdf_manifest.json` - PDF manifest for renamed source files.
-- `obc_hearing_pdf_manifest.json` - hearing/public notice PDF manifest.
-- `evidence_file_inventory.csv` - evidence file inventory.
-- `contribute.html` - public source/correction report page; it prepares a reviewable GitHub issue without collecting data itself.
-- `document_inventory.json` - display rows for `inventory.html`.
-- `site-src/app-template.html` - shared source template for the page header, footer, panels, styles, and application logic.
-- `scripts/build-pages.js` - builds the twelve public HTML pages plus the shared `css/site.css` and `js/site.js` assets.
-- `index.html?lang=bn` - Bengali mode for the research homepage; the language choice persists across pages.
-- `SURVEY_SETUP.md` - privacy-aware guidance for adding a Google Forms survey alongside the public GitHub reporting route.
-- `QUICK_REFERENCE.txt` and `README_WB_OBC_SITE.md` - supporting archive notes.
+West Bengal's OBC list has been made, expanded, split into categories, struck down by the Calcutta High Court, rebuilt and withdrawn over three decades. The documents that explain how this happened are scattered across department websites, gazettes, court portals and newspaper notices. Some of them have disappeared.
 
-## Important PRD Survey Addition
+This archive brings them together in one place, keeps a copy of each original, and explains each one in plain English and Bengali. It is meant for:
 
-The bundle includes:
+- **the public:** to find out which communities are on the list today and what changed;
+- **lawyers:** to trace an order back to the notification, Act or judgment it relies on;
+- **researchers and journalists:** to cite primary sources with dates, reference numbers and page-level text.
 
-`obc_pdfs/2012-04-25_2572-PN-O-I-1S-5-2012_first_panchayat_survey_guideline.pdf`
+### What's inside
 
-This is the first statewide Panchayat & Rural Development Department guideline/order for determining Backward Class population for Panchayat election reservation. It supports the later 2012 survey trail documents already in the bundle.
+| | |
+|---|---|
+| **118 source PDFs** | 76 government notifications, orders, Acts, guidelines, hearing notices and reports (`obc_pdfs/`) and 42 court records (`case_pdfs/`). Each file's SHA-256 checksum is in `data/pdf_checksums.json`. |
+| **Notification timeline** | 75 dated events, from the 1993 Commission Act to the 2026 Acts, each linked to its source file. |
+| **Litigation tracker** | 13 proceedings in the Calcutta High Court and Supreme Court, with 43 dated court events, case cards and a map of the court orders. |
+| **OBC list** | The current 66-class list (Notification 945-BCW, 18 May 2026) and the status of every historical and withdrawn class. |
+| **Document notes** | Plain-language notes for all 56 listed documents in English and Bengali, checked against each PDF on 6 November 2026. |
+| **Public hearings** | The 2025 Commission hearing notices with dates, venues and communities. |
+| **Search** | Site-wide search over every record and the full text of the PDFs. |
+| **Exports** | Any table can be downloaded as CSV, Excel or a PDF report. |
 
-## Intended Website Use
+Every page works in English and Bengali, on phones, and offline once loaded.
 
-The site uses relative links, so downloaded copies work without a network connection. When served by GitHub Pages, the same links continue to work:
+---
 
-```text
-https://raw.githubusercontent.com/civicresearch/wb-obc-document-bundle/main/obc_pdfs/<file>.pdf
+## Disclaimer
+
+**This archive is a research aid, not legal advice.**
+
+- **Not an official source.** Civic Research Group is an independent, volunteer research group. We are not connected to the Government of West Bengal, the Backward Classes Welfare Department, the West Bengal Commission for Backward Classes, any court or any political party. Nothing here is an official or certified copy.
+- **Check the original before you rely on it.** We collect documents from public sources and check them carefully, but copies may be incomplete, scanned text may contain errors, and later orders may change what an earlier document means. Before relying on any document, check it against the official gazette, the issuing department or the certified court record.
+- **Court records are mostly unofficial.** Many court records here are prints of public court-text mirrors such as Indian Kanoon, not certified copies. Each record says where it came from. Case status changes; confirm the current position with the court before acting on it.
+- **Our notes and translations are summaries.** The plain-language notes, timeline entries and Bengali translations are our own work, written to help readers. Where a note and the original document differ, the original document is correct.
+- **No view on any community's claim.** Including a community, document or argument in this archive does not mean we support or oppose its inclusion in, or removal from, any list.
+- **Rights in the source documents.** Government notifications, Acts and court orders belong to their issuing authorities and are reproduced as public records for research and public information. News reports are linked, not copied.
+- **Corrections are welcome.** If you find a mistake or a missing document, please tell us through the [Contribute page](https://obcwb.civicresearch.in/contribute.html) or by email at <civicresearchgroup@gmail.com>.
+
+---
+
+## How to cite this work
+
+If you use this archive in research, reporting, a legal filing or teaching, please cite it. GitHub's **"Cite this repository"** button (from `CITATION.cff`) gives APA and BibTeX formats.
+
+**Suggested citation**
+
+> Civic Research Group. (2026). *West Bengal OBC Archive: Documents, notifications and litigation on Other Backward Classes reservation in West Bengal, 1993–2026* [Data set and website]. https://obcwb.civicresearch.in
+
+**When citing a single document**, cite the original document first and the archive as the place you found it, for example:
+
+> Government of West Bengal, Backward Classes Welfare Department. Notification No. 945-BCW/MR-23/2026, 18 May 2026. Retrieved from the West Bengal OBC Archive, Civic Research Group, https://obcwb.civicresearch.in/documents.html
+
+**BibTeX**
+
+```bibtex
+@misc{crg_obcwb_2026,
+  author       = {{Civic Research Group}},
+  title        = {West Bengal OBC Archive: Documents, notifications and litigation on
+                  Other Backward Classes reservation in West Bengal, 1993--2026},
+  year         = {2026},
+  howpublished = {\url{https://obcwb.civicresearch.in}},
+  note         = {Source repository: https://github.com/civicresearch/wb-obc-document-bundle.
+                  Accessed: <date>}
+}
 ```
 
-For GitHub Pages-style links, use:
+Please give the date you accessed the archive, because records are added and corrected over time.
 
-```text
-https://civicresearch.github.io/wb-obc-document-bundle/obc_pdfs/<file>.pdf
-```
+### Other CRG projects
+
+- [SIR Adjudication & Tribunal Appeals dashboard](https://appeal.civicresearch.in)
+- [RTI Karo](https://rti.votercards.in)
+- All projects: <https://civicresearch.in> and the [Projects page](https://obcwb.civicresearch.in/projects.html)
 
 Contact: <civicresearchgroup@gmail.com>
 
-Because the main timeline, litigation tracker, and document corpus now load JSON files, serve the folder over HTTP while editing:
+---
+
+## For maintainers
+
+### Repository layout
+
+- `site-src/app-template.html`: the shared template for every page (header, footer, panels and application code). `site-src/contribute-template.html` is the Contribute page.
+- `*.html` at the root: **generated** pages. Edit the template and data, then rebuild; don't edit these files by hand.
+- `obc_pdfs/`, `case_pdfs/`: the archived source PDFs.
+- Root-level JSON (`obc_documents.json`, `supplemental_documents.json`, `timeline_events.json`, `case_events.json`, `case_manifest.json`, `obc_classes.json`, `public_hearings.json`, `document_inventory.json` and others): the original records. They are **frozen** against checkpoint `42d21a7`: new records may be appended, but existing records may not change. The only exceptions are field fixes listed in `data/source_corrections.json`, each with its old value, reason and source PDF.
+- `data/`:
+  - `i18n.json`: English and Bengali text;
+  - `document_notes.json`: the reviewed reader-facing notes;
+  - `case_files.json`, `case_map.json`, `case_orders_map.json`: litigation;
+  - `media_coverage.json`: news coverage;
+  - `pdf_checksums.json`: file checksums;
+  - `search/`: the search index.
+- `css/crg.css`: CRG design. `js/navigation.js`: menus, language and theme, and jumping to search targets. `js/search.js`: search. `js/export.js`: downloads.
+- `scripts/`: build and validation scripts.
+
+### Build and check
 
 ```sh
-npm run serve
-```
-
-Run the data checks before publishing:
-
-```sh
+npm run serve           # local server at http://localhost:8123
+npm run build           # pages + standalone copy + search index
+npm run build:og        # sharing images (when page titles change)
 npm run validate:data
 npm run validate:site
+python3 scripts/validate-preservation.py
 ```
 
-Build all public pages and the standalone fallback after editing the shared template:
+The search index needs Python with numpy and `pdftotext`. After adding PDFs, run `python3 scripts/build-checksums.py` and update the record count. Bump the cache name in `sw.js` when assets change.
 
-```sh
-npm run build
-```
+To add a page, register it in:
 
-Use `npm run build:pages` when only the multi-page site needs rebuilding.
+- `scripts/build-pages.js`;
+- the template's page map and navigation;
+- `data/i18n.json`;
+- `scripts/site-publishing.js`;
+- `scripts/build-og.js`;
+- `scripts/validate-site.js`;
+- `sw.js`.
 
-To create a double-clickable fallback copy with the JSON embedded into the HTML:
+### Publishing
 
-```sh
-npm run build:standalone
-```
+The site is served by GitHub Pages from `main` (root folder) at the custom domain in `CNAME`. `scripts/site-publishing.js` writes page metadata, structured data, `sitemap.xml` and `robots.txt` during the build.
 
-This writes `index-standalone.html`. Edit `site-src/app-template.html`, the shared
-translation/data files, and then run the build; generated page files should not be
-edited independently.
+### Contributions
 
-The contribution form has its own source at `site-src/contribute-template.html`.
-Shared responsive styling lives in `css/polish.css`; `js/navigation.js` handles
-navigation and preferences independently of archive downloads. The page loader
-fetches only the data needed for each section, while built HTML includes the core
-records for search engines and readers without JavaScript.
+`contribute.html` prepares a GitHub issue for review in public; it does not collect data itself. For anonymous feedback, see `SURVEY_SETUP.md`. Don't collect sensitive personal or case material through a public form.
 
-The masthead, typography, and light/dark palette follow the CRG appeal report's
-visual style. Language controls stay visible in the header on mobile. Appearance
-offers Auto (the device setting), Light, and Dark; explicit choices persist across
-pages. Keep these controls in the shared header rather than inside the mobile menu.
-
-`scripts/site-publishing.js` generates unique page metadata, canonical URLs,
-social previews, structured data, `sitemap.xml`, and `robots.txt`. The canonical
-hostname comes from `CNAME`; rebuild after changing it. Run `validate:site` after
-building to check metadata, discoverability, static records, and local asset links.
-
-## GitHub Pages
-
-1. Push the `main` branch to GitHub.
-2. In **Settings → Pages**, choose **Deploy from a branch**, then select `main` and `/(root)`.
-3. Save. GitHub will publish the site at `https://civicresearch.github.io/wb-obc-document-bundle/`.
-
-The repository root contains `index.html`, which GitHub Pages uses automatically. The larger litigation bundles listed in `related_sources_catalog.json` are intentionally not published; add concise primary orders or properly described extracts instead.
-
-## Public reports and surveys
-
-Use `contribute.html` for public source additions, corrections, missing records, and broken-link reports. It opens a prefilled GitHub issue so that the source trail can be reviewed in public. For anonymous or aggregate feedback, the recommended option is a Google Form configured according to `SURVEY_SETUP.md`; do not collect sensitive personal or case material through a public form.
+Earlier research notes: [`RESEARCH_UPDATE_2026-11-04.md`](RESEARCH_UPDATE_2026-11-04.md), `README_WB_OBC_SITE.md`, `QUICK_REFERENCE.txt`.

@@ -1,0 +1,20 @@
+cff-version: 1.2.0
+message: "If you use this archive, please cite it as below. When citing a single document, cite the original document first and this archive as where you found it."
+type: dataset
+title: "West Bengal OBC Archive: Documents, notifications and litigation on Other Backward Classes reservation in West Bengal, 1993–2026"
+authors:
+  - name: "Civic Research Group"
+    website: "https://civicresearch.in"
+    email: "civicresearchgroup@gmail.com"
+url: "https://obcwb.civicresearch.in"
+repository-code: "https://github.com/civicresearch/wb-obc-document-bundle"
+date-released: "2026-11-06"
+abstract: "A public, bilingual (English and Bengali) archive of government notifications, Acts, public-hearing notices, reports and court records on Other Backward Classes reservation in West Bengal, with plain-language notes, a notification timeline, a litigation tracker and full-text search. A research aid, not legal advice."
+keywords:
+  - "Other Backward Classes"
+  - "OBC reservation"
+  - "West Bengal"
+  - "Calcutta High Court"
+  - "Supreme Court of India"
+  - "public records"
+  - "Bengali"
