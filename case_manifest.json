@@ -326,5 +326,104 @@
     "local_file": "case_pdfs/2026-10-31_Calcutta-High-Court_WPA-31572-2026_Mohabul-Islam_order.pdf",
     "pages": 6,
     "sha256": "33239e1eaf509b904de68a7f7347098bc4d4fbfa8e17e8940c19f9035be9b7dc"
+  },
+  {
+    "date": "2024-12-09",
+    "court": "Supreme Court of India",
+    "case_numbers": [
+      "SLP(C) 17751-17755/2024",
+      "Diary 30078/2024",
+      "Diary 31942/2024",
+      "Diary 31944/2024",
+      "SLP(C) 16936/2024",
+      "SLP(C) 18931-18935/2024",
+      "SLP(C) 18926-18930/2024",
+      "Diary 36073/2024",
+      "SLP(C) 20849/2024",
+      "SLP(C) 29017-29021/2024"
+    ],
+    "title": "Supreme Court: OBC appeals listed for 7 January 2025",
+    "record_type": "record of proceedings",
+    "source_type": "court_text_mirror_print",
+    "retrieved_on": "2026-11-06",
+    "verification_note": "A Bench of B.R. Gavai and K.V. Viswanathan JJ. heard the State's appeals against the 22 May 2024 High Court judgment with the connected matters and directed only that they be listed on 7 January 2025 as the first item. It is a listing order; it records no stay, merits finding or interim relief. Local typeset reproduction of the public Indian Kanoon court text; not an official/certified court PDF. Pagination differs from the original.",
+    "source_url": "https://indiankanoon.org/doc/116290599/",
+    "local_file": "case_pdfs/2024-12-09_Supreme-Court_SLP-C-17751-17755-2024_order.pdf",
+    "pages": 4,
+    "sha256": "46997e14ca35d32a7fce689ee0115dc62fbce581a420ff3f95d015a5be47235b"
+  },
+  {
+    "date": "2025-03-18",
+    "court": "Supreme Court of India",
+    "case_numbers": [
+      "SLP(C) 17751-17755/2024",
+      "Diary 30078/2024",
+      "Diary 31942/2024",
+      "Diary 31944/2024",
+      "SLP(C) 16936/2024",
+      "SLP(C) 18931-18935/2024",
+      "SLP(C) 18926-18930/2024",
+      "Diary 36073/2024",
+      "SLP(C) 20849/2024",
+      "SLP(C) 29017-29021/2024"
+    ],
+    "title": "Supreme Court: fresh Backward Classes Commission exercise noted; matters listed in July 2025",
+    "record_type": "record of proceedings",
+    "source_type": "court_text_mirror_print",
+    "retrieved_on": "2026-11-06",
+    "verification_note": "Before B.R. Gavai and Augustine George Masih JJ., the State's counsel said the West Bengal Commission for Backward Classes was examining backward classes afresh and needed about three more months. The Court listed the matters in July 2025 on a non-miscellaneous day and recorded that the exercise is without prejudice to the parties' rights; no merits ruling. Local typeset reproduction of the public Indian Kanoon court text; not an official/certified court PDF. Pagination differs from the original.",
+    "source_url": "https://indiankanoon.org/doc/99233273/",
+    "local_file": "case_pdfs/2025-03-18_Supreme-Court_SLP-C-17751-17755-2024_order.pdf",
+    "pages": 4,
+    "sha256": "bf5434f7caf042189dc054c53137621b6ade4cfae35e33442948d378aee63114"
+  },
+  {
+    "date": "2025-12-24",
+    "court": "Calcutta High Court",
+    "case_numbers": [
+      "WPA 28939/2025"
+    ],
+    "title": "Calcutta High Court: Arijit Bakshi representation on invalid OBC certificates in SIR to be decided",
+    "record_type": "order",
+    "source_type": "court_text_mirror_print",
+    "retrieved_on": "2026-11-06",
+    "verification_note": "Justice Krishna Rao disposed of the writ petition, which sought to stop invalid OBC certificates being accepted as documents in the electoral-roll Special Intensive Revision, by directing the West Bengal Chief Electoral Officer to decide the petitioner's 4 December 2025 representation by a reasoned order within a week. The Court did not rule on the certificates' use or on the SIR itself. Local typeset reproduction of the public Indian Kanoon court text; not an official/certified court PDF. Pagination differs from the original.",
+    "source_url": "https://indiankanoon.org/doc/9403360/",
+    "local_file": "case_pdfs/2025-12-24_Calcutta-High-Court_WPA-28939-2025_Arijit-Bakshi_order.pdf",
+    "pages": 2,
+    "sha256": "7332d30d7505f745df5ef8f870f3443dd72365349c01824f5b7a588875171478"
+  },
+  {
+    "date": "2026-08-14",
+    "court": "Calcutta High Court",
+    "case_numbers": [
+      "WPA 21501/2026"
+    ],
+    "title": "Calcutta High Court: NEET-UG 2026 general-category candidates cannot switch to EWS at counselling",
+    "record_type": "judgment",
+    "source_type": "court_text_mirror_print",
+    "retrieved_on": "2026-11-06",
+    "verification_note": "Justice Amrita Sinha dismissed the petition of eight NEET-UG 2026 candidates who applied as general category and later obtained EWS certificates, holding that they cannot claim EWS reservation at State counselling (neutral citation 2026:CHC-AS:1271). The petitioners' appeal was heard as MAT 1374/2026 on 18 August 2026, which is not archived here. Local typeset reproduction of the public Indian Kanoon court text; not an official/certified court PDF. Pagination differs from the original.",
+    "source_url": "https://indiankanoon.org/doc/93149037/",
+    "local_file": "case_pdfs/2026-08-14_Calcutta-High-Court_WPA-21501-2026_Hasibur-Rahaman-Mondal_judgment.pdf",
+    "pages": 9,
+    "sha256": "88069e44893e904d0d0b93f791aa6d6bcb59e12fbf148e3d4022cb12ce7618f3"
+  },
+  {
+    "date": "2026-08-31",
+    "court": "Calcutta High Court",
+    "case_numbers": [
+      "WPA 23207/2026",
+      "WPA 23209/2026"
+    ],
+    "title": "Calcutta High Court: SLST 2016 OBC-A candidates' writ petitions dismissed",
+    "record_type": "judgment",
+    "source_type": "court_text_mirror_print",
+    "retrieved_on": "2026-11-06",
+    "verification_note": "Justice Aniruddha Roy dismissed both writ petitions (neutral citation 2026:CHC-AS:1414), holding that after the Amal Chandra Das judgment and the termination of the whole SLST 2016 panel the petitioners cannot claim rights as OBC-A candidates, and that the Central School Service Commission's notifications follow the State's reservation policy, which was not challenged. Local typeset reproduction of the public Indian Kanoon court text; not an official/certified court PDF. Pagination differs from the original.",
+    "source_url": "https://indiankanoon.org/doc/54743684/",
+    "local_file": "case_pdfs/2026-08-31_Calcutta-High-Court_WPA-23207-23209-2026_Mehebuba-Khatun_judgment.pdf",
+    "pages": 13,
+    "sha256": "465389155e9eaf84e11c12ff258353c05283eff640e2fb6735eb98450f566a57"
   }
 ]
