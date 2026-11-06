@@ -1,7 +1,14 @@
 const DATA_LOAD_ERRORS = window.OBC_DATA_ERRORS || [];
 const INLINE_JSON_DATA = window.OBC_INLINE_JSON || {};
-const OBC_DOCS = loadJsonSync('obc_documents.json');
-const SUPPLEMENTAL_DOCS = loadJsonSync('supplemental_documents.json');
+// Reviewed reader notes (data/document_notes.json) replace the summary shown for a
+// document without changing the preserved source record.
+const DOC_NOTES = (loadJsonSync('data/document_notes.json', {}) || {}).notes || {};
+const withDocNotes = docs => (Array.isArray(docs) ? docs : []).map(doc => {
+  const note = DOC_NOTES[`${doc.notif_no || ''}|${doc.filename || ''}`];
+  return note ? { ...doc, summary: note.summary, summary_bn: note.summary_bn || doc.summary_bn } : doc;
+});
+const OBC_DOCS = withDocNotes(loadJsonSync('obc_documents.json'));
+const SUPPLEMENTAL_DOCS = withDocNotes(loadJsonSync('supplemental_documents.json'));
 // Private manifests are intentionally excluded from the public build. Keeping
 // Keeping these optional arrays empty avoids expected 404 requests on every page.
 const PRIVATE_DOCS = [];
@@ -752,6 +759,13 @@ const HERO_CONTENT = {
     subKey: 'caseOrders.sub',
     stats: []
   },
+  projects: {
+    eyebrowKey: 'projects.eyebrow',
+    eyebrow: 'Civic Research Group · other projects',
+    titleKey: 'projects.title',
+    subKey: 'projects.sub',
+    stats: []
+  },
   'case-map': {
     eyebrowKey: 'caseMap.eyebrow',
     eyebrow: 'Case map · how the cases connect',
@@ -828,6 +842,7 @@ const PAGE_FILES = {
   cases: 'litigation.html',
   media: 'media.html',
   'case-map': 'case-map.html',
+  projects: 'projects.html',
   'case-orders': 'case-orders.html',
   'obc-list': 'obc-list.html',
   documents: 'documents.html',
@@ -1235,6 +1250,7 @@ function tabForHash(hash) {
   if (id === 'public-hearings' || id === 'missing-records' || id === 'evidence') return 'evidence';
   if (id === 'media' || id.startsWith('media-')) return 'media';
   if (id === 'case-map') return 'case-map';
+  if (id === 'projects') return 'projects';
   if (id === 'case-orders' || /^n-\d{4}-/.test(id) || id === 'root') return 'case-orders';
   if (id.startsWith('casefile-')) return 'cases';
   if (id === 'cases' || id.startsWith('case-') || id === 'employee-protection-note' || id.startsWith('litigation-note-')) return 'cases';
@@ -1314,7 +1330,7 @@ function showTab(tabName, targetHash) {
   if (target && !isTopLevelTab && hash !== '#guide' && hash !== '#query-hub' && hash !== '#home') {
     requestAnimationFrame(() => {
       setTimeout(() => {
-        const headerOffset = document.querySelector('.section-nav')?.offsetHeight || 0;
+        const headerOffset = Math.max(document.querySelector('.navbar')?.offsetHeight || 0, document.querySelector('.section-nav')?.offsetHeight || 0);
         const top = target.getBoundingClientRect().top + window.scrollY - headerOffset - 16;
         window.scrollTo({ top: Math.max(0, top) });
       }, 30);

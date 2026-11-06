@@ -12,6 +12,7 @@ const pages = [
   { tab: 'timeline', file: 'timeline.html', title: 'OBC Notification Timeline' },
   { tab: 'cases', file: 'litigation.html', title: 'OBC Litigation Tracker' },
   { tab: 'case-map', file: 'case-map.html', title: 'Map of Connected OBC Court Cases' },
+  { tab: 'projects', file: 'projects.html', title: 'Projects by Civic Research Group' },
   { tab: 'case-orders', file: 'case-orders.html', title: 'Map of West Bengal OBC Court Orders' },
   { tab: 'media', file: 'media.html', title: 'West Bengal OBC Reservation in the News' },
   { tab: 'obc-list', file: 'obc-list.html', title: 'West Bengal OBC Class Status List' },
@@ -37,6 +38,7 @@ function pageForId(id) {
   if (id === 'evidence' || id === 'public-hearings' || id === 'missing-records') return 'evidence';
   if (id === 'media' || id.startsWith('media-')) return 'media';
   if (id === 'case-map') return 'case-map';
+  if (id === 'projects') return 'projects';
   if (id === 'case-orders' || /^n-\d{4}-/.test(id)) return 'case-orders';
   if (id.startsWith('casefile-')) return 'cases';
   if (id === 'cases' || id.startsWith('case-') || id === 'employee-protection-note' || id.startsWith('litigation-note-')) return 'cases';
@@ -130,10 +132,10 @@ let shell = template.replace(styleMatch[0], '');
 shell = shell.replace(/<link rel="stylesheet" href="css\/polish\.css[^>]*>/, '');
 shell = shell.replace(/<link rel="stylesheet" href="css\/print\.css[^>]*>/, '');
 shell = shell.replace(/<link rel="stylesheet" href="css\/crg\.css[^>]*>/, '');
-shell = shell.replace('</head>', '  <link rel="stylesheet" href="css/site.css?v=20261104-records">\n  <link rel="stylesheet" href="css/polish.css?v=20261104-records">\n  <link rel="stylesheet" href="css/crg.css?v=20261106-audit">\n  <link rel="stylesheet" href="css/print.css?v=20261106-print">\n</head>');
+shell = shell.replace('</head>', '  <link rel="stylesheet" href="css/site.css?v=20261104-records">\n  <link rel="stylesheet" href="css/polish.css?v=20261104-records">\n  <link rel="stylesheet" href="css/crg.css?v=20261106-find">\n  <link rel="stylesheet" href="css/print.css?v=20261106-print">\n</head>');
 const shellScriptStart = shell.lastIndexOf('\n<script>');
 const shellScriptEnd = shell.indexOf('</script>', shellScriptStart) + '</script>'.length;
-shell = shell.slice(0, shellScriptStart) + '\n<script src="js/archive-loader.js?v=20261105-crg" defer></script>' + shell.slice(shellScriptEnd);
+shell = shell.slice(0, shellScriptStart) + '\n<script src="js/archive-loader.js?v=20261106-notes" defer></script>' + shell.slice(shellScriptEnd);
 
 for (const page of pages) {
   let html = keepOnlyPanel(shell, page.tab);

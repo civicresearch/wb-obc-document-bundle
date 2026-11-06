@@ -20,6 +20,7 @@ const config = {
   'case-orders': ['caseOrders.title', 'caseOrders.sub', 'caseOrders.eyebrow', 'Every West Bengal OBC court order since the 2024 Calcutta High Court judgment on one map: Supreme Court and High Court orders, how they connect, and the archived PDFs.'],
   'case-map': ['caseMap.title', 'caseMap.sub', 'caseMap.eyebrow', 'See how the West Bengal OBC court cases connect: the 2024 Calcutta High Court judgment, the Supreme Court appeals, the 2025 and 2026 lists, and candidates’ category claims.'],
   media: ['media.title', 'media.sub', 'media.eyebrow', 'Read news and legal reporting on West Bengal OBC reservation, the 2024 judgment, the 2026 notifications and certificate cases, linked to the court records.'],
+  projects: ['projects.title', 'projects.sub', 'projects.eyebrow', 'Other free public-interest projects by Civic Research Group: the SIR adjudication and Tribunal appeals dashboard, the voter deletion application generator, and the West Bengal OBC Archive.'],
   about: ['aboutTitle', 'aboutSub', 'aboutHeroEyebrow', 'About the independent WB OBC Archive by Civic Research Group: its scope, research methods, source verification and ways to contribute.'],
   contribute: ['contribute.heroTitle', 'contribute.heroSub', 'contribute.heroKicker', 'Contribute a public document, court update or correction to the WB OBC Archive through guided forms and a structured source-report process.']
 };
@@ -269,7 +270,7 @@ function prerender(html, page) {
   html = renderCaseOrders(html);
   if (page.tab === 'cases') {
     const events = read('case_events.json');
-    html = html.replace('<!-- Case events are rendered from case_events.json. -->', events.map(e => `<li id="${escape(e.id)}" class="case-event">${e.html}</li>`).join('\n'));
+    html = html.replace('<!-- Case events are rendered from case_events.json. -->', events.map(e => `<li id="${escape(e.id)}" class="case-event">${translations[`narrative.case.${e.id}`] || e.html}</li>`).join('\n'));
     for (const [id, count] of [['total-cases',events.length],['court-records',events.filter(e => e.record_kind==='order').length],['supporting-records',events.filter(e => e.record_kind!=='order').length]]) {
       html = html.replace(new RegExp(`(id="${id}"[^>]*>)0`), (_, open) => open + count);
     }
@@ -278,11 +279,13 @@ function prerender(html, page) {
     const events = read('timeline_events.json');
     for (const [offset, doc] of read('supplemental_documents.json').filter(d => d.show_on_timeline).entries()) events.push({id:`evt-framework-${offset}`,date:doc.date,type:'legacy',html:`<div class="date">${escape(doc.date)}</div><span class="dot" aria-hidden="true"></span><article class="card"><h2>${escape(doc.notif_no)}</h2><p>${escape(doc.summary)}</p>${pdfLink(doc.local_pdf)}</article>`});
     events.sort((a,b) => (Date.parse(a.date)||0)-(Date.parse(b.date)||0));
-    html = html.replace('<!-- Timeline events are rendered from timeline_events.json. -->',events.map(e => `<li id="${escape(e.id)}" class="event" data-type="${escape(e.type)}" data-date="${escape(e.date)}">${e.html.replace(/(<div class="date">)(\d{4})-(\d{2})-(\d{2})(<\/div>)/, (m,o,y,mo,d,c) => `${o}${Number(d)} ${["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"][mo-1]} ${y}${c}`)}</li>`).join('\n'));
+    html = html.replace('<!-- Timeline events are rendered from timeline_events.json. -->',events.map(e => `<li id="${escape(e.id)}" class="event" data-type="${escape(e.type)}" data-date="${escape(e.date)}">${(translations[`narrative.timeline.${e.id}`] || e.html).replace(/(<div class="date">)(\d{4})-(\d{2})-(\d{2})(<\/div>)/, (m,o,y,mo,d,c) => `${o}${Number(d)} ${["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"][mo-1]} ${y}${c}`)}</li>`).join('\n'));
   }
   if (page.tab === 'documents') {
     const docs = read('obc_documents.json'), keys = new Set(docs.map(d=>`${d.notif_no}|${d.filename}`));
     docs.push(...read('supplemental_documents.json').filter(d=>!keys.has(`${d.notif_no}|${d.filename}`)));
+    const notes = read('data/document_notes.json').notes;
+    for (const d of docs) { const n = notes[`${d.notif_no}|${d.filename}`]; if (n) d.summary = n.summary; }
     html = fillBody(html,'docs-tbody',docs.map((d,i)=>`<tr id="doc-${i}" class="doc-row">${cell(`<code>${escape(d.notif_no)}</code>`,'Document')}${cell(escape(d.date),'Date')}${cell(escape(d.type),'Type')}${cell(escape(d.status),'Status')}${cell(escape(d.summary),'Summary')}${cell(pdfLink(d.local_pdf),'Source')}</tr>`).join(''));
   }
   if (page.tab === 'obc-list') {

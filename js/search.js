@@ -98,6 +98,12 @@ do does did so can could would should must out up down more most very about agai
       const title = new Set(tokens(r.t));
       if (unique.every(t => title.has(t))) bm[i] *= r.k === 'PDF text' ? 1.3 : 2;
     });
+    // A reference number typed as written (e.g. "1056-BCW") should open the record itself,
+    // not a PDF that only mentions it.
+    const refPhrase = phrase;
+    if (refPhrase.length >= 4 && /\d/.test(refPhrase)) records.forEach((r, i) => {
+      if (bm[i] && r.k !== 'PDF text' && String(r.t || '').toLowerCase().includes(refPhrase)) bm[i] *= 3;
+    });
     // Query vector: idf-weighted sum of term vectors.
     const dims = meta.dims, q = new Float32Array(dims);
     let known = 0;

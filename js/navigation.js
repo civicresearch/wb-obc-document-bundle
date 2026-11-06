@@ -263,3 +263,73 @@ syncBilingualData();
   });
   update();
 })();
+
+// Arriving at a record from search or a shared link: open it, bring it clear of the
+// sticky bar, and highlight it for a few seconds so it is easy to find.
+(() => {
+  const FLASH_MS = 3500;
+  let timer = null;
+  const reduced = () => window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const targetFor = id => {
+    if (!id) return null;
+    let el = null;
+    try { el = document.getElementById(decodeURIComponent(id)); } catch (_) { el = document.getElementById(id); }
+    if (!el || el === document.body || el.matches('main, section.tab-panel, .tab-panel')) return null;
+    return el;
+  };
+  const reveal = (el, { smooth = true } = {}) => {
+    // Open any collapsed section that holds the record, and the record itself if it is one.
+    for (let d = el.closest('details'); d; d = d.parentElement && d.parentElement.closest('details')) d.open = true;
+    if (el.tagName === 'DETAILS') el.open = true;
+    // A record hidden by a list filter: clear that list's filters so it can be shown.
+    if (!el.getClientRects().length) {
+      const hiddenBy = el.closest('[hidden], .is-filtered-out');
+      if (hiddenBy && hiddenBy !== el.closest('main')) { hiddenBy.hidden = false; hiddenBy.classList.remove('is-filtered-out'); }
+      if (!el.getClientRects().length) el.hidden = false;
+    }
+    el.scrollIntoView({ block: 'start', behavior: smooth && !reduced() ? 'smooth' : 'auto' });
+    document.querySelectorAll('.is-search-target').forEach(n => n.classList.remove('is-search-target'));
+    // Restart the animation even when the same record is chosen twice.
+    void el.offsetWidth;
+    el.classList.add('is-search-target');
+    if (!el.hasAttribute('tabindex')) el.setAttribute('tabindex', '-1');
+    el.focus({ preventScroll: true });
+    clearTimeout(timer);
+    timer = setTimeout(() => el.classList.remove('is-search-target'), FLASH_MS);
+    // Some lists are redrawn just after load; if the record was replaced, find it again.
+    if (!reveal.retried) setTimeout(() => {
+      if (el.isConnected) return;
+      const again = targetFor(el.id);
+      if (again) { reveal.retried = true; reveal(again, { smooth: false }); reveal.retried = false; }
+    }, 600);
+  };
+  const fromHash = opts => {
+    const id = location.hash.slice(1);
+    if (!id || /^tab|^\//.test(id)) return;
+    // Records can be drawn after load, so wait briefly for the target to appear.
+    let tries = 0;
+    const attempt = () => {
+      const el = targetFor(id);
+      if (el) return reveal(el, opts);
+      if (++tries < 20) setTimeout(attempt, 100);
+    };
+    attempt();
+  };
+  window.addEventListener('load', () => {
+    if (!location.hash) return;
+    setTimeout(() => fromHash({ smooth: false }), 150);
+  });
+  window.addEventListener('hashchange', () => fromHash({ smooth: true }));
+  // A result that points at the page already open, with the same hash, does not fire
+  // hashchange, so handle that click directly.
+  document.addEventListener('click', event => {
+    const link = event.target.closest('a[href*="#"]');
+    if (!link || link.target === '_blank' || event.ctrlKey || event.metaKey || event.shiftKey) return;
+    const url = new URL(link.href, location.href);
+    if (url.origin !== location.origin || url.pathname !== location.pathname || url.hash !== location.hash || !url.hash) return;
+    const el = targetFor(url.hash.slice(1));
+    if (!el) return;
+    event.preventDefault();
+    reveal(el);
+  });
+})();

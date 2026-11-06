@@ -7,9 +7,9 @@
   <meta name="theme-color" content="#0f3b3c">
   <title>WB OBC Archive</title>
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
-  <script src="js/navigation.js?v=20261106-audit" defer></script>
+  <script src="js/navigation.js?v=20261106-find" defer></script>
   <script src="js/export-pdf.js?v=20261105-icon" defer></script>
-  <script src="js/search.js?v=20261106-search" defer></script>
+  <script src="js/search.js?v=20261106-ref" defer></script>
   <script src="js/export.js?v=20261106-export" defer></script>
   <script src="js/case-orders-map.js?v=20261106-polish" defer></script>
   <link rel="manifest" href="pwa-manifest.json">
@@ -39,8 +39,8 @@
   <header class="site-header masthead">
     <div class="mast-band">
     <div class="site-header-inner wrap">
-      <a class="brandmark" href="https://civicresearch.in" target="_blank" rel="noopener noreferrer" aria-label="Civic Research Group">
-        <img src="assets/crg-on-dark.png" alt="Civic Research Group" width="2003" height="378" decoding="async">
+      <a class="brandmark brandmark-obcwb" href="#home" aria-label="OBCWB, West Bengal OBC Archive: home">
+        <img src="obcwb-flat-light-logo.webp" alt="OBCWB, West Bengal OBC Archive, a research initiative by Civic Research Group" width="720" height="240" decoding="async" fetchpriority="high">
       </a>
       <a href="#home" class="masthead-title" aria-label="West Bengal OBC Archive — home">
         <span class="mast-eyebrow" data-i18n="masthead.eyebrow">WB OBC Archive</span>
@@ -94,6 +94,7 @@
               <a href="#methods" data-tab-target="methods" data-i18n="navMethods">Evidence Method</a>
               <a href="#inventory" data-tab-target="inventory" data-i18n="navInventory">File Inventory</a>
               <a href="#entry-framework" data-tab-target="entry-framework" data-i18n="navEntryFramework">Add Record Guide</a>
+              <a href="#projects" data-tab-target="projects" data-i18n="navProjects">CRG projects</a>
               <a href="#about" data-tab-target="about" data-i18n="navAbout">About</a>
               <a href="https://github.com/civicresearch/wb-obc-document-bundle" target="_blank" rel="noreferrer" data-i18n="navGitHub">GitHub</a>
             </div>
@@ -312,6 +313,38 @@
           </thead>
           <tbody id="obc-class-list"></tbody>
         </table>
+      </div>
+    </section>
+
+    <section id="projects" class="research projects-section tab-panel" data-tab-panel="projects" hidden>
+      <h2 class="section-heading" data-i18n="projects.title">Projects by Civic Research Group</h2>
+      <p class="section-sub" data-i18n="projects.sub">The WB OBC Archive is one of several free public-interest tools built by Civic Research Group, a volunteer research collective in West Bengal. Careful work for the common good.</p>
+      <div class="crg-projects">
+        <article class="crg-project">
+          <p class="crg-project-status"><span class="crg-live" data-i18n="projects.live">Live</span></p>
+          <h3><a href="https://appeal.civicresearch.in" target="_blank" rel="noopener" data-i18n="projects.p1.title">SIR Adjudication &amp; Tribunal Appeals dashboard</a></h3>
+          <p data-i18n="projects.p1.desc">Search 59.6 lakh adjudicated-voter records and 38.25 lakh Tribunal appeals from the Special Intensive Revision by name, EPIC number, constituency, district, booth, gram panchayat or municipality.</p>
+          <p class="crg-project-link"><a href="https://appeal.civicresearch.in" target="_blank" rel="noopener">appeal.civicresearch.in <span aria-hidden="true">↗</span></a></p>
+        </article>
+        <article class="crg-project">
+          <p class="crg-project-status"><span class="crg-live" data-i18n="projects.live">Live</span></p>
+          <h3><a href="https://rti.votercards.in" target="_blank" rel="noopener" data-i18n="projects.p2.title">Voter Deletion Application Generator</a></h3>
+          <p data-i18n="projects.p2.desc">A guided tool for preparing letters to the Electoral Registration Officer and RTI applications that ask for the order, reasons and records behind a voter-roll deletion.</p>
+          <p class="crg-project-link"><a href="https://rti.votercards.in" target="_blank" rel="noopener">rti.votercards.in <span aria-hidden="true">↗</span></a></p>
+        </article>
+        <article class="crg-project is-current">
+          <p class="crg-project-status"><span class="crg-live" data-i18n="projects.live">Live</span> <span class="crg-here" data-i18n="projects.here">You are here</span></p>
+          <h3><a href="#home" data-i18n="projects.p3.title">West Bengal OBC Archive</a></h3>
+          <p data-i18n="projects.p3.desc">A searchable, source-led archive of West Bengal OBC notifications, hearings, class status, policy documents and litigation records from 1993 to 2026.</p>
+          <p class="crg-project-link"><a href="#home">obcwb.civicresearch.in</a></p>
+        </article>
+      </div>
+      <div class="crg-about">
+        <a class="crg-about-logo" href="https://civicresearch.in" target="_blank" rel="noopener" aria-label="Civic Research Group"><img src="assets/crg-on-light.png" data-theme-logo data-light-src="assets/crg-on-light.png" data-dark-src="assets/crg-on-dark.png" alt="Civic Research Group" width="2003" height="378" loading="lazy" decoding="async"></a>
+        <div>
+          <p data-i18n="projects.aboutText">Civic Research Group works on voter rights, reservation records and public data in West Bengal. Every tool is free to use, and the sources behind it are published.</p>
+          <p class="crg-about-links"><a href="https://civicresearch.in" target="_blank" rel="noopener" data-i18n="projects.visit">Visit civicresearch.in</a> · <a href="mailto:civicresearchgroup@gmail.com">civicresearchgroup@gmail.com</a> · <a href="https://www.facebook.com/civicresearch" target="_blank" rel="noopener">Facebook</a> · <a href="https://www.instagram.com/civicresearch/" target="_blank" rel="noopener">Instagram</a> · <a href="https://x.com/CivicResearchX" target="_blank" rel="noopener">X</a></p>
+        </div>
       </div>
     </section>
 
@@ -1041,8 +1074,8 @@
             </tr>
             <tr>
               <td>WBCBC public notice for inclusion</td>
-              <td>Shows the Commission's public invitation for communities/classes to apply for inclusion before hearings and surveys.</td>
-              <td><a class="external" href="obc_pdfs/2025-04-00_PUBLIC-NOTICE_Newspaper-Advertisement-in-English.pdf" target="_blank" rel="noreferrer">English public notice</a> | <a class="external" href="https://wbcbc.in/html/Newspaper%20Advertisement%20in%20Bengali.pdf" target="_blank" rel="noreferrer">Bengali public notice</a></td>
+              <td>The Commission's invitation, issued after the High Court's 6 May 2025 order in WPA(P) 111/2025, for communities not on the SC, ST or OBC lists to apply for inclusion. It came after the hearings had begun on 29 April.</td>
+              <td><a class="external" href="obc_pdfs/2025-04-00_PUBLIC-NOTICE_Newspaper-Advertisement-in-English.pdf" target="_blank" rel="noreferrer">English public notice</a> | <a href="case_pdfs/2025-05-06_Calcutta-High-Court_WPA-P-111-119-132-2025_benchmark-survey_order.pdf" target="_blank" rel="noreferrer">6 May 2025 order</a> | <a class="external" href="https://wbcbc.in/html/Newspaper%20Advertisement%20in%20Bengali.pdf" target="_blank" rel="noreferrer">Bengali public notice</a></td>
             </tr>
             <tr>
               <td>Public hearing notices, 29 Apr to 4 May 2025</td>
@@ -1205,7 +1238,7 @@
         <img src="obcwb-flat-dark-logo.webp" data-theme-logo data-light-src="obcwb-flat-dark-logo.webp" data-dark-src="obcwb-flat-light-logo.webp" alt="West Bengal OBC Archive" width="720" height="240" decoding="async" loading="lazy">
         <span data-i18n="footerTagline">An independent, volunteer-run public research archive on West Bengal OBC policy and litigation.</span>
       </div>
-      <nav class="footer-links" aria-label="Footer"><a href="obc-basics.html" data-i18n="navOBCBasics">OBC Basics</a><a href="reports.html" data-i18n="navReports">Policy Reports</a><a href="record-guide.html" data-i18n="navEntryFramework">Add Record Guide</a><a href="about.html" data-i18n="navAbout">About</a><a href="methods.html" data-i18n="navMethods">Evidence Method</a><a href="inventory.html" data-i18n="navInventory">File Inventory</a><a href="contribute.html" data-i18n="navContribute">Contribute</a></nav>
+      <nav class="footer-links" aria-label="Footer"><a href="obc-basics.html" data-i18n="navOBCBasics">OBC Basics</a><a href="reports.html" data-i18n="navReports">Policy Reports</a><a href="record-guide.html" data-i18n="navEntryFramework">Add Record Guide</a><a href="projects.html" data-i18n="navProjects">CRG projects</a><a href="about.html" data-i18n="navAbout">About</a><a href="methods.html" data-i18n="navMethods">Evidence Method</a><a href="inventory.html" data-i18n="navInventory">File Inventory</a><a href="contribute.html" data-i18n="navContribute">Contribute</a></nav>
       <div class="site-footer-meta">
         <a class="footer-parent-brand" href="https://civicresearch.in" target="_blank" rel="noopener noreferrer">
           <span data-i18n="footerInitiativeLabel">A research initiative by</span>
@@ -5748,8 +5781,15 @@ html[data-theme="dark"] .modal-related a {
 <script>
 const DATA_LOAD_ERRORS = window.OBC_DATA_ERRORS || [];
 const INLINE_JSON_DATA = window.OBC_INLINE_JSON || {};
-const OBC_DOCS = loadJsonSync('obc_documents.json');
-const SUPPLEMENTAL_DOCS = loadJsonSync('supplemental_documents.json');
+// Reviewed reader notes (data/document_notes.json) replace the summary shown for a
+// document without changing the preserved source record.
+const DOC_NOTES = (loadJsonSync('data/document_notes.json', {}) || {}).notes || {};
+const withDocNotes = docs => (Array.isArray(docs) ? docs : []).map(doc => {
+  const note = DOC_NOTES[`${doc.notif_no || ''}|${doc.filename || ''}`];
+  return note ? { ...doc, summary: note.summary, summary_bn: note.summary_bn || doc.summary_bn } : doc;
+});
+const OBC_DOCS = withDocNotes(loadJsonSync('obc_documents.json'));
+const SUPPLEMENTAL_DOCS = withDocNotes(loadJsonSync('supplemental_documents.json'));
 // Private manifests are intentionally excluded from the public build. Keeping
 // Keeping these optional arrays empty avoids expected 404 requests on every page.
 const PRIVATE_DOCS = [];
@@ -6500,6 +6540,13 @@ const HERO_CONTENT = {
     subKey: 'caseOrders.sub',
     stats: []
   },
+  projects: {
+    eyebrowKey: 'projects.eyebrow',
+    eyebrow: 'Civic Research Group · other projects',
+    titleKey: 'projects.title',
+    subKey: 'projects.sub',
+    stats: []
+  },
   'case-map': {
     eyebrowKey: 'caseMap.eyebrow',
     eyebrow: 'Case map · how the cases connect',
@@ -6576,6 +6623,7 @@ const PAGE_FILES = {
   cases: 'litigation.html',
   media: 'media.html',
   'case-map': 'case-map.html',
+  projects: 'projects.html',
   'case-orders': 'case-orders.html',
   'obc-list': 'obc-list.html',
   documents: 'documents.html',
@@ -6983,6 +7031,7 @@ function tabForHash(hash) {
   if (id === 'public-hearings' || id === 'missing-records' || id === 'evidence') return 'evidence';
   if (id === 'media' || id.startsWith('media-')) return 'media';
   if (id === 'case-map') return 'case-map';
+  if (id === 'projects') return 'projects';
   if (id === 'case-orders' || /^n-\d{4}-/.test(id) || id === 'root') return 'case-orders';
   if (id.startsWith('casefile-')) return 'cases';
   if (id === 'cases' || id.startsWith('case-') || id === 'employee-protection-note' || id.startsWith('litigation-note-')) return 'cases';
@@ -7062,7 +7111,7 @@ function showTab(tabName, targetHash) {
   if (target && !isTopLevelTab && hash !== '#guide' && hash !== '#query-hub' && hash !== '#home') {
     requestAnimationFrame(() => {
       setTimeout(() => {
-        const headerOffset = document.querySelector('.section-nav')?.offsetHeight || 0;
+        const headerOffset = Math.max(document.querySelector('.navbar')?.offsetHeight || 0, document.querySelector('.section-nav')?.offsetHeight || 0);
         const top = target.getBoundingClientRect().top + window.scrollY - headerOffset - 16;
         window.scrollTo({ top: Math.max(0, top) });
       }, 30);

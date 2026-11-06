@@ -69,16 +69,14 @@
     "date": "2025-05-21",
     "court": "Calcutta High Court",
     "case_numbers": [
-      "WPA 9132 of 2025",
-      "MAT 943 of 2025",
-      "MAT 955 of 2025"
+      "WPA 9132 of 2025"
     ],
     "title": "Supriya Mondal & Ors. v. State of West Bengal & Ors.",
     "record_type": "admission implementation order",
     "local_file": "case_pdfs/2025-05-21_Calcutta-High-Court_WPA-9132-2025_JEMAS-PG-order.pdf",
     "source_type": "court_text_mirror_print",
     "source_url": "https://indiankanoon.org/doc/30501968/",
-    "verification_note": "A locally printed copy of the public court-text mirror, not an official or certified High Court PDF. The 21 May writ order was disposed of with directions for JEMAS PG admissions. MAT 943/2025 and MAT 955/2025 are later appeals referred to in the 7 August 2025 order; verify appeal status separately."
+    "verification_note": "A locally printed copy of the public court-text mirror, not an official or certified High Court PDF. The 21 May writ order was disposed of with directions for JEMAS PG admissions. The State's appeals (MAT 943 and 955 of 2025) were released and placed before the Chief Justice on 2 July 2025; that order is archived."
   },
   {
     "date": "2025-07-18",

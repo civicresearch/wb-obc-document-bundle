@@ -22,14 +22,16 @@ const facts = {
     cases: [`${caseCount} proceedings`, 'Calcutta HC · Supreme Court'],
     media: [`${mediaCount} reports`, 'Linked to cases', '2024–2026'],
     'case-map': [`${caseCount} proceedings`, 'Since the 2024 judgment', 'Status at a glance'],
-    'case-orders': ['Every court order', 'SC and High Court', 'Linked PDFs']
+    'case-orders': ['Every court order', 'SC and High Court', 'Linked PDFs'],
+    projects: ['Civic Research Group', '3 live projects', 'Free public tools']
   },
   bn: {
-    home: ['৯৪টি মূল PDF', '৬৬টি শ্রেণি · ৭%', '১৯৯৩–২০২৬'],
+    home: [`${bnNum(Number(i18n.en.heroStat1Value))}টি মূল PDF`, '৬৬টি শ্রেণি · ৭%', '১৯৯৩–২০২৬'],
     cases: [`${bnNum(caseCount)}টি মামলা`, 'কলকাতা হাইকোর্ট · সুপ্রিম কোর্ট'],
     media: [`${bnNum(mediaCount)}টি প্রতিবেদন`, 'মামলার সঙ্গে যুক্ত', '২০২৪–২০২৬'],
     'case-map': [`${bnNum(caseCount)}টি মামলা`, '২০২৪-এর রায় থেকে', 'এক নজরে অবস্থা'],
-    'case-orders': ['প্রতিটি আদালতের আদেশ', 'সুপ্রিম কোর্ট ও হাইকোর্ট', 'যুক্ত PDF']
+    'case-orders': ['প্রতিটি আদালতের আদেশ', 'সুপ্রিম কোর্ট ও হাইকোর্ট', 'যুক্ত PDF'],
+    projects: ['সিভিক রিসার্চ গ্রুপ', '৩টি চালু প্রকল্প', 'সবার জন্য বিনামূল্যে']
   }
 };
 

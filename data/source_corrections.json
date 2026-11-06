@@ -1,0 +1,84 @@
+{
+  "note": "Field-level corrections to frozen checkpoint records, each checked against the source PDF. validate-preservation.py accepts an original record only if it survives unchanged or differs exactly by an entry here.",
+  "checked": "2026-11-06",
+  "corrections": [
+    {
+      "file": "obc_documents.json",
+      "match": {
+        "notif_no": "2770-BCW/MR-116/12"
+      },
+      "was": {
+        "summary": "15 new classes; 9 Cat-A (sl.66-75), 6 Cat-B (sl.79-84); plus 24 nomenclature amendments"
+      },
+      "set": {
+        "summary": "15 new classes: 9 Category-A at A-67 to A-75 and 6 Category-B at B-79 to B-84. Sekh/Seikh (added in 2012 by 845-BCW) is placed at A-66. Also amends entries to remove 24 differences with the Central list."
+      },
+      "reason": "A-66 to A-75 is ten serials; A-66 is Sekh/Seikh from 845-BCW (2012). The 24 are Central/State list disparities, not renamings.",
+      "source": "obc_pdfs/2014-08-29_2770-BCW-MR-116-12_inclusion_amendment.pdf"
+    },
+    {
+      "file": "obc_pdf_manifest.json",
+      "match": {
+        "notif_no": "2770-BCW/MR-116/12"
+      },
+      "was": {
+        "summary": "15 new classes; 9 Cat-A (sl.66-75), 6 Cat-B (sl.79-84); plus 24 nomenclature amendments"
+      },
+      "set": {
+        "summary": "15 new classes: 9 Category-A at A-67 to A-75 and 6 Category-B at B-79 to B-84. Sekh/Seikh (added in 2012 by 845-BCW) is placed at A-66. Also amends entries to remove 24 differences with the Central list."
+      },
+      "reason": "Same as obc_documents.json.",
+      "source": "obc_pdfs/2014-08-29_2770-BCW-MR-116-12_inclusion_amendment.pdf"
+    },
+    {
+      "file": "document_inventory.json",
+      "match": {
+        "href": "obc_pdfs/2012-04-25_2572-PN-O-I-1S-5-2012_first_panchayat_survey_guideline.pdf"
+      },
+      "was": {
+        "pages": "11"
+      },
+      "set": {
+        "pages": "10"
+      },
+      "reason": "The PDF has 10 pages.",
+      "source": "obc_pdfs/2012-04-25_2572-PN-O-I-1S-5-2012_first_panchayat_survey_guideline.pdf"
+    },
+    {
+      "file": "public_hearings.json",
+      "match": {
+        "date_label": "23 May 2025"
+      },
+      "was": {
+        "communities": "Majhi; Siuli (Muslim); Shikari/Sikari (Muslim); Mukti/Mufti (Muslim); Dhukre (Muslim)"
+      },
+      "set": {
+        "communities": "Majhi; Siuli (Muslim); Shikari (Muslim); Mukti/Mufti (Muslim); Dhukre (Muslim)"
+      },
+      "reason": "The notice prints only শিকারি (মুসলিম).",
+      "source": "obc_pdfs/2025-05-23_PUBLIC-HEARING_newspaper-advertisement-part14-23.5.25.pdf"
+    },
+    {
+      "file": "case_manifest.json",
+      "match": {
+        "local_file": "case_pdfs/2025-05-21_Calcutta-High-Court_WPA-9132-2025_JEMAS-PG-order.pdf"
+      },
+      "was": {
+        "case_numbers": [
+          "WPA 9132 of 2025",
+          "MAT 943 of 2025",
+          "MAT 955 of 2025"
+        ],
+        "verification_note": "A locally printed copy of the public court-text mirror, not an official or certified High Court PDF. The 21 May writ order was disposed of with directions for JEMAS PG admissions. MAT 943/2025 and MAT 955/2025 are later appeals referred to in the 7 August 2025 order; verify appeal status separately."
+      },
+      "set": {
+        "case_numbers": [
+          "WPA 9132 of 2025"
+        ],
+        "verification_note": "A locally printed copy of the public court-text mirror, not an official or certified High Court PDF. The 21 May writ order was disposed of with directions for JEMAS PG admissions. The State's appeals (MAT 943 and 955 of 2025) were released and placed before the Chief Justice on 2 July 2025; that order is archived."
+      },
+      "reason": "The MAT numbers are the State's later appeals and do not appear in this order.",
+      "source": "case_pdfs/2025-07-02_Calcutta-High-Court_MAT-943-955-2025_Supriya-Mondal_order.pdf"
+    }
+  ]
+}
