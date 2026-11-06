@@ -1,6 +1,6 @@
 {
   "note": "SHA-256 fingerprints of every archived PDF. Regenerate with python3 scripts/build-checksums.py after adding files.",
-  "count": 117,
+  "count": 118,
   "files": {
     "obc_pdfs/1980-12-31_MANDAL-Commission-Report-First-Part-English.pdf": {
       "sha256": "25c89420e55e99652c417db20ef25e74903f894b17180cdeb13e90d6a13857bf",
@@ -269,6 +269,10 @@
     "obc_pdfs/2026-05-18_946-Secy-BCW-MR-23-2026_administrative.pdf": {
       "sha256": "c01582c369316985530442d8b0d86dd6a873f3e2565a2f137823ddd1d2b90967",
       "bytes": 2212262
+    },
+    "obc_pdfs/2026-05-25_Labr-85-Emp_model-roster.pdf": {
+      "sha256": "b6a91864c7b7c2280ba7da9ae1f04458d953628f14fbe8647c9e4e36db218542",
+      "bytes": 768202
     },
     "obc_pdfs/2026-07-15_658-L_amendment-act.pdf": {
       "sha256": "65535f813a16a83b6b380b9a51b22bbc64117306b9cef1d46b830beb5c5844fc",

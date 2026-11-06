@@ -509,5 +509,22 @@
     "source_type": "official",
     "sha256": "2ce535444aec6a2c0966b5bae74c9a27cdf05be2892fed6b1a4696a9e575356e",
     "verification_note": "Listed on https://wbbpe.wb.gov.in/pages/notice.aspx. Scanned PDF; text is OCR."
+  },
+  {
+    "notif_no": "Labr/85-Emp/EC/1M-01/2025",
+    "date": "2026-05-25",
+    "year": 2026,
+    "type": "administrative",
+    "status": "current",
+    "summary": "Labour Department Gazette notification (Kolkata Gazette Extraordinary, 25 May 2026) prescribing the revised Model 100-Point Roster of Vacancies after Notification 945-BCW. OBC now has 7 of the 100 points (points 9, 19, 29, 49, 59, 69 and 89; points 19 and 69 are for exempted-category OBC candidates and point 49 for an OBC ex-serviceman in Group-D posts), matching the 7% reservation. It also sets the EWS, SC, ST, disability, ex-serviceman and sportsperson points, and supersedes Labour Department Notification Labr/20-EMP/EC/1M-01/2025 of 27 January 2026.",
+    "summary_bn": "পশ্চিমবঙ্গ শ্রম দপ্তরের গেজেট বিজ্ঞপ্তি (কলকাতা গেজেট অসাধারণ, ২৫ মে ২০২৬): ৯৪৫-BCW বিজ্ঞপ্তির পরে সংশোধিত মডেল ১০০-পয়েন্ট শূন্যপদ রোস্টার। ওবিসি এখন ১০০টির মধ্যে ৭টি পয়েন্ট পায় (৯, ১৯, ২৯, ৪৯, ৫৯, ৬৯ ও ৮৯; ১৯ ও ৬৯ ছাড়প্রাপ্ত শ্রেণির ওবিসি প্রার্থীদের জন্য এবং ৪৯ গ্রুপ-ডি পদে ওবিসি প্রাক্তন সেনাকর্মীর জন্য), যা ৭% সংরক্ষণের সঙ্গে মেলে। এতে EWS, তফসিলি জাতি, তফসিলি উপজাতি, প্রতিবন্ধী, প্রাক্তন সেনাকর্মী ও ক্রীড়াবিদদের পয়েন্টও নির্ধারিত হয়েছে, এবং ২৭ জানুয়ারি ২০২৬-এর Labr/20-EMP/EC/1M-01/2025 বিজ্ঞপ্তি বাতিল হয়েছে।",
+    "filename": "2026-05-25_Labr-85-Emp_model-roster.pdf",
+    "text": "THE KOLKATA GAZETTE, EXTRAORDINARY, MONDAY, MAY 25, 2026. No. WB(Part-I)/2026/SAR-184. GOVERNMENT OF WEST BENGAL, Labour Department (Exempted Category Cell). NOTIFICATION No. Labr/85-Emp/EC/1M-01/2025 Date: 25.05.2026. Model 100-Point Roster of Vacancies for SC, ST, OBC, PwBD, Ex-servicemen, Exempted Categories and EWS, issued in compliance with Notification No. 945-BCW/MR-23/2026 dated 18.05.2026. OBC points: 9th OBC; 19th OBC (E.C.); 29th OBC; 49th OBC (Ex-Serviceman in Group-D Post); 59th OBC; 69th OBC (E.C.); 89th OBC. Para 5: By Notification No. 945-BCW/MR-23/2026 dated 18.05.2026 the Governor is pleased to reserve 7% of vacancies for the Other Backward Classes, to be filled up by direct recruitment. Para 10: This order issues in supersession of Notification No. Labr/20-EMP/EC/1M-01/2025 dated 27.01.2026. Signed: Manoj Kumar Agarwal, Chief Secretary to the Government of West Bengal. (Summary transcription of a scanned 5-page Gazette; see the PDF for the full roster.)",
+    "local_pdf": "obc_pdfs/2026-05-25_Labr-85-Emp_model-roster.pdf",
+    "source_url": "https://wbxpress.com/revised-model-100-point-roster-west-bengal/",
+    "retrieved_on": "2026-11-06",
+    "source_type": "gazette_copy_supplied",
+    "sha256": "b6a91864c7b7c2280ba7da9ae1f04458d953628f14fbe8647c9e4e36db218542",
+    "verification_note": "Kolkata Gazette Extraordinary copy supplied by Civic Research Group on 6 Nov 2026 (scanned, 5 pp.). Number and date confirmed by BCW Notification 1060/Secy/BCW/7P-63/2024. The cited page lists the same notification."
   }
 ]
