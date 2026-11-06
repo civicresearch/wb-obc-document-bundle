@@ -18,7 +18,7 @@ const caseCount = JSON.parse(fs.readFileSync(path.join(root, 'data/case_files.js
 const mediaCount = JSON.parse(fs.readFileSync(path.join(root, 'data/media_coverage.json'))).items.length;
 const facts = {
   en: {
-    home: ['94 source PDFs', '66 classes · 7%', '1993–2026'],
+    home: [`${i18n.en.heroStat1Value} source PDFs`, '66 classes · 7%', '1993–2026'],
     cases: [`${caseCount} proceedings`, 'Calcutta HC · Supreme Court'],
     media: [`${mediaCount} reports`, 'Linked to cases', '2024–2026'],
     'case-map': [`${caseCount} proceedings`, 'Since the 2024 judgment', 'Status at a glance'],
