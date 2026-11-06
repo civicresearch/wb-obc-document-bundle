@@ -183,6 +183,25 @@
    ]
   },
   {
+   "id": "media-2025-07-29-tribune",
+   "date": "2025-07-29",
+   "outlet": "The Tribune",
+   "author": "Satya Prakash",
+   "language": "en",
+   "type": "News",
+   "headline": "SC vacates Calcutta HC stay on Bengal OBC list",
+   "url": "https://www.tribuneindia.com/news/top-headlines/sc-vacates-calcutta-hc-stay-on-bengal-obc-list",
+   "summary": "The Supreme Court lifted the High Court stay on the revised 2025 OBC list, calling its reasoning prima facie erroneous.",
+   "cases": [
+    "casefile-sc-purabi-das-2025",
+    "casefile-notification-challenge-2025"
+   ],
+   "topics": [
+    "Supreme Court",
+    "2025 notifications"
+   ]
+  },
+  {
    "id": "media-2025-08-07-careers360",
    "date": "2025-08-07",
    "outlet": "Careers360",
@@ -328,6 +347,22 @@
    ]
   },
   {
+   "id": "media-2026-05-18-uni",
+   "date": "2026-05-18",
+   "outlet": "UNI",
+   "author": "",
+   "language": "en",
+   "type": "News",
+   "headline": "Bengal cabinet orders fresh OBC review, scraps existing sub-categorisation",
+   "url": "https://test.uniindia.com/bengal-cabinet-orders-fresh-obc-review-scraps-existing-sub-categorisation/east/news/3847068.html",
+   "summary": "The new state cabinet under Chief Minister Suvendu Adhikari ordered a fresh review of the OBC list, scrapped the A/B sub-categorisation and said it would revisit the reservation percentage.",
+   "cases": [],
+   "topics": [
+    "2026 notifications",
+    "Sub-categorisation"
+   ]
+  },
+  {
    "id": "media-2026-05-19-indiatv",
    "date": "2026-05-19",
    "outlet": "India TV",
@@ -353,6 +388,22 @@
    "headline": "West Bengal government notifies list of 66 OBC classes following Calcutta High Court order",
    "url": "https://www.newsonair.gov.in/west-bengal-government-notifies-list-of-66-obc-classes-following-calcutta-high-court-order/",
    "summary": "The State notifies 66 classes with a single 7% reservation, dropping the OBC-A (10%) and OBC-B (7%) split.",
+   "cases": [],
+   "topics": [
+    "2026 notifications",
+    "7% reservation"
+   ]
+  },
+  {
+   "id": "media-2026-05-20-uni",
+   "date": "2026-05-20",
+   "outlet": "UNI",
+   "author": "",
+   "language": "en",
+   "type": "News",
+   "headline": "BJP government retains 66 OBC communities for 7 pc reservation",
+   "url": "https://test.uniindia.com/bjp-government-retains-66-obc-communities-for-7-pc-reservation/east/news/3849029.html",
+   "summary": "The State kept the 66 pre-2010 classes at 7% reservation, ended the sub-categorisation and said certificates issued under the previous government would be re-verified.",
    "cases": [],
    "topics": [
     "2026 notifications",
@@ -540,6 +591,25 @@
    ]
   },
   {
+   "id": "media-2026-10-01-uni",
+   "date": "2026-10-01",
+   "outlet": "UNI",
+   "author": "",
+   "language": "en",
+   "type": "News",
+   "headline": "SC seeks Bengal govt's response on invalidation of OBC certificates, allows recruitment subject to outcome",
+   "url": "https://www.uniindia.com/national/sc-seeks-bengal-govts-response-on-invalidation-of-obc-certificates-allows-recruitment-subject-to-out/199714",
+   "summary": "Justices Joymalya Bagchi and V. Mohana issued notice on challenges to the 12 August High Court order and did not stay the constable recruitment, making appointments subject to the outcome.",
+   "cases": [
+    "casefile-shreyasi-dhang-2026"
+   ],
+   "topics": [
+    "Supreme Court",
+    "Certificates",
+    "Recruitment"
+   ]
+  },
+  {
    "id": "media-2026-11-02-livelaw",
    "date": "2026-11-02",
    "outlet": "LiveLaw",
@@ -549,6 +619,24 @@
    "headline": "Calcutta High Court Seeks State's Response On Plea By Former OBC Candidates Seeking EWS Reservation In Teacher Recruitment",
    "url": "https://www.livelaw.in/high-court/calcutta-high-court/calcutta-high-court-seeks-states-response-on-plea-by-former-obc-candidates-seeking-ews-reservation-in-teacher-recruitment-556863",
    "summary": "Justice Arjun Ray Mukherjee calls for affidavits in WPA 31572 of 2026 (Mohabul Islam) on former OBC applicants seeking EWS status.",
+   "cases": [
+    "casefile-category-petitions-oct-2026"
+   ],
+   "topics": [
+    "Recruitment",
+    "EWS"
+   ]
+  },
+  {
+   "id": "media-2026-11-03-millenniumpost",
+   "date": "2026-11-03",
+   "outlet": "Millennium Post",
+   "author": "Soumyadip Mullick",
+   "language": "en",
+   "type": "News",
+   "headline": "Calcutta HC seeks state's reply on OBC candidates' EWS switch",
+   "url": "https://www.millenniumpost.in/bengal/calcutta-hc-seeks-states-reply-on-obc-candidates-ews-switch-681935",
+   "summary": "Justice Arjun Ray Mukherjee asked the Board of Primary Education for affidavits on whether OBC-A and OBC-B applicants can move to EWS in the primary teacher recruitment.",
    "cases": [
     "casefile-category-petitions-oct-2026"
    ],
