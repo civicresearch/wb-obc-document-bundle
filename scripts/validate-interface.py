@@ -17,6 +17,12 @@ class QuietHandler(SimpleHTTPRequestHandler):
         super().__init__(*args, directory=str(ROOT), **kwargs)
     def log_message(self, *args):
         pass
+    def translate_path(self, path):
+        # Serve clean URLs like GitHub Pages: /timeline -> timeline.html.
+        local = super().translate_path(path)
+        if not os.path.exists(local) and os.path.exists(local + '.html'):
+            return local + '.html'
+        return local
 
 def run():
     server = ThreadingHTTPServer(('127.0.0.1', 0), QuietHandler)

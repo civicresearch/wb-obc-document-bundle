@@ -837,22 +837,22 @@ function readableIsoDate(html, lang) {
 
 const SITE_PAGE = document.body.dataset.page || '';
 const PAGE_FILES = {
-  home: 'index.html',
-  timeline: 'timeline.html',
-  cases: 'litigation.html',
-  media: 'media.html',
-  'case-map': 'case-map.html',
-  projects: 'projects.html',
-  'case-orders': 'case-orders.html',
-  'obc-list': 'obc-list.html',
-  documents: 'documents.html',
-  evidence: 'evidence.html',
-  'entry-framework': 'record-guide.html',
-  inventory: 'inventory.html',
-  'obc-basics': 'obc-basics.html',
-  methods: 'methods.html',
-  reports: 'reports.html',
-  about: 'about.html'
+  home: './',
+  timeline: 'timeline',
+  cases: 'litigation',
+  media: 'media',
+  'case-map': 'case-map',
+  projects: 'projects',
+  'case-orders': 'case-orders',
+  'obc-list': 'obc-list',
+  documents: 'documents',
+  evidence: 'evidence',
+  'entry-framework': 'record-guide',
+  inventory: 'inventory',
+  'obc-basics': 'obc-basics',
+  methods: 'methods',
+  reports: 'reports',
+  about: 'about'
 };
 
 function pageHref(tabName, targetId = tabName) {

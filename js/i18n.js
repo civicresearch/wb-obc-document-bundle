@@ -80,8 +80,21 @@
       else el.innerHTML = t(key);
     });
     document.querySelectorAll('[data-i18n-placeholder]').forEach(el => { el.placeholder = t(el.dataset.i18nPlaceholder); });
-    const titleKey = document.body.dataset.page ? `pageTitle.${document.body.dataset.page}` : 'siteTitle';
-    if (translations[currentLang]?.[titleKey]) document.title = t(titleKey);
+    // Published pages carry their Bengali title and description in data-bn;
+    // the English versions are the original text.
+    const titleEl = document.querySelector('title');
+    const descriptionEl = document.querySelector('meta[name="description"]');
+    if (titleEl?.dataset.bn) {
+      if (!titleEl.dataset.en) titleEl.dataset.en = document.title;
+      document.title = currentLang === 'bn' ? titleEl.dataset.bn : titleEl.dataset.en;
+      if (descriptionEl?.dataset.bn) {
+        if (!descriptionEl.dataset.en) descriptionEl.dataset.en = descriptionEl.content;
+        descriptionEl.content = currentLang === 'bn' ? descriptionEl.dataset.bn : descriptionEl.dataset.en;
+      }
+    } else {
+      const titleKey = document.body.dataset.page ? `pageTitle.${document.body.dataset.page}` : 'siteTitle';
+      if (translations[currentLang]?.[titleKey]) document.title = t(titleKey);
+    }
     document.querySelectorAll('[data-lang-switch]').forEach(button => {
       const active = button.dataset.langSwitch === currentLang;
       button.classList.toggle('active',active);

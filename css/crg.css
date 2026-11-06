@@ -562,3 +562,61 @@ html[data-theme] .site-header .nav-mega a[aria-current="page"] .nav-item-title {
   html[data-theme] .site-header .nav-mega a { min-height: 48px; }
   html[data-theme] .site-header .nav-mega a:hover, html[data-theme] .site-header .nav-mega a[aria-current="page"] { background: var(--surface) !important; }
 }
+
+/* ---------- Civic Research Group top bar and social links ---------- */
+.icon-sprite { position: absolute; width: 0; height: 0; overflow: hidden; }
+html[data-theme] .crg-topbar { background: #0a2a2b; color: var(--brand-ink-2); font: 500 13px/1.4 var(--sans); border-bottom: 1px solid rgba(244,239,225,.08); }
+html[data-theme="dark"] .crg-topbar { background: #061d1e; }
+.crg-topbar-inner { display: flex; align-items: center; justify-content: space-between; gap: 12px; min-height: 36px; }
+html[data-theme] .crg-topbar-home { display: inline-flex; align-items: center; gap: 6px; min-height: 36px; color: var(--brand-ink-2); text-decoration: none; }
+html[data-theme] .crg-topbar-home strong { color: var(--brand-ink); font-weight: 650; }
+html[data-theme] .crg-topbar-home:hover strong { text-decoration: underline; text-underline-offset: 3px; }
+.crg-topbar-ext { width: 13px; height: 13px; opacity: .75; flex-shrink: 0; }
+.social-links { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
+.social-icon { width: 18px; height: 18px; flex-shrink: 0; }
+html[data-theme] .social-links--compact { gap: 2px; }
+html[data-theme] .social-links--compact .social-link { display: inline-flex; align-items: center; justify-content: center; width: 36px; height: 36px; border-radius: 50%; color: var(--brand-ink-2); transition: background-color .15s, color .15s; }
+html[data-theme] .social-links--compact .social-link:hover,
+html[data-theme] .social-links--compact .social-link:focus-visible { background: rgba(244,239,225,.12); color: var(--brand-ink); }
+html[data-theme] .social-links--compact .social-icon { width: 16px; height: 16px; }
+/* Full links: icon, network name and handle, used in the footer and on About and Projects. */
+html[data-theme] .social-links:not(.social-links--compact) .social-link { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; padding: 8px 14px 8px 10px; border: 1px solid var(--line); border-radius: 999px; background: var(--surface); color: var(--reading); font: 600 14px/1.2 var(--sans); text-decoration: none; transition: border-color .15s, background-color .15s; }
+html[data-theme] .social-links:not(.social-links--compact) .social-link:hover { border-color: var(--line-strong); background: var(--surface-soft); }
+html[data-theme] .social-link .social-handle { color: var(--secondary); font-weight: 500; font-size: 13px; }
+.social-link--facebook .social-icon { color: #1877f2; }
+.social-link--instagram .social-icon { color: #d62976; }
+html[data-theme="dark"] .social-link--facebook .social-icon { color: #5aa0ff; }
+html[data-theme="dark"] .social-link--instagram .social-icon { color: #f06aa5; }
+html[data-theme] .social-links--compact .social-icon { color: inherit; }
+/* Footer: on the dark band in both themes. */
+html[data-theme] .footer-social { gap: 8px 10px; }
+html[data-theme] .footer-social .footer-social-label { color: var(--brand-ink-2); font: 700 12px/1.5 var(--sans); letter-spacing: .08em; text-transform: uppercase; margin-right: 4px; }
+html[lang="bn"] .footer-social .footer-social-label { letter-spacing: 0; }
+html[data-theme] .site-footer .social-links .social-link { background: rgba(244,239,225,.06); border-color: rgba(244,239,225,.22); color: var(--brand-ink); }
+html[data-theme] .site-footer .social-links .social-link:hover { background: rgba(244,239,225,.14); border-color: rgba(244,239,225,.4); color: var(--brand-ink); }
+html[data-theme] .site-footer .social-link :is(.social-name) { color: var(--brand-ink); }
+html[data-theme] .site-footer .social-link .social-handle { color: var(--brand-ink-2); }
+html[data-theme] .site-footer .social-link--facebook .social-icon { color: #7fb4ff; }
+html[data-theme] .site-footer .social-link--instagram .social-icon { color: #ff8fc0; }
+html[data-theme] .site-footer .social-link--x .social-icon { color: var(--brand-ink); }
+/* About page */
+html[data-theme] .about-connect { margin-top: 2rem; padding-top: 1.5rem; border-top: 1px solid var(--line); }
+html[data-theme] .about-connect .social-links,
+html[data-theme] .crg-about-social { margin-top: 12px; }
+.not-found-links { margin-top: 18px; }
+@media (max-width: 640px) {
+  html[data-theme] .crg-topbar { font-size: 12px; }
+  .crg-topbar-inner { min-height: 34px; gap: 6px; }
+  html[data-theme] .crg-topbar-home { white-space: nowrap; min-width: 0; }
+  html[data-theme] .crg-topbar-home > span { display: none; }
+  html[data-theme] .crg-topbar-home::before { content: "Civic Research Group"; color: var(--brand-ink-2); }
+  html[lang="bn"] .crg-topbar-home::before { content: "সিভিক রিসার্চ গ্রুপ"; }
+  html[data-theme] .social-links--compact { flex-wrap: nowrap; flex-shrink: 0; }
+  html[data-theme] .social-links--compact .social-link { width: 34px; height: 34px; }
+  html[data-theme] .social-link .social-handle { display: none; }
+}
+@media print { .crg-topbar, .footer-social, .about-connect .social-links { display: none !important; } }
+@media (max-width: 374px) {
+  html[data-theme] .crg-topbar-home::before { content: none; }
+  html[data-theme] .crg-topbar-home > span { display: none; }
+}

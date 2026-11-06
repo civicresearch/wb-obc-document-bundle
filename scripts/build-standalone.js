@@ -27,7 +27,7 @@ let html = fs.readFileSync(inputPath, 'utf8').replace(/\r\n/g, '\n')
 const styles = html.match(/\n<style>\n[\s\S]*?\n<\/style>/);
 if (styles) {
   html = html.replace(styles[0], '').replace(/<link rel="stylesheet" href="css\/polish\.css[^>]*>/, '').replace(/<link rel="stylesheet" href="css\/print\.css[^>]*>/, '');
-  html = html.replace('</head>', () => `${styles[0]}\n<link rel="stylesheet" href="css/polish.css?v=20261104-records">\n<link rel="stylesheet" href="css/crg.css?v=20261106-menu2">\n<link rel="stylesheet" href="css/print.css?v=20261106-print">\n</head>`);
+  html = html.replace('</head>', () => `${styles[0]}\n<link rel="stylesheet" href="css/polish.css?v=20261104-records">\n<link rel="stylesheet" href="css/crg.css?v=20261106-seo">\n<link rel="stylesheet" href="css/print.css?v=20261106-print">\n</head>`);
 }
 const { renderCaseFiles, renderMedia, renderCaseMap, renderCaseOrders } = require('./site-publishing');
 html = renderCaseOrders(renderCaseMap(renderMedia(renderCaseFiles(html), { cases: '' }), { cases: '' }));
@@ -37,7 +37,9 @@ const inlineScript = [
   // Data is text inside a script element, never HTML or replacement syntax.
   JSON.stringify(inlineJson).replace(/</g, '\\u003c'),
   ';window.OBC_INLINE_I18N = ',
-  JSON.stringify(JSON.parse(fs.readFileSync(path.join(root, 'data/i18n.json'), 'utf8'))).replace(/</g, '\\u003c'),
+  // Translated text links to clean page addresses; this single-file edition
+  // holds every section, so keep only the #anchor.
+  JSON.stringify(JSON.parse(fs.readFileSync(path.join(root, 'data/i18n.json'), 'utf8'))).replace(/href=\\"[a-z-]+#/g, 'href=\\"#').replace(/</g, '\\u003c'),
   ';',
   '</script>'
 ].join('');

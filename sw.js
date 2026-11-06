@@ -1,26 +1,27 @@
 // Service Worker for WB OBC Archive - Offline Support
-const CACHE_NAME = 'wb-obc-archive-v33';
+const CACHE_NAME = 'wb-obc-archive-v34';
 const ASSETS_TO_CACHE = [
   './',
-  './index.html',
-  './timeline.html',
-  './litigation.html',
-  './case-map.html',
-  './projects.html',
-  './case-orders.html',
+  './timeline',
+  './litigation',
+  './case-map',
+  './projects',
+  './case-orders',
   './js/case-orders-map.js',
-  './media.html',
-  './obc-list.html',
-  './documents.html',
-  './evidence.html',
-  './record-guide.html',
-  './inventory.html',
-  './obc-basics.html',
-  './methods.html',
-  './reports.html',
-  './about.html',
-  './contribute.html',
+  './media',
+  './obc-list',
+  './documents',
+  './evidence',
+  './record-guide',
+  './inventory',
+  './obc-basics',
+  './methods',
+  './reports',
+  './about',
+  './contribute',
   './pwa-manifest.json',
+  './404.html',
+  './assets/icons/icon-192.png',
   './css/shared.css',
   './css/site.css',
   './css/polish.css',
@@ -142,7 +143,7 @@ self.addEventListener('fetch', (event) => {
       }).catch(() => {
         // Offline fallback for navigation requests
         if (event.request.mode === 'navigate') {
-          return caches.match('./index.html');
+          return caches.match('./index');
         }
       });
     })

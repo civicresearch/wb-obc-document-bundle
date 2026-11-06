@@ -92,7 +92,7 @@
     "shortcutReportsDesc": "reports and evidence standards",
     "shortcutAboutDesc": "methods, limits and source principles",
     "homeCard1Title": "Documented position in this bundle",
-    "homeCard1Desc": "Reviewed 4 November 2026: Notification 945 lists 66 classes at 7%. The July statutory amendments took effect on 27 July. After withdrawal of the State’s specified SLPs and the August certificate judgment, the Supreme Court issued notice on fresh challenges on 1 October, making appointments subject to the outcome. <a href=\"litigation.html#case-2026-10-01\">Read the latest court record</a>.",
+    "homeCard1Desc": "Reviewed 4 November 2026: Notification 945 lists 66 classes at 7%. The July statutory amendments took effect on 27 July. After withdrawal of the State’s specified SLPs and the August certificate judgment, the Supreme Court issued notice on fresh challenges on 1 October, making appointments subject to the outcome. <a href=\"litigation#case-2026-10-01\">Read the latest court record</a>.",
     "homeCard1Link1": "Open withdrawal entry",
     "homeCard1Link2": "Open current list entry",
     "homeCard2Title": "Policy Basis",
@@ -1235,7 +1235,11 @@
     "navGroup.maps": "Maps",
     "navGroup.understand": "Understand",
     "navGroup.tools": "Archive tools",
-    "navGroup.about": "About"
+    "navGroup.about": "About",
+    "social.navLabel": "Civic Research Group on social media",
+    "social.facebook": "Civic Research Group on Facebook",
+    "social.instagram": "Civic Research Group on Instagram",
+    "social.x": "Civic Research Group on X"
   },
   "bn": {
     "siteTitle": "পশ্চিমবঙ্গ ওবিসি আর্কাইভ",
@@ -1331,7 +1335,7 @@
     "shortcutReportsDesc": "প্রতিবেদন ও প্রমাণের মানদণ্ড",
     "shortcutAboutDesc": "পদ্ধতি, সীমাবদ্ধতা ও উৎস নীতি",
     "homeCard1Title": "এই সংকলনে নথিভুক্ত অবস্থান",
-    "homeCard1Desc": "পর্যালোচনা: ৪ নভেম্বর ২০২৬। বিজ্ঞপ্তি 945-এ ৬৬টি শ্রেণি ও ৭% সংরক্ষণ আছে। জুলাইয়ের আইন সংশোধনগুলি ২৭ জুলাই কার্যকর হয়। রাজ্যের নির্দিষ্ট SLP প্রত্যাহার ও আগস্টের শংসাপত্রের রায়ের পর ১ অক্টোবর সুপ্রিম কোর্ট নতুন চ্যালেঞ্জে নোটিশ দিয়ে নিয়োগ মামলার ফলাফলের অধীন রাখে। <a href=\"litigation.html#case-2026-10-01\">সাম্প্রতিক আদালতের নথি পড়ুন</a>।",
+    "homeCard1Desc": "পর্যালোচনা: ৪ নভেম্বর ২০২৬। বিজ্ঞপ্তি 945-এ ৬৬টি শ্রেণি ও ৭% সংরক্ষণ আছে। জুলাইয়ের আইন সংশোধনগুলি ২৭ জুলাই কার্যকর হয়। রাজ্যের নির্দিষ্ট SLP প্রত্যাহার ও আগস্টের শংসাপত্রের রায়ের পর ১ অক্টোবর সুপ্রিম কোর্ট নতুন চ্যালেঞ্জে নোটিশ দিয়ে নিয়োগ মামলার ফলাফলের অধীন রাখে। <a href=\"litigation#case-2026-10-01\">সাম্প্রতিক আদালতের নথি পড়ুন</a>।",
     "homeCard1Link1": "প্রত্যাহারের তালিকাভুক্তি খুলুন",
     "homeCard1Link2": "বর্তমান তালিকার তালিকাভুক্তি খুলুন",
     "homeCard2Title": "নীতিগত ভিত্তি",
@@ -1594,7 +1598,7 @@
     "obcBasicsHeading": "ওবিসি মানে কী",
     "methodsHeading": "অনগ্রসরতা যাচাইয়ের বৈজ্ঞানিক পদ্ধতি",
     "reportsHeading": "নীতি প্রতিবেদন ও অনগ্রসরতার মানদণ্ড",
-    "frameworkHeading": "নতুন এবং অনুপস্থিত তালিকাভুক্তিের জন্য কাঠামো",
+    "frameworkHeading": "নতুন ও বাদ পড়া নথি যোগ করার কাঠামো",
     "completenessAuditHeading": "নথি ও প্রমাণের ঘাটতি",
     "publicHearingsHeading": "জনশুনানির নোটিশ",
     "newSourcesHeading": "নতুন সংরক্ষিত উৎসের পর্যালোচনা",
@@ -2473,6 +2477,10 @@
     "navGroup.maps": "মানচিত্র",
     "navGroup.understand": "বুঝে নিন",
     "navGroup.tools": "আর্কাইভের সরঞ্জাম",
-    "navGroup.about": "পরিচিতি"
+    "navGroup.about": "পরিচিতি",
+    "social.navLabel": "সামাজিক মাধ্যমে সিভিক রিসার্চ গ্রুপ",
+    "social.facebook": "ফেসবুকে সিভিক রিসার্চ গ্রুপ",
+    "social.instagram": "ইনস্টাগ্রামে সিভিক রিসার্চ গ্রুপ",
+    "social.x": "X-এ সিভিক রিসার্চ গ্রুপ"
   }
 }

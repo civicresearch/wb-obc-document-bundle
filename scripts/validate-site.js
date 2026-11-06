@@ -10,22 +10,34 @@ const urls = [...sitemap.matchAll(/<loc>(.*?)<\/loc>/g)].map(m => m[1]);
 assert.equal(urls.length, 17, 'All public pages must be discoverable');
 const titles = new Set(), descriptions = new Set();
 for (const url of urls) {
-  const file = new URL(url).pathname.slice(1) || 'index.html';
+  const slug = new URL(url).pathname.slice(1);
+  assert.ok(!slug.endsWith('.html'), `${url}: sitemap uses clean URLs`);
+  const file = slug ? `${slug}.html` : 'index.html';
   const html = read(file), head = html.split('</head>')[0];
   assert.equal((html.match(/<h1\b/g) || []).length, 1, `${file}: one main heading`);
   assert.equal((head.match(/rel="canonical"/g) || []).length, 1, `${file}: one canonical`);
   assert.ok(head.includes(`rel="canonical" href="${url}"`), `${file}: canonical matches sitemap`);
-  const title = head.match(/<title>(.*?)<\/title>/)?.[1];
+  const title = head.match(/<title[^>]*>(.*?)<\/title>/)?.[1];
   const description = head.match(/name="description" content="([^"]+)"/)?.[1];
   assert.ok(title && !titles.has(title), `${file}: unique title`); titles.add(title);
   assert.ok(description && !descriptions.has(description), `${file}: unique description`); descriptions.add(description);
   assert.ok(head.includes('css/polish.css'), `${file}: styling available before paint`);
+  assert.ok(title.length <= 70, `${file}: title is short enough to show in search results (${title.length})`);
+  assert.ok(description.length >= 70 && description.length <= 165, `${file}: description is 70–165 characters (${description.length})`);
+  for (const tag of ['og:title', 'og:description', 'og:url', 'og:image', 'og:image:alt', 'twitter:card', 'twitter:image']) assert.ok(head.includes(`"${tag}"`), `${file}: ${tag}`);
+  const ogImage = head.match(/property="og:image" content="([^"]+)"/)[1];
+  assert.ok(fs.existsSync(path.join(root, new URL(ogImage).pathname)), `${file}: sharing image exists`);
+  assert.ok(head.includes(`property="og:url" content="${url}"`), `${file}: og:url matches canonical`);
+  assert.ok(html.includes('href="https://civicresearch.in/"'), `${file}: links to civicresearch.in`);
+  for (const net of ['facebook', 'instagram', 'x']) assert.ok(html.includes(`social-link--${net}`), `${file}: ${net} link`);
+  assert.ok(!/href="(?:index|timeline|litigation|media|documents|obc-list|evidence|about|contribute|projects|reports|methods|inventory|record-guide|obc-basics|case-map|case-orders)\.html/.test(html), `${file}: internal links use clean URLs`);
   const structured = head.match(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/)?.[1];
-  assert.ok(JSON.parse(structured)['@graph'].some(item => item['@type'] === 'WebPage'));
+  assert.ok(JSON.parse(structured)['@graph'].some(item => /Page$/.test(item['@type'])), `${file}: WebPage structured data`);
   for (const match of html.matchAll(/(?:src|href)="([^"#?]+)(?:[?#][^"]*)?"/g)) {
     const target = match[1];
     if (/^(?:[a-z]+:|\/\/)/i.test(target)) continue;
-    assert.ok(fs.existsSync(path.resolve(root, target)), `${file}: missing local asset ${target}`);
+    const local = path.resolve(root, target);
+    assert.ok(fs.existsSync(local) || fs.existsSync(`${local}.html`), `${file}: missing local page or asset ${target}`);
   }
 }
 assert.ok(read('litigation.html').includes('id="case-2026-10-31"'), 'Latest case is in server HTML');
@@ -35,6 +47,7 @@ for (const [file,id] of [['documents.html','docs-tbody'],['obc-list.html','obc-c
 assert.ok(read('litigation.html').includes('id="casefile-shreyasi-dhang-2026"'), 'Case files are in server HTML');
 assert.ok((read('media.html').match(/class="media-item"/g) || []).length >= 20, 'Media coverage is in server HTML');
 assert.ok(read('robots.txt').includes('Sitemap: '));
+assert.ok(read('404.html').includes('noindex'), '404 page is not indexed');
 assert.ok(!read('js/site.js').includes('new XMLHttpRequest'), 'No synchronous data requests');
 // Every archived PDF is fingerprinted, unchanged, and counted correctly on the home page.
 {
