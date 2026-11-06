@@ -138,3 +138,128 @@ document.querySelectorAll('.table-wrap').forEach((wrapper, index) => {
 if ('serviceWorker' in navigator && location.protocol !== 'file:') {
   navigator.serviceWorker.register('./sw.js').catch(() => {});
 }
+
+// Press / anywhere to jump to the navigation-bar search (js/search.js runs it).
+document.addEventListener('keydown', event => {
+  if (event.key !== '/' || event.metaKey || event.ctrlKey || event.altKey) return;
+  if (event.target.closest?.('input, textarea, select, [contenteditable="true"]')) return;
+  const input = document.getElementById('nav-search-input');
+  if (!input) return;
+  event.preventDefault();
+  input.focus();
+  input.select();
+});
+
+// Bilingual data rendered at build time carries both languages in data-en / data-bn.
+function syncBilingualData() {
+  const bn = document.documentElement.lang === 'bn';
+  document.querySelectorAll('[data-en]').forEach(el => {
+    const text = bn && el.dataset.bn ? el.dataset.bn : el.dataset.en;
+    if (el.textContent !== text) el.textContent = text;
+  });
+}
+document.addEventListener('wbobc:langchange', syncBilingualData);
+syncBilingualData();
+
+// Litigation: filter case cards by status.
+(() => {
+  const group = document.querySelector('[data-case-filter]');
+  if (!group) return;
+  const sets = { all: null, pending: ['pending', 'listed'], stayed: ['stayed'], decided: ['decided', 'withdrawn', 'dismissed'] };
+  group.addEventListener('click', event => {
+    const button = event.target.closest('button[data-status]');
+    if (!button) return;
+    group.querySelectorAll('button').forEach(b => { const on = b === button; b.classList.toggle('active', on); b.setAttribute('aria-pressed', String(on)); });
+    const allowed = sets[button.dataset.status];
+    document.querySelectorAll('.case-file').forEach(card => { card.hidden = !!allowed && !allowed.includes(card.dataset.status); });
+  });
+  // Opening a linked case card from elsewhere expands its record list.
+  function openFromHash() {
+    const card = location.hash.startsWith('#casefile-') && document.getElementById(location.hash.slice(1));
+    if (card) { card.hidden = false; card.querySelector('details')?.setAttribute('open', ''); card.classList.add('is-target'); }
+  }
+  window.addEventListener('hashchange', openFromHash);
+  openFromHash();
+})();
+
+// Media: search, case and year filters.
+(() => {
+  const toolbar = document.querySelector('[data-media-filter]');
+  if (!toolbar) return;
+  const search = document.getElementById('media-search');
+  const caseSelect = document.getElementById('media-case');
+  const yearSelect = document.getElementById('media-year');
+  const count = document.getElementById('media-count');
+  const empty = document.getElementById('media-empty');
+  const items = Array.from(document.querySelectorAll('.media-item'));
+  const params = new URLSearchParams(location.search);
+  if (params.get('case')) caseSelect.value = params.get('case');
+  function apply() {
+    const terms = search.value.toLowerCase().split(/\s+/).filter(Boolean);
+    let shown = 0;
+    items.forEach(item => {
+      const ok = terms.every(t => item.dataset.text.includes(t))
+        && (!caseSelect.value || item.dataset.cases.split(' ').includes(caseSelect.value))
+        && (!yearSelect.value || item.dataset.year === yearSelect.value);
+      item.hidden = !ok;
+      if (ok) shown += 1;
+    });
+    const bn = document.documentElement.lang === 'bn';
+    count.textContent = bn ? String(shown).replace(/[0-9]/g, n => '০১২৩৪৫৬৭৮৯'[n]) : String(shown);
+    empty.hidden = shown > 0;
+  }
+  [search, caseSelect, yearSelect].forEach(el => el.addEventListener('input', apply));
+  document.addEventListener('wbobc:langchange', apply);
+  apply();
+})();
+
+// Case map: highlight a case's linked cases on hover or keyboard focus.
+(() => {
+  const canvas = document.querySelector('[data-case-map]');
+  if (!canvas) return;
+  const links = [...canvas.querySelectorAll('.cm-link[data-case]')];
+  const crosses = [...canvas.querySelectorAll('.cm-cross')];
+  const clear = () => {
+    canvas.classList.remove('has-focus');
+    links.forEach(l => l.classList.remove('is-active', 'is-linked'));
+    crosses.forEach(c => c.classList.remove('on'));
+  };
+  const show = id => {
+    clear();
+    const related = new Set();
+    crosses.forEach(c => {
+      if (c.dataset.a === id || c.dataset.b === id) { c.classList.add('on'); related.add(c.dataset.a === id ? c.dataset.b : c.dataset.a); }
+    });
+    canvas.classList.add('has-focus');
+    links.forEach(l => { if (l.dataset.case === id) l.classList.add('is-active'); else if (related.has(l.dataset.case)) l.classList.add('is-linked'); });
+  };
+  links.forEach(l => {
+    l.addEventListener('mouseenter', () => show(l.dataset.case));
+    l.addEventListener('focus', () => show(l.dataset.case));
+    l.addEventListener('mouseleave', clear);
+    l.addEventListener('blur', clear);
+  });
+})();
+
+// Back-to-top button for long pages.
+(() => {
+  const button = document.createElement('button');
+  button.type = 'button';
+  button.className = 'to-top';
+  const label = () => (document.documentElement.lang === 'bn' ? 'ওপরে ফিরুন' : 'Back to top');
+  button.setAttribute('aria-label', label());
+  button.title = label();
+  button.textContent = '↑';
+  document.body.appendChild(button);
+  document.addEventListener('wbobc:langchange', () => { button.setAttribute('aria-label', label()); button.title = label(); });
+  let ticking = false;
+  const update = () => { button.classList.toggle('is-visible', window.scrollY > Math.max(1200, window.innerHeight * 1.5)); ticking = false; };
+  window.addEventListener('scroll', () => { if (!ticking) { ticking = true; requestAnimationFrame(update); } }, { passive: true });
+  button.addEventListener('click', () => {
+    const smooth = !window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    window.scrollTo({ top: 0, behavior: smooth ? 'smooth' : 'auto' });
+    const target = document.getElementById('main-content') || document.querySelector('main');
+    if (target) { target.setAttribute('tabindex', '-1'); target.focus({ preventScroll: true }); }
+  });
+  update();
+})();

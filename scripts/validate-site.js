@@ -7,7 +7,7 @@ const sitemap = read('sitemap.xml');
 const translations = JSON.parse(read('data/i18n.json'));
 assert.ok(translations.en && translations.bn, 'Both language dictionaries must parse');
 const urls = [...sitemap.matchAll(/<loc>(.*?)<\/loc>/g)].map(m => m[1]);
-assert.equal(urls.length, 13, 'All public pages must be discoverable');
+assert.equal(urls.length, 16, 'All public pages must be discoverable');
 const titles = new Set(), descriptions = new Set();
 for (const url of urls) {
   const file = new URL(url).pathname.slice(1) || 'index.html';
@@ -32,6 +32,8 @@ assert.ok(read('litigation.html').includes('id="case-2026-10-31"'), 'Latest case
 for (const [file,id] of [['documents.html','docs-tbody'],['obc-list.html','obc-class-list'],['inventory.html','inventory-tbody'],['evidence.html','public-hearings-tbody']]) {
   assert.match(read(file),new RegExp(`<tbody[^>]*id="${id}"[^>]*>\\s*<tr`),`${file}: static records`);
 }
+assert.ok(read('litigation.html').includes('id="casefile-shreyasi-dhang-2026"'), 'Case files are in server HTML');
+assert.ok((read('media.html').match(/class="media-item"/g) || []).length >= 20, 'Media coverage is in server HTML');
 assert.ok(read('robots.txt').includes('Sitemap: '));
 assert.ok(!read('js/site.js').includes('new XMLHttpRequest'), 'No synchronous data requests');
 console.log(`Site validation passed for ${urls.length} pages: metadata, discovery, static records and local assets.`);

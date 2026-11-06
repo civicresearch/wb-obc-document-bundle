@@ -745,6 +745,27 @@ const HERO_CONTENT = {
       ['Verify', 'casesStat4Label', 'casesStat4Value']
     ]
   },
+  'case-orders': {
+    eyebrowKey: 'caseOrders.eyebrow',
+    eyebrow: 'Case map · every court order',
+    titleKey: 'caseOrders.title',
+    subKey: 'caseOrders.sub',
+    stats: []
+  },
+  'case-map': {
+    eyebrowKey: 'caseMap.eyebrow',
+    eyebrow: 'Case map · how the cases connect',
+    titleKey: 'caseMap.title',
+    subKey: 'caseMap.sub',
+    stats: []
+  },
+  media: {
+    eyebrowKey: 'media.eyebrow',
+    eyebrow: 'Media coverage · news and legal reporting',
+    titleKey: 'media.title',
+    subKey: 'media.sub',
+    stats: []
+  },
   'obc-list': {
     eyebrowKey: 'obcListHeroEyebrow',
     eyebrow: 'OBC List · Notification 945-BCW',
@@ -795,6 +816,9 @@ const PAGE_FILES = {
   home: 'index.html',
   timeline: 'timeline.html',
   cases: 'litigation.html',
+  media: 'media.html',
+  'case-map': 'case-map.html',
+  'case-orders': 'case-orders.html',
   'obc-list': 'obc-list.html',
   documents: 'documents.html',
   evidence: 'evidence.html',
@@ -975,10 +999,12 @@ function renderBundleSearch() {
   });
 }
 
-if (siteSearch) siteSearch.addEventListener('input', renderBundleSearch);
+// js/search.js replaces this keyword-only search when the site is served over HTTP.
+const smartSearchActive = !!window.WBOBCSearch;
+if (siteSearch && !smartSearchActive) siteSearch.addEventListener('input', renderBundleSearch);
 
 const initialSearch = new URLSearchParams(window.location.search).get('q');
-if (siteSearch && initialSearch) {
+if (siteSearch && initialSearch && !smartSearchActive) {
   siteSearch.value = initialSearch;
   renderBundleSearch();
 }
@@ -1197,6 +1223,10 @@ function tabForHash(hash) {
   if (id.startsWith('evt-') || id === 'timeline') return 'timeline';
   if (id.startsWith('doc-') || id === 'documents') return 'documents';
   if (id === 'public-hearings' || id === 'missing-records' || id === 'evidence') return 'evidence';
+  if (id === 'media' || id.startsWith('media-')) return 'media';
+  if (id === 'case-map') return 'case-map';
+  if (id === 'case-orders' || /^n-\d{4}-/.test(id) || id === 'root') return 'case-orders';
+  if (id.startsWith('casefile-')) return 'cases';
   if (id === 'cases' || id.startsWith('case-') || id === 'employee-protection-note' || id.startsWith('litigation-note-')) return 'cases';
   if (id === 'entry-framework') return 'entry-framework';
   if (id === 'inventory') return 'inventory';

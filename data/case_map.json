@@ -1,0 +1,61 @@
+{
+  "note": "Layout of the Case map page (case-map.html). Groups are themes, not proceedings; every case id must exist in data/case_files.json. Children are drawn left to right; dashed links come from each case's `related` list.",
+  "root": {
+    "case": "casefile-amal-chandra-das-2024",
+    "label": "Amal Chandra Das judgment",
+    "label_bn": "অমল চন্দ্র দাস রায়",
+    "sub": "Calcutta High Court · 22 May 2024",
+    "sub_bn": "কলকাতা হাইকোর্ট · ২২ মে ২০২৪"
+  },
+  "groups": [
+    {
+      "id": "appeal",
+      "label": "Appeal against the judgment",
+      "label_bn": "রায়ের বিরুদ্ধে আপিল",
+      "children": [
+        { "case": "casefile-sc-state-appeals-2024", "label": "State's appeals in the Supreme Court", "label_bn": "সুপ্রিম কোর্টে রাজ্যের আপিল" }
+      ]
+    },
+    {
+      "id": "enforce",
+      "label": "Enforcing the 2024 judgment",
+      "label_bn": "২০২৪-এর রায় কার্যকর",
+      "children": [
+        { "case": "casefile-implementation-pils-2024", "label": "Implementation PILs (university admissions)", "label_bn": "রায় কার্যকরের জনস্বার্থ মামলা (বিশ্ববিদ্যালয়ে ভর্তি)" },
+        { "case": "casefile-jemas-pg-2025", "label": "JEMAS PG and WBJEE admissions", "label_bn": "JEMAS PG ও WBJEE ভর্তি" },
+        { "case": "casefile-sir-certificates-2025", "label": "Voided certificates in the voter-roll revision", "label_bn": "ভোটার তালিকা সংশোধনে বাতিল শংসাপত্র" }
+      ]
+    },
+    {
+      "id": "list2025",
+      "label": "The 2025 new OBC list",
+      "label_bn": "২০২৫-এর নতুন ওবিসি তালিকা",
+      "children": [
+        { "case": "casefile-notification-challenge-2025", "label": "Challenge to the 2025 survey and lists", "label_bn": "২০২৫-এর সমীক্ষা ও তালিকার চ্যালেঞ্জ",
+          "children": [
+            { "case": "casefile-sc-purabi-das-2025", "edge": "SC appeal", "edge_bn": "আপিল", "label": "State v. Purabi Das (Supreme Court)", "label_bn": "রাজ্য বনাম পূরবী দাস (সুপ্রিম কোর্ট)" }
+          ] }
+      ]
+    },
+    {
+      "id": "list2026",
+      "label": "The 2026 list and certificates",
+      "label_bn": "২০২৬-এর তালিকা ও শংসাপত্র",
+      "children": [
+        { "case": "casefile-rjf-pil-2026", "label": "Right and Justice Foundation PIL", "label_bn": "রাইট অ্যান্ড জাস্টিস ফাউন্ডেশন জনস্বার্থ মামলা" },
+        { "case": "casefile-shreyasi-dhang-2026", "label": "Shreyasi Dhang: 2025-list certificates void", "label_bn": "শ্রেয়সী ধাং: ২০২৫-এর তালিকার শংসাপত্র অবৈধ" }
+      ]
+    },
+    {
+      "id": "claims",
+      "label": "Candidates' category claims",
+      "label_bn": "প্রার্থীদের শ্রেণি দাবি",
+      "children": [
+        { "case": "casefile-recruitment-category-2026", "label": "College Service Commission category petitions", "label_bn": "কলেজ সার্ভিস কমিশনে শ্রেণি সংক্রান্ত আবেদন" },
+        { "case": "casefile-admission-recruitment-claims-2026", "label": "NEET-UG and SLST category claims", "label_bn": "NEET-UG ও SLST শ্রেণি দাবি" },
+        { "case": "casefile-recruitment-roster-2026", "label": "Recruitment: EWS moves and the new roster", "label_bn": "নিয়োগ: EWS-এ স্থানান্তর ও নতুন রোস্টার" },
+        { "case": "casefile-category-petitions-oct-2026", "label": "Category-update petitions, Oct 2026", "label_bn": "শ্রেণি হালনাগাদের আবেদন, অক্টোবর ২০২৬" }
+      ]
+    }
+  ]
+}

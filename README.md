@@ -9,6 +9,14 @@ and corrected record counters. See [the dated research note](RESEARCH_UPDATE_202
 for source links, scope and follow-up gaps. The 23 November Supreme Court listing
 is a future direction in the 1 October order, not a completed hearing.
 
+## Search, exports and sharing (November 2026)
+
+- `js/search.js` runs the site-wide search in the navigation bar (press `/`) and on the home page. It combines keyword ranking (BM25) with meaning-based ranking from latent semantic vectors, over every record, the news list and the text inside the PDFs. The index in `data/search/` is built by `npm run build:search` (`scripts/build-search.py`, needs numpy and `pdftotext`); it loads only when someone searches.
+- `js/export.js` adds a download icon next to the print icon on data pages. It exports the records currently shown as CSV, Excel (.xlsx) or a branded PDF report.
+- `data/case_files.json` groups court records into proceedings for the case cards on `litigation.html`; `data/media_coverage.json` feeds `media.html`.
+- `assets/og/` holds the 1200×630 sharing images for every page in English and Bengali (`npm run build:og`).
+- `npm run build` rebuilds pages, the standalone edition and the search index. Rebuild the sharing images when page titles change.
+
 ## Contents
 
 - `obc_pdfs/` - published PDF source documents used by the timeline, corpus, reports, hearings, and inventory sections.

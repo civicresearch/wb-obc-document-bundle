@@ -4,11 +4,14 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="Read the Mandal and Sachar reports alongside West Bengal OBC research, with source PDFs and context for studying backwardness and reservation.">
-  <meta name="theme-color" content="#10253f">
+  <meta name="theme-color" content="#0f3b3c">
   <title>OBC Policy Reports · Civic Research Group</title>
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
-  <script src="js/navigation.js?v=20261104-records" defer></script>
-  <script src="js/export-pdf.js?v=20261106-print" defer></script>
+  <script src="js/navigation.js?v=20261106-polish" defer></script>
+  <script src="js/export-pdf.js?v=20261105-icon" defer></script>
+  <script src="js/search.js?v=20261106-search" defer></script>
+  <script src="js/export.js?v=20261106-export" defer></script>
+  <script src="js/case-orders-map.js?v=20261106-polish" defer></script>
   <link rel="manifest" href="pwa-manifest.json">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -32,93 +35,107 @@
   </script>
   <link rel="stylesheet" href="css/site.css?v=20261104-records">
   <link rel="stylesheet" href="css/polish.css?v=20261104-records">
+  <link rel="stylesheet" href="css/crg.css?v=20261106-polish">
   <link rel="stylesheet" href="css/print.css?v=20261106-print">
 <link rel="canonical" href="https://obcwb.civicresearch.in/reports.html">
-  <meta name="robots" content="index, follow, max-image-preview:large">
+  <link rel="alternate" hreflang="en" href="https://obcwb.civicresearch.in/reports.html">
+  <link rel="alternate" hreflang="bn" href="https://obcwb.civicresearch.in/reports.html?lang=bn">
+  <link rel="alternate" hreflang="x-default" href="https://obcwb.civicresearch.in/reports.html">
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+  <meta name="author" content="Civic Research Group">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="WB OBC Archive">
+  <meta property="og:locale" content="en_IN">
+  <meta property="og:locale:alternate" content="bn_IN">
   <meta property="og:title" content="OBC Policy Reports · Civic Research Group">
   <meta property="og:description" content="Read the Mandal and Sachar reports alongside West Bengal OBC research, with source PDFs and context for studying backwardness and reservation.">
   <meta property="og:url" content="https://obcwb.civicresearch.in/reports.html">
-  <meta property="og:image" content="https://obcwb.civicresearch.in/obcwb-light-logo.png">
-  <meta property="og:image:alt" content="West Bengal OBC Archive">
-  <meta name="twitter:card" content="summary">
+  <meta property="og:image" content="https://obcwb.civicresearch.in/assets/og/reports.png">
+  <meta property="og:image:type" content="image/png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="OBC Policy Reports: WB OBC Archive by Civic Research Group">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@CivicResearchX">
   <meta name="twitter:title" content="OBC Policy Reports · Civic Research Group">
   <meta name="twitter:description" content="Read the Mandal and Sachar reports alongside West Bengal OBC research, with source PDFs and context for studying backwardness and reservation.">
-  <meta name="twitter:image" content="https://obcwb.civicresearch.in/obcwb-light-logo.png">
-  <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://obcwb.civicresearch.in/#organization","name":"Civic Research Group","url":"https://civicresearch.in"},{"@type":"WebSite","@id":"https://obcwb.civicresearch.in/#website","url":"https://obcwb.civicresearch.in/","name":"WB OBC Archive","inLanguage":["en","bn"],"publisher":{"@id":"https://obcwb.civicresearch.in/#organization"}},{"@type":"WebPage","@id":"https://obcwb.civicresearch.in/reports.html#webpage","url":"https://obcwb.civicresearch.in/reports.html","name":"OBC Policy Reports","description":"Read the Mandal and Sachar reports alongside West Bengal OBC research, with source PDFs and context for studying backwardness and reservation.","inLanguage":"en","isPartOf":{"@id":"https://obcwb.civicresearch.in/#website"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://obcwb.civicresearch.in/"},{"@type":"ListItem","position":2,"name":"OBC Policy Reports","item":"https://obcwb.civicresearch.in/reports.html"}]}]}</script>
+  <meta name="twitter:image" content="https://obcwb.civicresearch.in/assets/og/reports.png">
+  <meta name="twitter:image:alt" content="OBC Policy Reports: WB OBC Archive by Civic Research Group">
+  <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://obcwb.civicresearch.in/#organization","name":"Civic Research Group","url":"https://civicresearch.in","logo":"https://obcwb.civicresearch.in/assets/crg-on-light.png","email":"civicresearchgroup@gmail.com","sameAs":["https://www.facebook.com/civicresearch","https://www.instagram.com/civicresearch","https://x.com/CivicResearchX"]},{"@type":"WebSite","@id":"https://obcwb.civicresearch.in/#website","url":"https://obcwb.civicresearch.in/","name":"WB OBC Archive","alternateName":"পশ্চিমবঙ্গ ওবিসি আর্কাইভ","inLanguage":["en","bn"],"publisher":{"@id":"https://obcwb.civicresearch.in/#organization"},"potentialAction":{"@type":"SearchAction","target":"https://obcwb.civicresearch.in/?q={search_term_string}","query-input":"required name=search_term_string"}},{"@type":"WebPage","@id":"https://obcwb.civicresearch.in/reports.html#webpage","url":"https://obcwb.civicresearch.in/reports.html","name":"OBC Policy Reports","description":"Read the Mandal and Sachar reports alongside West Bengal OBC research, with source PDFs and context for studying backwardness and reservation.","inLanguage":"en","dateModified":"2026-11-05","isPartOf":{"@id":"https://obcwb.civicresearch.in/#website"},"primaryImageOfPage":{"@type":"ImageObject","url":"https://obcwb.civicresearch.in/assets/og/reports.png","width":1200,"height":630}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://obcwb.civicresearch.in/"},{"@type":"ListItem","position":2,"name":"OBC Policy Reports","item":"https://obcwb.civicresearch.in/reports.html"}]}]}</script>
 </head>
 <body data-page="reports">
   <a class="skip-link" href="#main-content">Skip to main content</a>
-  <header class="site-header">
-    <div class="site-header-inner">
-      <a href="index.html" class="site-logo" aria-label="West Bengal OBC Archive — home">
-        <img src="obcwb-flat-light-logo.webp" data-theme-logo data-light-src="obcwb-flat-light-logo.webp" data-dark-src="obcwb-flat-light-logo.webp" alt="West Bengal OBC Archive" width="720" height="240" decoding="async">
+  <header class="site-header masthead">
+    <div class="mast-band">
+    <div class="site-header-inner wrap">
+      <a class="brandmark" href="https://civicresearch.in" target="_blank" rel="noopener noreferrer" aria-label="Civic Research Group">
+        <img src="assets/crg-on-dark.png" alt="Civic Research Group" width="2003" height="378" decoding="async">
       </a>
-      <script>
-        // Swap the header logo to the theme-correct file before first paint;
-        // otherwise a dark-theme load briefly (or, if a later script fails,
-        // permanently) shows the dark-text logo on the dark header.
-        (function () {
-          if (document.documentElement.dataset.theme !== 'dark') return;
-          var logo = document.querySelector('img[data-theme-logo]');
-          if (logo && logo.dataset.darkSrc) logo.setAttribute('src', logo.dataset.darkSrc);
-        })();
-      </script>
+      <a href="index.html" class="masthead-title" aria-label="West Bengal OBC Archive — home">
+        <span class="mast-eyebrow" data-i18n="masthead.eyebrow">WB OBC Archive</span>
+        <strong data-i18n="masthead.title">OBC Reservation Records of West Bengal</strong>
+        <small data-i18n="masthead.subtitle">Notifications, court records, hearings and source documents, 1993–2026</small>
+      </a>
       <div class="nav-preferences" aria-label="Language and appearance">
         <div class="language-switch" role="group" aria-label="Language">
-          <button type="button" id="lang-en" class="lang-btn active" data-lang="en" data-lang-switch="en" aria-pressed="true" lang="en" aria-label="English" title="English">EN</button>
+          <button type="button" id="lang-en" class="lang-btn active" data-lang="en" data-lang-switch="en" aria-pressed="true" lang="en">English</button>
           <button type="button" id="lang-bn" class="lang-btn" data-lang="bn" data-lang-switch="bn" aria-pressed="false" lang="bn">বাংলা</button>
         </div>
-        <select id="theme-select" class="theme-select" aria-label="Appearance">
-          <option value="auto" data-i18n="appearance.auto">Auto</option>
-          <option value="light" data-i18n="appearance.light">Light</option>
-          <option value="dark" data-i18n="appearance.dark">Dark</option>
-        </select>
+        <label class="theme-label">
+          <span class="visually-hidden" data-i18n="appearance.label">Theme</span>
+          <select id="theme-select" class="theme-select" aria-label="Appearance">
+            <option value="auto" data-i18n="appearance.auto">Auto</option>
+            <option value="light" data-i18n="appearance.light">Light</option>
+            <option value="dark" data-i18n="appearance.dark">Dark</option>
+          </select>
+        </label>
       </div>
-      <div class="masthead-title"><strong data-i18n="masthead.title">West Bengal OBC Archive</strong><small data-i18n="masthead.subtitle">Policy, court records &amp; public evidence</small></div>
-      <button type="button" class="nav-toggle" aria-expanded="false" aria-controls="site-nav" aria-label="Open navigation menu">
-        <span class="nav-toggle-bar"></span>
-        <span class="nav-toggle-bar"></span>
-        <span class="nav-toggle-bar"></span>
-      </button>
-      <nav class="site-nav" id="site-nav" aria-label="Sections">
-        <p class="drawer-title" data-i18n="navigation.title">Explore the archive</p>
-        <button type="button" class="nav-close" aria-label="Close navigation menu">×</button>
-        <a href="index.html" class="active" data-tab-target="home" data-i18n="navHome">Home</a>
-        <div class="nav-group">
-          <button type="button" class="nav-group-toggle" aria-expanded="false">
-            <span data-i18n="navResearch">Research</span>
-            <span class="nav-caret" aria-hidden="true">▾</span>
-          </button>
-          <div class="nav-group-items">
-            <a href="timeline.html" data-tab-target="timeline" data-i18n="navTimeline">Timeline</a>
-            <a href="litigation.html" data-tab-target="cases" data-i18n="navCases">Litigation</a>
-            <a href="obc-list.html" data-tab-target="obc-list" data-i18n="navOBCList">OBC List</a>
-            <a href="documents.html" data-tab-target="documents" data-i18n="navDocuments">Source PDFs</a>
-            <a href="evidence.html" data-tab-target="evidence" data-i18n="navEvidence">Hearings &amp; Gaps</a>
-            <a href="record-guide.html" data-tab-target="entry-framework" data-i18n="navEntryFramework">Add Record Guide</a>
-            <a href="inventory.html" data-tab-target="inventory" data-i18n="navInventory">File Inventory</a>
-          </div>
-        </div>
-        <div class="nav-group">
-          <button type="button" class="nav-group-toggle" aria-expanded="false">
-            <span data-i18n="navLearn">Learn</span>
-            <span class="nav-caret" aria-hidden="true">▾</span>
-          </button>
-          <div class="nav-group-items">
-            <a href="obc-basics.html" data-tab-target="obc-basics" data-i18n="navOBCBasics">OBC Basics</a>
-            <a href="methods.html" data-tab-target="methods" data-i18n="navMethods">Evidence Method</a>
-            <a href="#reports" data-tab-target="reports" data-i18n="navReports" class="active" aria-current="page">Policy Reports</a>
-          </div>
-        </div>
-        <a href="contribute.html" data-i18n="navContribute">Contribute</a>
-        <a href="about.html" data-tab-target="about" data-i18n="navAbout">About</a>
-        <a href="https://github.com/civicresearch/wb-obc-document-bundle" target="_blank" rel="noreferrer" data-i18n="navGitHub">GitHub</a>
-        <a class="drawer-crg" href="https://civicresearch.in" target="_blank" rel="noopener noreferrer" aria-label="Civic Research Group"><img src="assets/crg-on-light.png" data-theme-logo data-light-src="assets/crg-on-light.png" data-dark-src="assets/crg-on-dark.png" alt="Civic Research Group" width="2003" height="378" decoding="async"><span data-i18n="drawer.research">Independent public interest research</span></a>
-
-      </nav>
       <div class="nav-overlay"></div>
+    </div>
+    </div>
+    <div class="navbar">
+      <div class="wrap navbar-inner">
+        <button type="button" class="nav-toggle" aria-expanded="false" aria-controls="site-nav" aria-label="Open navigation menu">
+          <span class="nav-toggle-bar"></span>
+          <span class="nav-toggle-bar"></span>
+          <span class="nav-toggle-bar"></span>
+        </button>
+        <nav class="site-nav" id="site-nav" aria-label="Sections">
+          <p class="drawer-title" data-i18n="navigation.title">Explore the archive</p>
+          <button type="button" class="nav-close" aria-label="Close navigation menu">×</button>
+          <a href="index.html" class="active" data-tab-target="home" data-i18n="navHome">Home</a>
+          <a href="timeline.html" data-tab-target="timeline" data-i18n="navTimeline">Timeline</a>
+          <a href="litigation.html" data-tab-target="cases" data-i18n="navCases">Litigation</a>
+          <a href="media.html" data-tab-target="media" data-i18n="navMedia">Media</a>
+          <a href="obc-list.html" data-tab-target="obc-list" data-i18n="navOBCList">OBC List</a>
+          <a href="documents.html" data-tab-target="documents" data-i18n="navDocuments">Source PDFs</a>
+          <a href="evidence.html" data-tab-target="evidence" data-i18n="navEvidence">Hearings &amp; Gaps</a>
+          <div class="nav-group">
+            <button type="button" class="nav-group-toggle" aria-expanded="false">
+              <span data-i18n="navMore">More</span>
+              <span class="nav-caret" aria-hidden="true">▾</span>
+            </button>
+            <div class="nav-group-items">
+              <a href="case-map.html" data-tab-target="case-map" data-i18n="navCaseMap">Case map</a>
+              <a href="case-orders.html" data-tab-target="case-orders" data-i18n="navCaseOrders">Court orders map</a>
+              <a href="#reports" data-tab-target="reports" data-i18n="navReports" class="active" aria-current="page">Policy Reports</a>
+              <a href="obc-basics.html" data-tab-target="obc-basics" data-i18n="navOBCBasics">OBC Basics</a>
+              <a href="methods.html" data-tab-target="methods" data-i18n="navMethods">Evidence Method</a>
+              <a href="inventory.html" data-tab-target="inventory" data-i18n="navInventory">File Inventory</a>
+              <a href="record-guide.html" data-tab-target="entry-framework" data-i18n="navEntryFramework">Add Record Guide</a>
+              <a href="about.html" data-tab-target="about" data-i18n="navAbout">About</a>
+              <a href="https://github.com/civicresearch/wb-obc-document-bundle" target="_blank" rel="noreferrer" data-i18n="navGitHub">GitHub</a>
+            </div>
+          </div>
+          <a href="contribute.html" data-i18n="navContribute">Contribute</a>
+        </nav>
+        <form class="nav-search" role="search" action="index.html" method="get" data-nav-search>
+          <svg aria-hidden="true" viewBox="0 0 20 20" width="16" height="16"><circle cx="8.5" cy="8.5" r="5.5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M13 13l4.5 4.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+          <label class="visually-hidden" for="nav-search-input" data-i18n="navSearchLabel">Search the archive</label>
+          <input id="nav-search-input" name="q" type="search" autocomplete="off" data-i18n-placeholder="navSearchPlaceholder" placeholder="Search notifications, cases, communities, documents">
+          <kbd aria-hidden="true">/</kbd>
+        </form>
+      </div>
     </div>
   </header>
 
@@ -246,7 +263,7 @@
     </div>
   </footer>
 
-<script src="js/archive-loader.js?v=20261104-records" defer></script>
+<script src="js/archive-loader.js?v=20261105-crg" defer></script>
 
 </body>
 </html>

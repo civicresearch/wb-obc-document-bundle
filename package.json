@@ -2,9 +2,11 @@
   "scripts": {
     "build:pages": "node scripts/build-pages.js",
     "build:standalone": "node scripts/build-standalone.js",
-    "build": "npm run build:pages && npm run build:standalone",
+    "build": "npm run build:pages && npm run build:standalone && npm run build:search",
     "serve": "python3 -m http.server 8123",
     "validate:data": "node scripts/validate-data.js",
-    "validate:site": "node scripts/validate-site.js"
+    "validate:site": "node scripts/validate-site.js",
+    "build:og": "node scripts/build-og.js",
+    "build:search": "python3 scripts/build-search.py"
   }
 }
