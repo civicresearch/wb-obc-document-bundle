@@ -1,0 +1,463 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="A mind map of connected West Bengal OBC court cases: the 2024 Calcutta High Court judgment, the Supreme Court appeals, the 2025 new-list process, admissions, recruitment and EWS disputes, with links to every archived order.">
+  <meta name="theme-color" content="#0f3b3c">
+  <title>Connected Case Map · Civic Research Group</title>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="canonical" href="https://obcwb.civicresearch.in/case-map.html">
+  <script>
+    (function () {
+      var pref = 'auto';
+      try { var s = localStorage.getItem('wb-obc-theme'); if (s === 'light' || s === 'dark') pref = s; } catch (e) {}
+      var dark = pref === 'dark' || (pref === 'auto' && window.matchMedia && matchMedia('(prefers-color-scheme: dark)').matches);
+      document.documentElement.dataset.themePreference = pref;
+      document.documentElement.dataset.theme = dark ? 'dark' : 'light';
+    })();
+  </script>
+  <style>
+    :root, html[data-theme="light"] {
+      --page-bg: #f3f6f5; --surface: #ffffff; --surface-soft: #e9efed; --line: #d6e0dd; --line-strong: #b7c7c3;
+      --reading: #0e2627; --secondary: #3f5655; --muted-ink: #6b8180; --link: #155e8f; --focus: #2a78d6;
+      --brand: #0f3b3c; --brand-ink: #f4efe1; --brand-ink-2: #b9cfc9; --highlight: #e8922b; --highlight-ink: #965609;
+      --edge: #b7c7c3; --xlink: #965609;
+      --f1: #1f5f99; --f2: #0f766e; --f3: #7c3aed; --f4: #b45309; --f5: #be123c; --f6: #047857; --f7: #9a3412; --f8: #475569;
+      --shadow: 0 1px 2px rgba(14,38,39,.06), 0 4px 16px rgba(14,38,39,.05);
+    }
+    html[data-theme="dark"] {
+      --page-bg: #0b1919; --surface: #102324; --surface-soft: #152d2d; --line: #233e3d; --line-strong: #345453;
+      --reading: #e6eeec; --secondary: #b3c5c2; --muted-ink: #85a09c; --link: #7ab8ea; --focus: #6da7ec;
+      --brand: #0a2c2d; --brand-ink: #f4efe1; --brand-ink-2: #a9c2bc; --highlight: #f2a541; --highlight-ink: #f2b35f;
+      --edge: #345453; --xlink: #f2b35f;
+      --f1: #7ab8ea; --f2: #5eead4; --f3: #c4b5fd; --f4: #fbbf24; --f5: #fda4af; --f6: #6ee7b7; --f7: #fdba74; --f8: #cbd5e1;
+      --shadow: 0 1px 2px rgba(0,0,0,.3), 0 4px 16px rgba(0,0,0,.25);
+    }
+    * { box-sizing: border-box; }
+    html { -webkit-text-size-adjust: 100%; }
+    body { margin: 0; background: var(--page-bg); color: var(--reading); font: 400 15px/1.6 "Segoe UI", system-ui, -apple-system, "Noto Sans Bengali", sans-serif; }
+    a { color: var(--link); }
+    :focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+    .wrap { max-width: 1240px; margin: 0 auto; padding: 0 16px; }
+    .band { background: var(--brand); color: var(--brand-ink); }
+    .band-inner { display: flex; align-items: center; gap: 20px; padding: 18px 0; flex-wrap: wrap; }
+    .band img { width: 170px; height: auto; display: block; }
+    .band-title { flex: 1 1 280px; border-left: 3px solid var(--highlight); padding: 2px 0 2px 18px; }
+    .band-title .eyebrow { color: var(--highlight); font: 700 13px/1.4 inherit; font-weight: 700; display: block; }
+    .band-title h1 { margin: 2px 0 0; font-size: clamp(22px, 2.4vw, 30px); line-height: 1.2; font-weight: 750; letter-spacing: -.01em; }
+    .band-title p { margin: 4px 0 0; color: var(--brand-ink-2); font-size: 13px; }
+    .band select { height: 32px; border-radius: 999px; padding: 2px 10px; border: 1px solid rgba(244,239,225,.35); background: transparent; color: var(--brand-ink); font: inherit; font-size: 13px; }
+    .band select option { color: #0e2627; background: #fff; }
+    .crumbs { padding: 14px 0 0; font-size: 14px; }
+    .crumbs a { text-decoration: none; }
+    .intro { margin: 8px 0 16px; color: var(--secondary); max-width: 78ch; }
+    .panel { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; box-shadow: var(--shadow); }
+    .toolbar { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; padding: 12px; margin-bottom: 14px; }
+    .toolbar input[type="search"] { flex: 1 1 240px; min-width: 0; height: 38px; padding: 6px 12px; border: 1px solid var(--line-strong); border-radius: 8px; background: var(--surface); color: var(--reading); font: inherit; }
+    .seg { display: inline-flex; border: 1px solid var(--line-strong); border-radius: 8px; overflow: hidden; }
+    .seg button, .btn { font: inherit; font-size: 14px; border: 0; background: var(--surface); color: var(--reading); padding: 7px 12px; cursor: pointer; min-height: 38px; }
+    .seg button + button { border-left: 1px solid var(--line-strong); }
+    .seg button[aria-pressed="true"] { background: var(--brand); color: var(--brand-ink); }
+    .btn { border: 1px solid var(--line-strong); border-radius: 8px; }
+    .btn:hover, .seg button:hover { background: var(--surface-soft); }
+    .seg button[aria-pressed="true"]:hover { background: var(--brand); }
+    .count { color: var(--muted-ink); font-size: 13px; margin-left: auto; }
+    .layout { display: grid; grid-template-columns: minmax(0, 1fr) 300px; gap: 16px; align-items: start; }
+    .layout > * { min-width: 0; }
+    .map-box { overflow-x: auto; overflow-y: hidden; padding: 8px 4px; }
+    .map-box svg { display: block; }
+    .legend { display: flex; flex-wrap: wrap; gap: 14px; padding: 10px 14px; border-top: 1px solid var(--line); font-size: 13px; color: var(--secondary); }
+    .legend span { display: inline-flex; align-items: center; gap: 6px; }
+    .legend svg { flex: none; }
+    aside.details { position: sticky; top: 12px; padding: 16px; min-height: 200px; }
+    .details h2 { font-size: 18px; line-height: 1.35; margin: 4px 0 8px; }
+    .details .kicker { font-size: 12px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: var(--highlight-ink); }
+    .details dl { display: grid; grid-template-columns: auto 1fr; gap: 4px 12px; margin: 10px 0; font-size: 14px; }
+    .details dt { color: var(--muted-ink); }
+    .details dd { margin: 0; }
+    .details p { margin: 8px 0; font-size: 14.5px; }
+    .badge { display: inline-block; font-size: 12px; font-weight: 600; padding: 2px 8px; border-radius: 999px; border: 1px solid var(--line-strong); color: var(--secondary); }
+    .badge.official { border-color: var(--f6); color: var(--f6); }
+    .badge.none { border-style: dashed; }
+    .actions { display: flex; flex-wrap: wrap; gap: 8px; margin: 12px 0 4px; }
+    .actions a { display: inline-block; padding: 6px 12px; border-radius: 8px; border: 1px solid var(--line-strong); text-decoration: none; font-size: 14px; }
+    .actions a.primary { background: var(--brand); color: var(--brand-ink); border-color: var(--brand); }
+    .conn { margin: 12px 0 0; padding: 0; list-style: none; font-size: 14px; }
+    .conn li { margin: 6px 0; }
+    .conn button { font: inherit; background: none; border: 0; padding: 0; color: var(--link); cursor: pointer; text-align: left; text-decoration: underline; }
+    .hint { color: var(--muted-ink); font-size: 14px; }
+    /* svg */
+    .edge { fill: none; stroke-width: 1.6; opacity: .55; }
+    .xlink { fill: none; stroke: var(--xlink); stroke-width: 1.3; stroke-dasharray: 4 3; opacity: .45; }
+    .xlink.on { opacity: 1; stroke-width: 2; }
+    .node { cursor: pointer; }
+    .node text { fill: var(--reading); font-size: 13px; }
+    .node .date { fill: var(--muted-ink); font-variant-numeric: tabular-nums; font-size: 12px; }
+    .node.dim { opacity: .22; }
+    .node.sel .hit { fill: var(--surface-soft); stroke: var(--focus); }
+    .node .hit { fill: transparent; stroke: transparent; rx: 6; }
+    .node:hover .hit { fill: var(--surface-soft); }
+    .node.related .hit { fill: var(--surface-soft); stroke: var(--xlink); stroke-dasharray: 3 2; }
+    .box { fill: var(--surface); stroke-width: 1.5; }
+    .box-title { font-weight: 700; font-size: 13px; }
+    .box-sub { fill: var(--muted-ink); font-size: 11.5px; }
+    .root-box { fill: var(--brand); }
+    .root-text { fill: var(--brand-ink) !important; font-weight: 700; }
+    .root-sub { fill: var(--brand-ink-2) !important; font-size: 11.5px; }
+    .toggle { font-size: 11px; fill: var(--muted-ink); }
+    /* outline */
+    .outline { margin: 18px 0 32px; padding: 6px 16px 12px; }
+    .outline h2 { font-size: 20px; margin: 10px 0 4px; }
+    .outline details { border-top: 1px solid var(--line); padding: 8px 0; }
+    .outline summary { cursor: pointer; font-weight: 650; }
+    .outline summary small { font-weight: 400; color: var(--muted-ink); margin-left: 6px; }
+    .outline ol { margin: 6px 0 0; padding-left: 20px; }
+    .outline li { margin: 4px 0; font-size: 14.5px; }
+    .outline li .d { color: var(--muted-ink); font-variant-numeric: tabular-nums; margin-right: 6px; }
+    .outline button { font: inherit; background: none; border: 0; padding: 0; color: var(--link); cursor: pointer; text-align: left; }
+    .err { padding: 16px; color: var(--secondary); }
+    footer { color: var(--muted-ink); font-size: 13px; padding: 8px 0 28px; }
+    @media (max-width: 1100px) {
+      .layout { grid-template-columns: 1fr; }
+      aside.details { position: static; }
+    }
+    @media print {
+      .toolbar, .band select, aside.details { display: none; }
+      .layout { grid-template-columns: 1fr; }
+      .map-box { overflow: visible; }
+    }
+  </style>
+</head>
+<body>
+  <header class="band">
+    <div class="wrap band-inner">
+      <a href="https://civicresearch.in" target="_blank" rel="noopener noreferrer" aria-label="Civic Research Group"><img src="assets/crg-on-dark.png" alt="Civic Research Group"></a>
+      <div class="band-title">
+        <span class="eyebrow">WB OBC Reservation Archive</span>
+        <h1>Connected Case Map</h1>
+        <p>How the 2024 judgment, the appeals and the later petitions connect</p>
+      </div>
+      <label><span class="visually-hidden" style="position:absolute;left:-9999px">Theme</span>
+        <select id="theme" aria-label="Colour theme">
+          <option value="auto">Auto theme</option><option value="light">Light</option><option value="dark">Dark</option>
+        </select>
+      </label>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <nav class="crumbs" aria-label="Breadcrumb"><a href="index.html">Archive home</a> › <a href="litigation.html">Litigation tracker</a> › Case map</nav>
+    <p class="intro">Every archived order starts from the Calcutta High Court's 22 May 2024 judgment in <em>Amal Chandra Das</em>. Each branch is a family of connected proceedings; dashed orange arcs show links recorded in the orders themselves, such as tagging, appeals, reviews and withdrawals. Select any order to read what it decided and open the PDF.</p>
+
+    <div class="panel toolbar" role="search">
+      <input id="q" type="search" placeholder="Search case number, party or topic (e.g. 17422, Hasibur, EWS)" aria-label="Search the case map">
+      <div class="seg" role="group" aria-label="Court">
+        <button type="button" data-court="all" aria-pressed="true">All courts</button>
+        <button type="button" data-court="SC" aria-pressed="false">Supreme Court</button>
+        <button type="button" data-court="HC" aria-pressed="false">High Court</button>
+      </div>
+      <button type="button" class="btn" id="expand">Expand all</button>
+      <button type="button" class="btn" id="collapse">Collapse all</button>
+      <button type="button" class="btn" id="dl">Download SVG</button>
+      <span class="count" id="count" aria-live="polite"></span>
+    </div>
+
+    <div class="layout">
+      <section class="panel" aria-label="Case map">
+        <div class="map-box" id="mapbox"><div class="err" id="status">Loading the case map…</div></div>
+        <div class="legend" aria-hidden="true">
+          <span><svg width="14" height="14"><rect x="2" y="2" width="10" height="10" fill="var(--secondary)" transform="rotate(45 7 7)"/></svg>Supreme Court</span>
+          <span><svg width="14" height="14"><circle cx="7" cy="7" r="5" fill="var(--secondary)"/></svg>Calcutta High Court</span>
+          <span><svg width="14" height="14"><circle cx="7" cy="7" r="5" fill="none" stroke="var(--secondary)" stroke-dasharray="2 2"/></svg>Reported, not archived</span>
+          <span><svg width="26" height="10"><path d="M1 5h24" stroke="var(--xlink)" stroke-dasharray="4 3" stroke-width="1.5"/></svg>Recorded connection</span>
+        </div>
+      </section>
+      <aside class="panel details" id="details" aria-live="polite">
+        <p class="kicker">Details</p>
+        <p class="hint">Select an order in the map or the list below to see the court, case numbers, what it decided and links to the archived PDF and its source.</p>
+      </aside>
+    </div>
+
+    <section class="panel outline" aria-labelledby="outline-h">
+      <h2 id="outline-h">All connected cases, by family</h2>
+      <p class="hint">The same map as a list, in date order within each family.</p>
+      <div id="outline"></div>
+    </section>
+
+    <footer>Research archive, not legal advice or current case status. Most files are typeset prints of public court text and are marked as such; check the court's own record before relying on any entry. Data: <a href="case_map.json">case_map.json</a> and <a href="case_manifest.json">case_manifest.json</a>.</footer>
+  </main>
+
+  <script>
+  (function () {
+    'use strict';
+    var NS = 'http://www.w3.org/2000/svg';
+    var MONTHS = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+    var LONG = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+    var SOURCE_LABEL = {
+      official: ['Official court PDF', 'official'], official_court_pdf: ['Official court PDF', 'official'],
+      court_text_mirror_print: ['Court-text print (not official)', ''], mirror_copy: ['Mirror copy (not official)', ''],
+      local_source_copy: ['Archived source copy', '']
+    };
+    var state = { map: null, manifest: {}, nodes: {}, collapsed: {}, court: 'all', q: '', sel: null, rows: {} };
+
+    function el(tag, attrs, parent) {
+      var e = document.createElementNS(NS, tag);
+      for (var k in attrs) e.setAttribute(k, attrs[k]);
+      if (parent) parent.appendChild(e);
+      return e;
+    }
+    function fmt(d) { var p = d.split('-'); return +p[2] + ' ' + MONTHS[+p[1] - 1] + ' ' + p[0]; }
+    function fmtLong(d) { var p = d.split('-'); return +p[2] + ' ' + LONG[+p[1] - 1] + ' ' + p[0]; }
+    function wrapText(s, max) {
+      var words = s.split(' '), lines = [''], i;
+      for (i = 0; i < words.length; i++) {
+        var cur = lines[lines.length - 1];
+        if ((cur + ' ' + words[i]).trim().length > max && cur) lines.push(words[i]); else lines[lines.length - 1] = (cur + ' ' + words[i]).trim();
+      }
+      return lines;
+    }
+    function cleanNote(n) { return (n || '').replace(/\s*Local typeset reproduction[^]*$/, '').trim(); }
+    function famColor(i) { return 'var(--f' + ((i % 8) + 1) + ')'; }
+    function entryFor(n) { return n.file ? state.manifest[n.file] : null; }
+    function haystack(n) {
+      var e = entryFor(n) || {};
+      return [n.date, fmt(n.date), n.case, n.label, n.title, e.title, (e.case_numbers || []).join(' '), e.verification_note, n.note].join(' ').toLowerCase();
+    }
+    function matches(n) {
+      if (state.court !== 'all' && n.court !== state.court) return false;
+      if (!state.q) return true;
+      return state.q.split(/\s+/).every(function (t) { return n._hay.indexOf(t) !== -1; });
+    }
+    function linksOf(id) {
+      return state.map.links.filter(function (l) { return l.from === id || l.to === id; });
+    }
+
+    function draw() {
+      var box = document.getElementById('mapbox');
+      box.innerHTML = '';
+      var fams = state.map.families, ROW = 32, GAP = 16, FAM_H = 56;
+      var X0 = 8, ROOT_W = 176, X1 = 212, FAM_W = 200, X2 = 446, LABEL_W = 342, GUT = X2 + LABEL_W + 8;
+      var y = 12, layout = [], shown = 0, total = 0;
+      fams.forEach(function (f, i) {
+        var vis = f.nodes.filter(matches);
+        total += f.nodes.length; shown += vis.length;
+        if (!vis.length && (state.q || state.court !== 'all')) return;
+        var open = !state.collapsed[f.id] || (state.q && vis.length);
+        var rows = open ? vis : [];
+        var h = Math.max(FAM_H, rows.length * ROW);
+        layout.push({ f: f, i: i, rows: rows, vis: vis, top: y, h: h, open: open });
+        y += h + GAP;
+      });
+      var H = y + 4, W = GUT + 70;
+      var svg = el('svg', { width: W, height: H, viewBox: '0 0 ' + W + ' ' + H, role: 'img', 'aria-labelledby': 'svgt', id: 'mapsvg' });
+      el('title', { id: 'svgt' }, svg).textContent = 'Mind map of connected West Bengal OBC court cases';
+      var gEdges = el('g', {}, svg), gX = el('g', {}, svg), gNodes = el('g', {}, svg);
+      var rootY = H / 2, ROOT_H = 74;
+      state.rows = {};
+      // families + leaves
+      layout.forEach(function (L) {
+        var col = famColor(L.i), fy = L.top + L.h / 2;
+        el('path', { 'class': 'edge', stroke: col, d: 'M' + (X0 + ROOT_W) + ',' + rootY + ' C' + (X1 - 30) + ',' + rootY + ' ' + (X0 + ROOT_W + 20) + ',' + fy + ' ' + X1 + ',' + fy }, gEdges);
+        var g = el('g', { 'class': 'node fam', tabindex: 0, role: 'button', 'aria-expanded': String(!!L.open), 'aria-label': L.f.label + ', ' + L.f.nodes.length + ' orders. Press to ' + (L.open ? 'collapse' : 'expand') }, gNodes);
+        el('rect', { 'class': 'box', x: X1, y: fy - 26, width: FAM_W, height: 52, rx: 10, stroke: col }, g);
+        el('rect', { x: X1, y: fy - 26, width: 5, height: 52, rx: 2, fill: col }, g);
+        var lines = wrapText(L.f.label, 27);
+        var t = el('text', { 'class': 'box-title', x: X1 + 14, y: fy - (lines.length > 1 ? 7 : 2) }, g);
+        lines.slice(0, 2).forEach(function (s, k) { var ts = el('tspan', { x: X1 + 14, dy: k ? 15 : 0 }, t); ts.textContent = s; });
+        var sub = el('text', { 'class': 'box-sub', x: X1 + 14, y: fy + (lines.length > 1 ? 20 : 15) }, g);
+        sub.textContent = (L.vis.length === L.f.nodes.length ? L.f.nodes.length : L.vis.length + ' of ' + L.f.nodes.length) + (L.f.nodes.length === 1 ? ' order' : ' orders');
+        var tg = el('text', { 'class': 'toggle', x: X1 + FAM_W - 14, y: fy + 4, 'text-anchor': 'middle' }, g);
+        tg.textContent = L.open ? '−' : '+';
+        function toggle() { state.collapsed[L.f.id] = !!L.open; draw(); }
+        g.addEventListener('click', toggle);
+        g.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggle(); } });
+        var y0 = L.top + (L.h - L.rows.length * ROW) / 2;
+        L.rows.forEach(function (n, k) {
+          var ny = y0 + k * ROW + ROW / 2;
+          state.rows[n.id] = ny;
+          el('path', { 'class': 'edge', stroke: col, d: 'M' + (X1 + FAM_W) + ',' + fy + ' C' + (X2 - 40) + ',' + fy + ' ' + (X1 + FAM_W + 20) + ',' + ny + ' ' + (X2 - 8) + ',' + ny }, gEdges);
+          var ng = el('g', { 'class': 'node leaf', tabindex: 0, role: 'button', 'data-id': n.id, 'aria-label': fmtLong(n.date) + ', ' + (n.court === 'SC' ? 'Supreme Court' : 'Calcutta High Court') + ', ' + n.case + ': ' + n.label }, gNodes);
+          el('rect', { 'class': 'hit', x: X2 - 16, y: ny - ROW / 2 + 2, width: LABEL_W + 14, height: ROW - 4, rx: 6 }, ng);
+          if (n.court === 'SC') el('rect', { x: X2 - 13, y: ny - 5, width: 10, height: 10, fill: n.unarchived ? 'none' : col, stroke: col, 'stroke-dasharray': n.unarchived ? '2 2' : '', transform: 'rotate(45 ' + (X2 - 8) + ' ' + ny + ')' }, ng);
+          else el('circle', { cx: X2 - 8, cy: ny, r: 5.5, fill: n.unarchived ? 'none' : col, stroke: col }, ng);
+          var tt = el('text', { x: X2 + 4, y: ny + 4.5 }, ng);
+          var d = el('tspan', { 'class': 'date' }, tt); d.textContent = fmt(n.date) + '  ';
+          var lab = el('tspan', {}, tt); lab.textContent = n.label; lab.setAttribute('class', 'lab');
+          el('title', {}, ng).textContent = n.case + ' — ' + n.label;
+          ng.addEventListener('click', function () { select(n.id, true); });
+          ng.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); select(n.id, true); } });
+        });
+      });
+      // cross-links in the right gutter
+      state.map.links.forEach(function (l) {
+        var a = state.rows[l.from], b = state.rows[l.to];
+        if (a == null || b == null) return;
+        var bulge = Math.min(80, 18 + Math.abs(a - b) * 0.12);
+        var p = el('path', { 'class': 'xlink', 'data-a': l.from, 'data-b': l.to, d: 'M' + GUT + ',' + a + ' C' + (GUT + bulge) + ',' + a + ' ' + (GUT + bulge) + ',' + b + ' ' + GUT + ',' + b }, gX);
+        el('title', {}, p).textContent = l.label;
+        el('circle', { cx: GUT, cy: a, r: 2.5, fill: 'var(--xlink)', 'class': 'xlink-dot' }, gX);
+        el('circle', { cx: GUT, cy: b, r: 2.5, fill: 'var(--xlink)', 'class': 'xlink-dot' }, gX);
+      });
+      // root
+      var r = state.map.root;
+      var rg = el('g', { 'class': 'node leaf', tabindex: 0, role: 'button', 'data-id': r.id, 'aria-label': 'Root: ' + fmtLong(r.date) + ' Calcutta High Court judgment, ' + r.case }, gNodes);
+      el('rect', { 'class': 'root-box', x: X0, y: rootY - ROOT_H / 2, width: ROOT_W, height: ROOT_H, rx: 12 }, rg);
+      var rt = el('text', { 'class': 'root-text', x: X0 + 14, y: rootY - 12 }, rg); rt.textContent = r.label;
+      var rs = el('text', { 'class': 'root-sub', x: X0 + 14, y: rootY + 6 }, rg); rs.textContent = 'Calcutta HC · ' + fmt(r.date);
+      var rs2 = el('text', { 'class': 'root-sub', x: X0 + 14, y: rootY + 22 }, rg); rs2.textContent = r.case.length > 30 ? 'WPO 60/2011 and connected' : r.case;
+      rg.addEventListener('click', function () { select(r.id, true); });
+      rg.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); select(r.id, true); } });
+      state.rows[r.id] = rootY;
+      box.appendChild(svg);
+      Array.prototype.forEach.call(svg.querySelectorAll('.leaf text'), function (t) {
+        var lab = t.querySelector('.lab'); if (!lab) return;
+        var full = lab.textContent, cut = full.length;
+        while (t.getComputedTextLength() > LABEL_W - 10 && cut > 8) { cut -= 2; lab.textContent = full.slice(0, cut).trim() + '…'; }
+      });
+      document.getElementById('count').textContent = (state.q || state.court !== 'all') ? shown + ' of ' + total + ' orders match' : total + ' orders in ' + fams.length + ' families';
+      applySelection();
+    }
+
+    function applySelection() {
+      var id = state.sel, rel = {};
+      if (id) linksOf(id).forEach(function (l) { rel[l.from] = rel[l.to] = true; });
+      Array.prototype.forEach.call(document.querySelectorAll('#mapsvg .leaf'), function (g) {
+        var nid = g.getAttribute('data-id');
+        g.classList.toggle('sel', nid === id);
+        g.classList.toggle('related', !!id && nid !== id && !!rel[nid]);
+      });
+      Array.prototype.forEach.call(document.querySelectorAll('#mapsvg .xlink'), function (p) {
+        p.classList.toggle('on', !!id && (p.getAttribute('data-a') === id || p.getAttribute('data-b') === id));
+      });
+    }
+
+    function select(id, fromUser) {
+      var n = state.nodes[id];
+      if (!n) return;
+      state.sel = id;
+      if (n._fam && state.collapsed[n._fam]) { state.collapsed[n._fam] = false; draw(); } else applySelection();
+      renderDetails(n);
+      if (fromUser) { try { history.replaceState(null, '', '#' + id); } catch (e) {} }
+    }
+
+    function renderDetails(n) {
+      var e = entryFor(n) || {}, d = document.getElementById('details');
+      var src = n.unarchived ? ['Reported, no court copy archived', 'none'] : (SOURCE_LABEL[e.source_type] || ['Archived copy', '']);
+      var title = e.title || n.title || n.label;
+      var note = n.unarchived ? n.note : cleanNote(e.verification_note || e.later_development || '');
+      var cases = (e.case_numbers && e.case_numbers.length ? e.case_numbers : [n.case]).join('; ');
+      var h = '';
+      h += '<p class="kicker">' + (n.court === 'SC' ? 'Supreme Court of India' : 'Calcutta High Court') + ' · ' + esc(n._famLabel || 'Root judgment') + '</p>';
+      h += '<h2>' + esc(title) + '</h2>';
+      h += '<span class="badge ' + src[1] + '">' + esc(src[0]) + '</span>';
+      h += '<dl><dt>Date</dt><dd>' + fmtLong(n.date) + '</dd><dt>Case</dt><dd>' + esc(cases) + '</dd>' + (e.record_type ? '<dt>Record</dt><dd>' + esc(e.record_type) + '</dd>' : '') + (e.pages ? '<dt>Pages</dt><dd>' + e.pages + '</dd>' : '') + '</dl>';
+      if (note) h += '<p>' + esc(note) + '</p>';
+      if (n.unarchived) h += '';
+      h += '<div class="actions">';
+      if (n.file) h += '<a class="primary" href="' + encodeURI(n.file) + '" target="_blank" rel="noopener">Open PDF</a>';
+      var su = e.source_url || n.source_url;
+      if (su) h += '<a href="' + esc(su) + '" target="_blank" rel="noopener noreferrer">' + (n.unarchived ? 'Read the report' : 'Source') + '</a>';
+      h += '</div>';
+      var ls = linksOf(n.id);
+      if (ls.length) {
+        h += '<p class="kicker" style="margin-top:14px">Connected orders</p><ul class="conn">';
+        ls.forEach(function (l) {
+          var other = state.nodes[l.from === n.id ? l.to : l.from];
+          h += '<li>' + esc(l.label) + ': <button type="button" data-go="' + other.id + '">' + fmt(other.date) + ' · ' + esc(other.label) + '</button></li>';
+        });
+        h += '</ul>';
+      }
+      d.innerHTML = h;
+      Array.prototype.forEach.call(d.querySelectorAll('[data-go]'), function (b) {
+        b.addEventListener('click', function () { select(b.getAttribute('data-go'), true); var g = document.querySelector('#mapsvg [data-id="' + b.getAttribute('data-go') + '"]'); if (g) g.focus({ preventScroll: false }); });
+      });
+      if (window.matchMedia('(max-width: 1100px)').matches && !d._quiet) d.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
+
+    function esc(s) { return String(s == null ? '' : s).replace(/[&<>"']/g, function (c) { return ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[c]; }); }
+
+    function renderOutline() {
+      var o = document.getElementById('outline'), h = '';
+      state.map.families.forEach(function (f) {
+        h += '<details open><summary>' + esc(f.label) + '<small>' + esc(f.sub || '') + '</small></summary><ol>';
+        f.nodes.forEach(function (n) {
+          h += '<li><span class="d">' + fmt(n.date) + '</span><button type="button" data-go="' + n.id + '">' + esc(n.label) + '</button> <span class="hint">· ' + (n.court === 'SC' ? 'SC' : 'HC') + ' · ' + esc(n.case) + (n.unarchived ? ' · not archived' : '') + '</span></li>';
+        });
+        h += '</ol></details>';
+      });
+      o.innerHTML = h;
+      Array.prototype.forEach.call(o.querySelectorAll('[data-go]'), function (b) {
+        b.addEventListener('click', function () { select(b.getAttribute('data-go'), true); document.getElementById('details').scrollIntoView({ behavior: 'smooth', block: 'start' }); });
+      });
+    }
+
+    function downloadSvg() {
+      var svg = document.getElementById('mapsvg');
+      if (!svg) return;
+      var clone = svg.cloneNode(true), cs = getComputedStyle(document.documentElement);
+      var vars = ['--reading','--muted-ink','--surface','--surface-soft','--brand','--brand-ink','--brand-ink-2','--xlink','--focus','--f1','--f2','--f3','--f4','--f5','--f6','--f7','--f8'];
+      var css = ':root{' + vars.map(function (v) { return v + ':' + cs.getPropertyValue(v); }).join(';') + '}';
+      css += Array.prototype.map.call(document.styleSheets[0].cssRules, function (r) { return r.cssText; }).filter(function (t) { return /^\.(edge|xlink|node|box|root|toggle)/.test(t); }).join('');
+      var st = document.createElementNS(NS, 'style'); st.textContent = css + 'text{font-family:Segoe UI,system-ui,sans-serif}';
+      clone.insertBefore(st, clone.firstChild);
+      var bg = document.createElementNS(NS, 'rect'); bg.setAttribute('width', '100%'); bg.setAttribute('height', '100%'); bg.setAttribute('fill', cs.getPropertyValue('--surface'));
+      clone.insertBefore(bg, st.nextSibling);
+      clone.setAttribute('xmlns', NS);
+      var blob = new Blob([new XMLSerializer().serializeToString(clone)], { type: 'image/svg+xml' });
+      var a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = 'wb-obc-connected-case-map.svg';
+      document.body.appendChild(a); a.click(); setTimeout(function () { URL.revokeObjectURL(a.href); a.remove(); }, 500);
+    }
+
+    // theme control (shares the archive's saved preference)
+    var themeSel = document.getElementById('theme');
+    themeSel.value = document.documentElement.dataset.themePreference || 'auto';
+    themeSel.addEventListener('change', function () {
+      var v = themeSel.value;
+      try { localStorage.setItem('wb-obc-theme', v); } catch (e) {}
+      document.documentElement.dataset.themePreference = v;
+      document.documentElement.dataset.theme = v === 'auto' ? (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : v;
+    });
+
+    Promise.all([
+      fetch('case_map.json').then(function (r) { if (!r.ok) throw new Error('case_map.json ' + r.status); return r.json(); }),
+      fetch('case_manifest.json').then(function (r) { if (!r.ok) throw new Error('case_manifest.json ' + r.status); return r.json(); })
+    ]).then(function (res) {
+      state.map = res[0];
+      res[1].forEach(function (e) {
+        if (e.local_file) state.manifest[e.local_file] = e;
+        (e.local_files || []).forEach(function (f) { state.manifest[f] = e; });
+      });
+      var r = state.map.root; r._hay = haystack(r); state.nodes[r.id] = r;
+      state.map.families.forEach(function (f) {
+        f.nodes.sort(function (a, b) { return a.date < b.date ? -1 : a.date > b.date ? 1 : 0; });
+        f.nodes.forEach(function (n) { n._fam = f.id; n._famLabel = f.label; n._hay = haystack(n) + ' ' + f.label.toLowerCase(); state.nodes[n.id] = n; });
+      });
+      draw();
+      renderOutline();
+      var h = location.hash.slice(1);
+      if (h && state.nodes[h]) { document.getElementById('details')._quiet = true; select(h, false); document.getElementById('details')._quiet = false; }
+    }).catch(function (err) {
+      document.getElementById('status').textContent = 'The case map could not be loaded (' + err.message + '). Open this page from the archive website rather than as a local file.';
+    });
+
+    window.addEventListener('hashchange', function () { var h = location.hash.slice(1); if (h && state.nodes[h]) select(h, false); });
+    var qt;
+    document.getElementById('q').addEventListener('input', function (e) {
+      clearTimeout(qt);
+      qt = setTimeout(function () { state.q = e.target.value.trim().toLowerCase(); if (state.map) draw(); }, 120);
+    });
+    Array.prototype.forEach.call(document.querySelectorAll('[data-court]'), function (b) {
+      b.addEventListener('click', function () {
+        state.court = b.getAttribute('data-court');
+        Array.prototype.forEach.call(document.querySelectorAll('[data-court]'), function (x) { x.setAttribute('aria-pressed', String(x === b)); });
+        if (state.map) draw();
+      });
+    });
+    document.getElementById('expand').addEventListener('click', function () { state.collapsed = {}; if (state.map) draw(); });
+    document.getElementById('collapse').addEventListener('click', function () { if (!state.map) return; state.map.families.forEach(function (f) { state.collapsed[f.id] = true; }); draw(); });
+    document.getElementById('dl').addEventListener('click', downloadSvg);
+  })();
+  </script>
+</body>
+</html>

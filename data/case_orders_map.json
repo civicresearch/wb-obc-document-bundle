@@ -1,0 +1,130 @@
+{
+  "updated": "2026-11-06",
+  "note": "Connected-case map for case-map.html. Each node with a 'file' takes its title, holding note and source from the matching case_manifest.json entry; nodes without a file carry their own note and source. Links describe procedural connections recorded in the orders themselves.",
+  "root": {
+    "id": "root",
+    "date": "2024-05-22",
+    "court": "HC",
+    "case": "WPO 60/2011 and connected matters",
+    "label": "Amal Chandra Das judgment",
+    "file": "case_pdfs/2024-05-22_Calcutta-High-Court_Amal-Chandra-Das-WPO-60-2011_judgment.pdf"
+  },
+  "families": [
+    {
+      "id": "sc2024",
+      "label": "State's appeals against the 2024 judgment",
+      "sub": "Supreme Court · SLP(C) 17751–17755/2024 and connected",
+      "nodes": [
+        { "id": "n-2024-07-28", "date": "2024-07-28", "court": "SC", "case": "SLP(C) 16936/2024", "label": "Aatmadeep's SLP paper book", "file": "case_pdfs/2024-07-28_Supreme-Court_SLP-C-16936-2024_Aatmadeep_paper-book.pdf" },
+        { "id": "n-2024-11-22", "date": "2024-11-22", "court": "SC", "case": "SLP(C) 17751–17755/2024", "label": "First listing of the State's appeals", "file": "case_pdfs/2024-11-22_Supreme-Court_SLP-C-17751-17755-2024_order.pdf" },
+        { "id": "n-2024-12-09", "date": "2024-12-09", "court": "SC", "case": "SLP(C) 17751–17755/2024", "label": "Listed for 7 January 2025", "file": "case_pdfs/2024-12-09_Supreme-Court_SLP-C-17751-17755-2024_order.pdf" },
+        { "id": "n-2025-01-07", "date": "2025-01-07", "court": "SC", "case": "SLP(C) 17751–17755/2024", "label": "Connected appeals listed for final hearing", "file": "case_pdfs/2025-01-07_Supreme-Court_SLP-C-17751-17755-2024_connected-appeals_order.pdf" },
+        { "id": "n-2025-03-18", "date": "2025-03-18", "court": "SC", "case": "SLP(C) 17751–17755/2024", "label": "Commission redoing the exercise; posted to July", "file": "case_pdfs/2025-03-18_Supreme-Court_SLP-C-17751-17755-2024_order.pdf" },
+        { "id": "n-2025-10-14", "date": "2025-10-14", "court": "SC", "case": "SLP(C) 17751–17755/2024", "label": "Listed for 6 November 2025", "file": "case_pdfs/2025-10-14_Supreme-Court_SLP-C-17751-17755-2024_order.pdf" },
+        { "id": "n-2025-11-06", "date": "2025-11-06", "court": "SC", "case": "State's appeals (order not archived)", "label": "High Court told not to proceed on the new list", "unarchived": true,
+          "title": "Supreme Court: Calcutta High Court told not to proceed with the new-list matter",
+          "note": "Reported by Scroll on 7 November 2025: a three-judge bench led by Chief Justice B.R. Gavai stayed the High Court proceedings on the fresh OBC list until further orders. The date is inferred from the report and the 14 October 2025 listing order; the court's own order has not been found or archived.",
+          "source_url": "https://scroll.in/latest/1088355/supreme-court-stays-proceedings-in-calcutta-hc-on-preparation-of-new-west-bengal-obc-list" },
+        { "id": "n-2026-07-14", "date": "2026-07-14", "court": "SC", "case": "SLP(C) 17751–17755/2024, 17422/2025 and others", "label": "State and Commission petitions withdrawn", "file": "case_pdfs/2026-07-14_Supreme-Court_OBC-SLPs_withdrawal_order.pdf" }
+      ]
+    },
+    {
+      "id": "pil2024",
+      "label": "Implementation PILs",
+      "sub": "Calcutta High Court · WPA(P) 387 and 430 of 2024",
+      "nodes": [
+        { "id": "n-2024-09-30", "date": "2024-09-30", "court": "HC", "case": "WPA(P) 430/2024", "label": "Universities warned over OBC admissions", "file": "case_pdfs/2024-09-30_Calcutta-High-Court_WPA-P-430-2024_Amal-Chandra-Das-PIL_order.pdf" },
+        { "id": "n-2024-10-07", "date": "2024-10-07", "court": "HC", "case": "WPA(P) 430/2024", "label": "No stay of the 2013 Act; order circulated", "file": "case_pdfs/2024-10-07_Calcutta-High-Court_WPA-P-430-2024_Amal-Chandra-Das-PIL_order.pdf" },
+        { "id": "n-2025-01-21", "date": "2025-01-21", "court": "HC", "case": "WPA(P) 387 and 430 of 2024", "label": "Aatmadeep and Amal Chandra Das PILs listed together", "file": "case_pdfs/2025-01-21_Calcutta-High-Court_WPA-P-387-430-2024_listing-order.pdf" }
+      ]
+    },
+    {
+      "id": "list2025",
+      "label": "The 2025 new-list process",
+      "sub": "WPA(P) 111/119/132 of 2025 → SLP(C) 17422/2025 (State v. Purabi Das)",
+      "nodes": [
+        { "id": "n-2025-05-06", "date": "2025-05-06", "court": "HC", "case": "WPA(P) 111, 119, 132 of 2025", "label": "Interim directions on the benchmark survey", "file": "case_pdfs/2025-05-06_Calcutta-High-Court_WPA-P-111-119-132-2025_benchmark-survey_order.pdf" },
+        { "id": "n-2025-06-17", "date": "2025-06-17", "court": "HC", "case": "WPA(P) 111, 119, 132 of 2025", "label": "New-list notifications halted", "file": "case_pdfs/2025-06-17_Calcutta-High-Court_WPA-P-111-119-132-2025_benchmark-survey_order.pdf" },
+        { "id": "n-2025-07-18", "date": "2025-07-18", "court": "SC", "case": "SLP(C) 17528/2025", "label": "Office report in the State's 2025 appeal", "file": "case_pdfs/2025-07-18_Supreme-Court_SLP-C-17528-2025_office-report.pdf" },
+        { "id": "n-2025-07-28", "date": "2025-07-28", "court": "SC", "case": "SLP(C) 17422, 17528, 17973–74 of 2025", "label": "Supreme Court stays the 17 June order", "file": "case_pdfs/2025-07-28_Supreme-Court_SLP-C-17422-17528-17973-17974-2025_stay_order.pdf" },
+        { "id": "n-2026-03-11", "date": "2026-03-11", "court": "SC", "case": "SLP(C) 17422/2025 and connected", "label": "Applications to vacate the stay listed", "file": "case_pdfs/2026-03-11_Supreme-Court_SLP-C-17422-17528-17973-17974_office-report.pdf" }
+      ]
+    },
+    {
+      "id": "jemas",
+      "label": "JEMAS PG and WBJEE 2025 admissions",
+      "sub": "WPA 9132/2025 → MAT 943/955 → CPAN 1362/1365 → SC",
+      "nodes": [
+        { "id": "n-2025-05-21", "date": "2025-05-21", "court": "HC", "case": "WPA 9132/2025", "label": "JEMAS PG implementation order", "file": "case_pdfs/2025-05-21_Calcutta-High-Court_WPA-9132-2025_JEMAS-PG-order.pdf" },
+        { "id": "n-2025-07-02", "date": "2025-07-02", "court": "HC", "case": "MAT 943 and 955 of 2025", "label": "State's appeals sent to the Chief Justice", "file": "case_pdfs/2025-07-02_Calcutta-High-Court_MAT-943-955-2025_Supriya-Mondal_order.pdf" },
+        { "id": "n-2025-08-07", "date": "2025-08-07", "court": "HC", "case": "CPAN 1362 and 1365 of 2025", "label": "Contempt order; WBJEE merit list to be redrawn", "file": "case_pdfs/2025-08-07_Calcutta-High-Court_CPAN-1362-1365-2025_JEMAS_contempt_order.pdf" },
+        { "id": "n-2025-08-22", "date": "2025-08-22", "court": "SC", "case": "Diary 45526 and 45628 of 2025", "label": "Supreme Court stays the 7 August order", "file": "case_pdfs/2025-08-22_Supreme-Court_Diary-45526-45628-2025_JEMAS_stay_order.pdf" }
+      ]
+    },
+    {
+      "id": "notif2026",
+      "label": "The 18 May 2026 notifications and certificates",
+      "sub": "WPA(P) 305/2026, MAT 1320/2026 and single-judge petitions",
+      "nodes": [
+        { "id": "n-2026-07-01", "date": "2026-07-01", "court": "HC", "case": "WPA 14695 and 14698 of 2026", "label": "Recruitment-category interim orders", "file": "case_pdfs/2026-07-01_Calcutta-High-Court_WPA-14695-2026_Bistriti-Parveen_order.pdf" },
+        { "id": "n-2026-07-03", "date": "2026-07-03", "court": "HC", "case": "WPA(P) 305/2026", "label": "PIL on the notifications not entertained", "file": "case_pdfs/2026-07-03_Calcutta-High-Court_WPA-P-305-2026_notifications-944-945-946_order.pdf" },
+        { "id": "n-2026-07-07", "date": "2026-07-07", "court": "HC", "case": "WPA 15380/2026", "label": "Single-judge challenge dismissed", "file": "case_pdfs/2026-07-07_Calcutta-High-Court_WPA-15380-2026_Mahamadul-Hasan-Gayen_order.pdf" },
+        { "id": "n-2026-07-08", "date": "2026-07-08", "court": "HC", "case": "WPA 14695/2026", "label": "Bistriti Parveen petition withdrawn", "file": "case_pdfs/2026-07-08_Calcutta-High-Court_WPA-14695-2026_withdrawal_order.pdf" },
+        { "id": "n-2026-07-09", "date": "2026-07-09", "court": "HC", "case": "WPA 14698/2026", "label": "Yasin Chowdhury application kept alive", "file": "case_pdfs/2026-07-09_Calcutta-High-Court_WPA-14698-2026_Yasin-Chowdhury_order.pdf" },
+        { "id": "n-2026-08-12", "date": "2026-08-12", "court": "HC", "case": "MAT 1320/2026", "label": "Shreyasi Dhang: 2025–26 certificates void", "file": "case_pdfs/2026-08-12_Calcutta-High-Court_MAT-1320-2026_Shreyasi-Dhang_judgment.pdf" },
+        { "id": "n-2026-10-01", "date": "2026-10-01", "court": "SC", "case": "Diary 41300 and 50605 of 2026", "label": "Fresh challenges; appointments subject to outcome", "file": "case_pdfs/2026-10-01_Supreme-Court_Diary-41300-50605-2026_order.pdf" }
+      ]
+    },
+    {
+      "id": "ews",
+      "label": "Switching to EWS after exclusion",
+      "sub": "NEET-UG, SLST and police recruitment",
+      "nodes": [
+        { "id": "n-2026-08-14", "date": "2026-08-14", "court": "HC", "case": "WPA 21501/2026", "label": "NEET-UG: no switch to EWS at counselling", "file": "case_pdfs/2026-08-14_Calcutta-High-Court_WPA-21501-2026_Hasibur-Rahaman-Mondal_judgment.pdf" },
+        { "id": "n-2026-08-18", "date": "2026-08-18", "court": "HC", "case": "MAT 1374/2026", "label": "Appeal: single judge upheld", "file": "case_pdfs/2026-08-18_Calcutta-High-Court_MAT-1374-2026_Hasibur-Rahaman-Mondal_judgment.pdf" },
+        { "id": "n-2026-09-14", "date": "2026-09-14", "court": "HC", "case": "FMA 1002/2026", "label": "2nd SLST: EWS consideration allowed", "file": "case_pdfs/2026-09-14_Calcutta-High-Court_FMA-1002-2026_Mir-Mazharul-Islam_judgment.pdf" },
+        { "id": "n-2026-09-23", "date": "2026-09-23", "court": "HC", "case": "RVW 239 and 241 of 2026", "label": "Review of the SLST judgment dismissed", "file": "case_pdfs/2026-09-23_Calcutta-High-Court_RVW-239-2026_Arindam-Saha_order.pdf" },
+        { "id": "n-2026-10-05", "date": "2026-10-05", "court": "SC", "case": "SLP(C) 31121/2026", "label": "Supreme Court: late EWS certificates not accepted", "file": "case_pdfs/2026-10-05_Supreme-Court_SLP-C-31121-2026_Hasibur-Rahaman-Mondal_order.pdf" },
+        { "id": "n-2026-10-15", "date": "2026-10-15", "court": "HC", "case": "WPA 28984/2026", "label": "Police recruitment: EWS challenge dismissed", "file": "case_pdfs/2026-10-15_Calcutta-High-Court_WPA-28984-2026_Srikanta-Chakraborty_judgment.pdf" },
+        { "id": "n-2026-10-31", "date": "2026-10-31", "court": "HC", "case": "WPA 31572/2026", "label": "Primary teachers' EWS claim: affidavits called", "file": "case_pdfs/2026-10-31_Calcutta-High-Court_WPA-31572-2026_Mohabul-Islam_order.pdf" }
+      ]
+    },
+    {
+      "id": "recruit",
+      "label": "Recruitment after the reset",
+      "sub": "Category updates, protected selectees and the new roster",
+      "nodes": [
+        { "id": "n-2026-08-31", "date": "2026-08-31", "court": "HC", "case": "WPA 23207 and 23209 of 2026", "label": "SLST OBC-A claims dismissed", "file": "case_pdfs/2026-08-31_Calcutta-High-Court_WPA-23207-23209-2026_Mehebuba-Khatun_judgment.pdf" },
+        { "id": "n-2026-10-13a", "date": "2026-10-13", "court": "HC", "case": "WPA 29788/2026", "label": "Nilanjona Kundu: category representations", "file": "case_pdfs/2026-10-13_Calcutta-High-Court_WPA-29788-2026_Nilanjona-Kundu_order.pdf" },
+        { "id": "n-2026-10-13b", "date": "2026-10-13", "court": "HC", "case": "WPA 26656/2026", "label": "Selectees protected by the 7 August notification", "file": "case_pdfs/2026-10-13_Calcutta-High-Court_WPA-26656-2026_Aslam-Hossain_order.pdf" },
+        { "id": "n-2026-10-13c", "date": "2026-10-13", "court": "HC", "case": "APOT 136/2026", "label": "New roster applied midway: listed 13 Nov", "file": "case_pdfs/2026-10-13_Calcutta-High-Court_APOT-136-2026_Shamim-Akhtar_order.pdf" },
+        { "id": "n-2026-10-15b", "date": "2026-10-15", "court": "HC", "case": "WPA 30672/2026", "label": "Abeda Khatoon: retained-class candidates", "file": "case_pdfs/2026-10-15_Calcutta-High-Court_WPA-30672-2026_Abeda-Khatoon_order.pdf" },
+        { "id": "n-2026-10-30", "date": "2026-10-30", "court": "HC", "case": "WPA 31497/2026", "label": "Update window opens no fresh applications", "file": "case_pdfs/2026-10-30_Calcutta-High-Court_WPA-31497-2026_Sambhu-Charan-Bera_order.pdf" }
+      ]
+    },
+    {
+      "id": "roll",
+      "label": "Certificates in the electoral roll",
+      "sub": "Special Intensive Revision",
+      "nodes": [
+        { "id": "n-2025-12-24", "date": "2025-12-24", "court": "HC", "case": "WPA 28939/2025", "label": "Arijit Bakshi: representation to be decided", "file": "case_pdfs/2025-12-24_Calcutta-High-Court_WPA-28939-2025_Arijit-Bakshi_order.pdf" }
+      ]
+    }
+  ],
+  "links": [
+    { "from": "n-2025-06-17", "to": "n-2024-09-30", "label": "Heard with WPA(P) 430/2024" },
+    { "from": "n-2025-08-22", "to": "n-2025-07-28", "label": "Tagged with SLP(C) 17422/2025" },
+    { "from": "n-2026-07-14", "to": "n-2025-07-28", "label": "Withdrawal also closed SLP(C) 17422/2025 group" },
+    { "from": "n-2026-07-14", "to": "n-2025-08-22", "label": "Withdrawal included Diary 45526/2025" },
+    { "from": "n-2026-08-12", "to": "n-2026-07-14", "label": "Judgment relies on the withdrawal" },
+    { "from": "n-2026-10-01", "to": "n-2026-08-12", "label": "Fresh challenges to the August judgment" },
+    { "from": "n-2026-10-01", "to": "n-2026-07-03", "label": "Arises from WPA(P) 305/2026" },
+    { "from": "n-2026-10-05", "to": "n-2026-08-18", "label": "SLP against MAT 1374/2026" },
+    { "from": "n-2026-09-23", "to": "n-2026-09-14", "label": "Review of FMA 1002/2026" },
+    { "from": "n-2026-10-13c", "to": "n-2026-07-14", "label": "New roster followed the withdrawal" },
+    { "from": "n-2026-07-07", "to": "n-2026-07-03", "label": "Follows the PIL decision" },
+    { "from": "n-2026-07-09", "to": "n-2026-07-01", "label": "Same petition (WPA 14698/2026)" },
+    { "from": "n-2026-07-08", "to": "n-2026-07-01", "label": "Same petition (WPA 14695/2026)" },
+    { "from": "n-2025-11-06", "to": "n-2025-07-28", "label": "Concerns the High Court new-list matter" }
+  ]
+}
