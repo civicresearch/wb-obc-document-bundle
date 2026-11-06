@@ -1,12 +1,12 @@
 /* Fetch only this page's data, in parallel, without blocking rendering. */
 (async () => {
-  const files = ['obc_documents.json', 'supplemental_documents.json', 'obc_classes.json', 'public_hearings.json', 'document_inventory.json', 'timeline_events.json', 'case_events.json'];
+  const files = ['obc_documents.json', 'supplemental_documents.json', 'obc_classes.json', 'public_hearings.json', 'document_inventory.json', 'timeline_events.json', 'case_events.json', 'data/document_notes.json'];
   const byPage = {
     home: files,
-    timeline: ['timeline_events.json', 'supplemental_documents.json', 'obc_documents.json'],
+    timeline: ['timeline_events.json', 'supplemental_documents.json', 'obc_documents.json', 'data/document_notes.json'],
     cases: ['case_events.json'],
-    documents: ['obc_documents.json', 'supplemental_documents.json'],
-    'obc-list': ['obc_classes.json', 'obc_documents.json'],
+    documents: ['obc_documents.json', 'supplemental_documents.json', 'data/document_notes.json'],
+    'obc-list': ['obc_classes.json', 'obc_documents.json', 'data/document_notes.json'],
     evidence: ['public_hearings.json'],
     inventory: ['document_inventory.json']
   };
@@ -14,7 +14,7 @@
   const needed = byPage[page] || (page ? [] : files);
   const data = window.OBC_INLINE_JSON || {};
   window.OBC_DATA_ERRORS = [];
-  for (const file of files) if (!(file in data) && !needed.includes(file)) data[file] = file === 'obc_classes.json' ? {} : [];
+  for (const file of files) if (!(file in data) && !needed.includes(file)) data[file] = file === 'obc_classes.json' || file.endsWith('document_notes.json') ? {} : [];
   await Promise.all(needed.map(async file => {
     if (file in data) return;
     try {
@@ -22,12 +22,12 @@
       if (!response.ok) throw new Error(String(response.status));
       data[file] = await response.json();
     } catch {
-      data[file] = file === 'obc_classes.json' ? {} : [];
+      data[file] = file === 'obc_classes.json' || file.endsWith('document_notes.json') ? {} : [];
       window.OBC_DATA_ERRORS.push(file);
     }
   }));
   window.OBC_INLINE_JSON = data;
   const script = document.createElement('script');
-  script.src = 'js/site.js?v=20261104-records';
+  script.src = 'js/site.js?v=20261106-notes';
   document.body.appendChild(script);
 })();

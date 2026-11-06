@@ -284,6 +284,8 @@ function prerender(html, page) {
   if (page.tab === 'documents') {
     const docs = read('obc_documents.json'), keys = new Set(docs.map(d=>`${d.notif_no}|${d.filename}`));
     docs.push(...read('supplemental_documents.json').filter(d=>!keys.has(`${d.notif_no}|${d.filename}`)));
+    const notes = read('data/document_notes.json').notes;
+    for (const d of docs) { const n = notes[`${d.notif_no}|${d.filename}`]; if (n) d.summary = n.summary; }
     html = fillBody(html,'docs-tbody',docs.map((d,i)=>`<tr id="doc-${i}" class="doc-row">${cell(`<code>${escape(d.notif_no)}</code>`,'Document')}${cell(escape(d.date),'Date')}${cell(escape(d.type),'Type')}${cell(escape(d.status),'Status')}${cell(escape(d.summary),'Summary')}${cell(pdfLink(d.local_pdf),'Source')}</tr>`).join(''));
   }
   if (page.tab === 'obc-list') {

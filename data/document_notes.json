@@ -1,0 +1,154 @@
+{
+  "note": "Reviewed plain-language notes for the Source PDFs table, checked against each document's text on 6 November 2026. The original records in obc_documents.json and supplemental_documents.json are kept unchanged; these notes replace only the summary shown to readers. Keys are notif_no|filename.",
+  "reviewed": "2026-11-06",
+  "notes": {
+    "6309-BCW/MR-84/10|6309-BCW24-09-10_BCA_56_BCB_52.pdf": {
+      "summary": "First split of the State OBC list into Category-A (More Backward, 56 classes) and Category-B (Backward, 52 classes). Struck down by the High Court on 22 May 2024.",
+      "summary_bn": "রাজ্যের ওবিসি তালিকাকে প্রথমবার দুই ভাগে ভাগ করা হয়: ক্যাটেগরি-এ (অধিক অনগ্রসর, ৫৬টি শ্রেণি) আর ক্যাটেগরি-বি (অনগ্রসর, ৫২টি শ্রেণি)। ২২ মে ২০২৪ হাইকোর্ট এই ভাগ বাতিল করে।"
+    },
+    "6312-BCW/MR-84/10|6312-BCW_reservation_policy_2010.pdf": {
+      "summary": "Raises OBC reservation in State jobs from 7% to 17%: 10% for Category-A and 7% for Category-B. Struck down by the High Court on 22 May 2024.",
+      "summary_bn": "রাজ্যের চাকরিতে ওবিসি সংরক্ষণ ৭% থেকে বেড়ে ১৭% হয়: ক্যাটেগরি-এ ১০%, ক্যাটেগরি-বি ৭%। ২২ মে ২০২৪ হাইকোর্ট এটি বাতিল করে।"
+    },
+    "WB Act XXXIX of 2012|Backward-Class-Other-than-SC-ST-Reservation__1___1_.pdf": {
+      "summary": "The West Bengal Backward Classes (Other than Scheduled Castes and Scheduled Tribes) (Reservation of Vacancies in Services and Posts) Act, 2012. It put the OBC list in Schedule I and set 10% (Category-A) and 7% (Category-B) reservation. Amended in 2026 by Act VIII of 2026.",
+      "summary_bn": "পশ্চিমবঙ্গ অনগ্রসর শ্রেণি (তফসিলি জাতি ও উপজাতি ছাড়া) (চাকরি ও পদে শূন্যপদ সংরক্ষণ) আইন, ২০১২। এই আইনের প্রথম তফসিলে ওবিসি তালিকা রাখা হয়, আর সংরক্ষণ ঠিক হয় ক্যাটেগরি-এ ১০% ও ক্যাটেগরি-বি ৭%। ২০২৬-এর VIII নং আইনে এটি সংশোধিত হয়েছে।"
+    },
+    "1673-BCW/MR-209/11|1673-BCW__Incl_35_com_May_2012.pdf": {
+      "summary": "Adds 35 classes to the OBC list: 9 in Category-A and 26 in Category-B.",
+      "summary_bn": "ওবিসি তালিকায় ৩৫টি নতুন শ্রেণি যোগ হয়: ক্যাটেগরি-এ-তে ৯টি, ক্যাটেগরি-বি-তে ২৬টি।"
+    },
+    "845-BCW/MR-147/12|845-BCW_Incl_shaikh_2012.pdf": {
+      "summary": "Adds Sekh/Seikh to Category-A, continuing Notification 1673 of May 2012.",
+      "summary_bn": "ক্যাটেগরি-এ-তে সেখ/সেইখ যোগ হয় (মে ২০১২-র ১৬৭৩ নং বিজ্ঞপ্তির ধারাবাহিকতায়)।"
+    },
+    "762-BCW/MR-116/12|762-bcw_01-03-13__ammendment_1673.pdf": {
+      "summary": "Corrects Notification 1673 in Category-B: serial 11 becomes Sadhukhan (Muslim), serial 20 is deleted, and serial 22 becomes Shah (Shah/Sahaji).",
+      "summary_bn": "১৬৭৩ নং বিজ্ঞপ্তির ক্যাটেগরি-বি সংশোধন: ১১ নম্বরে হয় সাধুখাঁ (মুসলিম), ২০ নম্বর বাদ যায়, আর ২২ নম্বরে হয় শাহ (শাহ/সাহাজি)।"
+    },
+    "3182-BCW/MR-127/13|3182-BCW_AMMENDMENT_SL_11_BC_B.pdf": {
+      "summary": "Renames serial 11 of the 1994 list to Goala, Gope (Pallav Gope, Ballav Gope, Yadav Gope, Gope, Ahir and Yadav).",
+      "summary_bn": "১৯৯৪-এর তালিকার ১১ নম্বর শ্রেণির নাম বদলে হয়: গোয়ালা, গোপ (পল্লব গোপ, বল্লভ গোপ, যাদব গোপ, গোপ, আহির ও যাদব)।"
+    },
+    "2770-BCW/MR-116/12|2770-BCW_BCA_66-75_BC_B_79-84.pdf": {
+      "summary": "Adds 15 new classes and renames 24 existing ones. Category-A serials 66 to 75 list ten classes, including Sekh/Seikh, which was first added in 2012; Category-B serials 79 to 84 add six more.",
+      "summary_bn": "১৫টি নতুন শ্রেণি যোগ হয় আর আগের ২৪টি শ্রেণির নাম বদলায়। ক্যাটেগরি-এ-র ৬৬ থেকে ৭৫ নম্বরে দশটি শ্রেণি রয়েছে, তার মধ্যে সেখ/সেইখ ২০১২ সালেই যুক্ত হয়েছিল; ক্যাটেগরি-বি-র ৭৯ থেকে ৮৪ নম্বরে আরও ছয়টি।"
+    },
+    "183-BCW/MR/209/11|183-BCW_sl_BC_B_85_kalal_sub_cast.pdf": {
+      "summary": "Adds Kalal/Iraqi to Category-B at serial 85.",
+      "summary_bn": "ক্যাটেগরি-বি-র ৮৫ নম্বরে কলাল/ইরাকি যোগ হয়।"
+    },
+    "2102-BCW/MR-209/11|2102-BCW_BCA_76-78_BC_B_86-88.pdf": {
+      "summary": "Adds six classes: Kalwar, Atta (Muslim) and Khansama to Category-A (serials 76 to 78), and Sarala/Sarwala (Muslim), Bagani (Muslim) and Bhandari (Muslim) to Category-B (serials 86 to 88).",
+      "summary_bn": "ছয়টি শ্রেণি যোগ হয়: ক্যাটেগরি-এ-তে কলওয়ার, আট্টা (মুসলিম) ও খানসামা (৭৬–৭৮ নম্বর), আর ক্যাটেগরি-বি-তে সারালা/সারওয়ালা (মুসলিম), বাগানি (মুসলিম) ও ভান্ডারি (মুসলিম) (৮৬–৮৮ নম্বর)।"
+    },
+    "468-BCW/MR-209/11|468-BCW79-80A___89-91_B.pdf": {
+      "summary": "Adds five classes: Hawaikar (Muslim) and Khajonkriya (Muslim) to Category-A, and Katha, Mudi/Mehedi and Sahana (all Muslim) to Category-B. Also widens two existing entries (Muslim Mali, Faraji; Borah/Bara/Bora).",
+      "summary_bn": "পাঁচটি শ্রেণি যোগ হয়: ক্যাটেগরি-এ-তে হাওয়াইকর (মুসলিম) ও খাজনক্রিয়া (মুসলিম), আর ক্যাটেগরি-বি-তে কাঠা, মুদি/মেহেদি ও সাহানা (সবই মুসলিম)। আগের দুটি শ্রেণির নামও বাড়ানো হয় (মুসলিম মালি, ফরাজি; বোরাহ/বারা/বোরা)।"
+    },
+    "773-BCW/MR-209/11|773-BCW_BC_B_92_kaji_muslim.pdf": {
+      "summary": "Adds Kazi/Kaji/Quazi/Quaji (Muslim) to Category-B at serial 92, and widens serial 61 to Gazi (Muslim), Par (Muslim).",
+      "summary_bn": "ক্যাটেগরি-বি-র ৯২ নম্বরে কাজি/কাজী (মুসলিম) যোগ হয়, আর ৬১ নম্বর হয় গাজি (মুসলিম), পার (মুসলিম)।"
+    },
+    "4283-BCW/MR-209/11 (Pt.I)|4283-BCW_BC_B_93_KOTAL_MUSLIM.pdf": {
+      "summary": "Adds Kotal (Muslim) to Category-B at serial 93, and tidies four names: Fakir, Sain; Rayeen (Kunjra); Bansi Barman; Pahadia Muslim.",
+      "summary_bn": "ক্যাটেগরি-বি-র ৯৩ নম্বরে কোটাল (মুসলিম) যোগ হয়, আর চারটি নামের বানান ঠিক করা হয়: ফকির, সাঁই; রায়িন (কুঞ্জড়া); বংশী বর্মন; পাহাড়িয়া মুসলিম।"
+    },
+    "4282-BCW/MR-118/16|4282-BCW__Incl_BC_B_94_SL.pdf": {
+      "summary": "Adds Gurung to Category-B at serial 94.",
+      "summary_bn": "ক্যাটেগরি-বি-র ৯৪ নম্বরে গুরুং যোগ হয়।"
+    },
+    "1132-BCW/MR-05/17|1132-BCW96_B.pdf": {
+      "summary": "Adds Khas to Category-B at serial 96.",
+      "summary_bn": "ক্যাটেগরি-বি-র ৯৬ নম্বরে খাস যোগ হয়।"
+    },
+    "1905-BCW/MR-19/17|1905-BCW_81_A.pdf": {
+      "summary": "Adds Hazari (Muslim) to Category-A at serial 81.",
+      "summary_bn": "ক্যাটেগরি-এ-র ৮১ নম্বরে হাজারি (মুসলিম) যোগ হয়।"
+    },
+    "3230-BCW/MR-116/12|3230-BCW.pdf": {
+      "summary": "Renames Category-B serial 24 from Khen to Khen (Non-Bania category).",
+      "summary_bn": "ক্যাটেগরি-বি-র ২৪ নম্বর ‘খেন’ বদলে হয় ‘খেন (অ-বানিয়া শ্রেণি)’।"
+    },
+    "3231-BCW/MR-74/17|3231-BCW.pdf": {
+      "summary": "Rewords two Category-B entries: serial 11 becomes 'Scheduled Castes converts to Christianity and their progeny', and serial 17 adds Das Kaibartta to Hele/Halia/Chasi-Kaibartta.",
+      "summary_bn": "ক্যাটেগরি-বি-র দুটি নাম বদলায়: ১১ নম্বর হয় ‘খ্রিস্টধর্মে রূপান্তরিত তফসিলি জাতি ও তাঁদের বংশধর’, আর ১৭ নম্বরে হেলে/হালিয়া/চাষি-কৈবর্তের সঙ্গে দাস কৈবর্ত যোগ হয়।"
+    },
+    "SBCW-165/MR-29/18|SBCW-165_97_B.pdf": {
+      "summary": "Adds Shikder/Shikdar/Sikder/Sikdar (Muslim) to Category-B at serial 97.",
+      "summary_bn": "ক্যাটেগরি-বি-র ৯৭ নম্বরে শিকদার (মুসলিম) যোগ হয়।"
+    },
+    "2019-BCW/MR-30/2020|2019-BCW_98_B_.pdf": {
+      "summary": "Adds Chowdhury/Chowdhuri (Muslim) to Category-B at serial 98, on the Commission's recommendation.",
+      "summary_bn": "কমিশনের সুপারিশে ক্যাটেগরি-বি-র ৯৮ নম্বরে চৌধুরী (মুসলিম) যোগ হয়।"
+    },
+    "2020-BCW/MR-03/2021|2020-BCW_99B_.pdf": {
+      "summary": "Adds Bairagi/Baishnab to Category-B at serial 99, on the Commission's recommendation.",
+      "summary_bn": "কমিশনের সুপারিশে ক্যাটেগরি-বি-র ৯৯ নম্বরে বৈরাগী/বৈষ্ণব যোগ হয়।"
+    },
+    "4144-BCW/MR-92/17|4144-BCW_95_B_.pdf": {
+      "summary": "Adds Layek (Muslim) to Category-B at serial 95.",
+      "summary_bn": "ক্যাটেগরি-বি-র ৯৫ নম্বরে লায়েক (মুসলিম) যোগ হয়।"
+    },
+    "917-BCW/MR-33/2025|917-BCW_SUB_CATAGORIGATION_OBC_A___B.pdf": {
+      "summary": "Restarts the split of OBCs into Category-A and Category-B in 2025, based on the Commission's benchmark survey. Withdrawn on 18 May 2026 by Notification 944.",
+      "summary_bn": "কমিশনের মানদণ্ড সমীক্ষার ভিত্তিতে ২০২৫ সালে ওবিসিদের আবার ক্যাটেগরি-এ ও ক্যাটেগরি-বি-তে ভাগ করা শুরু হয়। ১৮ মে ২০২৬ ৯৪৪ নং বিজ্ঞপ্তিতে এটি প্রত্যাহার করা হয়।"
+    },
+    "1056-BCW/MR-33/2025 (Pt.I)|1056-BCW_64_O_66_SUB_CAT.pdf": {
+      "summary": "Places 64 of the 66 pre-2010 classes into the new categories: 14 in Category-A and 50 in Category-B. Withdrawn on 18 May 2026 by Notification 944.",
+      "summary_bn": "২০১০-এর আগের ৬৬টি শ্রেণির মধ্যে ৬৪টিকে নতুন করে ভাগ করা হয়: ক্যাটেগরি-এ-তে ১৪টি, ক্যাটেগরি-বি-তে ৫০টি। ১৮ মে ২০২৬ ৯৪৪ নং বিজ্ঞপ্তিতে প্রত্যাহার।"
+    },
+    "1057-BCW/MR-38/2025|1057-BCW_Incl_51_ccommunity_in_sub_cat.pdf": {
+      "summary": "Adds 51 new communities to the OBC list: 27 in Category-A and 24 in Category-B. Withdrawn on 18 May 2026 by Notification 944.",
+      "summary_bn": "ওবিসি তালিকায় ৫১টি নতুন সম্প্রদায় যোগ হয়: ক্যাটেগরি-এ-তে ২৭টি, ক্যাটেগরি-বি-তে ২৪টি। ১৮ মে ২০২৬ ৯৪৪ নং বিজ্ঞপ্তিতে প্রত্যাহার।"
+    },
+    "1106-BCW/MR-33/2025|1106-BCW___hike_Res_7_to_17.pdf": {
+      "summary": "Raises OBC reservation back to 17% (10% for Category-A, 7% for Category-B). It counts 115 classes on the list at that point (41 in A, 74 in B); Notification 1107, issued the same day, took the total to 140. Withdrawn on 18 May 2026 by Notification 944.",
+      "summary_bn": "ওবিসি সংরক্ষণ আবার ১৭% করা হয় (ক্যাটেগরি-এ ১০%, ক্যাটেগরি-বি ৭%)। সেই সময় তালিকায় ১১৫টি শ্রেণি ছিল (এ-তে ৪১, বি-তে ৭৪); একই দিনের ১১০৭ নং বিজ্ঞপ্তিতে মোট সংখ্যা দাঁড়ায় ১৪০। ১৮ মে ২০২৬ ৯৪৪ নং বিজ্ঞপ্তিতে প্রত্যাহার।"
+    },
+    "1107-BCW/MR-38/2025|1107-BCW_Incl_25_community_sub_cat.pdf": {
+      "summary": "Adds 25 more communities: 8 in Category-A and 17 in Category-B, taking the list to 140 classes. Withdrawn on 18 May 2026 by Notification 944.",
+      "summary_bn": "আরও ২৫টি সম্প্রদায় যোগ হয়: ক্যাটেগরি-এ-তে ৮টি, ক্যাটেগরি-বি-তে ১৭টি; তালিকা দাঁড়ায় ১৪০টি শ্রেণিতে। ১৮ মে ২০২৬ ৯৪৪ নং বিজ্ঞপ্তিতে প্রত্যাহার।"
+    },
+    "944-BCW/MR-23/2026|Notification_No_944-BCW_Dt_18_05_2026.pdf": {
+      "summary": "Withdraws all five 2025 notifications (917, 1056, 1057, 1106 and 1107) and the 1172 corrigendum, with immediate effect.",
+      "summary_bn": "২০২৫-এর পাঁচটি বিজ্ঞপ্তি (৯১৭, ১০৫৬, ১০৫৭, ১১০৬ ও ১১০৭) এবং ১১৭২ নং সংশোধনী সঙ্গে সঙ্গে প্রত্যাহার করা হয়।"
+    },
+    "945-BCW/MR-23/2026|Notification_No_945-BCW_Dt_18_05_2026.pdf": {
+      "summary": "The current State OBC list: the 66 pre-2010 classes the High Court left untouched in May 2024, with a single 7% reservation and no Category-A/B split.",
+      "summary_bn": "বর্তমান রাজ্য ওবিসি তালিকা: ২০১০-এর আগের যে ৬৬টি শ্রেণিতে ২০২৪-এর মে মাসে হাইকোর্ট হাত দেয়নি, সেগুলি নিয়ে; ক্যাটেগরি-এ/বি ভাগ ছাড়াই মোট ৭% সংরক্ষণ।"
+    },
+    "945-BCW/MR-23/2026 (Gazette)|OBC_List_BCW_26.pdf": {
+      "summary": "Kolkata Gazette copy of Notification 945: the 66-class OBC list with 7% reservation.",
+      "summary_bn": "৯৪৫ নং বিজ্ঞপ্তির কলকাতা গেজেট সংস্করণ: ৬৬টি শ্রেণির ওবিসি তালিকা, ৭% সংরক্ষণ।"
+    },
+    "946/Secy-BCW/MR-23/2026|_Roster_Modification_BCW_Department_May_2026.pdf": {
+      "summary": "BCW Department letter asking the Labour Department to revise the Model 100-Point Roster of 27 January 2026 to match Notification 945. The Labour Department did so on 25 May 2026 (Labr/85-Emp).",
+      "summary_bn": "অনগ্রসর শ্রেণি কল্যাণ দপ্তর শ্রম দপ্তরকে চিঠি দিয়ে ২৭ জানুয়ারি ২০২৬-এর মডেল ১০০-পয়েন্ট রোস্টার ৯৪৫ নং বিজ্ঞপ্তি অনুযায়ী বদলাতে বলে। শ্রম দপ্তর ২৫ মে ২০২৬ তা করে (Labr/85-Emp)।"
+    },
+    "2896/PN/O/I/1S-5/2012|2896_PN_O_I_1S-5_2012.pdf": {
+      "summary": "Panchayat Department's third note on the 2012 household survey of Backward Classes for panchayat seat reservation. It encloses the list of 143 castes to be counted.",
+      "summary_bn": "পঞ্চায়েত আসন সংরক্ষণের জন্য ২০১২-র অনগ্রসর শ্রেণির বাড়ি-বাড়ি সমীক্ষা নিয়ে পঞ্চায়েত দপ্তরের তৃতীয় নির্দেশ। কোন ১৪৩টি জাতি গোনা হবে, তার তালিকা সঙ্গে দেওয়া।"
+    },
+    "2663/PN/O/I/1S-5/2012|2663_PN_O_I_1S-5_2012.pdf": {
+      "summary": "Panchayat Department's first clarification on the 2012 Backward Classes household survey: enumerators must visit every household in each gram panchayat constituency.",
+      "summary_bn": "২০১২-র অনগ্রসর শ্রেণির বাড়ি-বাড়ি সমীক্ষা নিয়ে পঞ্চায়েত দপ্তরের প্রথম ব্যাখ্যা: প্রতিটি গ্রাম পঞ্চায়েত আসনের সব বাড়িতে গণনাকারীদের যেতে হবে।"
+    },
+    "3276(18)/PN/O/I/1S-5/2012|8.1 Fourth Guideline on Survey for Populaton of Backward Classes-11.06.2012.pdf": {
+      "summary": "Panchayat Department's fourth note on the 2012 survey, setting out how people can file claims and objections against the draft list.",
+      "summary_bn": "২০১২-র সমীক্ষা নিয়ে পঞ্চায়েত দপ্তরের চতুর্থ নির্দেশ: খসড়া তালিকা নিয়ে কীভাবে দাবি ও আপত্তি জানানো যাবে।"
+    },
+    "3276(18)/PN/O/I/1S-5/2012 Form|8.2 Form for Claims & Objections-11.06.2012.pdf": {
+      "summary": "The Bengali form households used to claim inclusion or object to entries in the draft 2012 survey list.",
+      "summary_bn": "২০১২-র খসড়া সমীক্ষা তালিকায় নাম তোলার দাবি বা আপত্তি জানানোর বাংলা ফর্ম।"
+    },
+    "3804/PN/O/I/1S-5/2012|3804_PN_O_I_ 1S-5_12.pdf": {
+      "summary": "Panchayat Department instructions for entering the 2012 survey data, online where possible, after the draft lists were published.",
+      "summary_bn": "খসড়া তালিকা প্রকাশের পরে ২০১২-র সমীক্ষার তথ্য কম্পিউটারে তোলার নির্দেশ, যতটা সম্ভব অনলাইনে।"
+    },
+    "No.960-BCW/MR-221/08 (Part-I)|960-BCW.pdf": {
+      "summary": "How to get an amended OBC certificate after Order 2770 of August 2014 renamed 24 OBC classes and Category-A/B was shown on certificates. Holders apply with the old certificate and fresh non-creamy-layer proof.",
+      "summary_bn": "২০১৪-র আগস্টে ২৭৭০ নং আদেশে ২৪টি ওবিসি শ্রেণির নাম বদলানো এবং শংসাপত্রে ক্যাটেগরি-এ/বি দেখানোর পরে কীভাবে সংশোধিত ওবিসি শংসাপত্র পাওয়া যাবে। পুরনো শংসাপত্র আর নতুন নন-ক্রিমি লেয়ার প্রমাণ নিয়ে আবেদন করতে হবে।"
+    }
+  }
+}

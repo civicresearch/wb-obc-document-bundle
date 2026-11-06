@@ -498,7 +498,7 @@ html[data-theme] .footer-parent-brand { font-size: 13px !important; }
   html[data-theme] .cf-records li > a:first-child, html[data-theme] .cf-related a { display: inline-block; padding-block: 5px; }
 }
 /* Records reached from search or a shared link: clear of the sticky bar, briefly highlighted. */
-html[data-theme] main [id] { scroll-margin-top: 84px; }
+html[data-theme] main [id] { scroll-margin-top: 8px; }
 @keyframes wbobc-target-flash {
   0%, 65% { outline-color: var(--highlight); box-shadow: inset 0 0 0 9999px color-mix(in srgb, var(--highlight) 12%, transparent); }
   100% { outline-color: transparent; box-shadow: inset 0 0 0 9999px transparent; }

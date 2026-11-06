@@ -1,7 +1,14 @@
 const DATA_LOAD_ERRORS = window.OBC_DATA_ERRORS || [];
 const INLINE_JSON_DATA = window.OBC_INLINE_JSON || {};
-const OBC_DOCS = loadJsonSync('obc_documents.json');
-const SUPPLEMENTAL_DOCS = loadJsonSync('supplemental_documents.json');
+// Reviewed reader notes (data/document_notes.json) replace the summary shown for a
+// document without changing the preserved source record.
+const DOC_NOTES = (loadJsonSync('data/document_notes.json', {}) || {}).notes || {};
+const withDocNotes = docs => (Array.isArray(docs) ? docs : []).map(doc => {
+  const note = DOC_NOTES[`${doc.notif_no || ''}|${doc.filename || ''}`];
+  return note ? { ...doc, summary: note.summary, summary_bn: note.summary_bn || doc.summary_bn } : doc;
+});
+const OBC_DOCS = withDocNotes(loadJsonSync('obc_documents.json'));
+const SUPPLEMENTAL_DOCS = withDocNotes(loadJsonSync('supplemental_documents.json'));
 // Private manifests are intentionally excluded from the public build. Keeping
 // Keeping these optional arrays empty avoids expected 404 requests on every page.
 const PRIVATE_DOCS = [];
@@ -1323,7 +1330,7 @@ function showTab(tabName, targetHash) {
   if (target && !isTopLevelTab && hash !== '#guide' && hash !== '#query-hub' && hash !== '#home') {
     requestAnimationFrame(() => {
       setTimeout(() => {
-        const headerOffset = document.querySelector('.section-nav')?.offsetHeight || 0;
+        const headerOffset = Math.max(document.querySelector('.navbar')?.offsetHeight || 0, document.querySelector('.section-nav')?.offsetHeight || 0);
         const top = target.getBoundingClientRect().top + window.scrollY - headerOffset - 16;
         window.scrollTo({ top: Math.max(0, top) });
       }, 30);

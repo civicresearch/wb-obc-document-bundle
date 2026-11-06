@@ -135,7 +135,7 @@ shell = shell.replace(/<link rel="stylesheet" href="css\/crg\.css[^>]*>/, '');
 shell = shell.replace('</head>', '  <link rel="stylesheet" href="css/site.css?v=20261104-records">\n  <link rel="stylesheet" href="css/polish.css?v=20261104-records">\n  <link rel="stylesheet" href="css/crg.css?v=20261106-find">\n  <link rel="stylesheet" href="css/print.css?v=20261106-print">\n</head>');
 const shellScriptStart = shell.lastIndexOf('\n<script>');
 const shellScriptEnd = shell.indexOf('</script>', shellScriptStart) + '</script>'.length;
-shell = shell.slice(0, shellScriptStart) + '\n<script src="js/archive-loader.js?v=20261105-crg" defer></script>' + shell.slice(shellScriptEnd);
+shell = shell.slice(0, shellScriptStart) + '\n<script src="js/archive-loader.js?v=20261106-notes" defer></script>' + shell.slice(shellScriptEnd);
 
 for (const page of pages) {
   let html = keepOnlyPanel(shell, page.tab);

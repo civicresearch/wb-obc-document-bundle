@@ -11,7 +11,8 @@ const jsonFiles = [
   'public_hearings.json',
   'document_inventory.json',
   'timeline_events.json',
-  'case_events.json'
+  'case_events.json',
+  'data/document_notes.json'
 ];
 
 const inlineJson = {};
