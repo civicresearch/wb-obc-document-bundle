@@ -270,7 +270,7 @@ function prerender(html, page) {
   html = renderCaseOrders(html);
   if (page.tab === 'cases') {
     const events = read('case_events.json');
-    html = html.replace('<!-- Case events are rendered from case_events.json. -->', events.map(e => `<li id="${escape(e.id)}" class="case-event">${e.html}</li>`).join('\n'));
+    html = html.replace('<!-- Case events are rendered from case_events.json. -->', events.map(e => `<li id="${escape(e.id)}" class="case-event">${translations[`narrative.case.${e.id}`] || e.html}</li>`).join('\n'));
     for (const [id, count] of [['total-cases',events.length],['court-records',events.filter(e => e.record_kind==='order').length],['supporting-records',events.filter(e => e.record_kind!=='order').length]]) {
       html = html.replace(new RegExp(`(id="${id}"[^>]*>)0`), (_, open) => open + count);
     }
