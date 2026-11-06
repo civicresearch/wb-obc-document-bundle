@@ -11,6 +11,7 @@ const pages = [
   { tab: 'home', file: 'index.html', title: 'WB OBC Reservation Archive' },
   { tab: 'timeline', file: 'timeline.html', title: 'OBC Notification Timeline' },
   { tab: 'cases', file: 'litigation.html', title: 'OBC Litigation Tracker' },
+  { tab: 'case-map', file: 'case-map.html', title: 'Map of Connected OBC Court Cases' },
   { tab: 'media', file: 'media.html', title: 'West Bengal OBC Reservation in the News' },
   { tab: 'obc-list', file: 'obc-list.html', title: 'West Bengal OBC Class Status List' },
   { tab: 'documents', file: 'documents.html', title: 'OBC Source PDFs' },
@@ -34,6 +35,7 @@ function pageForId(id) {
   if (id === 'documents' || id.startsWith('doc-')) return 'documents';
   if (id === 'evidence' || id === 'public-hearings' || id === 'missing-records') return 'evidence';
   if (id === 'media' || id.startsWith('media-')) return 'media';
+  if (id === 'case-map') return 'case-map';
   if (id.startsWith('casefile-')) return 'cases';
   if (id === 'cases' || id.startsWith('case-') || id === 'employee-protection-note' || id.startsWith('litigation-note-')) return 'cases';
   if (id === 'entry-framework') return 'entry-framework';
@@ -126,7 +128,7 @@ let shell = template.replace(styleMatch[0], '');
 shell = shell.replace(/<link rel="stylesheet" href="css\/polish\.css[^>]*>/, '');
 shell = shell.replace(/<link rel="stylesheet" href="css\/print\.css[^>]*>/, '');
 shell = shell.replace(/<link rel="stylesheet" href="css\/crg\.css[^>]*>/, '');
-shell = shell.replace('</head>', '  <link rel="stylesheet" href="css/site.css?v=20261104-records">\n  <link rel="stylesheet" href="css/polish.css?v=20261104-records">\n  <link rel="stylesheet" href="css/crg.css?v=20261106-search">\n  <link rel="stylesheet" href="css/print.css?v=20261106-print">\n</head>');
+shell = shell.replace('</head>', '  <link rel="stylesheet" href="css/site.css?v=20261104-records">\n  <link rel="stylesheet" href="css/polish.css?v=20261104-records">\n  <link rel="stylesheet" href="css/crg.css?v=20261106-casemap">\n  <link rel="stylesheet" href="css/print.css?v=20261106-print">\n</head>');
 const shellScriptStart = shell.lastIndexOf('\n<script>');
 const shellScriptEnd = shell.indexOf('</script>', shellScriptStart) + '</script>'.length;
 shell = shell.slice(0, shellScriptStart) + '\n<script src="js/archive-loader.js?v=20261105-crg" defer></script>' + shell.slice(shellScriptEnd);

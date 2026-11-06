@@ -17,6 +17,7 @@ const config = {
   'obc-basics': ['obcBasicsHeading', 'obcBasicsSub', 'obcBasicsHeroEyebrow', 'Understand OBC classification, backwardness, reservation and evidence requirements through the West Bengal policy and legal record.'],
   methods: ['methodsHeading', 'methodsSub', 'methodsHeroEyebrow', 'Read the archive’s evidence method: backwardness indicators, representation data, surveys, verification and transparent source documentation.'],
   reports: ['reportsHeading', 'reportsSub', 'reportsHeroEyebrow', 'Read the Mandal and Sachar reports alongside West Bengal OBC research, with source PDFs and context for studying backwardness and reservation.'],
+  'case-map': ['caseMap.title', 'caseMap.sub', 'caseMap.eyebrow', 'See how the West Bengal OBC court cases connect: the 2024 Calcutta High Court judgment, the Supreme Court appeals, the 2025 and 2026 lists, and candidates’ category claims.'],
   media: ['media.title', 'media.sub', 'media.eyebrow', 'Read news and legal reporting on West Bengal OBC reservation, the 2024 judgment, the 2026 notifications and certificate cases, linked to the court records.'],
   about: ['aboutTitle', 'aboutSub', 'aboutHeroEyebrow', 'About the independent WB OBC Archive by Civic Research Group: its scope, research methods, source verification and ways to contribute.'],
   contribute: ['contribute.heroTitle', 'contribute.heroSub', 'contribute.heroKicker', 'Contribute a public document, court update or correction to the WB OBC Archive through guided forms and a structured source-report process.']
@@ -114,6 +115,111 @@ function renderCaseFiles(html, pageLinks = {}) {
   }).join('\n');
   return html.replace('<!-- Case files are rendered from data/case_files.json. -->', cards).replace(/(id="case-file-count"[^>]*>)0/, (_, open) => open + files.length);
 }
+function wrapWords(text, max) {
+  const lines = []; let line = '';
+  for (const word of String(text).split(/\s+/)) {
+    if (line && (line + ' ' + word).length > max) { lines.push(line); line = word; } else line = line ? `${line} ${word}` : word;
+  }
+  if (line) lines.push(line);
+  return lines;
+}
+function renderCaseMap(html, pageLinks = {}) {
+  const marker = '<!-- Case map is rendered from data/case_map.json. -->';
+  if (!html.includes(marker)) return html;
+  const map = read('data/case_map.json');
+  const files = Object.fromEntries(read('data/case_files.json').cases.map(c => [c.id, c]));
+  const href = id => `${pageLinks.cases ?? 'litigation.html'}#${id}`;
+  const STATUS = { pending: ['Pending','বিচারাধীন'], listed: ['Listed','তালিকাভুক্ত'], stayed: ['Stayed','স্থগিত'], decided: ['Decided','নিষ্পত্তি'], withdrawn: ['Withdrawn','প্রত্যাহৃত'], dismissed: ['Dismissed','খারিজ'] };
+  const courtShort = c => c.replace('Calcutta High Court', 'Calcutta HC').replace('Supreme Court of India', 'Supreme Court');
+  const courtShortBn = c => courtShort(c).replace('Calcutta HC', 'কলকাতা হাইকোর্ট').replace('Supreme Court', 'সুপ্রিম কোর্ট');
+  // Build the tree.
+  const root = { kind: 'root', ...map.root, depth: 0, children: map.groups.map(g => ({ kind: 'group', ...g, depth: 1, children: [] })) };
+  const toNode = (n, depth) => ({ kind: 'case', ...n, depth, children: (n.children || []).map(k => toNode(k, depth + 1)) });
+  map.groups.forEach((g, i) => { root.children[i].children = g.children.map(n => toNode(n, 2)); root.children[i].groupIndex = i; });
+  const all = [];
+  (function walk(n, group) { n.group = n.kind === 'group' ? n.groupIndex : group; all.push(n); n.children.forEach(k => walk(k, n.group)); })(root, -1);
+  for (const n of all) if (n.kind === 'case' && !files[n.case]) throw new Error(`case_map.json: unknown case ${n.case}`);
+  // Sizes.
+  const COLX = [24, 286, 528, 952], W = [236, 210, 330, 300];
+  const LINE = 19;
+  for (const n of all) {
+    const w = W[n.depth];
+    n.w = w;
+    const cw = n.kind === 'root' ? [10.6, 11.5] : [7.6, 8.4];
+    n.en = wrapWords(n.label, Math.floor((w - 32) / cw[0]));
+    n.bn = wrapWords(n.label_bn, Math.floor((w - 32) / cw[1]));
+    const lines = Math.max(n.en.length, n.bn.length);
+    n.h = n.kind === 'case' ? 30 + lines * LINE + 46 : n.kind === 'group' ? 28 + lines * LINE : 40 + lines * 24 + 26;
+  }
+  // Vertical placement: leaves stacked, parents centred on children.
+  let y = 24; const GAP = 18;
+  (function place(n) {
+    if (!n.children.length) { n.y = y; y += n.h + GAP; return; }
+    const before = y;
+    n.children.forEach(place);
+    const first = n.children[0], last = n.children[n.children.length - 1];
+    const mid = (first.y + first.h / 2 + last.y + last.h / 2) / 2;
+    n.y = Math.max(before, mid - n.h / 2);
+    if (n.y + n.h + GAP > y) y = n.y + n.h + GAP;
+    if (n.kind === 'group') y += 14;
+  })(root);
+  const height = Math.ceil(y + 10), width = COLX[3] + W[3] + 24;
+  for (const n of all) n.x = COLX[n.depth];
+  const byCase = Object.fromEntries(all.filter(n => n.case).map(n => [n.case, n]));
+  const textBlock = (lines, x, y0, cls, step) => lines.map((l, i) => `<tspan x="${x}" y="${y0 + i * step}">${escape(l)}</tspan>`).join('');
+  const label = (n, x, y0, cls, step) => `<text class="${cls} cm-en">${textBlock(n.en, x, y0, cls, step)}</text><text class="${cls} cm-bn">${textBlock(n.bn, x, y0, cls, step)}</text>`;
+  const curve = (a, b) => { const x1 = a.x + a.w, y1 = a.y + a.h / 2, x2 = b.x, y2 = b.y + b.h / 2, dx = (x2 - x1) / 2; return `M${x1} ${y1} C${x1 + dx} ${y1}, ${x2 - dx} ${y2}, ${x2} ${y2}`; };
+  const edges = [];
+  for (const n of all) for (const k of n.children) {
+    edges.push(`<path class="cm-edge cm-g${k.group}" d="${curve(n, k)}"/>`);
+    if (k.edge) { const mx = (n.x + n.w + k.x) / 2, my = (n.y + n.h / 2 + k.y + k.h / 2) / 2 - 8; edges.push(`<text class="cm-edge-label cm-en" x="${mx}" y="${my}" text-anchor="middle">${escape(k.edge)}</text><text class="cm-edge-label cm-bn" x="${mx}" y="${my}" text-anchor="middle">${escape(k.edge_bn)}</text>`); }
+  }
+  // Cross-links between related cases that are not already parent and child.
+  const treePairs = new Set(); for (const n of all) for (const k of n.children) if (n.case && k.case) treePairs.add([n.case, k.case].sort().join('|'));
+  const cross = new Set();
+  for (const n of all.filter(n => n.kind === 'case' || n.kind === 'root')) for (const r of (files[n.case].related || [])) {
+    if (!byCase[r]) continue; const key = [n.case, r].sort().join('|');
+    if (treePairs.has(key) || cross.has(key)) continue; cross.add(key);
+  }
+  const crossPaths = [...cross].map(key => {
+    const [a, b] = key.split('|').map(id => byCase[id]);
+    const [p, q] = a.x <= b.x ? [a, b] : [b, a];
+    let d;
+    if (p.x === q.x) { const x = p.x + p.w, bend = Math.min(140, 40 + Math.abs(q.y - p.y) / 6); d = `M${x} ${p.y + p.h / 2} C${x + bend} ${p.y + p.h / 2}, ${x + bend} ${q.y + q.h / 2}, ${x} ${q.y + q.h / 2}`; }
+    else d = `M${p.x + p.w} ${p.y + p.h / 2 + 10} C${(p.x + p.w + q.x) / 2} ${p.y + p.h / 2 + 10}, ${(p.x + p.w + q.x) / 2} ${q.y + q.h / 2 + 10}, ${q.x} ${q.y + q.h / 2 + 10}`;
+    return `<path class="cm-cross" data-a="${a.case}" data-b="${b.case}" d="${d}"/>`;
+  }).join('');
+  const nodes = all.map(n => {
+    if (n.kind === 'group') return `<g class="cm-node cm-group cm-g${n.group}"><rect x="${n.x}" y="${n.y}" width="${n.w}" height="${n.h}" rx="${n.h / 2 > 22 ? 14 : n.h / 2}"/>${label(n, n.x + 16, n.y + 19 + 6, 'cm-group-label', LINE)}</g>`;
+    const c = files[n.case];
+    if (n.kind === 'root') return `<a class="cm-link" href="${href(n.case)}" data-case="${n.case}"><g class="cm-node cm-root"><rect x="${n.x}" y="${n.y}" width="${n.w}" height="${n.h}" rx="14"/><text class="cm-kicker cm-en" x="${n.x + 16}" y="${n.y + 26}">THE STARTING POINT</text><text class="cm-kicker cm-bn" x="${n.x + 16}" y="${n.y + 26}">সূচনাবিন্দু</text>${label(n, n.x + 16, n.y + 52, 'cm-root-label', 24)}<text class="cm-root-sub cm-en" x="${n.x + 16}" y="${n.y + n.h - 14}">${escape(n.sub)}</text><text class="cm-root-sub cm-bn" x="${n.x + 16}" y="${n.y + n.h - 14}">${escape(n.sub_bn)}</text></g></a>`;
+    const [sEn, sBn] = STATUS[c.status] || [c.status, c.status];
+    const recs = c.records.length;
+    const metaEn = `${courtShort(c.court)} · ${recs} record${recs === 1 ? '' : 's'}`;
+    const metaBn = `${courtShortBn(c.court)} · ${bnDigits(recs)}টি নথি`;
+    const nextEn = c.next_date ? `Next: ${shortDate(c.next_date)}` : '', nextBn = c.next_date ? `পরবর্তী: ${shortDateBn(c.next_date)}` : '';
+    const lines = Math.max(n.en.length, n.bn.length), by = n.y + 26 + lines * LINE;
+    const pillW = 92;
+    return `<a class="cm-link" href="${href(n.case)}" data-case="${n.case}" aria-label="${escape(c.title)}"><g class="cm-node cm-case cm-g${n.group} cm-s-${c.status}">
+<rect class="cm-card" x="${n.x}" y="${n.y}" width="${n.w}" height="${n.h}" rx="10"/><rect class="cm-stripe" x="${n.x}" y="${n.y + 10}" width="4" height="${n.h - 20}" rx="2"/>
+${label(n, n.x + 18, n.y + 26, 'cm-title', LINE)}
+<text class="cm-meta cm-en" x="${n.x + 18}" y="${by + 6}">${escape(metaEn)}</text><text class="cm-meta cm-bn" x="${n.x + 18}" y="${by + 6}">${escape(metaBn)}</text>
+<rect class="cm-pill" x="${n.x + 18}" y="${by + 16}" width="${pillW}" height="22" rx="11"/><text class="cm-pill-text cm-en" x="${n.x + 18 + pillW / 2}" y="${by + 31}" text-anchor="middle">${sEn}</text><text class="cm-pill-text cm-bn" x="${n.x + 18 + pillW / 2}" y="${by + 31}" text-anchor="middle">${sBn}</text>
+${nextEn ? `<text class="cm-next cm-en" x="${n.x + 18 + pillW + 12}" y="${by + 31}">${escape(nextEn)}</text><text class="cm-next cm-bn" x="${n.x + 18 + pillW + 12}" y="${by + 31}">${escape(nextBn)}</text>` : ''}
+</g></a>`;
+  }).join('\n');
+  const svg = `<svg class="cm-svg" viewBox="0 0 ${width} ${height}" width="${width}" height="${height}" role="img" aria-labelledby="case-map-svg-title"><title id="case-map-svg-title">Map of connected West Bengal OBC court cases</title><g class="cm-edges">${edges.join('')}</g><g class="cm-crosses">${crossPaths}</g>${nodes}</svg>`;
+  // Text outline: the accessible version, and the layout used on small screens.
+  const outline = (function li(n) {
+    if (n.kind === 'group') return `<li class="cmo-group cm-g${n.group}"><span class="cmo-group-label">${bi(n.label, n.label_bn)}</span><ul>${n.children.map(li).join('')}</ul></li>`;
+    const c = files[n.case], [sEn, sBn] = STATUS[c.status] || [c.status, c.status];
+    const kids = n.kind === 'root' ? n.children : n.children;
+    return `<li class="cmo-case"><a href="${href(n.case)}">${bi(n.kind === 'root' ? `${n.label} · ${n.sub}` : n.label, n.kind === 'root' ? `${n.label_bn} · ${n.sub_bn}` : n.label_bn)}</a> <span class="cf-status cf-status--${escape(c.status)}">${bi(sEn, sBn)}</span>${c.next_date ? ` <span class="cmo-next">${bi(`Next: ${shortDate(c.next_date)}`, `পরবর্তী: ${shortDateBn(c.next_date)}`)}</span>` : ''}${kids.length ? `<ul>${kids.map(li).join('')}</ul>` : ''}</li>`;
+  })(root);
+  const out = `<div class="cm-canvas" data-case-map>${svg}</div><ul class="cm-outline">${outline}</ul>`;
+  const count = Object.keys(byCase).length;
+  return html.replace(marker, out).replace('<span id="case-map-count">0</span>', `<span id="case-map-count" data-en="${count}" data-bn="${bnDigits(count)}">${count}</span>`);
+}
 function renderMedia(html, pageLinks = {}) {
   if (!html.includes('<!-- Media coverage is rendered from data/media_coverage.json. -->')) return html;
   const items = read('data/media_coverage.json').items.slice().sort((a,b) => b.date.localeCompare(a.date));
@@ -140,6 +246,7 @@ function renderMedia(html, pageLinks = {}) {
 function prerender(html, page) {
   html = renderCaseFiles(html);
   html = renderMedia(html, { cases: 'litigation.html' });
+  html = renderCaseMap(html, { cases: 'litigation.html' });
   if (page.tab === 'cases') {
     const events = read('case_events.json');
     html = html.replace('<!-- Case events are rendered from case_events.json. -->', events.map(e => `<li id="${escape(e.id)}" class="case-event">${e.html}</li>`).join('\n'));
@@ -197,4 +304,4 @@ function writeDiscovery(pages) {
   fs.writeFileSync(path.join(root,'sitemap.xml'),`<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">\n${pages.map(entry).join('\n')}\n</urlset>\n`);
   fs.writeFileSync(path.join(root,'robots.txt'),`User-agent: *\nAllow: /\n\nSitemap: ${origin}/sitemap.xml\n`);
 }
-module.exports = { publish, writeDiscovery, renderCaseFiles, renderMedia, config };
+module.exports = { publish, writeDiscovery, renderCaseFiles, renderMedia, renderCaseMap, config };

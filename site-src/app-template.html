@@ -7,7 +7,7 @@
   <meta name="theme-color" content="#0f3b3c">
   <title>WB OBC Archive</title>
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
-  <script src="js/navigation.js?v=20261106-search" defer></script>
+  <script src="js/navigation.js?v=20261106-casemap" defer></script>
   <script src="js/export-pdf.js?v=20261105-icon" defer></script>
   <script src="js/search.js?v=20261106-search" defer></script>
   <script src="js/export.js?v=20261106-export" defer></script>
@@ -86,6 +86,7 @@
               <span class="nav-caret" aria-hidden="true">▾</span>
             </button>
             <div class="nav-group-items">
+              <a href="#case-map" data-tab-target="case-map" data-i18n="navCaseMap">Case map</a>
               <a href="#reports" data-tab-target="reports" data-i18n="navReports">Policy Reports</a>
               <a href="#obc-basics" data-tab-target="obc-basics" data-i18n="navOBCBasics">OBC Basics</a>
               <a href="#methods" data-tab-target="methods" data-i18n="navMethods">Evidence Method</a>
@@ -641,6 +642,7 @@
             <p class="panel-kicker" data-i18n="caseFiles.kicker">Cases at a glance</p>
             <h2 id="case-files-title" data-i18n="caseFiles.title">Proceedings and where they stand</h2>
             <p class="section-sub" data-i18n="caseFiles.sub">Each card groups the orders of one proceeding, with its case numbers, current position, linked court records and news coverage.</p>
+            <p class="case-map-cta"><a href="case-map.html" data-i18n="caseMap.cta">View these cases as a map →</a></p>
           </div>
           <div class="case-files-filter" role="group" aria-label="Filter cases by status" data-case-filter>
             <button type="button" class="chip-btn active" data-status="all" aria-pressed="true" data-i18n="caseFiles.all">All</button>
@@ -776,6 +778,23 @@
       </div>
 
       <div class="callout"><strong>Source discipline:</strong> the archive includes key 2025–26 orders, but the large Supreme Court filing bundles remain catalogued rather than published. Add later certified/official orders, then map each order to the exact notification, survey memo, recruitment process, or admission process affected.</div>
+    </section>
+
+    <section id="case-map" class="research case-map-section tab-panel" data-tab-panel="case-map" hidden>
+      <div class="case-map-head">
+        <div>
+          <h2 class="section-heading" data-i18n="caseMap.heading">How the cases connect</h2>
+          <p class="section-sub" data-i18n="caseMap.intro">Every proceeding traces back to the Calcutta High Court’s 22 May 2024 judgment. Branches group the cases by what they are about; select a case to open its card with case numbers, orders and news. Hover or focus a case to see the other cases it is linked to.</p>
+        </div>
+        <ul class="cm-legend" aria-label="Status colours">
+          <li><span class="cm-dot cm-dot--pending"></span><span data-i18n="caseFiles.pending">Pending</span></li>
+          <li><span class="cm-dot cm-dot--stayed"></span><span data-i18n="caseFiles.stayed">Stayed</span></li>
+          <li><span class="cm-dot cm-dot--decided"></span><span data-i18n="caseFiles.closed">Decided or withdrawn</span></li>
+          <li><span class="cm-line"></span><span data-i18n="caseMap.crossLegend">Linked case</span></li>
+        </ul>
+      </div>
+      <!-- Case map is rendered from data/case_map.json. -->
+      <p class="media-note"><span data-i18n="caseMap.note">The map shows</span> <span id="case-map-count">0</span> <span data-i18n="caseMap.noteCases">proceedings. Status is as reviewed for the archive; check the court record before relying on it.</span> <a href="litigation.html#case-files-title" data-i18n="caseMap.toCards">See all case cards</a></p>
     </section>
 
     <section id="media" class="research media-section tab-panel" data-tab-panel="media" hidden>
@@ -6430,6 +6449,13 @@ const HERO_CONTENT = {
       ['Verify', 'casesStat4Label', 'casesStat4Value']
     ]
   },
+  'case-map': {
+    eyebrowKey: 'caseMap.eyebrow',
+    eyebrow: 'Case map · how the cases connect',
+    titleKey: 'caseMap.title',
+    subKey: 'caseMap.sub',
+    stats: []
+  },
   media: {
     eyebrowKey: 'media.eyebrow',
     eyebrow: 'Media coverage · news and legal reporting',
@@ -6488,6 +6514,7 @@ const PAGE_FILES = {
   timeline: 'timeline.html',
   cases: 'litigation.html',
   media: 'media.html',
+  'case-map': 'case-map.html',
   'obc-list': 'obc-list.html',
   documents: 'documents.html',
   evidence: 'evidence.html',
@@ -6893,6 +6920,7 @@ function tabForHash(hash) {
   if (id.startsWith('doc-') || id === 'documents') return 'documents';
   if (id === 'public-hearings' || id === 'missing-records' || id === 'evidence') return 'evidence';
   if (id === 'media' || id.startsWith('media-')) return 'media';
+  if (id === 'case-map') return 'case-map';
   if (id.startsWith('casefile-')) return 'cases';
   if (id === 'cases' || id.startsWith('case-') || id === 'employee-protection-note' || id.startsWith('litigation-note-')) return 'cases';
   if (id === 'entry-framework') return 'entry-framework';

@@ -1128,7 +1128,18 @@
     "caseFiles.all": "All",
     "caseFiles.pending": "Pending",
     "caseFiles.stayed": "Stayed",
-    "caseFiles.closed": "Decided or withdrawn"
+    "caseFiles.closed": "Decided or withdrawn",
+    "navCaseMap": "Case map",
+    "caseMap.eyebrow": "Case map · how the cases connect",
+    "caseMap.title": "Map of connected OBC cases",
+    "caseMap.sub": "A mind map of the West Bengal OBC litigation since the 2024 High Court judgment: appeals, challenges to the new lists, and candidates’ claims, with where each stands.",
+    "caseMap.heading": "How the cases connect",
+    "caseMap.intro": "Every proceeding traces back to the Calcutta High Court’s 22 May 2024 judgment. Branches group the cases by what they are about; select a case to open its card with case numbers, orders and news. Hover or focus a case to see the other cases it is linked to.",
+    "caseMap.crossLegend": "Linked case",
+    "caseMap.note": "The map shows",
+    "caseMap.noteCases": "proceedings. Status is as reviewed for the archive; check the court record before relying on it.",
+    "caseMap.toCards": "See all case cards",
+    "caseMap.cta": "View these cases as a map →"
   },
   "bn": {
     "siteTitle": "পশ্চিমবঙ্গ ওবিসি আর্কাইভ",
@@ -2262,6 +2273,17 @@
     "caseFiles.all": "সব",
     "caseFiles.pending": "বিচারাধীন",
     "caseFiles.stayed": "স্থগিত",
-    "caseFiles.closed": "নিষ্পত্তি বা প্রত্যাহৃত"
+    "caseFiles.closed": "নিষ্পত্তি বা প্রত্যাহৃত",
+    "navCaseMap": "মামলার মানচিত্র",
+    "caseMap.eyebrow": "মামলার মানচিত্র · মামলাগুলি কীভাবে যুক্ত",
+    "caseMap.title": "যুক্ত ওবিসি মামলার মানচিত্র",
+    "caseMap.sub": "২০২৪-এর হাইকোর্ট রায়ের পর থেকে পশ্চিমবঙ্গের ওবিসি মামলার মাইন্ড ম্যাপ: আপিল, নতুন তালিকার চ্যালেঞ্জ ও প্রার্থীদের দাবি, প্রতিটির বর্তমান অবস্থা সহ।",
+    "caseMap.heading": "মামলাগুলি কীভাবে যুক্ত",
+    "caseMap.intro": "প্রতিটি মামলার সূত্র কলকাতা হাইকোর্টের ২২ মে ২০২৪-এর রায়। শাখাগুলি বিষয় অনুযায়ী মামলা সাজায়; কোনো মামলায় ক্লিক করলে মামলা নম্বর, আদেশ ও সংবাদ সহ তার কার্ড খুলবে। কোনো মামলার ওপর কার্সর রাখলে বা ফোকাস করলে তার সঙ্গে যুক্ত অন্য মামলাগুলি দেখা যাবে।",
+    "caseMap.crossLegend": "যুক্ত মামলা",
+    "caseMap.note": "মানচিত্রে",
+    "caseMap.noteCases": "টি মামলা দেখানো হয়েছে। অবস্থা আর্কাইভের পর্যালোচনা অনুযায়ী; নির্ভর করার আগে আদালতের নথি দেখুন।",
+    "caseMap.toCards": "সব মামলার কার্ড দেখুন",
+    "caseMap.cta": "এই মামলাগুলি মানচিত্রে দেখুন →"
   }
 }

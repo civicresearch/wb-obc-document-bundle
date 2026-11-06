@@ -212,3 +212,31 @@ syncBilingualData();
   document.addEventListener('wbobc:langchange', apply);
   apply();
 })();
+
+// Case map: highlight a case's linked cases on hover or keyboard focus.
+(() => {
+  const canvas = document.querySelector('[data-case-map]');
+  if (!canvas) return;
+  const links = [...canvas.querySelectorAll('.cm-link[data-case]')];
+  const crosses = [...canvas.querySelectorAll('.cm-cross')];
+  const clear = () => {
+    canvas.classList.remove('has-focus');
+    links.forEach(l => l.classList.remove('is-active', 'is-linked'));
+    crosses.forEach(c => c.classList.remove('on'));
+  };
+  const show = id => {
+    clear();
+    const related = new Set();
+    crosses.forEach(c => {
+      if (c.dataset.a === id || c.dataset.b === id) { c.classList.add('on'); related.add(c.dataset.a === id ? c.dataset.b : c.dataset.a); }
+    });
+    canvas.classList.add('has-focus');
+    links.forEach(l => { if (l.dataset.case === id) l.classList.add('is-active'); else if (related.has(l.dataset.case)) l.classList.add('is-linked'); });
+  };
+  links.forEach(l => {
+    l.addEventListener('mouseenter', () => show(l.dataset.case));
+    l.addEventListener('focus', () => show(l.dataset.case));
+    l.addEventListener('mouseleave', clear);
+    l.addEventListener('blur', clear);
+  });
+})();

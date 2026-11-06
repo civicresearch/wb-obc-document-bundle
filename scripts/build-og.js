@@ -20,12 +20,14 @@ const facts = {
   en: {
     home: ['94 source PDFs', '66 classes · 7%', '1993–2026'],
     cases: [`${caseCount} proceedings`, 'Calcutta HC · Supreme Court'],
-    media: [`${mediaCount} reports`, 'Linked to cases', '2024–2026']
+    media: [`${mediaCount} reports`, 'Linked to cases', '2024–2026'],
+    'case-map': [`${caseCount} proceedings`, 'Since the 2024 judgment', 'Status at a glance']
   },
   bn: {
     home: ['৯৪টি মূল PDF', '৬৬টি শ্রেণি · ৭%', '১৯৯৩–২০২৬'],
     cases: [`${bnNum(caseCount)}টি মামলা`, 'কলকাতা হাইকোর্ট · সুপ্রিম কোর্ট'],
-    media: [`${bnNum(mediaCount)}টি প্রতিবেদন`, 'মামলার সঙ্গে যুক্ত', '২০২৪–২০২৬']
+    media: [`${bnNum(mediaCount)}টি প্রতিবেদন`, 'মামলার সঙ্গে যুক্ত', '২০২৪–২০২৬'],
+    'case-map': [`${bnNum(caseCount)}টি মামলা`, '২০২৪-এর রায় থেকে', 'এক নজরে অবস্থা']
   }
 };
 

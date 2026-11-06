@@ -7,7 +7,7 @@ const sitemap = read('sitemap.xml');
 const translations = JSON.parse(read('data/i18n.json'));
 assert.ok(translations.en && translations.bn, 'Both language dictionaries must parse');
 const urls = [...sitemap.matchAll(/<loc>(.*?)<\/loc>/g)].map(m => m[1]);
-assert.equal(urls.length, 14, 'All public pages must be discoverable');
+assert.equal(urls.length, 15, 'All public pages must be discoverable');
 const titles = new Set(), descriptions = new Set();
 for (const url of urls) {
   const file = new URL(url).pathname.slice(1) || 'index.html';
