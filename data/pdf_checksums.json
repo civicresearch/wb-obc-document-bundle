@@ -1,0 +1,478 @@
+{
+  "note": "SHA-256 fingerprints of every archived PDF. Regenerate with python3 scripts/build-checksums.py after adding files.",
+  "count": 118,
+  "files": {
+    "obc_pdfs/1980-12-31_MANDAL-Commission-Report-First-Part-English.pdf": {
+      "sha256": "25c89420e55e99652c417db20ef25e74903f894b17180cdeb13e90d6a13857bf",
+      "bytes": 18165199
+    },
+    "obc_pdfs/1993-03-15_WB-Commission-for-Backward-Classes-Act-1993.pdf": {
+      "sha256": "919e10b809d9fead2d59d3afc5a6491812a5eb18e8afef81a95081091ecc446a",
+      "bytes": 82188
+    },
+    "obc_pdfs/1993-11-25_WB-Commission-for-Backward-Classes-Rules-1993.pdf": {
+      "sha256": "899e853e0be0b229642ffa631bf0a7323e9cefe32304a896e3a2e50bd1769294",
+      "bytes": 2058269
+    },
+    "obc_pdfs/1993-2010_Official-Combined-OBC-Orders-and-Notifications.pdf": {
+      "sha256": "76a8e964210ea2999e4198c9039486187d85d2402b986dc4510bea8f34366132",
+      "bytes": 218170
+    },
+    "obc_pdfs/2006-11-17_SACHAR-Committee-Report-Muslim-Social-Economic-Educational-Status.pdf": {
+      "sha256": "ecfad285a2c6ee94533b7233f2a42bfa688f0eacc83f3416b73bef44db931997",
+      "bytes": 6814569
+    },
+    "obc_pdfs/2010-04-30_1464-BCW-MR-59-10_OBC-certificate-guidelines.pdf": {
+      "sha256": "b2a1b45a3a17a413a0712f88478fe341c70005d0a71327d0eb75f38b32ddda3a",
+      "bytes": 2465092
+    },
+    "obc_pdfs/2010-09-24_6309-BCW-MR-84-10_categorisation.pdf": {
+      "sha256": "847939cd8ed202442d665900172ed59234165bd1913b97b945afefd91a75024f",
+      "bytes": 461623
+    },
+    "obc_pdfs/2010-09-24_6312-BCW-MR-84-10_reservation_hike.pdf": {
+      "sha256": "0e1eb9e17229d15ab51a8c1320579094769542af00dfb9e5f5ad1c2a83a447d4",
+      "bytes": 48974
+    },
+    "obc_pdfs/2010-09-24_6320-BCW-MR-84-10_100-point-roster.pdf": {
+      "sha256": "4ee499bf560a0d152179112cbd57630967c07db17c801e48129113a7d3d18c97",
+      "bytes": 1244822
+    },
+    "obc_pdfs/2011_NCBC-Advice-West-Bengal_Compilation.pdf": {
+      "sha256": "5d5145912fcb0b6116de8bc36cfc2a4ece1a1a5be8e3c50b6aabd96d5d143af4",
+      "bytes": 11088773
+    },
+    "obc_pdfs/2012-04-25_2572-PN-O-I-1S-5-2012_first_panchayat_survey_guideline.pdf": {
+      "sha256": "4dc9f55422a1cd638583a8525855c762996314331fef09db013c515db62f6fc9",
+      "bytes": 64590
+    },
+    "obc_pdfs/2012-05-02_2663-PN-O-I-1S-5-2012_panchayat_survey_guideline.pdf": {
+      "sha256": "77de4dbff0073f0aa214868285c927c0666586a534fb9c9d30ac6195ebcfd125",
+      "bytes": 15464
+    },
+    "obc_pdfs/2012-05-11_1673-BCW-MR-209-11_inclusion.pdf": {
+      "sha256": "64c3f25158653ba0665520d1c68338eebbb2e7dc143e6272640021f583d2ca05",
+      "bytes": 168146
+    },
+    "obc_pdfs/2012-05-15_2896-PN-O-I-1S-5-2012_administrative.pdf": {
+      "sha256": "f01f4322a521be01bad3fae49ce07ed3f1693777387f939aea2ec7c8ff7a5094",
+      "bytes": 48266
+    },
+    "obc_pdfs/2012-06-11_3276-PN-O-I-1S-5-2012_claims_objections_form.pdf": {
+      "sha256": "0b510cc125f08a61a95d1b0b4765da2d9367c854464481a23e511ae9f040005c",
+      "bytes": 35731
+    },
+    "obc_pdfs/2012-06-11_3276-PN-O-I-1S-5-2012_fourth_panchayat_survey_guideline.pdf": {
+      "sha256": "de2cc3ca68cf69d216181c2a3a00a3fcdd473c93e43eaa5bceca32523cc3c3cb",
+      "bytes": 12190
+    },
+    "obc_pdfs/2012-07-06_3804-PN-O-I-1S-5-2012_panchayat_survey_data_entry.pdf": {
+      "sha256": "32319f0b4c0a8d1a13e378c9f8aeda7eece88f822b2df36b248509a368ac5d2b",
+      "bytes": 17782
+    },
+    "obc_pdfs/2012-10-10_845-BCW-MR-147-12_inclusion.pdf": {
+      "sha256": "83c0c81118bed7751fefc648369aebf78688ef657feceec888c25bf55d63d674",
+      "bytes": 349338
+    },
+    "obc_pdfs/2013-03-01_762-BCW-MR-116-12_amendment.pdf": {
+      "sha256": "3d90760c7c65aa4bbdfd6db3e4e5f48dab1e94603dc43fe38d80ca27236242c0",
+      "bytes": 351503
+    },
+    "obc_pdfs/2013-03-25_WB-Act-XXXIX-of-2012_act.pdf": {
+      "sha256": "ae43a531e4a8e04702efa3f73166dc45c54a9ca1afca49602d62ca9261c8ac8a",
+      "bytes": 2648308
+    },
+    "obc_pdfs/2013-09-12_3182-BCW-MR-127-13_amendment.pdf": {
+      "sha256": "328bae647e5044848b0c827a8e669179bb61a4a1c5dba8cfeeadc302bfb8accd",
+      "bytes": 480339
+    },
+    "obc_pdfs/2014-08-29_2770-BCW-MR-116-12_inclusion_amendment.pdf": {
+      "sha256": "fe35b2bcbb261153617c958c23da61988ee63ebe99e0a19007987a20cf38ef34",
+      "bytes": 958998
+    },
+    "obc_pdfs/2015-00-00_Research-Muslim-OBCs-in-West-Bengal.pdf": {
+      "sha256": "435e93ce0cebfc5eda47c4603f9dfa4d2f94ace45798d337ec7eabd5e2fb20f2",
+      "bytes": 228070
+    },
+    "obc_pdfs/2015-01-16_183-BCW-MR-209-11_inclusion.pdf": {
+      "sha256": "58ae6c79726b3b01dc94a912a4514a483039b49ca6fa2f535f92bacd0627f625",
+      "bytes": 253308
+    },
+    "obc_pdfs/2015-03-02_NCBC_sub-categorization-within-OBCs_report.pdf": {
+      "sha256": "6627c8b31adc9526f69706a4086161f7698b7ac63b47e348265834c812739b13",
+      "bytes": 5573734
+    },
+    "obc_pdfs/2015-06-01_2102-BCW-MR-209-11_inclusion.pdf": {
+      "sha256": "1f63eff40d0469baabd49c020ba039041893f04c61cd725ba7dc9933f6f39b54",
+      "bytes": 233368
+    },
+    "obc_pdfs/2015-07-27_1204-SBCW-MR-67-10_updated-OBC-certificate-guidelines.pdf": {
+      "sha256": "9c7808005fc3357175243f3138fbd4bd8052b4b1181bb85e1731a776be2cf4ac",
+      "bytes": 2643783
+    },
+    "obc_pdfs/2016-02-04_468-BCW-MR-209-11_inclusion_amendment.pdf": {
+      "sha256": "aa769a20ca5b55ddf77693218bb18e68cc65982b2f089bf0f2e477790d72b4d8",
+      "bytes": 244927
+    },
+    "obc_pdfs/2016-02-26_773-BCW-MR-209-11_inclusion_amendment.pdf": {
+      "sha256": "4dc1caf89967efa49bcfe23154c8b8cda7448c7f1c4d976a309509119da599ff",
+      "bytes": 234321
+    },
+    "obc_pdfs/2016-12-26_4282-BCW-MR-118-16_inclusion.pdf": {
+      "sha256": "4d5ce570279183289e2734dbd635223bba82d2aec252c779fa369dc6263b2a29",
+      "bytes": 174630
+    },
+    "obc_pdfs/2016-12-26_4283-BCW-MR-209-11-(Pt.I)_inclusion_amendment.pdf": {
+      "sha256": "fa0d50078a3892a1860d3c7de01fc155c14968d8db9275bbbfbcbdd958120e8e",
+      "bytes": 208636
+    },
+    "obc_pdfs/2017-06-07_1905-BCW-MR-19-17_inclusion.pdf": {
+      "sha256": "5df0ce12909ac427497d23e8ab3ba380164525558a8931556de322261c654c03",
+      "bytes": 249836
+    },
+    "obc_pdfs/2017-09-14_3230-BCW-MR-116-12_amendment.pdf": {
+      "sha256": "e455aa2d3b7d8ca3b70404ee90661b8885347c137603dc840228420dced88e37",
+      "bytes": 254833
+    },
+    "obc_pdfs/2017-09-14_3231-BCW-MR-74-17_amendment.pdf": {
+      "sha256": "4817f2e795a8c5d664e55c9f6cb34f8f57b5dd718d669df060efbb89c37bcbac",
+      "bytes": 266104
+    },
+    "obc_pdfs/2017-12-05_4144-BCW-MR-92-17_inclusion.pdf": {
+      "sha256": "b4a7312b7ff3785767b7076a3600d3713f2628361899918b04c0eff7e6bd7bee",
+      "bytes": 251219
+    },
+    "obc_pdfs/2018-03-28_1132-BCW-MR-05-17_inclusion.pdf": {
+      "sha256": "09eb2936e9812ac0790218991e6610efacea96cdb158bb89f0d247973e132d85",
+      "bytes": 250976
+    },
+    "obc_pdfs/2018-06-27_SBCW-165-MR-29-18_inclusion.pdf": {
+      "sha256": "e1a11e349d8c9d48f1338c9346cba81e64762e9ec65c388c0be797ec34f8fa01",
+      "bytes": 265132
+    },
+    "obc_pdfs/2022-07-11_2019-BCW-MR-30-2020_inclusion.pdf": {
+      "sha256": "0d5da5f43d3d0cab840ae21063c688b801286afd4e4ed79932c3ef6df5419807",
+      "bytes": 78888
+    },
+    "obc_pdfs/2022-07-11_2020-BCW-MR-03-2021_inclusion.pdf": {
+      "sha256": "ce3c0ec98cb6ccf441f3ca40730f21a8a25e5d08c65da3f74ce0c880d31eed49",
+      "bytes": 73678
+    },
+    "obc_pdfs/2025-04-00_PUBLIC-NOTICE_Newspaper-Advertisement-in-English.pdf": {
+      "sha256": "13f1cd2e7e409cbf13c9fc583128ac5e66edcc186a37c9a1838f45396f4fad92",
+      "bytes": 121490
+    },
+    "obc_pdfs/2025-04-29_PUBLIC-HEARING_OBC-29.04.2025.pdf": {
+      "sha256": "2105284c639ffe9ceee8e43679a39317124ffe4c487c5566bee71800c0e9def4",
+      "bytes": 94432
+    },
+    "obc_pdfs/2025-04-30_PUBLIC-HEARING_Hearing-for-Notice-30.04.2025.pdf": {
+      "sha256": "be83159a62ddcf85dac40135f63bf8dab2d50ff2da2e2f9da4e80b9b08dfe7aa",
+      "bytes": 419897
+    },
+    "obc_pdfs/2025-05-02_PUBLIC-HEARING_Hearing-for-Notice-02.05.2025.pdf": {
+      "sha256": "1cb8c9eb2fc56cb7fc2a1162a95d1de68b37dfa4e0cdf9dc924afce7785d2428",
+      "bytes": 409975
+    },
+    "obc_pdfs/2025-05-03_PUBLIC-HEARING_Hearing-for-Notice-03.05.2025.pdf": {
+      "sha256": "da283067ec354c17d8f9d168f064f32ca60328d44341820390d392165ccffdb1",
+      "bytes": 292443
+    },
+    "obc_pdfs/2025-05-04_PUBLIC-HEARING_Hearing-for-Notice-04.05.2025.pdf": {
+      "sha256": "8e6877246e760ab649ed5c81c6b4b5b7f7457e9d0eac39cb557449417b0e67ce",
+      "bytes": 303056
+    },
+    "obc_pdfs/2025-05-08_917-BCW-MR-33-2025_sub_categorisation.pdf": {
+      "sha256": "efb7f76c0e9571a1e9b72dbe7219923b87f7dfbb48cc4d44254b36399bdfbf1c",
+      "bytes": 1329463
+    },
+    "obc_pdfs/2025-05-13_PUBLIC-HEARING_Newspaper-Advertisement-13.05.2025.pdf": {
+      "sha256": "f4711d43c72816b37e8772411cb5fd18806fb801f36cdc717bec92bbaa239ea1",
+      "bytes": 95424
+    },
+    "obc_pdfs/2025-05-14_PUBLIC-HEARING_newspaper-advertisement-14.05.2025.pdf": {
+      "sha256": "ab5159b4c5d0ea81bb6f383e2ec5051fde4537a4404cad30241f59ba05162a49",
+      "bytes": 95012
+    },
+    "obc_pdfs/2025-05-15_PUBLIC-HEARING_newspaper-advertisement-part8.docx-15.5.25.pdf": {
+      "sha256": "59350be727f1fc2176a943c79c48b3bf342eb0a7b6bc31641b9a724f05b313e1",
+      "bytes": 96620
+    },
+    "obc_pdfs/2025-05-16_PUBLIC-HEARING_newspaper-advertisement-part9-16.5.25.pdf": {
+      "sha256": "0e3443c64b0fc57c38f59085e2745fa8b6de9ed6293d80ee2d88bd67209e7a3f",
+      "bytes": 96441
+    },
+    "obc_pdfs/2025-05-18_PUBLIC-HEARING_newspaper-advertisement-for-18.05.25.pdf": {
+      "sha256": "cae0de1620baf63a20e336743c8c6e5ce71bf47f077b1637e2c0f25a61d6e7d0",
+      "bytes": 98407
+    },
+    "obc_pdfs/2025-05-19_PUBLIC-HEARING_newspaper-advertisement-part10-19.5.25.pdf": {
+      "sha256": "f044cb5e994a56883946d4ed397f1429ff547f5a9c844cfb603234e880a93873",
+      "bytes": 97502
+    },
+    "obc_pdfs/2025-05-20_PUBLIC-HEARING_newspaper-advertisement-part11-20.5.25.pdf": {
+      "sha256": "65b9cc92e01911c8810b64d3fb637997ae46cf727cb66765bef746d2e21ad756",
+      "bytes": 77241
+    },
+    "obc_pdfs/2025-05-21_PUBLIC-HEARING_newspaper-advertisement-part12-21.5.25.pdf": {
+      "sha256": "7b11e9800ca181f41032254e5d108539ee894af882a56de8627d4e01ad57b7ab",
+      "bytes": 76709
+    },
+    "obc_pdfs/2025-05-22_PUBLIC-HEARING_newspaper-advertisement-part13-22.5.25.pdf": {
+      "sha256": "2593cccb3717841d63a9fa07aecfd409ffef7436e09d67697d582e107fb12aea",
+      "bytes": 77233
+    },
+    "obc_pdfs/2025-05-23_PUBLIC-HEARING_newspaper-advertisement-part14-23.5.25.pdf": {
+      "sha256": "7c956e287c3a1753f962620f4a7a12dfa6c55399b9cf9a61adb9078f2f993805",
+      "bytes": 76279
+    },
+    "obc_pdfs/2025-05-24_PUBLIC-HEARING_newspaper-advertisement-24.05.2025.pdf": {
+      "sha256": "76ce47b7a6d3cae721877c31d96b2444c7a1174484238df7fbaa1e215581b1e8",
+      "bytes": 76783
+    },
+    "obc_pdfs/2025-05-27_1056-BCW-MR-33-2025-(Pt.I)_sub_categorisation.pdf": {
+      "sha256": "9bf69f3de696378d0b8f612bc02543bcbc48413d612d64cf18c8ea05cfd48ef5",
+      "bytes": 1744437
+    },
+    "obc_pdfs/2025-05-27_1057-BCW-MR-38-2025_inclusion.pdf": {
+      "sha256": "7e669219dadc98529010d9e43b4610bf181bf104124d8d9b31f9a3b3eac84318",
+      "bytes": 1408157
+    },
+    "obc_pdfs/2025-06-03_1106-BCW-MR-33-2025_reservation_hike.pdf": {
+      "sha256": "587619a2a99e8a611622b8c8fcf83f64652c188d8d41711ca0d1446bf740c4b9",
+      "bytes": 1342139
+    },
+    "obc_pdfs/2025-06-03_1107-BCW-MR-38-2025_inclusion.pdf": {
+      "sha256": "9bbff59118329b0c02d61786d84b2c699712faf36812c5e3759ab54aed891c2f",
+      "bytes": 1630285
+    },
+    "obc_pdfs/2025-06-03_OFFICIAL-New-List-of-OBCs-Notification-wise-up-to-03-06-2025.pdf": {
+      "sha256": "b1a5bac5b73c51fe356fecc8ec65d208bd0db5f46c7273b55829d9544994f165",
+      "bytes": 325453
+    },
+    "obc_pdfs/2026-05-14_1033-Secy-BCW_caste-certificate-reverification.pdf": {
+      "sha256": "a8090457c61bc5287683bb1d9f3ce5d267c8b1985f8ef70ce37974379b10cea2",
+      "bytes": 1183277
+    },
+    "obc_pdfs/2026-05-18_944-BCW-MR-23-2026_withdrawal.pdf": {
+      "sha256": "cabcc3043bbada202831bae12c8c1350f4853d57c322157d03f905e28a51dd12",
+      "bytes": 362228
+    },
+    "obc_pdfs/2026-05-18_945-BCW-MR-23-2026-(Gazette)_current_list.pdf": {
+      "sha256": "88470eb0819a405efeed576b86f07419c518252172cfc5f755118dc76cdb166e",
+      "bytes": 4799258
+    },
+    "obc_pdfs/2026-05-18_945-BCW-MR-23-2026_current_list.pdf": {
+      "sha256": "c860600402b45f33c0fbcadd6705e40ac5e0345f7baf72a53c6ef6a9ae8b5d55",
+      "bytes": 1367080
+    },
+    "obc_pdfs/2026-05-18_946-Secy-BCW-MR-23-2026_administrative.pdf": {
+      "sha256": "c01582c369316985530442d8b0d86dd6a873f3e2565a2f137823ddd1d2b90967",
+      "bytes": 2212262
+    },
+    "obc_pdfs/2026-05-25_Labr-85-Emp_model-roster.pdf": {
+      "sha256": "b6a91864c7b7c2280ba7da9ae1f04458d953628f14fbe8647c9e4e36db218542",
+      "bytes": 768202
+    },
+    "obc_pdfs/2026-07-15_658-L_amendment-act.pdf": {
+      "sha256": "65535f813a16a83b6b380b9a51b22bbc64117306b9cef1d46b830beb5c5844fc",
+      "bytes": 868539
+    },
+    "obc_pdfs/2026-07-15_659-L_amendment-act.pdf": {
+      "sha256": "a7ca489e008a991b31e9fe5d8947aea854d41b5ab103e357c2b2167faffc6da0",
+      "bytes": 548508
+    },
+    "obc_pdfs/2026-07-27_1579-BCW_commencement.pdf": {
+      "sha256": "ae4f4ff638331eee659b4de264116c04737fcfb96b5fa3a5c388cc3d5c9f2f04",
+      "bytes": 246548
+    },
+    "obc_pdfs/2026-07-27_1580-BCW_commencement.pdf": {
+      "sha256": "5bebafda7cd97ccbeef704496ee1e0b02c96a31d164dcc1b75702b492c308e03",
+      "bytes": 238176
+    },
+    "obc_pdfs/2026-08-07_1060-Secy-BCW_ongoing-recruitment.pdf": {
+      "sha256": "1358e7b735f6b57425d69709a1718bd1c0aa4c233ab180ab12125f47e491e28b",
+      "bytes": 1767799
+    },
+    "obc_pdfs/2026-10-14_WBBPE_category-update-notice.pdf": {
+      "sha256": "fd056a847221bb5038f3091c52ae18a97188ae0d664cfd7261cb57d5f3a28366",
+      "bytes": 461821
+    },
+    "obc_pdfs/2026-11-05_WBBPE_PwBD-OBC-edit-notice.pdf": {
+      "sha256": "2ce535444aec6a2c0966b5bae74c9a27cdf05be2892fed6b1a4696a9e575356e",
+      "bytes": 476424
+    },
+    "obc_pdfs/WBCBC_OBC-Survey-Block-Proforma.pdf": {
+      "sha256": "b579556fe687db4881d895a3f3c6eef4327981fc673f5ea3230bf4711c396b41",
+      "bytes": 111823
+    },
+    "case_pdfs/2024-05-22_Calcutta-High-Court_Amal-Chandra-Das-WPO-60-2011_judgment.pdf": {
+      "sha256": "5468fd1e1034333116c23aa57bbe43b84068a479a999e0f52d27eba29aac880b",
+      "bytes": 1159318
+    },
+    "case_pdfs/2024-07-28_Supreme-Court_SLP-C-16936-2024_Aatmadeep_paper-book.pdf": {
+      "sha256": "677b51d2d0901cd15a69c0332c1e3baa87396f70bbb745c07f104f37f52ad906",
+      "bytes": 6636082
+    },
+    "case_pdfs/2024-09-30_Calcutta-High-Court_WPA-P-430-2024_Amal-Chandra-Das-PIL_order.pdf": {
+      "sha256": "c2eef9bc2cd8f049c0adfba952fa5d46694943cc7bb8e2cd8dbcee1355c8cd3a",
+      "bytes": 103074
+    },
+    "case_pdfs/2024-10-07_Calcutta-High-Court_WPA-P-430-2024_Amal-Chandra-Das-PIL_order.pdf": {
+      "sha256": "045adfbc3271e3eef8c43921ee7d9b3941e6721a7d1c6b1b9b69cc0bab5cd2af",
+      "bytes": 102421
+    },
+    "case_pdfs/2024-11-22_Supreme-Court_SLP-C-17751-17755-2024_order.pdf": {
+      "sha256": "929cbe39101be4be496bbb8eec2c1f1cd8a1d1b1e560c5e01bf622a5fd708ee9",
+      "bytes": 43694
+    },
+    "case_pdfs/2024-12-09_Supreme-Court_SLP-C-17751-17755-2024_order.pdf": {
+      "sha256": "46997e14ca35d32a7fce689ee0115dc62fbce581a420ff3f95d015a5be47235b",
+      "bytes": 105402
+    },
+    "case_pdfs/2025-01-07_Supreme-Court_SLP-C-17751-17755-2024_connected-appeals_order.pdf": {
+      "sha256": "32e8b618d075035c799dfb51db0a9863bf6dc5b76ff76ecf6268cd2eda2fb437",
+      "bytes": 45219
+    },
+    "case_pdfs/2025-01-21_Calcutta-High-Court_WPA-P-387-430-2024_listing-order.pdf": {
+      "sha256": "fb5d30ddef35c8a659ec17fd762e69f92ae976e13e2058c285b863cccfb091e2",
+      "bytes": 370709
+    },
+    "case_pdfs/2025-03-18_Supreme-Court_SLP-C-17751-17755-2024_order.pdf": {
+      "sha256": "bf5434f7caf042189dc054c53137621b6ade4cfae35e33442948d378aee63114",
+      "bytes": 104927
+    },
+    "case_pdfs/2025-05-06_Calcutta-High-Court_WPA-P-111-119-132-2025_benchmark-survey_order.pdf": {
+      "sha256": "cd31e2b81d1cf7a8d5db61dbc31f14be1c63674b099db4d6d8371b4e825d75d3",
+      "bytes": 106402
+    },
+    "case_pdfs/2025-05-21_Calcutta-High-Court_WPA-9132-2025_JEMAS-PG-order.pdf": {
+      "sha256": "5b218bab483f322b923a906e5aa2232cdf125882fe77c16ed20a778955f8d899",
+      "bytes": 446460
+    },
+    "case_pdfs/2025-06-17_Calcutta-High-Court_WPA-P-111-119-132-2025_benchmark-survey_order.pdf": {
+      "sha256": "eb76e841793ee4b629bd26696911a98732f8c3672a53b02df5d64bb8bd8e0481",
+      "bytes": 181389
+    },
+    "case_pdfs/2025-07-02_Calcutta-High-Court_MAT-943-955-2025_Supriya-Mondal_order.pdf": {
+      "sha256": "83411b823467d4ae502de2420a8c7bb3ee9284ffc66050cd87a0f6016a55f341",
+      "bytes": 105421
+    },
+    "case_pdfs/2025-07-18_Supreme-Court_SLP-C-17528-2025_office-report.pdf": {
+      "sha256": "073e57150978d54f85a7632296e875e8d5930864c4d43ed8844d6e06fa144020",
+      "bytes": 34565
+    },
+    "case_pdfs/2025-07-28_Supreme-Court_SLP-C-17422-17528-17973-17974-2025_stay_order.pdf": {
+      "sha256": "96c489b0f6baadf6074344769b9d6d0b5d4e74284495cfc5d12eba011c574d42",
+      "bytes": 41303
+    },
+    "case_pdfs/2025-08-07_Calcutta-High-Court_CPAN-1362-1365-2025_JEMAS_contempt_order.pdf": {
+      "sha256": "b15324fe1b68021fb4bcce9c8820bde0983a9ca65eb9a549f37d83a88da5a2d7",
+      "bytes": 144725
+    },
+    "case_pdfs/2025-08-22_Supreme-Court_Diary-45526-45628-2025_JEMAS_stay_order.pdf": {
+      "sha256": "fdfbbcf18fdcd3132036048f6f5e4134c0ad8dc0175fa4f1415fc0482e39036f",
+      "bytes": 39661
+    },
+    "case_pdfs/2025-10-14_Supreme-Court_SLP-C-17751-17755-2024_order.pdf": {
+      "sha256": "3b547db9381d1255a0f26d28fefea63d4641d08574e0b8a02b13f5cddc95b1ee",
+      "bytes": 104604
+    },
+    "case_pdfs/2025-12-24_Calcutta-High-Court_WPA-28939-2025_Arijit-Bakshi_order.pdf": {
+      "sha256": "7332d30d7505f745df5ef8f870f3443dd72365349c01824f5b7a588875171478",
+      "bytes": 100854
+    },
+    "case_pdfs/2026-03-11_Supreme-Court_SLP-C-17422-17528-17973-17974_office-report.pdf": {
+      "sha256": "2bb1e535dda1e6660320eabb203448e84b5c92ef3b8eb67adce1062a09e579bb",
+      "bytes": 64345
+    },
+    "case_pdfs/2026-07-01_Calcutta-High-Court_WPA-14695-2026_Bistriti-Parveen_order.pdf": {
+      "sha256": "bb57a3c6656f02d960e36eb34a7272ca6a58d6a6fd7b22c08e603783ba7ae0a0",
+      "bytes": 141851
+    },
+    "case_pdfs/2026-07-01_Calcutta-High-Court_WPA-14698-2026_Yasin-Chowdhury_order.pdf": {
+      "sha256": "cd395a04f364fb0f403cc761054ee990cc49ec6fbef044aed377da17f3b30309",
+      "bytes": 142026
+    },
+    "case_pdfs/2026-07-03_Calcutta-High-Court_WPA-P-305-2026_notifications-944-945-946_order.pdf": {
+      "sha256": "66d105c76b52420c402390cca00117000ba8b5bd51b37e4e2a18abc449263a1e",
+      "bytes": 81329
+    },
+    "case_pdfs/2026-07-07_Calcutta-High-Court_WPA-15380-2026_Mahamadul-Hasan-Gayen_order.pdf": {
+      "sha256": "2ca0281ddf22ff1416429c3fbd6a0380d50aa28ef9637043cd5ee87eac4824fd",
+      "bytes": 102876
+    },
+    "case_pdfs/2026-07-08_Calcutta-High-Court_WPA-14695-2026_withdrawal_order.pdf": {
+      "sha256": "157f5fa4d9fbdf57e2a36a8b895f29573022303a69033cce5467db07ca9273da",
+      "bytes": 54057
+    },
+    "case_pdfs/2026-07-09_Calcutta-High-Court_WPA-14698-2026_Yasin-Chowdhury_order.pdf": {
+      "sha256": "81d06ca4ccb005305cef47f8c87a1153d07ad72f977d57c815895938ddd04dca",
+      "bytes": 116420
+    },
+    "case_pdfs/2026-07-14_Supreme-Court_OBC-SLPs_withdrawal_order.pdf": {
+      "sha256": "fce585e2163e85dc243d944d389429364474b5dab640dada2b86bce4c61d8366",
+      "bytes": 9073
+    },
+    "case_pdfs/2026-08-12_Calcutta-High-Court_MAT-1320-2026_Shreyasi-Dhang_judgment.pdf": {
+      "sha256": "52800a5b60d31cbfa4e167423783b3ca6fe409aa95e6e372ccf5fe92dacf82ea",
+      "bytes": 18187
+    },
+    "case_pdfs/2026-08-14_Calcutta-High-Court_WPA-21501-2026_Hasibur-Rahaman-Mondal_judgment.pdf": {
+      "sha256": "88069e44893e904d0d0b93f791aa6d6bcb59e12fbf148e3d4022cb12ce7618f3",
+      "bytes": 117704
+    },
+    "case_pdfs/2026-08-18_Calcutta-High-Court_MAT-1374-2026_Hasibur-Rahaman-Mondal_judgment.pdf": {
+      "sha256": "528a36b88fd535ca81a3621e6fc2ba81e68f2859a5015f7810cc39739d47f343",
+      "bytes": 106692
+    },
+    "case_pdfs/2026-08-31_Calcutta-High-Court_WPA-23207-23209-2026_Mehebuba-Khatun_judgment.pdf": {
+      "sha256": "465389155e9eaf84e11c12ff258353c05283eff640e2fb6735eb98450f566a57",
+      "bytes": 129231
+    },
+    "case_pdfs/2026-09-14_Calcutta-High-Court_FMA-1002-2026_Mir-Mazharul-Islam_judgment.pdf": {
+      "sha256": "f2278a98cc8c2e484dfd15ab3aee34c82ec329a21c885e39026829924ad25f58",
+      "bytes": 109589
+    },
+    "case_pdfs/2026-09-23_Calcutta-High-Court_RVW-239-2026_Arindam-Saha_order.pdf": {
+      "sha256": "00e280c1aa6b29908a7266f44f1aa1f66ca9686d871e366ddefcc25a93ccb3a8",
+      "bytes": 107692
+    },
+    "case_pdfs/2026-10-01_Supreme-Court_Diary-41300-50605-2026_order.pdf": {
+      "sha256": "70f598adb58686fa6225cd49f5d171c45f56a0c89f2944158097002f64e77f08",
+      "bytes": 6403
+    },
+    "case_pdfs/2026-10-05_Supreme-Court_SLP-C-31121-2026_Hasibur-Rahaman-Mondal_order.pdf": {
+      "sha256": "139e57a8400fb884830d88a0bde19cc169b2ae441ce323f5d4905889bcc0a601",
+      "bytes": 101449
+    },
+    "case_pdfs/2026-10-13_Calcutta-High-Court_APOT-136-2026_Shamim-Akhtar_order.pdf": {
+      "sha256": "e828d60438d04dd2397d1f6c865df2202bf9b65d40d643074f49783de9fcff5f",
+      "bytes": 100796
+    },
+    "case_pdfs/2026-10-13_Calcutta-High-Court_WPA-26656-2026_Aslam-Hossain_order.pdf": {
+      "sha256": "af0c92d1a541b77f8cdb1a20040ab2774715f5a44f8560331154f7f9be47faca",
+      "bytes": 101423
+    },
+    "case_pdfs/2026-10-13_Calcutta-High-Court_WPA-29788-2026_Nilanjona-Kundu_order.pdf": {
+      "sha256": "72d5e6107853c1c1d9b179cced27f4d682cbbc7c768dd1cc008f5721caf439c3",
+      "bytes": 13955
+    },
+    "case_pdfs/2026-10-15_Calcutta-High-Court_WPA-28984-2026_Srikanta-Chakraborty_judgment.pdf": {
+      "sha256": "ad62ea8a00c54f05a83e941c19e7ce750f60b43bc7c21f3f3361d8e8e45b5696",
+      "bytes": 123640
+    },
+    "case_pdfs/2026-10-15_Calcutta-High-Court_WPA-30672-2026_Abeda-Khatoon_order.pdf": {
+      "sha256": "bf2987f8c5ab6d499e7a3ea9d934150ab69f28b26fc5c88fae35b754a5a796a4",
+      "bytes": 15149
+    },
+    "case_pdfs/2026-10-30_Calcutta-High-Court_WPA-31497-2026_Sambhu-Charan-Bera_order.pdf": {
+      "sha256": "6537c0e773c3a49833b41f3936070b1d349e8ecff2a71b61714da28570e90a65",
+      "bytes": 105800
+    },
+    "case_pdfs/2026-10-31_Calcutta-High-Court_WPA-31572-2026_Mohabul-Islam_order.pdf": {
+      "sha256": "33239e1eaf509b904de68a7f7347098bc4d4fbfa8e17e8940c19f9035be9b7dc",
+      "bytes": 11979
+    }
+  }
+}

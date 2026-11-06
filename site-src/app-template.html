@@ -7,7 +7,7 @@
   <meta name="theme-color" content="#0f3b3c">
   <title>WB OBC Archive</title>
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
-  <script src="js/navigation.js?v=20261106-polish" defer></script>
+  <script src="js/navigation.js?v=20261106-audit" defer></script>
   <script src="js/export-pdf.js?v=20261105-icon" defer></script>
   <script src="js/search.js?v=20261106-search" defer></script>
   <script src="js/export.js?v=20261106-export" defer></script>
@@ -116,7 +116,7 @@
       <h1 id="hero-title" data-i18n="heroTitle">West Bengal OBC records, in one place.</h1>
       <p class="hero-sub" id="hero-sub" data-i18n="heroSub">Trace policy changes, follow court proceedings, and find the source behind every record. An open archive for researchers, communities and the public.</p>
       <div class="hero-stats stagger-in">
-        <div class="hero-stat lift"><strong id="hero-stat-1-value" data-i18n="heroStat1Value">94</strong><span id="hero-stat-1-label" data-i18n="heroStat1Label">Archived source PDFs</span></div>
+        <div class="hero-stat lift"><strong id="hero-stat-1-value" data-i18n="heroStat1Value">118</strong><span id="hero-stat-1-label" data-i18n="heroStat1Label">Archived source PDFs</span></div>
         <div class="hero-stat lift"><strong id="hero-stat-2-value" data-i18n="heroStat2Value">66</strong><span id="hero-stat-2-label" data-i18n="heroStat2Label">Classes in Notification 945</span></div>
         <div class="hero-stat lift"><strong id="hero-stat-3-value" data-i18n="heroStat3Value">7%</strong><span id="hero-stat-3-label" data-i18n="heroStat3Label">Reservation in the May 2026 notice</span></div>
         <div class="hero-stat lift"><strong id="hero-stat-4-value" data-i18n="heroStat4Value">5</strong><span id="hero-stat-4-label" data-i18n="heroStat4Label">Evidence gaps tracked</span></div>
@@ -944,7 +944,7 @@
 
     <section id="evidence" class="research tab-panel" data-tab-panel="evidence" hidden>
       <h2 id="missing-records" class="section-heading" data-i18n="completenessAuditHeading">Completeness Audit</h2>
-      <p class="section-sub">The archive contains the core 2010, 2025, and 2026 notifications and a substantial public-hearing notice set. The remaining procedural gap is the West Bengal Commission for Backward Classes record behind the notices: benchmark-survey memos, class-wise advice reports, survey data, and later court records around the 2025 survey challenge.</p>
+      <p class="section-sub">The archive contains the core 2010, 2025, and 2026 notifications, a substantial public-hearing notice set, and the court orders in the cases that followed. The remaining procedural gap is the West Bengal Commission for Backward Classes record behind the notices: benchmark-survey memos, class-wise advice reports, and survey data.</p>
 
       <div class="research-grid">
         <div class="research-card found">
@@ -957,7 +957,7 @@
         </div>
         <div class="research-card missing">
           <h3 data-i18n="evidenceStillMissing">Not yet archived</h3>
-          <p>Class-wise Commission advice/survey reports, the benchmark-survey memo trail, complete court filings/orders after the 2025 survey challenge, and original source pages for hearing notices currently represented only by archived scans.</p>
+          <p>Class-wise Commission advice and survey reports, the benchmark-survey memo trail, the Supreme Court order of 6 November 2025, later orders in the implementation PILs (none found after January 2025) and in the JEMAS PG appeals (none found after August 2025), and original source pages for hearing notices held only as archived scans.</p>
         </div>
       </div>
 
@@ -5832,7 +5832,7 @@ function renderTimelineEvents(events, forceLang) {
     ].filter(Boolean).join(' ');
     const key = `narrative.timeline.${event.id}`;
     const body = window.WBOBCI18n?.getTranslations()?.[lang]?.[key] || ((lang === 'bn' && event.html_bn) ? event.html_bn : (event.html || ''));
-    return `<li ${attrs}>${body}</li>`;
+    return `<li ${attrs}>${readableIsoDate(body, lang)}</li>`;
   }).join('');
   
   // Initialize scroll animations
@@ -6559,6 +6559,16 @@ function normalise(text) {
     .trim();
 }
 
+// Some timeline records store an ISO date in their date label; show it like the rest.
+function readableIsoDate(html, lang) {
+  return String(html).replace(/(<div class="date">)(\d{4})-(\d{2})-(\d{2})(<\/div>)/, (m, open, y, mo, d, close) => {
+    const en = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'], bn = ['জানুয়ারি','ফেব্রুয়ারি','মার্চ','এপ্রিল','মে','জুন','জুলাই','আগস্ট','সেপ্টেম্বর','অক্টোবর','নভেম্বর','ডিসেম্বর'];
+    const day = String(Number(d));
+    if (lang === 'bn') { const dg = v => v.replace(/\d/g, c => '০১২৩৪৫৬৭৮৯'[c]); return `${open}${dg(day)} ${bn[mo - 1]} ${dg(y)}${close}`; }
+    return `${open}${day} ${en[mo - 1]} ${y}${close}`;
+  });
+}
+
 const SITE_PAGE = document.body.dataset.page || '';
 const PAGE_FILES = {
   home: 'index.html',
@@ -7194,6 +7204,13 @@ document.addEventListener('click', event => {
   if (hashLink) {
     const hash = hashLink.getAttribute('href');
     event.preventDefault();
+    // In the multi-page site, a link to a section on another page (for example
+    // from runtime-rendered record text) goes to that page.
+    const targetTab = tabForHash(hash);
+    if (SITE_PAGE && targetTab && targetTab !== SITE_PAGE && !document.getElementById(hash.slice(1))) {
+      window.location.href = pageHref(targetTab, hash.slice(1));
+      return;
+    }
     history.pushState(null, '', hash);
     showTab(tabForHash(hash), hash);
     const openGroupEl = hashLink.closest('.nav-group.is-open');

@@ -36,4 +36,16 @@ assert.ok(read('litigation.html').includes('id="casefile-shreyasi-dhang-2026"'),
 assert.ok((read('media.html').match(/class="media-item"/g) || []).length >= 20, 'Media coverage is in server HTML');
 assert.ok(read('robots.txt').includes('Sitemap: '));
 assert.ok(!read('js/site.js').includes('new XMLHttpRequest'), 'No synchronous data requests');
+// Every archived PDF is fingerprinted, unchanged, and counted correctly on the home page.
+{
+  const crypto = require('crypto');
+  const sums = JSON.parse(read('data/pdf_checksums.json')).files;
+  const pdfs = ['obc_pdfs', 'case_pdfs'].flatMap(d => fs.readdirSync(path.join(root, d)).filter(f => f.endsWith('.pdf')).map(f => `${d}/${f}`));
+  for (const f of pdfs) {
+    assert.ok(sums[f], `${f} is not in data/pdf_checksums.json (run python3 scripts/build-checksums.py)`);
+    assert.equal(crypto.createHash('sha256').update(fs.readFileSync(path.join(root, f))).digest('hex'), sums[f].sha256, `${f} changed since it was fingerprinted`);
+  }
+  for (const f of Object.keys(sums)) assert.ok(fs.existsSync(path.join(root, f)), `${f} is fingerprinted but missing`);
+  assert.equal(translations.en.heroStat1Value, String(pdfs.length), 'Home page PDF count (heroStat1Value) matches the archive');
+}
 console.log(`Site validation passed for ${urls.length} pages: metadata, discovery, static records and local assets.`);

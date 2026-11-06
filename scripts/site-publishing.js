@@ -278,7 +278,7 @@ function prerender(html, page) {
     const events = read('timeline_events.json');
     for (const [offset, doc] of read('supplemental_documents.json').filter(d => d.show_on_timeline).entries()) events.push({id:`evt-framework-${offset}`,date:doc.date,type:'legacy',html:`<div class="date">${escape(doc.date)}</div><span class="dot" aria-hidden="true"></span><article class="card"><h2>${escape(doc.notif_no)}</h2><p>${escape(doc.summary)}</p>${pdfLink(doc.local_pdf)}</article>`});
     events.sort((a,b) => (Date.parse(a.date)||0)-(Date.parse(b.date)||0));
-    html = html.replace('<!-- Timeline events are rendered from timeline_events.json. -->',events.map(e => `<li id="${escape(e.id)}" class="event" data-type="${escape(e.type)}" data-date="${escape(e.date)}">${e.html}</li>`).join('\n'));
+    html = html.replace('<!-- Timeline events are rendered from timeline_events.json. -->',events.map(e => `<li id="${escape(e.id)}" class="event" data-type="${escape(e.type)}" data-date="${escape(e.date)}">${e.html.replace(/(<div class="date">)(\d{4})-(\d{2})-(\d{2})(<\/div>)/, (m,o,y,mo,d,c) => `${o}${Number(d)} ${["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"][mo-1]} ${y}${c}`)}</li>`).join('\n'));
   }
   if (page.tab === 'documents') {
     const docs = read('obc_documents.json'), keys = new Set(docs.map(d=>`${d.notif_no}|${d.filename}`));
@@ -309,7 +309,7 @@ function publish(html, page) {
     const mainStart = html.indexOf('<main '), mainEnd = html.indexOf('</main>',mainStart);
     let main = html.slice(mainStart,mainEnd);
     for (const key of [titleKey,subKey]) {
-      main = main.replace(new RegExp(`<(h2|p)[^>]*data-i18n="${key.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')}"[^>]*>[\\s\\S]*?</\\1>`), '');
+      main = main.replace(new RegExp(`<(h2|p)[^>]*data-i18n="${key.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')}"[^>]*>[\\s\\S]*?</\\1>`), m => { const id = /\sid="([^"]+)"/.exec(m); return id ? `<span id="${id[1]}" class="anchor-target"></span>` : ''; });
     }
     // The litigation introduction uses the same sentence as the hero.
     if (page.tab === 'cases') main = main.replace(/<p class="panel-kicker"[^>]*>[\s\S]*?<\/p>/,'');

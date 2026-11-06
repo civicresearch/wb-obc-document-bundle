@@ -25,7 +25,9 @@
       ],
       "related": [
         "casefile-sc-state-appeals-2024",
-        "casefile-implementation-pils-2024"
+        "casefile-implementation-pils-2024",
+        "casefile-sir-certificates-2025",
+        "casefile-admission-recruitment-claims-2026"
       ]
     },
     {
@@ -108,11 +110,13 @@
       "summary_bn": "১৭ জুন ২০২৫ হাইকোর্ট রাজ্যের নতুন ২০২৫ ওবিসি তালিকা স্থগিত করে। ২৮ জুলাই ২০২৫ সুপ্রিম কোর্ট সেই আদেশ স্থগিত করে। জুলাই ২০২৬-এ রাজ্য আপিল প্রত্যাহারের পর আগস্ট ২০২৬-এ ডিভিশন বেঞ্চ ২০২৫-এর স্থগিতাদেশ পুনর্বহাল বলে নথিভুক্ত করে।",
       "records": [
         "case-2025-05-06",
-        "case-2025-06-17"
+        "case-2025-06-17",
+        "case-2026-08-12"
       ],
       "related": [
         "casefile-sc-purabi-das-2025",
-        "casefile-shreyasi-dhang-2026"
+        "casefile-shreyasi-dhang-2026",
+        "casefile-implementation-pils-2024"
       ]
     },
     {
@@ -142,7 +146,8 @@
       ],
       "related": [
         "casefile-notification-challenge-2025",
-        "casefile-sc-state-appeals-2024"
+        "casefile-sc-state-appeals-2024",
+        "casefile-jemas-pg-2025"
       ]
     },
     {
@@ -274,7 +279,8 @@
       "related": [
         "casefile-notification-challenge-2025",
         "casefile-rjf-pil-2026",
-        "casefile-category-petitions-oct-2026"
+        "casefile-category-petitions-oct-2026",
+        "casefile-recruitment-roster-2026"
       ]
     },
     {
@@ -324,8 +330,8 @@
       "status": "pending",
       "status_label": "Pending · affidavits called",
       "status_label_bn": "বিচারাধীন · হলফনামা তলব",
-      "summary": "October 2026 petitions deal with candidates whose category changed after the August judgment: representations to update category, candidates from retained classes, and former OBC applicants seeking EWS status in primary-teacher recruitment. In WPA 31572 the State must file affidavits within three weeks after the Puja vacation. On 30 October 2026 the Court held that the 14 October category-update window does not allow fresh applications.",
-      "summary_bn": "অক্টোবর ২০২৬-এর আবেদনগুলি আগস্টের রায়ের পর যাঁদের শ্রেণি বদলেছে তাঁদের নিয়ে: শ্রেণি হালনাগাদের আবেদন, বহাল শ্রেণির প্রার্থী, এবং প্রাথমিক শিক্ষক নিয়োগে ইডব্লিউএস চাওয়া প্রাক্তন ওবিসি আবেদনকারী। WPA 31572-এ পুজোর ছুটির পর তিন সপ্তাহের মধ্যে রাজ্যকে হলফনামা দিতে হবে। ৩০ অক্টোবর ২০২৬ আদালত জানায়, ১৪ অক্টোবরের শ্রেণি হালনাগাদের সুযোগে নতুন আবেদন করা যায় না।",
+      "summary": "October 2026 petitions deal with candidates whose category changed after the August judgment: representations to update category, candidates from retained classes, and former OBC applicants seeking EWS status in primary-teacher recruitment. In WPA 31572 the State must file affidavits within three weeks after the Puja vacation. On 30 October 2026 the Court held that the 14 October category-update window does not allow fresh applications. On 5 November 2026 the Primary Education Board reopened OBC status declarations from 5 to 9 November (Memo 3747).",
+      "summary_bn": "অক্টোবর ২০২৬-এর আবেদনগুলি আগস্টের রায়ের পর যাঁদের শ্রেণি বদলেছে তাঁদের নিয়ে: শ্রেণি হালনাগাদের আবেদন, বহাল শ্রেণির প্রার্থী, এবং প্রাথমিক শিক্ষক নিয়োগে ইডব্লিউএস চাওয়া প্রাক্তন ওবিসি আবেদনকারী। WPA 31572-এ পুজোর ছুটির পর তিন সপ্তাহের মধ্যে রাজ্যকে হলফনামা দিতে হবে। ৩০ অক্টোবর ২০২৬ আদালত জানায়, ১৪ অক্টোবরের শ্রেণি হালনাগাদের সুযোগে নতুন আবেদন করা যায় না। ৫ নভেম্বর ২০২৬ প্রাথমিক শিক্ষা পর্ষদ ৫ থেকে ৯ নভেম্বর পর্যন্ত আবার ওবিসি অবস্থা জানানোর সুযোগ দেয় (৩৭৪৭ নং মেমো)।",
       "records": [
         "case-2026-10-13",
         "case-2026-10-15",
