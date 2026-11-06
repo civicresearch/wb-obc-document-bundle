@@ -1,0 +1,141 @@
+{
+  "_note": "Search and sharing text for each public page. Titles stay under about 60 characters and descriptions under 160, so search results show them in full. {pdfs}, {classes}, {cases} and {media} are filled in from the data at build time. The English text is in the page HTML; the Bengali text is used when a reader switches language.",
+  "pages": {
+    "home": {
+      "title": "West Bengal OBC Archive: OBC List, Court Cases and PDFs",
+      "title_bn": "পশ্চিমবঙ্গ ওবিসি আর্কাইভ: ওবিসি তালিকা, মামলা ও নথি",
+      "description": "West Bengal OBC notifications, the current list of {classes} classes, court orders and {pdfs} source PDFs, 1993–2026. A free bilingual research archive.",
+      "description_bn": "১৯৯৩ থেকে ২০২৬ পর্যন্ত পশ্চিমবঙ্গের ওবিসি বিজ্ঞপ্তি, বর্তমান {classes}টি শ্রেণির তালিকা, আদালতের আদেশ ও {pdfs}টি মূল PDF। বিনামূল্যের দ্বিভাষিক গবেষণা আর্কাইভ।",
+      "facts": ["{pdfs} source PDFs", "{classes} classes · 7%", "1993–2026"],
+      "facts_bn": ["{pdfs}টি মূল PDF", "{classes}টি শ্রেণি · ৭%", "১৯৯৩–২০২৬"]
+    },
+    "timeline": {
+      "title": "West Bengal OBC Timeline, 1993–2026 | WB OBC Archive",
+      "title_bn": "পশ্চিমবঙ্গ ওবিসি কালক্রম, ১৯৯৩–২০২৬ | ওবিসি আর্কাইভ",
+      "description": "Every change to West Bengal OBC reservation since 1993: notifications, amendment Acts, list revisions and court rulings, with the source PDF for each.",
+      "description_bn": "১৯৯৩ থেকে পশ্চিমবঙ্গের ওবিসি সংরক্ষণে প্রতিটি পরিবর্তন: বিজ্ঞপ্তি, সংশোধনী আইন, তালিকা বদল ও আদালতের রায়, প্রতিটির মূল PDF সহ।",
+      "facts": ["Dated notifications", "Amendment Acts", "1993–2026"],
+      "facts_bn": ["তারিখ ধরে বিজ্ঞপ্তি", "সংশোধনী আইন", "১৯৯৩–২০২৬"]
+    },
+    "cases": {
+      "title": "West Bengal OBC Court Cases and Litigation | WB OBC Archive",
+      "title_bn": "পশ্চিমবঙ্গ ওবিসি মামলা ও আদালতের রায় | ওবিসি আর্কাইভ",
+      "description": "Track {cases} West Bengal OBC cases in the Calcutta High Court and Supreme Court: case numbers, latest orders, next hearing dates and archived PDFs.",
+      "description_bn": "কলকাতা হাইকোর্ট ও সুপ্রিম কোর্টে পশ্চিমবঙ্গের {cases}টি ওবিসি মামলার খোঁজ রাখুন: মামলা নম্বর, সাম্প্রতিক আদেশ, পরবর্তী শুনানির তারিখ ও PDF।",
+      "facts": ["{cases} proceedings", "Calcutta HC · Supreme Court", "Next hearings"],
+      "facts_bn": ["{cases}টি মামলা", "কলকাতা হাইকোর্ট · সুপ্রিম কোর্ট", "পরবর্তী শুনানি"]
+    },
+    "case-map": {
+      "title": "Map of West Bengal OBC Court Cases | WB OBC Archive",
+      "title_bn": "ওবিসি মামলাগুলির মানচিত্র | পশ্চিমবঙ্গ ওবিসি আর্কাইভ",
+      "description": "See how the West Bengal OBC court cases connect, from the 2024 Calcutta High Court judgment to the Supreme Court appeals and the 2025 and 2026 lists.",
+      "description_bn": "২০২৪ সালের কলকাতা হাইকোর্টের রায় থেকে সুপ্রিম কোর্টের আপিল এবং ২০২৫ ও ২০২৬-এর তালিকা পর্যন্ত, পশ্চিমবঙ্গের ওবিসি মামলাগুলি কীভাবে যুক্ত, এক নজরে দেখুন।",
+      "facts": ["{cases} proceedings", "Since the 2024 judgment", "Status at a glance"],
+      "facts_bn": ["{cases}টি মামলা", "২০২৪-এর রায় থেকে", "এক নজরে অবস্থা"]
+    },
+    "case-orders": {
+      "title": "West Bengal OBC Court Orders Map | WB OBC Archive",
+      "title_bn": "ওবিসি মামলার আদেশের মানচিত্র | পশ্চিমবঙ্গ ওবিসি আর্কাইভ",
+      "description": "Every West Bengal OBC court order since the 2024 High Court judgment on one map, showing how the Supreme Court and High Court orders connect, with PDFs.",
+      "description_bn": "২০২৪-এর হাইকোর্টের রায়ের পর থেকে পশ্চিমবঙ্গের প্রতিটি ওবিসি আদালত-আদেশ এক মানচিত্রে। সুপ্রিম কোর্ট ও হাইকোর্টের আদেশ কীভাবে যুক্ত, PDF সহ দেখুন।",
+      "facts": ["Every court order", "Supreme Court · High Court", "Linked PDFs"],
+      "facts_bn": ["প্রতিটি আদালত-আদেশ", "সুপ্রিম কোর্ট · হাইকোর্ট", "যুক্ত PDF"]
+    },
+    "media": {
+      "title": "West Bengal OBC Reservation in the News | WB OBC Archive",
+      "title_bn": "সংবাদে পশ্চিমবঙ্গের ওবিসি সংরক্ষণ | ওবিসি আর্কাইভ",
+      "description": "{media} news and legal reports on West Bengal OBC reservation, the 2024 High Court judgment and the 2026 lists, each linked to the court records.",
+      "description_bn": "পশ্চিমবঙ্গের ওবিসি সংরক্ষণ, ২০২৪-এর হাইকোর্টের রায় ও ২০২৬-এর তালিকা নিয়ে {media}টি সংবাদ ও আইনি প্রতিবেদন, প্রতিটি সংশ্লিষ্ট মামলার নথির সঙ্গে যুক্ত।",
+      "facts": ["{media} reports", "Linked to cases", "2024–2026"],
+      "facts_bn": ["{media}টি প্রতিবেদন", "মামলার সঙ্গে যুক্ত", "২০২৪–২০২৬"]
+    },
+    "obc-list": {
+      "title": "West Bengal OBC List 2026: All {classes} Classes | WB OBC Archive",
+      "title_bn": "পশ্চিমবঙ্গের ওবিসি তালিকা ২০২৬: {classes}টি শ্রেণি | ওবিসি আর্কাইভ",
+      "description": "Search the {classes} classes in West Bengal's 2026 OBC list (Notification 945), with when each was first included, earlier removals and the source notice.",
+      "description_bn": "পশ্চিমবঙ্গের ২০২৬ সালের ওবিসি তালিকার (বিজ্ঞপ্তি 945) {classes}টি শ্রেণি খুঁজুন: কোন শ্রেণি কবে প্রথম যুক্ত হয়, আগে কোনগুলি বাদ পড়ে, আর মূল বিজ্ঞপ্তি।",
+      "facts": ["{classes} classes", "Notification 945", "Searchable list"],
+      "facts_bn": ["{classes}টি শ্রেণি", "বিজ্ঞপ্তি 945", "খোঁজা যায়"]
+    },
+    "documents": {
+      "title": "West Bengal OBC Notifications and PDFs | WB OBC Archive",
+      "title_bn": "ওবিসি বিজ্ঞপ্তি ও মূল PDF | পশ্চিমবঙ্গ ওবিসি আর্কাইভ",
+      "description": "Search West Bengal OBC notifications, Acts and certificate rules. Read the extracted text, check the status of each order and open the original PDF.",
+      "description_bn": "পশ্চিমবঙ্গের ওবিসি বিজ্ঞপ্তি, আইন ও শংসাপত্রের নিয়ম খুঁজুন। তুলে আনা লেখা পড়ুন, প্রতিটি আদেশের বর্তমান অবস্থা দেখুন, মূল PDF খুলুন।",
+      "facts": ["{pdfs} source PDFs", "Full text", "Status of each order"],
+      "facts_bn": ["{pdfs}টি মূল PDF", "পুরো লেখা", "প্রতিটি আদেশের অবস্থা"]
+    },
+    "evidence": {
+      "title": "OBC Public Hearings and Evidence Gaps | WB OBC Archive",
+      "title_bn": "ওবিসি গণশুনানি ও প্রমাণের ঘাটতি | ওবিসি আর্কাইভ",
+      "description": "Public-hearing notices from the West Bengal Backward Classes Commission, the communities heard, and the records still missing from the public archive.",
+      "description_bn": "পশ্চিমবঙ্গ অনগ্রসর শ্রেণি কমিশনের গণশুনানির বিজ্ঞপ্তি, কোন সম্প্রদায়ের শুনানি হয়েছে, এবং কোন নথি এখনও প্রকাশ্যে পাওয়া যায়নি।",
+      "facts": ["Hearing notices", "Communities heard", "Missing records"],
+      "facts_bn": ["শুনানির বিজ্ঞপ্তি", "যাদের শুনানি হয়েছে", "যে নথি নেই"]
+    },
+    "entry-framework": {
+      "title": "How to Add an OBC Record | WB OBC Archive",
+      "title_bn": "ওবিসি নথি যোগ করার নিয়ম | পশ্চিমবঙ্গ ওবিসি আর্কাইভ",
+      "description": "A step-by-step guide to recording an OBC notification, court order or missing document with the right dates, source links and provenance notes.",
+      "description_bn": "ওবিসি বিজ্ঞপ্তি, আদালতের আদেশ বা হারিয়ে যাওয়া নথি সঠিক তারিখ, উৎসের লিংক ও প্রাপ্তিসূত্র সহ কীভাবে নথিভুক্ত করবেন, ধাপে ধাপে নির্দেশিকা।",
+      "facts": ["Step by step", "Dates and sources", "Provenance"],
+      "facts_bn": ["ধাপে ধাপে", "তারিখ ও উৎস", "প্রাপ্তিসূত্র"]
+    },
+    "inventory": {
+      "title": "OBC Archive File Inventory | WB OBC Archive",
+      "title_bn": "আর্কাইভের ফাইল তালিকা | পশ্চিমবঙ্গ ওবিসি আর্কাইভ",
+      "description": "Every file in the West Bengal OBC archive: court records, government notifications and reports, with page counts and a direct link to each PDF.",
+      "description_bn": "পশ্চিমবঙ্গ ওবিসি আর্কাইভের প্রতিটি ফাইল: আদালতের নথি, সরকারি বিজ্ঞপ্তি ও প্রতিবেদন, পৃষ্ঠাসংখ্যা ও প্রতিটি PDF-এর সরাসরি লিংক সহ।",
+      "facts": ["{pdfs} files", "Page counts", "Direct PDF links"],
+      "facts_bn": ["{pdfs}টি ফাইল", "পৃষ্ঠাসংখ্যা", "সরাসরি PDF লিংক"]
+    },
+    "obc-basics": {
+      "title": "OBC Reservation Explained: The Basics | WB OBC Archive",
+      "title_bn": "ওবিসি সংরক্ষণ সহজ ভাষায় | পশ্চিমবঙ্গ ওবিসি আর্কাইভ",
+      "description": "What OBC means, how a class is found to be backward, how reservation works and what evidence courts expect, explained through the West Bengal record.",
+      "description_bn": "ওবিসি মানে কী, কোনো শ্রেণিকে কীভাবে অনগ্রসর ধরা হয়, সংরক্ষণ কীভাবে কাজ করে আর আদালত কী প্রমাণ চায়, পশ্চিমবঙ্গের নথি দিয়ে সহজ ভাষায়।",
+      "facts": ["What OBC means", "Backwardness", "What courts ask"],
+      "facts_bn": ["ওবিসি কী", "অনগ্রসরতা", "আদালত কী চায়"]
+    },
+    "methods": {
+      "title": "How OBC Backwardness Is Measured | WB OBC Archive",
+      "title_bn": "অনগ্রসরতা কীভাবে মাপা হয় | পশ্চিমবঙ্গ ওবিসি আর্কাইভ",
+      "description": "The archive's evidence method: indicators of backwardness, data on representation in jobs and education, surveys, and how each source is checked.",
+      "description_bn": "এই আর্কাইভের প্রমাণ-পদ্ধতি: অনগ্রসরতার সূচক, চাকরি ও শিক্ষায় প্রতিনিধিত্বের তথ্য, সমীক্ষা, এবং প্রতিটি উৎস কীভাবে যাচাই করা হয়।",
+      "facts": ["Indicators", "Representation data", "Source checks"],
+      "facts_bn": ["সূচক", "প্রতিনিধিত্বের তথ্য", "উৎস যাচাই"]
+    },
+    "reports": {
+      "title": "Mandal, Sachar and OBC Policy Reports | WB OBC Archive",
+      "title_bn": "মণ্ডল, সাচার ও ওবিসি নীতি প্রতিবেদন | ওবিসি আর্কাইভ",
+      "description": "Read the Mandal Commission and Sachar Committee reports with West Bengal OBC research, the source PDFs and notes on how backwardness was assessed.",
+      "description_bn": "মণ্ডল কমিশন ও সাচার কমিটির প্রতিবেদন এবং পশ্চিমবঙ্গের ওবিসি গবেষণা পড়ুন, মূল PDF ও অনগ্রসরতা কীভাবে বিচার করা হয়েছিল তার টীকা সহ।",
+      "facts": ["Mandal Commission", "Sachar Committee", "Source PDFs"],
+      "facts_bn": ["মণ্ডল কমিশন", "সাচার কমিটি", "মূল PDF"]
+    },
+    "projects": {
+      "title": "Free Public Projects by Civic Research Group | WB OBC Archive",
+      "title_bn": "সিভিক রিসার্চ গ্রুপের প্রকল্প | পশ্চিমবঙ্গ ওবিসি আর্কাইভ",
+      "description": "Free public-interest tools by Civic Research Group: the SIR appeals dashboard, the voter deletion application generator and the West Bengal OBC Archive.",
+      "description_bn": "সিভিক রিসার্চ গ্রুপের বিনামূল্যের জনস্বার্থ প্রকল্প: SIR আপিল ড্যাশবোর্ড, ভোটার তালিকা থেকে নাম বাদের আবেদন তৈরির টুল, এবং পশ্চিমবঙ্গ ওবিসি আর্কাইভ।",
+      "facts": ["Civic Research Group", "3 live projects", "Free to use"],
+      "facts_bn": ["সিভিক রিসার্চ গ্রুপ", "৩টি চালু প্রকল্প", "বিনামূল্যে"]
+    },
+    "about": {
+      "title": "About the WB OBC Archive | Civic Research Group",
+      "title_bn": "পশ্চিমবঙ্গ ওবিসি আর্কাইভ সম্পর্কে | সিভিক রিসার্চ গ্রুপ",
+      "description": "Who runs the West Bengal OBC Archive, what it covers, how every record is sourced and checked, and how to send a correction or a missing document.",
+      "description_bn": "পশ্চিমবঙ্গ ওবিসি আর্কাইভ কারা চালায়, এতে কী আছে, প্রতিটি নথির উৎস কীভাবে যাচাই হয়, এবং ভুল সংশোধন বা হারানো নথি কীভাবে পাঠাবেন।",
+      "facts": ["Independent", "Source-led", "Volunteer-run"],
+      "facts_bn": ["স্বাধীন", "উৎস-ভিত্তিক", "স্বেচ্ছাসেবকদের দ্বারা পরিচালিত"]
+    },
+    "contribute": {
+      "title": "Send a Source or Correction | WB OBC Archive",
+      "title_bn": "নথি বা সংশোধন পাঠান | পশ্চিমবঙ্গ ওবিসি আর্কাইভ",
+      "description": "Send a public document, a court update or a correction to the West Bengal OBC Archive using a short guided form. Every submission is checked.",
+      "description_bn": "ছোট একটি ফর্ম পূরণ করে পশ্চিমবঙ্গ ওবিসি আর্কাইভে সরকারি নথি, মামলার নতুন খবর বা সংশোধন পাঠান। প্রতিটি তথ্য যাচাই করা হয়।",
+      "facts": ["Guided form", "Court updates", "Corrections"],
+      "facts_bn": ["সহজ ফর্ম", "মামলার খবর", "সংশোধন"]
+    }
+  }
+}

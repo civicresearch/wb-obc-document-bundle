@@ -145,7 +145,7 @@
     document.body.appendChild(frame);
     const esc = s => xml(s);
     const wide = data.columns.length > 5;
-    const logo = abs('assets/crg-on-light.png'), obc = abs('obcwb-flat-dark-logo.webp');
+    const base = window.OBC_ASSET_BASE || '', logo = abs(base + 'assets/crg-on-light.png'), obc = abs(base + 'obcwb-flat-dark-logo.webp');
     const filters = [...document.querySelectorAll('main input[type="search"], main select')].filter(el => el.value && visible(el)).map(el => el.tagName === 'SELECT' ? text(el.selectedOptions[0]) : `“${el.value}”`);
     const avg = data.columns.map((c, i) => { const vals = data.rows.slice(0, 80).map(r => String(r[i] || '')); const n = vals.reduce((a, v) => a + (/^https?:/.test(v) ? 22 : Math.min(v.length, 400)), 0) / Math.max(vals.length, 1); return Math.max(7, Math.min(48, Math.sqrt(n) * 3 + 4)); });
     const total = avg.reduce((a, b) => a + b, 0);

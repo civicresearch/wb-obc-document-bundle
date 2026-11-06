@@ -80,8 +80,21 @@
       else el.innerHTML = t(key);
     });
     document.querySelectorAll('[data-i18n-placeholder]').forEach(el => { el.placeholder = t(el.dataset.i18nPlaceholder); });
-    const titleKey = document.body.dataset.page ? `pageTitle.${document.body.dataset.page}` : 'siteTitle';
-    if (translations[currentLang]?.[titleKey]) document.title = t(titleKey);
+    // Published pages carry their Bengali title and description in data-bn;
+    // the English versions are the original text.
+    const titleEl = document.querySelector('title');
+    const descriptionEl = document.querySelector('meta[name="description"]');
+    if (titleEl?.dataset.bn) {
+      if (!titleEl.dataset.en) titleEl.dataset.en = document.title;
+      document.title = currentLang === 'bn' ? titleEl.dataset.bn : titleEl.dataset.en;
+      if (descriptionEl?.dataset.bn) {
+        if (!descriptionEl.dataset.en) descriptionEl.dataset.en = descriptionEl.content;
+        descriptionEl.content = currentLang === 'bn' ? descriptionEl.dataset.bn : descriptionEl.dataset.en;
+      }
+    } else {
+      const titleKey = document.body.dataset.page ? `pageTitle.${document.body.dataset.page}` : 'siteTitle';
+      if (translations[currentLang]?.[titleKey]) document.title = t(titleKey);
+    }
     document.querySelectorAll('[data-lang-switch]').forEach(button => {
       const active = button.dataset.langSwitch === currentLang;
       button.classList.toggle('active',active);
@@ -102,7 +115,7 @@
     try {
       translations = window.OBC_INLINE_I18N || {};
       if (!translations.en) {
-        const response = await fetch('data/i18n.json',{cache:'no-store'});
+        const response = await fetch(`${window.OBC_ASSET_BASE || ''}data/i18n.json`,{cache:'no-store'});
         if (!response.ok) throw new Error('Translation request failed');
         translations = await response.json();
       }
@@ -111,7 +124,11 @@
     let saved;
     try { saved = localStorage.getItem('wb-obc-lang'); } catch {}
     const requested = new URLSearchParams(location.search).get('lang');
-    currentLang = requested === 'bn' || (!requested && saved === 'bn') ? 'bn' : 'en';
+    // Published pages exist in both languages (/timeline and /bn/timeline):
+    // the page's own language wins, and the switch opens the other page.
+    const altHref = document.documentElement.dataset.altHref;
+    currentLang = altHref ? (document.documentElement.lang === 'bn' ? 'bn' : 'en')
+      : requested === 'bn' || (!requested && saved === 'bn') ? 'bn' : 'en';
     observer = new MutationObserver(() => {
       if (queued) return;
       queued = true;
@@ -121,13 +138,22 @@
       button.addEventListener('click',event => {
         event.preventDefault();
         const lang = button.dataset.langSwitch;
+        if (altHref) {
+          try { localStorage.setItem('wb-obc-lang',lang); } catch {}
+          if (lang !== currentLang) {
+            const params = new URLSearchParams(location.search); params.delete('lang');
+            const query = params.toString();
+            location.href = altHref + (query ? `?${query}` : '') + location.hash;
+          }
+          return;
+        }
         const url = new URL(location.href); url.searchParams.set('lang',lang);
         history.pushState({},'',url);
         switchLanguage(lang);
       });
     });
     switchLanguage(currentLang);
-    addEventListener('popstate',() => switchLanguage(new URLSearchParams(location.search).get('lang') === 'bn' ? 'bn' : 'en'));
+    if (!altHref) addEventListener('popstate',() => switchLanguage(new URLSearchParams(location.search).get('lang') === 'bn' ? 'bn' : 'en'));
   }
   window.WBOBCI18n = { t, exact, number, date, localize, switchLanguage, getCurrentLang:() => currentLang, getTranslations:() => translations };
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded',init);

@@ -12,6 +12,14 @@ CHECKPOINT = '42d21a7ad409792fc94388b11b3ab68923444f67'
 def git(*args):
     return subprocess.check_output(['git', '-c', f'safe.directory={ROOT.as_posix()}', *args], cwd=ROOT)
 
+def clean_url(href):
+    # Pages moved to clean URLs ("timeline.html#x" is now "timeline#x"); the
+    # destination is the same page, so compare links in their clean form.
+    href = re.sub(r'^(https://obcwb\.civicresearch\.in/)?index\.html(?=$|[#?])', lambda m: (m.group(1) or './'), href)
+    href = re.sub(r'^((?:https://obcwb\.civicresearch\.in/)?[a-z-]+)\.html(?=$|[#?])', r'\1', href)
+    return href.rstrip('/') if href.startswith('https://civicresearch.in') else href
+
+
 def main():
     paths = git('ls-tree', '-r', '--name-only', CHECKPOINT).decode().splitlines()
     counts = {'pdfs': 0, 'data_files': 0, 'pages': 0}
@@ -21,7 +29,7 @@ def main():
             original = git('show', f'{CHECKPOINT}:{path}')
             assert hashlib.sha256(file.read_bytes()).digest() == hashlib.sha256(original).digest(), path
             counts['pdfs'] += 1
-        elif path.endswith('.json') and '/' not in path and path != 'package.json':
+        elif path.endswith('.json') and '/' not in path and path not in ('package.json', 'pwa-manifest.json'):  # app settings, not research records
             current = json.loads(file.read_text(encoding='utf-8'))
             original = json.loads(git('show', f'{CHECKPOINT}:{path}'))
             if isinstance(original, list) and isinstance(current, list):
@@ -42,8 +50,9 @@ def main():
             old = git('show', f'{CHECKPOINT}:{path}').decode()
             new = file.read_text(encoding='utf-8')
             for attr in ['id', 'href']:
-                original = set(re.findall(r'\b' + attr + r'="([^"]+)"', old))
-                current = set(re.findall(r'\b' + attr + r'="([^"]+)"', new))
+                norm = clean_url if attr == 'href' else (lambda v: v)
+                original = {norm(v) for v in re.findall(r'\b' + attr + r'="([^"]+)"', old)}
+                current = {norm(v) for v in re.findall(r'\b' + attr + r'="([^"]+)"', new)}
                 assert not original - current, (path, attr, original - current)
             counts['pages'] += 1
     dictionary = json.loads((ROOT / 'data/i18n.json').read_text(encoding='utf-8'))

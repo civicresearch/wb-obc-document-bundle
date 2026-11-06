@@ -1,15 +1,15 @@
 <!doctype html>
-<html lang="en" data-theme="light">
+<html lang="en" data-alt-href="/bn/inventory" data-theme="light">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Browse the West Bengal OBC archive file inventory, including court records, government notifications, reports, page counts and PDF links.">
+  <meta name="description" content="Every file in the West Bengal OBC archive: court records, government notifications and reports, with page counts and a direct link to each PDF." data-bn="পশ্চিমবঙ্গ ওবিসি আর্কাইভের প্রতিটি ফাইল: আদালতের নথি, সরকারি বিজ্ঞপ্তি ও প্রতিবেদন, পৃষ্ঠাসংখ্যা ও প্রতিটি PDF-এর সরাসরি লিংক সহ।">
   <meta name="theme-color" content="#0f3b3c">
-  <title>OBC Document Inventory · Civic Research Group</title>
+  <title data-bn="আর্কাইভের ফাইল তালিকা | পশ্চিমবঙ্গ ওবিসি আর্কাইভ">OBC Archive File Inventory | WB OBC Archive</title>
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <script src="js/navigation.js?v=20261106-menu" defer></script>
   <script src="js/export-pdf.js?v=20261105-icon" defer></script>
-  <script src="js/search.js?v=20261106-ref" defer></script>
+  <script src="js/search.js?v=20261106-seo" defer></script>
   <script src="js/export.js?v=20261106-export" defer></script>
   <script src="js/case-orders-map.js?v=20261106-polish" defer></script>
   <link rel="manifest" href="pwa-manifest.json">
@@ -18,9 +18,32 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anek+Bangla:wght@400;500;600;700;800&family=Hind+Siliguri:wght@400;500;600;700&family=Noto+Sans+Bengali:wght@400;500;600;700&display=swap">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Tiro+Bangla:ital@0;1&display=swap">
   <link rel="stylesheet" href="css/shared.css?v=20261104-records">
-  <script src="js/i18n.js?v=20261104-records" defer></script>
+  <script src="js/i18n.js?v=20261106-seo" defer></script>
   <script>
     window.OBC_ASSET_BASE = "";
+    // Clean URLs: show /timeline rather than /timeline.html in the address bar.
+    // Language: each page has an English and a Bengali address. ?lang=bn (used
+    // by older links) or a saved choice of Bengali opens the Bengali page.
+    (function () {
+      try {
+        var root = document.documentElement, alt = root.dataset.altHref;
+        if (alt && /^https?:$/.test(location.protocol)) {
+          var params = new URLSearchParams(location.search), asked = params.get('lang'), saved = null;
+          try { saved = localStorage.getItem('wb-obc-lang'); } catch (e) {}
+          if (asked === 'en' || asked === 'bn') { try { localStorage.setItem('wb-obc-lang', asked); } catch (e) {} }
+          var want = asked === 'en' || asked === 'bn' ? asked : (root.lang === 'en' && saved === 'bn' ? 'bn' : root.lang);
+          if (want !== root.lang) {
+            params.delete('lang');
+            var q = params.toString();
+            location.replace(alt + (q ? '?' + q : '') + location.hash);
+            return;
+          }
+        }
+        if (/^https?:$/.test(location.protocol) && /\.html$/.test(location.pathname) && !/standalone|admin/.test(location.pathname)) {
+          history.replaceState(history.state, '', location.pathname.replace(/(^|\/)index\.html$/, '$1').replace(/\.html$/, '') + location.search + location.hash);
+        }
+      } catch (error) {}
+    })();
     (function () {
       try {
         var savedTheme = localStorage.getItem('wb-obc-theme');
@@ -35,43 +58,67 @@
   </script>
   <link rel="stylesheet" href="css/site.css?v=20261104-records">
   <link rel="stylesheet" href="css/polish.css?v=20261104-records">
-  <link rel="stylesheet" href="css/crg.css?v=20261106-menu2">
+  <link rel="stylesheet" href="css/crg.css?v=20261106-seo">
   <link rel="stylesheet" href="css/print.css?v=20261106-print">
-<link rel="canonical" href="https://obcwb.civicresearch.in/inventory.html">
-  <link rel="alternate" hreflang="en" href="https://obcwb.civicresearch.in/inventory.html">
-  <link rel="alternate" hreflang="bn" href="https://obcwb.civicresearch.in/inventory.html?lang=bn">
-  <link rel="alternate" hreflang="x-default" href="https://obcwb.civicresearch.in/inventory.html">
-  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<link rel="canonical" href="https://obcwb.civicresearch.in/inventory">
+  <link rel="alternate" hreflang="en" href="https://obcwb.civicresearch.in/inventory">
+  <link rel="alternate" hreflang="bn" href="https://obcwb.civicresearch.in/bn/inventory">
+  <link rel="alternate" hreflang="x-default" href="https://obcwb.civicresearch.in/inventory">
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
   <meta name="author" content="Civic Research Group">
+  <meta name="publisher" content="Civic Research Group">
+  <meta name="application-name" content="WB OBC Archive">
+  <meta name="apple-mobile-web-app-title" content="WB OBC Archive">
+  <link rel="apple-touch-icon" href="assets/icons/apple-touch-icon.png">
+  <link rel="icon" href="assets/icons/icon-192.png" type="image/png" sizes="192x192">
+  <link rel="author" href="https://civicresearch.in/">
+  <link rel="sitemap" type="application/xml" href="sitemap.xml">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="WB OBC Archive">
   <meta property="og:locale" content="en_IN">
   <meta property="og:locale:alternate" content="bn_IN">
-  <meta property="og:title" content="OBC Document Inventory · Civic Research Group">
-  <meta property="og:description" content="Browse the West Bengal OBC archive file inventory, including court records, government notifications, reports, page counts and PDF links.">
-  <meta property="og:url" content="https://obcwb.civicresearch.in/inventory.html">
+  <meta property="og:title" content="OBC Archive File Inventory | WB OBC Archive">
+  <meta property="og:description" content="Every file in the West Bengal OBC archive: court records, government notifications and reports, with page counts and a direct link to each PDF.">
+  <meta property="og:url" content="https://obcwb.civicresearch.in/inventory">
   <meta property="og:image" content="https://obcwb.civicresearch.in/assets/og/inventory.png">
   <meta property="og:image:type" content="image/png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
-  <meta property="og:image:alt" content="OBC Document Inventory: WB OBC Archive by Civic Research Group">
+  <meta property="og:image:alt" content="OBC Document Inventory, WB OBC Archive by Civic Research Group. 118 files, Page counts, Direct PDF links.">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:site" content="@CivicResearchX">
-  <meta name="twitter:title" content="OBC Document Inventory · Civic Research Group">
-  <meta name="twitter:description" content="Browse the West Bengal OBC archive file inventory, including court records, government notifications, reports, page counts and PDF links.">
+  <meta name="twitter:creator" content="@CivicResearchX">
+  <meta name="twitter:title" content="OBC Archive File Inventory | WB OBC Archive">
+  <meta name="twitter:description" content="Every file in the West Bengal OBC archive: court records, government notifications and reports, with page counts and a direct link to each PDF.">
   <meta name="twitter:image" content="https://obcwb.civicresearch.in/assets/og/inventory.png">
-  <meta name="twitter:image:alt" content="OBC Document Inventory: WB OBC Archive by Civic Research Group">
-  <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://obcwb.civicresearch.in/#organization","name":"Civic Research Group","url":"https://civicresearch.in","logo":"https://obcwb.civicresearch.in/assets/crg-on-light.png","email":"civicresearchgroup@gmail.com","sameAs":["https://www.facebook.com/civicresearch","https://www.instagram.com/civicresearch","https://x.com/CivicResearchX"]},{"@type":"WebSite","@id":"https://obcwb.civicresearch.in/#website","url":"https://obcwb.civicresearch.in/","name":"WB OBC Archive","alternateName":"পশ্চিমবঙ্গ ওবিসি আর্কাইভ","inLanguage":["en","bn"],"publisher":{"@id":"https://obcwb.civicresearch.in/#organization"},"potentialAction":{"@type":"SearchAction","target":"https://obcwb.civicresearch.in/?q={search_term_string}","query-input":"required name=search_term_string"}},{"@type":"WebPage","@id":"https://obcwb.civicresearch.in/inventory.html#webpage","url":"https://obcwb.civicresearch.in/inventory.html","name":"OBC Document Inventory","description":"Browse the West Bengal OBC archive file inventory, including court records, government notifications, reports, page counts and PDF links.","inLanguage":"en","dateModified":"2026-11-05","isPartOf":{"@id":"https://obcwb.civicresearch.in/#website"},"primaryImageOfPage":{"@type":"ImageObject","url":"https://obcwb.civicresearch.in/assets/og/inventory.png","width":1200,"height":630}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://obcwb.civicresearch.in/"},{"@type":"ListItem","position":2,"name":"OBC Document Inventory","item":"https://obcwb.civicresearch.in/inventory.html"}]}]}</script>
+  <meta name="twitter:image:alt" content="OBC Document Inventory, WB OBC Archive by Civic Research Group. 118 files, Page counts, Direct PDF links.">
+  <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://obcwb.civicresearch.in/#organization","name":"Civic Research Group","url":"https://civicresearch.in","logo":"https://obcwb.civicresearch.in/assets/crg-on-light.png","email":"civicresearchgroup@gmail.com","sameAs":["https://www.facebook.com/civicresearch","https://www.instagram.com/civicresearch","https://x.com/CivicResearchX"]},{"@type":"WebSite","@id":"https://obcwb.civicresearch.in/#website","url":"https://obcwb.civicresearch.in/","name":"WB OBC Archive","alternateName":"পশ্চিমবঙ্গ ওবিসি আর্কাইভ","inLanguage":["en","bn"],"publisher":{"@id":"https://obcwb.civicresearch.in/#organization"},"potentialAction":{"@type":"SearchAction","target":"https://obcwb.civicresearch.in/?q={search_term_string}","query-input":"required name=search_term_string"}},{"@type":"CollectionPage","@id":"https://obcwb.civicresearch.in/inventory#webpage","url":"https://obcwb.civicresearch.in/inventory","name":"OBC Document Inventory","headline":"OBC Document Inventory","description":"Every file in the West Bengal OBC archive: court records, government notifications and reports, with page counts and a direct link to each PDF.","inLanguage":"en","dateModified":"2026-11-05","isPartOf":{"@id":"https://obcwb.civicresearch.in/#website"},"publisher":{"@id":"https://obcwb.civicresearch.in/#organization"},"about":{"@type":"Thing","name":"Other Backward Classes reservation in West Bengal"},"breadcrumb":{"@id":"https://obcwb.civicresearch.in/inventory#breadcrumb"},"primaryImageOfPage":{"@type":"ImageObject","url":"https://obcwb.civicresearch.in/assets/og/inventory.png","width":1200,"height":630}},{"@type":"BreadcrumbList","@id":"https://obcwb.civicresearch.in/inventory#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://obcwb.civicresearch.in/"},{"@type":"ListItem","position":2,"name":"OBC Document Inventory","item":"https://obcwb.civicresearch.in/inventory"}]}]}</script>
 </head>
 <body data-page="inventory">
   <a class="skip-link" href="#main-content">Skip to main content</a>
   <header class="site-header masthead">
+    <svg class="icon-sprite" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg">
+      <symbol id="icon-facebook" viewBox="0 0 24 24" fill="currentColor"><path d="M9.101 23.691v-7.98H6.627v-3.667h2.474v-1.58c0-4.085 1.848-5.978 5.858-5.978.401 0 .955.042 1.468.103a8.68 8.68 0 0 1 1.141.195v3.325a8.623 8.623 0 0 0-.653-.036 26.805 26.805 0 0 0-.733-.009c-.707 0-1.259.096-1.675.309a1.686 1.686 0 0 0-.679.622c-.258.42-.374.995-.374 1.752v1.297h3.919l-.386 2.103-.287 1.564h-3.246v8.245C19.396 23.238 24 18.179 24 12.044c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.628 3.874 10.35 9.101 11.647Z"/></symbol>
+      <symbol id="icon-instagram" viewBox="0 0 24 24" fill="currentColor"><rect x="2.6" y="2.6" width="18.8" height="18.8" rx="5.4" fill="none" stroke="currentColor" stroke-width="2.2"/><circle cx="12" cy="12" r="4.3" fill="none" stroke="currentColor" stroke-width="2.2"/><circle cx="17.7" cy="6.3" r="1.35"/></symbol>
+      <symbol id="icon-x" viewBox="0 0 24 24" fill="currentColor"><path d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932ZM17.61 20.644h2.039L6.486 3.24H4.298Z"/></symbol>
+      <symbol id="icon-external" viewBox="0 0 24 24"><path d="M14 4h6v6M20 4l-9 9M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    </svg>
+    <div class="crg-topbar">
+      <div class="wrap crg-topbar-inner">
+        <a class="crg-topbar-home" href="https://civicresearch.in/" rel="noopener"><span data-en="A Civic Research Group initiative" data-bn="সিভিক রিসার্চ গ্রুপের একটি উদ্যোগ">A Civic Research Group initiative</span><strong>civicresearch.in</strong><svg class="crg-topbar-ext" aria-hidden="true" focusable="false"><use href="#icon-external"></use></svg></a>
+        <nav class="social-links social-links--compact" aria-label="Civic Research Group on social media">
+          <a class="social-link social-link--facebook" href="https://www.facebook.com/civicresearch" target="_blank" rel="noopener me" aria-label="Civic Research Group on Facebook" title="Facebook"><svg class="social-icon" aria-hidden="true" focusable="false"><use href="#icon-facebook"></use></svg></a>
+          <a class="social-link social-link--instagram" href="https://www.instagram.com/civicresearch" target="_blank" rel="noopener me" aria-label="Civic Research Group on Instagram" title="Instagram"><svg class="social-icon" aria-hidden="true" focusable="false"><use href="#icon-instagram"></use></svg></a>
+          <a class="social-link social-link--x" href="https://x.com/CivicResearchX" target="_blank" rel="noopener me" aria-label="Civic Research Group on X" title="X"><svg class="social-icon" aria-hidden="true" focusable="false"><use href="#icon-x"></use></svg></a>
+        </nav>
+      </div>
+    </div>
     <div class="mast-band">
     <div class="site-header-inner wrap">
-      <a class="brandmark brandmark-obcwb" href="index.html" aria-label="OBCWB, West Bengal OBC Archive: home">
+      <a class="brandmark brandmark-obcwb" href="./" aria-label="OBCWB, West Bengal OBC Archive: home">
         <img src="obcwb-flat-light-logo.webp" alt="OBCWB, West Bengal OBC Archive, a research initiative by Civic Research Group" width="720" height="240" decoding="async" fetchpriority="high">
       </a>
-      <a href="index.html" class="masthead-title" aria-label="West Bengal OBC Archive — home">
+      <a href="./" class="masthead-title" aria-label="West Bengal OBC Archive — home">
         <span class="mast-eyebrow" data-i18n="masthead.eyebrow">WB OBC Archive</span>
         <strong data-i18n="masthead.title">OBC Reservation Records of West Bengal</strong>
         <small data-i18n="masthead.subtitle">Notifications, court records, hearings and source documents, 1993–2026</small>
@@ -103,13 +150,13 @@
         <nav class="site-nav" id="site-nav" aria-label="Sections">
           <p class="drawer-title" data-i18n="navigation.title">Explore the archive</p>
           <button type="button" class="nav-close" aria-label="Close navigation menu">×</button>
-          <a href="index.html" class="active" data-tab-target="home" data-i18n="navHome">Home</a>
-          <a href="timeline.html" data-tab-target="timeline" data-i18n="navTimeline">Timeline</a>
-          <a href="litigation.html" data-tab-target="cases" data-i18n="navCases">Litigation</a>
-          <a href="media.html" data-tab-target="media" data-i18n="navMedia">Media</a>
-          <a href="obc-list.html" data-tab-target="obc-list" data-i18n="navOBCList">OBC List</a>
-          <a href="documents.html" data-tab-target="documents" data-i18n="navDocuments">Source PDFs</a>
-          <a href="evidence.html" data-tab-target="evidence" data-i18n="navEvidence">Hearings &amp; Gaps</a>
+          <a href="./" class="active" data-tab-target="home" data-i18n="navHome">Home</a>
+          <a href="timeline" data-tab-target="timeline" data-i18n="navTimeline">Timeline</a>
+          <a href="litigation" data-tab-target="cases" data-i18n="navCases">Litigation</a>
+          <a href="media" data-tab-target="media" data-i18n="navMedia">Media</a>
+          <a href="obc-list" data-tab-target="obc-list" data-i18n="navOBCList">OBC List</a>
+          <a href="documents" data-tab-target="documents" data-i18n="navDocuments">Source PDFs</a>
+          <a href="evidence" data-tab-target="evidence" data-i18n="navEvidence">Hearings &amp; Gaps</a>
           <div class="nav-group">
             <button type="button" class="nav-group-toggle" aria-expanded="false">
               <span data-i18n="navMore">More</span>
@@ -118,31 +165,31 @@
             <div class="nav-group-items nav-mega">
               <div class="nav-mega-group" role="group" aria-labelledby="ng-maps">
                 <p class="nav-mega-label" id="ng-maps" data-i18n="navGroup.maps">Maps</p>
-                <a href="case-map.html" data-tab-target="case-map"><span class="nav-item-title"><span data-i18n="navCaseMap">Case map</span></span><span class="nav-item-desc" data-i18n="navDesc.caseMap">How the cases connect</span></a>
-                <a href="case-orders.html" data-tab-target="case-orders"><span class="nav-item-title"><span data-i18n="navCaseOrders">Court orders map</span></span><span class="nav-item-desc" data-i18n="navDesc.caseOrders">Every court order, case by case</span></a>
+                <a href="case-map" data-tab-target="case-map"><span class="nav-item-title"><span data-i18n="navCaseMap">Case map</span></span><span class="nav-item-desc" data-i18n="navDesc.caseMap">How the cases connect</span></a>
+                <a href="case-orders" data-tab-target="case-orders"><span class="nav-item-title"><span data-i18n="navCaseOrders">Court orders map</span></span><span class="nav-item-desc" data-i18n="navDesc.caseOrders">Every court order, case by case</span></a>
               </div>
               <div class="nav-mega-group" role="group" aria-labelledby="ng-understand">
                 <p class="nav-mega-label" id="ng-understand" data-i18n="navGroup.understand">Understand</p>
-                <a href="obc-basics.html" data-tab-target="obc-basics"><span class="nav-item-title"><span data-i18n="navOBCBasics">OBC basics</span></span><span class="nav-item-desc" data-i18n="navDesc.obcBasics">Key terms in plain language</span></a>
-                <a href="reports.html" data-tab-target="reports"><span class="nav-item-title"><span data-i18n="navReports">Policy reports</span></span><span class="nav-item-desc" data-i18n="navDesc.reports">Mandal, Sachar, NCBC and more</span></a>
-                <a href="methods.html" data-tab-target="methods"><span class="nav-item-title"><span data-i18n="navMethods">Evidence method</span></span><span class="nav-item-desc" data-i18n="navDesc.methods">How backwardness should be tested</span></a>
+                <a href="obc-basics" data-tab-target="obc-basics"><span class="nav-item-title"><span data-i18n="navOBCBasics">OBC basics</span></span><span class="nav-item-desc" data-i18n="navDesc.obcBasics">Key terms in plain language</span></a>
+                <a href="reports" data-tab-target="reports"><span class="nav-item-title"><span data-i18n="navReports">Policy reports</span></span><span class="nav-item-desc" data-i18n="navDesc.reports">Mandal, Sachar, NCBC and more</span></a>
+                <a href="methods" data-tab-target="methods"><span class="nav-item-title"><span data-i18n="navMethods">Evidence method</span></span><span class="nav-item-desc" data-i18n="navDesc.methods">How backwardness should be tested</span></a>
               </div>
               <div class="nav-mega-group" role="group" aria-labelledby="ng-tools">
                 <p class="nav-mega-label" id="ng-tools" data-i18n="navGroup.tools">Archive tools</p>
                 <a href="#inventory" data-tab-target="inventory" class="active" aria-current="page"><span class="nav-item-title"><span data-i18n="navInventory">File inventory</span></span><span class="nav-item-desc" data-i18n="navDesc.inventory">Every file and where it came from</span></a>
-                <a href="record-guide.html" data-tab-target="entry-framework"><span class="nav-item-title"><span data-i18n="navEntryFramework">Add record guide</span></span><span class="nav-item-desc" data-i18n="navDesc.entryFramework">How to add a document</span></a>
+                <a href="record-guide" data-tab-target="entry-framework"><span class="nav-item-title"><span data-i18n="navEntryFramework">Add record guide</span></span><span class="nav-item-desc" data-i18n="navDesc.entryFramework">How to add a document</span></a>
               </div>
               <div class="nav-mega-group" role="group" aria-labelledby="ng-about">
                 <p class="nav-mega-label" id="ng-about" data-i18n="navGroup.about">About</p>
-                <a href="about.html" data-tab-target="about"><span class="nav-item-title"><span data-i18n="navAbout">About</span></span><span class="nav-item-desc" data-i18n="navDesc.about">Who we are, and the disclaimer</span></a>
-                <a href="projects.html" data-tab-target="projects"><span class="nav-item-title"><span data-i18n="navProjects">CRG projects</span></span><span class="nav-item-desc" data-i18n="navDesc.projects">CRG's other public tools</span></a>
+                <a href="about" data-tab-target="about"><span class="nav-item-title"><span data-i18n="navAbout">About</span></span><span class="nav-item-desc" data-i18n="navDesc.about">Who we are, and the disclaimer</span></a>
+                <a href="projects" data-tab-target="projects"><span class="nav-item-title"><span data-i18n="navProjects">CRG projects</span></span><span class="nav-item-desc" data-i18n="navDesc.projects">CRG's other public tools</span></a>
                 <a href="https://github.com/civicresearch/wb-obc-document-bundle" target="_blank" rel="noreferrer" class="nav-external"><span class="nav-item-title"><span data-i18n="navGitHub">GitHub</span><svg class="nav-ext-icon" aria-hidden="true" viewBox="0 0 16 16" width="12" height="12"><path d="M6 3H3v10h10v-3M9 3h4v4M13 3L7 9" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="nav-item-desc" data-i18n="navDesc.github">Source code and data</span></a>
               </div>
             </div>
           </div>
-          <a href="contribute.html" data-i18n="navContribute">Contribute</a>
+          <a href="contribute" data-i18n="navContribute">Contribute</a>
         </nav>
-        <form class="nav-search" role="search" action="index.html" method="get" data-nav-search>
+        <form class="nav-search" role="search" action="./" method="get" data-nav-search>
           <svg aria-hidden="true" viewBox="0 0 20 20" width="16" height="16"><circle cx="8.5" cy="8.5" r="5.5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M13 13l4.5 4.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
           <label class="visually-hidden" for="nav-search-input" data-i18n="navSearchLabel">Search the archive</label>
           <input id="nav-search-input" name="q" type="search" autocomplete="off" data-i18n-placeholder="navSearchPlaceholder" placeholder="Search notifications, cases, communities, documents">
@@ -153,7 +200,7 @@
   </header>
 
   <section class="hero">
-    <div class="hero-inner wrap"><nav class="breadcrumbs" aria-label="Breadcrumb"><a href="index.html" data-i18n="navHome">Home</a><span aria-hidden="true">/</span><span aria-current="page" data-i18n="inventory.title">Document Inventory</span></nav>
+    <div class="hero-inner wrap"><nav class="breadcrumbs" aria-label="Breadcrumb"><a href="./" data-i18n="navHome">Home</a><span aria-hidden="true">/</span><span aria-current="page" data-i18n="inventory.title">Document Inventory</span></nav>
       <p class="hero-eyebrow" id="hero-eyebrow" data-i18n="heroEyebrow">Independent research archive · West Bengal</p>
       <h1 id="hero-title" data-i18n="inventory.title">Document Inventory</h1>
       <p class="hero-sub" id="hero-sub" data-i18n="inventorySub">A file-by-file table of published PDFs, pages, timeline roles, manifests, and supporting archive assets.</p>
@@ -168,11 +215,11 @@
 
   <nav class="section-nav" aria-label="Archive sections">
     <div class="wrap">
-      <a href="timeline.html" data-section="timeline" data-i18n="navTimeline">Timeline</a>
-      <a href="litigation.html" data-section="cases" data-i18n="navCases">Litigation</a>
-      <a href="obc-list.html" data-section="obc-list" data-i18n="navOBCList">OBC List</a>
-      <a href="documents.html" data-section="documents" data-i18n="navDocuments">Source PDFs</a>
-      <a href="evidence.html" data-section="evidence" data-i18n="navEvidence">Hearings &amp; Gaps</a>
+      <a href="timeline" data-section="timeline" data-i18n="navTimeline">Timeline</a>
+      <a href="litigation" data-section="cases" data-i18n="navCases">Litigation</a>
+      <a href="obc-list" data-section="obc-list" data-i18n="navOBCList">OBC List</a>
+      <a href="documents" data-section="documents" data-i18n="navDocuments">Source PDFs</a>
+      <a href="evidence" data-section="evidence" data-i18n="navEvidence">Hearings &amp; Gaps</a>
     </div>
   </nav>
 
@@ -201,30 +248,31 @@
   <footer class="site-footer">
     <div class="site-footer-inner">
       <div class="site-footer-brand">
-        <img src="obcwb-flat-dark-logo.webp" data-theme-logo data-light-src="obcwb-flat-dark-logo.webp" data-dark-src="obcwb-flat-light-logo.webp" alt="West Bengal OBC Archive" width="720" height="240" decoding="async" loading="lazy">
+        <img src="obcwb-flat-light-logo.webp" data-theme-logo data-light-src="obcwb-flat-light-logo.webp" data-dark-src="obcwb-flat-light-logo.webp" alt="West Bengal OBC Archive" width="720" height="240" decoding="async" loading="lazy">
         <span data-i18n="footerTagline">An independent, volunteer-run public research archive on West Bengal OBC policy and litigation.</span>
       </div>
-      <nav class="footer-links" aria-label="Footer"><a href="obc-basics.html" data-i18n="navOBCBasics">OBC basics</a><a href="reports.html" data-i18n="navReports">Policy reports</a><a href="record-guide.html" data-i18n="navEntryFramework">Add record guide</a><a href="projects.html" data-i18n="navProjects">CRG projects</a><a href="about.html" data-i18n="navAbout">About</a><a href="methods.html" data-i18n="navMethods">Evidence method</a><a href="inventory.html" data-i18n="navInventory">File inventory</a><a href="contribute.html" data-i18n="navContribute">Contribute</a></nav>
+      <nav class="footer-links" aria-label="Footer"><a href="obc-basics" data-i18n="navOBCBasics">OBC basics</a><a href="reports" data-i18n="navReports">Policy reports</a><a href="record-guide" data-i18n="navEntryFramework">Add record guide</a><a href="projects" data-i18n="navProjects">CRG projects</a><a href="about" data-i18n="navAbout">About</a><a href="methods" data-i18n="navMethods">Evidence method</a><a href="inventory" data-i18n="navInventory">File inventory</a><a href="contribute" data-i18n="navContribute">Contribute</a></nav>
       <div class="site-footer-meta">
-        <a class="footer-parent-brand" href="https://civicresearch.in" target="_blank" rel="noopener noreferrer">
+        <a class="footer-parent-brand" href="https://civicresearch.in/" target="_blank" rel="noopener">
           <span data-i18n="footerInitiativeLabel">A research initiative by</span>
-          <img src="assets/crg-on-light.png" data-theme-logo data-light-src="assets/crg-on-light.png" data-dark-src="assets/crg-on-dark.png" alt="Civic Research Group" width="2003" height="378" decoding="async" loading="lazy">
+          <img src="assets/crg-on-dark.png" data-theme-logo data-light-src="assets/crg-on-dark.png" data-dark-src="assets/crg-on-dark.png" alt="Civic Research Group" width="2003" height="378" decoding="async" loading="lazy">
         </a>
         <span class="site-footer-contact">
           <span data-i18n="footerContactLabel">Contact:</span>
           <a href="mailto:civicresearchgroup@gmail.com">civicresearchgroup@gmail.com</a>
         </span>
-        <nav class="footer-social" aria-label="Civic Research Group social media">
-          <a href="https://www.facebook.com/civicresearch" target="_blank" rel="noopener noreferrer">Facebook <span>@civicresearch</span></a>
-          <a href="https://www.instagram.com/civicresearch" target="_blank" rel="noopener noreferrer">Instagram <span>@civicresearch</span></a>
-          <a href="https://x.com/CivicResearchX" target="_blank" rel="noopener noreferrer">X <span>@CivicResearchX</span></a>
+        <nav class="footer-social social-links" aria-label="Civic Research Group on social media">
+          <span class="footer-social-label" data-en="Follow us" data-bn="আমাদের অনুসরণ করুন">Follow us</span>
+          <a class="social-link social-link--facebook" href="https://www.facebook.com/civicresearch" target="_blank" rel="noopener me" aria-label="Civic Research Group on Facebook"><svg class="social-icon" aria-hidden="true" focusable="false"><use href="#icon-facebook"></use></svg><span class="social-name">Facebook</span><span class="social-handle">@civicresearch</span></a>
+          <a class="social-link social-link--instagram" href="https://www.instagram.com/civicresearch" target="_blank" rel="noopener me" aria-label="Civic Research Group on Instagram"><svg class="social-icon" aria-hidden="true" focusable="false"><use href="#icon-instagram"></use></svg><span class="social-name">Instagram</span><span class="social-handle">@civicresearch</span></a>
+          <a class="social-link social-link--x" href="https://x.com/CivicResearchX" target="_blank" rel="noopener me" aria-label="Civic Research Group on X"><svg class="social-icon" aria-hidden="true" focusable="false"><use href="#icon-x"></use></svg><span class="social-name">X</span><span class="social-handle">@CivicResearchX</span></a>
         </nav>
         <span data-i18n="footerNoDonations">Free public resource.</span>
       </div>
     </div>
   </footer>
 
-<script src="js/archive-loader.js?v=20261106-notes" defer></script>
+<script src="js/archive-loader.js?v=20261106-bn" defer></script>
 
 </body>
 </html>

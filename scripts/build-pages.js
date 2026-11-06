@@ -5,7 +5,8 @@ const path = require('path');
 
 const root = path.resolve(__dirname, '..');
 const templatePath = path.join(root, 'site-src', 'app-template.html');
-const { publish, writeDiscovery } = require('./site-publishing');
+const { publish, writeDiscovery, cleanUrls, bengaliVariant } = require('./site-publishing');
+fs.mkdirSync(path.join(root, 'bn'), { recursive: true });
 
 const pages = [
   { tab: 'home', file: 'index.html', title: 'WB OBC Reservation Archive' },
@@ -132,10 +133,10 @@ let shell = template.replace(styleMatch[0], '');
 shell = shell.replace(/<link rel="stylesheet" href="css\/polish\.css[^>]*>/, '');
 shell = shell.replace(/<link rel="stylesheet" href="css\/print\.css[^>]*>/, '');
 shell = shell.replace(/<link rel="stylesheet" href="css\/crg\.css[^>]*>/, '');
-shell = shell.replace('</head>', '  <link rel="stylesheet" href="css/site.css?v=20261104-records">\n  <link rel="stylesheet" href="css/polish.css?v=20261104-records">\n  <link rel="stylesheet" href="css/crg.css?v=20261106-menu2">\n  <link rel="stylesheet" href="css/print.css?v=20261106-print">\n</head>');
+shell = shell.replace('</head>', '  <link rel="stylesheet" href="css/site.css?v=20261104-records">\n  <link rel="stylesheet" href="css/polish.css?v=20261104-records">\n  <link rel="stylesheet" href="css/crg.css?v=20261106-seo">\n  <link rel="stylesheet" href="css/print.css?v=20261106-print">\n</head>');
 const shellScriptStart = shell.lastIndexOf('\n<script>');
 const shellScriptEnd = shell.indexOf('</script>', shellScriptStart) + '</script>'.length;
-shell = shell.slice(0, shellScriptStart) + '\n<script src="js/archive-loader.js?v=20261106-notes" defer></script>' + shell.slice(shellScriptEnd);
+shell = shell.slice(0, shellScriptStart) + '\n<script src="js/archive-loader.js?v=20261106-bn" defer></script>' + shell.slice(shellScriptEnd);
 
 for (const page of pages) {
   let html = keepOnlyPanel(shell, page.tab);
@@ -146,8 +147,10 @@ for (const page of pages) {
   html = markActiveNavigation(html, page.tab);
   html = publish(html, page);
   html = rewriteInternalLinks(html, page.tab);
+  html = cleanUrls(html);
   html = html.replace(/^[ \t]+$/gm, '').replace(/\n{3,}/g, '\n\n');
   fs.writeFileSync(path.join(root, page.file), html);
+  fs.writeFileSync(path.join(root, 'bn', page.file), bengaliVariant(html, page));
 }
 
 const contributionPage = { tab: 'contribute', file: 'contribute.html', title: 'Contribute a Source or Correction' };
@@ -163,6 +166,36 @@ for (const tag of ['header', 'footer']) {
   contribution = contribution.replace(pattern, () => shared);
 }
 contribution = contribution.replace(/<title>[^<]*<\/title>/, `<title>${contributionPage.title} · Civic Research Group</title>`);
-fs.writeFileSync(path.join(root, contributionPage.file), publish(contribution, contributionPage));
+contribution = cleanUrls(publish(contribution, contributionPage));
+fs.writeFileSync(path.join(root, contributionPage.file), contribution);
+fs.writeFileSync(path.join(root, 'bn', contributionPage.file), bengaliVariant(contribution, contributionPage));
 writeDiscovery([...pages, contributionPage]);
-console.log(`Built ${pages.length + 1} public pages, shared assets, sitemap.xml and robots.txt.`);
+
+// 404 page. GitHub Pages serves it for any unknown address, so asset paths
+// are made absolute with <base>. Old-style addresses such as /timeline/ or
+// /timeline.htm are sent on to the right page.
+{
+  let notFound = keepOnlyPanel(shell, '__none__');
+  notFound = removeOtherPageOnlyElements(notFound, '__none__');
+  notFound = rewriteInternalLinks(notFound, '__none__');
+  notFound = markActiveNavigation(notFound, '__none__');
+  notFound = notFound.replace('<body>', '<body data-page="not-found">')
+    .replace('<meta charset="utf-8">', '<meta charset="utf-8">\n  <base href="/">\n  <meta name="robots" content="noindex, follow">')
+    .replace(/<title>[^<]*<\/title>/, '<title data-bn="পাতাটি পাওয়া যায়নি | পশ্চিমবঙ্গ ওবিসি আর্কাইভ">Page not found | WB OBC Archive</title>')
+    .replace(/<meta name="description"[^>]*>/, '<meta name="description" content="This page could not be found in the West Bengal OBC Archive." data-bn="পশ্চিমবঙ্গ ওবিসি আর্কাইভে এই পাতাটি পাওয়া যায়নি।">');
+  const pageSlugs = pages.map(p => p.file.replace(/\.html$/, '')).concat('contribute').filter(s => s !== 'index');
+  const redirect = `<script>(function(){var m=location.pathname.match(/^\\/([a-z-]+)(?:\\/|\\.html?|\\/index\\.html?)$/i),s=${JSON.stringify(pageSlugs)};if(m&&s.indexOf(m[1].toLowerCase())>-1)location.replace('/'+m[1].toLowerCase()+location.search+location.hash);})();</script>`;
+  notFound = notFound.replace('<meta name="robots" content="noindex, follow">', `<meta name="robots" content="noindex, follow">\n  ${redirect}`);
+  // Hero: replace the home hero with a short not-found message.
+  notFound = notFound.replace(/<section class="hero">[\s\S]*?\n  <\/section>/, `<section class="hero">
+    <div class="hero-inner wrap">
+      <p class="hero-eyebrow" data-en="Error 404" data-bn="ত্রুটি ৪০৪">Error 404</p>
+      <h1 class="hero-title" data-en="This page could not be found" data-bn="পাতাটি পাওয়া যায়নি">This page could not be found</h1>
+      <p class="hero-sub" data-en="The address may be mistyped, or the page may have moved. Try the search box above, or use the menu to find a section." data-bn="ঠিকানায় ভুল থাকতে পারে, বা পাতাটি সরানো হয়েছে। ওপরের সার্চ বক্সে খুঁজুন, অথবা মেনু থেকে যে বিভাগ দরকার সেটি বেছে নিন।">The address may be mistyped, or the page may have moved. Try the search box above, or use the menu to find a section.</p>
+      <p class="not-found-links"><a class="btn btn-primary" href="./" data-en="Go to the home page" data-bn="হোম পেজে যান">Go to the home page</a></p>
+    </div>
+  </section>`);
+  notFound = cleanUrls(notFound).replace(/^[ \t]+$/gm, '').replace(/\n{3,}/g, '\n\n');
+  fs.writeFileSync(path.join(root, '404.html'), notFound);
+}
+console.log(`Built ${pages.length + 1} public pages in English and Bengali (bn/), a 404 page, shared assets, sitemap.xml and robots.txt.`);

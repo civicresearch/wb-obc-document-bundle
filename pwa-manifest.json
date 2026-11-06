@@ -1,27 +1,45 @@
 {
   "name": "WB OBC Archive",
   "short_name": "WB OBC Archive",
-  "description": "WB OBC Archive - A consolidated archive of West Bengal OBC notifications, court orders, hearings, source PDFs, and policy documents from 1993-2026",
-  "start_url": "./index.html",
+  "description": "West Bengal OBC notifications, class lists, court orders, public hearings and source PDFs, 1993–2026. A free bilingual research archive by Civic Research Group.",
+  "start_url": "./",
   "display": "standalone",
   "background_color": "#f4f1eb",
-  "theme_color": "#1a3a5c",
-  "orientation": "portrait-primary",
+  "theme_color": "#0f3b3c",
+  "orientation": "any",
   "icons": [
     {
-      "src": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3E%3Crect width='512' height='512' fill='%231a3a5c'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-family='Arial' font-size='200' font-weight='bold' fill='white'%3EOBC%3C/text%3E%3C/svg%3E",
+      "src": "assets/icons/icon-192.png",
       "sizes": "192x192",
-      "type": "image/svg+xml",
-      "purpose": "any maskable"
+      "type": "image/png",
+      "purpose": "any"
     },
     {
-      "src": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3E%3Crect width='512' height='512' fill='%231a3a5c'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-family='Arial' font-size='200' font-weight='bold' fill='white'%3EOBC%3C/text%3E%3C/svg%3E",
+      "src": "assets/icons/icon-512.png",
       "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "assets/icons/icon-maskable-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "favicon.svg",
+      "sizes": "any",
       "type": "image/svg+xml",
-      "purpose": "any maskable"
+      "purpose": "any"
     }
   ],
-  "categories": ["education", "reference", "government"],
+  "categories": [
+    "education",
+    "reference",
+    "government"
+  ],
   "lang": "en",
-  "dir": "ltr"
+  "dir": "ltr",
+  "scope": "./",
+  "id": "./"
 }

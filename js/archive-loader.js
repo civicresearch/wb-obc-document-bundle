@@ -28,6 +28,6 @@
   }));
   window.OBC_INLINE_JSON = data;
   const script = document.createElement('script');
-  script.src = 'js/site.js?v=20261106-notes';
+  script.src = `${window.OBC_ASSET_BASE || ''}js/site.js?v=20261106-notes`;
   document.body.appendChild(script);
 })();

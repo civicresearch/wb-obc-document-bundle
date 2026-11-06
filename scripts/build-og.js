@@ -13,54 +13,53 @@ const logo = `data:image/png;base64,${fs.readFileSync(path.join(root, 'assets/cr
 const obc = `data:image/webp;base64,${fs.readFileSync(path.join(root, 'obcwb-flat-light-logo.webp')).toString('base64')}`;
 const strip = s => String(s || '').replace(/<[^>]+>/g, '').replace(/&amp;/g, '&');
 const esc = s => strip(s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
-const bnNum = n => String(n).replace(/[0-9]/g, d => '০১২৩৪৫৬৭৮৯'[d]);
-const caseCount = JSON.parse(fs.readFileSync(path.join(root, 'data/case_files.json'))).cases.length;
-const mediaCount = JSON.parse(fs.readFileSync(path.join(root, 'data/media_coverage.json'))).items.length;
-const facts = {
-  en: {
-    home: [`${i18n.en.heroStat1Value} source PDFs`, '66 classes · 7%', '1993–2026'],
-    cases: [`${caseCount} proceedings`, 'Calcutta HC · Supreme Court'],
-    media: [`${mediaCount} reports`, 'Linked to cases', '2024–2026'],
-    'case-map': [`${caseCount} proceedings`, 'Since the 2024 judgment', 'Status at a glance'],
-    'case-orders': ['Every court order', 'SC and High Court', 'Linked PDFs'],
-    projects: ['Civic Research Group', '3 live projects', 'Free public tools']
-  },
-  bn: {
-    home: [`${bnNum(Number(i18n.en.heroStat1Value))}টি মূল PDF`, '৬৬টি শ্রেণি · ৭%', '১৯৯৩–২০২৬'],
-    cases: [`${bnNum(caseCount)}টি মামলা`, 'কলকাতা হাইকোর্ট · সুপ্রিম কোর্ট'],
-    media: [`${bnNum(mediaCount)}টি প্রতিবেদন`, 'মামলার সঙ্গে যুক্ত', '২০২৪–২০২৬'],
-    'case-map': [`${bnNum(caseCount)}টি মামলা`, '২০২৪-এর রায় থেকে', 'এক নজরে অবস্থা'],
-    'case-orders': ['প্রতিটি আদালতের আদেশ', 'সুপ্রিম কোর্ট ও হাইকোর্ট', 'যুক্ত PDF'],
-    projects: ['সিভিক রিসার্চ গ্রুপ', '৩টি চালু প্রকল্প', 'সবার জন্য বিনামূল্যে']
-  }
-};
+const pages = require('../data/seo.json').pages;
+const { seoFor, slugFor } = require('./site-publishing');
+const FILES = { home: 'index.html', timeline: 'timeline.html', cases: 'litigation.html', 'case-map': 'case-map.html', projects: 'projects.html', 'case-orders': 'case-orders.html', media: 'media.html', 'obc-list': 'obc-list.html', documents: 'documents.html', evidence: 'evidence.html', 'entry-framework': 'record-guide.html', inventory: 'inventory.html', 'obc-basics': 'obc-basics.html', methods: 'methods.html', reports: 'reports.html', about: 'about.html', contribute: 'contribute.html' };
 
+// One sharing card per page and language. The English card also carries the
+// Bengali page name, because the site is bilingual and links are shared in both.
 function card(tab, lang) {
-  const t = i18n[lang], [titleKey, subKey, eyebrowKey] = config[tab];
-  const title = t[titleKey] || i18n.en[titleKey] || 'West Bengal OBC Archive';
-  const eyebrow = (eyebrowKey && (t[eyebrowKey] || i18n.en[eyebrowKey])) || t['masthead.eyebrow'];
-  const sub = t[subKey] || i18n.en[subKey] || '';
-  const font = lang === 'bn' ? '"Noto Sans Bengali", "Hind Siliguri", sans-serif' : '"Noto Sans", "Noto Sans Bengali", sans-serif';
-  const chips = (facts[lang][tab] || []).map(f => `<span>${esc(f)}</span>`).join('');
-  return `<!doctype html><html><head><meta charset="utf-8"><style>
+  const seo = seoFor(tab), other = lang === 'bn' ? 'en' : 'bn';
+  const [titleKey, , eyebrowKey] = config[tab];
+  const name = l => strip(i18n[l][titleKey] || i18n.en[titleKey] || 'West Bengal OBC Archive');
+  const title = name(lang), second = name(other);
+  const eyebrow = strip((eyebrowKey && (i18n[lang][eyebrowKey] || i18n.en[eyebrowKey])) || i18n[lang]['masthead.eyebrow']);
+  const sub = lang === 'bn' ? seo.description_bn : seo.description;
+  const facts = lang === 'bn' ? seo.facts_bn : seo.facts;
+  const url = `obcwb.civicresearch.in${slugFor(FILES[tab]) ? '/' + slugFor(FILES[tab]) : ''}`;
+  const bnFont = '"Noto Sans Bengali", "Hind Siliguri", sans-serif';
+  const font = lang === 'bn' ? bnFont : '"Noto Sans", "Noto Sans Bengali", sans-serif';
+  const size = title.length > 44 ? 52 : title.length > 30 ? 60 : 68;
+  return `<!doctype html><html><head><meta charset="utf-8"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@400;600;700;800&family=Noto+Sans:wght@400;600;700;800&display=block"><style>
   *{box-sizing:border-box;margin:0}
-  body{width:1200px;height:630px;background:#0f3b3c;color:#f4efe1;font-family:${font};position:relative;overflow:hidden}
-  .ring{position:absolute;right:-140px;top:-160px;width:560px;height:560px;border-radius:50%;background:radial-gradient(circle,rgba(232,146,43,.18),rgba(232,146,43,.07) 60%,transparent 61%)}
-  .band{position:absolute;left:0;right:0;bottom:0;height:10px;background:#e8922b}
-  header{display:flex;align-items:center;gap:28px;padding:56px 72px 0}
-  header img.crg{height:50px} header img.obc{height:62px;margin-left:auto}
-  main{position:absolute;left:72px;right:72px;top:170px;border-left:6px solid #e8922b;padding-left:32px}
-  .eyebrow{color:#e8922b;font-weight:700;font-size:26px;letter-spacing:${lang === 'bn' ? 0 : '.06em'};text-transform:${lang === 'bn' ? 'none' : 'uppercase'}}
-  h1{font-size:${title.length > 48 ? 54 : 64}px;line-height:1.12;font-weight:800;margin-top:14px;letter-spacing:-.01em}
-  p{font-size:25px;line-height:1.45;color:#b9cfc9;margin-top:18px;max-width:950px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
-  footer{position:absolute;left:72px;right:72px;bottom:48px;display:flex;align-items:center;gap:12px}
+  body{width:1200px;height:630px;background:linear-gradient(135deg,#0f3b3c 0%,#0c3132 60%,#0a2a2b 100%);color:#f4efe1;font-family:${font};position:relative;overflow:hidden}
+  .ring{position:absolute;right:-170px;top:-190px;width:620px;height:620px;border-radius:50%;background:radial-gradient(circle,rgba(232,146,43,.20),rgba(232,146,43,.07) 60%,transparent 61%)}
+  .ring2{position:absolute;right:120px;bottom:-260px;width:420px;height:420px;border-radius:50%;border:2px solid rgba(244,239,225,.06)}
+  .band{position:absolute;left:0;right:0;bottom:0;height:12px;background:#e8922b}
+  header{position:absolute;left:72px;right:72px;top:46px;display:flex;align-items:center;justify-content:space-between}
+  header img.obc{height:92px} header img.crg{height:46px;opacity:.95}
+  main{position:absolute;left:72px;right:72px;top:178px;border-left:6px solid #e8922b;padding-left:32px}
+  .eyebrow{color:#f2a541;font-weight:700;font-size:24px;letter-spacing:${lang === 'bn' ? 0 : '.06em'};text-transform:${lang === 'bn' ? 'none' : 'uppercase'}}
+  h1{font-size:${size}px;line-height:1.12;font-weight:800;margin-top:12px;letter-spacing:-.01em;max-width:1000px}
+  .alt{font-family:${lang === 'bn' ? '"Noto Sans", sans-serif' : bnFont};font-size:30px;font-weight:600;color:#f2c88a;margin-top:10px}
+  p{font-size:24px;line-height:1.45;color:#c4d8d2;margin-top:16px;max-width:1000px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+  footer{position:absolute;left:72px;right:72px;bottom:44px;display:flex;align-items:center;gap:12px}
   .chips{display:flex;gap:12px}
-  footer span{border:1.5px solid rgba(244,239,225,.35);border-radius:999px;padding:8px 18px;font-size:22px;font-weight:600}
-  .url{margin-left:auto;font-size:22px;color:#b9cfc9;white-space:nowrap}
-  </style></head><body><div class="ring"></div>
-  <header><img class="crg" src="${logo}"><img class="obc" src="${obc}"></header>
-  <main><div class="eyebrow">${esc(eyebrow)}</div><h1>${esc(title)}</h1><p>${esc(sub)}</p></main>
-  <footer><div class="chips">${chips}</div><div class="url">obcwb.civicresearch.in</div></footer><div class="band"></div></body></html>`;
+  footer span{border:1.5px solid rgba(244,239,225,.35);background:rgba(244,239,225,.06);border-radius:999px;padding:8px 18px;font-size:21px;font-weight:600;white-space:nowrap}
+  .url{margin-left:auto;font-size:21px;color:#c4d8d2;white-space:nowrap;font-family:"Noto Sans",sans-serif}
+  </style></head><body><div class="ring"></div><div class="ring2"></div>
+  <header><img class="obc" src="${obc}"><img class="crg" src="${logo}"></header>
+  <main><div class="eyebrow">${esc(eyebrow)}</div><h1>${esc(title)}</h1>${second !== title ? `<div class="alt">${esc(second)}</div>` : ''}<p>${esc(sub)}</p></main>
+  <footer><div class="chips">${facts.map(f => `<span>${esc(f)}</span>`).join('')}</div><div class="url">${esc(url)}</div></footer><div class="band"></div></body></html>`;
+}
+
+// App icons for phones and the installable web app, drawn from favicon.svg.
+function icon(size, maskable) {
+  const svg = fs.readFileSync(path.join(root, 'favicon.svg'), 'utf8');
+  const inner = maskable ? `<div style="width:${size}px;height:${size}px;background:#122f3d;display:flex;align-items:center;justify-content:center"><img src="data:image/svg+xml;base64,${Buffer.from(svg).toString('base64')}" style="width:${size * 0.8}px;height:${size * 0.8}px"></div>`
+    : `<img src="data:image/svg+xml;base64,${Buffer.from(svg).toString('base64')}" style="width:${size}px;height:${size}px;display:block">`;
+  return `<!doctype html><html><head><style>*{margin:0}body{width:${size}px;height:${size}px;background:transparent}</style></head><body>${inner}</body></html>`;
 }
 
 (async () => {
@@ -70,11 +69,18 @@ function card(tab, lang) {
   const page = await browser.newPage({ viewport: { width: 1200, height: 630 } });
   for (const tab of Object.keys(config)) {
     for (const lang of ['en', 'bn']) {
-      await page.setContent(card(tab, lang), { waitUntil: 'load' });
+      await page.setContent(card(tab, lang), { waitUntil: 'networkidle' });
       await page.evaluate(() => document.fonts.ready);
       await page.screenshot({ path: path.join(out, lang === 'bn' ? 'bn' : '', `${tab}.png`) });
     }
   }
+  const icons = path.join(root, 'assets/icons');
+  fs.mkdirSync(icons, { recursive: true });
+  for (const [file, size, maskable] of [['apple-touch-icon.png', 180, true], ['icon-192.png', 192, false], ['icon-512.png', 512, false], ['icon-maskable-512.png', 512, true]]) {
+    await page.setViewportSize({ width: size, height: size });
+    await page.setContent(icon(size, maskable), { waitUntil: 'load' });
+    await page.screenshot({ path: path.join(icons, file), omitBackground: !maskable });
+  }
   await browser.close();
-  console.log(`Rendered ${Object.keys(config).length * 2} sharing images in assets/og/.`);
+  console.log(`Rendered ${Object.keys(config).length * 2} sharing images in assets/og/ and app icons in assets/icons/.`);
 })();

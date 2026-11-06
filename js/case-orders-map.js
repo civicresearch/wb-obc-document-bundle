@@ -191,7 +191,7 @@
       (e.pages ? '<dt>' + t('Pages', 'পৃষ্ঠা') + '</dt><dd>' + digits(e.pages) + '</dd>' : '') + '</dl>';
     if (note) h += (bn() ? '<p class="com-hint">ইংরেজিতে সারাংশ:</p>' : '') + '<p lang="en">' + esc(note) + '</p>';
     h += '<div class="com-actions">';
-    if (n.file) h += '<a class="primary" href="' + encodeURI(n.file) + '" target="_blank" rel="noopener">' + t('Open PDF', 'PDF খুলুন') + '</a>';
+    if (n.file) h += '<a class="primary" href="' + encodeURI((window.OBC_ASSET_BASE || '') + n.file) + '" target="_blank" rel="noopener">' + t('Open PDF', 'PDF খুলুন') + '</a>';
     var su = e.source_url || n.source_url;
     if (su) h += '<a href="' + esc(su) + '" target="_blank" rel="noopener noreferrer">' + (n.unarchived ? t('Read the report', 'প্রতিবেদন পড়ুন') : t('Source', 'উৎস')) + '</a>';
     h += '</div>';

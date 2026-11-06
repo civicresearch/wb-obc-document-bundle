@@ -5,6 +5,15 @@
 (() => {
   'use strict';
   const BASE = window.OBC_ASSET_BASE || '';
+  // Results link to clean page addresses ("litigation#case-…"). The standalone
+  // edition has every section in one file, so it keeps only the #anchor.
+  // Page links stay relative, so a Bengali page leads to other Bengali pages;
+  // files (PDFs) use BASE.
+  const resultHref = u => {
+    const pageLink = /^[a-z-]+#/.test(u);
+    if (!document.body.dataset.page) return pageLink ? u.replace(/^[a-z-]+/, '') : u;
+    return pageLink ? u : BASE + u;
+  };
   const STOP = new Set(`a an and are as at be by for from has have in is it its of on or that the this to was were will with
 which who whom whose not no but if into than then there these those their they them he she his her we our you your
 shall may any all such other also been being under over per upon above below after before between same each only
@@ -171,7 +180,7 @@ do does did so can could would should must out up down more most very about agai
       const shown = results.filter(r => active === 'all' || r.k === active).slice(0, inline ? 30 : 12);
       const chips = [`<button type="button" class="ss-chip${active === 'all' ? ' active' : ''}" data-type="all">${label('All', 'সব')} <span>${results.length}</span></button>`]
         .concat(types.map(t => `<button type="button" class="ss-chip${active === t ? ' active' : ''}" data-type="${esc(t)}">${esc(label(t, TYPE_BN[t]))} <span>${counts[t]}</span></button>`)).join('');
-      const items = shown.map((r, i) => `<li><a class="ss-result" href="${esc(BASE + r.u)}" id="${panel.id}-opt-${i}" role="option"${r.k === 'PDF text' ? ' target="_blank" rel="noreferrer"' : ''}>
+      const items = shown.map((r, i) => `<li><a class="ss-result" href="${esc(resultHref(r.u))}" id="${panel.id}-opt-${i}" role="option"${r.k === 'PDF text' ? ' target="_blank" rel="noreferrer"' : ''}>
           <span class="ss-type ss-type--${esc(r.k.toLowerCase().replace(/\s+/g, '-'))}">${esc(label(r.k, TYPE_BN[r.k]))}</span>${r.semantic ? `<span class="ss-related" title="${esc(label('Found by meaning, not exact words', 'অর্থের ভিত্তিতে পাওয়া, হুবহু শব্দে নয়'))}">${label('Related', 'সম্পর্কিত')}</span>` : ''}
           <strong>${esc(r.t)}</strong>
           ${r.m ? `<small>${esc(r.m)}</small>` : ''}

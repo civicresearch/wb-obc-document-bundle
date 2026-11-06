@@ -45,7 +45,7 @@ Every page works in English and Bengali, on phones, and offline once loaded.
 - **Our notes and translations are summaries.** The plain-language notes, timeline entries and Bengali translations are our own work, written to help readers. Where a note and the original document differ, the original document is correct.
 - **No view on any community's claim.** Including a community, document or argument in this archive does not mean we support or oppose its inclusion in, or removal from, any list.
 - **Rights in the source documents.** Government notifications, Acts and court orders belong to their issuing authorities and are reproduced as public records for research and public information. News reports are linked, not copied.
-- **Corrections are welcome.** If you find a mistake or a missing document, please tell us through the [Contribute page](https://obcwb.civicresearch.in/contribute.html) or by email at <civicresearchgroup@gmail.com>.
+- **Corrections are welcome.** If you find a mistake or a missing document, please tell us through the [Contribute page](https://obcwb.civicresearch.in/contribute) or by email at <civicresearchgroup@gmail.com>.
 
 ---
 
@@ -59,7 +59,7 @@ If you use this archive in research, reporting, a legal filing or teaching, plea
 
 **When citing a single document**, cite the original document first and the archive as the place you found it, for example:
 
-> Government of West Bengal, Backward Classes Welfare Department. Notification No. 945-BCW/MR-23/2026, 18 May 2026. Retrieved from the West Bengal OBC Archive, Civic Research Group, https://obcwb.civicresearch.in/documents.html
+> Government of West Bengal, Backward Classes Welfare Department. Notification No. 945-BCW/MR-23/2026, 18 May 2026. Retrieved from the West Bengal OBC Archive, Civic Research Group, https://obcwb.civicresearch.in/documents
 
 **BibTeX**
 
@@ -81,7 +81,7 @@ Please give the date you accessed the archive, because records are added and cor
 
 - [SIR Adjudication & Tribunal Appeals dashboard](https://appeal.civicresearch.in)
 - [RTI Karo](https://rti.votercards.in)
-- All projects: <https://civicresearch.in> and the [Projects page](https://obcwb.civicresearch.in/projects.html)
+- All projects: <https://civicresearch.in> and the [Projects page](https://obcwb.civicresearch.in/projects)
 
 Contact: <civicresearchgroup@gmail.com>
 
@@ -104,13 +104,14 @@ Contact: <civicresearchgroup@gmail.com>
   - `search/`: the search index.
 - `css/crg.css`: CRG design. `js/navigation.js`: menus, language and theme, and jumping to search targets. `js/search.js`: search. `js/export.js`: downloads.
 - `scripts/`: build and validation scripts.
+- `data/seo.json`: each page's search title, description and sharing-card facts, in English and Bengali. Pages are published as `timeline.html` but linked as `/timeline`; GitHub Pages serves both, and the page tidies a `.html` address in the browser bar.
 
 ### Build and check
 
 ```sh
-npm run serve           # local server at http://localhost:8123
+npm run serve           # local server at http://localhost:8123 (clean URLs, like the live site)
 npm run build           # pages + standalone copy + search index
-npm run build:og        # sharing images (when page titles change)
+npm run build:og        # sharing images and app icons (after editing data/seo.json or page titles)
 npm run validate:data
 npm run validate:site
 python3 scripts/validate-preservation.py

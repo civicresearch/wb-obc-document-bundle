@@ -151,7 +151,7 @@ document.querySelectorAll('.table-wrap').forEach((wrapper, index) => {
   wrapper.setAttribute('aria-label', heading ? `${heading.textContent.trim()} — table` : `Records table ${index + 1}`);
 });
 if ('serviceWorker' in navigator && location.protocol !== 'file:') {
-  navigator.serviceWorker.register('./sw.js').catch(() => {});
+  navigator.serviceWorker.register((window.OBC_ASSET_BASE || './') + 'sw.js', { scope: (window.OBC_ASSET_BASE || './') }).catch(() => {});
 }
 
 // Press / anywhere to jump to the navigation-bar search (js/search.js runs it).

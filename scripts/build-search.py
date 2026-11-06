@@ -88,35 +88,35 @@ def records():
                      'x': body[:SNIPPET], '_full': f'{title} {meta} {body} {extra}'})
 
     for c in load('data/case_files.json')['cases']:
-        add('Case', c['title'], f"litigation.html#{c['id']}", c['summary'], '', f"{c['court']} · {c['status_label']}",
+        add('Case', c['title'], f"litigation#{c['id']}", c['summary'], '', f"{c['court']} · {c['status_label']}",
             ' '.join(c['case_numbers']) + ' ' + c.get('title_bn', '') + ' ' + c.get('summary_bn', ''))
     for e in load('case_events.json'):
-        add('Court record', e['title'], f"litigation.html#{e['id']}", plain(e['html']).replace(e.get('displayDate', ''), '', 1),
+        add('Court record', e['title'], f"litigation#{e['id']}", plain(e['html']).replace(e.get('displayDate', ''), '', 1),
             e['date'], short_date(e['date']), plain(e.get('html_bn', '')))
     for e in load('timeline_events.json'):
         text = plain(e['html'])
         title = re.search(r'<h[23][^>]*>(.*?)</h[23]>', e['html'], re.S)
-        add('Timeline', plain(title.group(1)) if title else text[:90], f"timeline.html#{e['id']}", text, e.get('date', ''),
+        add('Timeline', plain(title.group(1)) if title else text[:90], f"timeline#{e['id']}", text, e.get('date', ''),
             short_date(e.get('date', '')), (e.get('search') or '') + ' ' + plain(e.get('html_bn', '')))
     for m in load('data/media_coverage.json')['items']:
-        add('News', m['headline'], f"media.html#{m['id']}", m['summary'], m['date'], f"{m['outlet']} · {short_date(m['date'])}",
+        add('News', m['headline'], f"media#{m['id']}", m['summary'], m['date'], f"{m['outlet']} · {short_date(m['date'])}",
             ' '.join(m['topics']) + ' ' + m['url'])
     docs = load('obc_documents.json')
     keys = {f"{d['notif_no']}|{d['filename']}" for d in docs}
     docs += [d for d in load('supplemental_documents.json') if f"{d['notif_no']}|{d['filename']}" not in keys]
     for i, d in enumerate(docs):
-        add('Document', f"{d['notif_no']} ({d.get('type', '')})", f'documents.html#doc-{i}', d.get('summary', ''), d.get('date', ''),
+        add('Document', f"{d['notif_no']} ({d.get('type', '')})", f'documents#doc-{i}', d.get('summary', ''), d.get('date', ''),
             f"{short_date(d.get('date', ''))} · {d.get('status', '')}", (d.get('text') or '')[:4000])
     classes = load('obc_classes.json')
     for i, name in enumerate(classes['current_classes_2026']):
-        add('OBC class', name, f'obc-list.html#obc-class-{i + 1}', f'Listed at serial {i + 1} of Notification 945-BCW/MR-23/2026 (current 66-class list).',
+        add('OBC class', name, f'obc-list#obc-class-{i + 1}', f'Listed at serial {i + 1} of Notification 945-BCW/MR-23/2026 (current 66-class list).',
             '', 'Current class', classes['first_inclusion'].get(name, ''))
     offset = len(classes['current_classes_2026'])
     for j, c in enumerate(classes['class_changes']):
-        add('OBC class', c['name'], f'obc-list.html#obc-class-{offset + j + 1}', f"{c.get('status', '')}. Included: {c.get('included', '')}. Removed: {c.get('removed', '') or '—'}.",
+        add('OBC class', c['name'], f'obc-list#obc-class-{offset + j + 1}', f"{c.get('status', '')}. Included: {c.get('included', '')}. Removed: {c.get('removed', '') or '—'}.",
             '', c.get('status', ''), c.get('source', ''))
     for h in load('public_hearings.json'):
-        add('Hearing', f"Public hearing, {h.get('date_label', '')} {h.get('time', '')}", 'evidence.html#public-hearings',
+        add('Hearing', f"Public hearing, {h.get('date_label', '')} {h.get('time', '')}", 'evidence#public-hearings',
             f"Communities heard: {h.get('communities', '')}", '', 'Public hearing notice', h.get('local_pdf', ''))
 
     # Text inside the PDFs, one record per passage, linked to the page.
