@@ -84,7 +84,7 @@ function renderTimelineEvents(events, forceLang) {
     ].filter(Boolean).join(' ');
     const key = `narrative.timeline.${event.id}`;
     const body = window.WBOBCI18n?.getTranslations()?.[lang]?.[key] || ((lang === 'bn' && event.html_bn) ? event.html_bn : (event.html || ''));
-    return `<li ${attrs}>${body}</li>`;
+    return `<li ${attrs}>${readableIsoDate(body, lang)}</li>`;
   }).join('');
   
   // Initialize scroll animations
@@ -811,6 +811,16 @@ function normalise(text) {
     .trim();
 }
 
+// Some timeline records store an ISO date in their date label; show it like the rest.
+function readableIsoDate(html, lang) {
+  return String(html).replace(/(<div class="date">)(\d{4})-(\d{2})-(\d{2})(<\/div>)/, (m, open, y, mo, d, close) => {
+    const en = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'], bn = ['জানুয়ারি','ফেব্রুয়ারি','মার্চ','এপ্রিল','মে','জুন','জুলাই','আগস্ট','সেপ্টেম্বর','অক্টোবর','নভেম্বর','ডিসেম্বর'];
+    const day = String(Number(d));
+    if (lang === 'bn') { const dg = v => v.replace(/\d/g, c => '০১২৩৪৫৬৭৮৯'[c]); return `${open}${dg(day)} ${bn[mo - 1]} ${dg(y)}${close}`; }
+    return `${open}${day} ${en[mo - 1]} ${y}${close}`;
+  });
+}
+
 const SITE_PAGE = document.body.dataset.page || '';
 const PAGE_FILES = {
   home: 'index.html',
@@ -1446,6 +1456,13 @@ document.addEventListener('click', event => {
   if (hashLink) {
     const hash = hashLink.getAttribute('href');
     event.preventDefault();
+    // In the multi-page site, a link to a section on another page (for example
+    // from runtime-rendered record text) goes to that page.
+    const targetTab = tabForHash(hash);
+    if (SITE_PAGE && targetTab && targetTab !== SITE_PAGE && !document.getElementById(hash.slice(1))) {
+      window.location.href = pageHref(targetTab, hash.slice(1));
+      return;
+    }
     history.pushState(null, '', hash);
     showTab(tabForHash(hash), hash);
     const openGroupEl = hashLink.closest('.nav-group.is-open');

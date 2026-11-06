@@ -25,7 +25,9 @@
       ],
       "related": [
         "casefile-sc-state-appeals-2024",
-        "casefile-implementation-pils-2024"
+        "casefile-implementation-pils-2024",
+        "casefile-sir-certificates-2025",
+        "casefile-admission-recruitment-claims-2026"
       ]
     },
     {
@@ -108,11 +110,13 @@
       "summary_bn": "১৭ জুন ২০২৫ হাইকোর্ট রাজ্যের নতুন ২০২৫ ওবিসি তালিকা স্থগিত করে। ২৮ জুলাই ২০২৫ সুপ্রিম কোর্ট সেই আদেশ স্থগিত করে। জুলাই ২০২৬-এ রাজ্য আপিল প্রত্যাহারের পর আগস্ট ২০২৬-এ ডিভিশন বেঞ্চ ২০২৫-এর স্থগিতাদেশ পুনর্বহাল বলে নথিভুক্ত করে।",
       "records": [
         "case-2025-05-06",
-        "case-2025-06-17"
+        "case-2025-06-17",
+        "case-2026-08-12"
       ],
       "related": [
         "casefile-sc-purabi-das-2025",
-        "casefile-shreyasi-dhang-2026"
+        "casefile-shreyasi-dhang-2026",
+        "casefile-implementation-pils-2024"
       ]
     },
     {
@@ -142,7 +146,8 @@
       ],
       "related": [
         "casefile-notification-challenge-2025",
-        "casefile-sc-state-appeals-2024"
+        "casefile-sc-state-appeals-2024",
+        "casefile-jemas-pg-2025"
       ]
     },
     {
@@ -274,7 +279,8 @@
       "related": [
         "casefile-notification-challenge-2025",
         "casefile-rjf-pil-2026",
-        "casefile-category-petitions-oct-2026"
+        "casefile-category-petitions-oct-2026",
+        "casefile-recruitment-roster-2026"
       ]
     },
     {

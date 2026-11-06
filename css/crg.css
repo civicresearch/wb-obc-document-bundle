@@ -480,3 +480,20 @@ html[data-theme] .com-seg button { border-radius: 0; white-space: nowrap; box-sh
   .com-layout > * { width: 100%; max-width: 100%; }
   .com-details { min-height: 0; }
 }
+/* Tablet and desktop: the same minimum text size and tap targets as phones. */
+html[data-theme] main .tag, html[data-theme] .cf-court, html[data-theme] main .report-meta { font-size: 12px !important; }
+html[data-theme] .cf-pdf { font-size: 12px; padding: 4px 10px; display: inline-block; }
+html[data-theme] .footer-parent-brand { font-size: 13px !important; }
+@media (max-width: 1100px) {
+  html[data-theme] .breadcrumbs a { display: inline-block; padding: 6px 0; }
+  html[data-theme] main .callout a { display: inline-block; padding-block: 4px; }
+  html[data-theme] .site-footer a[href^="mailto:"] { display: inline-block; padding-block: 10px; }
+  html[data-theme] .cf-details > summary { min-height: 44px; display: flex; align-items: center; gap: 6px; }
+  html[data-theme] .com-seg button, html[data-theme] .com-node-list a, html[data-theme] .com-details a { min-height: 32px; }
+}
+@media (pointer: coarse), (max-width: 1100px) {
+  html[data-theme] .cf-pdf { padding: 7px 12px; margin-block: 2px; }
+  html[data-theme] .case-map-cta a { display: inline-block; padding-block: 8px; }
+  html[data-theme] .com-panel details > summary, html[data-theme] .com-list details > summary { min-height: 40px; display: flex; align-items: center; }
+  html[data-theme] .cf-records li > a:first-child, html[data-theme] .cf-related a { display: inline-block; padding-block: 5px; }
+}
