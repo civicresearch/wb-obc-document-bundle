@@ -1,5 +1,5 @@
 // Service Worker for WB OBC Archive - Offline Support
-const CACHE_NAME = 'wb-obc-archive-v32';
+const CACHE_NAME = 'wb-obc-archive-v33';
 const ASSETS_TO_CACHE = [
   './',
   './index.html',

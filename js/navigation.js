@@ -23,6 +23,13 @@ function openGroup(group) {
   navGroups.forEach(other => { if (other !== group) closeGroup(other); });
   group.classList.add('is-open');
   group.querySelector('.nav-group-toggle')?.setAttribute('aria-expanded', 'true');
+  // Keep a wide panel inside the window on narrow desktops.
+  const panel = group.querySelector('.nav-group-items');
+  if (panel && !isMobileNav()) {
+    panel.style.marginLeft = '';
+    const overflow = panel.getBoundingClientRect().right - (window.innerWidth - 16);
+    if (overflow > 0) panel.style.marginLeft = `-${Math.ceil(overflow)}px`;
+  }
 }
 function openMobileNav() {
   if (!siteNav || !isMobileNav()) return;
@@ -67,6 +74,14 @@ navGroups.forEach((group, index) => {
       event.preventDefault();
       openGroup(group);
       items.querySelector('a')?.focus();
+    } else if ((event.key === 'ArrowDown' || event.key === 'ArrowUp' || event.key === 'Home' || event.key === 'End') && items.contains(event.target)) {
+      const links = Array.from(items.querySelectorAll('a'));
+      const at = links.indexOf(event.target.closest('a'));
+      if (at < 0) return;
+      event.preventDefault();
+      const next = event.key === 'Home' ? 0 : event.key === 'End' ? links.length - 1
+        : (at + (event.key === 'ArrowDown' ? 1 : -1) + links.length) % links.length;
+      links[next].focus();
     }
   });
 });
