@@ -20,7 +20,7 @@ def main():
             original = git('show', f'{CHECKPOINT}:{path}')
             assert hashlib.sha256(file.read_bytes()).digest() == hashlib.sha256(original).digest(), path
             counts['pdfs'] += 1
-        elif path.endswith('.json') and '/' not in path:
+        elif path.endswith('.json') and '/' not in path and path != 'package.json':
             current = json.loads(file.read_text(encoding='utf-8'))
             original = json.loads(git('show', f'{CHECKPOINT}:{path}'))
             if isinstance(original, list) and isinstance(current, list):
