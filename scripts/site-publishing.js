@@ -89,8 +89,10 @@ function renderCaseFiles(html, pageLinks = {}) {
   const caseHref = id => `${pageLinks.cases || ''}#${id}`;
   const cards = files.map(c => {
     const records = c.records.map(id => {
-      const e = events[id], date = id.replace('case-', '');
-      const pdfs = manifest.filter(m => m.date === date).map(m => `<a class="cf-pdf" href="${escape(m.local_file)}" target="_blank" rel="noreferrer">PDF</a>`).join(' ');
+      const e = events[id], date = e.date || id.replace('case-', '').slice(0, 10);
+      const linked = [...new Set((e.html.match(/case_pdfs\/[^"]+\.pdf/g) || []))];
+      const files = linked.length ? linked : manifest.filter(m => m.date === date).map(m => m.local_file);
+      const pdfs = files.map(f => `<a class="cf-pdf" href="${escape(f)}" target="_blank" rel="noreferrer">PDF</a>`).join(' ');
       return `<li><time datetime="${date}">${escape(shortDate(date))}</time> <a href="${caseHref(id)}">${escape(e.title)}</a> ${pdfs}</li>`;
     }).join('');
     const reports = media.filter(m => m.cases.includes(c.id));

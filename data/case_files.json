@@ -54,6 +54,7 @@
         "case-2024-12-09",
         "case-2025-01-07",
         "case-2025-03-18",
+        "case-2025-10-14",
         "case-2026-07-14"
       ],
       "related": [
@@ -78,6 +79,8 @@
       "summary": "PILs seeking implementation of the 2024 judgment were listed together on 21 January 2025. WPA(P) 430 of 2024 was later heard with the 2025 notification challenge.",
       "summary_bn": "২০২৪-এর রায় কার্যকর করার দাবিতে জনস্বার্থ মামলাগুলি ২১ জানুয়ারি ২০২৫ একসঙ্গে তালিকাভুক্ত হয়। WPA(P) 430 of 2024 পরে ২০২৫-এর বিজ্ঞপ্তি-চ্যালেঞ্জের সঙ্গে শোনা হয়।",
       "records": [
+        "case-2024-09-30",
+        "case-2024-10-07",
         "case-2025-01-21"
       ],
       "related": [
@@ -104,6 +107,7 @@
       "summary": "On 17 June 2025 the High Court stayed the State's new 2025 OBC list. The Supreme Court stayed that order on 28 July 2025 and in November 2025 told the High Court not to proceed. After the State withdrew its appeals in July 2026, the Division Bench recorded in August 2026 that the 2025 stay was revived.",
       "summary_bn": "১৭ জুন ২০২৫ হাইকোর্ট রাজ্যের নতুন ২০২৫ ওবিসি তালিকা স্থগিত করে। ২৮ জুলাই ২০২৫ সুপ্রিম কোর্ট সেই আদেশ স্থগিত করে। জুলাই ২০২৬-এ রাজ্য আপিল প্রত্যাহারের পর আগস্ট ২০২৬-এ ডিভিশন বেঞ্চ ২০২৫-এর স্থগিতাদেশ পুনর্বহাল বলে নথিভুক্ত করে।",
       "records": [
+        "case-2025-05-06",
         "case-2025-06-17"
       ],
       "related": [
@@ -163,6 +167,7 @@
       "summary_bn": "২১ মে ২০২৫ হাইকোর্ট ২০২৪-এর রায় মেনে ভর্তির নির্দেশ দেয়। ৭ আগস্ট ২০২৫ জেমাস পিজি নিয়ে অবমাননার কার্যক্রম শুরু হয় এবং ২০১০-পূর্ব ভিত্তিতে WBJEE ২০২৫-এর নতুন মেধাতালিকার নির্দেশ আসে। ২২ আগস্ট ২০২৫ সুপ্রিম কোর্ট সেই নির্দেশ স্থগিত করে।",
       "records": [
         "case-2025-05-21",
+        "case-2025-07-02",
         "case-2025-08-07",
         "case-2025-08-07-wbjee",
         "case-2025-08-22"
@@ -211,7 +216,8 @@
       "summary_bn": "২০২৬-এর পরিবর্তনের পর নিয়োগে শ্রেণি-নিয়ম নিয়ে প্রার্থীরা আবেদন করেন। ১ জুলাইয়ের অন্তর্বর্তী আদেশে আবেদন সংশোধনের সময় বাড়ে। ৮ জুলাই WPA 14695 নতুন করে দাখিলের স্বাধীনতাসহ প্রত্যাহৃত হয়।",
       "records": [
         "case-2026-07-01",
-        "case-2026-07-08"
+        "case-2026-07-08",
+        "case-2026-07-09"
       ],
       "related": [
         "casefile-category-petitions-oct-2026"
@@ -224,16 +230,18 @@
       "title": "Right and Justice Foundation v. State of West Bengal",
       "title_bn": "রাইট অ্যান্ড জাস্টিস ফাউন্ডেশন বনাম পশ্চিমবঙ্গ রাজ্য",
       "case_numbers": [
-        "WPA(P) 305 of 2026"
+        "WPA(P) 305 of 2026",
+        "WPA 15380 of 2026 (Mahamadul Hasan Gayen)"
       ],
       "filed": "2026",
       "status": "dismissed",
       "status_label": "Not entertained 3 Jul 2026",
       "status_label_bn": "৩ জুলাই ২০২৬ গ্রহণ করা হয়নি",
-      "summary": "A PIL against the 18 May 2026 notifications (944, 945 and 946) was not entertained because the Supreme Court was already seized of the main issues. The petitioner later went to the Supreme Court (Diary 41300 of 2026).",
-      "summary_bn": "১৮ মে ২০২৬-এর বিজ্ঞপ্তি (৯৪৪, ৯৪৫, ৯৪৬)-এর বিরুদ্ধে জনস্বার্থ মামলা গ্রহণ করা হয়নি, কারণ মূল প্রশ্নগুলি সুপ্রিম কোর্টে বিচারাধীন। আবেদনকারী পরে সুপ্রিম কোর্টে যান (ডায়েরি ৪১৩০০/২০২৬)।",
+      "summary": "A PIL against the 18 May 2026 notifications (944, 945 and 946) was not entertained because the Supreme Court was already seized of the main issues. The petitioner later went to the Supreme Court (Diary 41300 of 2026). A single-judge challenge to the same notifications was dismissed on 7 July 2026 for the same reason.",
+      "summary_bn": "১৮ মে ২০২৬-এর বিজ্ঞপ্তি (৯৪৪, ৯৪৫, ৯৪৬)-এর বিরুদ্ধে জনস্বার্থ মামলা গ্রহণ করা হয়নি, কারণ মূল প্রশ্নগুলি সুপ্রিম কোর্টে বিচারাধীন। আবেদনকারী পরে সুপ্রিম কোর্টে যান (ডায়েরি ৪১৩০০/২০২৬)। একই কারণে ৭ জুলাই ২০২৬ একই বিজ্ঞপ্তির বিরুদ্ধে একক বেঞ্চের মামলাও খারিজ হয়।",
       "records": [
-        "case-2026-07-03"
+        "case-2026-07-03",
+        "case-2026-07-07"
       ],
       "related": [
         "casefile-shreyasi-dhang-2026"
@@ -278,21 +286,26 @@
       "case_numbers": [
         "WPA 21501 of 2026 (Hasibur Rahaman Mondal)",
         "WPA 23207 of 2026 (Mehebuba Khatun)",
-        "WPA 23209 of 2026"
+        "WPA 23209 of 2026",
+        "MAT 1374 of 2026",
+        "SLP(C) 31121 of 2026"
       ],
       "filed": "2026",
       "status": "dismissed",
       "status_label": "Petitions dismissed, Aug–Sep 2026",
       "status_label_bn": "আবেদন খারিজ, আগস্ট–সেপ্টেম্বর ২০২৬",
-      "summary": "NEET-UG 2026 candidates who sought to switch to EWS after results, and SLST 2025 candidates who sought OBC-A reserved status, both lost. The Court held that category must be valid on the application date and that the 2024 judgment was final before the SLST recruitment began.",
-      "summary_bn": "ফল প্রকাশের পর EWS-এ যেতে চাওয়া NEET-UG ২০২৬ প্রার্থী এবং OBC-A সংরক্ষণ চাওয়া SLST ২০২৫ প্রার্থী—উভয়ের আবেদন খারিজ। আদালত বলে, আবেদনের দিন শ্রেণি বৈধ থাকতে হবে এবং SLST নিয়োগ শুরুর আগেই ২০২৪-এর রায় চূড়ান্ত।",
+      "summary": "NEET-UG 2026 candidates who sought to switch to EWS after results, and SLST 2025 candidates who sought OBC-A reserved status, both lost. The Court held that category must be valid on the application date and that the 2024 judgment was final before the SLST recruitment began. The Division Bench upheld the NEET-UG ruling on 18 August 2026, and the Supreme Court closed the challenge on 5 October 2026, saying the EWS benefit would be available next year.",
+      "summary_bn": "ফল প্রকাশের পর EWS-এ যেতে চাওয়া NEET-UG ২০২৬ প্রার্থী এবং OBC-A সংরক্ষণ চাওয়া SLST ২০২৫ প্রার্থী—উভয়ের আবেদন খারিজ। আদালত বলে, আবেদনের দিন শ্রেণি বৈধ থাকতে হবে এবং SLST নিয়োগ শুরুর আগেই ২০২৪-এর রায় চূড়ান্ত। ১৮ আগস্ট ২০২৬ ডিভিশন বেঞ্চ NEET-UG রায় বহাল রাখে; ৫ অক্টোবর ২০২৬ সুপ্রিম কোর্ট মামলাটি নিষ্পত্তি করে জানায়, আগামী বছর EWS সুবিধা মিলবে।",
       "records": [
         "case-2026-08-14",
-        "case-2026-08-31"
+        "case-2026-08-18",
+        "case-2026-08-31",
+        "case-2026-10-05"
       ],
       "related": [
         "casefile-category-petitions-oct-2026",
-        "casefile-amal-chandra-das-2024"
+        "casefile-amal-chandra-das-2024",
+        "casefile-recruitment-roster-2026"
       ]
     },
     {
@@ -304,23 +317,59 @@
       "case_numbers": [
         "WPA 29788 of 2026 (Nilanjona Kundu)",
         "WPA 30672 of 2026 (Abeda Khatoon)",
-        "WPA 31572 of 2026 (Mohabul Islam)"
+        "WPA 31572 of 2026 (Mohabul Islam)",
+        "WPA 31497 of 2026 (Sambhu Charan Bera)"
       ],
       "filed": "2026",
       "status": "pending",
       "status_label": "Pending · affidavits called",
       "status_label_bn": "বিচারাধীন · হলফনামা তলব",
-      "summary": "Three October 2026 petitions deal with candidates whose category changed after the August judgment: representations to update category, candidates from retained classes, and former OBC applicants seeking EWS status in primary-teacher recruitment. In WPA 31572 the State must file affidavits within three weeks after the Puja vacation.",
-      "summary_bn": "অক্টোবর ২০২৬-এর তিনটি আবেদন আগস্টের রায়ের পর যাঁদের শ্রেণি বদলেছে তাঁদের নিয়ে: শ্রেণি হালনাগাদের আবেদন, বহাল শ্রেণির প্রার্থী, এবং প্রাথমিক শিক্ষক নিয়োগে ইডব্লিউএস চাওয়া প্রাক্তন ওবিসি আবেদনকারী। WPA 31572-এ পুজোর ছুটির পর তিন সপ্তাহের মধ্যে রাজ্যকে হলফনামা দিতে হবে।",
+      "summary": "October 2026 petitions deal with candidates whose category changed after the August judgment: representations to update category, candidates from retained classes, and former OBC applicants seeking EWS status in primary-teacher recruitment. In WPA 31572 the State must file affidavits within three weeks after the Puja vacation. On 30 October 2026 the Court held that the 14 October category-update window does not allow fresh applications.",
+      "summary_bn": "অক্টোবর ২০২৬-এর আবেদনগুলি আগস্টের রায়ের পর যাঁদের শ্রেণি বদলেছে তাঁদের নিয়ে: শ্রেণি হালনাগাদের আবেদন, বহাল শ্রেণির প্রার্থী, এবং প্রাথমিক শিক্ষক নিয়োগে ইডব্লিউএস চাওয়া প্রাক্তন ওবিসি আবেদনকারী। WPA 31572-এ পুজোর ছুটির পর তিন সপ্তাহের মধ্যে রাজ্যকে হলফনামা দিতে হবে। ৩০ অক্টোবর ২০২৬ আদালত জানায়, ১৪ অক্টোবরের শ্রেণি হালনাগাদের সুযোগে নতুন আবেদন করা যায় না।",
       "records": [
         "case-2026-10-13",
         "case-2026-10-15",
+        "case-2026-10-30",
         "case-2026-10-31"
       ],
       "related": [
         "casefile-shreyasi-dhang-2026",
         "casefile-recruitment-category-2026",
-        "casefile-admission-recruitment-claims-2026"
+        "casefile-admission-recruitment-claims-2026",
+        "casefile-recruitment-roster-2026"
+      ]
+    },
+    {
+      "id": "casefile-recruitment-roster-2026",
+      "court": "Calcutta High Court",
+      "forum": "Single Benches and Division Benches",
+      "title": "Recruitment after the 2026 list: EWS moves, selected candidates and the new roster",
+      "title_bn": "২০২৬-এর তালিকার পর নিয়োগ: EWS-এ স্থানান্তর, নির্বাচিত প্রার্থী ও নতুন রোস্টার",
+      "case_numbers": [
+        "FMA 1002 of 2026 (Mir Mazharul Islam)",
+        "RVW 239 and 241 of 2026 (Arindam Saha)",
+        "WPA 26656 of 2026 (Aslam Hossain)",
+        "APOT 136 of 2026 (Shamim Akhtar)",
+        "WPA 28984 of 2026 (Srikanta Chakraborty)"
+      ],
+      "filed": "2026",
+      "status": "pending",
+      "status_label": "Pending · APOT 136 listed 13 Nov 2026",
+      "status_label_bn": "বিচারাধীন · APOT 136 তালিকাভুক্ত ১৩ নভেম্বর ২০২৬",
+      "next_date": "2026-11-13",
+      "summary": "Cases on how ongoing recruitments handle candidates whose OBC status fell away. SLST candidates may be considered as EWS after verification (review refused); candidates already selected as OBC-A are outside the 7 August 2026 notification; candidates dropped from the list may compete as EWS in police recruitment. Whether the new roster can apply midway through a selection is pending before the Chief Justice's Bench.",
+      "summary_bn": "চলমান নিয়োগে যাঁদের OBC মর্যাদা চলে গেছে তাঁদের নিয়ে মামলা। যাচাইয়ের পর SLST প্রার্থীরা EWS হিসেবে বিবেচিত হতে পারেন (পুনর্বিবেচনা খারিজ); আগেই OBC-A হিসেবে নির্বাচিতরা ৭ আগস্ট ২০২৬-এর বিজ্ঞপ্তির বাইরে; তালিকা থেকে বাদ পড়া প্রার্থীরা পুলিশ নিয়োগে EWS হিসেবে লড়তে পারেন। চলমান নিয়োগের মাঝপথে নতুন রোস্টার প্রয়োগ করা যায় কি না, তা প্রধান বিচারপতির বেঞ্চে বিচারাধীন।",
+      "records": [
+        "case-2026-09-14",
+        "case-2026-09-23",
+        "case-2026-10-13-aslam",
+        "case-2026-10-13-apot",
+        "case-2026-10-15-srikanta"
+      ],
+      "related": [
+        "casefile-category-petitions-oct-2026",
+        "casefile-admission-recruitment-claims-2026",
+        "casefile-shreyasi-dhang-2026"
       ]
     }
   ]
