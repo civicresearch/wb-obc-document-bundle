@@ -22,29 +22,51 @@ const config = {
   contribute: ['contribute.heroTitle', 'contribute.heroSub', 'contribute.heroKicker', 'Contribute a public document, court update or correction to the WB OBC Archive through guided forms and a structured source-report process.']
 };
 function urlFor(page) { return `${origin}/${page.file === 'index.html' ? '' : page.file}`; }
+const REVIEWED = read('data/case_files.json').reviewed;
+function structuredData(page, url, description) {
+  const org = {'@type':'Organization','@id':`${origin}/#organization`,name:'Civic Research Group',url:'https://civicresearch.in',logo:`${origin}/assets/crg-on-light.png`,email:'civicresearchgroup@gmail.com',sameAs:['https://www.facebook.com/civicresearch','https://www.instagram.com/civicresearch','https://x.com/CivicResearchX']};
+  const graph = [
+    org,
+    {'@type':'WebSite','@id':`${origin}/#website`,url:`${origin}/`,name:'WB OBC Archive',alternateName:'পশ্চিমবঙ্গ ওবিসি আর্কাইভ',inLanguage:['en','bn'],publisher:{'@id':`${origin}/#organization`},potentialAction:{'@type':'SearchAction',target:`${origin}/?q={search_term_string}`,'query-input':'required name=search_term_string'}},
+    {'@type':'WebPage','@id':`${url}#webpage`,url,name:page.title,description,inLanguage:'en',dateModified:REVIEWED,isPartOf:{'@id':`${origin}/#website`},primaryImageOfPage:{'@type':'ImageObject',url:`${origin}/assets/og/${page.tab}.png`,width:1200,height:630}}
+  ];
+  if (page.tab !== 'home') graph.push({'@type':'BreadcrumbList',itemListElement:[{'@type':'ListItem',position:1,name:'Home',item:`${origin}/`},{'@type':'ListItem',position:2,name:page.title,item:url}]});
+  if (page.tab === 'home') graph.push({'@type':'Dataset','@id':`${origin}/#dataset`,name:'West Bengal OBC reservation records, 1993–2026',description:'Notifications, OBC class lists, court orders, public-hearing notices and source PDFs on Other Backward Classes reservation in West Bengal, with extracted text and provenance notes.',url:`${origin}/`,creator:{'@id':`${origin}/#organization`},inLanguage:['en','bn'],spatialCoverage:'West Bengal, India',temporalCoverage:'1993/2026',dateModified:REVIEWED,isAccessibleForFree:true,keywords:['OBC','Other Backward Classes','West Bengal','reservation','Calcutta High Court','Supreme Court of India']});
+  if (page.tab === 'cases') graph.push({'@type':'ItemList','@id':`${url}#cases`,name:'West Bengal OBC court proceedings',itemListElement:read('data/case_files.json').cases.map((c,i)=>({'@type':'ListItem',position:i+1,url:`${url}#${c.id}`,name:c.title}))});
+  if (page.tab === 'media') graph.push({'@type':'ItemList','@id':`${url}#coverage`,name:'Media coverage of West Bengal OBC reservation',itemListElement:read('data/media_coverage.json').items.slice().sort((a,b)=>b.date.localeCompare(a.date)).map((m,i)=>({'@type':'ListItem',position:i+1,item:{'@type':'NewsArticle',headline:m.headline.slice(0,110),url:m.url,datePublished:m.date,publisher:{'@type':'Organization',name:m.outlet.replace(/\s*\(.*\)$/,'')}}}))});
+  return JSON.stringify({'@context':'https://schema.org','@graph':graph}).replace(/</g,'\\u003c');
+}
 function metadata(page) {
   const url = urlFor(page), description = config[page.tab][3];
   const title = `${page.title} · Civic Research Group`;
-  const graph = [
-    {'@type':'Organization','@id':`${origin}/#organization`,name:'Civic Research Group',url:'https://civicresearch.in'},
-    {'@type':'WebSite','@id':`${origin}/#website`,url:`${origin}/`,name:'WB OBC Archive',inLanguage:['en','bn'],publisher:{'@id':`${origin}/#organization`}},
-    {'@type':'WebPage','@id':`${url}#webpage`,url,name:page.title,description,inLanguage:'en',isPartOf:{'@id':`${origin}/#website`}}
-  ];
-  if (page.tab !== 'home') graph.push({'@type':'BreadcrumbList',itemListElement:[{'@type':'ListItem',position:1,name:'Home',item:`${origin}/`},{'@type':'ListItem',position:2,name:page.title,item:url}]});
+  const image = `${origin}/assets/og/${page.tab}.png`;
+  const alt = `${page.title}: WB OBC Archive by Civic Research Group`;
+  const bnUrl = `${url}${url.includes('?') ? '&' : '?'}lang=bn`;
   return `<link rel="canonical" href="${url}">
-  <meta name="robots" content="index, follow, max-image-preview:large">
+  <link rel="alternate" hreflang="en" href="${url}">
+  <link rel="alternate" hreflang="bn" href="${bnUrl}">
+  <link rel="alternate" hreflang="x-default" href="${url}">
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+  <meta name="author" content="Civic Research Group">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="WB OBC Archive">
+  <meta property="og:locale" content="en_IN">
+  <meta property="og:locale:alternate" content="bn_IN">
   <meta property="og:title" content="${escape(title)}">
   <meta property="og:description" content="${escape(description)}">
   <meta property="og:url" content="${url}">
-  <meta property="og:image" content="${origin}/obcwb-light-logo.png">
-  <meta property="og:image:alt" content="West Bengal OBC Archive">
-  <meta name="twitter:card" content="summary">
+  <meta property="og:image" content="${image}">
+  <meta property="og:image:type" content="image/png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="${escape(alt)}">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@CivicResearchX">
   <meta name="twitter:title" content="${escape(title)}">
   <meta name="twitter:description" content="${escape(description)}">
-  <meta name="twitter:image" content="${origin}/obcwb-light-logo.png">
-  <script type="application/ld+json">${JSON.stringify({'@context':'https://schema.org','@graph':graph}).replace(/</g,'\\u003c')}</script>`;
+  <meta name="twitter:image" content="${image}">
+  <meta name="twitter:image:alt" content="${escape(alt)}">
+  <script type="application/ld+json">${structuredData(page, url, description)}</script>`;
 }
 function cell(value, label) { return `<td data-label="${escape(label)}">${value}</td>`; }
 function pdfLink(href, label = 'Open PDF') { return href ? `<a href="${escape(href)}" target="_blank" rel="noreferrer">${escape(label)}</a>` : ''; }
@@ -169,7 +191,8 @@ function publish(html, page) {
   return prerender(html,page);
 }
 function writeDiscovery(pages) {
-  fs.writeFileSync(path.join(root,'sitemap.xml'),`<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${pages.map(p=>`  <url><loc>${urlFor(p)}</loc></url>`).join('\n')}\n</urlset>\n`);
+  const entry = p => { const url = urlFor(p); return `  <url>\n    <loc>${url}</loc>\n    <lastmod>${REVIEWED}</lastmod>\n    <xhtml:link rel="alternate" hreflang="en" href="${url}"/>\n    <xhtml:link rel="alternate" hreflang="bn" href="${url}?lang=bn"/>\n    <image:image><image:loc>${origin}/assets/og/${p.tab}.png</image:loc></image:image>\n  </url>`; };
+  fs.writeFileSync(path.join(root,'sitemap.xml'),`<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">\n${pages.map(entry).join('\n')}\n</urlset>\n`);
   fs.writeFileSync(path.join(root,'robots.txt'),`User-agent: *\nAllow: /\n\nSitemap: ${origin}/sitemap.xml\n`);
 }
-module.exports = { publish, writeDiscovery, renderCaseFiles, renderMedia };
+module.exports = { publish, writeDiscovery, renderCaseFiles, renderMedia, config };

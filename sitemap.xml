@@ -1,17 +1,101 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://obcwb.civicresearch.in/</loc></url>
-  <url><loc>https://obcwb.civicresearch.in/timeline.html</loc></url>
-  <url><loc>https://obcwb.civicresearch.in/litigation.html</loc></url>
-  <url><loc>https://obcwb.civicresearch.in/media.html</loc></url>
-  <url><loc>https://obcwb.civicresearch.in/obc-list.html</loc></url>
-  <url><loc>https://obcwb.civicresearch.in/documents.html</loc></url>
-  <url><loc>https://obcwb.civicresearch.in/evidence.html</loc></url>
-  <url><loc>https://obcwb.civicresearch.in/record-guide.html</loc></url>
-  <url><loc>https://obcwb.civicresearch.in/inventory.html</loc></url>
-  <url><loc>https://obcwb.civicresearch.in/obc-basics.html</loc></url>
-  <url><loc>https://obcwb.civicresearch.in/methods.html</loc></url>
-  <url><loc>https://obcwb.civicresearch.in/reports.html</loc></url>
-  <url><loc>https://obcwb.civicresearch.in/about.html</loc></url>
-  <url><loc>https://obcwb.civicresearch.in/contribute.html</loc></url>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+  <url>
+    <loc>https://obcwb.civicresearch.in/</loc>
+    <lastmod>2026-11-05</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://obcwb.civicresearch.in/"/>
+    <xhtml:link rel="alternate" hreflang="bn" href="https://obcwb.civicresearch.in/?lang=bn"/>
+    <image:image><image:loc>https://obcwb.civicresearch.in/assets/og/home.png</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://obcwb.civicresearch.in/timeline.html</loc>
+    <lastmod>2026-11-05</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://obcwb.civicresearch.in/timeline.html"/>
+    <xhtml:link rel="alternate" hreflang="bn" href="https://obcwb.civicresearch.in/timeline.html?lang=bn"/>
+    <image:image><image:loc>https://obcwb.civicresearch.in/assets/og/timeline.png</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://obcwb.civicresearch.in/litigation.html</loc>
+    <lastmod>2026-11-05</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://obcwb.civicresearch.in/litigation.html"/>
+    <xhtml:link rel="alternate" hreflang="bn" href="https://obcwb.civicresearch.in/litigation.html?lang=bn"/>
+    <image:image><image:loc>https://obcwb.civicresearch.in/assets/og/cases.png</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://obcwb.civicresearch.in/media.html</loc>
+    <lastmod>2026-11-05</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://obcwb.civicresearch.in/media.html"/>
+    <xhtml:link rel="alternate" hreflang="bn" href="https://obcwb.civicresearch.in/media.html?lang=bn"/>
+    <image:image><image:loc>https://obcwb.civicresearch.in/assets/og/media.png</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://obcwb.civicresearch.in/obc-list.html</loc>
+    <lastmod>2026-11-05</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://obcwb.civicresearch.in/obc-list.html"/>
+    <xhtml:link rel="alternate" hreflang="bn" href="https://obcwb.civicresearch.in/obc-list.html?lang=bn"/>
+    <image:image><image:loc>https://obcwb.civicresearch.in/assets/og/obc-list.png</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://obcwb.civicresearch.in/documents.html</loc>
+    <lastmod>2026-11-05</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://obcwb.civicresearch.in/documents.html"/>
+    <xhtml:link rel="alternate" hreflang="bn" href="https://obcwb.civicresearch.in/documents.html?lang=bn"/>
+    <image:image><image:loc>https://obcwb.civicresearch.in/assets/og/documents.png</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://obcwb.civicresearch.in/evidence.html</loc>
+    <lastmod>2026-11-05</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://obcwb.civicresearch.in/evidence.html"/>
+    <xhtml:link rel="alternate" hreflang="bn" href="https://obcwb.civicresearch.in/evidence.html?lang=bn"/>
+    <image:image><image:loc>https://obcwb.civicresearch.in/assets/og/evidence.png</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://obcwb.civicresearch.in/record-guide.html</loc>
+    <lastmod>2026-11-05</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://obcwb.civicresearch.in/record-guide.html"/>
+    <xhtml:link rel="alternate" hreflang="bn" href="https://obcwb.civicresearch.in/record-guide.html?lang=bn"/>
+    <image:image><image:loc>https://obcwb.civicresearch.in/assets/og/entry-framework.png</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://obcwb.civicresearch.in/inventory.html</loc>
+    <lastmod>2026-11-05</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://obcwb.civicresearch.in/inventory.html"/>
+    <xhtml:link rel="alternate" hreflang="bn" href="https://obcwb.civicresearch.in/inventory.html?lang=bn"/>
+    <image:image><image:loc>https://obcwb.civicresearch.in/assets/og/inventory.png</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://obcwb.civicresearch.in/obc-basics.html</loc>
+    <lastmod>2026-11-05</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://obcwb.civicresearch.in/obc-basics.html"/>
+    <xhtml:link rel="alternate" hreflang="bn" href="https://obcwb.civicresearch.in/obc-basics.html?lang=bn"/>
+    <image:image><image:loc>https://obcwb.civicresearch.in/assets/og/obc-basics.png</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://obcwb.civicresearch.in/methods.html</loc>
+    <lastmod>2026-11-05</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://obcwb.civicresearch.in/methods.html"/>
+    <xhtml:link rel="alternate" hreflang="bn" href="https://obcwb.civicresearch.in/methods.html?lang=bn"/>
+    <image:image><image:loc>https://obcwb.civicresearch.in/assets/og/methods.png</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://obcwb.civicresearch.in/reports.html</loc>
+    <lastmod>2026-11-05</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://obcwb.civicresearch.in/reports.html"/>
+    <xhtml:link rel="alternate" hreflang="bn" href="https://obcwb.civicresearch.in/reports.html?lang=bn"/>
+    <image:image><image:loc>https://obcwb.civicresearch.in/assets/og/reports.png</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://obcwb.civicresearch.in/about.html</loc>
+    <lastmod>2026-11-05</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://obcwb.civicresearch.in/about.html"/>
+    <xhtml:link rel="alternate" hreflang="bn" href="https://obcwb.civicresearch.in/about.html?lang=bn"/>
+    <image:image><image:loc>https://obcwb.civicresearch.in/assets/og/about.png</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://obcwb.civicresearch.in/contribute.html</loc>
+    <lastmod>2026-11-05</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://obcwb.civicresearch.in/contribute.html"/>
+    <xhtml:link rel="alternate" hreflang="bn" href="https://obcwb.civicresearch.in/contribute.html?lang=bn"/>
+    <image:image><image:loc>https://obcwb.civicresearch.in/assets/og/contribute.png</image:loc></image:image>
+  </url>
 </urlset>
