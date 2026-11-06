@@ -6,6 +6,7 @@ import subprocess
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
+CORRECTIONS = json.loads((ROOT / 'data/source_corrections.json').read_text(encoding='utf-8'))['corrections']
 CHECKPOINT = '42d21a7ad409792fc94388b11b3ab68923444f67'
 
 def git(*args):
@@ -25,7 +26,15 @@ def main():
             original = json.loads(git('show', f'{CHECKPOINT}:{path}'))
             if isinstance(original, list) and isinstance(current, list):
                 # Research refreshes may add records; every original record must survive unchanged.
-                assert all(item in current for item in original), path
+                # Field-level corrections in data/source_corrections.json are the only allowed edits.
+                for item in original:
+                    if item in current:
+                        continue
+                    fixed = dict(item)
+                    for c in CORRECTIONS:
+                        if c['file'] == path and all(item.get(k) == v for k, v in c['match'].items()) and all(item.get(k) == v for k, v in c['was'].items()):
+                            fixed.update(c['set'])
+                    assert fixed != item and fixed in current, (path, item.get('notif_no') or item.get('date_label') or item.get('href') or item.get('local_file'))
             else:
                 assert current == original, path
             counts['data_files'] += 1
