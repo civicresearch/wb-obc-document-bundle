@@ -983,10 +983,12 @@ function renderBundleSearch() {
   });
 }
 
-if (siteSearch) siteSearch.addEventListener('input', renderBundleSearch);
+// js/search.js replaces this keyword-only search when the site is served over HTTP.
+const smartSearchActive = !!window.WBOBCSearch;
+if (siteSearch && !smartSearchActive) siteSearch.addEventListener('input', renderBundleSearch);
 
 const initialSearch = new URLSearchParams(window.location.search).get('q');
-if (siteSearch && initialSearch) {
+if (siteSearch && initialSearch && !smartSearchActive) {
   siteSearch.value = initialSearch;
   renderBundleSearch();
 }

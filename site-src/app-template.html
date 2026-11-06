@@ -7,8 +7,10 @@
   <meta name="theme-color" content="#0f3b3c">
   <title>WB OBC Archive</title>
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
-  <script src="js/navigation.js?v=20261105-cases" defer></script>
+  <script src="js/navigation.js?v=20261106-search" defer></script>
   <script src="js/export-pdf.js?v=20261105-icon" defer></script>
+  <script src="js/search.js?v=20261106-search" defer></script>
+  <script src="js/export.js?v=20261106-export" defer></script>
   <link rel="manifest" href="pwa-manifest.json">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -6666,10 +6668,12 @@ function renderBundleSearch() {
   });
 }
 
-if (siteSearch) siteSearch.addEventListener('input', renderBundleSearch);
+// js/search.js replaces this keyword-only search when the site is served over HTTP.
+const smartSearchActive = !!window.WBOBCSearch;
+if (siteSearch && !smartSearchActive) siteSearch.addEventListener('input', renderBundleSearch);
 
 const initialSearch = new URLSearchParams(window.location.search).get('q');
-if (siteSearch && initialSearch) {
+if (siteSearch && initialSearch && !smartSearchActive) {
   siteSearch.value = initialSearch;
   renderBundleSearch();
 }
