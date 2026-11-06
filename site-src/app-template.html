@@ -11,6 +11,7 @@
   <script src="js/export-pdf.js?v=20261105-icon" defer></script>
   <script src="js/search.js?v=20261106-search" defer></script>
   <script src="js/export.js?v=20261106-export" defer></script>
+  <script src="js/case-orders-map.js?v=20261106-orders2" defer></script>
   <link rel="manifest" href="pwa-manifest.json">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -87,6 +88,7 @@
             </button>
             <div class="nav-group-items">
               <a href="#case-map" data-tab-target="case-map" data-i18n="navCaseMap">Case map</a>
+              <a href="#case-orders" data-tab-target="case-orders" data-i18n="navCaseOrders">Court orders map</a>
               <a href="#reports" data-tab-target="reports" data-i18n="navReports">Policy Reports</a>
               <a href="#obc-basics" data-tab-target="obc-basics" data-i18n="navOBCBasics">OBC Basics</a>
               <a href="#methods" data-tab-target="methods" data-i18n="navMethods">Evidence Method</a>
@@ -795,6 +797,46 @@
       </div>
       <!-- Case map is rendered from data/case_map.json. -->
       <p class="media-note"><span data-i18n="caseMap.note">The map shows</span> <span id="case-map-count">0</span> <span data-i18n="caseMap.noteCases">proceedings. Status is as reviewed for the archive; check the court record before relying on it.</span> <a href="litigation.html#case-files-title" data-i18n="caseMap.toCards">See all case cards</a></p>
+      <p class="case-map-cta"><a href="case-orders.html" data-i18n="caseMap.toOrders">Go deeper: see every court order on one map →</a></p>
+    </section>
+
+    <section id="case-orders" class="research case-orders-section tab-panel" data-tab-panel="case-orders" hidden>
+      <h2 class="section-heading" data-i18n="caseOrders.heading">Every order, and how the orders connect</h2>
+      <p class="section-sub" data-i18n="caseOrders.intro">Each branch is a family of connected proceedings growing from the 22 May 2024 judgment. Diamonds are Supreme Court orders and circles are High Court orders; dashed orange arcs are links recorded in the orders themselves, such as tagging, appeals, reviews and withdrawals. Select an order to read what it decided and open the PDF.</p>
+      <p class="case-map-cta"><a href="case-map.html" data-i18n="caseOrders.back">← Back to the case-level map</a></p>
+      <div class="com-toolbar" role="search">
+        <input id="com-q" type="search" autocomplete="off" data-i18n-placeholder="caseOrders.search" placeholder="Search case number, party or topic (e.g. 17422, Hasibur, EWS)" aria-label="Search the court orders map">
+        <div class="com-seg" role="group" aria-label="Court">
+          <button type="button" data-com-court="all" aria-pressed="true" data-i18n="caseOrders.allCourts">All courts</button>
+          <button type="button" data-com-court="SC" aria-pressed="false" data-i18n="caseOrders.sc">Supreme Court</button>
+          <button type="button" data-com-court="HC" aria-pressed="false" data-i18n="caseOrders.hc">High Court</button>
+        </div>
+        <button type="button" class="com-btn" id="com-expand" data-i18n="caseOrders.expand">Expand all</button>
+        <button type="button" class="com-btn" id="com-collapse" data-i18n="caseOrders.collapse">Collapse all</button>
+        <button type="button" class="com-btn" id="com-dl" data-i18n="caseOrders.download">Download SVG</button>
+        <span class="com-count" id="com-count" aria-live="polite"></span>
+      </div>
+      <div class="com-layout">
+        <section class="com-panel" aria-label="Court orders map">
+          <div class="com-mapbox" id="com-mapbox"><p class="com-hint" data-i18n="caseOrders.loading">The map needs JavaScript. The full list of orders is below.</p></div>
+          <div class="com-legend" aria-hidden="true">
+            <span><svg width="14" height="14"><rect x="2" y="2" width="10" height="10" fill="var(--secondary)" transform="rotate(45 7 7)"/></svg><span data-i18n="caseOrders.sc">Supreme Court</span></span>
+            <span><svg width="14" height="14"><circle cx="7" cy="7" r="5" fill="var(--secondary)"/></svg><span data-i18n="caseOrders.hcFull">Calcutta High Court</span></span>
+            <span><svg width="14" height="14"><circle cx="7" cy="7" r="5" fill="none" stroke="var(--secondary)" stroke-dasharray="2 2"/></svg><span data-i18n="caseOrders.unarchived">Reported, not archived</span></span>
+            <span><svg width="26" height="10"><path d="M1 5h24" stroke="var(--xlink)" stroke-dasharray="4 3" stroke-width="1.5"/></svg><span data-i18n="caseOrders.recorded">Recorded connection</span></span>
+          </div>
+        </section>
+        <aside class="com-panel com-details" id="com-details" aria-live="polite">
+          <p class="com-kicker" data-i18n="caseOrders.details">Details</p>
+          <p class="com-hint" data-i18n="caseOrders.detailsHint">Select an order in the map or the list below to see the court, case numbers, what it decided and links to the archived PDF and its source.</p>
+        </aside>
+      </div>
+      <section class="com-panel com-outline" aria-labelledby="com-outline-h">
+        <h3 id="com-outline-h" data-i18n="caseOrders.listHeading">All orders, by family</h3>
+        <p class="com-hint" data-i18n="caseOrders.listSub">The same map as a list, in date order within each family.</p>
+        <div id="com-outline"><!-- Court orders map is rendered from data/case_orders_map.json. --></div>
+      </section>
+      <p class="media-note" data-i18n="caseOrders.note">Research archive, not legal advice or current case status. Most files are typeset prints of public court text and are marked as such; check the court’s own record before relying on any entry.</p>
     </section>
 
     <section id="media" class="research media-section tab-panel" data-tab-panel="media" hidden>
@@ -6449,6 +6491,13 @@ const HERO_CONTENT = {
       ['Verify', 'casesStat4Label', 'casesStat4Value']
     ]
   },
+  'case-orders': {
+    eyebrowKey: 'caseOrders.eyebrow',
+    eyebrow: 'Case map · every court order',
+    titleKey: 'caseOrders.title',
+    subKey: 'caseOrders.sub',
+    stats: []
+  },
   'case-map': {
     eyebrowKey: 'caseMap.eyebrow',
     eyebrow: 'Case map · how the cases connect',
@@ -6515,6 +6564,7 @@ const PAGE_FILES = {
   cases: 'litigation.html',
   media: 'media.html',
   'case-map': 'case-map.html',
+  'case-orders': 'case-orders.html',
   'obc-list': 'obc-list.html',
   documents: 'documents.html',
   evidence: 'evidence.html',
@@ -6921,6 +6971,7 @@ function tabForHash(hash) {
   if (id === 'public-hearings' || id === 'missing-records' || id === 'evidence') return 'evidence';
   if (id === 'media' || id.startsWith('media-')) return 'media';
   if (id === 'case-map') return 'case-map';
+  if (id === 'case-orders' || /^n-\d{4}-/.test(id) || id === 'root') return 'case-orders';
   if (id.startsWith('casefile-')) return 'cases';
   if (id === 'cases' || id.startsWith('case-') || id === 'employee-protection-note' || id.startsWith('litigation-note-')) return 'cases';
   if (id === 'entry-framework') return 'entry-framework';

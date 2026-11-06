@@ -745,6 +745,13 @@ const HERO_CONTENT = {
       ['Verify', 'casesStat4Label', 'casesStat4Value']
     ]
   },
+  'case-orders': {
+    eyebrowKey: 'caseOrders.eyebrow',
+    eyebrow: 'Case map · every court order',
+    titleKey: 'caseOrders.title',
+    subKey: 'caseOrders.sub',
+    stats: []
+  },
   'case-map': {
     eyebrowKey: 'caseMap.eyebrow',
     eyebrow: 'Case map · how the cases connect',
@@ -811,6 +818,7 @@ const PAGE_FILES = {
   cases: 'litigation.html',
   media: 'media.html',
   'case-map': 'case-map.html',
+  'case-orders': 'case-orders.html',
   'obc-list': 'obc-list.html',
   documents: 'documents.html',
   evidence: 'evidence.html',
@@ -1217,6 +1225,7 @@ function tabForHash(hash) {
   if (id === 'public-hearings' || id === 'missing-records' || id === 'evidence') return 'evidence';
   if (id === 'media' || id.startsWith('media-')) return 'media';
   if (id === 'case-map') return 'case-map';
+  if (id === 'case-orders' || /^n-\d{4}-/.test(id) || id === 'root') return 'case-orders';
   if (id.startsWith('casefile-')) return 'cases';
   if (id === 'cases' || id.startsWith('case-') || id === 'employee-protection-note' || id.startsWith('litigation-note-')) return 'cases';
   if (id === 'entry-framework') return 'entry-framework';

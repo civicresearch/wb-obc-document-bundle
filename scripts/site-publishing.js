@@ -17,6 +17,7 @@ const config = {
   'obc-basics': ['obcBasicsHeading', 'obcBasicsSub', 'obcBasicsHeroEyebrow', 'Understand OBC classification, backwardness, reservation and evidence requirements through the West Bengal policy and legal record.'],
   methods: ['methodsHeading', 'methodsSub', 'methodsHeroEyebrow', 'Read the archive’s evidence method: backwardness indicators, representation data, surveys, verification and transparent source documentation.'],
   reports: ['reportsHeading', 'reportsSub', 'reportsHeroEyebrow', 'Read the Mandal and Sachar reports alongside West Bengal OBC research, with source PDFs and context for studying backwardness and reservation.'],
+  'case-orders': ['caseOrders.title', 'caseOrders.sub', 'caseOrders.eyebrow', 'Every West Bengal OBC court order since the 2024 Calcutta High Court judgment on one map: Supreme Court and High Court orders, how they connect, and the archived PDFs.'],
   'case-map': ['caseMap.title', 'caseMap.sub', 'caseMap.eyebrow', 'See how the West Bengal OBC court cases connect: the 2024 Calcutta High Court judgment, the Supreme Court appeals, the 2025 and 2026 lists, and candidates’ category claims.'],
   media: ['media.title', 'media.sub', 'media.eyebrow', 'Read news and legal reporting on West Bengal OBC reservation, the 2024 judgment, the 2026 notifications and certificate cases, linked to the court records.'],
   about: ['aboutTitle', 'aboutSub', 'aboutHeroEyebrow', 'About the independent WB OBC Archive by Civic Research Group: its scope, research methods, source verification and ways to contribute.'],
@@ -220,6 +221,24 @@ ${nextEn ? `<text class="cm-next cm-en" x="${n.x + 18 + pillW + 12}" y="${by + 3
   const count = Object.keys(byCase).length;
   return html.replace(marker, out).replace('<span id="case-map-count">0</span>', `<span id="case-map-count" data-en="${count}" data-bn="${bnDigits(count)}">${count}</span>`);
 }
+function renderCaseOrders(html) {
+  const marker = '<!-- Court orders map is rendered from data/case_orders_map.json. -->';
+  if (!html.includes(marker)) return html;
+  const map = read('data/case_orders_map.json');
+  const manifest = read('case_manifest.json');
+  const nodes = [map.root, ...map.families.flatMap(f => f.nodes)];
+  const files = new Set(nodes.map(n => n.file).filter(Boolean));
+  const byFile = {};
+  for (const m of manifest) for (const f of [m.local_file, ...(m.local_files || [])]) if (f) byFile[f] = m;
+  for (const f of files) if (!byFile[f]) throw new Error(`case_orders_map.json: ${f} is not in case_manifest.json`);
+  const ids = new Set(nodes.map(n => n.id));
+  for (const l of map.links) if (!ids.has(l.from) || !ids.has(l.to)) throw new Error(`case_orders_map.json: bad link ${l.from} → ${l.to}`);
+  const keep = ['title','case_numbers','record_type','pages','source_type','source_url','verification_note','later_development','local_file','local_files'];
+  const subset = [...new Set([...files].map(f => byFile[f]))].map(m => Object.fromEntries(keep.filter(k => m[k] != null).map(k => [k, m[k]])));
+  const json = JSON.stringify({ map, manifest: subset }).replace(/</g, '\\u003c');
+  const outline = map.families.map(f => `<details open><summary>${bi(f.label, f.label_bn)}<small>${bi(f.sub || '', f.sub_bn)}</small></summary><ol>${f.nodes.slice().sort((a, b) => a.date.localeCompare(b.date)).map(n => `<li><span class="d">${escape(shortDate(n.date))}</span>${n.file ? `<a href="${escape(n.file)}" target="_blank" rel="noopener">${bi(n.label, n.label_bn)}</a>` : bi(n.label, n.label_bn)} <span class="com-hint">· ${n.court} · ${escape(n.case)}</span></li>`).join('')}</ol></details>`).join('');
+  return html.replace(marker, outline).replace('</section>\n      <p class="media-note" data-i18n="caseOrders.note">', `</section>\n      <script type="application/json" id="com-data">${json}</script>\n      <p class="media-note" data-i18n="caseOrders.note">`);
+}
 function renderMedia(html, pageLinks = {}) {
   if (!html.includes('<!-- Media coverage is rendered from data/media_coverage.json. -->')) return html;
   const items = read('data/media_coverage.json').items.slice().sort((a,b) => b.date.localeCompare(a.date));
@@ -247,6 +266,7 @@ function prerender(html, page) {
   html = renderCaseFiles(html);
   html = renderMedia(html, { cases: 'litigation.html' });
   html = renderCaseMap(html, { cases: 'litigation.html' });
+  html = renderCaseOrders(html);
   if (page.tab === 'cases') {
     const events = read('case_events.json');
     html = html.replace('<!-- Case events are rendered from case_events.json. -->', events.map(e => `<li id="${escape(e.id)}" class="case-event">${e.html}</li>`).join('\n'));
@@ -304,4 +324,4 @@ function writeDiscovery(pages) {
   fs.writeFileSync(path.join(root,'sitemap.xml'),`<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">\n${pages.map(entry).join('\n')}\n</urlset>\n`);
   fs.writeFileSync(path.join(root,'robots.txt'),`User-agent: *\nAllow: /\n\nSitemap: ${origin}/sitemap.xml\n`);
 }
-module.exports = { publish, writeDiscovery, renderCaseFiles, renderMedia, renderCaseMap, config };
+module.exports = { publish, writeDiscovery, renderCaseFiles, renderMedia, renderCaseMap, renderCaseOrders, config };
