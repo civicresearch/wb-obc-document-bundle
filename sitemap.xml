@@ -29,6 +29,13 @@
     <image:image><image:loc>https://obcwb.civicresearch.in/assets/og/case-map.png</image:loc></image:image>
   </url>
   <url>
+    <loc>https://obcwb.civicresearch.in/projects.html</loc>
+    <lastmod>2026-11-05</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://obcwb.civicresearch.in/projects.html"/>
+    <xhtml:link rel="alternate" hreflang="bn" href="https://obcwb.civicresearch.in/projects.html?lang=bn"/>
+    <image:image><image:loc>https://obcwb.civicresearch.in/assets/og/projects.png</image:loc></image:image>
+  </url>
+  <url>
     <loc>https://obcwb.civicresearch.in/case-orders.html</loc>
     <lastmod>2026-11-05</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://obcwb.civicresearch.in/case-orders.html"/>

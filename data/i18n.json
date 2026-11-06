@@ -1168,7 +1168,22 @@
     "caseOrders.showMap": "Show the map",
     "obc-listStat1Value": "66",
     "obc-listStat2Value": "7%",
-    "obc-listStat3Value": "2026"
+    "obc-listStat3Value": "2026",
+    "navProjects": "CRG projects",
+    "projects.eyebrow": "Civic Research Group · other projects",
+    "projects.kicker": "Civic Research Group",
+    "projects.title": "Projects by Civic Research Group",
+    "projects.sub": "The WB OBC Archive is one of several free public-interest tools built by Civic Research Group, a volunteer research collective in West Bengal. Careful work for the common good.",
+    "projects.live": "Live",
+    "projects.here": "You are here",
+    "projects.p1.title": "SIR Adjudication & Tribunal Appeals dashboard",
+    "projects.p1.desc": "Search 59.6 lakh adjudicated-voter records and 38.25 lakh Tribunal appeals from the Special Intensive Revision by name, EPIC number, constituency, district, booth, gram panchayat or municipality.",
+    "projects.p2.title": "Voter Deletion Application Generator",
+    "projects.p2.desc": "A guided tool for preparing letters to the Electoral Registration Officer and RTI applications that ask for the order, reasons and records behind a voter-roll deletion.",
+    "projects.p3.title": "West Bengal OBC Archive",
+    "projects.p3.desc": "A searchable, source-led archive of West Bengal OBC notifications, hearings, class status, policy documents and litigation records from 1993 to 2026.",
+    "projects.aboutText": "Civic Research Group works on voter rights, reservation records and public data in West Bengal. Every tool is free to use, and the sources behind it are published.",
+    "projects.visit": "Visit civicresearch.in"
   },
   "bn": {
     "siteTitle": "পশ্চিমবঙ্গ ওবিসি আর্কাইভ",
@@ -2339,6 +2354,21 @@
     "caseOrders.listSub": "একই মানচিত্র তালিকা আকারে, প্রতিটি গোষ্ঠীতে তারিখ অনুযায়ী।",
     "caseOrders.note": "এটি গবেষণা আর্কাইভ, আইনি পরামর্শ বা মামলার বর্তমান অবস্থা নয়। বেশিরভাগ ফাইল আদালতের প্রকাশ্য পাঠের মুদ্রিত রূপ এবং তা চিহ্নিত; নির্ভর করার আগে আদালতের নিজস্ব নথি দেখুন।",
     "caseOrders.swipe": "পুরো মানচিত্র দেখতে পাশে সোয়াইপ করুন, অথবা নিচের তালিকা দেখুন।",
-    "caseOrders.showMap": "মানচিত্র দেখুন"
+    "caseOrders.showMap": "মানচিত্র দেখুন",
+    "navProjects": "CRG-র অন্যান্য কাজ",
+    "projects.eyebrow": "সিভিক রিসার্চ গ্রুপ · অন্যান্য প্রকল্প",
+    "projects.kicker": "সিভিক রিসার্চ গ্রুপ",
+    "projects.title": "সিভিক রিসার্চ গ্রুপের প্রকল্প",
+    "projects.sub": "এই ওবিসি আর্কাইভ সিভিক রিসার্চ গ্রুপের একটি কাজ। পশ্চিমবঙ্গের এই স্বেচ্ছাসেবী গবেষক দল সাধারণ মানুষের কাজে লাগে এমন আরও কয়েকটি বিনামূল্যের পরিষেবা চালায়।",
+    "projects.live": "চালু",
+    "projects.here": "আপনি এখানে আছেন",
+    "projects.p1.title": "SIR শুনানি ও ট্রাইব্যুনাল আপিল ড্যাশবোর্ড",
+    "projects.p1.desc": "বিশেষ নিবিড় সংশোধনে (SIR) শুনানি হওয়া ৫৯.৬ লক্ষ ভোটারের তথ্য আর ট্রাইব্যুনালে করা ৩৮.২৫ লক্ষ আপিল খুঁজুন: নাম, EPIC নম্বর, বিধানসভা কেন্দ্র, জেলা, বুথ, গ্রাম পঞ্চায়েত বা পুরসভা দিয়ে।",
+    "projects.p2.title": "ভোটার তালিকা থেকে নাম বাদের আবেদন তৈরি",
+    "projects.p2.desc": "ভোটার তালিকা থেকে নাম কেন বাদ গেল, সেই আদেশ, কারণ ও নথি চেয়ে ERO-কে চিঠি আর RTI আবেদন ধাপে ধাপে তৈরি করুন।",
+    "projects.p3.title": "পশ্চিমবঙ্গ ওবিসি আর্কাইভ",
+    "projects.p3.desc": "১৯৯৩ থেকে ২০২৬ পর্যন্ত পশ্চিমবঙ্গের ওবিসি বিজ্ঞপ্তি, জনশুনানি, শ্রেণির অবস্থা, নীতির নথি ও মামলার রেকর্ড, মূল উৎস সহ, এক জায়গায় খোঁজার ব্যবস্থা।",
+    "projects.aboutText": "সিভিক রিসার্চ গ্রুপ পশ্চিমবঙ্গে ভোটাধিকার, সংরক্ষণের নথি ও সরকারি তথ্য নিয়ে কাজ করে। প্রতিটি পরিষেবা বিনামূল্যে, আর যে উৎস থেকে তথ্য নেওয়া তা-ও প্রকাশ করা থাকে।",
+    "projects.visit": "civicresearch.in দেখুন"
   }
 }

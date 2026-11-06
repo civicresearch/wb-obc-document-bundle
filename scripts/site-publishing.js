@@ -20,6 +20,7 @@ const config = {
   'case-orders': ['caseOrders.title', 'caseOrders.sub', 'caseOrders.eyebrow', 'Every West Bengal OBC court order since the 2024 Calcutta High Court judgment on one map: Supreme Court and High Court orders, how they connect, and the archived PDFs.'],
   'case-map': ['caseMap.title', 'caseMap.sub', 'caseMap.eyebrow', 'See how the West Bengal OBC court cases connect: the 2024 Calcutta High Court judgment, the Supreme Court appeals, the 2025 and 2026 lists, and candidates’ category claims.'],
   media: ['media.title', 'media.sub', 'media.eyebrow', 'Read news and legal reporting on West Bengal OBC reservation, the 2024 judgment, the 2026 notifications and certificate cases, linked to the court records.'],
+  projects: ['projects.title', 'projects.sub', 'projects.eyebrow', 'Other free public-interest projects by Civic Research Group: the SIR adjudication and Tribunal appeals dashboard, the voter deletion application generator, and the West Bengal OBC Archive.'],
   about: ['aboutTitle', 'aboutSub', 'aboutHeroEyebrow', 'About the independent WB OBC Archive by Civic Research Group: its scope, research methods, source verification and ways to contribute.'],
   contribute: ['contribute.heroTitle', 'contribute.heroSub', 'contribute.heroKicker', 'Contribute a public document, court update or correction to the WB OBC Archive through guided forms and a structured source-report process.']
 };
