@@ -1163,7 +1163,9 @@
     "caseOrders.detailsHint": "Select an order in the map or the list below to see the court, case numbers, what it decided and links to the archived PDF and its source.",
     "caseOrders.listHeading": "All orders, by family",
     "caseOrders.listSub": "The same map as a list, in date order within each family.",
-    "caseOrders.note": "Research archive, not legal advice or current case status. Most files are typeset prints of public court text and are marked as such; check the court’s own record before relying on any entry."
+    "caseOrders.note": "Research archive, not legal advice or current case status. Most files are typeset prints of public court text and are marked as such; check the court’s own record before relying on any entry.",
+    "caseOrders.swipe": "Swipe sideways to see the whole map, or use the list below.",
+    "caseOrders.showMap": "Show the map"
   },
   "bn": {
     "siteTitle": "পশ্চিমবঙ্গ ওবিসি আর্কাইভ",
@@ -2332,6 +2334,8 @@
     "caseOrders.detailsHint": "আদালত, মামলা নম্বর, সিদ্ধান্ত এবং সংরক্ষিত PDF ও উৎসের লিঙ্ক দেখতে মানচিত্রে বা নিচের তালিকায় একটি আদেশ বেছে নিন।",
     "caseOrders.listHeading": "গোষ্ঠী অনুযায়ী সব আদেশ",
     "caseOrders.listSub": "একই মানচিত্র তালিকা আকারে, প্রতিটি গোষ্ঠীতে তারিখ অনুযায়ী।",
-    "caseOrders.note": "এটি গবেষণা আর্কাইভ, আইনি পরামর্শ বা মামলার বর্তমান অবস্থা নয়। বেশিরভাগ ফাইল আদালতের প্রকাশ্য পাঠের মুদ্রিত রূপ এবং তা চিহ্নিত; নির্ভর করার আগে আদালতের নিজস্ব নথি দেখুন।"
+    "caseOrders.note": "এটি গবেষণা আর্কাইভ, আইনি পরামর্শ বা মামলার বর্তমান অবস্থা নয়। বেশিরভাগ ফাইল আদালতের প্রকাশ্য পাঠের মুদ্রিত রূপ এবং তা চিহ্নিত; নির্ভর করার আগে আদালতের নিজস্ব নথি দেখুন।",
+    "caseOrders.swipe": "পুরো মানচিত্র দেখতে পাশে সোয়াইপ করুন, অথবা নিচের তালিকা দেখুন।",
+    "caseOrders.showMap": "মানচিত্র দেখুন"
   }
 }

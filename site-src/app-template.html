@@ -7,11 +7,11 @@
   <meta name="theme-color" content="#0f3b3c">
   <title>WB OBC Archive</title>
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
-  <script src="js/navigation.js?v=20261106-casemap" defer></script>
+  <script src="js/navigation.js?v=20261106-polish" defer></script>
   <script src="js/export-pdf.js?v=20261105-icon" defer></script>
   <script src="js/search.js?v=20261106-search" defer></script>
   <script src="js/export.js?v=20261106-export" defer></script>
-  <script src="js/case-orders-map.js?v=20261106-orders2" defer></script>
+  <script src="js/case-orders-map.js?v=20261106-polish" defer></script>
   <link rel="manifest" href="pwa-manifest.json">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -247,7 +247,7 @@
 
     <section id="obc-list" class="research tab-panel" data-tab-panel="obc-list" hidden>
       <h2 class="section-heading" data-i18n="obcList.title">West Bengal OBC Class Status List</h2>
-      <p class="section-sub" data-i18n="obcList.sub">A consolidated lookup for classes found in the bundled OBC record. It includes the current 66 classes in <a href="obc_pdfs/2026-05-18_945-BCW-MR-23-2026_current_list.pdf" target="_blank" rel="noreferrer">Notification No. 945-BCW/MR-23/2026</a>, older post-2010 entries affected by the 22 May 2024 judgment record, and the 2025 additions withdrawn by <a href="obc_pdfs/2026-05-18_944-BCW-MR-23-2026_withdrawal.pdf" target="_blank" rel="noreferrer">Notification No. 944-BCW/MR-23/2026</a>.</p>
+<!-- obcList.sub is shown in the page heading. -->
 
       <div class="report-grid">
         <article class="report-card">
@@ -343,7 +343,7 @@
 
     <section id="obc-basics" class="research report-section tab-panel" data-tab-panel="obc-basics" hidden>
       <h2 class="section-heading" data-i18n="obcBasicsHeading">What OBC Means</h2>
-      <p class="section-sub">OBC is a constitutional-administrative category for socially and educationally backward classes. It is not a religion quota, and it is not limited to Hindu caste names.</p>
+
 
       <div class="report-grid">
         <article class="report-card">
@@ -818,6 +818,8 @@
       </div>
       <div class="com-layout">
         <section class="com-panel" aria-label="Court orders map">
+          <button type="button" class="com-map-toggle" aria-expanded="false" data-i18n="caseOrders.showMap">Show the map</button>
+          <p class="com-swipe-hint" data-i18n="caseOrders.swipe">Swipe sideways to see the whole map, or use the list below.</p>
           <div class="com-mapbox" id="com-mapbox"><p class="com-hint" data-i18n="caseOrders.loading">The map needs JavaScript. The full list of orders is below.</p></div>
           <div class="com-legend" aria-hidden="true">
             <span><svg width="14" height="14"><rect x="2" y="2" width="10" height="10" fill="var(--secondary)" transform="rotate(45 7 7)"/></svg><span data-i18n="caseOrders.sc">Supreme Court</span></span>

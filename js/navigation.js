@@ -240,3 +240,26 @@ syncBilingualData();
     l.addEventListener('blur', clear);
   });
 })();
+
+// Back-to-top button for long pages.
+(() => {
+  const button = document.createElement('button');
+  button.type = 'button';
+  button.className = 'to-top';
+  const label = () => (document.documentElement.lang === 'bn' ? 'ওপরে ফিরুন' : 'Back to top');
+  button.setAttribute('aria-label', label());
+  button.title = label();
+  button.textContent = '↑';
+  document.body.appendChild(button);
+  document.addEventListener('wbobc:langchange', () => { button.setAttribute('aria-label', label()); button.title = label(); });
+  let ticking = false;
+  const update = () => { button.classList.toggle('is-visible', window.scrollY > Math.max(1200, window.innerHeight * 1.5)); ticking = false; };
+  window.addEventListener('scroll', () => { if (!ticking) { ticking = true; requestAnimationFrame(update); } }, { passive: true });
+  button.addEventListener('click', () => {
+    const smooth = !window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    window.scrollTo({ top: 0, behavior: smooth ? 'smooth' : 'auto' });
+    const target = document.getElementById('main-content') || document.querySelector('main');
+    if (target) { target.setAttribute('tabindex', '-1'); target.focus({ preventScroll: true }); }
+  });
+  update();
+})();

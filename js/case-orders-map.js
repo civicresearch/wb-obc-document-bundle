@@ -283,4 +283,12 @@
   if (ex) ex.addEventListener('click', function () { state.collapsed = {}; draw(); });
   if (co) co.addEventListener('click', function () { state.map.families.forEach(function (f) { state.collapsed[f.id] = true; }); draw(); });
   if (dl) dl.addEventListener('click', downloadSvg);
+  var mt = document.querySelector('.com-map-toggle');
+  if (mt) mt.addEventListener('click', function () {
+    var panel = mt.closest('.com-panel'), open = !panel.classList.contains('map-open');
+    panel.classList.toggle('map-open', open);
+    mt.setAttribute('aria-expanded', String(open));
+    mt.textContent = open ? t('Hide the map', 'মানচিত্র লুকান') : t('Show the map', 'মানচিত্র দেখুন');
+    if (open) draw();
+  });
 })();
