@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-06",
+  "updated": "2026-11-10",
   "note": "Order-level map for case-orders.html, a drill-down from case-map.html. Each node with a 'file' takes its title, holding note and source from the matching case_manifest.json entry; nodes without a file carry their own note and source. Links describe procedural connections recorded in the orders themselves. label_bn fields hold the Bengali text.",
   "root": {
     "id": "root",
@@ -24,6 +24,15 @@
           "label": "Aatmadeep's SLP paper book",
           "file": "case_pdfs/2024-07-28_Supreme-Court_SLP-C-16936-2024_Aatmadeep_paper-book.pdf",
           "label_bn": "আত্মদীপের SLP পেপার বুক"
+        },
+        {
+          "id": "n-2024-08-05",
+          "date": "2024-08-05",
+          "court": "SC",
+          "case": "SLP(C) 17751–17755/2024",
+          "label": "Notice issued; State to explain the 77 classes",
+          "file": "case_pdfs/2024-08-05_Supreme-Court_SLP-C-17751-17755-2024_record-of-proceedings-compilation.pdf",
+          "label_bn": "নোটিস জারি; ৭৭টি শ্রেণির ব্যাখ্যা চাওয়া হল"
         },
         {
           "id": "n-2024-11-22",
@@ -74,13 +83,10 @@
           "id": "n-2025-11-06",
           "date": "2025-11-06",
           "court": "SC",
-          "case": "State's appeals (order not archived)",
-          "label": "High Court told not to proceed on the new list",
-          "unarchived": true,
-          "title": "Supreme Court: Calcutta High Court told not to proceed with the new-list matter",
-          "note": "Reported by Scroll on 7 November 2025: a three-judge bench led by Chief Justice B.R. Gavai stayed the High Court proceedings on the fresh OBC list until further orders. The date is inferred from the report and the 14 October 2025 listing order; the court's own order has not been found or archived.",
-          "source_url": "https://scroll.in/latest/1088355/supreme-court-stays-proceedings-in-calcutta-hc-on-preparation-of-new-west-bengal-obc-list",
-          "label_bn": "নতুন তালিকা নিয়ে হাইকোর্টকে এগোতে নিষেধ"
+          "case": "SLP(C) 17751–17755/2024",
+          "label": "High Court not to go ahead until further orders",
+          "file": "case_pdfs/2025-11-06_Supreme-Court_SLP-C-17751-17755-2024_order.pdf",
+          "label_bn": "পরবর্তী নির্দেশ পর্যন্ত হাইকোর্ট শুনানি এগোবে না"
         },
         {
           "id": "n-2026-07-14",
@@ -236,6 +242,15 @@
       "sub": "WPA(P) 305/2026, MAT 1320/2026 and single-judge petitions",
       "nodes": [
         {
+          "id": "n-2026-06-29",
+          "date": "2026-06-29",
+          "court": "HC",
+          "case": "WPA(P) 305/2026",
+          "label": "PIL on the notifications: first hearing",
+          "file": "case_pdfs/2026-06-29_Calcutta-High-Court_WPA-P-305-2026_first-hearing_order.pdf",
+          "label_bn": "বিজ্ঞপ্তির বিরুদ্ধে জনস্বার্থ মামলা: প্রথম শুনানি"
+        },
+        {
           "id": "n-2026-07-01",
           "date": "2026-07-01",
           "court": "HC",
@@ -263,6 +278,15 @@
           "label_bn": "একক বেঞ্চে চ্যালেঞ্জ খারিজ"
         },
         {
+          "id": "n-2026-07-07b",
+          "date": "2026-07-07",
+          "court": "HC",
+          "case": "WPA(P) 319/2026",
+          "label": "Mijanul Kabir PIL: State asked to appear",
+          "file": "case_pdfs/2026-07-07_Calcutta-High-Court_WPA-P-319-2026_Mijanul-Kabir_order.pdf",
+          "label_bn": "মিজানুল কবির মামলা: রাজ্যকে হাজির হতে বলা হল"
+        },
+        {
           "id": "n-2026-07-08",
           "date": "2026-07-08",
           "court": "HC",
@@ -281,6 +305,15 @@
           "label_bn": "ইয়াসিন চৌধুরীর আবেদন বহাল"
         },
         {
+          "id": "n-2026-07-22",
+          "date": "2026-07-22",
+          "court": "HC",
+          "case": "WPA(P) 319/2026",
+          "label": "Mijanul Kabir PIL: affidavits called for",
+          "file": "case_pdfs/2026-07-22_Calcutta-High-Court_WPA-P-319-2026_Mijanul-Kabir_order.pdf",
+          "label_bn": "মিজানুল কবির মামলা: হলফনামা চাওয়া হল"
+        },
+        {
           "id": "n-2026-08-12",
           "date": "2026-08-12",
           "court": "HC",
@@ -288,6 +321,15 @@
           "label": "Shreyasi Dhang: 2025–26 certificates void",
           "file": "case_pdfs/2026-08-12_Calcutta-High-Court_MAT-1320-2026_Shreyasi-Dhang_judgment.pdf",
           "label_bn": "শ্রেয়সী ধাং: ২০২৫–২৬-এর শংসাপত্র অবৈধ"
+        },
+        {
+          "id": "n-2026-08-18b",
+          "date": "2026-08-18",
+          "court": "HC",
+          "case": "WPA(P) 275 and 300 of 2026",
+          "label": "Certificate re-verification memo stayed",
+          "file": "case_pdfs/2026-08-18_Calcutta-High-Court_WPA-P-275-300-2026_certificate-reverification_stay-order.pdf",
+          "label_bn": "শংসাপত্র পুনর্যাচাইয়ের মেমো স্থগিত"
         },
         {
           "id": "n-2026-10-01",
@@ -324,6 +366,15 @@
           "label": "Appeal: single judge upheld",
           "file": "case_pdfs/2026-08-18_Calcutta-High-Court_MAT-1374-2026_Hasibur-Rahaman-Mondal_judgment.pdf",
           "label_bn": "আপিল: একক বেঞ্চের রায় বহাল"
+        },
+        {
+          "id": "n-2026-09-09",
+          "date": "2026-09-09",
+          "court": "HC",
+          "case": "FMA 1002/2026",
+          "label": "2nd SLST EWS appeal: Commission asked to respond",
+          "file": "case_pdfs/2026-09-09_Calcutta-High-Court_FMA-1002-2026_Mir-Mazharul-Islam_order.pdf",
+          "label_bn": "দ্বিতীয় SLST-এর EWS আপিল: কমিশনের মত চাওয়া হল"
         },
         {
           "id": "n-2026-09-14",
@@ -537,9 +588,33 @@
     },
     {
       "from": "n-2025-11-06",
-      "to": "n-2025-07-28",
-      "label": "Concerns the High Court new-list matter",
-      "label_bn": "হাইকোর্টের নতুন তালিকার মামলা সংক্রান্ত"
+      "to": "n-2025-06-17",
+      "label": "High Court told not to go ahead with the hearing",
+      "label_bn": "হাইকোর্টকে শুনানি না এগোতে বলা হল"
+    },
+    {
+      "from": "n-2026-07-03",
+      "to": "n-2026-06-29",
+      "label": "Same PIL (WPA(P) 305/2026)",
+      "label_bn": "একই মামলা (WPA(P) 305/2026)"
+    },
+    {
+      "from": "n-2026-07-22",
+      "to": "n-2026-07-07b",
+      "label": "Same PIL (WPA(P) 319/2026)",
+      "label_bn": "একই মামলা (WPA(P) 319/2026)"
+    },
+    {
+      "from": "n-2026-07-07b",
+      "to": "n-2026-07-03",
+      "label": "Same notifications challenged",
+      "label_bn": "একই বিজ্ঞপ্তির বিরুদ্ধে"
+    },
+    {
+      "from": "n-2026-09-14",
+      "to": "n-2026-09-09",
+      "label": "Same appeal (FMA 1002/2026)",
+      "label_bn": "একই আপিল (FMA 1002/2026)"
     }
   ]
 }

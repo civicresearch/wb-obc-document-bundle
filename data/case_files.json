@@ -1,5 +1,5 @@
 {
-  "reviewed": "2026-11-05",
+  "reviewed": "2026-11-10",
   "note": "Groups the litigation records in case_events.json into proceedings. Status lines summarise what the archived orders record; check the court's case-status service before relying on them.",
   "cases": [
     {
@@ -48,15 +48,17 @@
       "status": "withdrawn",
       "status_label": "State and Commission petitions withdrawn 14 Jul 2026",
       "status_label_bn": "রাজ্য ও কমিশনের আবেদন ১৪ জুলাই ২০২৬ প্রত্যাহৃত",
-      "summary": "The State and the West Bengal Commission for Backward Classes appealed the 2024 judgment. In March 2025 the State told the Court that the Commission was redoing the identification exercise. On 14 July 2026 the Court allowed the State and Commission petitions to be withdrawn, recording that other aggrieved parties may still pursue their own challenges.",
-      "summary_bn": "রাজ্য ও পশ্চিমবঙ্গ অনগ্রসর শ্রেণি কমিশন ২০২৪-এর রায়ের বিরুদ্ধে আপিল করে। মার্চ ২০২৫-এ রাজ্য জানায় কমিশন নতুন করে চিহ্নিতকরণ করছে। ১৪ জুলাই ২০২৬ আদালত রাজ্য ও কমিশনের আবেদন প্রত্যাহারের অনুমতি দেয়; অন্য সংক্ষুব্ধ পক্ষ নিজস্ব চ্যালেঞ্জ চালাতে পারে।",
+      "summary": "The State and the West Bengal Commission for Backward Classes appealed the 2024 judgment. On 5 August 2024 the Court issued notice and asked the State to explain the survey and consultation behind the 77 designations. In March 2025 the State said the Commission was redoing the exercise, and on 6 November 2025 the Court told the High Court not to go ahead with the hearing until further orders. On 14 July 2026 the State and Commission petitions were withdrawn; other aggrieved parties may still pursue their own challenges.",
+      "summary_bn": "রাজ্য ও পশ্চিমবঙ্গ অনগ্রসর শ্রেণি কমিশন ২০২৪-এর রায়ের বিরুদ্ধে আপিল করে। ৫ আগস্ট ২০২৪ আদালত নোটিস দিয়ে রাজ্যকে জানাতে বলে, ৭৭টি শ্রেণি ঘোষণার আগে কী সমীক্ষা ও পরামর্শ হয়েছিল। মার্চ ২০২৫-এ রাজ্য জানায় কমিশন নতুন করে কাজটি করছে, আর ৬ নভেম্বর ২০২৫ আদালত হাইকোর্টকে পরবর্তী নির্দেশ পর্যন্ত শুনানি না এগোতে বলে। ১৪ জুলাই ২০২৬ রাজ্য ও কমিশনের আবেদন প্রত্যাহৃত হয়; অন্য সংক্ষুব্ধ পক্ষ নিজেদের মামলা চালিয়ে যেতে পারে।",
       "records": [
         "case-2024-07-28",
+        "case-2024-08-05",
         "case-2024-11-22",
         "case-2024-12-09",
         "case-2025-01-07",
         "case-2025-03-18",
         "case-2025-10-14",
+        "case-2025-11-06",
         "case-2026-07-14"
       ],
       "related": [
@@ -140,7 +142,6 @@
       "records": [
         "case-2025-07-18",
         "case-2025-07-28",
-        "case-2025-11-06",
         "case-2026-03-11",
         "case-2026-07-14"
       ],
@@ -245,11 +246,13 @@
       "summary": "A PIL against the 18 May 2026 notifications (944, 945 and 946) was not entertained because the Supreme Court was already seized of the main issues. The petitioner later went to the Supreme Court (Diary 41300 of 2026). A single-judge challenge to the same notifications was dismissed on 7 July 2026 for the same reason.",
       "summary_bn": "১৮ মে ২০২৬-এর বিজ্ঞপ্তি (৯৪৪, ৯৪৫, ৯৪৬)-এর বিরুদ্ধে জনস্বার্থ মামলা গ্রহণ করা হয়নি, কারণ মূল প্রশ্নগুলি সুপ্রিম কোর্টে বিচারাধীন। আবেদনকারী পরে সুপ্রিম কোর্টে যান (ডায়েরি ৪১৩০০/২০২৬)। একই কারণে ৭ জুলাই ২০২৬ একই বিজ্ঞপ্তির বিরুদ্ধে একক বেঞ্চের মামলাও খারিজ হয়।",
       "records": [
+        "case-2026-06-29",
         "case-2026-07-03",
         "case-2026-07-07"
       ],
       "related": [
-        "casefile-shreyasi-dhang-2026"
+        "casefile-shreyasi-dhang-2026",
+        "casefile-mijanul-kabir-pil-2026"
       ]
     },
     {
@@ -366,6 +369,7 @@
       "summary": "Cases on how ongoing recruitments handle candidates whose OBC status fell away. SLST candidates may be considered as EWS after verification (review refused); candidates already selected as OBC-A are outside the 7 August 2026 notification; candidates dropped from the list may compete as EWS in police recruitment. Whether the new roster can apply midway through a selection is pending before the Chief Justice's Bench.",
       "summary_bn": "চলমান নিয়োগে যাঁদের ওবিসি মর্যাদা চলে গেছে তাঁদের নিয়ে মামলা। যাচাইয়ের পর SLST প্রার্থীরা EWS হিসেবে বিবেচিত হতে পারেন (পুনর্বিবেচনা খারিজ); আগেই ওবিসি-এ হিসেবে নির্বাচিতরা ৭ আগস্ট ২০২৬-এর বিজ্ঞপ্তির বাইরে; তালিকা থেকে বাদ পড়া প্রার্থীরা পুলিশ নিয়োগে EWS হিসেবে লড়তে পারেন। চলমান নিয়োগের মাঝপথে নতুন রোস্টার প্রয়োগ করা যায় কি না, তা প্রধান বিচারপতির বেঞ্চে বিচারাধীন।",
       "records": [
+        "case-2026-09-09",
         "case-2026-09-14",
         "case-2026-09-23",
         "case-2026-10-13-aslam",
@@ -375,6 +379,54 @@
       "related": [
         "casefile-category-petitions-oct-2026",
         "casefile-admission-recruitment-claims-2026",
+        "casefile-shreyasi-dhang-2026"
+      ]
+    },
+    {
+      "id": "casefile-mijanul-kabir-pil-2026",
+      "court": "Calcutta High Court",
+      "forum": "Division Bench, public interest litigation",
+      "title": "Mijanul Kabir v. State of West Bengal",
+      "title_bn": "মিজানুল কবির বনাম পশ্চিমবঙ্গ রাজ্য",
+      "case_numbers": [
+        "WPA(P) 319 of 2026"
+      ],
+      "filed": "2026",
+      "status": "pending",
+      "status_label": "Pending; affidavits ordered 22 Jul 2026",
+      "status_label_bn": "বিচারাধীন; ২২ জুলাই ২০২৬ হলফনামা চাওয়া হয়েছে",
+      "summary": "A second PIL against the 18 May 2026 notifications, filed days before the first one was turned away. It asks for Notifications 944 and 945 and Letter 946 to be quashed and for the 2025 notifications to be restored for the 74 affected communities. Unlike the first PIL it was not dismissed: on 22 July 2026 the Court called for affidavits and left open whether the PIL is maintainable.",
+      "summary_bn": "১৮ মে ২০২৬-এর বিজ্ঞপ্তির বিরুদ্ধে দ্বিতীয় জনস্বার্থ মামলা, প্রথমটি খারিজ হওয়ার কয়েক দিন আগে দায়ের হয়। আর্জি: ৯৪৪ ও ৯৪৫ নং বিজ্ঞপ্তি ও ৯৪৬ নং চিঠি বাতিল করে ক্ষতিগ্রস্ত ৭৪টি সম্প্রদায়ের জন্য ২০২৫-এর বিজ্ঞপ্তি ফিরিয়ে আনা। প্রথম মামলার মতো এটি খারিজ হয়নি: ২২ জুলাই ২০২৬ আদালত হলফনামা চেয়েছে, আর মামলাটি চলতে পারে কি না সেই প্রশ্ন খোলা রেখেছে।",
+      "records": [
+        "case-2026-07-07-mijanul",
+        "case-2026-07-22"
+      ],
+      "related": [
+        "casefile-rjf-pil-2026",
+        "casefile-shreyasi-dhang-2026"
+      ]
+    },
+    {
+      "id": "casefile-certificate-reverification-2026",
+      "court": "Calcutta High Court",
+      "forum": "Division Bench, public interest litigation",
+      "title": "Dr. Md. Adil Hossain v. State of West Bengal (re-verification of caste certificates)",
+      "title_bn": "ড. মহম্মদ আদিল হোসেন বনাম পশ্চিমবঙ্গ রাজ্য (জাতিগত শংসাপত্রের পুনর্যাচাই)",
+      "case_numbers": [
+        "WPA(P) 275 of 2026",
+        "WPA(P) 300 of 2026 (CPI(ML) Liberation)"
+      ],
+      "filed": "2026",
+      "status": "pending",
+      "status_label": "Memo stayed 18 Aug 2026; pending",
+      "status_label_bn": "১৮ আগস্ট ২০২৬ মেমো স্থগিত; বিচারাধীন",
+      "summary": "Two PILs against the BCW Department's memo of 14 May 2026, which told Sub-Divisional Officers to re-verify every SC, ST and OBC certificate issued since 2011 and linked the check to names deleted from the voter list. On 18 August 2026 the Court stayed the memo until the PILs are decided, while leaving officers free to act in individual cases under the 1994 Act and 1995 Rules. The Department sent the stay to all District Magistrates on 21 August 2026.",
+      "summary_bn": "অনগ্রসর শ্রেণি কল্যাণ দপ্তরের ১৪ মে ২০২৬-এর মেমোর বিরুদ্ধে দুটি জনস্বার্থ মামলা। মেমোয় মহকুমা শাসকদের ২০১১ থেকে দেওয়া সব SC, ST ও ওবিসি শংসাপত্র নতুন করে যাচাই করতে বলা হয়েছিল, আর যাচাইকে ভোটার তালিকা থেকে নাম বাদ যাওয়ার সঙ্গে জোড়া হয়েছিল। ১৮ আগস্ট ২০২৬ আদালত মামলার নিষ্পত্তি পর্যন্ত মেমোটি স্থগিত রাখে, তবে ১৯৯৪-এর আইন ও ১৯৯৫-এর বিধি মেনে আলাদা ক্ষেত্রে ব্যবস্থা নেওয়ার পথ খোলা রাখে। ২১ আগস্ট ২০২৬ দপ্তর স্থগিতাদেশটি সব জেলাশাসককে পাঠায়।",
+      "records": [
+        "case-2026-08-18-reverification"
+      ],
+      "related": [
+        "casefile-sir-certificates-2025",
         "casefile-shreyasi-dhang-2026"
       ]
     }

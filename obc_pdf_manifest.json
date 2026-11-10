@@ -412,5 +412,95 @@
     "source_url": "https://wbxpress.com/revised-model-100-point-roster-west-bengal/",
     "pages": 5,
     "sha256": "b6a91864c7b7c2280ba7da9ae1f04458d953628f14fbe8647c9e4e36db218542"
+  },
+  {
+    "status": "copied_research_file",
+    "notif_no": "390-Estt./WBCBC",
+    "date": "2025-05-26",
+    "local_pdf": "obc_pdfs/2025-05-26_390-Estt-WBCBC_benchmark-survey-7-classes.pdf",
+    "summary": "West Bengal Commission for Backward Classes letter to all District Magistrates and the KMC Commissioner. Citing the High Court order of 6 May 2025 in WPA(P) 111/2025, it records that seven communities not on any list had applied for OBC inclusion (Mahishya, Baishya Saha, Kayastha, Samudra Banik, Deswali Majhi, Beniya (Gandha Banik) and Ekadash Tili) and asks for a benchmark survey of them from 28 May to 6 June 2025, with BAE&S and CRI to report to the Commission by 9 June 2025.",
+    "source_url": "https://wbcbc.in/",
+    "pages": 2,
+    "sha256": "b44538a80a5439242e731b6a6feb2d4d6a90ec39323df98f1499d263f835ce49"
+  },
+  {
+    "status": "copied_research_file",
+    "notif_no": "407-Estt./WBCBC and 408-Estt./WBCBC",
+    "date": "2025-05-28",
+    "local_pdf": "obc_pdfs/2025-05-28_407-408-Estt-WBCBC_recommendation-25-classes.pdf",
+    "summary": "Compiled file. The Commission sends the BCW Secretary its reports on 25 classes, recommended for inclusion under section 9(1) of the 1993 Act and approved at its 466th meeting on 28 May 2025, with the meeting's decisions. It also holds the Department's letter of 17 April 2025 asking the Commission to consult on sub-classifying the 66 classes and those under survey, and the 2024-25 file notes in which the Law Department questioned treating the struck-down classes as EWS while the State's appeal was pending.",
+    "source_url": "https://wbcbc.in/",
+    "pages": 18,
+    "sha256": "884080293441cad290b3a404350cce8cd1e5563e2b33f41e92b1292641f6d656"
+  },
+  {
+    "status": "copied_research_file",
+    "notif_no": "412/P-11 (BDO Purbasthali-II)",
+    "date": "2026-06-09",
+    "local_pdf": "obc_pdfs/2026-06-09_BDO-Purbasthali-II-412-P-11_certificate-verification-schedule.pdf",
+    "summary": "Block Development Officer, Purbasthali-II (Purba Bardhaman), to all Gram Panchayats: SC, ST and OBC certificate holders whose certificates are to be verified must attend hearings at the BDO office, 100 holders a day, on set dates from 11 June to 9 July 2026. The schedule lists about 30,000 certificate holders across ten panchayats. It shows how the 14 May 2026 re-verification memo was carried out on the ground before the High Court stayed it on 18 August 2026.",
+    "source_url": "https://purbabardhaman.gov.in/",
+    "pages": 1,
+    "sha256": "29add1df031db245b32dfd6844b57bf40e383004da5b2b4af435e5860ea05e8e"
+  },
+  {
+    "status": "copied_research_file",
+    "notif_no": "WBCSC notice, Advertisement 1/2026",
+    "date": "2026-06-12",
+    "local_pdf": "obc_pdfs/2026-06-12_WBCSC_assistant-professor-edit-option-notice.pdf",
+    "summary": "West Bengal College Service Commission notice for Assistant Professor recruitment (Advertisement 1/2026): a 7-day edit window from 25 June to 1 July 2026. Candidates who applied as OBC-A or OBC-B must update their category under Notification 945-BCW/MR-23/2026 of 18 May 2026, or risk rejection. This is the notice challenged in WPA 14695 and 14698 of 2026.",
+    "source_url": "https://wbcsconline.in/",
+    "pages": 1,
+    "sha256": "b9c4b6e4d90110178369808d65690e3c4c3044ce66971f3ac6dd7014ddc601b1"
+  },
+  {
+    "status": "copied_research_file",
+    "notif_no": "549-L (Bill No. 11 of 2026)",
+    "date": "2026-06-22",
+    "local_pdf": "obc_pdfs/2026-06-22_549-L_Bill-11-of-2026.pdf",
+    "summary": "Kolkata Gazette Extraordinary publishing the Bill to amend the West Bengal Backward Classes (Reservation of Vacancies in Services and Posts) Act, 2012. It renames the Act, defines OBCs by the 1993 Commission Act, lets the State fix the OBC percentage and any sub-categories only in consultation with the Commission (total SC, ST and OBC reservation not above 50%), and omits section 16 and Schedules I and III. These are the provisions the 2024 judgment struck down. The Bill became West Bengal Act VIII of 2026 (Notification 658-L of 15 July 2026), in force from 27 July 2026.",
+    "source_url": "https://egazette.wb.gov.in/",
+    "pages": 4,
+    "sha256": "5bcd090ec968e3b301c421a6f0c6d56dcdc66651bc621e0716b8a6b0c652d927"
+  },
+  {
+    "status": "copied_research_file",
+    "notif_no": "1483(11)-BCW/MR-215/14",
+    "date": "2026-07-15",
+    "local_pdf": "obc_pdfs/2026-07-15_1483-BCW-MR-215-14_recruitment-information.pdf",
+    "summary": "BCW Secretary to eleven recruiting bodies (College, Municipal, Central School, Madrasah and Co-operative Service Commissions, PSC, Health and Police Recruitment Boards, WBJEEB, Medical Education and the Primary Board): report within 7 days every ongoing recruitment, its stage and which reservation policy and 100-point roster it follows, split into processes begun before 22 May 2024, between 10 June 2025 and 18 May 2026, and after 18 May 2026. This review led to Notification 1060 of 7 August 2026.",
+    "source_url": "https://anagrasarkalyan.gov.in/all_notice",
+    "pages": 2,
+    "sha256": "e35c3484818075fa1a15fc7109945e42d62cb204eb9210059d77064bf94af4f5"
+  },
+  {
+    "status": "copied_research_file",
+    "notif_no": "1293/7016/CSSC/ESTT/2026",
+    "date": "2026-07-23",
+    "local_pdf": "obc_pdfs/2026-07-23_WBCSSC-1293_SLST-IX-X-verification-notice.pdf",
+    "summary": "West Bengal Central School Service Commission notice: document verification for successful 2nd SLST (AT) 2025 candidates for Classes IX-X in English, Physical Science and Life Science starts on 30 July 2026 at the Regional Commissions. Context for the SLST category cases (WPA 23207/2026 and FMA 1002/2026).",
+    "source_url": "https://www.westbengalssc.com/",
+    "pages": 1,
+    "sha256": "c7af30c209632061b7f20a360723dfb5fa8fc662e35c5cd87dc4a62505904611"
+  },
+  {
+    "status": "copied_research_file",
+    "notif_no": "1454/7016/CSSC/ESTT/2026",
+    "date": "2026-08-19",
+    "local_pdf": "obc_pdfs/2026-08-19_WBCSSC-1454_SLST-XI-XII-category-update.pdf",
+    "summary": "Following BCW Memo 1060 of 7 August 2026, the School Service Commission opened its portal from 20 to 25 August 2026 for 2nd SLST (AT) 2025 Classes XI-XII candidates to update their OBC sub-category or Unreserved details with certificate number and issuing authority. Anyone who did not do so would be treated as Unreserved (General), with no extension.",
+    "source_url": "https://www.westbengalssc.com/",
+    "pages": 1,
+    "sha256": "54c26f941ca6d5376b78207f07e9106a3b4cef4f67d6f296fca6230a92c7653f"
+  },
+  {
+    "status": "copied_research_file",
+    "notif_no": "1/808204/2026",
+    "date": "2026-08-21",
+    "local_pdf": "obc_pdfs/2026-08-21_1-808204-BCW_reverification-stay-circular.pdf",
+    "summary": "BCW Department (Additional Secretary, Law) to all District Magistrates, with a copy of the High Court's interim order of 18 August 2026 in WPA(P) 275 and 300 of 2026: the 14 May 2026 memo on re-verifying all caste certificates issued since 2011 is stayed until the PILs are decided, but Sub-Divisional Officers may still act under the 1994 Act and 1995 Rules. DMs are asked to instruct SDOs accordingly.",
+    "source_url": "https://anagrasarkalyan.gov.in/all_notice",
+    "pages": 7,
+    "sha256": "75eea14bfae052fe50a5988317bc34bd54be7ab1ea866a2ac18cd201bdba08b4"
   }
 ]
