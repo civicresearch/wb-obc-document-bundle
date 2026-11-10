@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
     <loc>https://obcwb.civicresearch.in/</loc>
-    <lastmod>2026-11-05</lastmod>
+    <lastmod>2026-11-10</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://obcwb.civicresearch.in/"/>
@@ -12,7 +12,7 @@
   </url>
   <url>
     <loc>https://obcwb.civicresearch.in/bn/</loc>
-    <lastmod>2026-11-05</lastmod>
+    <lastmod>2026-11-10</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://obcwb.civicresearch.in/"/>
@@ -22,7 +22,7 @@
   </url>
   <url>
     <loc>https://obcwb.civicresearch.in/timeline</loc>
-    <lastmod>2026-11-05</lastmod>
+    <lastmod>2026-11-10</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://obcwb.civicresearch.in/timeline"/>
@@ -32,7 +32,7 @@
   </url>
   <url>
     <loc>https://obcwb.civicresearch.in/bn/timeline</loc>
-    <lastmod>2026-11-05</lastmod>
+    <lastmod>2026-11-10</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://obcwb.civicresearch.in/timeline"/>
@@ -42,7 +42,7 @@
   </url>
   <url>
     <loc>https://obcwb.civicresearch.in/litigation</loc>
-    <lastmod>2026-11-05</lastmod>
+    <lastmod>2026-11-10</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://obcwb.civicresearch.in/litigation"/>
@@ -52,7 +52,7 @@
   </url>
   <url>
     <loc>https://obcwb.civicresearch.in/bn/litigation</loc>
-    <lastmod>2026-11-05</lastmod>
+    <lastmod>2026-11-10</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://obcwb.civicresearch.in/litigation"/>
@@ -62,7 +62,7 @@
   </url>
   <url>
     <loc>https://obcwb.civicresearch.in/case-map</loc>
-    <lastmod>2026-11-05</lastmod>
+    <lastmod>2026-11-10</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://obcwb.civicresearch.in/case-map"/>
@@ -72,7 +72,7 @@
   </url>
   <url>
     <loc>https://obcwb.civicresearch.in/bn/case-map</loc>
-    <lastmod>2026-11-05</lastmod>
+    <lastmod>2026-11-10</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://obcwb.civicresearch.in/case-map"/>
@@ -82,7 +82,7 @@
   </url>
   <url>
     <loc>https://obcwb.civicresearch.in/projects</loc>
-    <lastmod>2026-11-05</lastmod>
+    <lastmod>2026-11-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://obcwb.civicresearch.in/projects"/>
@@ -92,7 +92,7 @@
   </url>
   <url>
     <loc>https://obcwb.civicresearch.in/bn/projects</loc>
-    <lastmod>2026-11-05</lastmod>
+    <lastmod>2026-11-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://obcwb.civicresearch.in/projects"/>
@@ -102,7 +102,7 @@
   </url>
   <url>
     <loc>https://obcwb.civicresearch.in/case-orders</loc>
-    <lastmod>2026-11-05</lastmod>
+    <lastmod>2026-11-10</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://obcwb.civicresearch.in/case-orders"/>
@@ -112,7 +112,7 @@
   </url>
   <url>
     <loc>https://obcwb.civicresearch.in/bn/case-orders</loc>
-    <lastmod>2026-11-05</lastmod>
+    <lastmod>2026-11-10</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://obcwb.civicresearch.in/case-orders"/>
@@ -122,7 +122,7 @@
   </url>
   <url>
     <loc>https://obcwb.civicresearch.in/media</loc>
-    <lastmod>2026-11-05</lastmod>
+    <lastmod>2026-11-10</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://obcwb.civicresearch.in/media"/>
@@ -132,7 +132,7 @@
   </url>
   <url>
     <loc>https://obcwb.civicresearch.in/bn/media</loc>
-    <lastmod>2026-11-05</lastmod>
+    <lastmod>2026-11-10</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://obcwb.civicresearch.in/media"/>
@@ -142,7 +142,7 @@
   </url>
   <url>
     <loc>https://obcwb.civicresearch.in/obc-list</loc>
-    <lastmod>2026-11-05</lastmod>
+    <lastmod>2026-11-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://obcwb.civicresearch.in/obc-list"/>
@@ -152,7 +152,7 @@
   </url>
   <url>
     <loc>https://obcwb.civicresearch.in/bn/obc-list</loc>
-    <lastmod>2026-11-05</lastmod>
+    <lastmod>2026-11-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://obcwb.civicresearch.in/obc-list"/>
@@ -162,7 +162,7 @@
   </url>
   <url>
     <loc>https://obcwb.civicresearch.in/documents</loc>
-    <lastmod>2026-11-05</lastmod>
+    <lastmod>2026-11-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://obcwb.civicresearch.in/documents"/>
@@ -172,7 +172,7 @@
   </url>
   <url>
     <loc>https://obcwb.civicresearch.in/bn/documents</loc>
-    <lastmod>2026-11-05</lastmod>
+    <lastmod>2026-11-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://obcwb.civicresearch.in/documents"/>
@@ -182,7 +182,7 @@
   </url>
   <url>
     <loc>https://obcwb.civicresearch.in/evidence</loc>
-    <lastmod>2026-11-05</lastmod>
+    <lastmod>2026-11-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://obcwb.civicresearch.in/evidence"/>
@@ -192,7 +192,7 @@
   </url>
   <url>
     <loc>https://obcwb.civicresearch.in/bn/evidence</loc>
-    <lastmod>2026-11-05</lastmod>
+    <lastmod>2026-11-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://obcwb.civicresearch.in/evidence"/>
@@ -202,7 +202,7 @@
   </url>
   <url>
     <loc>https://obcwb.civicresearch.in/record-guide</loc>
-    <lastmod>2026-11-05</lastmod>
+    <lastmod>2026-11-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://obcwb.civicresearch.in/record-guide"/>
@@ -212,7 +212,7 @@
   </url>
   <url>
     <loc>https://obcwb.civicresearch.in/bn/record-guide</loc>
-    <lastmod>2026-11-05</lastmod>
+    <lastmod>2026-11-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://obcwb.civicresearch.in/record-guide"/>
@@ -222,7 +222,7 @@
   </url>
   <url>
     <loc>https://obcwb.civicresearch.in/inventory</loc>
-    <lastmod>2026-11-05</lastmod>
+    <lastmod>2026-11-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://obcwb.civicresearch.in/inventory"/>
@@ -232,7 +232,7 @@
   </url>
   <url>
     <loc>https://obcwb.civicresearch.in/bn/inventory</loc>
-    <lastmod>2026-11-05</lastmod>
+    <lastmod>2026-11-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://obcwb.civicresearch.in/inventory"/>
@@ -242,7 +242,7 @@
   </url>
   <url>
     <loc>https://obcwb.civicresearch.in/obc-basics</loc>
-    <lastmod>2026-11-05</lastmod>
+    <lastmod>2026-11-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://obcwb.civicresearch.in/obc-basics"/>
@@ -252,7 +252,7 @@
   </url>
   <url>
     <loc>https://obcwb.civicresearch.in/bn/obc-basics</loc>
-    <lastmod>2026-11-05</lastmod>
+    <lastmod>2026-11-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://obcwb.civicresearch.in/obc-basics"/>
@@ -262,7 +262,7 @@
   </url>
   <url>
     <loc>https://obcwb.civicresearch.in/methods</loc>
-    <lastmod>2026-11-05</lastmod>
+    <lastmod>2026-11-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://obcwb.civicresearch.in/methods"/>
@@ -272,7 +272,7 @@
   </url>
   <url>
     <loc>https://obcwb.civicresearch.in/bn/methods</loc>
-    <lastmod>2026-11-05</lastmod>
+    <lastmod>2026-11-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://obcwb.civicresearch.in/methods"/>
@@ -282,7 +282,7 @@
   </url>
   <url>
     <loc>https://obcwb.civicresearch.in/reports</loc>
-    <lastmod>2026-11-05</lastmod>
+    <lastmod>2026-11-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://obcwb.civicresearch.in/reports"/>
@@ -292,7 +292,7 @@
   </url>
   <url>
     <loc>https://obcwb.civicresearch.in/bn/reports</loc>
-    <lastmod>2026-11-05</lastmod>
+    <lastmod>2026-11-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://obcwb.civicresearch.in/reports"/>
@@ -302,7 +302,7 @@
   </url>
   <url>
     <loc>https://obcwb.civicresearch.in/about</loc>
-    <lastmod>2026-11-05</lastmod>
+    <lastmod>2026-11-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://obcwb.civicresearch.in/about"/>
@@ -312,7 +312,7 @@
   </url>
   <url>
     <loc>https://obcwb.civicresearch.in/bn/about</loc>
-    <lastmod>2026-11-05</lastmod>
+    <lastmod>2026-11-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://obcwb.civicresearch.in/about"/>
@@ -322,7 +322,7 @@
   </url>
   <url>
     <loc>https://obcwb.civicresearch.in/contribute</loc>
-    <lastmod>2026-11-05</lastmod>
+    <lastmod>2026-11-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://obcwb.civicresearch.in/contribute"/>
@@ -332,7 +332,7 @@
   </url>
   <url>
     <loc>https://obcwb.civicresearch.in/bn/contribute</loc>
-    <lastmod>2026-11-05</lastmod>
+    <lastmod>2026-11-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://obcwb.civicresearch.in/contribute"/>

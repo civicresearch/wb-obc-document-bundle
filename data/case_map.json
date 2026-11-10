@@ -43,7 +43,9 @@
       "label_bn": "২০২৬-এর তালিকা ও শংসাপত্র",
       "children": [
         { "case": "casefile-rjf-pil-2026", "label": "Right and Justice Foundation PIL", "label_bn": "রাইট অ্যান্ড জাস্টিস ফাউন্ডেশন জনস্বার্থ মামলা" },
-        { "case": "casefile-shreyasi-dhang-2026", "label": "Shreyasi Dhang: 2025-list certificates void", "label_bn": "শ্রেয়সী ধাং: ২০২৫-এর তালিকার শংসাপত্র অবৈধ" }
+        { "case": "casefile-shreyasi-dhang-2026", "label": "Shreyasi Dhang: 2025-list certificates void", "label_bn": "শ্রেয়সী ধাং: ২০২৫-এর তালিকার শংসাপত্র অবৈধ" },
+        { "case": "casefile-mijanul-kabir-pil-2026", "label": "Mijanul Kabir PIL (pending)", "label_bn": "মিজানুল কবির জনস্বার্থ মামলা (বিচারাধীন)" },
+        { "case": "casefile-certificate-reverification-2026", "label": "Re-verification of certificates stayed", "label_bn": "শংসাপত্র পুনর্যাচাইয়ে স্থগিতাদেশ" }
       ]
     },
     {

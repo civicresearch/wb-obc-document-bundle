@@ -670,5 +670,126 @@
     "local_file": "case_pdfs/2026-10-30_Calcutta-High-Court_WPA-31497-2026_Sambhu-Charan-Bera_order.pdf",
     "pages": 4,
     "sha256": "6537c0e773c3a49833b41f3936070b1d349e8ecff2a71b61714da28570e90a65"
+  },
+  {
+    "date": "2024-08-05",
+    "court": "Supreme Court of India",
+    "case_numbers": [
+      "SLP(C) 17751-17755/2024",
+      "Diary 27287/2024",
+      "connected SLPs"
+    ],
+    "title": "Supreme Court: record of proceedings in the State's appeals, 5 August 2024 to 6 November 2025",
+    "record_type": "record of proceedings",
+    "source_type": "official_court_pdf",
+    "retrieved_on": "2026-11-10",
+    "verification_note": "Eighteen orders in the State's appeals against the 22 May 2024 judgment. On 5 August 2024 notice was issued and the State was told to explain, on affidavit, the survey and Commission consultation behind the 77 designations and the sub-classification; later orders adjourn the matter, grant permission to file and tag fresh SLPs (Diary 34038, 36073, 37221 and 52301 of 2024), and end with the 6 November 2025 order. Orders start on pages 1, 6, 8, 12, 15, 19, 21, 25, 28, 31, 36, 40, 42, 46, 48, 53, 57 and 62. Digitally signed Supreme Court record of proceedings, from the CRG research file; not a certified copy.",
+    "source_url": "https://www.sci.gov.in/case-status-case-no/",
+    "local_file": "case_pdfs/2024-08-05_Supreme-Court_SLP-C-17751-17755-2024_record-of-proceedings-compilation.pdf",
+    "pages": 65,
+    "sha256": "772c0125b3a9ef19e98b59be5f0f2e8b8c37afb401f916340544ee578695177f",
+    "later_development": "The State and Commission petitions were dismissed as withdrawn on 14 July 2026."
+  },
+  {
+    "date": "2025-11-06",
+    "court": "Supreme Court of India",
+    "case_numbers": [
+      "SLP(C) 17751-17755/2024"
+    ],
+    "title": "Supreme Court: High Court not to proceed with the hearing until further orders",
+    "record_type": "record of proceedings",
+    "source_type": "official_court_pdf",
+    "retrieved_on": "2026-11-10",
+    "verification_note": "Before the Chief Justice, K. Vinod Chandran and Vipul M. Pancholi JJ.: list after four weeks; until further orders the High Court would not proceed further with the hearing of the petition(s). The order does not name the High Court matters. Digitally signed Supreme Court record of proceedings, from the CRG research file; not a certified copy.",
+    "source_url": "https://www.sci.gov.in/case-status-case-no/",
+    "local_file": "case_pdfs/2025-11-06_Supreme-Court_SLP-C-17751-17755-2024_order.pdf",
+    "pages": 5,
+    "sha256": "0b724fec2e4f014a63ecbe16f218b5e425a83ddc54b60fa41b97bc5504384472",
+    "later_development": "The State and Commission petitions were dismissed as withdrawn on 14 July 2026."
+  },
+  {
+    "date": "2026-06-29",
+    "court": "Calcutta High Court",
+    "case_numbers": [
+      "WPA(P) 305/2026"
+    ],
+    "title": "Calcutta High Court: first hearing of the Right and Justice Foundation PIL",
+    "record_type": "order",
+    "source_type": "official_court_pdf",
+    "retrieved_on": "2026-11-10",
+    "verification_note": "The Division Bench heard the petitioners, asked the Advocate General to take instructions and listed the PIL on 2 July 2026; no direction on the notifications. The High Court's own order as published on its website, from the CRG research file; not a certified copy.",
+    "source_url": "https://www.calcuttahighcourt.gov.in/",
+    "local_file": "case_pdfs/2026-06-29_Calcutta-High-Court_WPA-P-305-2026_first-hearing_order.pdf",
+    "pages": 1,
+    "sha256": "620f61f24ed138f0ee5e0942c0b3d568e22717ac7a0a4a2cb6e88d75ca0ec3d1",
+    "later_development": "The PIL was not entertained on 3 July 2026."
+  },
+  {
+    "date": "2026-07-07",
+    "court": "Calcutta High Court",
+    "case_numbers": [
+      "WPA(P) 319/2026"
+    ],
+    "title": "Calcutta High Court: Mijanul Kabir PIL against the 18 May 2026 notifications, first hearing",
+    "record_type": "order",
+    "source_type": "official_court_pdf",
+    "retrieved_on": "2026-11-10",
+    "verification_note": "State unrepresented despite service; Additional Government Pleader asked to appear; listed on 16 July 2026. The High Court's own order as published on its website, from the CRG research file; not a certified copy.",
+    "source_url": "https://www.calcuttahighcourt.gov.in/",
+    "local_file": "case_pdfs/2026-07-07_Calcutta-High-Court_WPA-P-319-2026_Mijanul-Kabir_order.pdf",
+    "pages": 2,
+    "sha256": "e184961b133ac3caac7c9180615c0bac8748131a4bd00f74e64e61b12b57e08d"
+  },
+  {
+    "date": "2026-07-22",
+    "court": "Calcutta High Court",
+    "case_numbers": [
+      "WPA(P) 319/2026"
+    ],
+    "title": "Calcutta High Court: Mijanul Kabir PIL to be decided on affidavits",
+    "record_type": "order",
+    "source_type": "official_court_pdf",
+    "retrieved_on": "2026-11-10",
+    "verification_note": "Affidavit-in-opposition in six weeks and reply in four weeks; maintainability kept open for the final hearing; no interim order. The High Court's own order as published on its website, from the CRG research file; not a certified copy.",
+    "source_url": "https://www.calcuttahighcourt.gov.in/",
+    "local_file": "case_pdfs/2026-07-22_Calcutta-High-Court_WPA-P-319-2026_Mijanul-Kabir_order.pdf",
+    "pages": 2,
+    "sha256": "a44ea2ff29d99e17a075edef4aaf1810e2ad95ae78a4dc85cb665edb0c24230e"
+  },
+  {
+    "date": "2026-08-18",
+    "court": "Calcutta High Court",
+    "case_numbers": [
+      "WPA(P) 275/2026",
+      "WPA(P) 300/2026"
+    ],
+    "title": "Calcutta High Court: BCW memo of 14 May 2026 on re-verifying caste certificates stayed",
+    "record_type": "order",
+    "source_type": "official_court_pdf",
+    "retrieved_on": "2026-11-10",
+    "verification_note": "The Division Bench (Atarup Banerjee J. and Tapabrata Chakraborty A.C.J.) stayed Memo 1033/Secy/BCW of 14 May 2026 until the PILs are decided, finding a prima facie case of dictation to the certificate-issuing authorities; affidavits in four weeks and replies in two; authorities may still act under the 1994 Act and 1995 Rules. The High Court's own order as published on its website, from the CRG research file; not a certified copy.",
+    "source_url": "https://www.calcuttahighcourt.gov.in/",
+    "local_file": "case_pdfs/2026-08-18_Calcutta-High-Court_WPA-P-275-300-2026_certificate-reverification_stay-order.pdf",
+    "pages": 5,
+    "sha256": "edb643646706db49fb174de22d1445ba237b9f6b772e5ddb058e4dc4f09b837b"
+  },
+  {
+    "date": "2026-09-09",
+    "court": "Calcutta High Court",
+    "case_numbers": [
+      "FMA 1002/2026",
+      "CAN 1/2026",
+      "CAN 2/2026"
+    ],
+    "title": "Calcutta High Court: SLST EWS appeal, interim order",
+    "record_type": "order",
+    "source_type": "official_court_pdf",
+    "retrieved_on": "2026-11-10",
+    "verification_note": "Notice to the School Service Commission's counsel on the BCW letter of 10 August 2026; listed on 14 September 2026. The High Court's own order as published on its website, from the CRG research file; not a certified copy.",
+    "source_url": "https://www.calcuttahighcourt.gov.in/",
+    "local_file": "case_pdfs/2026-09-09_Calcutta-High-Court_FMA-1002-2026_Mir-Mazharul-Islam_order.pdf",
+    "pages": 3,
+    "sha256": "4225b9c041a49a506c64bbc751451a83c40217b9e993490b16ff87d98eabf617",
+    "later_development": "The appeal was allowed on 14 September 2026."
   }
 ]
